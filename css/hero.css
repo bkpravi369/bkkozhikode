@@ -1,0 +1,143 @@
+/* Keep the complete supplied composition visible, including all seven rays. */
+.rajyoga-hero {
+  --hero-ink: #fff5e8;
+  --hero-gold: #ffd68a;
+  background: #190909;
+  color: var(--hero-ink);
+  overflow: hidden;
+  container-type: inline-size;
+}
+.rajyoga-stage {
+  position: relative;
+  width: min(100%, 1440px);
+  margin-inline: auto;
+
+  padding: 10px 10px 0;
+}
+.rajyoga-scene {
+  transform: none;
+  transform-origin: center;
+  transition: transform 180ms ease-out;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #190909;
+}
+.rajyoga-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+.rajyoga-motion-toggle {
+  position: absolute;
+  right: 26px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1px solid #ffffff70;
+  border-radius: 50px;
+  background: #190909df;
+  color: #fff;
+  font: inherit;
+  font-size: .875rem;
+  cursor: pointer;
+}
+.rajyoga-motion-toggle[hidden] { display: none; }
+.rajyoga-caption {
+  max-width: 1320px;
+  margin: auto;
+  padding: 36px 30px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+.rajyoga-copy { max-width: 780px; min-width: 0; overflow-wrap: anywhere; }
+.rajyoga-eyebrow {
+  color: var(--hero-gold);
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  margin: 0 0 14px;
+}
+.rajyoga-copy h1 {
+  font-size: clamp(1.8rem, 3.3vw, 3rem);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -.035em;
+  color: var(--hero-ink);
+  margin: 0 0 16px;
+}
+.rajyoga-copy h1 span { color: var(--hero-gold); }
+.rajyoga-malayalam {
+  font-family: var(--font-malayalam);
+  font-size: 1.25rem;
+  color: #ffe4ba;
+  margin: 0 0 5px;
+}
+.rajyoga-copy #heroSubtitle {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #dcc4b9;
+  margin: 0;
+}
+.rajyoga-actions { display: grid; gap: 12px; flex-shrink: 0; }
+.rajyoga-actions button {
+  min-height: 50px;
+  padding: 14px 22px;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+  font-size: .9375rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  transition: background 180ms ease;
+}
+.rajyoga-primary { background: #ffd68a; color: #32140c; border: 1px solid #ffd68a; }
+.rajyoga-primary:hover { background: #ffe5b5; }
+.rajyoga-secondary { background: transparent; color: var(--hero-ink); border: 1px solid #785548; }
+.rajyoga-secondary:hover { background: #ffffff0d; }
+.rajyoga-hero button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+@container (max-width: 900px) {
+  .rajyoga-caption { flex-direction: column; align-items: flex-start; gap: 24px; padding: 28px 24px 36px; }
+  .rajyoga-actions { display: flex; flex-wrap: wrap; }
+}
+@container (max-width: 540px) {
+  .rajyoga-stage { padding: 0; }
+  .rajyoga-scene { border-radius: 0; }
+  .rajyoga-motion-toggle { position: relative; display: flex; margin: 12px 16px 0 auto; right: auto; bottom: auto; }
+  .rajyoga-motion-toggle[hidden] { display: none; }
+  .rajyoga-caption { padding: 24px 20px 32px; }
+  .rajyoga-eyebrow { font-size: .875rem; letter-spacing: .06em; line-height: 1.6; }
+  .rajyoga-actions { display: grid; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rajyoga-scene { transform: none; transition: none; }
+  .rajyoga-actions button { transition: none; }
+}
+
+/* Allocate the perspective layer only while an eligible desktop is playing. */
+.rajyoga-stage.has-depth { perspective: 1600px; }
+.rajyoga-stage.has-depth .rajyoga-scene {
+  transform: rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
+}
+.rajyoga-actions { max-width: 100%; }
+.rajyoga-actions button { white-space: normal; overflow-wrap: anywhere; }
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .rajyoga-stage.has-depth { perspective: none; }
+  .rajyoga-stage.has-depth .rajyoga-scene { transform: none; transition: none; }
+}
+/* Keep existing device preview modes inside the physical screen. */
+body.view-mode-mobile #siteHeader, body.view-mode-mobile #announcementBanner,
+body.view-mode-mobile #mainContent, body.view-mode-mobile footer,
+body.view-mode-tablet #siteHeader, body.view-mode-tablet #announcementBanner,
+body.view-mode-tablet #mainContent, body.view-mode-tablet footer {
+  max-width: 100% !important;
+}

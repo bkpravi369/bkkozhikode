@@ -23,6 +23,7 @@
   
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hero.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23d94514'/><circle cx='50' cy='50' r='20' fill='%23ffd064'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
 </head>
 <body>
@@ -72,58 +73,38 @@
          SECTION: HOME / HERO
          ========================================================================= -->
     <section id="tab-home" class="tab-pane active">
-      <!-- FULL-WIDTH 3D CINEMATIC SPIRITUAL HERO SCENE (DIVINE LIGHT & 7 RAYS) -->
-      <div class="hero-cinematic-universe" id="heroCinematicUniverse">
-        
-        <!-- Layer 1: Master Full-Width Visual Scene (Exact Young Yogi Reference Image) -->
-        <div class="cinematic-backdrop-layer">
-          <img src="assets/images/user_reference_hero.jpg" alt="Brahma Kumaris Raja Yoga Meditation in Divine Light" class="cinematic-scene-img" id="cinematicSceneImg">
+      <!-- Animation compiled from all 300 supplied frames, in their original order. -->
+      <section class="rajyoga-hero" aria-labelledby="heroTitle">
+        <div class="rajyoga-stage" id="rajyogaStage">
+          <div class="rajyoga-scene" id="rajyogaScene">
+            <video id="rajyogaVideo" class="rajyoga-video" width="1920" height="1080"
+              poster="assets/video/rajyoga-poster.jpg" preload="none" muted loop playsinline
+              aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
+              <!-- Source is selected on first playback for the device and connection. -->
+            </video>
+          </div>
+          <button class="rajyoga-motion-toggle" id="rajyogaMotionToggle" type="button" hidden>
+            <span id="rajyogaMotionIcon" aria-hidden="true">▶</span>
+            <span id="rajyogaMotionLabel">Play animation</span>
+          </button>
         </div>
-
-        <!-- Layer 2: Single Supreme Divine Jyoti (Touch / Click Interactive Point of Light) -->
-        <div class="supreme-jyoti-beacon" id="supremeJyotiBeacon" onclick="bkApp.triggerJyotiTouch()" role="button" tabindex="0" title="Touch Supreme Jyoti to receive divine energy">
-          <div class="jyoti-center-white-core"></div>
-          <div class="jyoti-golden-coronal-ring"></div>
-          <div class="jyoti-outer-divine-aura"></div>
-          <div class="jyoti-concentric-waves"></div>
-          <div class="jyoti-volumetric-flares"></div>
-        </div>
-
-        <!-- Layer 3: Live 60fps Canvas for All 7 Simultaneous Continuous Energy Rays + Subtle In-Ray Values + Forehead Convergence -->
-        <canvas id="divineRaysCanvas" class="divine-rays-canvas"></canvas>
-
-        <!-- Layer 4: Forehead Center (Point Between Eyebrows / Brikuti) Soul Receiving Point -->
-        <div class="yogi-brikuti-soul-point" id="yogiBrikutiPoint"></div>
-
-        <!-- Layer 5: Atmospheric Warm Sunset Vignette & Seamless Feathered Bottom Veil -->
-        <div class="cinematic-vignette-overlay"></div>
-        <div class="hero-feathered-bottom-veil"></div>
-
-        <!-- Layer 6: Clean, Minimal Lower Caption Dock (Positioned at Bottom to Protect Yogi Face & Forehead) -->
-        <div class="hero-cinematic-caption-dock">
-          <div class="hero-eyebrow-spiritual">OM SHANTI • WORLD SPIRITUAL UNIVERSITY</div>
-          <h1 class="hero-cinematic-headline" id="heroTitle">Awaken Your Inner Peace & Divine Radiance</h1>
-          <p class="hero-cinematic-tagline" id="heroSubtitle">
-            Experience the serenity of Raja Yoga Meditation in Kozhikode.
-          </p>
-
-          <div class="hero-cinematic-cta-pair">
-            <button class="btn-cinematic-primary" onclick="bkApp.switchTab('course')">
-              <i data-lucide="sparkles"></i>
-              <span>Begin 7-Day Rajyoga Course</span>
+        <div class="rajyoga-caption">
+          <div class="rajyoga-copy">
+            <p class="rajyoga-eyebrow">OM SHANTI · BRAHMA KUMARIS KOZHIKODE</p>
+            <h1 id="heroTitle">Awaken Your Inner Peace <span>&amp; Divine Radiance</span></h1>
+            <p class="rajyoga-malayalam" lang="ml">ആത്മശാന്തിയിലേക്കൊരു യാത്ര</p>
+            <p id="heroSubtitle">Experience the serenity of Rajyoga meditation in Kozhikode.</p>
+          </div>
+          <div class="rajyoga-actions">
+            <button class="rajyoga-primary" type="button" onclick="bkApp.switchTab('course')">
+              Begin 7-Day Rajyoga Course <span aria-hidden="true">↗</span>
             </button>
-            <button class="btn-cinematic-secondary" onclick="bkApp.switchTab('meditation')">
-              <i data-lucide="play-circle"></i>
-              <span>Experience 1-Min Peace</span>
+            <button class="rajyoga-secondary" type="button" onclick="bkApp.switchTab('meditation')">
+              <span aria-hidden="true">▷</span> Experience 1-Min Peace
             </button>
           </div>
-
-          <div class="hero-scroll-indicator" onclick="document.getElementById('dailyThoughtContainer')?.scrollIntoView({behavior:'smooth'})" title="Scroll to explore">
-            <i data-lucide="chevron-down"></i>
-          </div>
         </div>
-
-      </div>
+      </section>
 
       <!-- Daily Thought / Murli Quote Section -->
       <section class="daily-wisdom-banner">
@@ -1790,6 +1771,7 @@
   </aside>
 
   <!-- Scripts -->
+  <script src="js/hero.js"></script>
   <script src="js/store.js"></script>
   <script src="js/app.js"></script>
   <script src="js/admin.js"></script>
