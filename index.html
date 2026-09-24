@@ -22,8 +22,8 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=20">
-  <link rel="stylesheet" href="css/hero.css?v=20">
+  <link rel="stylesheet" href="css/style.css?v=25">
+  <link rel="stylesheet" href="css/hero.css?v=25">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23d94514'/><circle cx='50' cy='50' r='20' fill='%23ffd064'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
 </head>
 <body>
@@ -34,7 +34,7 @@
     <span id="announcementText">🕊️ Complimentary 7-Day Rajyoga Meditation Foundation Course — Ashokapuram Light Palace & all Kozhikode branches</span>
   </div>
 
-  <!-- Site Header & Transparent Floating Navigation -->
+  <!-- Site Header: Minimal Transparent Floating Bar with Single Menu Trigger -->
   <header class="site-header" id="siteHeader">
     <div class="header-container">
       <a href="#home" class="brand-wrapper" onclick="bkApp.switchTab('home')">
@@ -46,25 +46,67 @@
         </div>
       </a>
 
-      <!-- Dynamic Navigation Menu -->
-      <nav>
-        <ul class="nav-menu" id="dynamicNavContainer">
-          <!-- Dynamic navigation items injected by js/app.js -->
-        </ul>
-      </nav>
-
-      <!-- Header Action Buttons -->
+      <!-- Header Action: Single Mobile-Style Menu Button -->
       <div class="header-actions">
         <button class="btn-admin-portal" onclick="bkAdmin.openAdminModal()" title="Open Admin CMS Portal">
           <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
           <span>Admin</span>
         </button>
-        <button class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle menu" onclick="bkApp.toggleMobileMenu()">
-          <i data-lucide="menu"></i>
+        <button class="btn-menu-pill" id="mobileMenuBtn" aria-label="Toggle navigation menu" onclick="bkApp.toggleMobileMenu()">
+          <i data-lucide="menu" class="menu-icon"></i>
+          <span class="menu-label">Menu</span>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile-Style Slide-In Navigation Drawer & Backdrop -->
+  <div class="nav-drawer-backdrop" id="navDrawerBackdrop" onclick="bkApp.toggleMobileMenu(true)"></div>
+  <aside class="nav-drawer-panel" id="navDrawerPanel" aria-label="Site Navigation">
+    <div class="drawer-header">
+      <div class="drawer-brand" onclick="bkApp.switchTab('home'); bkApp.toggleMobileMenu(true);">
+        <div class="soul-light-symbol sm"></div>
+        <div class="brand-text">
+          <div class="drawer-title">BRAHMA KUMARIS</div>
+          <div class="drawer-tag">KOZHIKODE · കോഴിക്കോട്</div>
+        </div>
+      </div>
+      <button class="btn-drawer-close" aria-label="Close menu" onclick="bkApp.toggleMobileMenu(true)">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <div class="drawer-scroll-body">
+      <div class="drawer-nav-label">Navigation · വഴികാട്ടി</div>
+      <ul class="nav-menu" id="dynamicNavContainer">
+        <!-- Dynamic navigation items injected by js/app.js -->
+      </ul>
+
+      <div class="drawer-footer-card">
+        <button class="drawer-course-cta" onclick="bkApp.switchTab('course'); bkApp.toggleMobileMenu(true);">
+          <i data-lucide="sparkles"></i>
+          <div class="cta-txt">
+            <div class="cta-heading">7-Day Rajyoga Course</div>
+            <div class="cta-desc">Free Spiritual Education · പ്രവേശനം സൗജന്യം</div>
+          </div>
+        </button>
+        <div class="drawer-contact-row">
+          <a href="https://wa.me/919539933699" target="_blank" rel="noopener noreferrer" class="drawer-btn-wa">
+            <i data-lucide="message-circle"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="tel:+919539933699" class="drawer-btn-call">
+            <i data-lucide="phone"></i>
+            <span>Call Center</span>
+          </a>
+        </div>
+        <button class="drawer-btn-admin" onclick="bkAdmin.openAdminModal(); bkApp.toggleMobileMenu(true);">
+          <i data-lucide="shield-check"></i>
+          <span>Admin CMS Portal</span>
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <!-- MAIN APP CONTAINER FOR ALL TABS -->
   <main id="mainContent">
@@ -73,25 +115,28 @@
          SECTION: HOME / HERO
          ========================================================================= -->
     <section id="tab-home" class="tab-pane active">
-      <!-- Scroll-driven Rajyoga Animation: advances forward when scrolling down, reverses when scrolling up -->
-      <section class="rajyoga-hero" id="rajyogaHero" aria-labelledby="heroTitle">
+      <!-- Full-Cover Scroll-driven Rajyoga Hero (100vw x 100vh Full Immersion) -->
+      <section class="rajyoga-hero full-cover-hero" id="rajyogaHero" aria-labelledby="heroTitle">
         <div class="rajyoga-hero-sticky" id="rajyogaHeroSticky">
           <div class="rajyoga-stage" id="rajyogaStage">
             <div class="rajyoga-scene" id="rajyogaScene">
               <video id="rajyogaVideo" class="rajyoga-video" width="1920" height="1080"
-                poster="assets/video/rajyoga-poster.jpg" preload="auto" muted loop playsinline
+                preload="auto" muted loop playsinline
                 aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
                 <!-- Source is selected on initial load for the device and connection. -->
               </video>
+              <!-- Full cover feathered gradient veil for cinematic legibility -->
+              <div class="rajyoga-cover-veil" aria-hidden="true"></div>
               <!-- Spiritual light rays aura & glowing scroll progress line -->
               <div class="rajyoga-rays-aura" id="rajyogaRaysAura" aria-hidden="true"></div>
               <div class="rajyoga-scroll-progress-bar" id="rajyogaProgressBar" aria-hidden="true"></div>
             </div>
             <button class="rajyoga-motion-toggle" id="rajyogaMotionToggle" type="button" hidden>
               <span id="rajyogaMotionIcon" aria-hidden="true">▶</span>
-              <span id="rajyogaMotionLabel">Play animation</span>
+              <span id="rajyogaMotionLabel">Play</span>
             </button>
           </div>
+          <!-- Full-Cover Lower-Third Caption & Actions -->
           <div class="rajyoga-caption" id="rajyogaCaption">
             <div class="rajyoga-copy">
               <p class="rajyoga-eyebrow">OM SHANTI · BRAHMA KUMARIS KOZHIKODE</p>
@@ -1786,10 +1831,10 @@
   </aside>
 
   <!-- Scripts -->
-  <script src="js/hero.js?v=20"></script>
-  <script src="js/store.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/admin.js"></script>
+  <script src="js/hero.js?v=25"></script>
+  <script src="js/store.js?v=25"></script>
+  <script src="js/app.js?v=25"></script>
+  <script src="js/admin.js?v=25"></script>
   <script>
     // Initialize Lucide Icons on load
     document.addEventListener('DOMContentLoaded', () => {

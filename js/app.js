@@ -444,18 +444,24 @@ class AppController {
     // Scroll to top of content
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('dynamicNavContainer');
-    if (mobileMenu && mobileMenu.classList.contains('open')) {
-      mobileMenu.classList.remove('open');
-    }
+    // Close navigation drawer if open
+    this.toggleMobileMenu(true);
   }
 
-  toggleMobileMenu() {
+  toggleMobileMenu(forceClose = false) {
+    const drawer = document.getElementById('navDrawerPanel');
+    const backdrop = document.getElementById('navDrawerBackdrop');
+    const btn = document.getElementById('mobileMenuBtn');
     const nav = document.getElementById('dynamicNavContainer');
-    if (nav) {
-      nav.classList.toggle('open');
-    }
+
+    const isOpen = drawer ? drawer.classList.contains('open') : (nav ? nav.classList.contains('open') : false);
+    const shouldOpen = forceClose ? false : !isOpen;
+
+    if (drawer) drawer.classList.toggle('open', shouldOpen);
+    if (backdrop) backdrop.classList.toggle('open', shouldOpen);
+    if (btn) btn.classList.toggle('active', shouldOpen);
+    if (nav) nav.classList.toggle('open', shouldOpen);
+    document.body.classList.toggle('drawer-open', shouldOpen);
   }
 
   // --- Render Daily Murli & Thought ---
