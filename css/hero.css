@@ -1,143 +1,356 @@
-/* Keep the complete supplied composition visible, including all seven rays. */
+/* ==========================================================================
+   Brahma Kumaris Kozhikode - Scroll-Driven Interactive Rajyoga Hero
+   Optimized for 60fps/120fps scrubbing: forward on scroll down, reverse on scroll up
+   ========================================================================== */
+
 .rajyoga-hero {
   --hero-ink: #fff5e8;
   --hero-gold: #ffd68a;
+  position: relative;
+  min-height: 160vh;
   background: #190909;
   color: var(--hero-ink);
-  overflow: hidden;
-  container-type: inline-size;
 }
+
+/* Sticky viewport frame: stays pinned while user scrolls through the track */
+.rajyoga-hero-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  min-height: 500px;
+  max-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 8px 16px 12px;
+  z-index: 10;
+}
+
+/* Stage container containing the cinematic scene */
 .rajyoga-stage {
   position: relative;
-  width: min(100%, 1440px);
+  width: min(100%, 1240px);
   margin-inline: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  padding: 10px 10px 0;
-}
 .rajyoga-scene {
-  transform: none;
-  transform-origin: center;
-  transition: transform 180ms ease-out;
-  border-radius: 6px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 56vh;
+  transform: scale(calc(0.98 + var(--scroll-p, 0) * 0.035)) rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
+  transform-origin: center center;
+  border-radius: 12px;
   overflow: hidden;
-  background: #190909;
+  background: #120404;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 calc(20px + var(--scroll-p, 0) * 45px) rgba(240, 100, 24, calc(0.18 + var(--scroll-p, 0) * 0.35));
+  will-change: transform, box-shadow;
+  transition: box-shadow 0.12s ease-out;
 }
+
 .rajyoga-video {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   aspect-ratio: 16 / 9;
   object-fit: contain;
+  pointer-events: none;
 }
+
+/* Spiritual light rays aura expanding with scroll */
+.rajyoga-rays-aura {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 22%, rgba(255, 214, 138, calc(var(--scroll-p, 0) * 0.3)) 0%, rgba(217, 69, 20, calc(var(--scroll-p, 0) * 0.2)) 40%, transparent 72%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 0.1s linear;
+}
+
+/* Glowing golden meditation progress bar at bottom of scene */
+.rajyoga-scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #d94514, #f59e0b 50%, #ffd68a 100%);
+  transform-origin: left center;
+  transform: scaleX(var(--scroll-p, 0));
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.95);
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Optional Play/Pause toggle */
 .rajyoga-motion-toggle {
   position: absolute;
-  right: 26px;
-  bottom: 18px;
+  right: 18px;
+  bottom: 14px;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  min-height: 44px;
-  padding: 10px 15px;
-  border: 1px solid #ffffff70;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 50px;
-  background: #190909df;
+  background: rgba(25, 9, 9, 0.88);
+  backdrop-filter: blur(8px);
   color: #fff;
   font: inherit;
-  font-size: .875rem;
+  font-size: .8125rem;
+  font-weight: 500;
   cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, border-color 0.2s;
 }
+
+.rajyoga-motion-toggle:hover {
+  background: rgba(45, 15, 15, 0.95);
+  border-color: var(--hero-gold);
+}
+
 .rajyoga-motion-toggle[hidden] { display: none; }
+
+/* Caption section with Malayalam & English */
 .rajyoga-caption {
-  max-width: 1320px;
-  margin: auto;
-  padding: 36px 30px 44px;
+  max-width: 1240px;
+  width: 100%;
+  margin: 8px auto 0;
+  padding: 8px 20px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 36px;
+  gap: 24px;
+  transform: translateY(calc(var(--scroll-p, 0) * -6px));
+  opacity: calc(1 - var(--scroll-p, 0) * 0.2);
+  transition: opacity 0.1s linear;
+  box-sizing: border-box;
 }
-.rajyoga-copy { max-width: 780px; min-width: 0; overflow-wrap: anywhere; }
+
+.rajyoga-copy { 
+  max-width: 760px; 
+  min-width: 0; 
+  overflow-wrap: anywhere; 
+}
+
 .rajyoga-eyebrow {
   color: var(--hero-gold);
-  font-size: .875rem;
-  font-weight: 600;
+  font-size: .8125rem;
+  font-weight: 700;
   letter-spacing: .12em;
-  margin: 0 0 14px;
+  margin: 0 0 6px;
 }
+
 .rajyoga-copy h1 {
-  font-size: clamp(1.8rem, 3.3vw, 3rem);
+  font-size: clamp(1.5rem, 2.6vw, 2.3rem);
   font-weight: 500;
   line-height: 1.18;
-  letter-spacing: -.035em;
+  letter-spacing: -.03em;
   color: var(--hero-ink);
-  margin: 0 0 16px;
+  margin: 0 0 6px;
 }
-.rajyoga-copy h1 span { color: var(--hero-gold); }
+
+.rajyoga-copy h1 span { 
+  color: var(--hero-gold); 
+  font-weight: 600;
+}
+
 .rajyoga-malayalam {
   font-family: var(--font-malayalam);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #ffe4ba;
-  margin: 0 0 5px;
+  margin: 0 0 4px;
+  font-weight: 500;
 }
+
 .rajyoga-copy #heroSubtitle {
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: .9rem;
+  line-height: 1.5;
   color: #dcc4b9;
   margin: 0;
 }
-.rajyoga-actions { display: grid; gap: 12px; flex-shrink: 0; }
+
+.rajyoga-actions { 
+  display: flex; 
+  flex-direction: column;
+  gap: 8px; 
+  flex-shrink: 0; 
+}
+
 .rajyoga-actions button {
-  min-height: 50px;
-  padding: 14px 22px;
-  border-radius: 6px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 8px;
   font: inherit;
   font-weight: 600;
-  font-size: .9375rem;
+  font-size: .875rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  transition: background 180ms ease;
-}
-.rajyoga-primary { background: #ffd68a; color: #32140c; border: 1px solid #ffd68a; }
-.rajyoga-primary:hover { background: #ffe5b5; }
-.rajyoga-secondary { background: transparent; color: var(--hero-ink); border: 1px solid #785548; }
-.rajyoga-secondary:hover { background: #ffffff0d; }
-.rajyoga-hero button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-@container (max-width: 900px) {
-  .rajyoga-caption { flex-direction: column; align-items: flex-start; gap: 24px; padding: 28px 24px 36px; }
-  .rajyoga-actions { display: flex; flex-wrap: wrap; }
-}
-@container (max-width: 540px) {
-  .rajyoga-stage { padding: 0; }
-  .rajyoga-scene { border-radius: 0; }
-  .rajyoga-motion-toggle { position: relative; display: flex; margin: 12px 16px 0 auto; right: auto; bottom: auto; }
-  .rajyoga-motion-toggle[hidden] { display: none; }
-  .rajyoga-caption { padding: 24px 20px 32px; }
-  .rajyoga-eyebrow { font-size: .875rem; letter-spacing: .06em; line-height: 1.6; }
-  .rajyoga-actions { display: grid; width: 100%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .rajyoga-scene { transform: none; transition: none; }
-  .rajyoga-actions button { transition: none; }
+  gap: 10px;
+  transition: all 180ms ease;
+  white-space: nowrap;
 }
 
-/* Allocate the perspective layer only while an eligible desktop is playing. */
-.rajyoga-stage.has-depth { perspective: 1600px; }
+.rajyoga-primary { 
+  background: #ffd68a; 
+  color: #32140c; 
+  border: 1px solid #ffd68a; 
+  box-shadow: 0 4px 15px rgba(255, 214, 138, 0.25);
+}
+
+.rajyoga-primary:hover { 
+  background: #ffe5b5; 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 214, 138, 0.4);
+}
+
+.rajyoga-secondary { 
+  background: rgba(255, 255, 255, 0.05); 
+  color: var(--hero-ink); 
+  border: 1px solid rgba(120, 85, 72, 0.8); 
+  backdrop-filter: blur(4px);
+}
+
+.rajyoga-secondary:hover { 
+  background: rgba(255, 255, 255, 0.12); 
+  border-color: var(--hero-gold);
+}
+
+.rajyoga-hero button:focus-visible { 
+  outline: 3px solid #fff; 
+  outline-offset: 4px; 
+}
+
+/* Floating interactive Malayalam & English scroll guide badge */
+.rajyoga-scroll-prompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  opacity: calc(1 - var(--scroll-p, 0) * 8);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.prompt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  background: rgba(30, 10, 10, 0.8);
+  border: 1px solid rgba(255, 214, 138, 0.35);
+  border-radius: 999px;
+  color: var(--hero-gold);
+  font-size: .78rem;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.prompt-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffd68a;
+  box-shadow: 0 0 8px #ffd68a;
+  animation: promptGlow 1.8s infinite ease-in-out;
+}
+
+.prompt-text-ml {
+  font-family: var(--font-malayalam);
+  font-size: .82rem;
+}
+
+.prompt-sep {
+  opacity: 0.5;
+  font-size: .72rem;
+}
+
+.prompt-text-en {
+  font-size: .72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.prompt-arrow {
+  display: inline-block;
+  font-size: .82rem;
+  animation: promptArrowBounce 1.4s infinite ease-in-out;
+}
+
+@keyframes promptGlow {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes promptArrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* 3D pointer tilt depth */
+.rajyoga-stage.has-depth { 
+  perspective: 1600px; 
+}
+
 .rajyoga-stage.has-depth .rajyoga-scene {
-  transform: rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
+  transform: scale(calc(0.98 + var(--scroll-p, 0) * 0.035)) rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
 }
-.rajyoga-actions { max-width: 100%; }
-.rajyoga-actions button { white-space: normal; overflow-wrap: anywhere; }
-@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .rajyoga-stage.has-depth { perspective: none; }
-  .rajyoga-stage.has-depth .rajyoga-scene { transform: none; transition: none; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .rajyoga-hero { min-height: 150vh; }
+  .rajyoga-hero-sticky {
+    height: auto;
+    min-height: calc(100vh - 60px);
+    padding: 10px 14px 16px;
+    justify-content: flex-start;
+  }
+  .rajyoga-scene { max-height: 46vh; }
+  .rajyoga-caption { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 14px; 
+    padding: 8px 10px 0; 
+  }
+  .rajyoga-actions { 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    width: 100%;
+  }
 }
-/* Keep existing device preview modes inside the physical screen. */
-body.view-mode-mobile #siteHeader, body.view-mode-mobile #announcementBanner,
-body.view-mode-mobile #mainContent, body.view-mode-mobile footer,
-body.view-mode-tablet #siteHeader, body.view-mode-tablet #announcementBanner,
-body.view-mode-tablet #mainContent, body.view-mode-tablet footer {
-  max-width: 100% !important;
+
+@media (max-width: 540px) {
+  .rajyoga-hero { min-height: 140vh; }
+  .rajyoga-hero-sticky {
+    top: 56px;
+    height: calc(100vh - 56px);
+    padding: 6px 10px 10px;
+  }
+  .rajyoga-scene { 
+    border-radius: 8px; 
+    max-height: 36vh;
+  }
+  .rajyoga-copy h1 { font-size: 1.35rem; }
+  .rajyoga-eyebrow { font-size: .7rem; }
+  .rajyoga-malayalam { font-size: .95rem; }
+  .rajyoga-copy #heroSubtitle { font-size: .82rem; }
+  .rajyoga-actions { display: grid; width: 100%; gap: 6px; }
+  .rajyoga-actions button { min-height: 40px; font-size: .82rem; padding: 6px 10px; }
+  .rajyoga-scroll-prompt { margin-top: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rajyoga-scene { transform: none !important; transition: none !important; }
+  .rajyoga-actions button { transition: none !important; }
+  .prompt-pulse, .prompt-arrow { animation: none !important; }
 }

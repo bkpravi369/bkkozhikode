@@ -261,8 +261,61 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(payload).encode('utf-8'))
             return
 
+        # Range request support for media & video seeking
+        range_header = self.headers.get('Range')
+        if range_header and range_header.startswith('bytes='):
+            filepath = self.translate_path(self.path)
+            if os.path.isfile(filepath):
+                return self.send_range_response(filepath, range_header)
+
         # Fallback to standard static file serving
         return super().do_GET()
+
+    def end_headers(self):
+        # Ensure fresh assets during development
+        p = self.path.split('?')[0]
+        if p == '/' or p.endswith('.html') or p.endswith('.js') or p.endswith('.css'):
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.send_header('Pragma', 'no-cache')
+            self.send_header('Expires', '0')
+        super().end_headers()
+
+    def send_range_response(self, filepath, range_header):
+        try:
+            file_size = os.path.getsize(filepath)
+            ranges = range_header[6:].strip().split('-')
+            start = int(ranges[0]) if ranges[0] else 0
+            end = int(ranges[1]) if len(ranges) > 1 and ranges[1] else file_size - 1
+            if start >= file_size or end >= file_size or start > end:
+                self.send_error(416, "Requested Range Not Satisfiable")
+                return
+
+            length = end - start + 1
+            ctype = self.guess_type(filepath)
+
+            self.send_response(206)
+            self.send_header('Content-Type', ctype)
+            self.send_header('Content-Range', f'bytes {start}-{end}/{file_size}')
+            self.send_header('Content-Length', str(length))
+            self.send_header('Accept-Ranges', 'bytes')
+            self.send_header('Cache-Control', 'public, max-age=3600')
+            self.end_headers()
+
+            with open(filepath, 'rb') as f:
+                f.seek(start)
+                bytes_to_send = length
+                chunk_size = 64 * 1024
+                while bytes_to_send > 0:
+                    read_len = min(chunk_size, bytes_to_send)
+                    chunk = f.read(read_len)
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    bytes_to_send -= len(chunk)
+        except (ConnectionResetError, BrokenPipeError):
+            pass
+        except Exception as e:
+            self.send_error(500, f"Range error: {e}")
 
     def do_POST(self):
         if self.path.startswith('/api/youtube/clear-cache'):

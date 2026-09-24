@@ -22,8 +22,8 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/style.css?v=20">
+  <link rel="stylesheet" href="css/hero.css?v=20">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23d94514'/><circle cx='50' cy='50' r='20' fill='%23ffd064'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
 </head>
 <body>
@@ -73,35 +73,50 @@
          SECTION: HOME / HERO
          ========================================================================= -->
     <section id="tab-home" class="tab-pane active">
-      <!-- Animation compiled from all 300 supplied frames, in their original order. -->
-      <section class="rajyoga-hero" aria-labelledby="heroTitle">
-        <div class="rajyoga-stage" id="rajyogaStage">
-          <div class="rajyoga-scene" id="rajyogaScene">
-            <video id="rajyogaVideo" class="rajyoga-video" width="1920" height="1080"
-              poster="assets/video/rajyoga-poster.jpg" preload="none" muted loop playsinline
-              aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
-              <!-- Source is selected on first playback for the device and connection. -->
-            </video>
-          </div>
-          <button class="rajyoga-motion-toggle" id="rajyogaMotionToggle" type="button" hidden>
-            <span id="rajyogaMotionIcon" aria-hidden="true">▶</span>
-            <span id="rajyogaMotionLabel">Play animation</span>
-          </button>
-        </div>
-        <div class="rajyoga-caption">
-          <div class="rajyoga-copy">
-            <p class="rajyoga-eyebrow">OM SHANTI · BRAHMA KUMARIS KOZHIKODE</p>
-            <h1 id="heroTitle">Awaken Your Inner Peace <span>&amp; Divine Radiance</span></h1>
-            <p class="rajyoga-malayalam" lang="ml">ആത്മശാന്തിയിലേക്കൊരു യാത്ര</p>
-            <p id="heroSubtitle">Experience the serenity of Rajyoga meditation in Kozhikode.</p>
-          </div>
-          <div class="rajyoga-actions">
-            <button class="rajyoga-primary" type="button" onclick="bkApp.switchTab('course')">
-              Begin 7-Day Rajyoga Course <span aria-hidden="true">↗</span>
+      <!-- Scroll-driven Rajyoga Animation: advances forward when scrolling down, reverses when scrolling up -->
+      <section class="rajyoga-hero" id="rajyogaHero" aria-labelledby="heroTitle">
+        <div class="rajyoga-hero-sticky" id="rajyogaHeroSticky">
+          <div class="rajyoga-stage" id="rajyogaStage">
+            <div class="rajyoga-scene" id="rajyogaScene">
+              <video id="rajyogaVideo" class="rajyoga-video" width="1920" height="1080"
+                poster="assets/video/rajyoga-poster.jpg" preload="auto" muted loop playsinline
+                aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
+                <!-- Source is selected on initial load for the device and connection. -->
+              </video>
+              <!-- Spiritual light rays aura & glowing scroll progress line -->
+              <div class="rajyoga-rays-aura" id="rajyogaRaysAura" aria-hidden="true"></div>
+              <div class="rajyoga-scroll-progress-bar" id="rajyogaProgressBar" aria-hidden="true"></div>
+            </div>
+            <button class="rajyoga-motion-toggle" id="rajyogaMotionToggle" type="button" hidden>
+              <span id="rajyogaMotionIcon" aria-hidden="true">▶</span>
+              <span id="rajyogaMotionLabel">Play animation</span>
             </button>
-            <button class="rajyoga-secondary" type="button" onclick="bkApp.switchTab('meditation')">
-              <span aria-hidden="true">▷</span> Experience 1-Min Peace
-            </button>
+          </div>
+          <div class="rajyoga-caption" id="rajyogaCaption">
+            <div class="rajyoga-copy">
+              <p class="rajyoga-eyebrow">OM SHANTI · BRAHMA KUMARIS KOZHIKODE</p>
+              <h1 id="heroTitle">Awaken Your Inner Peace <span>&amp; Divine Radiance</span></h1>
+              <p class="rajyoga-malayalam" lang="ml">ആത്മശാന്തിയിലേക്കൊരു യാത്ര</p>
+              <p id="heroSubtitle">Experience the serenity of Rajyoga meditation in Kozhikode.</p>
+            </div>
+            <div class="rajyoga-actions">
+              <button class="rajyoga-primary" type="button" onclick="bkApp.switchTab('course')">
+                Begin 7-Day Rajyoga Course <span aria-hidden="true">↗</span>
+              </button>
+              <button class="rajyoga-secondary" type="button" onclick="bkApp.switchTab('meditation')">
+                <span aria-hidden="true">▷</span> Experience 1-Min Peace
+              </button>
+            </div>
+          </div>
+          <!-- Interactive Malayalam & English Scroll Guidance Badge -->
+          <div class="rajyoga-scroll-prompt" id="rajyogaScrollPrompt" aria-hidden="true">
+            <div class="prompt-pill">
+              <span class="prompt-pulse"></span>
+              <span class="prompt-text-ml">താഴോട്ട് സ്ക്രോൾ ചെയ്യുക</span>
+              <span class="prompt-sep">•</span>
+              <span class="prompt-text-en">Scroll to awaken</span>
+              <span class="prompt-arrow">↓</span>
+            </div>
           </div>
         </div>
       </section>
@@ -1771,7 +1786,7 @@
   </aside>
 
   <!-- Scripts -->
-  <script src="js/hero.js"></script>
+  <script src="js/hero.js?v=20"></script>
   <script src="js/store.js"></script>
   <script src="js/app.js"></script>
   <script src="js/admin.js"></script>

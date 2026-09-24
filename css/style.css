@@ -74,6 +74,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
 body {
@@ -81,7 +82,7 @@ body {
   background-color: var(--divine-cream);
   color: var(--text-dark);
   line-height: 1.7;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6, .sacred-title {
