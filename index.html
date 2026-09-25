@@ -22,17 +22,12 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=25">
-  <link rel="stylesheet" href="css/hero.css?v=25">
+  <link rel="stylesheet" href="css/style.css?v=27">
+  <link rel="stylesheet" href="css/hero.css?v=27">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23d94514'/><circle cx='50' cy='50' r='20' fill='%23ffd064'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
 </head>
 <body>
 
-  <!-- Top Announcement Bar (Slim & Elegant) -->
-  <div class="announcement-bar" id="announcementBanner">
-    <span class="badge">Announcement</span>
-    <span id="announcementText">🕊️ Complimentary 7-Day Rajyoga Meditation Foundation Course — Ashokapuram Light Palace & all Kozhikode branches</span>
-  </div>
 
   <!-- Site Header: Minimal Transparent Floating Bar with Single Menu Trigger -->
   <header class="site-header" id="siteHeader">
@@ -115,52 +110,49 @@
          SECTION: HOME / HERO
          ========================================================================= -->
     <section id="tab-home" class="tab-pane active">
-      <!-- Full-Cover Scroll-driven Rajyoga Hero (100vw x 100vh Full Immersion) -->
-      <section class="rajyoga-hero full-cover-hero" id="rajyogaHero" aria-labelledby="heroTitle">
-        <div class="rajyoga-hero-sticky" id="rajyogaHeroSticky">
-          <div class="rajyoga-stage" id="rajyogaStage">
-            <div class="rajyoga-scene" id="rajyogaScene">
-              <video id="rajyogaVideo" class="rajyoga-video" width="1920" height="1080"
-                preload="auto" muted loop playsinline
-                aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
-                <!-- Source is selected on initial load for the device and connection. -->
-              </video>
-              <!-- Full cover feathered gradient veil for cinematic legibility -->
-              <div class="rajyoga-cover-veil" aria-hidden="true"></div>
-              <!-- Spiritual light rays aura & glowing scroll progress line -->
-              <div class="rajyoga-rays-aura" id="rajyogaRaysAura" aria-hidden="true"></div>
-              <div class="rajyoga-scroll-progress-bar" id="rajyogaProgressBar" aria-hidden="true"></div>
-            </div>
-            <button class="rajyoga-motion-toggle" id="rajyogaMotionToggle" type="button" hidden>
-              <span id="rajyogaMotionIcon" aria-hidden="true">▶</span>
-              <span id="rajyogaMotionLabel">Play</span>
-            </button>
+      <!-- Cinematic Rajyoga Hero Visual (Pure Looping Divine Animation) -->
+      <section class="rajyoga-hero cinematic-hero" id="rajyogaHero" aria-label="Brahma Kumaris Rajyoga Meditation Visualization">
+        <div class="rajyoga-stage" id="rajyogaStage">
+          <div class="rajyoga-scene" id="rajyogaScene">
+            <video id="rajyogaVideo" class="rajyoga-video" width="1920" height="1080"
+              preload="auto" autoplay muted loop playsinline
+              poster="assets/video/rajyoga-poster.jpg"
+              aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
+            </video>
+            <!-- Feathered gradient veil for cinematic depth & seamless transition into page -->
+            <div class="rajyoga-cover-veil" aria-hidden="true"></div>
+            <!-- Spiritual light rays aura -->
+            <div class="rajyoga-rays-aura" id="rajyogaRaysAura" aria-hidden="true"></div>
           </div>
-          <!-- Full-Cover Lower-Third Caption & Actions -->
-          <div class="rajyoga-caption" id="rajyogaCaption">
-            <div class="rajyoga-copy">
-              <p class="rajyoga-eyebrow">OM SHANTI · BRAHMA KUMARIS KOZHIKODE</p>
-              <h1 id="heroTitle">Awaken Your Inner Peace <span>&amp; Divine Radiance</span></h1>
-              <p class="rajyoga-malayalam" lang="ml">ആത്മശാന്തിയിലേക്കൊരു യാത്ര</p>
-              <p id="heroSubtitle">Experience the serenity of Rajyoga meditation in Kozhikode.</p>
-            </div>
-            <div class="rajyoga-actions">
-              <button class="rajyoga-primary" type="button" onclick="bkApp.switchTab('course')">
-                Begin 7-Day Rajyoga Course <span aria-hidden="true">↗</span>
-              </button>
-              <button class="rajyoga-secondary" type="button" onclick="bkApp.switchTab('meditation')">
-                <span aria-hidden="true">▷</span> Experience 1-Min Peace
-              </button>
-            </div>
-          </div>
-          <!-- Interactive Malayalam & English Scroll Guidance Badge -->
-          <div class="rajyoga-scroll-prompt" id="rajyogaScrollPrompt" aria-hidden="true">
-            <div class="prompt-pill">
-              <span class="prompt-pulse"></span>
-              <span class="prompt-text-ml">താഴോട്ട് സ്ക്രോൾ ചെയ്യുക</span>
-              <span class="prompt-sep">•</span>
-              <span class="prompt-text-en">Scroll to awaken</span>
-              <span class="prompt-arrow">↓</span>
+          <button class="rajyoga-motion-toggle" id="rajyogaMotionToggle" type="button" aria-label="Pause or play background meditation animation">
+            <span id="rajyogaMotionIcon" aria-hidden="true">Ⅱ</span>
+            <span id="rajyogaMotionLabel">Pause</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Awakening & Introduction Section (Placed cleanly below hero visual) -->
+      <section class="hero-awakening-section" id="heroAwakeningSection">
+        <div class="container">
+          <div class="awakening-card">
+            <div class="awakening-content">
+              <div class="awakening-badge">
+                <span class="badge-dot" aria-hidden="true"></span>
+                <span class="awakening-eyebrow">OM SHANTI · BRAHMA KUMARIS KOZHIKODE</span>
+              </div>
+              <h1 class="awakening-title" id="heroTitle">Awaken Your Inner Peace <span>&amp; Divine Radiance</span></h1>
+              <p class="awakening-malayalam" lang="ml">ആത്മശാന്തിയിലേക്കൊരു യാത്ര</p>
+              <p class="awakening-desc" id="heroSubtitle">Experience the serenity of Rajyoga meditation in Kozhikode. Reconnect with the Supreme Light, restore inner stillness, and awaken divine virtues.</p>
+              <div class="awakening-actions">
+                <button class="btn-awakening-primary" type="button" onclick="bkApp.switchTab('course')">
+                  <span>Begin 7-Day Rajyoga Course</span>
+                  <span class="btn-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button class="btn-awakening-secondary" type="button" onclick="bkApp.switchTab('meditation')">
+                  <span class="btn-play-icon" aria-hidden="true">▷</span>
+                  <span>Experience 1-Min Peace</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1811,30 +1803,12 @@
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- =========================================================================
-       FLOATING RESPONSIVE DEVICE SWITCHER (DESKTOP / TAB / MOBILE VIEW)
-       ========================================================================= -->
-  <aside class="floating-viewport-bar" id="floatingViewportBar" aria-label="Responsive Device Preview Switcher">
-    <span class="viewport-bar-title">👁️ View:</span>
-    <button type="button" class="viewport-btn active" data-view="desktop" onclick="bkApp.setPublicViewport('desktop', this)" title="Full Desktop View (100%)">
-      <i data-lucide="monitor" style="width:14px;height:14px;"></i>
-      <span>Desktop</span>
-    </button>
-    <button type="button" class="viewport-btn" data-view="tablet" onclick="bkApp.setPublicViewport('tablet', this)" title="Tablet View (768px - iPad / Tab)">
-      <i data-lucide="tablet" style="width:14px;height:14px;"></i>
-      <span>Tab (768px)</span>
-    </button>
-    <button type="button" class="viewport-btn" data-view="mobile" onclick="bkApp.setPublicViewport('mobile', this)" title="Mobile View (390px - Smartphone)">
-      <i data-lucide="smartphone" style="width:14px;height:14px;"></i>
-      <span>Mobile (390px)</span>
-    </button>
-  </aside>
 
   <!-- Scripts -->
-  <script src="js/hero.js?v=25"></script>
-  <script src="js/store.js?v=25"></script>
-  <script src="js/app.js?v=25"></script>
-  <script src="js/admin.js?v=25"></script>
+  <script src="js/hero.js?v=27"></script>
+  <script src="js/store.js?v=27"></script>
+  <script src="js/app.js?v=27"></script>
+  <script src="js/admin.js?v=27"></script>
   <script>
     // Initialize Lucide Icons on load
     document.addEventListener('DOMContentLoaded', () => {

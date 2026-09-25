@@ -1,77 +1,62 @@
 /* ==========================================================================
-   Brahma Kumaris Kozhikode - Full-Cover Immersive Scroll-Driven Rajyoga Hero
-   - 100vw x 100vh Edge-to-Edge Cinematic Full Coverage
-   - Bidirectional Scroll Scrubbing: Forward on scroll down, reverse on scroll up
-   - Seamless floating header & lower-third typography
+   Brahma Kumaris Kozhikode - Cinematic Rajyoga Hero & Awakening Intro
+   - Pure Looping Divine Meditation Video Animation
+   - Crystal-clear visual showcase (no text obscuring the 7 rays or meditator)
+   - Awakening Intro Section placed seamlessly below hero
+   - 100% Responsive for Desktop, Tablet, and Mobile
    ========================================================================== */
 
-.rajyoga-hero.full-cover-hero {
-  --hero-ink: #fff5e8;
+:root {
   --hero-gold: #ffd68a;
+  --hero-amber: #f59e0b;
+  --hero-flame: #d94514;
+  --hero-dark: #0a0203;
+  --hero-card-bg: rgba(22, 6, 7, 0.88);
+}
+
+/* ==========================================================================
+   1. HERO VIDEO STAGE (Pure Animation Showcase)
+   ========================================================================== */
+
+.rajyoga-hero.cinematic-hero {
   position: relative;
   width: 100%;
-  min-height: 180vh;
   margin: 0;
   padding: 0;
-  background: #0d0304;
-  color: var(--hero-ink);
-  overflow: clip;
-}
-
-/* Full-viewport sticky frame (100vw x 100vh) */
-.rajyoga-hero.full-cover-hero .rajyoga-hero-sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: stretch;
+  background: var(--hero-dark);
   overflow: hidden;
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  z-index: 5;
 }
 
-/* Stage container covering the entire viewport */
-.rajyoga-hero.full-cover-hero .rajyoga-stage {
-  position: absolute;
-  inset: 0;
+/* On Desktop: Expansive cinematic height */
+.rajyoga-hero.cinematic-hero .rajyoga-stage {
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: clamp(520px, 82vh, 880px);
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background: #0a0203;
 }
 
-/* Full-bleed scene */
-.rajyoga-hero.full-cover-hero .rajyoga-scene {
+.rajyoga-hero.cinematic-hero .rajyoga-scene {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  aspect-ratio: unset;
-  max-height: unset;
-  border-radius: 0;
   overflow: hidden;
-  background: #0d0304;
-  box-shadow: none;
-  transform: scale(calc(1 + var(--scroll-p, 0) * 0.04)) rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
-  transform-origin: center 32%;
+  background: #0a0203;
+  transform: rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
+  transform-origin: center center;
+  transition: transform 0.15s ease-out;
   will-change: transform;
 }
 
-/* Video: Edge-to-edge full cover */
-.rajyoga-hero.full-cover-hero .rajyoga-video {
+/* Video: crisp full-view presentation */
+.rajyoga-hero.cinematic-hero .rajyoga-video {
   display: block;
   width: 100%;
   height: 100%;
@@ -80,303 +65,397 @@
   pointer-events: none;
 }
 
-/* Cinematic Feathered Gradient Veil for optimal text readability */
-.rajyoga-cover-veil {
+/* Feathered smooth gradient transitions:
+   - Soft fade at top for fixed header
+   - Deep rich dissolve at bottom into the Awakening section */
+.rajyoga-hero.cinematic-hero .rajyoga-cover-veil {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 30%, transparent 35%, rgba(13, 3, 4, 0.45) 70%, rgba(13, 3, 4, 0.92) 100%),
-              linear-gradient(180deg, rgba(13, 3, 4, 0.72) 0%, rgba(13, 3, 4, 0.25) 15%, transparent 35%, transparent 55%, rgba(13, 3, 4, 0.75) 75%, rgba(13, 3, 4, 0.98) 100%);
+  background: 
+    linear-gradient(180deg, 
+      rgba(10, 2, 3, 0.72) 0%, 
+      rgba(10, 2, 3, 0.15) 12%, 
+      transparent 28%, 
+      transparent 70%, 
+      rgba(10, 2, 3, 0.75) 88%, 
+      #0a0203 100%
+    );
   pointer-events: none;
 }
 
-/* Spiritual light rays aura expanding with scroll */
-.rajyoga-hero.full-cover-hero .rajyoga-rays-aura {
+/* Ambient spiritual glow */
+.rajyoga-hero.cinematic-hero .rajyoga-rays-aura {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 25%, rgba(255, 214, 138, calc(var(--scroll-p, 0) * 0.32)) 0%, rgba(217, 69, 20, calc(var(--scroll-p, 0) * 0.2)) 40%, transparent 70%);
+  background: radial-gradient(circle at 50% 20%, rgba(255, 214, 138, 0.14) 0%, rgba(217, 69, 20, 0.08) 45%, transparent 70%);
   pointer-events: none;
   mix-blend-mode: screen;
-  transition: opacity 0.1s linear;
 }
 
-/* Glowing golden meditation progress line at bottom */
-.rajyoga-hero.full-cover-hero .rajyoga-scroll-progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #d94514, #f59e0b 50%, #ffd68a 100%);
-  transform-origin: left center;
-  transform: scaleX(var(--scroll-p, 0));
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.95);
-  pointer-events: none;
-  z-index: 25;
-  will-change: transform;
-}
-
-/* Play/Pause toggle */
-.rajyoga-hero.full-cover-hero .rajyoga-motion-toggle {
+/* Modern Minimal Play / Pause Toggle Button */
+.rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
   position: absolute;
   right: 24px;
-  top: 90px;
+  top: 76px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 36px;
   padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(251, 191, 36, 0.35);
   border-radius: 50px;
-  background: rgba(20, 6, 8, 0.8);
-  backdrop-filter: blur(10px);
-  color: #fff;
+  background: rgba(20, 6, 8, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
   font: inherit;
-  font-size: .8rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
   z-index: 20;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-.rajyoga-hero.full-cover-hero .rajyoga-motion-toggle:hover {
-  background: rgba(45, 12, 16, 0.92);
+.rajyoga-hero.cinematic-hero .rajyoga-motion-toggle:hover {
+  background: rgba(45, 12, 16, 0.9);
   border-color: var(--hero-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
 }
 
-.rajyoga-hero.full-cover-hero .rajyoga-motion-toggle[hidden] { display: none; }
+/* ==========================================================================
+   2. AWAKENING INTRO SECTION (Placed Below Hero Visual)
+   ========================================================================== */
 
-/* Lower-Third Caption Section */
-.rajyoga-hero.full-cover-hero .rajyoga-caption {
+.hero-awakening-section {
   position: relative;
-  z-index: 20;
-  max-width: 1360px;
+  background: linear-gradient(180deg, #0a0203 0%, #150506 50%, #0d0304 100%);
+  padding: 2.75rem 1.25rem 3.5rem;
+  margin-top: -1px; /* seamless seal */
+  z-index: 10;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hero-awakening-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 80%);
+  height: 1px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.6) 0%, rgba(217, 69, 20, 0.3) 50%, transparent 100%);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+}
+
+.awakening-card {
+  max-width: 960px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 36px 28px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
+  text-align: center;
+  padding: 1.5rem 1.5rem 2rem;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, rgba(20, 6, 8, 0.45) 60%, transparent 100%);
   box-sizing: border-box;
-  transform: translateY(calc(var(--scroll-p, 0) * -8px));
-  opacity: calc(1 - var(--scroll-p, 0) * 0.25);
-  transition: opacity 0.1s linear;
 }
 
-.rajyoga-copy { 
-  max-width: 780px; 
-  min-width: 0; 
-  overflow-wrap: anywhere; 
-}
-
-.rajyoga-eyebrow {
-  color: var(--hero-gold);
-  font-size: .8125rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  margin: 0 0 6px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-}
-
-.rajyoga-copy h1 {
-  font-size: clamp(1.75rem, 3.2vw, 3rem);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -.03em;
-  color: #ffffff;
-  margin: 0 0 6px;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.95);
-}
-
-.rajyoga-copy h1 span { 
-  color: var(--hero-gold); 
-  font-weight: 700;
-  text-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
-}
-
-.rajyoga-malayalam {
-  font-family: var(--font-malayalam);
-  font-size: 1.25rem;
-  color: #ffe4ba;
-  margin: 0 0 4px;
-  font-weight: 500;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
-}
-
-.rajyoga-copy #heroSubtitle {
-  font-size: .95rem;
-  line-height: 1.5;
-  color: #eedbd2;
-  margin: 0;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-}
-
-.rajyoga-actions { 
-  display: flex; 
+.awakening-content {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
   flex-direction: column;
-  gap: 10px; 
-  flex-shrink: 0; 
-}
-
-.rajyoga-actions button {
-  min-height: 48px;
-  padding: 12px 22px;
-  border-radius: 8px;
-  font: inherit;
-  font-weight: 600;
-  font-size: .92rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
-  transition: all 180ms ease;
-  white-space: nowrap;
 }
 
-.rajyoga-primary { 
-  background: #ffd68a; 
-  color: #32140c; 
-  border: 1px solid #ffd68a; 
-  box-shadow: 0 4px 20px rgba(255, 214, 138, 0.35);
-}
-
-.rajyoga-primary:hover { 
-  background: #ffe5b5; 
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255, 214, 138, 0.5);
-}
-
-.rajyoga-secondary { 
-  background: rgba(30, 10, 12, 0.7); 
-  color: var(--hero-ink); 
-  border: 1px solid rgba(255, 214, 138, 0.35); 
-  backdrop-filter: blur(10px);
-}
-
-.rajyoga-secondary:hover { 
-  background: rgba(50, 18, 22, 0.85); 
-  border-color: var(--hero-gold);
-}
-
-.rajyoga-hero button:focus-visible { 
-  outline: 3px solid #fff; 
-  outline-offset: 4px; 
-}
-
-/* Floating interactive Scroll Guide Badge */
-.rajyoga-hero.full-cover-hero .rajyoga-scroll-prompt {
-  position: relative;
-  z-index: 20;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 16px;
-  opacity: calc(1 - var(--scroll-p, 0) * 8);
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.prompt-pill {
+.awakening-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 5px 16px;
-  background: rgba(20, 6, 8, 0.85);
-  border: 1px solid rgba(255, 214, 138, 0.35);
+  padding: 6px 18px;
   border-radius: 999px;
-  color: var(--hero-gold);
-  font-size: .8rem;
-  font-weight: 600;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  margin-bottom: 1.25rem;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.prompt-pulse {
+.badge-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #ffd68a;
-  box-shadow: 0 0 8px #ffd68a;
-  animation: promptGlow 1.8s infinite ease-in-out;
+  box-shadow: 0 0 10px #f59e0b;
+  animation: pulse-aura 2.5s infinite alternate;
+  flex-shrink: 0;
 }
 
-.prompt-text-ml {
-  font-family: var(--font-malayalam);
-  font-size: .85rem;
-}
-
-.prompt-sep {
-  opacity: 0.5;
-  font-size: .75rem;
-}
-
-.prompt-text-en {
-  font-size: .75rem;
-  letter-spacing: 0.04em;
+.awakening-eyebrow {
+  color: var(--hero-gold);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0;
   text-transform: uppercase;
 }
 
-.prompt-arrow {
-  display: inline-block;
-  font-size: .85rem;
-  animation: promptArrowBounce 1.4s infinite ease-in-out;
+.awakening-title {
+  font-size: clamp(1.85rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.75);
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
-@keyframes promptGlow {
-  0%, 100% { opacity: 0.5; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.2); }
+.awakening-title span {
+  background: linear-gradient(135deg, #ffe08a 0%, #f59e0b 60%, #ff8c42 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
 }
 
-@keyframes promptArrowBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
+.awakening-malayalam {
+  font-family: var(--font-malayalam, 'Gayathri', 'Manjari', sans-serif);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  color: #ffd68a;
+  margin: 0 0 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  max-width: 100%;
 }
 
-/* 3D pointer tilt depth */
-.rajyoga-stage.has-depth { 
-  perspective: 1600px; 
+.awakening-desc {
+  font-size: clamp(0.95rem, 1.8vw, 1.12rem);
+  line-height: 1.65;
+  color: rgba(255, 245, 235, 0.85);
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  box-sizing: border-box;
 }
 
-.rajyoga-stage.has-depth .rajyoga-scene {
-  transform: scale(calc(1 + var(--scroll-p, 0) * 0.04)) rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
+.awakening-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .rajyoga-hero.full-cover-hero { min-height: 160vh; }
-  .rajyoga-hero.full-cover-hero .rajyoga-caption { 
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 18px; 
-    padding: 0 24px 24px; 
+.btn-awakening-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd68a 0%, #f59e0b 50%, #d94514 100%);
+  color: #1a0604;
+  font-size: 0.98rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-awakening-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(245, 158, 11, 0.65);
+  filter: brightness(1.08);
+}
+
+.btn-awakening-primary .btn-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-awakening-primary:hover .btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+.btn-awakening-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: rgba(28, 8, 10, 0.75);
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 600;
+  border: 1.5px solid rgba(251, 191, 36, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-awakening-secondary:hover {
+  background: rgba(45, 14, 18, 0.9);
+  border-color: var(--hero-gold);
+  color: var(--hero-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+}
+
+.btn-awakening-secondary .btn-play-icon {
+  font-size: 1.05rem;
+  color: var(--hero-gold);
+}
+
+/* ==========================================================================
+   3. RESPONSIVE BREAKPOINTS (Tablet & Mobile Perfection)
+   ========================================================================== */
+
+/* Tablet (iPad, Android Tablets: 601px - 1024px) */
+@media (max-width: 1024px) {
+  .rajyoga-hero.cinematic-hero .rajyoga-stage {
+    height: clamp(400px, 56vw, 600px);
+    margin-top: 56px;
   }
-  .rajyoga-actions { 
-    flex-direction: row; 
-    flex-wrap: wrap; 
+  .rajyoga-hero.cinematic-hero .rajyoga-video {
+    object-position: center center;
+  }
+  .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
+    top: 18px;
+    right: 18px;
+  }
+  .hero-awakening-section {
+    padding: 2.25rem 1.25rem 3rem;
+  }
+  .awakening-card {
+    padding: 1.25rem 1.25rem;
+  }
+  .awakening-desc {
+    margin-bottom: 1.75rem;
+  }
+}
+
+/* Mobile (Smartphones: <= 600px) */
+@media (max-width: 600px) {
+  .rajyoga-hero.cinematic-hero .rajyoga-stage {
+    /* 16:9 proportion so all 7 divine rays and meditator are fully framed with zero cutoff */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 56.25vw;
+    min-height: 200px;
+    margin-top: 52px; /* Clear fixed header */
+    background: #0a0203;
+  }
+  
+  .rajyoga-hero.cinematic-hero .rajyoga-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
+    top: 8px;
+    right: 8px;
+    padding: 3px 9px;
+    font-size: 0.7rem;
+    min-height: 26px;
+    gap: 4px;
+  }
+
+  .hero-awakening-section {
+    padding: 1.5rem 0.75rem 2.25rem;
+    overflow-x: hidden;
+  }
+
+  .awakening-card {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background: none;
+  }
+
+  .awakening-badge {
+    padding: 4px 12px;
+    margin-bottom: 0.75rem;
+    max-width: 100%;
+  }
+
+  .awakening-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  .awakening-title {
+    font-size: clamp(1.4rem, 5.8vw, 1.85rem);
+    line-height: 1.22;
+    margin-bottom: 0.5rem;
+    padding: 0 0.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+
+  .awakening-malayalam {
+    font-size: 1.05rem;
+    margin-bottom: 0.55rem;
     width: 100%;
   }
-  .rajyoga-actions button {
-    flex: 1 1 200px;
+
+  .awakening-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    padding: 0 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .awakening-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 9px;
+    padding: 0 0.25rem;
+    box-sizing: border-box;
+  }
+
+  .btn-awakening-primary,
+  .btn-awakening-secondary {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 16px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    justify-content: center;
   }
 }
 
-@media (max-width: 540px) {
-  .rajyoga-hero.full-cover-hero { min-height: 150vh; }
-  .rajyoga-hero.full-cover-hero .rajyoga-caption { 
-    padding: 0 16px 20px; 
-  }
-  .rajyoga-copy h1 { font-size: 1.55rem; }
-  .rajyoga-eyebrow { font-size: .72rem; }
-  .rajyoga-malayalam { font-size: 1.05rem; }
-  .rajyoga-copy #heroSubtitle { font-size: .85rem; }
-  .rajyoga-actions { display: grid; width: 100%; gap: 8px; }
-  .rajyoga-actions button { min-height: 42px; font-size: .85rem; padding: 8px 12px; }
-  .rajyoga-hero.full-cover-hero .rajyoga-motion-toggle { top: 80px; right: 16px; font-size: .75rem; }
-}
-
+/* Reduced Motion Mode */
 @media (prefers-reduced-motion: reduce) {
-  .rajyoga-hero.full-cover-hero .rajyoga-scene { transform: none !important; transition: none !important; }
-  .rajyoga-actions button { transition: none !important; }
-  .prompt-pulse, .prompt-arrow { animation: none !important; }
+  .rajyoga-hero.cinematic-hero .rajyoga-scene {
+    transform: none !important;
+    transition: none !important;
+  }
+  .badge-dot {
+    animation: none !important;
+  }
+  .btn-awakening-primary,
+  .btn-awakening-secondary {
+    transition: none !important;
+  }
 }

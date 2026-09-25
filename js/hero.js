@@ -1,255 +1,129 @@
 /* ==========================================================================
-   Brahma Kumaris Kozhikode - Scroll-Driven Rajyoga Animation Engine (v2)
-   - Scrolling DOWN: Animation advances forward (0s -> 10s)
-   - Scrolling UP: Animation scrubs backwards in reverse (10s -> 0s)
-   - Hardware-primed video surface (clears poster image immediately)
-   - Fast seek watchdog & non-blocking seek pipeline
-   - Smooth 60fps/120fps requestAnimationFrame lerp interpolation
+   Brahma Kumaris Kozhikode - Continuous Looping Rajyoga Animation Engine
+   - Smooth continuous auto-looping animation of the 7 spiritual rays & meditating soul
+   - Automatic responsive video source selection (Mobile, Tablet, Desktop)
+   - IntersectionObserver battery & performance optimization (pauses when out of view)
+   - Background tab visibility auto-pause/resume
+   - Play/Pause toggle control with interactive icon state
+   - Subtle 3D interactive pointer perspective tilt on fine pointer desktop
    ========================================================================== */
 
 (() => {
-  const heroTrack = document.getElementById('rajyogaHero');
-  const heroSticky = document.getElementById('rajyogaHeroSticky');
+  const heroSection = document.getElementById('rajyogaHero');
   const stage = document.getElementById('rajyogaStage');
   const scene = document.getElementById('rajyogaScene');
   const video = document.getElementById('rajyogaVideo');
-  const progressBar = document.getElementById('rajyogaProgressBar');
-  const scrollPrompt = document.getElementById('rajyogaScrollPrompt');
   const toggle = document.getElementById('rajyogaMotionToggle');
   const label = document.getElementById('rajyogaMotionLabel');
   const icon = document.getElementById('rajyogaMotionIcon');
 
-  if (!heroTrack || !video) return;
+  if (!video) return;
 
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const desktopPointer = matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine)');
 
-  let targetProgress = 0;
-  let currentProgress = 0;
-  let isSeeking = false;
-  let pendingSeekTime = null;
-  let seekWatchdog = null;
-  let rafId = null;
-  let isUserAutoplaying = false;
-  let isVideoPrimed = false;
-
-  // 3D Pointer Perspective
+  let isPlaying = true;
   let pointerFrame = 0;
-  let pointerX = 0;
-  let pointerY = 0;
 
-  // Geometry cache
-  let cachedScrollDistance = 600;
-
-  function updateMetrics() {
-    const stickyHeight = heroSticky ? heroSticky.offsetHeight : (window.innerHeight - 60);
-    const trackHeight = heroTrack ? heroTrack.offsetHeight : window.innerHeight * 1.5;
-    cachedScrollDistance = Math.max(350, trackHeight - stickyHeight);
-  }
-
+  // Select optimal video asset based on viewport
   function selectSource() {
-    if (video.hasAttribute('src')) return;
     const width = window.innerWidth;
-    // Prefer mobile / tablet for fast 60fps scrubbing with near-zero seek latency
-    const isMobile = width <= 640;
-    const isTablet = width <= 1200;
-    const videoFile = isMobile ? 'rajyoga-mobile.mp4' : isTablet ? 'rajyoga-tablet.mp4' : 'rajyoga-hero.mp4';
-    
-    video.src = `assets/video/${videoFile}`;
-    video.preload = 'auto';
-    video.muted = true;
-    video.playsInline = true;
-    video.load();
+    let selectedFile = 'rajyoga-hero.mp4';
+    if (width <= 640) {
+      selectedFile = 'rajyoga-mobile.mp4';
+    } else if (width <= 1024) {
+      selectedFile = 'rajyoga-tablet.mp4';
+    }
+
+    const targetSrc = `assets/video/${selectedFile}`;
+    if (!video.src || !video.src.includes(selectedFile)) {
+      video.src = targetSrc;
+      video.load();
+    }
   }
 
-  function primeVideoSurface() {
-    if (isVideoPrimed) return;
-    isVideoPrimed = true;
-    // CRITICAL: Remove the poster attribute so Chrome displays the live video frame immediately
-    video.removeAttribute('poster');
+  function startPlayback() {
     video.muted = true;
     video.playsInline = true;
-    
-    // Quick play-pause cycle to prime the hardware decode compositor
+    video.loop = true;
     const playPromise = video.play();
-    if (playPromise && playPromise.then) {
-      playPromise.then(() => {
-        if (!isUserAutoplaying) {
-          video.pause();
-          performSeek(currentProgress * (video.duration || 10));
-        }
-      }).catch(() => {
-        performSeek(currentProgress * (video.duration || 10));
-      });
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          isPlaying = true;
+          updateToggleUI();
+        })
+        .catch(() => {
+          isPlaying = false;
+          updateToggleUI();
+          // Autoplay blocked by browser policy, play on first user interaction
+          const resumeOnTouch = () => {
+            video.play().then(() => {
+              isPlaying = true;
+              updateToggleUI();
+            }).catch(() => {});
+            window.removeEventListener('click', resumeOnTouch);
+            window.removeEventListener('touchstart', resumeOnTouch);
+          };
+          window.addEventListener('click', resumeOnTouch, { once: true, passive: true });
+          window.addEventListener('touchstart', resumeOnTouch, { once: true, passive: true });
+        });
     }
-  }
-
-  function performSeek(time) {
-    if (!video || !video.duration || isNaN(video.duration)) return;
-    const duration = video.duration;
-    const clampedTime = Math.max(0, Math.min(duration - 0.03, time));
-
-    // Deadband check
-    if (Math.abs(video.currentTime - clampedTime) < 0.02) return;
-
-    if (isSeeking || video.seeking) {
-      pendingSeekTime = clampedTime;
-      return;
-    }
-
-    isSeeking = true;
-    pendingSeekTime = null;
-
-    clearTimeout(seekWatchdog);
-    seekWatchdog = setTimeout(() => {
-      isSeeking = false;
-      if (pendingSeekTime !== null) {
-        const next = pendingSeekTime;
-        pendingSeekTime = null;
-        performSeek(next);
-      }
-    }, 70);
-
-    try {
-      if (typeof video.fastSeek === 'function') {
-        video.fastSeek(clampedTime);
-      } else {
-        video.currentTime = clampedTime;
-      }
-    } catch {
-      isSeeking = false;
-    }
-  }
-
-  video.addEventListener('seeked', () => {
-    isSeeking = false;
-    clearTimeout(seekWatchdog);
-    if (pendingSeekTime !== null) {
-      const next = pendingSeekTime;
-      pendingSeekTime = null;
-      performSeek(next);
-    }
-  });
-
-  video.addEventListener('loadeddata', primeVideoSurface);
-  video.addEventListener('canplay', primeVideoSurface);
-  video.addEventListener('loadedmetadata', () => {
-    updateMetrics();
-    primeVideoSurface();
-    if (video.duration) {
-      performSeek(currentProgress * video.duration);
-    }
-  });
-
-  function updateVisualEffects(progress) {
-    // 1. Progress Bar
-    if (progressBar) {
-      progressBar.style.transform = `scaleX(${progress})`;
-    }
-
-    // 2. CSS Variable for scene scale, glow, and aura
-    if (scene) {
-      scene.style.setProperty('--scroll-p', progress.toFixed(3));
-    }
-
-    // 3. Scroll Guidance Prompt
-    if (scrollPrompt) {
-      if (progress > 0.05) {
-        scrollPrompt.style.opacity = '0';
-        scrollPrompt.style.pointerEvents = 'none';
-      } else {
-        scrollPrompt.style.opacity = '1';
-        scrollPrompt.style.pointerEvents = 'auto';
-      }
-    }
-  }
-
-  function animationLoop() {
-    if (isUserAutoplaying) {
-      if (video.duration && !video.paused) {
-        currentProgress = video.currentTime / video.duration;
-        targetProgress = currentProgress;
-        updateVisualEffects(currentProgress);
-      }
-      rafId = requestAnimationFrame(animationLoop);
-      return;
-    }
-
-    // Smooth Lerp (Linear Interpolation) with 0.18 response factor
-    const delta = targetProgress - currentProgress;
-    if (Math.abs(delta) < 0.001) {
-      currentProgress = targetProgress;
-    } else {
-      currentProgress += delta * 0.18;
-    }
-
-    if (video.duration && !isNaN(video.duration)) {
-      performSeek(currentProgress * video.duration);
-    }
-
-    updateVisualEffects(currentProgress);
-
-    if (Math.abs(targetProgress - currentProgress) >= 0.001) {
-      rafId = requestAnimationFrame(animationLoop);
-    } else {
-      rafId = null;
-    }
-  }
-
-  function requestLoop() {
-    if (!rafId) {
-      rafId = requestAnimationFrame(animationLoop);
-    }
-  }
-
-  // Scroll handler: reads scroll position and maps directly to animation progress
-  function onScroll() {
-    if (document.hidden) return;
-
-    if (isUserAutoplaying) {
-      isUserAutoplaying = false;
-      video.pause();
-      updateToggleUI();
-    }
-
-    const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-    
-    // As user scrolls down from top (0px), progress starts immediately!
-    const rawProgress = scrollY / cachedScrollDistance;
-    targetProgress = Math.max(0, Math.min(1, rawProgress));
-
-    requestLoop();
   }
 
   function updateToggleUI() {
-    if (!toggle || !label || !icon) return;
-    const playing = !video.paused && isUserAutoplaying;
-    label.textContent = playing ? 'Pause animation' : 'Play animation';
-    icon.textContent = playing ? 'Ⅱ' : '▶';
+    if (!label || !icon) return;
+    const active = !video.paused;
+    label.textContent = active ? 'Pause' : 'Play';
+    icon.textContent = active ? 'Ⅱ' : '▶';
   }
 
+  // Toggle button click listener
   if (toggle) {
-    toggle.hidden = false;
-    toggle.addEventListener('click', () => {
-      if (isUserAutoplaying) {
-        isUserAutoplaying = false;
-        video.pause();
-      } else {
-        isUserAutoplaying = true;
-        selectSource();
-        primeVideoSurface();
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (video.paused) {
         video.play().catch(() => {});
-        requestLoop();
+        isPlaying = true;
+      } else {
+        video.pause();
+        isPlaying = false;
       }
       updateToggleUI();
     });
   }
 
-  // 3D Desktop Pointer Tilt
+  // Optimize performance: pause video when hero is scrolled out of viewport
+  if ('IntersectionObserver' in window && heroSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (isPlaying && video.paused) {
+            video.play().catch(() => {});
+          }
+        } else {
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(heroSection);
+  }
+
+  // Pause when browser tab is inactive
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (!video.paused) video.pause();
+    } else {
+      if (isPlaying && video.paused) video.play().catch(() => {});
+    }
+  });
+
+  // 3D Desktop Pointer Tilt (subtle, delicate 3D tilt on hover)
   function resetDepth() {
     cancelAnimationFrame(pointerFrame);
     pointerFrame = 0;
-    stage?.classList.remove('has-depth');
     scene?.style.removeProperty('--hero-rx');
     scene?.style.removeProperty('--hero-ry');
   }
@@ -257,41 +131,32 @@
   if (stage) {
     stage.addEventListener('pointermove', (event) => {
       if (!desktopPointer.matches || reducedMotion.matches || document.hidden) return;
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-      if (!pointerFrame) pointerFrame = requestAnimationFrame(() => {
-        const bounds = stage.getBoundingClientRect();
-        stage.classList.add('has-depth');
-        const rx = -(pointerY - bounds.top - bounds.height / 2) / bounds.height * 2.2;
-        const ry = (pointerX - bounds.left - bounds.width / 2) / bounds.width * 2.2;
-        scene.style.setProperty('--hero-rx', `${rx}deg`);
-        scene.style.setProperty('--hero-ry', `${ry}deg`);
-        pointerFrame = 0;
-      });
+      if (!pointerFrame) {
+        pointerFrame = requestAnimationFrame(() => {
+          const bounds = stage.getBoundingClientRect();
+          const rx = -((event.clientY - bounds.top - bounds.height / 2) / bounds.height) * 2.5;
+          const ry = ((event.clientX - bounds.left - bounds.width / 2) / bounds.width) * 2.5;
+          scene.style.setProperty('--hero-rx', `${rx.toFixed(2)}deg`);
+          scene.style.setProperty('--hero-ry', `${ry.toFixed(2)}deg`);
+          pointerFrame = 0;
+        });
+      }
     }, { passive: true });
 
     stage.addEventListener('pointerleave', resetDepth);
   }
 
-  // Listeners
-  window.addEventListener('scroll', onScroll, { passive: true });
+  // Handle window resize dynamically to swap appropriate video resolution if needed
+  let resizeTimeout;
   window.addEventListener('resize', () => {
-    updateMetrics();
-    onScroll();
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      selectSource();
+      if (isPlaying && video.paused) video.play().catch(() => {});
+    }, 250);
   }, { passive: true });
 
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      if (isUserAutoplaying) video.pause();
-    } else {
-      updateMetrics();
-      onScroll();
-    }
-  });
-
-  // Init
+  // Initialize
   selectSource();
-  updateMetrics();
-  onScroll();
-  setTimeout(primeVideoSurface, 100);
+  startPlayback();
 })();
