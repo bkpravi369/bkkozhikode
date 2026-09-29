@@ -21,9 +21,13 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=27">
-  <link rel="stylesheet" href="css/hero.css?v=27">
+  <link rel="stylesheet" href="css/style.css?v=30">
+  <link rel="stylesheet" href="css/hero.css?v=30">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23d94514'/><circle cx='50' cy='50' r='20' fill='%23ffd064'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
 </head>
 <body>
@@ -121,21 +125,21 @@
             <span id="rajyogaMotionLabel">Pause</span>
           </button>
         </div>
-      </section>
 
-      <!-- Subtle Cinematic Title & Clean CTA (Soft atmospheric dissolve below visual) -->
-      <section class="hero-feathered-flow" id="heroFeatheredFlow">
-        <div class="container hero-flow-container">
-          <h1 class="hero-cinematic-title" id="heroTitle">Awaken Your Inner Peace <span class="title-accent">&amp; Divine Radiance</span></h1>
-          <div class="hero-flow-actions">
-            <button class="btn-awakening-primary" type="button" onclick="bkApp.switchTab('course')">
-              <span>Begin 7-Day Rajyoga Course</span>
-              <span class="btn-arrow" aria-hidden="true">↗</span>
-            </button>
-            <button class="btn-awakening-secondary" type="button" onclick="bkApp.switchTab('meditation')">
-              <span class="btn-play-icon" aria-hidden="true">▷</span>
-              <span>Experience 1-Min Peace</span>
-            </button>
+        <!-- Words & Action Buttons Repositioned Cleanly to Bottom Side of Hero Section -->
+        <div class="hero-bottom-flow" id="heroBottomFlow">
+          <div class="container hero-flow-container">
+            <h1 class="hero-cinematic-title" id="heroTitle">Awaken Your Inner Peace <span class="title-accent">&amp; Divine Radiance</span></h1>
+            <div class="hero-flow-actions">
+              <button class="btn-awakening-primary" type="button" onclick="bkApp.switchTab('course')">
+                <span>Begin 7-Day Rajyoga Course</span>
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="btn-awakening-secondary" type="button" onclick="bkApp.switchTab('meditation')">
+                <span class="btn-play-icon" aria-hidden="true">▷</span>
+                <span>Experience 1-Min Peace</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -906,9 +910,9 @@
 
 
   <!-- Scripts -->
-  <script src="js/hero.js?v=28"></script>
-  <script src="js/store.js?v=28"></script>
-  <script src="js/app.js?v=28"></script>
+  <script src="js/hero.js?v=30"></script>
+  <script src="js/store.js?v=30"></script>
+  <script src="js/app.js?v=30"></script>
   <script>
     // Initialize Lucide Icons on load
     document.addEventListener('DOMContentLoaded', () => {
