@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal — Brahma Kumaris Kozhikode</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=28">
+  <link rel="stylesheet" href="../css/hero.css?v=28">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background: #0a0203 !important;
+      color: #ffffff;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-standalone-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-modal-backdrop {
+      position: relative !important;
+      display: block !important;
+      background: transparent !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      padding: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 100vh !important;
+    }
+    .admin-modal-card {
+      max-width: 100% !important;
+      min-height: 100vh !important;
+      height: 100% !important;
+      border-radius: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      background: #0a0203 !important;
+    }
+    #adminLoginView {
+      margin: 12vh auto !important;
+      background: #180608 !important;
+      border: 1px solid rgba(251, 191, 36, 0.35) !important;
+      border-radius: 16px;
+      padding: 3rem 2.5rem !important;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+    }
+    #adminLoginView h3 {
+      color: #ffd68a !important;
+      font-weight: 700;
+    }
+    #adminLoginView p {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+    #adminLoginView label {
+      color: #fef08a !important;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99999;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-standalone-wrapper">
+  <div class="admin-modal-backdrop" id="adminModal">
+    <div class="admin-modal-card">
+      
+      <!-- Admin Header -->
+      <div class="admin-header">
+        <h2>
+          <i data-lucide="shield-check"></i>
+          <span>Brahma Kumaris Kozhikode — Admin Management Portal</span>
+        </h2>
+        <div style="display:flex;align-items:center;gap:0.75rem;"><a href="/" class="btn-view-site" style="color:#ffd68a;text-decoration:none;font-size:0.85rem;padding:6px 12px;border:1px solid rgba(255,214,138,0.3);border-radius:6px;">View Public Site ↗</a><button class="btn-admin-logout" onclick="bkAdmin.handleLogout()" style="background:rgba(217,69,20,0.8);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:0.85rem;cursor:pointer;">Sign Out</button></div>
+      </div>
+
+      <!-- Admin Login View (if not authenticated) -->
+      <div id="adminLoginView" style="padding:3rem 2rem;text-align:center;max-width:480px;margin:0 auto;">
+        <div class="soul-light-symbol" style="margin:0 auto 1.5rem;"></div>
+        <h3 style="font-size:1.6rem;margin-bottom:0.5rem;color:var(--sunset-dark-base);">Admin Authentication</h3>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin-bottom:1.5rem;">
+          Please enter the administrative security PIN to manage tabs, gallery media, events, and student registrations. 
+        </p>
+
+        <div id="loginErrorMsg" style="display:none;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#fca5a5;padding:0.6rem 1rem;border-radius:8px;margin-bottom:1rem;font-size:0.85rem;"></div>
+        <form onsubmit="bkAdmin.handleLogin(event)">
+          <div class="form-group" style="text-align:left;">
+            <label for="adminPinInput">Security PIN</label>
+            <input type="password" id="adminPinInput" class="form-control" placeholder="Enter Administrative Password" required>
+          </div>
+          <button type="submit" class="btn-submit-form" style="margin-top:1rem;">Unlock Admin Portal</button>
+        </form>
+      </div>
+
+      <!-- Admin Panel Body (Visible when authenticated) -->
+      <div id="adminPanelView" style="display:none;flex-direction:column;flex-grow:1;overflow:hidden;">
+        
+        <!-- Live Viewport Device Preview Simulator Toolbar -->
+        <div class="admin-preview-toolbar" id="adminDevicePreviewBar" style="display:flex;align-items:center;justify-content:space-between;background:#241208;color:#ffd064;padding:0.45rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.1);font-size:0.82rem;flex-wrap:wrap;gap:0.5rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;">
+            <i data-lucide="smartphone" style="width:14px;height:14px;"></i>
+            <span><strong>Responsive Viewport Simulator:</strong> Preview public website on different devices</span>
+          </div>
+          <div class="device-preview-buttons" style="display:flex;gap:0.4rem;">
+            <button type="button" class="btn-device-prev active" data-device="desktop" onclick="bkAdmin.setDevicePreview('desktop', this)">
+              <i data-lucide="monitor" style="width:13px;height:13px;"></i> Desktop
+            </button>
+            <button type="button" class="btn-device-prev" data-device="tablet" onclick="bkAdmin.setDevicePreview('tablet', this)">
+              <i data-lucide="tablet" style="width:13px;height:13px;"></i> Tablet (768px)
+            </button>
+            <button type="button" class="btn-device-prev" data-device="mobile" onclick="bkAdmin.setDevicePreview('mobile', this)">
+              <i data-lucide="smartphone" style="width:13px;height:13px;"></i> Mobile (390px)
+            </button>
+          </div>
+        </div>
+
+        <!-- Sub-Nav Tabs -->
+        <div class="admin-nav-tabs">
+          <button class="admin-tab-btn active" onclick="bkAdmin.switchPane('dashboard', this)">Dashboard</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('about-mgr', this)">About Us Content</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('murali-mgr', this)">Daily Murali</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('centers-mgr', this)">Center List</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('youtube-mgr', this)">YouTube Channels & Videos</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('social-channels-mgr', this)">Social Media Links</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('course-mgr', this)">7-Day Course Videos</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('gallery-mgr', this)">Gallery Manager</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('events-mgr', this)">Events & Retreats</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('registrations-mgr', this)">Registrations & Inquiries</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('tab-builder', this)">Dynamic Tabs</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('settings-mgr', this)">Site Settings</button>
+        </div>
+
+        <div class="admin-body">
+          
+          <!-- PANE 1: DASHBOARD -->
+          <div class="admin-pane active" id="pane-dashboard">
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="stat-icon"><i data-lucide="users"></i></div>
+                <div class="stat-info">
+                  <strong id="statRegCount">0</strong>
+                  <span>Course Inquiries</span>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i data-lucide="layers"></i></div>
+                <div class="stat-info">
+                  <strong id="statTabsCount">0</strong>
+                  <span>Active Tabs & Pages</span>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i data-lucide="image"></i></div>
+                <div class="stat-info">
+                  <strong id="statMediaCount">0</strong>
+                  <span>Gallery Items</span>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i data-lucide="calendar"></i></div>
+                <div class="stat-info">
+                  <strong id="statEventsCount">0</strong>
+                  <span>Upcoming Events</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:#fff;padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--divine-card-border);">
+              <h3 style="font-size:1.2rem;margin-bottom:0.75rem;">Recent Student Registrations</h3>
+              <div style="overflow-x:auto;">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Center</th>
+                      <th>Program</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dashRecentRegsTable">
+                    <!-- Injected -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANE: 7-DAY RAJYOGA COURSE VIDEO MANAGER -->
+          <div class="admin-pane" id="pane-course-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">7-Day Rajyoga Course Video Manager</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Paste YouTube video URLs (Public or Unlisted), update lesson titles, descriptions, and durations for each of the seven daily lessons. Videos will embed directly on the course page.
+                </p>
+              </div>
+            </div>
+
+            <div class="admin-course-days-list" id="adminCourseDaysList">
+              <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE: SOCIAL MEDIA CHANNELS MANAGER -->
+          <div class="admin-pane" id="pane-social-channels-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Official Social Media Channels Management</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Manage platform links (YouTube, Instagram, Facebook) and active status for all four official channels. Links automatically update the multi-level navigation dropdown and the Media hub!
+                </p>
+              </div>
+            </div>
+
+            <div class="admin-social-channels-list" id="adminSocialChannelsList">
+              <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE 2: DYNAMIC TABS BUILDER -->
+          <div class="admin-pane" id="pane-tab-builder">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Dynamic Tab & Page Builder</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">Create new custom tabs and pages at any time. They immediately appear in the top navigation bar!</p>
+              </div>
+              <button class="btn-cta-course" onclick="bkAdmin.showAddTabForm()">+ Add New Tab</button>
+            </div>
+
+            <!-- Add/Edit Tab Form (Collapsible) -->
+            <div id="addTabFormContainer" style="display:none;background:#fff;padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--sunset-gold);margin-bottom:1.5rem;">
+              <h4 style="font-size:1.1rem;margin-bottom:1rem;color:var(--sunset-primary);" id="tabFormTitle">Create New Dynamic Navigation Tab</h4>
+              <form onsubmit="bkAdmin.handleSaveTab(event)">
+                <input type="hidden" id="tabFormId" value="">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="tabFormLabel">Tab Display Label *</label>
+                    <input type="text" id="tabFormLabel" class="form-control" placeholder="e.g. Youth Wing, Women Empowerment" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="tabFormIcon">Icon Name</label>
+                    <select id="tabFormIcon" class="form-control">
+                      <option value="file-text">Document / Article</option>
+                      <option value="sparkles">Spiritual / Sparkles</option>
+                      <option value="heart">Values & Compassion</option>
+                      <option value="users">Youth / Community</option>
+                      <option value="book-open">Education / Books</option>
+                      <option value="video">Video & Discourses</option>
+                      <option value="help-circle">FAQ & Q&A</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="tabFormSubtitle">Page Subtitle / Tagline</label>
+                  <input type="text" id="tabFormSubtitle" class="form-control" placeholder="Short description shown in page banner">
+                </div>
+
+                <div class="form-group">
+                  <label for="tabFormContent">Page Content (HTML / Rich Text) *</label>
+                  <textarea id="tabFormContent" class="form-control" rows="6" placeholder="Enter articles, bullet points, or spiritual insights... (HTML supported)" required></textarea>
+                </div>
+
+                <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+                  <button type="submit" class="btn-submit-form" style="width:auto;padding:0.6rem 1.5rem;">Save Tab & Page</button>
+                  <button type="button" class="btn-reset-meditation" style="background:#ddd;color:#333;" onclick="bkAdmin.hideAddTabForm()">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- List of Current Navigation Tabs -->
+            <div id="adminTabsListContainer">
+              <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE 3: MEDIA & GALLERY MANAGER -->
+          <div class="admin-pane" id="pane-gallery-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Gallery & Media Manager</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">Add, edit, preview, and delete photos and videos from the public gallery.</p>
+              </div>
+              <button class="btn-cta-course" onclick="bkAdmin.showAddMediaForm()">+ Upload / Add Media</button>
+            </div>
+
+            <!-- Add Media Form -->
+            <div id="addMediaFormContainer" style="display:none;background:#fff;padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--sunset-gold);margin-bottom:1.5rem;">
+              <h4 style="font-size:1.1rem;margin-bottom:1rem;color:var(--sunset-primary);" id="mediaFormTitle">Add New Media to Gallery</h4>
+              <form onsubmit="bkAdmin.handleSaveMedia(event)">
+                <input type="hidden" id="mediaFormId" value="">
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="mediaFormTitleInput">Title *</label>
+                    <input type="text" id="mediaFormTitleInput" class="form-control" placeholder="e.g. Mahashivratri Celebrations at Light Palace" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="mediaFormCategory">Category Tag *</label>
+                    <select id="mediaFormCategory" class="form-control" required>
+                      <option value="Kozhikode Centers">Kozhikode Centers</option>
+                      <option value="Meditation Hall">Meditation Hall</option>
+                      <option value="Spiritual Art">Spiritual Art (Paramdham)</option>
+                      <option value="Peace Initiatives">Peace Initiatives</option>
+                      <option value="Rajyoga Experience">Rajyoga Experience</option>
+                      <option value="Headquarters">Headquarters</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="mediaFormUrl">Image / Media File URL (or select local file below) *</label>
+                  <input type="text" id="mediaFormUrl" class="form-control" placeholder="assets/images/paramdham_sunset.jpg or https://..." required>
+                </div>
+
+                <div class="form-group">
+                  <label>Or Upload Image from Device:</label>
+                  <input type="file" id="mediaFormFileInput" class="form-control" accept="image/*" onchange="bkAdmin.handleFileUpload(event)">
+                </div>
+
+                <div class="form-group">
+                  <label for="mediaFormDesc">Description</label>
+                  <textarea id="mediaFormDesc" class="form-control" rows="2" placeholder="Brief description of this photo or event..."></textarea>
+                </div>
+
+                <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+                  <button type="submit" class="btn-submit-form" style="width:auto;padding:0.6rem 1.5rem;">Save Media Item</button>
+                  <button type="button" class="btn-reset-meditation" style="background:#ddd;color:#333;" onclick="bkAdmin.hideAddMediaForm()">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Media Grid Table -->
+            <div id="adminGalleryTableContainer">
+              <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE 4: EVENTS & RETREATS MANAGER -->
+          <div class="admin-pane" id="pane-events-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Events & Gatherings Management</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Create, edit, duplicate, and publish events for Latest Events, Navathi Celebrations, Shivarathri, Raksha Bandhan, and Other Programs.
+                </p>
+              </div>
+              <button class="btn-cta-course" onclick="bkAdmin.openAddEventModal()">
+                <i data-lucide="plus-circle" style="width:16px;height:16px;"></i>
+                <span>+ Add New Event</span>
+              </button>
+            </div>
+
+            <!-- Admin Category Filter Bar -->
+            <div class="admin-event-filter-bar" id="adminEventFilterBar">
+              <button class="admin-ev-filter-btn active" data-cat="all" onclick="bkAdmin.filterAdminEvents('all', this)">All Events</button>
+              <button class="admin-ev-filter-btn" data-cat="latest" onclick="bkAdmin.filterAdminEvents('latest', this)">Latest Events</button>
+              <button class="admin-ev-filter-btn" data-cat="navathi" onclick="bkAdmin.filterAdminEvents('navathi', this)">Navathi Celebrations</button>
+              <button class="admin-ev-filter-btn" data-cat="shivarathri" onclick="bkAdmin.filterAdminEvents('shivarathri', this)">Shivarathri</button>
+              <button class="admin-ev-filter-btn" data-cat="rakshabandhan" onclick="bkAdmin.filterAdminEvents('rakshabandhan', this)">Raksha Bandhan</button>
+              <button class="admin-ev-filter-btn" data-cat="other" onclick="bkAdmin.filterAdminEvents('other', this)">Other Programs</button>
+              <button class="admin-ev-filter-btn" data-cat="drafts" onclick="bkAdmin.filterAdminEvents('drafts', this)">Drafts Only</button>
+            </div>
+
+            <!-- Add / Edit Event Form Container (Collapsible / Modal) -->
+            <div id="addEventFormContainer" style="display:none;background:#ffffff;padding:1.75rem;border-radius:var(--radius-md);border:1px solid var(--sunset-gold);margin-bottom:2rem;box-shadow:var(--shadow-sunset-sm);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;border-bottom:1px solid #f3f4f6;padding-bottom:0.75rem;">
+                <h4 style="font-size:1.15rem;margin:0;color:var(--sunset-primary);" id="eventFormTitle">Create New Event / Gathering</h4>
+                <button type="button" onclick="bkAdmin.hideAddEventForm()" style="background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:1.25rem;">✕</button>
+              </div>
+
+              <form onsubmit="bkAdmin.handleSaveEvent(event)" id="adminEventMainForm">
+                <input type="hidden" id="eventFormId" value="">
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="eventFormTitleInput">Event Title *</label>
+                    <input type="text" id="eventFormTitleInput" class="form-control" placeholder="e.g. 90th Anniversary: Navathi Celebrations" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventFormTitleMl">Title in Malayalam (Optional)</label>
+                    <input type="text" id="eventFormTitleMl" class="form-control" placeholder="e.g. ബ്രഹ്മാകുമാരീസ് നവതി ആത്മീയ മഹോത്സവം">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="eventFormCategory">Category Section *</label>
+                    <select id="eventFormCategory" class="form-control" required>
+                      <option value="latest">Latest Events (General)</option>
+                      <option value="navathi">Navathi Celebrations</option>
+                      <option value="shivarathri">Festivals → Shivarathri</option>
+                      <option value="rakshabandhan">Festivals → Raksha Bandhan</option>
+                      <option value="other">Festivals → Other Programs</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventFormOrder">Display Order (1 = Top)</label>
+                    <input type="number" id="eventFormOrder" class="form-control" value="1" min="1">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="eventFormDate">Date / Period *</label>
+                    <input type="text" id="eventFormDate" class="form-control" placeholder="e.g. 2026-10-15 or Every 3rd Sunday" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventFormTime">Time *</label>
+                    <input type="text" id="eventFormTime" class="form-control" placeholder="e.g. 9:30 AM - 1:00 PM" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="eventFormVenue">Location / Venue *</label>
+                  <input type="text" id="eventFormVenue" class="form-control" placeholder="e.g. Ashokapuram Light Palace, Kozhikode" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="eventFormShortDesc">Short Summary (for Cards & Highlights) *</label>
+                  <textarea id="eventFormShortDesc" class="form-control" rows="2" placeholder="Brief 1-2 sentence overview of the event..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="eventFormFullDesc">Full Editorial Description</label>
+                  <textarea id="eventFormFullDesc" class="form-control" rows="4" placeholder="Detailed description of the program, spiritual significance, and guest speakers..."></textarea>
+                </div>
+
+                <!-- Main Image Upload & URL with Preview -->
+                <div class="form-row" style="background:#fafafa;padding:1rem;border-radius:var(--radius-sm);margin-bottom:1rem;border:1px solid #f0f0f0;">
+                  <div class="form-group" style="flex:1;">
+                    <label for="eventFormImageUrl">Main Cover Image URL</label>
+                    <input type="text" id="eventFormImageUrl" class="form-control" placeholder="assets/images/light_palace_center.jpg or https://..." oninput="bkAdmin.previewEventMainImage(this.value)">
+                    <div style="margin-top:0.5rem;">
+                      <label style="font-size:0.8rem;color:var(--text-muted);">Or Upload Image File from Device:</label>
+                      <input type="file" id="eventFormImageFileInput" class="form-control" accept="image/*" onchange="bkAdmin.handleEventImageUpload(event)">
+                    </div>
+                  </div>
+                  <div style="width:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                    <div id="eventMainImagePreviewWrap" style="width:120px;height:80px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid #ddd;background:#eee;display:flex;align-items:center;justify-content:center;">
+                      <span style="font-size:0.75rem;color:#888;">No Image</span>
+                    </div>
+                    <button type="button" id="btnRemoveEventMainImg" style="display:none;background:none;border:none;color:#ef4444;font-size:0.75rem;cursor:pointer;margin-top:0.35rem;" onclick="bkAdmin.removeEventMainImage()">Remove</button>
+                  </div>
+                </div>
+
+                <!-- Additional Gallery Images -->
+                <div class="form-group">
+                  <label for="eventFormAdditionalImages">Additional Gallery Images (Comma-separated URLs)</label>
+                  <input type="text" id="eventFormAdditionalImages" class="form-control" placeholder="e.g. assets/images/meditation_hall.jpg, assets/images/paramdham_sunset.jpg">
+                </div>
+
+                <!-- Optional Video URL (YouTube) with Auto ID & Preview -->
+                <div class="form-group" style="background:#fafafa;padding:1rem;border-radius:var(--radius-sm);border:1px solid #f0f0f0;">
+                  <label for="eventFormVideoUrl" style="display:flex;align-items:center;gap:0.4rem;">
+                    <i data-lucide="youtube" style="width:16px;height:16px;color:#ef4444;"></i>
+                    <span>Optional YouTube Video URL</span>
+                  </label>
+                  <input type="url" id="eventFormVideoUrl" class="form-control" placeholder="e.g. https://www.youtube.com/watch?v=... or https://youtu.be/..." oninput="bkAdmin.previewEventVideo(this.value)">
+                  <div id="eventVideoPreviewContainer" style="margin-top:0.75rem;display:none;">
+                    <!-- Live video preview -->
+                  </div>
+                </div>
+
+                <!-- Registration & External URLs -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="eventFormRegUrl">Online Registration URL (Optional)</label>
+                    <input type="url" id="eventFormRegUrl" class="form-control" placeholder="https://forms.gle/... or custom registration link">
+                  </div>
+                  <div class="form-group">
+                    <label for="eventFormExternalUrl">External Information URL (Optional)</label>
+                    <input type="url" id="eventFormExternalUrl" class="form-control" placeholder="https://brahmakumaris.com/...">
+                  </div>
+                </div>
+
+                <!-- Program Schedule Builder -->
+                <div class="form-group" style="background:#fafafa;padding:1rem;border-radius:var(--radius-sm);border:1px solid #f0f0f0;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                    <label style="font-weight:700;margin:0;">Program Schedule (Optional)</label>
+                    <button type="button" class="btn-sm" style="background:var(--sunset-primary);color:#fff;border:none;padding:0.25rem 0.65rem;border-radius:4px;cursor:pointer;font-size:0.8rem;" onclick="bkAdmin.addScheduleRow()">+ Add Session</button>
+                  </div>
+                  <div id="adminScheduleRowsContainer">
+                    <!-- Dynamic schedule rows -->
+                  </div>
+                </div>
+
+                <!-- Status & Featured -->
+                <div class="form-row" style="align-items:center;padding:0.75rem 0;border-top:1px solid #eee;">
+                  <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-weight:600;font-size:0.9rem;">
+                    <input type="checkbox" id="eventFormIsFeatured" style="width:18px;height:18px;accent-color:var(--sunset-primary);">
+                    <span>Featured Event (Pinned prominently at the top of Latest Events)</span>
+                  </label>
+                  <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-weight:600;font-size:0.9rem;">
+                    <input type="checkbox" id="eventFormIsPublished" checked style="width:18px;height:18px;accent-color:var(--sunset-primary);">
+                    <span>Published (Visible publicly on website)</span>
+                  </label>
+                </div>
+
+                <div style="display:flex;gap:0.75rem;margin-top:1.25rem;justify-content:flex-end;">
+                  <button type="button" class="btn-reset-meditation" style="background:#f3f4f6;color:#374151;" onclick="bkAdmin.hideAddEventForm()">Cancel</button>
+                  <button type="submit" class="btn-cta-course" style="padding:0.6rem 1.6rem;">
+                    <i data-lucide="check" style="width:16px;height:16px;"></i>
+                    <span id="btnSaveEventText">Save & Publish Event</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Admin Events List / Grid -->
+            <div id="adminEventsCardsContainer">
+              <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE 5: REGISTRATIONS & INQUIRIES -->
+          <div class="admin-pane" id="pane-registrations-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Course Registrations & Visitor Inquiries</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">Track seekers who registered for the 7-day course or requested center visits.</p>
+              </div>
+              <button class="btn-admin-portal" onclick="bkAdmin.exportRegistrationsCSV()">
+                <i data-lucide="download"></i>
+                <span>Export CSV</span>
+              </button>
+            </div>
+
+            <div style="overflow-x:auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Full Name</th>
+                    <th>Phone / WhatsApp</th>
+                    <th>Center</th>
+                    <th>Course / Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminRegsTableBody">
+                  <!-- Injected by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- PANE: ABOUT US CONTENT MANAGER -->
+          <div class="admin-pane" id="pane-about-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">About Us Page Content Manager</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Manage both editorial sections of the About Us page: "About Brahma Kumaris" and "About Brahma Kumaris Kozhikode". Edit headings, text paragraphs, images, and publish status.
+                </p>
+              </div>
+            </div>
+
+            <form onsubmit="bkAdmin.handleSaveAbout(event)" style="background:#fff;padding:2rem;border-radius:var(--radius-md);border:1px solid var(--divine-card-border);">
+              
+              <!-- Section 1: About Brahma Kumaris -->
+              <div style="border-bottom:2px solid #f3f4f6;padding-bottom:1.75rem;margin-bottom:1.75rem;">
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+                  <span style="background:var(--grad-gold-flame);color:#fff;font-size:0.75rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:var(--radius-full);">Section 1</span>
+                  <h4 style="margin:0;font-size:1.15rem;color:var(--sunset-dark-base);">About Brahma Kumaris (Global Movement)</h4>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="aboutBkHeading">English Heading</label>
+                    <input type="text" id="aboutBkHeading" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="aboutBkHeadingMl">Malayalam Heading</label>
+                    <input type="text" id="aboutBkHeadingMl" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="aboutBkText">Content & Paragraphs *</label>
+                  <textarea id="aboutBkText" class="form-control" rows="5" placeholder="Enter paragraph text (separate paragraphs with blank lines)..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="aboutBkImage">Image Path / URL</label>
+                    <input type="text" id="aboutBkImage" class="form-control" placeholder="assets/images/light_palace_center.jpg">
+                  </div>
+                  <div class="form-group" style="display:flex;align-items:center;margin-top:1.8rem;">
+                    <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                      <input type="checkbox" id="aboutBkPublished" checked>
+                      <strong>Publish Section 1 Publicly</strong>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 2: About Brahma Kumaris Kozhikode -->
+              <div style="margin-bottom:1.75rem;">
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+                  <span style="background:var(--sunset-primary);color:#fff;font-size:0.75rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:var(--radius-full);">Section 2</span>
+                  <h4 style="margin:0;font-size:1.15rem;color:var(--sunset-dark-base);">About Brahma Kumaris Kozhikode (Local Sub-Zone)</h4>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="aboutKozhikodeHeading">English Heading</label>
+                    <input type="text" id="aboutKozhikodeHeading" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="aboutKozhikodeHeadingMl">Malayalam Heading</label>
+                    <input type="text" id="aboutKozhikodeHeadingMl" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="aboutKozhikodeText">Content & Paragraphs *</label>
+                  <textarea id="aboutKozhikodeText" class="form-control" rows="5" placeholder="Enter paragraph text (separate paragraphs with blank lines)..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="aboutKozhikodeImage">Image Path / URL</label>
+                    <input type="text" id="aboutKozhikodeImage" class="form-control" placeholder="assets/images/meditation_hall.jpg">
+                  </div>
+                  <div class="form-group" style="display:flex;align-items:center;margin-top:1.8rem;">
+                    <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                      <input type="checkbox" id="aboutKozhikodePublished" checked>
+                      <strong>Publish Section 2 Publicly</strong>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit-form" style="width:auto;padding:0.75rem 2.5rem;">
+                <i data-lucide="check" style="width:15px;height:15px;margin-right:0.35rem;"></i> Save & Publish About Us
+              </button>
+            </form>
+          </div>
+
+          <!-- PANE: DAILY MURALI MANAGER -->
+          <div class="admin-pane" id="pane-murali-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Daily Murali & Sacred Wisdom Manager</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Update daily Murli date, title, essence, blessing, slogan, full text, and optional media links.
+                </p>
+              </div>
+            </div>
+
+            <form onsubmit="bkAdmin.handleSaveDailyMurali(event)" style="background:#fff;padding:2rem;border-radius:var(--radius-md);border:1px solid var(--divine-card-border);">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="muraliFormDate">Date of Murli *</label>
+                  <input type="date" id="muraliFormDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="muraliFormTitle">English Title / Essence Topic *</label>
+                  <input type="text" id="muraliFormTitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="muraliFormTitleMl">Malayalam Title</label>
+                  <input type="text" id="muraliFormTitleMl" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="muraliFormEssence">English Essence of the Day (സാരാംശം) *</label>
+                  <textarea id="muraliFormEssence" class="form-control" rows="2" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="muraliFormEssenceMl">Malayalam Essence (മലയാള സാരാംശം)</label>
+                  <textarea id="muraliFormEssenceMl" class="form-control" rows="2"></textarea>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="muraliFormBlessing">Daily Murli Blessing (വരദാനം)</label>
+                  <textarea id="muraliFormBlessing" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="muraliFormBlessingMl">Malayalam Blessing</label>
+                  <textarea id="muraliFormBlessingMl" class="form-control" rows="2"></textarea>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="muraliFormSlogan">Daily Slogan (സ്ലോഗൻ)</label>
+                  <input type="text" id="muraliFormSlogan" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="muraliFormSloganMl">Malayalam Slogan</label>
+                  <input type="text" id="muraliFormSloganMl" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="muraliFormFullText">Full Murli Reading Text (Optional)</label>
+                <textarea id="muraliFormFullText" class="form-control" rows="6" placeholder="Paste full daily Murli transcription or summary..."></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="muraliFormAudioUrl">Audio Reading URL (Optional MP3)</label>
+                  <input type="url" id="muraliFormAudioUrl" class="form-control" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                  <label for="muraliFormVideoUrl">Video Discourse URL (Optional YouTube)</label>
+                  <input type="url" id="muraliFormVideoUrl" class="form-control" placeholder="https://youtube.com/watch?v=...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                  <input type="checkbox" id="muraliFormPublished" checked>
+                  <strong>Publish Daily Murali on Live Website</strong>
+                </label>
+              </div>
+
+              <button type="submit" class="btn-submit-form" style="width:auto;padding:0.75rem 2.5rem;">
+                <i data-lucide="sun" style="width:15px;height:15px;margin-right:0.35rem;"></i> Update Daily Murali
+              </button>
+            </form>
+          </div>
+
+          <!-- PANE: CENTER LIST MANAGER -->
+          <div class="admin-pane" id="pane-centers-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Kozhikode Center List Manager</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Add, edit, and organize meditation centers and sub-centers across Kozhikode. Phone numbers are automatically formatted as click-to-call links.
+                </p>
+              </div>
+              <button class="btn-cta-course" onclick="bkAdmin.openAddCenterModal()">
+                <i data-lucide="plus-circle" style="width:15px;height:15px;margin-right:0.35rem;"></i> Add New Center
+              </button>
+            </div>
+
+            <!-- Center Add / Edit Form (Hidden by default) -->
+            <div id="addCenterFormContainer" style="display:none;background:#fdfbf7;padding:2rem;border-radius:var(--radius-md);border:1px solid var(--sunset-amber);margin-bottom:2rem;">
+              <h4 id="centerFormTitle" style="font-size:1.2rem;margin-bottom:1.25rem;color:var(--sunset-dark-base);">Create New Center</h4>
+              
+              <form onsubmit="bkAdmin.handleSaveCenter(event)">
+                <input type="hidden" id="centerFormId" value="">
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="centerFormName">Center Name (English) *</label>
+                    <input type="text" id="centerFormName" class="form-control" placeholder="e.g. Light Palace (Ashokapuram)" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="centerFormNameMl">Center Name (Malayalam)</label>
+                    <input type="text" id="centerFormNameMl" class="form-control" placeholder="e.g. ലൈറ്റ് പാലസ്, അശോകാപുരം">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="centerFormArea">Area / Locality *</label>
+                    <input type="text" id="centerFormArea" class="form-control" placeholder="e.g. Ashokapuram, Kozhikode" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="centerFormContactPerson">Contact Person (Sister / Brother In-Charge)</label>
+                    <input type="text" id="centerFormContactPerson" class="form-control" placeholder="e.g. BK Sister Sheeba">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="centerFormPhone">Mobile Phone (for Click-to-Call) *</label>
+                    <input type="tel" id="centerFormPhone" class="form-control" placeholder="+91 9746334202" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="centerFormWhatsapp">WhatsApp Number</label>
+                    <input type="tel" id="centerFormWhatsapp" class="form-control" placeholder="+91 9746334202">
+                  </div>
+                  <div class="form-group">
+                    <label for="centerFormLandline">Landline Phone (Optional)</label>
+                    <input type="text" id="centerFormLandline" class="form-control" placeholder="0495-2770568">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="centerFormAddress">Full Physical Address</label>
+                  <textarea id="centerFormAddress" class="form-control" rows="2" placeholder="H.No: 44/284, Balan K Nair Road..."></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="centerFormMapsUrl">Google Maps Link</label>
+                    <input type="url" id="centerFormMapsUrl" class="form-control" placeholder="https://maps.google.com/?q=...">
+                  </div>
+                  <div class="form-group">
+                    <label for="centerFormTimings">Daily Meditation Timings</label>
+                    <input type="text" id="centerFormTimings" class="form-control" placeholder="Morning: 6:30 AM – 8:30 AM | Evening: 5:30 PM – 8:00 PM">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="centerFormDescription">Center Overview & Activities</label>
+                  <textarea id="centerFormDescription" class="form-control" rows="2" placeholder="Brief description of facilities and classes..."></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="centerFormImage">Center Photo Path / URL</label>
+                    <input type="text" id="centerFormImage" class="form-control" placeholder="assets/images/light_palace_center.jpg">
+                  </div>
+                  <div class="form-group" style="display:flex;align-items:center;gap:1.5rem;margin-top:1.8rem;">
+                    <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+                      <input type="checkbox" id="centerFormIsPrimary">
+                      <strong>⭐ Main / Primary Center</strong>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+                      <input type="checkbox" id="centerFormPublished" checked>
+                      <strong>Published</strong>
+                    </label>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:0.75rem;margin-top:1.25rem;">
+                  <button type="submit" class="btn-submit-form" style="width:auto;padding:0.65rem 2rem;">Save Center</button>
+                  <button type="button" class="btn-action-sm" style="background:#ddd;color:#333;" onclick="bkAdmin.hideAddCenterForm()">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Centers List Container -->
+            <div class="admin-centers-list" id="adminCentersCardsContainer">
+              <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE: YOUTUBE CHANNELS & AUTOMATIC VIDEO MANAGER -->
+          <div class="admin-pane" id="pane-youtube-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">YouTube Channels & Automatic Video Integration</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Configure Channel IDs and Content Types for the four official channels. Latest videos are automatically fetched server-side with 30-minute caching.
+                </p>
+              </div>
+            </div>
+
+            <!-- API Key & Cache Status Banner -->
+            <div id="adminYtApiStatusBox" style="background:#fef3c7;border:1px solid #f59e0b;border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <strong style="color:#92400e;display:flex;align-items:center;gap:0.4rem;">
+                  <i data-lucide="key" style="width:16px;height:16px;"></i> Server YouTube API Status:
+                </strong>
+                <span id="adminYtKeyStatusText" style="font-size:0.85rem;color:#78350f;">Checking backend status...</span>
+              </div>
+              <button type="button" class="btn-action-sm" style="background:#fff;border:1px solid #d97706;color:#92400e;" onclick="bkAdmin.clearYouTubeCache()">
+                <i data-lucide="refresh-cw" style="width:13px;height:13px;"></i> Force Refresh Video Cache
+              </button>
+            </div>
+
+            <!-- YouTube Channels Form Container -->
+            <div id="adminYouTubeChannelsListContainer">
+              <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE 7: SITE SETTINGS & BACKUP -->
+          <div class="admin-pane" id="pane-settings-mgr">
+            <h3 style="font-size:1.3rem;margin-bottom:0.5rem;">Site Settings & Data Backup</h3>
+            <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1.5rem;">Modify contact details, change admin PIN, or download complete site backup.</p>
+
+            <form onsubmit="bkAdmin.handleSaveSettings(event)" style="background:#fff;padding:2rem;border-radius:var(--radius-md);border:1px solid var(--divine-card-border);margin-bottom:2rem;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="setOrgName">Organization Name</label>
+                  <input type="text" id="setOrgName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="setOrgNameMl">Malayalam Name</label>
+                  <input type="text" id="setOrgNameMl" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="setPhone1">Primary Phone</label>
+                  <input type="text" id="setPhone1" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="setPhone2">Secondary Phone / Mobile</label>
+                  <input type="text" id="setPhone2" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="setEmail">Contact Email</label>
+                <input type="email" id="setEmail" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="setAnnouncement">Top Banner Announcement Ticker</label>
+                <input type="text" id="setAnnouncement" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="setAdminPin">Change Admin Security PIN</label>
+                <input type="text" id="setAdminPin" class="form-control" placeholder="Enter new password">
+              </div>
+
+              <button type="submit" class="btn-submit-form" style="width:auto;padding:0.75rem 2rem;">Update Settings</button>
+            </form>
+
+            <div style="background:#fff;padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--divine-card-border);">
+              <h4 style="font-size:1.1rem;margin-bottom:0.75rem;">Backup, Restore & Reset</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+                <button class="btn-hero-secondary" style="background:#333;color:#fff;" onclick="bkAdmin.downloadBackupJSON()">
+                  <i data-lucide="download"></i>
+                  <span>Export Site Data (JSON)</span>
+                </button>
+                <label class="btn-hero-secondary" style="background:#444;color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;">
+                  <i data-lucide="upload"></i>
+                  <span>Restore from Backup</span>
+                  <input type="file" accept=".json" style="display:none;" onchange="bkAdmin.importBackupJSON(event)">
+                </label>
+                <button class="btn-action-sm btn-action-del" style="padding:0.6rem 1.2rem;font-size:0.9rem;" onclick="bkAdmin.confirmResetDefaults()">
+                  Reset to Factory Defaults
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../js/store.js?v=28"></script>
+  <script src="../js/admin.js?v=28"></script>
+  <script>
+    // Minimal app toast helper for admin
+    window.bkApp = window.bkApp || {
+      toast: function(msg) {
+        const c = document.getElementById('toastContainer');
+        if (!c) return;
+        const t = document.createElement('div');
+        t.className = 'toast show';
+        t.textContent = msg;
+        c.appendChild(t);
+        setTimeout(() => { t.remove(); }, 3500);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.bkAdmin) {
+        window.bkAdmin.init();
+      }
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

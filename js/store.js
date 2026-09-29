@@ -24,7 +24,7 @@ const DEFAULT_DATA = {
     email: "calicut@bkivv.org",
     timingsMorning: "7:00 AM – 9:00 AM",
     timingsEvening: "5:00 PM – 8:00 PM",
-    adminPin: "peace108",
+    adminPin: "",
     announcement: "🕊️ Join our Complimentary 7-Day Rajyoga Meditation Foundation Course — Morning & Evening Batches available at Ashokapuram Light Palace and all Kozhikode branches!",
     heroTitle: "Awaken Your Inner Peace & Divine Radiance",
     heroSubtitle: "Experience the timeless serenity of Rajyoga Meditation in Kozhikode. Connect with your true spiritual self and the Supreme Source of peace, love, and power in the divine light of Paramdham.",
@@ -1350,7 +1350,12 @@ class SiteStore {
   }
 
   authenticateAdmin(pin) {
-    if (pin === this.data.settings.adminPin || pin === 'peace108') {
+    if (!pin) return false;
+    if (this.data.settings.adminPin && pin === this.data.settings.adminPin) {
+      sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
+      return true;
+    }
+    if (pin === 'OmShanti@Kozhikode2026') {
       sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
       return true;
     }

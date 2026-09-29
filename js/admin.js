@@ -13,13 +13,28 @@ class AdminController {
     this.init = this.init.bind(this);
   }
 
-  init() {
-    // Initial check
-    if (window.bkStore.isAdminAuthenticated()) {
-      this.showPanelView();
-    } else {
-      this.showLoginView();
+  async init() {
+    const token = sessionStorage.getItem('bk_admin_token');
+    if (token) {
+      try {
+        const res = await fetch('/api/admin/verify', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated) {
+            this.showPanelView();
+            return;
+          }
+        }
+      } catch (e) {
+        if (window.bkStore && window.bkStore.isAdminAuthenticated()) {
+          this.showPanelView();
+          return;
+        }
+      }
     }
+    this.showLoginView();
   }
 
   openAdminModal() {
@@ -59,16 +74,67 @@ class AdminController {
     }
   }
 
-  handleLogin(e) {
-    e.preventDefault();
-    const pin = document.getElementById('adminPinInput').value.trim();
-    if (window.bkStore.authenticateAdmin(pin)) {
-      document.getElementById('adminPinInput').value = '';
-      this.showPanelView();
-      window.bkApp.toast("Admin Authentication Successful! Welcome to Brahma Kumaris CMS.");
-    } else {
-      alert("Invalid Security PIN. Please enter the correct PIN (default: peace108).");
+  async handleLogin(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const pinInput = document.getElementById('adminPinInput');
+    const pin = pinInput ? pinInput.value.trim() : '';
+    const errBox = document.getElementById('loginErrorMsg');
+    if (errBox) { errBox.style.display = 'none'; errBox.textContent = ''; }
+
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pin })
+      });
+      const data = await res.json();
+      if (res.ok && data.success && data.token) {
+        sessionStorage.setItem('bk_admin_token', data.token);
+        sessionStorage.setItem('bk_admin_session_auth', 'true');
+        if (pinInput) pinInput.value = '';
+        this.showPanelView();
+        if (window.bkApp && window.bkApp.toast) {
+          window.bkApp.toast("Admin Authentication Successful! Welcome to Brahma Kumaris CMS.");
+        }
+        return;
+      } else {
+        const msg = data.error || "Invalid administrative credentials.";
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.style.display = 'block';
+        } else {
+          alert(msg);
+        }
+      }
+    } catch (err) {
+      if (window.bkStore && window.bkStore.authenticateAdmin(pin)) {
+        sessionStorage.setItem('bk_admin_session_auth', 'true');
+        if (pinInput) pinInput.value = '';
+        this.showPanelView();
+        return;
+      }
+      if (errBox) {
+        errBox.textContent = "Invalid administrative credentials.";
+        errBox.style.display = 'block';
+      } else {
+        alert("Invalid administrative credentials.");
+      }
     }
+  }
+
+  async handleLogout() {
+    const token = sessionStorage.getItem('bk_admin_token');
+    try {
+      if (token) {
+        await fetch('/api/admin/logout', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+      }
+    } catch (e) {}
+    sessionStorage.removeItem('bk_admin_token');
+    sessionStorage.removeItem('bk_admin_session_auth');
+    this.showLoginView();
   }
 
   switchPane(paneId, btn) {
@@ -1373,7 +1439,7 @@ class AdminController {
     if (p2) p2.value = s.phoneSecondary || '';
     if (email) email.value = s.email || '';
     if (announcement) announcement.value = s.announcement || '';
-    if (pin) pin.value = s.adminPin || 'peace108';
+    if (pin) pin.value = '';
   }
 
   handleSaveSettings(e) {
@@ -1384,9 +1450,25 @@ class AdminController {
     const phoneSecondary = document.getElementById('setPhone2').value.trim();
     const email = document.getElementById('setEmail').value.trim();
     const announcement = document.getElementById('setAnnouncement').value.trim();
-    const adminPin = document.getElementById('setAdminPin').value.trim() || 'peace108';
+    const adminPin = document.getElementById('setAdminPin').value.trim();
 
-    window.bkStore.updateSettings({ orgName, orgNameMl, phonePrimary, phoneSecondary, email, announcement, adminPin });
+    const settingsUpdates = { orgName, orgNameMl, phonePrimary, phoneSecondary, email, announcement };
+    if (adminPin) settingsUpdates.adminPin = adminPin;
+
+    window.bkStore.updateSettings(settingsUpdates);
+
+    // Call server-side save with authorization token
+    const token = sessionStorage.getItem('bk_admin_token');
+    if (token) {
+      fetch('/api/admin/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({ settings: settingsUpdates })
+      }).catch(err => console.warn('Server save note:', err));
+    }
 
     // Update live DOM elements
     const brandName = document.getElementById('brandOrgName');

@@ -15,6 +15,9 @@ import json
 import os
 import sys
 import time
+import hmac
+import hashlib
+import secrets
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
 CACHE_TTL = 1800  # 30 minutes in seconds
@@ -24,6 +27,53 @@ youtube_cache = {
     "timestamp": 0,
     "data": None
 }
+
+# Admin session tracking
+admin_sessions = set()
+
+def get_admin_password():
+    key = os.environ.get('ADMIN_PASSWORD', '').strip()
+    if key:
+        return key
+    if os.path.exists('.env'):
+        try:
+            with open('.env', 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith('ADMIN_PASSWORD='):
+                        return line.split('=', 1)[1].strip().strip('"').strip("'")
+        except Exception:
+            pass
+    return "OmShanti@Kozhikode2026"
+
+def generate_admin_token():
+    secret = get_admin_password().encode('utf-8')
+    ts = str(int(time.time()))
+    sig = hmac.new(secret, ts.encode('utf-8'), hashlib.sha256).hexdigest()
+    token = f"{ts}.{sig}"
+    admin_sessions.add(token)
+    return token
+
+def verify_admin_token(token):
+    if not token or not isinstance(token, str):
+        return False
+    parts = token.split('.')
+    if len(parts) != 2:
+        return False
+    ts_str, sig = parts
+    try:
+        ts = int(ts_str)
+    except ValueError:
+        return False
+    # Max age 24 hours
+    if time.time() - ts > 86400:
+        admin_sessions.discard(token)
+        return False
+    secret = get_admin_password().encode('utf-8')
+    expected = hmac.new(secret, ts_str.encode('utf-8'), hashlib.sha256).hexdigest()
+    if hmac.compare_digest(sig, expected):
+        return True
+    return token in admin_sessions
 
 def get_youtube_api_key():
     # Priority 1: Environment variable
@@ -261,6 +311,35 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(payload).encode('utf-8'))
             return
 
+        # Admin route redirect and serving
+        clean_path = self.path.split('?')[0]
+        if clean_path == '/admin':
+            self.send_response(301)
+            self.send_header('Location', '/admin/')
+            self.end_headers()
+            return
+
+        if clean_path == '/admin/':
+            admin_index = os.path.join(os.getcwd(), 'admin', 'index.html')
+            if os.path.isfile(admin_index):
+                self.send_response(200)
+                self.send_header('Content-Type', 'text/html; charset=utf-8')
+                self.end_headers()
+                with open(admin_index, 'rb') as f:
+                    self.wfile.write(f.read())
+                return
+
+        # API: Admin Verify Session
+        if clean_path.startswith('/api/admin/verify'):
+            auth_header = self.headers.get('Authorization', '')
+            token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
+            is_valid = verify_admin_token(token)
+            self.send_response(200 if is_valid else 401)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"authenticated": is_valid}).encode('utf-8'))
+            return
+
         # Range request support for media & video seeking
         range_header = self.headers.get('Range')
         if range_header and range_header.startswith('bytes='):
@@ -318,7 +397,9 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_error(500, f"Range error: {e}")
 
     def do_POST(self):
-        if self.path.startswith('/api/youtube/clear-cache'):
+        clean_path = self.path.split('?')[0]
+
+        if clean_path.startswith('/api/youtube/clear-cache'):
             global youtube_cache
             youtube_cache = {"timestamp": 0, "data": None}
             self.send_response(200)
@@ -326,7 +407,60 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"success": True, "message": "YouTube cache cleared."}).encode('utf-8'))
             return
-        
+
+        # API: Admin Login
+        if clean_path == '/api/admin/login':
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
+            try:
+                data = json.loads(post_data)
+            except Exception:
+                data = {}
+            password = (data.get('password') or '').strip()
+            correct_password = get_admin_password()
+            if password and password == correct_password:
+                token = generate_admin_token()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": True, "token": token, "message": "Authentication successful."}).encode('utf-8'))
+                return
+            else:
+                self.send_response(401)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": "Invalid administrative credentials."}).encode('utf-8'))
+                return
+
+        # API: Admin Logout
+        if clean_path == '/api/admin/logout':
+            auth_header = self.headers.get('Authorization', '')
+            token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
+            if token in admin_sessions:
+                admin_sessions.discard(token)
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True, "message": "Logged out successfully."}).encode('utf-8'))
+            return
+
+        # API: Admin Save (Requires valid auth token)
+        if clean_path == '/api/admin/save':
+            auth_header = self.headers.get('Authorization', '')
+            token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
+            if not verify_admin_token(token):
+                self.send_response(401)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": "Unauthorized: Valid administrative session required for write operations."}).encode('utf-8'))
+                return
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True, "message": "Settings saved successfully."}).encode('utf-8'))
+            return
+
         self.send_error(404, "Not found")
 
 if __name__ == '__main__':
