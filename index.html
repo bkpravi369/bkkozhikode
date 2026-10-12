@@ -13,10 +13,10 @@
   <meta property="og:image" content="assets/images/paramdham_sunset.jpg">
   <meta property="og:type" content="website">
 
-  <!-- Premium Typography System (Plus Jakarta Sans & Anek Malayalam) -->
+  <!-- Premium Typography System (Outfit, Playfair Display, Plus Jakarta Sans, Anek Malayalam) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Manjari:wght@400;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700&family=Manjari:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -25,19 +25,38 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   
+  <!-- Preload Hero Poster for Instant Visual Paint -->
+  <link rel="preload" as="image" href="assets/video/rajyoga-poster.jpg" media="(min-width: 641px)">
+  <link rel="preload" as="image" href="assets/video/rajyoga-poster-mobile.jpg" media="(max-width: 640px)">
+
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=31">
-  <link rel="stylesheet" href="css/hero.css?v=31">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23d94514'/><circle cx='50' cy='50' r='20' fill='%23ffd064'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
+  <link rel="stylesheet" href="css/style.css?v=38">
+  <link rel="stylesheet" href="css/hero.css?v=38">
+  <link rel="stylesheet" href="css/course.css?v=38">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=38">
+  <link rel="apple-touch-icon" href="assets/images/logo-128.png?v=38">
+
+  <!-- Instant Initial Interior Page State Detection (Zero-Flicker) -->
+  <script>
+    (function() {
+      try {
+        var h = window.location.hash.replace('#', '');
+        var p = window.location.pathname.replace(/^\/+|\/+$/g, '');
+        if ((h && h !== 'home') || (p && p !== 'index.html' && p !== '')) {
+          document.documentElement.classList.add('is-interior-page');
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
-<body>
+<body class="site-body">
 
 
-  <!-- Site Header: Minimal Transparent Floating Bar with Single Menu Trigger -->
+  <!-- Site Header: Minimal Transparent Floating Bar with Horizontal Links & Direct WhatsApp -->
   <header class="site-header" id="siteHeader">
     <div class="header-container">
-      <a href="#home" class="brand-wrapper" onclick="bkApp.switchTab('home')">
-        <div class="soul-light-symbol" title="Supreme Soul Point of Light (Shiv Baba)"></div>
+      <a href="#home" class="brand-wrapper" onclick="bkApp.switchTab('home')" aria-label="Brahma Kumaris Kozhikode Home">
+        <img src="assets/images/logo.png" alt="Brahma Kumaris Emblem" class="brand-logo-img">
         <div class="brand-text">
           <h1 id="brandOrgName">BRAHMA KUMARIS</h1>
           <div class="brand-tag">KOZHIKODE</div>
@@ -45,11 +64,23 @@
         </div>
       </a>
 
-      <!-- Header Action: Single Mobile-Style Menu Button -->
+      <!-- Desktop Horizontal Navigation Links (Single Neat Row) -->
+      <nav class="desktop-nav" id="desktopNav" aria-label="Main Navigation">
+        <ul class="desktop-nav-menu" id="desktopNavContainer">
+          <!-- Populated dynamically by js/app.js -->
+        </ul>
+      </nav>
+
+      <!-- Header Actions: Direct WhatsApp Connect (9539933699) + Mobile Menu Toggle -->
       <div class="header-actions">
-        <button class="btn-menu-pill" id="mobileMenuBtn" aria-label="Toggle navigation menu" onclick="bkApp.toggleMobileMenu()">
-          <i data-lucide="menu" class="menu-icon"></i>
-          <span class="menu-label">Menu</span>
+        <a href="https://wa.me/919539933699" target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Connect on WhatsApp (9539933699)" title="Connect with Brahma Kumaris Kozhikode on WhatsApp (+91 9539933699)">
+          <svg class="wa-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.81 8.08 19.14L7.79 18.97L4.66 19.79L5.49 16.74L5.3 16.44C4.55 15.09 4.15 13.52 4.15 11.91C4.15 7.37 7.85 3.67 12.04 3.67ZM8.83 7.35C8.63 7.35 8.42 7.36 8.24 7.71C8.03 8.12 7.42 8.71 7.42 9.91C7.42 11.11 8.29 12.26 8.41 12.43C8.53 12.59 10.15 15.1 12.63 16.17C14.7 17.06 15.12 16.88 15.57 16.84C16.02 16.8 17.02 16.24 17.23 15.66C17.43 15.07 17.43 14.57 17.37 14.47C17.31 14.37 17.15 14.31 16.9 14.19C16.65 14.07 15.44 13.47 15.21 13.39C14.99 13.31 14.82 13.27 14.66 13.51C14.49 13.76 14.02 14.31 13.88 14.47C13.73 14.64 13.59 14.66 13.34 14.54C13.09 14.41 12.28 14.15 11.33 13.3C10.58 12.64 10.08 11.82 9.93 11.57C9.79 11.32 9.91 11.19 10.04 11.06C10.15 10.95 10.29 10.77 10.41 10.62C10.54 10.48 10.58 10.38 10.66 10.21C10.74 10.05 10.7 9.91 10.64 9.78C10.58 9.66 10.08 8.44 9.88 7.94C9.68 7.46 9.48 7.52 9.32 7.51C9.18 7.5 9.01 7.35 8.83 7.35Z"/>
+          </svg>
+          <span class="btn-wa-text">WhatsApp</span>
+        </a>
+        <button class="btn-mobile-nav-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" onclick="bkApp.toggleMobileMenu()">
+          <i data-lucide="menu"></i>
         </button>
       </div>
     </div>
@@ -60,7 +91,7 @@
   <aside class="nav-drawer-panel" id="navDrawerPanel" aria-label="Site Navigation">
     <div class="drawer-header">
       <div class="drawer-brand" onclick="bkApp.switchTab('home'); bkApp.toggleMobileMenu(true);">
-        <div class="soul-light-symbol sm"></div>
+        <img src="assets/images/logo.png" alt="Brahma Kumaris Emblem" class="brand-logo-img sm">
         <div class="brand-text">
           <div class="drawer-title">BRAHMA KUMARIS</div>
           <div class="drawer-tag">KOZHIKODE · കോഴിക്കോട്</div>
@@ -110,10 +141,13 @@
       <section class="rajyoga-hero cinematic-hero" id="rajyogaHero" aria-label="Brahma Kumaris Rajyoga Meditation Visualization">
         <div class="rajyoga-stage" id="rajyogaStage">
           <div class="rajyoga-scene" id="rajyogaScene">
-            <video id="rajyogaVideo" class="rajyoga-video" width="1920" height="1080"
+            <video id="rajyogaVideo" class="rajyoga-video" width="1280" height="720"
               preload="auto" autoplay muted loop playsinline
               poster="assets/video/rajyoga-poster.jpg"
               aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
+              <source src="assets/video/rajyoga-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+              <source src="assets/video/rajyoga-tablet.mp4" type="video/mp4" media="(max-width: 1024px)">
+              <source src="assets/video/rajyoga-hero.mp4" type="video/mp4">
             </video>
             <!-- Feathered gradient veil for cinematic depth & seamless transition into page -->
             <div class="rajyoga-cover-veil" aria-hidden="true"></div>
@@ -126,10 +160,11 @@
           </button>
         </div>
 
-        <!-- Words & Action Buttons Repositioned Cleanly to Bottom Side of Hero Section -->
-        <div class="hero-bottom-flow" id="heroBottomFlow">
-          <div class="container hero-flow-container">
+        <!-- Content Overlay: Text & Buttons Positioned in Bottom-Right Corner (relative/absolute z-10) -->
+        <div class="hero-content-overlay hero-bottom-flow" id="heroBottomFlow">
+          <div class="hero-flow-container">
             <h1 class="hero-cinematic-title" id="heroTitle">Awaken Your Inner Peace <span class="title-accent">&amp; Divine Radiance</span></h1>
+            <p class="hero-subtitle">ആത്മശാന്തിയിലേക്കൊരു യാത്ര • Reconnect with the Supreme Light &amp; discover your inner stillness</p>
             <div class="hero-flow-actions">
               <button class="btn-awakening-primary" type="button" onclick="bkApp.switchTab('course')">
                 <span>Begin 7-Day Rajyoga Course</span>
@@ -375,53 +410,10 @@
     </section>
 
     <!-- =========================================================================
-         SECTION: 7-DAY RAJYOGA FOUNDATION COURSE
+         SECTION: 7-DAY RAJAYOGA COURSE (INTERACTIVE LEARNING PLATFORM)
          ========================================================================= -->
-    <section id="tab-course" class="tab-pane">
-      <div class="section-padding">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-kicker">Complimentary Spiritual Education</span>
-            <h2>7-Day Rajyoga Course</h2>
-            <div class="section-title-ml">7 ദിവസത്തെ രാജയോഗ പഠന യാത്ര</div>
-            <div class="divider-sun"></div>
-            <p class="section-subtitle">
-              A gentle seven-day journey into Raja Yoga meditation, soul consciousness, and divine connection. Study at your own pace online and at our Kozhikode centers.
-            </p>
-          </div>
-
-          <!-- Course Journey Overview -->
-          <div class="course-journey-overview">
-            <div class="journey-item">
-              <span class="journey-num">7</span>
-              <span class="journey-label">Daily Video Lessons</span>
-            </div>
-            <div class="journey-divider"></div>
-            <div class="journey-item">
-              <span class="journey-num">100%</span>
-              <span class="journey-label">Free Spiritual Study</span>
-            </div>
-            <div class="journey-divider"></div>
-            <div class="journey-item">
-              <span class="journey-num">Self-Paced</span>
-              <span class="journey-label">Online & Center Batches</span>
-            </div>
-          </div>
-
-          <div class="course-grid" id="courseModulesContainer">
-            <!-- Injected by js/app.js -->
-          </div>
-
-          <div class="course-cta-box">
-            <h3>Ready to Begin Your 7-Day Journey?</h3>
-            <p>Courses are conducted daily in morning and evening batches at Ashokapuram Light Palace and all branches. Personalized sessions are also available for families and working professionals.</p>
-            <button class="btn-hero-primary" onclick="bkApp.openRegistrationModal('7-Day Rajyoga Course')">
-              <i data-lucide="check-circle-2"></i>
-              <span>Register for Next Batch (Free)</span>
-            </button>
-          </div>
-        </div>
-      </div>
+    <section id="tab-course" class="tab-pane" aria-label="7-Day Rajayoga Meditation Course Platform">
+      <!-- Injected & managed dynamically by js/course.js -->
     </section>
 
     <!-- =========================================================================
@@ -556,46 +548,177 @@
     </section>
 
     <!-- =========================================================================
-         SECTION: EVENTS & PROGRAMS (REDESIGNED PREMIUM EDITORIAL)
+         SECTION: EVENTS & PROGRAMS (DYNAMIC MULTI-LEVEL FILTERING)
          ========================================================================= -->
     <section id="tab-events" class="tab-pane">
       <div class="section-padding">
         <div class="container">
-          <!-- Dynamic Section Header (Updated by View: Latest, Navathi, Festivals, Shivarathri, Raksha Bandhan, Other) -->
-          <div class="events-header-area" id="eventsHeaderArea">
-            <!-- Rendered by js/app.js -->
+          <!-- Section Header -->
+          <div class="section-header" style="margin-bottom:2rem;">
+            <span class="section-kicker">Spiritual Gatherings & Retreats</span>
+            <h2>Events & Programs</h2>
+            <div class="section-title-ml">ആത്മീയ പരിപാടികളും സംഗമങ്ങളും</div>
+            <div class="divider-sun"></div>
+            <p class="section-subtitle">
+              Explore upcoming spiritual retreats, Raja Yoga meditation shivirs, youth empowerment workshops, and sacred celebrations conducted across Kozhikode centers.
+            </p>
           </div>
 
-          <!-- Editorial Sub-Navigation Filter Bar -->
-          <div class="events-subnav-bar" id="eventsSubnavBar">
-            <button class="events-subnav-btn active" data-view="latest" onclick="bkApp.filterEventsView('latest', this)">
-              <i data-lucide="sparkles" style="width:15px;height:15px;"></i>
-              <span>Latest Events</span>
-            </button>
-            <button class="events-subnav-btn" data-view="navathi" onclick="bkApp.filterEventsView('navathi', this)">
-              <i data-lucide="award" style="width:15px;height:15px;"></i>
-              <span>Navathi Celebrations</span>
-            </button>
-            <button class="events-subnav-btn" data-view="festivals" onclick="bkApp.filterEventsView('festivals', this)">
-              <i data-lucide="flame" style="width:15px;height:15px;"></i>
-              <span>Festivals</span>
-            </button>
-            <button class="events-subnav-btn" data-view="shivarathri" onclick="bkApp.filterEventsView('shivarathri', this)">
-              <i data-lucide="sun" style="width:15px;height:15px;"></i>
-              <span>Shivarathri</span>
-            </button>
-            <button class="events-subnav-btn" data-view="rakshabandhan" onclick="bkApp.filterEventsView('rakshabandhan', this)">
-              <i data-lucide="heart-handshake" style="width:15px;height:15px;"></i>
-              <span>Raksha Bandhan</span>
-            </button>
-            <button class="events-subnav-btn" data-view="other" onclick="bkApp.filterEventsView('other', this)">
-              <i data-lucide="calendar" style="width:15px;height:15px;"></i>
-              <span>Other Programs</span>
+          <!-- Top Multi-Level Filter Bar -->
+          <div class="events-filter-bar-card" id="eventsFilterBar">
+            <div class="filter-controls-row">
+              <!-- Year Filter Dropdown -->
+              <div class="filter-field-group">
+                <label for="eventsFilterYear" class="filter-field-label">
+                  <i data-lucide="calendar"></i>
+                  <span>Year</span>
+                </label>
+                <select id="eventsFilterYear" class="event-filter-select" onchange="bkApp.onEventsFilterChange()">
+                  <option value="all">All Years</option>
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+
+              <!-- Dynamic Centre Filter Dropdown -->
+              <div class="filter-field-group">
+                <label for="eventsFilterCentre" class="filter-field-label">
+                  <i data-lucide="map-pin"></i>
+                  <span>Centre</span>
+                </label>
+                <select id="eventsFilterCentre" class="event-filter-select" onchange="bkApp.onEventsFilterChange()">
+                  <option value="all">All Centres</option>
+                  <!-- Populated dynamically from bkStore.getCenters() -->
+                </select>
+              </div>
+
+              <!-- Search by Keyword -->
+              <div class="filter-field-group filter-field-search">
+                <label for="eventsSearchInput" class="filter-field-label">
+                  <i data-lucide="search"></i>
+                  <span>Search</span>
+                </label>
+                <div class="search-input-box">
+                  <input type="text" id="eventsSearchInput" class="event-search-input" placeholder="Search by event title or keyword..." oninput="bkApp.onEventsFilterChange()">
+                  <button type="button" class="btn-clear-search" id="btnClearEventsSearch" onclick="bkApp.clearEventsSearch()" title="Clear Search" style="display:none;">✕</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="filter-categories-row">
+              <span class="category-pills-label">Category:</span>
+              <div class="category-pills-wrap" id="eventsCategoryPills">
+                <!-- Injected dynamically by js/app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Filter Status & Count -->
+          <div class="events-results-meta-bar" id="eventsResultsMetaBar">
+            <span id="eventsResultsCount" class="results-count-text">Showing all programs</span>
+            <button id="btnResetEventsFilter" class="btn-reset-filters" onclick="bkApp.resetEventsFilters()" style="display:none;">
+              <i data-lucide="rotate-ccw"></i>
+              <span>Reset Filters</span>
             </button>
           </div>
 
-          <!-- Main Dynamic Events View Container -->
-          <div id="eventsViewContainer">
+          <!-- Main Dynamic Events Grid Container -->
+          <div id="eventsGridContainer" class="events-cards-grid">
+            <!-- Injected by js/app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION: DEDICATED 90TH NAVATHI CELEBRATIONS
+         ========================================================================= -->
+    <section id="tab-navathi" class="tab-pane">
+      <div class="section-padding">
+        <div class="container">
+          <!-- Elegant Golden Ceremonial Hero Banner -->
+          <div class="navathi-ceremonial-banner">
+            <div class="navathi-badge-gold">
+              <i data-lucide="sparkles"></i>
+              <span>1936 – 2026 • 90 GLORIOUS YEARS</span>
+            </div>
+            <h2 class="navathi-banner-heading">Brahma Kumaris 90th Navathi Celebrations</h2>
+            <div class="navathi-banner-heading-ml">ബ്രഹ്മാകുമാരീസ് നവതി ആത്മീയ മഹോത്സവം</div>
+            <p class="navathi-banner-lead">
+              A historic spiritual milestone commemorating 90 years of world renewal, women-led spiritual awakening, and Raja Yoga meditation founded by Incorporeal Supreme Soul Shiva through Prajapita Brahma.
+            </p>
+
+            <!-- Milestone Metric Highlights -->
+            <div class="navathi-milestones-row">
+              <div class="navathi-milestone-box">
+                <div class="milestone-num">90+</div>
+                <div class="milestone-label">Years of Spiritual Service</div>
+              </div>
+              <div class="navathi-milestone-box">
+                <div class="milestone-num">140+</div>
+                <div class="milestone-label">Countries Globally</div>
+              </div>
+              <div class="navathi-milestone-box">
+                <div class="milestone-num">8,500+</div>
+                <div class="milestone-label">Meditation Centers</div>
+              </div>
+              <div class="navathi-milestone-box">
+                <div class="milestone-num">Millions</div>
+                <div class="milestone-label">Lives Transformed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dedicated Navathi Filter Bar -->
+          <div class="navathi-filter-bar-card" id="navathiFilterBar">
+            <div class="navathi-filter-header">
+              <div class="navathi-filter-title">
+                <i data-lucide="award"></i>
+                <span>Explore Navathi Programs by Centre & Year</span>
+              </div>
+              <div class="navathi-filter-note">
+                Filtering all 90th Navathi Celebration initiatives conducted across Kozhikode centres
+              </div>
+            </div>
+
+            <div class="filter-controls-row">
+              <!-- Centre Filter -->
+              <div class="filter-field-group">
+                <label for="navathiFilterCentre" class="filter-field-label">
+                  <i data-lucide="map-pin"></i>
+                  <span>Filter by Centre</span>
+                </label>
+                <select id="navathiFilterCentre" class="event-filter-select gold-select" onchange="bkApp.onNavathiFilterChange()">
+                  <option value="all">All Centres (Navathi)</option>
+                  <!-- Populated dynamically from bkStore.getCenters() -->
+                </select>
+              </div>
+
+              <!-- Year Filter -->
+              <div class="filter-field-group">
+                <label for="navathiFilterYear" class="filter-field-label">
+                  <i data-lucide="calendar"></i>
+                  <span>Filter by Year</span>
+                </label>
+                <select id="navathiFilterYear" class="event-filter-select gold-select" onchange="bkApp.onNavathiFilterChange()">
+                  <option value="all">All Years (Navathi)</option>
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navathi Results Meta -->
+          <div class="events-results-meta-bar navathi-meta-bar" id="navathiResultsMetaBar">
+            <span id="navathiResultsCount" class="results-count-text">Showing all 90th Navathi celebrations</span>
+            <button id="btnResetNavathiFilter" class="btn-reset-filters" onclick="bkApp.resetNavathiFilters()" style="display:none;">
+              <i data-lucide="rotate-ccw"></i>
+              <span>Reset Filters</span>
+            </button>
+          </div>
+
+          <!-- Navathi Events Grid (Exclusively isNavathi === true) -->
+          <div id="navathiGridContainer" class="events-cards-grid navathi-special-grid">
             <!-- Injected by js/app.js -->
           </div>
         </div>
@@ -833,7 +956,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="brand-wrapper" style="margin-bottom:0.75rem;">
-            <div class="soul-light-symbol" style="width:38px;height:38px;"></div>
+            <img src="assets/images/logo.png" alt="Brahma Kumaris Emblem" class="brand-logo-img sm">
             <div>
               <h3>Brahma Kumaris Kozhikode</h3>
               <div class="footer-ml">ബ്രഹ്മാകുമാരീസ് കോഴിക്കോട്</div>
@@ -896,7 +1019,7 @@
   <!-- =========================================================================
        EVENT DETAIL MODAL (PREMIUM EDITORIAL VIEW)
        ========================================================================= -->
-  <div class="modal-backdrop" id="eventDetailModal">
+  <div class="modal-backdrop" id="eventDetailModal" onclick="bkApp.handleEventModalBackdrop(event)">
     <div class="event-detail-modal-card">
       <button class="modal-close-btn" onclick="bkApp.closeEventDetail()">✕</button>
       <div id="eventDetailContent">
@@ -905,14 +1028,24 @@
     </div>
   </div>
 
+  <!-- High-Res Photo Lightbox Modal -->
+  <div class="modal-backdrop" id="imageLightboxModal" onclick="bkApp.closeImageLightbox(event)" style="z-index:10001;display:none;">
+    <div class="image-lightbox-wrapper">
+      <button class="lightbox-close-btn" onclick="bkApp.closeImageLightbox()">✕</button>
+      <img id="lightboxLargeImg" src="" alt="Enlarged Photo" class="lightbox-img">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
 
 
   <!-- Scripts -->
-  <script src="js/hero.js?v=30"></script>
-  <script src="js/store.js?v=30"></script>
-  <script src="js/app.js?v=30"></script>
+  <script src="js/hero.js?v=38"></script>
+  <script src="js/store.js?v=38"></script>
+  <script src="js/course.js?v=38"></script>
+  <script src="js/app.js?v=38"></script>
   <script>
     // Initialize Lucide Icons on load
     document.addEventListener('DOMContentLoaded', () => {

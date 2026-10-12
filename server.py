@@ -311,15 +311,25 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(payload).encode('utf-8'))
             return
 
-        # Admin route redirect and serving
+        # Direct tab routes served by index.html
         clean_path = self.path.split('?')[0]
-        if clean_path == '/admin':
+        if clean_path in ['/rajayoga-course', '/rajyoga-course', '/course', '/navathi', '/events']:
+            index_path = os.path.join(os.getcwd(), 'index.html')
+            if os.path.isfile(index_path):
+                self.send_response(200)
+                self.send_header('Content-Type', 'text/html; charset=utf-8')
+                self.end_headers()
+                with open(index_path, 'rb') as f:
+                    self.wfile.write(f.read())
+                return
+
+        if clean_path in ['/bk-admin', '/admin']:
             self.send_response(301)
-            self.send_header('Location', '/admin/')
+            self.send_header('Location', '/bk-admin/')
             self.end_headers()
             return
 
-        if clean_path == '/admin/':
+        if clean_path in ['/bk-admin/', '/admin/']:
             admin_index = os.path.join(os.getcwd(), 'admin', 'index.html')
             if os.path.isfile(admin_index):
                 self.send_response(200)
@@ -350,6 +360,20 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
         # Fallback to standard static file serving
         return super().do_GET()
 
+    def do_HEAD(self):
+        clean_path = self.path.split('?')[0]
+        if clean_path in ['/rajayoga-course', '/rajyoga-course', '/course', '/navathi', '/events']:
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.end_headers()
+            return
+        if clean_path in ['/bk-admin', '/bk-admin/', '/admin', '/admin/']:
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.end_headers()
+            return
+        return super().do_HEAD()
+
     def end_headers(self):
         # Ensure fresh assets during development
         p = self.path.split('?')[0]
@@ -357,6 +381,9 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
             self.send_header('Pragma', 'no-cache')
             self.send_header('Expires', '0')
+        elif p.endswith('.mp4') or p.endswith('.m4v') or p.endswith('.jpg') or p.endswith('.png') or p.endswith('.webp'):
+            self.send_header('Accept-Ranges', 'bytes')
+            self.send_header('Cache-Control', 'public, max-age=86400')
         super().end_headers()
 
     def send_range_response(self, filepath, range_header):

@@ -29,22 +29,44 @@
   function selectSource() {
     const width = window.innerWidth;
     let selectedFile = 'rajyoga-hero.mp4';
+    let selectedPoster = 'rajyoga-poster.jpg';
     if (width <= 640) {
       selectedFile = 'rajyoga-mobile.mp4';
+      selectedPoster = 'rajyoga-poster-mobile.jpg';
     } else if (width <= 1024) {
       selectedFile = 'rajyoga-tablet.mp4';
+      selectedPoster = 'rajyoga-poster.jpg';
     }
 
     const targetSrc = `assets/video/${selectedFile}`;
-    if (!video.src || !video.src.includes(selectedFile)) {
+    const targetPoster = `assets/video/${selectedPoster}`;
+
+    // Ensure poster is synchronized with viewport
+    if (video.getAttribute('poster') !== targetPoster) {
+      video.setAttribute('poster', targetPoster);
+    }
+
+    // Check if the currently active video source matches the desired breakpoint file
+    const currentActive = video.currentSrc || video.src || '';
+    if (!currentActive.includes(selectedFile)) {
+      const prevTime = video.currentTime || 0;
       video.src = targetSrc;
       video.load();
+      if (prevTime > 0) {
+        try { video.currentTime = prevTime; } catch (_) {}
+      }
+      if (isPlaying) {
+        startPlayback();
+      }
     }
   }
 
   function startPlayback() {
     video.muted = true;
+    video.defaultMuted = true;
     video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
     video.loop = true;
     const playPromise = video.play();
     if (playPromise !== undefined) {

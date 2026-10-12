@@ -517,8 +517,10 @@ class AdminController {
     if (filterCat !== 'all') {
       if (filterCat === 'drafts') {
         events = events.filter(e => e.status === 'draft');
+      } else if (filterCat === 'navathi') {
+        events = events.filter(e => Boolean(e.isNavathi));
       } else {
-        events = events.filter(e => e.category === filterCat);
+        events = events.filter(e => (e.category || '').toLowerCase() === filterCat.toLowerCase());
       }
     }
 
@@ -541,35 +543,43 @@ class AdminController {
     events.forEach(ev => {
       const isDraft = ev.status === 'draft';
       const isFeat = Boolean(ev.isFeatured);
+      const isNavathi = Boolean(ev.isNavathi);
+      const photoCount = Array.isArray(ev.photos) ? ev.photos.length : (Array.isArray(ev.additionalImages) ? ev.additionalImages.length : 0);
+      const hasVideo = Boolean(ev.youtubeUrl || ev.videoUrl);
 
       const card = document.createElement('div');
-      card.className = `admin-event-row-card ${isDraft ? 'is-draft' : ''}`;
+      card.className = `admin-event-row-card ${isDraft ? 'is-draft' : ''} ${isNavathi ? 'is-navathi-admin-card' : ''}`;
 
       card.innerHTML = `
-        <div class="admin-ev-thumb-box">
-          <img src="${ev.image || 'assets/images/light_palace_center.jpg'}" alt="${ev.title}">
+        <div class="admin-ev-thumb-box" style="position:relative;">
+          <img src="${ev.coverImage || ev.image || 'assets/images/light_palace_center.jpg'}" alt="${ev.title}">
+          ${isNavathi ? `<span style="position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:0.68rem;font-weight:700;padding:2px 6px;border-radius:4px;box-shadow:0 2px 4px rgba(0,0,0,0.25);">✨ 90th Navathi</span>` : ''}
         </div>
 
         <div class="admin-ev-details-box">
-          <div class="admin-ev-badge-row">
+          <div class="admin-ev-badge-row" style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.4rem;">
             <span class="admin-cat-pill">${this.formatEventCatLabel(ev.category)}</span>
+            ${isNavathi ? `<span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;font-size:0.75rem;font-weight:700;padding:2px 8px;border-radius:4px;">✨ Navathi Tagged</span>` : ''}
+            <span style="background:#e0f2fe;color:#0369a1;font-size:0.75rem;font-weight:700;padding:2px 7px;border-radius:4px;">${ev.year || (ev.date ? ev.date.substring(0,4) : '2026')}</span>
             ${isFeat ? `<span class="admin-feat-pill">⭐ Featured</span>` : ''}
             <span class="admin-status-pill ${isDraft ? 'draft' : 'published'}">
               ${isDraft ? '● Draft (Hidden)' : '● Published'}
             </span>
             <span class="admin-order-badge">Order: ${ev.order || 1}</span>
+            ${hasVideo ? `<span style="display:inline-flex;align-items:center;gap:3px;background:#fee2e2;color:#b91c1c;font-size:0.72rem;font-weight:600;padding:2px 6px;border-radius:4px;"><i data-lucide="video" style="width:12px;height:12px;"></i> Video</span>` : ''}
+            ${photoCount > 0 ? `<span style="display:inline-flex;align-items:center;gap:3px;background:#f3e8ff;color:#6b21a8;font-size:0.72rem;font-weight:600;padding:2px 6px;border-radius:4px;"><i data-lucide="camera" style="width:12px;height:12px;"></i> ${photoCount} Photos</span>` : ''}
           </div>
 
-          <h4 class="admin-ev-title">${ev.title}</h4>
+          <h4 class="admin-ev-title" style="margin:0 0 0.25rem 0;">${ev.title}</h4>
           ${ev.titleMl ? `<div style="font-family:var(--font-malayalam);font-size:0.84rem;color:var(--sunset-crimson);margin-bottom:0.35rem;">${ev.titleMl}</div>` : ''}
           
-          <div class="admin-ev-meta-line">
+          <div class="admin-ev-meta-line" style="display:flex;gap:0.75rem;flex-wrap:wrap;font-size:0.82rem;color:var(--text-muted);margin-bottom:0.35rem;">
             <span><i data-lucide="calendar" style="width:13px;height:13px;"></i> ${ev.date}</span>
-            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> ${ev.time}</span>
-            <span><i data-lucide="map-pin" style="width:13px;height:13px;"></i> ${ev.location}</span>
+            <span><i data-lucide="map-pin" style="width:13px;height:13px;color:#d97706;"></i> <strong>${ev.centre || ev.location}</strong></span>
+            ${ev.time ? `<span><i data-lucide="clock" style="width:13px;height:13px;"></i> ${ev.time}</span>` : ''}
           </div>
 
-          <p class="admin-ev-desc-preview">${ev.shortDesc || ''}</p>
+          <p class="admin-ev-desc-preview" style="font-size:0.85rem;color:#4b5563;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${ev.description || ev.shortDesc || ''}</p>
         </div>
 
         <div class="admin-ev-actions-box">
@@ -601,29 +611,91 @@ class AdminController {
   formatEventCatLabel(cat) {
     const map = {
       latest: 'Latest Event',
-      navathi: 'Navathi Celebrations',
-      shivarathri: 'Festivals → Shivarathri',
-      rakshabandhan: 'Festivals → Raksha Bandhan',
-      other: 'Festivals → Other Programs'
+      navathi: 'Navathi Special',
+      Festivals: 'Festivals',
+      'Rajayoga Shivir': 'Rajayoga Shivir',
+      'Youth Program': 'Youth Program',
+      'Social Service': 'Social Service',
+      Celebrations: 'Celebrations',
+      shivarathri: 'Shivarathri',
+      rakshabandhan: 'Raksha Bandhan',
+      other: 'Other'
     };
-    return map[cat] || 'Event';
+    return map[cat] || cat || 'Event';
+  }
+
+  populateEventCentresDropdown(selectedCentre = '') {
+    const sel = document.getElementById('eventFormCentre');
+    if (!sel) return;
+
+    const centers = window.bkStore.getCenters ? window.bkStore.getCenters() : [];
+    sel.innerHTML = '';
+
+    if (centers.length === 0) {
+      const fallbackCentres = ["Kozhikode Main", "Ashokapuram", "Feroke", "Vadakara", "West Hill", "Balussery", "Koyilandy", "Chevayoor"];
+      fallbackCentres.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        if (selectedCentre && (selectedCentre.toLowerCase() === c.toLowerCase())) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      return;
+    }
+
+    centers.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.name;
+      opt.textContent = c.name + (c.area ? ` (${c.area})` : '');
+      if (selectedCentre) {
+        if (selectedCentre.toLowerCase() === c.name.toLowerCase() ||
+            selectedCentre.toLowerCase().includes(c.name.toLowerCase()) ||
+            c.name.toLowerCase().includes(selectedCentre.toLowerCase())) {
+          opt.selected = true;
+        }
+      }
+      sel.appendChild(opt);
+    });
+  }
+
+  onEventDateChange(dateVal) {
+    if (!dateVal) return;
+    const yearInput = document.getElementById('eventFormYear');
+    if (yearInput) {
+      const y = dateVal.substring(0, 4);
+      if (y && !isNaN(parseInt(y, 10))) {
+        yearInput.value = y;
+      }
+    }
   }
 
   openAddEventModal() {
     const form = document.getElementById('addEventFormContainer');
     if (!form) return;
 
+    this.populateEventCentresDropdown();
+
     document.getElementById('eventFormId').value = '';
     document.getElementById('eventFormTitleInput').value = '';
     document.getElementById('eventFormTitleMl').value = '';
-    document.getElementById('eventFormCategory').value = 'latest';
+    const isNavathiCheck = document.getElementById('eventFormIsNavathi');
+    if (isNavathiCheck) isNavathiCheck.checked = false;
+
+    document.getElementById('eventFormCategory').value = 'Festivals';
     document.getElementById('eventFormOrder').value = '1';
-    document.getElementById('eventFormDate').value = '';
+
+    const todayStr = new Date().toISOString().split('T')[0];
+    document.getElementById('eventFormDate').value = todayStr;
+    const yearInput = document.getElementById('eventFormYear');
+    if (yearInput) yearInput.value = todayStr.substring(0, 4) || '2026';
+
     document.getElementById('eventFormTime').value = '10:00 AM - 1:00 PM';
-    document.getElementById('eventFormVenue').value = 'Ashokapuram Light Palace, Kozhikode';
+    const venueInput = document.getElementById('eventFormVenue');
+    if (venueInput) venueInput.value = '';
+
     document.getElementById('eventFormShortDesc').value = '';
     document.getElementById('eventFormFullDesc').value = '';
-    document.getElementById('eventFormImageUrl').value = '';
+    document.getElementById('eventFormImageUrl').value = 'assets/images/light_palace_center.jpg';
     document.getElementById('eventFormAdditionalImages').value = '';
     document.getElementById('eventFormVideoUrl').value = '';
     document.getElementById('eventFormRegUrl').value = '';
@@ -631,7 +703,7 @@ class AdminController {
     document.getElementById('eventFormIsFeatured').checked = false;
     document.getElementById('eventFormIsPublished').checked = true;
 
-    this.removeEventMainImage();
+    this.previewEventMainImage('assets/images/light_palace_center.jpg');
     this.previewEventVideo('');
     this.renderAdminScheduleRows([]);
 
@@ -648,26 +720,57 @@ class AdminController {
     const ev = window.bkStore.getEvent(eventId);
     if (!form || !ev) return;
 
+    this.populateEventCentresDropdown(ev.centre || ev.location || '');
+
     document.getElementById('eventFormId').value = ev.id;
     document.getElementById('eventFormTitleInput').value = ev.title || '';
     document.getElementById('eventFormTitleMl').value = ev.titleMl || '';
-    document.getElementById('eventFormCategory').value = ev.category || 'latest';
+
+    const isNavathiCheck = document.getElementById('eventFormIsNavathi');
+    if (isNavathiCheck) isNavathiCheck.checked = Boolean(ev.isNavathi);
+
+    const centreSel = document.getElementById('eventFormCentre');
+    if (centreSel && (ev.centre || ev.location)) {
+      const match = ev.centre || ev.location;
+      for (let i = 0; i < centreSel.options.length; i++) {
+        if (centreSel.options[i].value.toLowerCase() === match.toLowerCase() ||
+            match.toLowerCase().includes(centreSel.options[i].value.toLowerCase())) {
+          centreSel.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    const venueInput = document.getElementById('eventFormVenue');
+    if (venueInput) venueInput.value = ev.venue || '';
+
+    document.getElementById('eventFormCategory').value = ev.category || 'Festivals';
     document.getElementById('eventFormOrder').value = ev.order || 1;
     document.getElementById('eventFormDate').value = ev.date || '';
+
+    const yearInput = document.getElementById('eventFormYear');
+    if (yearInput) yearInput.value = ev.year || (ev.date ? ev.date.substring(0, 4) : '2026');
+
     document.getElementById('eventFormTime').value = ev.time || '';
-    document.getElementById('eventFormVenue').value = ev.location || ev.venue || '';
-    document.getElementById('eventFormShortDesc').value = ev.shortDesc || '';
-    document.getElementById('eventFormFullDesc').value = ev.fullDesc || ev.shortDesc || '';
-    document.getElementById('eventFormImageUrl').value = ev.image || '';
-    document.getElementById('eventFormAdditionalImages').value = Array.isArray(ev.additionalImages) ? ev.additionalImages.join(', ') : '';
-    document.getElementById('eventFormVideoUrl').value = ev.videoUrl || '';
+    document.getElementById('eventFormShortDesc').value = ev.description || ev.shortDesc || '';
+    document.getElementById('eventFormFullDesc').value = ev.fullDesc || '';
+
+    const img = ev.coverImage || ev.image || '';
+    document.getElementById('eventFormImageUrl').value = img;
+
+    const photosList = Array.isArray(ev.photos) && ev.photos.length > 0 ? ev.photos : (Array.isArray(ev.additionalImages) ? ev.additionalImages : []);
+    document.getElementById('eventFormAdditionalImages').value = photosList.join(', ');
+
+    const vid = ev.youtubeUrl || ev.videoUrl || '';
+    document.getElementById('eventFormVideoUrl').value = vid;
+
     document.getElementById('eventFormRegUrl').value = ev.registrationUrl || '';
     document.getElementById('eventFormExternalUrl').value = ev.externalUrl || '';
     document.getElementById('eventFormIsFeatured').checked = Boolean(ev.isFeatured);
     document.getElementById('eventFormIsPublished').checked = ev.status !== 'draft';
 
-    this.previewEventMainImage(ev.image || '');
-    this.previewEventVideo(ev.videoUrl || '');
+    this.previewEventMainImage(img);
+    this.previewEventVideo(vid);
     this.renderAdminScheduleRows(ev.schedule || []);
 
     document.getElementById('eventFormTitle').textContent = `Edit Event: ${ev.title}`;
@@ -790,19 +893,26 @@ class AdminController {
     const id = document.getElementById('eventFormId').value;
     const title = document.getElementById('eventFormTitleInput').value.trim();
     const titleMl = document.getElementById('eventFormTitleMl').value.trim();
+    const isNavathi = document.getElementById('eventFormIsNavathi')?.checked || false;
+    const centre = document.getElementById('eventFormCentre')?.value.trim() || 'Kozhikode Main';
+    const venue = document.getElementById('eventFormVenue')?.value.trim() || '';
     const category = document.getElementById('eventFormCategory').value;
     const order = parseInt(document.getElementById('eventFormOrder').value, 10) || 1;
     const date = document.getElementById('eventFormDate').value.trim();
+    
+    let year = document.getElementById('eventFormYear')?.value.trim();
+    if (!year && date) year = date.substring(0, 4);
+    if (!year) year = '2026';
+
     const time = document.getElementById('eventFormTime').value.trim();
-    const location = document.getElementById('eventFormVenue').value.trim();
     const shortDesc = document.getElementById('eventFormShortDesc').value.trim();
     const fullDesc = document.getElementById('eventFormFullDesc').value.trim();
-    const image = document.getElementById('eventFormImageUrl').value.trim() || 'assets/images/light_palace_center.jpg';
+    const coverImage = document.getElementById('eventFormImageUrl').value.trim() || 'assets/images/light_palace_center.jpg';
     
-    const rawAdditional = document.getElementById('eventFormAdditionalImages').value.trim();
-    const additionalImages = rawAdditional ? rawAdditional.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const rawPhotos = document.getElementById('eventFormAdditionalImages').value.trim();
+    const photos = rawPhotos ? rawPhotos.split(/[\n,]+/).map(s => s.trim()).filter(Boolean) : [];
 
-    const videoUrl = document.getElementById('eventFormVideoUrl').value.trim();
+    const youtubeUrl = document.getElementById('eventFormVideoUrl').value.trim();
     const registrationUrl = document.getElementById('eventFormRegUrl').value.trim();
     const externalUrl = document.getElementById('eventFormExternalUrl').value.trim();
     const isFeatured = document.getElementById('eventFormIsFeatured').checked;
@@ -818,13 +928,21 @@ class AdminController {
       category,
       order,
       date,
-      time,
-      location,
+      year,
+      centre,
+      venue,
+      location: venue ? `${centre} (${venue})` : centre,
+      isNavathi,
+      description: shortDesc,
       shortDesc,
-      fullDesc,
-      image,
-      additionalImages,
-      videoUrl,
+      fullDesc: fullDesc || shortDesc,
+      coverImage,
+      image: coverImage,
+      photos,
+      additionalImages: photos,
+      youtubeUrl,
+      videoUrl: youtubeUrl,
+      time,
       registrationUrl,
       externalUrl,
       isFeatured,
@@ -838,12 +956,16 @@ class AdminController {
     this.renderAdminEvents();
     this.refreshDashboard();
 
-    // Re-render live website events section
-    if (window.bkApp && typeof window.bkApp.renderEventsSection === 'function') {
-      window.bkApp.renderEventsSection(category);
+    // Re-render live website events and navathi sections
+    if (window.bkApp) {
+      if (typeof window.bkApp.renderEventsPage === 'function') window.bkApp.renderEventsPage();
+      if (typeof window.bkApp.renderNavathiPage === 'function') window.bkApp.renderNavathiPage();
+      if (typeof window.bkApp.renderEventsSection === 'function') window.bkApp.renderEventsSection(category);
     }
 
-    window.bkApp.toast(`🕊️ Event "${saved.title}" saved & published successfully!`);
+    if (window.bkApp && typeof window.bkApp.toast === 'function') {
+      window.bkApp.toast(`🕊️ Event "${saved.title}" saved successfully!`);
+    }
   }
 
   duplicateEvent(eventId) {
@@ -851,8 +973,14 @@ class AdminController {
     if (cloned) {
       this.renderAdminEvents();
       this.refreshDashboard();
-      if (window.bkApp) window.bkApp.renderEvents();
-      window.bkApp.toast(`📋 Duplicated as Draft: "${cloned.title}"`);
+      if (window.bkApp) {
+        if (typeof window.bkApp.renderEventsPage === 'function') window.bkApp.renderEventsPage();
+        if (typeof window.bkApp.renderNavathiPage === 'function') window.bkApp.renderNavathiPage();
+        if (typeof window.bkApp.renderEventsSection === 'function') window.bkApp.renderEventsSection();
+      }
+      if (window.bkApp && typeof window.bkApp.toast === 'function') {
+        window.bkApp.toast(`📋 Duplicated as Draft: "${cloned.title}"`);
+      }
     }
   }
 
@@ -861,8 +989,14 @@ class AdminController {
     if (updated) {
       this.renderAdminEvents();
       this.refreshDashboard();
-      if (window.bkApp) window.bkApp.renderEvents();
-      window.bkApp.toast(`🕊️ Event is now ${updated.status === 'published' ? 'Published publicly' : 'saved as Draft (Hidden)'}.`);
+      if (window.bkApp) {
+        if (typeof window.bkApp.renderEventsPage === 'function') window.bkApp.renderEventsPage();
+        if (typeof window.bkApp.renderNavathiPage === 'function') window.bkApp.renderNavathiPage();
+        if (typeof window.bkApp.renderEventsSection === 'function') window.bkApp.renderEventsSection();
+      }
+      if (window.bkApp && typeof window.bkApp.toast === 'function') {
+        window.bkApp.toast(`🕊️ Event is now ${updated.status === 'published' ? 'Published publicly' : 'saved as Draft (Hidden)'}.`);
+      }
     }
   }
 
@@ -871,8 +1005,14 @@ class AdminController {
       window.bkStore.deleteEvent(eventId);
       this.renderAdminEvents();
       this.refreshDashboard();
-      if (window.bkApp) window.bkApp.renderEvents();
-      window.bkApp.toast("🕊️ Event deleted.");
+      if (window.bkApp) {
+        if (typeof window.bkApp.renderEventsPage === 'function') window.bkApp.renderEventsPage();
+        if (typeof window.bkApp.renderNavathiPage === 'function') window.bkApp.renderNavathiPage();
+        if (typeof window.bkApp.renderEventsSection === 'function') window.bkApp.renderEventsSection();
+      }
+      if (window.bkApp && typeof window.bkApp.toast === 'function') {
+        window.bkApp.toast("🕊️ Event deleted.");
+      }
     }
   }
 
@@ -1228,10 +1368,16 @@ class AdminController {
 
     this.hideAddCenterForm();
     this.renderCentersManager();
-    if (window.bkApp && typeof window.bkApp.renderCenters === 'function') {
-      window.bkApp.renderCenters('all');
+    this.populateEventCentresDropdown();
+
+    if (window.bkApp) {
+      if (typeof window.bkApp.populateEventsCenterDropdown === 'function') window.bkApp.populateEventsCenterDropdown();
+      if (typeof window.bkApp.populateNavathiCenterDropdown === 'function') window.bkApp.populateNavathiCenterDropdown();
+      if (typeof window.bkApp.renderEventsPage === 'function') window.bkApp.renderEventsPage();
+      if (typeof window.bkApp.renderNavathiPage === 'function') window.bkApp.renderNavathiPage();
+      if (typeof window.bkApp.renderCenters === 'function') window.bkApp.renderCenters('all');
+      if (typeof window.bkApp.toast === 'function') window.bkApp.toast(`🕊️ Center "${name}" saved successfully!`);
     }
-    window.bkApp.toast(`🕊️ Center "${name}" saved successfully!`);
   }
 
   deleteCenter(id) {
@@ -1244,10 +1390,16 @@ class AdminController {
     if (confirm(`Are you sure you want to delete "${c.name}"?`)) {
       window.bkStore.deleteCenter(id);
       this.renderCentersManager();
-      if (window.bkApp && typeof window.bkApp.renderCenters === 'function') {
-        window.bkApp.renderCenters('all');
+      this.populateEventCentresDropdown();
+
+      if (window.bkApp) {
+        if (typeof window.bkApp.populateEventsCenterDropdown === 'function') window.bkApp.populateEventsCenterDropdown();
+        if (typeof window.bkApp.populateNavathiCenterDropdown === 'function') window.bkApp.populateNavathiCenterDropdown();
+        if (typeof window.bkApp.renderEventsPage === 'function') window.bkApp.renderEventsPage();
+        if (typeof window.bkApp.renderNavathiPage === 'function') window.bkApp.renderNavathiPage();
+        if (typeof window.bkApp.renderCenters === 'function') window.bkApp.renderCenters('all');
+        if (typeof window.bkApp.toast === 'function') window.bkApp.toast(`Center "${c.name}" removed.`);
       }
-      window.bkApp.toast(`Center "${c.name}" removed.`);
     }
   }
 
@@ -1255,10 +1407,16 @@ class AdminController {
     const updated = window.bkStore.togglePublishCenter(id);
     if (updated) {
       this.renderCentersManager();
-      if (window.bkApp && typeof window.bkApp.renderCenters === 'function') {
-        window.bkApp.renderCenters('all');
+      this.populateEventCentresDropdown();
+
+      if (window.bkApp) {
+        if (typeof window.bkApp.populateEventsCenterDropdown === 'function') window.bkApp.populateEventsCenterDropdown();
+        if (typeof window.bkApp.populateNavathiCenterDropdown === 'function') window.bkApp.populateNavathiCenterDropdown();
+        if (typeof window.bkApp.renderEventsPage === 'function') window.bkApp.renderEventsPage();
+        if (typeof window.bkApp.renderNavathiPage === 'function') window.bkApp.renderNavathiPage();
+        if (typeof window.bkApp.renderCenters === 'function') window.bkApp.renderCenters('all');
+        if (typeof window.bkApp.toast === 'function') window.bkApp.toast(`Visibility updated for "${updated.name}".`);
       }
-      window.bkApp.toast(`Visibility updated for "${updated.name}".`);
     }
   }
 
@@ -1520,12 +1678,14 @@ class AdminController {
 
       const videoId = mod.youtubeVideoId || (window.bkUtils ? window.bkUtils.extractYouTubeVideoId(mod.youtubeUrl || '') : '');
       const hasValidVideo = Boolean(videoId);
+      const quizQuestions = Array.isArray(mod.quizQuestions) ? mod.quizQuestions : [];
 
       card.innerHTML = `
         <div class="admin-course-day-header">
           <div class="admin-course-day-title">
             <span class="admin-course-day-num">Day 0${mod.day}</span>
             <strong style="font-size:1.1rem;color:var(--sunset-dark-base);">${mod.title}</strong>
+            <span style="font-size:0.9rem;color:#854d0e;font-weight:600;">(${mod.titleMl || ''})</span>
           </div>
           <span style="font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:4px;background:${hasValidVideo ? '#d1fae5;color:#065f46;' : '#fef3c7;color:#92400e;'}">
             ${hasValidVideo ? '✅ Video Linked' : '⏳ Video Placeholder'}
@@ -1533,31 +1693,37 @@ class AdminController {
         </div>
 
         <form onsubmit="event.preventDefault(); bkAdmin.handleSaveCourseDay(${mod.day});">
+          <!-- Lesson Metadata -->
           <div class="admin-course-grid-form">
             <div class="form-group">
-              <label for="adminCourseTitle_${mod.day}">Lesson Title (Day ${mod.day})</label>
+              <label for="adminCourseTitle_${mod.day}">Lesson Title (English) *</label>
               <input type="text" id="adminCourseTitle_${mod.day}" class="form-control" value="${mod.title || ''}" required>
             </div>
 
             <div class="form-group">
-              <label for="adminCourseTitleMl_${mod.day}">Malayalam Title</label>
+              <label for="adminCourseTitleMl_${mod.day}">Lesson Title (Malayalam)</label>
               <input type="text" id="adminCourseTitleMl_${mod.day}" class="form-control" value="${mod.titleMl || ''}">
             </div>
           </div>
 
           <div class="admin-course-grid-form">
             <div class="form-group">
-              <label for="adminCourseDuration_${mod.day}">Video Duration</label>
-              <input type="text" id="adminCourseDuration_${mod.day}" class="form-control" value="${mod.duration || '30 mins'}" placeholder="e.g. 25 min or 45 mins">
+              <label for="adminCourseDuration_${mod.day}">Lesson Duration</label>
+              <input type="text" id="adminCourseDuration_${mod.day}" class="form-control" value="${mod.duration || '45 mins'}" placeholder="e.g. 45 mins or 50 mins">
             </div>
 
             <div class="form-group">
-              <label for="adminCourseYt_${mod.day}">YouTube Video URL (Public or Unlisted)</label>
+              <label for="adminCourseYt_${mod.day}">YouTube Video URL (Public, Unlisted, or 11-char ID)</label>
               <input type="text" id="adminCourseYt_${mod.day}" class="form-control" value="${mod.youtubeUrl || ''}" placeholder="e.g. https://www.youtube.com/watch?v=... or https://youtu.be/..." oninput="bkAdmin.handleYouTubeUrlInput(${mod.day}, this)">
               <div id="ytFeedbackDay${mod.day}" class="yt-valid-feedback ${hasValidVideo ? 'valid' : ''}">
                 ${hasValidVideo ? `✅ Valid YouTube ID: <code>${videoId}</code>` : 'ℹ️ Paste any Public or Unlisted YouTube URL.'}
               </div>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="adminCourseKeyInsight_${mod.day}">Key Insight / Subtitle (Malayalam / English)</label>
+            <input type="text" id="adminCourseKeyInsight_${mod.day}" class="form-control" value="${mod.keyInsight || ''}" placeholder="Core spiritual takeaway for seekers...">
           </div>
 
           <div class="form-group">
@@ -1572,7 +1738,7 @@ class AdminController {
             </div>
             ${hasValidVideo ? `
               <div class="course-video-wrapper" style="margin:0;max-width:480px;">
-                <iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1" frameborder="0" allowfullscreen></iframe>
               </div>
             ` : `
               <div style="font-size:0.84rem;color:var(--text-muted);padding:0.75rem;background:#fff;border-radius:4px;border:1px dashed #e5e7eb;">
@@ -1581,10 +1747,71 @@ class AdminController {
             `}
           </div>
 
-          <div style="display:flex;justify-content:flex-end;margin-top:1.25rem;">
-            <button type="submit" class="btn-cta-course" style="padding:0.6rem 1.4rem;">
+          <!-- Reflection Prompt Editor -->
+          <div class="form-group" style="margin-top:1.5rem;background:#fefce8;padding:1rem;border-radius:8px;border:1px solid #fef08a;">
+            <label for="adminCourseReflection_${mod.day}" style="color:#854d0e;font-weight:700;">
+              🕊️ Daily Spiritual Reflection Prompt (Malayalam / English)
+            </label>
+            <textarea id="adminCourseReflection_${mod.day}" class="form-control" rows="2" placeholder="Enter daily reflection prompt to guide seekers' self-inquiry...">${mod.reflectionPrompt || ''}</textarea>
+          </div>
+
+          <!-- Full Malayalam Quiz Editor -->
+          <div class="admin-quiz-section">
+            <div class="admin-quiz-section-header">
+              <div>
+                <strong style="color:var(--sunset-dark-base);font-size:1.05rem;">
+                  🧠 Malayalam Knowledge Quiz Questions
+                </strong>
+                <p style="font-size:0.82rem;color:var(--text-muted);margin:0.2rem 0 0 0;">
+                  Edit Malayalam questions, multiple choice options, correct answers, and wisdom explanations.
+                </p>
+              </div>
+              <button type="button" class="admin-btn-add-q" onclick="bkAdmin.addQuizQuestionToDay(${mod.day})">
+                <i data-lucide="plus" style="width:14px;height:14px;"></i>
+                <span>Add Quiz Question</span>
+              </button>
+            </div>
+
+            <div id="quizContainerDay_${mod.day}">
+              ${quizQuestions.map((q, qIdx) => `
+                <div class="admin-quiz-q-card admin-qblock-day-${mod.day}" data-qid="${q.id || 'd' + mod.day + '_q' + (qIdx + 1)}">
+                  <div class="admin-quiz-q-card-header">
+                    <strong style="color:var(--sunset-dark-base);font-size:0.92rem;">Question ${qIdx + 1}</strong>
+                    <button type="button" class="admin-btn-del-q" onclick="bkAdmin.removeQuizQuestion(this)">
+                      <i data-lucide="trash-2" style="width:13px;height:13px;"></i> Remove
+                    </button>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom:0.75rem;">
+                    <label>Question Text (Malayalam / English) *</label>
+                    <input type="text" class="form-control admin-q-text" value="${(q.question || '').replace(/"/g, '&quot;')}" placeholder="e.g. രാജയോഗ ധ്യാന പ്രകാരം ആത്മാവിന്റെ യഥാർത്ഥ സ്വരൂപവും ഗുണങ്ങളും എന്താണ്?" required>
+                  </div>
+
+                  <label style="font-size:0.82rem;color:var(--text-muted);font-weight:600;">
+                    Choices (Select the Radio Button corresponding to the Correct Answer):
+                  </label>
+                  <div class="admin-quiz-opt-grid">
+                    ${(q.options || ['', '', '', '']).map((opt, optIdx) => `
+                      <div class="admin-quiz-opt-item">
+                        <input type="radio" name="correct_choice_${mod.day}_${qIdx}" value="${optIdx}" ${optIdx === q.correctIndex ? 'checked' : ''} title="Mark option ${optIdx + 1} as correct answer">
+                        <input type="text" class="form-control admin-opt-input" value="${(opt || '').replace(/"/g, '&quot;')}" placeholder="Choice ${optIdx + 1}..." required>
+                      </div>
+                    `).join('')}
+                  </div>
+
+                  <div class="form-group" style="margin-top:0.75rem;margin-bottom:0;">
+                    <label>Spiritual Explanation / Wisdom note</label>
+                    <input type="text" class="form-control admin-q-expl" value="${(q.explanation || '').replace(/"/g, '&quot;')}" placeholder="Spiritual explanation shown after answering...">
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:flex-end;margin-top:1.5rem;">
+            <button type="submit" class="btn-cta-course" style="padding:0.65rem 1.6rem;">
               <i data-lucide="save" style="width:16px;height:16px;"></i>
-              <span>Save Day ${mod.day} Lesson</span>
+              <span>Save Day ${mod.day} Lesson &amp; Quiz</span>
             </button>
           </div>
         </form>
@@ -1627,7 +1854,7 @@ class AdminController {
           📺 Live Video Embed Preview:
         </div>
         <div class="course-video-wrapper" style="margin:0;max-width:480px;">
-          <iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1" frameborder="0" allowfullscreen></iframe>
         </div>
       `;
     } else {
@@ -1648,44 +1875,143 @@ class AdminController {
     const titleEl = document.getElementById(`adminCourseTitle_${dayNumber}`);
     const titleMlEl = document.getElementById(`adminCourseTitleMl_${dayNumber}`);
     const durationEl = document.getElementById(`adminCourseDuration_${dayNumber}`);
+    const keyInsightEl = document.getElementById(`adminCourseKeyInsight_${dayNumber}`);
     const descEl = document.getElementById(`adminCourseDesc_${dayNumber}`);
     const ytEl = document.getElementById(`adminCourseYt_${dayNumber}`);
+    const reflectionEl = document.getElementById(`adminCourseReflection_${dayNumber}`);
 
     if (!titleEl) return;
 
     const title = titleEl.value.trim();
     const titleMl = titleMlEl ? titleMlEl.value.trim() : '';
-    const duration = durationEl ? durationEl.value.trim() : '30 mins';
+    const duration = durationEl ? durationEl.value.trim() : '45 mins';
+    const keyInsight = keyInsightEl ? keyInsightEl.value.trim() : '';
     const description = descEl ? descEl.value.trim() : '';
     const youtubeUrl = ytEl ? ytEl.value.trim() : '';
+    const reflectionPrompt = reflectionEl ? reflectionEl.value.trim() : '';
 
     if (!title) {
       alert(`Lesson title for Day ${dayNumber} is required.`);
       return;
     }
 
+    // Collect all quiz questions for this day
+    const qBlocks = document.querySelectorAll(`.admin-qblock-day-${dayNumber}`);
+    const quizQuestions = [];
+    qBlocks.forEach((qEl, qIdx) => {
+      const qId = qEl.getAttribute('data-qid') || `d${dayNumber}_q${qIdx + 1}`;
+      const qText = qEl.querySelector('.admin-q-text')?.value.trim() || '';
+      const optInputs = qEl.querySelectorAll('.admin-opt-input');
+      const options = Array.from(optInputs).map(inp => inp.value.trim()).filter(Boolean);
+      const checkedRadio = qEl.querySelector(`input[name="correct_choice_${dayNumber}_${qIdx}"]:checked`);
+      const correctIndex = checkedRadio ? parseInt(checkedRadio.value, 10) : 0;
+      const explanation = qEl.querySelector('.admin-q-expl')?.value.trim() || '';
+
+      if (qText && options.length >= 2) {
+        quizQuestions.push({
+          id: qId,
+          question: qText,
+          options: options,
+          correctIndex: correctIndex,
+          explanation: explanation
+        });
+      }
+    });
+
     // Update in store
     const updated = window.bkStore.updateCourseModule(dayNumber, {
       title,
       titleMl,
       duration,
+      keyInsight,
       description,
       summary: description,
-      youtubeUrl
+      youtubeUrl,
+      reflectionPrompt,
+      quizQuestions: quizQuestions.length > 0 ? quizQuestions : undefined
     });
 
     if (updated) {
-      // Re-render main website course page in real time
+      // Re-render public website course page in real time
+      if (window.bkCourse && typeof window.bkCourse.render === 'function') {
+        window.bkCourse.render();
+      }
       if (window.bkApp && typeof window.bkApp.renderCourseModules === 'function') {
         window.bkApp.renderCourseModules();
       }
 
-      window.bkApp.toast(`🕊️ Day ${dayNumber} lesson updated successfully!`);
+      if (window.bkApp && window.bkApp.toast) {
+        window.bkApp.toast(`✨ Day ${dayNumber} lesson & Malayalam quiz saved successfully!`);
+      } else {
+        alert(`Day ${dayNumber} saved successfully!`);
+      }
 
       // Refresh admin course card view
       this.renderAdminCourseManager();
     } else {
       alert(`Failed to update Day ${dayNumber}.`);
+    }
+  }
+
+  addQuizQuestionToDay(dayNumber) {
+    const container = document.getElementById(`quizContainerDay_${dayNumber}`);
+    if (!container) return;
+    const currentCount = container.querySelectorAll(`.admin-qblock-day-${dayNumber}`).length;
+    const newIndex = currentCount;
+    const newQId = `d${dayNumber}_q${newIndex + 1}_${Date.now()}`;
+
+    const qCard = document.createElement('div');
+    qCard.className = `admin-quiz-q-card admin-qblock-day-${dayNumber}`;
+    qCard.setAttribute('data-qid', newQId);
+    qCard.innerHTML = `
+      <div class="admin-quiz-q-card-header">
+        <strong style="color:var(--sunset-dark-base);font-size:0.92rem;">Question ${newIndex + 1}</strong>
+        <button type="button" class="admin-btn-del-q" onclick="bkAdmin.removeQuizQuestion(this)">
+          <i data-lucide="trash-2" style="width:13px;height:13px;"></i> Remove
+        </button>
+      </div>
+
+      <div class="form-group" style="margin-bottom:0.75rem;">
+        <label>Question Text (Malayalam / English) *</label>
+        <input type="text" class="form-control admin-q-text" placeholder="Enter question in Malayalam..." required>
+      </div>
+
+      <label style="font-size:0.82rem;color:var(--text-muted);font-weight:600;">
+        Choices (Select Radio Button for Correct Answer):
+      </label>
+      <div class="admin-quiz-opt-grid">
+        ${[0, 1, 2, 3].map(optIdx => `
+          <div class="admin-quiz-opt-item">
+            <input type="radio" name="correct_choice_${dayNumber}_${newIndex}" value="${optIdx}" ${optIdx === 0 ? 'checked' : ''} title="Mark choice ${optIdx + 1} as correct">
+            <input type="text" class="form-control admin-opt-input" placeholder="Choice ${optIdx + 1}..." required>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="form-group" style="margin-top:0.75rem;margin-bottom:0;">
+        <label>Spiritual Explanation / Wisdom note</label>
+        <input type="text" class="form-control admin-q-expl" placeholder="Wisdom explanation for seekers...">
+      </div>
+    `;
+    container.appendChild(qCard);
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  removeQuizQuestion(buttonEl) {
+    const qCard = buttonEl.closest('.admin-quiz-q-card');
+    if (!qCard) return;
+    const container = qCard.parentElement;
+    qCard.remove();
+    if (container) {
+      container.querySelectorAll('.admin-quiz-q-card').forEach((card, idx) => {
+        const headerTitle = card.querySelector('.admin-quiz-q-card-header strong');
+        if (headerTitle) headerTitle.textContent = `Question ${idx + 1}`;
+        card.querySelectorAll('input[type="radio"]').forEach(radio => {
+          const match = radio.name.match(/correct_choice_(\d+)/);
+          const day = match ? match[1] : '1';
+          radio.name = `correct_choice_${day}_${idx}`;
+        });
+      });
     }
   }
 

@@ -1,10 +1,10 @@
 /* ==========================================================================
-   Brahma Kumaris Kozhikode - Cinematic Rajyoga Hero & Feathered Flow
-   - Pure Looping Divine Meditation Video Animation (Unobstructed)
-   - Divine Jyoti -> Seven Rays -> Yogi -> Forehead Receiving Point completely visible
-   - Feathered Atmospheric Dissolve (No hard lines or rectangular boundaries)
-   - Single Subtle Cinematic Title & Clean CTA below the visual
-   - 100% Responsive for Desktop, Tablet (768px), and Mobile (390px)
+   Brahma Kumaris Kozhikode - Full-Screen Cinematic Rajyoga Hero
+   - Full Viewport Height: height: 100vh; min-height: 100vh; min-height: 100dvh;
+   - Background Video: absolute inset-0 w-full h-full object-cover -z-10
+   - Autoplay, loop, muted, playsinline without getting squished or cropped awkwardly
+   - Content Overlay: relative/absolute z-10 in Bottom-Right Corner (transparent, unobstructed center)
+   - Responsive for Desktop, Tablet, and Mobile devices
    ========================================================================== */
 
 :root {
@@ -15,92 +15,85 @@
 }
 
 /* ==========================================================================
-   1. HERO VIDEO STAGE (Pure Divine Animation Showcase)
+   1. HERO SECTION CONTAINER (Full Viewport Height & Relative Layout)
    ========================================================================== */
 
 .rajyoga-hero.cinematic-hero {
   position: relative;
   width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--hero-dark);
   overflow: hidden;
   box-sizing: border-box;
-  padding-top: 56px; /* Smooth clearance for fixed glass header */
   display: flex;
   flex-direction: column;
-}
-
-/* Video Stage: expanded cinematic aspect-ratio presence so full Yogi is visible */
-.rajyoga-hero.cinematic-hero .rajyoga-stage {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 480px;
-  max-height: 820px;
-  margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: #0a0203;
+  margin: 0;
 }
 
+/* ==========================================================================
+   2. BACKGROUND VIDEO ELEMENT (Absolute Inset-0, Full Cover, -z-10)
+   ========================================================================== */
+
+.rajyoga-hero.cinematic-hero .rajyoga-stage,
 .rajyoga-hero.cinematic-hero .rajyoga-scene {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
-  background: #0a0203;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rajyoga-hero.cinematic-hero .rajyoga-scene {
   transform: rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
   transform-origin: center center;
   transition: transform 0.15s ease-out;
   will-change: transform;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
 }
 
-/* Video: centered full spiritual composition (Divine Jyoti -> Rays -> Yogi on Lotus) */
+/* Background Video: absolute, full cover, unconstrained, centered */
 .rajyoga-hero.cinematic-hero .rajyoga-video {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.75) 94%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.75) 94%, transparent 100%);
 }
 
-/* Feathered smooth atmospheric veil:
-   - Soft fade at top for floating header
-   - Clean, unobstructed view for entire video and Yogi */
+/* Atmospheric veil for contrast and readability while showcasing spiritual radiance */
 .rajyoga-hero.cinematic-hero .rajyoga-cover-veil {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, 
-    rgba(10, 2, 3, 0.5) 0%, 
-    rgba(10, 2, 3, 0.08) 8%, 
-    transparent 16%, 
-    transparent 85%, 
-    rgba(10, 2, 3, 0.4) 93%, 
-    #0a0203 100%
+    rgba(10, 2, 3, 0.55) 0%, 
+    rgba(10, 2, 3, 0.1) 25%, 
+    rgba(10, 2, 3, 0.15) 60%, 
+    rgba(10, 2, 3, 0.72) 100%
   );
   pointer-events: none;
+  z-index: 1;
 }
 
-/* Atmospheric subtle mist glow at bottom transition */
+/* Subtle spiritual mist glow */
 .rajyoga-hero.cinematic-hero .rajyoga-cover-veil::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background: radial-gradient(ellipse at 50% 100%, rgba(217, 69, 20, 0.1) 0%, rgba(10, 2, 3, 0.5) 50%, #0a0203 100%);
+  height: 100px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(217, 69, 20, 0.14) 0%, rgba(10, 2, 3, 0.5) 50%, #0a0203 100%);
   pointer-events: none;
 }
 
@@ -108,24 +101,25 @@
 .rajyoga-hero.cinematic-hero .rajyoga-rays-aura {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 20%, rgba(255, 214, 138, 0.12) 0%, rgba(217, 69, 20, 0.06) 45%, transparent 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(255, 214, 138, 0.12) 0%, rgba(217, 69, 20, 0.06) 50%, transparent 75%);
   pointer-events: none;
   mix-blend-mode: screen;
+  z-index: 2;
 }
 
 /* Modern Minimal Play / Pause Toggle Button */
 .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
   position: absolute;
+  top: 80px;
   right: 24px;
-  top: 18px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 34px;
-  padding: 5px 13px;
-  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 5px 14px;
+  border: 1px solid rgba(251, 191, 36, 0.4);
   border-radius: 50px;
-  background: rgba(20, 6, 8, 0.75);
+  background: rgba(20, 6, 8, 0.78);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: #ffffff;
@@ -135,50 +129,67 @@
   cursor: pointer;
   z-index: 20;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
 }
 
 .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle:hover {
-  background: rgba(45, 12, 16, 0.9);
+  background: rgba(45, 12, 16, 0.92);
   border-color: var(--hero-gold);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 6px 22px rgba(245, 158, 11, 0.4);
 }
 
 /* ==========================================================================
-   2. HERO BOTTOM FLOW (Words & Action Buttons Positioned Cleanly Below Animation)
+   3. CONTENT OVERLAY (Bottom-Right Corner, Pure Transparent, Subtle & Compact)
    ========================================================================== */
 
-.hero-bottom-flow {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  padding: 1.25rem 1.25rem 2.5rem;
+.hero-bottom-flow,
+.hero-content-overlay {
+  position: absolute;
+  bottom: 2.75rem;
+  right: 3.25rem;
+  z-index: 10;
+  width: auto;
+  max-width: 520px;
+  padding: 0;
   margin: 0;
-  z-index: 15;
   box-sizing: border-box;
-  overflow: hidden;
-  text-align: center;
-  background: #0a0203;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  pointer-events: auto;
 }
 
 .hero-flow-container {
-  max-width: 860px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
+  align-items: flex-end;
+  text-align: right;
+  background: transparent !important;
 }
 
+/* Main Cinematic Title: smaller, elegant, compact, with strong text-shadow */
 .hero-cinematic-title {
-  font-size: clamp(1.25rem, 2.2vw, 1.85rem);
-  font-weight: 600;
-  line-height: 1.28;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.4rem, 2.3vw, 1.95rem);
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.015em;
   color: #ffffff;
-  margin: 0 0 1rem;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.85);
+  margin: 0 0 0.5rem;
+  text-align: right;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.95),
+    0 4px 25px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(0, 0, 0, 0.85);
   max-width: 100%;
   box-sizing: border-box;
   word-wrap: break-word;
@@ -190,15 +201,30 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
 }
 
-/* Clean Action Buttons */
+/* Subtitle: slightly smaller text, refined spacing */
+.hero-subtitle {
+  font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1rem;
+  max-width: 440px;
+  text-align: right;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 4px 18px rgba(0, 0, 0, 0.9);
+}
+
+/* Action Buttons: compact, smaller padding, aligned right */
 .hero-flow-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 10px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -207,28 +233,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 26px;
+  gap: 8px;
+  padding: 9px 20px;
   border-radius: 999px;
   background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #92400e 100%);
   color: #ffffff;
-  font-size: 0.96rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  border: 1px solid rgba(251, 191, 36, 0.5);
-  box-shadow: 0 4px 18px rgba(217, 119, 6, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(251, 191, 36, 0.55);
+  box-shadow: 0 3px 14px rgba(217, 119, 6, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.28);
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
 }
 
 .btn-awakening-primary:hover {
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.38);
   border-color: #ffd68a;
 }
 
 .btn-awakening-primary .btn-arrow {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   transition: transform 0.25s ease;
 }
 
@@ -240,155 +267,122 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 24px;
+  gap: 8px;
+  padding: 9px 18px;
   border-radius: 999px;
-  background: rgba(20, 6, 8, 0.7);
+  background: rgba(20, 6, 8, 0.72);
   color: #ffffff;
-  font-size: 0.96rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  border: 1.5px solid rgba(251, 191, 36, 0.4);
+  border: 1.5px solid rgba(251, 191, 36, 0.45);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.5);
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
 }
 
 .btn-awakening-secondary:hover {
-  background: rgba(45, 14, 18, 0.9);
+  background: rgba(45, 14, 18, 0.92);
   border-color: var(--hero-gold);
   color: var(--hero-gold);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
 }
 
 .btn-awakening-secondary .btn-play-icon {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--hero-gold);
 }
 
 /* ==========================================================================
-   3. RESPONSIVE BREAKPOINTS (Tablet 768px & Mobile 390px)
+   4. RESPONSIVE BREAKPOINTS (Tablet & Mobile)
    ========================================================================== */
 
 /* Tablet & Medium Screens (iPad, Android Tablets, Laptops: 601px - 1024px) */
 @media (max-width: 1024px) {
   .rajyoga-hero.cinematic-hero {
+    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 56px;
   }
-  .rajyoga-hero.cinematic-hero .rajyoga-stage {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 480px;
-    max-height: none;
-    margin: 0;
-    background: #0a0203;
-  }
-  .rajyoga-hero.cinematic-hero .rajyoga-scene {
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-  }
-  .rajyoga-hero.cinematic-hero .rajyoga-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-  }
-  .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
-    top: 14px;
-    right: 14px;
-  }
-  .hero-bottom-flow {
-    padding: 1.25rem 1.25rem 2.25rem;
+  .hero-bottom-flow,
+  .hero-content-overlay {
+    bottom: 2rem;
+    right: 2rem;
+    max-width: 440px;
+    padding: 0;
   }
   .hero-cinematic-title {
-    font-size: clamp(1.2rem, 2.8vw, 1.55rem);
-    margin-bottom: 1rem;
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+    margin-bottom: 0.45rem;
+  }
+  .hero-subtitle {
+    font-size: 0.84rem;
+    margin-bottom: 0.85rem;
+    max-width: 380px;
+  }
+  .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
+    top: 72px;
+    right: 18px;
   }
 }
 
 /* Mobile (Smartphones: <= 600px, e.g. 390px) */
 @media (max-width: 600px) {
   .rajyoga-hero.cinematic-hero {
+    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 52px;
   }
-  .rajyoga-hero.cinematic-hero .rajyoga-stage {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 340px;
-    max-height: none;
-    margin: 0;
-    background: #0a0203;
+  .hero-bottom-flow,
+  .hero-content-overlay {
+    bottom: 1.5rem;
+    right: 1.25rem;
+    left: 1.25rem;
+    max-width: none;
+    padding: 0;
+    align-items: flex-end;
+    text-align: right;
   }
-  
-  .rajyoga-hero.cinematic-hero .rajyoga-scene {
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-  }
-
-  .rajyoga-hero.cinematic-hero .rajyoga-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-  }
-
-  .rajyoga-hero.cinematic-hero .rajyoga-cover-veil {
-    background: linear-gradient(180deg, 
-      rgba(10, 2, 3, 0.5) 0%, 
-      rgba(10, 2, 3, 0.08) 8%, 
-      transparent 16%, 
-      transparent 85%, 
-      rgba(10, 2, 3, 0.4) 93%, 
-      #0a0203 100%
-    );
-  }
-
-  .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
-    top: 8px;
-    right: 8px;
-    padding: 3px 9px;
-    font-size: 0.7rem;
-    min-height: 26px;
-    gap: 4px;
-  }
-
-  .hero-bottom-flow {
-    padding: 0.4rem 0.75rem 1.75rem;
-  }
-
-  /* Substantially reduced heading size on mobile as requested */
   .hero-cinematic-title {
-    font-size: clamp(1rem, 3.8vw, 1.25rem);
-    line-height: 1.25;
-    margin: 0.2rem 0 0.75rem;
-    padding: 0 0.5rem;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    font-size: clamp(1.2rem, 5.2vw, 1.5rem);
+    line-height: 1.24;
+    margin-bottom: 0.4rem;
+    padding: 0;
   }
-
+  .hero-subtitle {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0.85rem;
+    max-width: 320px;
+  }
   .hero-flow-actions {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     width: 100%;
-    gap: 10px;
-    padding: 0 0.5rem;
-    box-sizing: border-box;
+    gap: 8px;
+    padding: 0;
   }
-
   .btn-awakening-primary,
   .btn-awakening-secondary {
-    width: 100%;
-    min-height: 48px;
-    padding: 11px 16px;
-    font-size: 0.9rem;
-    box-sizing: border-box;
+    width: auto;
+    min-height: 38px;
+    padding: 8px 15px;
+    font-size: 0.8rem;
     justify-content: center;
+  }
+  .rajyoga-hero.cinematic-hero .rajyoga-motion-toggle {
+    top: 66px;
+    right: 12px;
+    padding: 3px 10px;
+    font-size: 0.7rem;
+    min-height: 28px;
+    gap: 4px;
   }
 }
 

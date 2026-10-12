@@ -50,9 +50,10 @@ const DEFAULT_DATA = {
     { id: 'centers', label: 'Center List', icon: 'map-pin', isCore: true, enabled: true, order: 5, type: 'system' },
     { id: 'gallery', label: 'Gallery', icon: 'image', isCore: true, enabled: true, order: 6, type: 'system' },
     { id: 'media', label: 'Media', icon: 'film', isCore: true, enabled: true, order: 7, type: 'media-dropdown' },
-    { id: 'events', label: 'Events', icon: 'calendar', isCore: true, enabled: true, order: 8, type: 'events-dropdown' },
-    { id: 'murali', label: 'Daily Murali', icon: 'sun', isCore: true, enabled: true, order: 9, type: 'system' },
-    { id: 'contact', label: 'Contact Us', icon: 'mail', isCore: true, enabled: true, order: 10, type: 'system' }
+    { id: 'events', label: 'Events', icon: 'calendar', isCore: true, enabled: true, order: 8, type: 'system' },
+    { id: 'navathi', label: 'Navathi', icon: 'award', isCore: true, enabled: true, order: 9, type: 'system' },
+    { id: 'murali', label: 'Daily Murali', icon: 'sun', isCore: true, enabled: true, order: 10, type: 'system' },
+    { id: 'contact', label: 'Contact Us', icon: 'mail', isCore: true, enabled: true, order: 11, type: 'system' }
   ],
 
   aboutData: {
@@ -170,102 +171,298 @@ const DEFAULT_DATA = {
   courseModules: [
     {
       day: 1,
+      keyword: "Soul",
       title: "Soul Consciousness vs Body Consciousness",
-      titleMl: "ആത്മജ്ഞാനം - ഞാൻ ആരാണ്?",
-      description: "Understand your true identity as a minute point of spiritual light situated between the eyebrows, having original divine qualities of peace, love, purity, and bliss.",
-      summary: "Understand your true identity as a minute point of spiritual light situated between the eyebrows, having original divine qualities of peace, love, purity, and bliss.",
-      keyInsight: "I am a peaceful, eternal soul, operating this physical body like a driver steers a car.",
+      titleMl: "ഞാൻ ആരാണ്? ആത്മജ്ഞാനം",
       duration: "45 mins",
-      youtubeUrl: "",
-      youtubeVideoId: "",
+      youtubeUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
+      youtubeVideoId: "xeZ_HBW1mq4",
       thumbnail: "",
-      published: true
+      published: true,
+      description: "Understand your true eternal identity as a sparkling point of divine spiritual light (Atma) situated at the center of the forehead, distinct from the physical body, temporary worldly labels, and physical senses.",
+      summary: "Understand your true eternal identity as a sparkling point of divine spiritual light (Atma) situated at the center of the forehead, distinct from the physical body, temporary worldly labels, and physical senses.",
+      keyInsight: "ഞാൻ ശാന്ത സ്വരൂപമായ അനശ്വര ആത്മാവാണ് (I am a peaceful, immortal soul). ശരീരം ഞാൻ ഉപയോഗിക്കുന്ന ഉപകരണം മാത്രമാണ്.",
+      reflectionPrompt: "ഇന്ന് സ്വയം ഒരു ആത്മാവായി ദർശിക്കുകയും, മറ്റുള്ളവരെ ശരീരത്തിന് പകരം പവിത്രമായ ശാന്ത സ്വരൂപ ആത്മാക്കളായി കാണുകയും ചെയ്യുമ്പോൾ നിങ്ങളുടെ മനസ്സിലും ബന്ധങ്ങളിലും എന്ത് മാറ്റമാണ് അനുഭവപ്പെടുന്നത്?",
+      quizQuestions: [
+        {
+          id: "d1_q1",
+          question: "രാജയോഗ ധ്യാന പ്രകാരം ആത്മാവിന്റെ യഥാർത്ഥ സ്വരൂപവും ഗുണങ്ങളും എന്താണ്? (What is the true nature of the soul?)",
+          options: [
+            "ശരീരത്തോടൊപ്പം അവസാനിക്കുന്ന ജൈവ രാസവസ്തു (A mortal biochemical byproduct)",
+            "ശാന്തി, സ്നേഹം, പവിത്രത എന്നീ സ്വഭാവിക ഗുണങ്ങളുള്ള ശാശ്വത ദിവ്യപ്രകാശ ബിന്ദു (An eternal conscious point of divine spiritual light)",
+            "യാതൊരു ബോധവുമില്ലാത്ത ഒരു വൈകാരിക മായ (An emotional illusion)",
+            "ഹൃദയത്തിൽ സ്ഥിതി ചെയ്യുന്ന ഒരു ഭൗതിക അവയവം (A physical organ)"
+          ],
+          correctIndex: 1,
+          explanation: "ആത്മാവ് (ജ്യോതി ബിന്ദു) അനശ്വരമായ ദിവ്യപ്രകാശ ബിന്ദുവാണ്. ശാന്തി, സ്നേഹം, ആനന്ദം, പവിത്രത എന്നിവ ആത്മാവിന്റെ സ്വാഭാവിക ഗുണങ്ങളാണ്."
+        },
+        {
+          id: "d1_q2",
+          question: "മനുഷ്യശരീരത്തിൽ ആത്മാവിന്റെ ഇരിപ്പിടം എവിടെയാണ്? (Where is the physical seat of the soul?)",
+          options: [
+            "നട്ടെല്ലിന്റെ താഴത്തെ ഭാഗത്ത് (In the lower spinal cord)",
+            "നെറ്റിയുടെ മധ്യത്തിൽ, പുരികങ്ങൾക്ക് ഇടയിൽ ഭ്രുകുടിയിൽ (In the center of the forehead, between the eyebrows)",
+            "പേശികളിൽ എല്ലായിടത്തും ഒരുപോലെ (Distributed evenly in muscles)",
+            "ശബ്ദപേടകത്തിൽ (Inside the vocal cords)"
+          ],
+          correctIndex: 1,
+          explanation: "ഒരു ഡ്രൈവർ കാറിലിരുന്ന് വാഹനം നിയന്ത്രിക്കുന്നതുപോലെ, ആത്മാവ് ഭ്രുകുടിയിൽ (നെറ്റിയുടെ മധ്യത്തിൽ) ഇരുന്നാണ് മുഴുവൻ ശരീരത്തെയും ഇന്ദ്രിയങ്ങളെയും നിയന്ത്രിക്കുന്നത്."
+        }
+      ]
     },
     {
       day: 2,
+      keyword: "Supreme Soul",
       title: "The Supreme Soul: God the Ocean of Peace",
-      titleMl: "പരമാത്മാവ് - പരമപിതാവിന്റെ സവിശേഷതകൾ",
-      description: "Discover the true form, supreme residence, and benevolent role of Shiv Baba, the incorporeal Supreme Soul who never enters the cycle of birth and death.",
-      summary: "Discover the true form, supreme residence, and benevolent role of Shiv Baba, the incorporeal Supreme Soul who never enters the cycle of birth and death.",
-      keyInsight: "God is an incorporeal Point of Radiant Light (Jyotirlingam), the eternal Father, Mother, Teacher, and Friend of all souls.",
+      titleMl: "പരമാത്മാവ് - പരമപിതാവായ ശിവബാബ",
       duration: "45 mins",
-      youtubeUrl: "",
-      youtubeVideoId: "",
+      youtubeUrl: "https://www.youtube.com/live/YMXD1FmGleg",
+      youtubeVideoId: "YMXD1FmGleg",
       thumbnail: "",
-      published: true
+      published: true,
+      description: "Discover the true form, supreme abode, and benevolent role of Shiv Baba, the incorporeal Supreme Father, Teacher, and Guide of all souls who never enters the bondage of birth, death, or karmic suffering.",
+      summary: "Discover the true form, supreme abode, and benevolent role of Shiv Baba, the incorporeal Supreme Father, Teacher, and Guide of all souls who never enters the bondage of birth, death, or karmic suffering.",
+      keyInsight: "ഭഗവാൻ അരൂപിയായ ജ്യോതിർബിന്ദുവാണ് (God is an incorporeal Point of Radiant Light), എല്ലാ ആത്മാക്കളുടെയും നിത്യ പിതാവും മാതാവും മാർഗ്ഗദർശിയുമാണ്.",
+      reflectionPrompt: "ശാന്തമായി ഇരുന്ന് പരമപിതാവായ ശിവബാബയെ നിങ്ങളുടെ സ്നേഹനിധിയായ പിതാവായും മാതാവായും സുഹൃത്തായും സ്മരിക്കുക. നിങ്ങളുടെ മനസ്സിന് ലഭിച്ച സുരക്ഷിതത്വവും ദിവ്യശാന്തിയും കുറിക്കുക.",
+      quizQuestions: [
+        {
+          id: "d2_q1",
+          question: "രാജയോഗത്തിൽ പരമാത്മാവിന്റെ യഥാർത്ഥ നാമവും രൂപവും എന്താണ്? (What is the true name and form of the Supreme Soul?)",
+          options: [
+            "ആയുധങ്ങൾ ധരിച്ച ഭൗതിക ശരീരം (A physical form with weapons)",
+            "'ശിവൻ' (പരമപിതാവ്) എന്ന നാമമുള്ള അരൂപിയായ പ്രകാശ ബിന്ദു (An incorporeal Point of Radiant Light named Shiva)",
+            "യാതൊരു ഗുണങ്ങളുമില്ലാത്ത ശൂന്യത (An empty void)",
+            "കല്ലിലും മൃഗങ്ങളിലും നിറഞ്ഞിരിക്കുന്ന ശക്തി (Omnipresent in matter)"
+          ],
+          correctIndex: 1,
+          explanation: "പരമാത്മാവായ ശിവബാബ സദാ മുക്തനും സദാ പവിത്രനുമായ ജ്യോതിർബിന്ദുവാണ് (Ocean of Peace and Purity)."
+        },
+        {
+          id: "d2_q2",
+          question: "മനുഷ്യ ആത്മാക്കളും പരമാത്മാവും തമ്മിലുള്ള പ്രധാന വ്യത്യാസം എന്താണ്? (How does the Supreme Soul differ from human souls?)",
+          options: [
+            "പരമാത്മാവിന് എപ്പോഴും മാറുന്ന ഭൗതിക ശരീരമുണ്ട് (He has a changing physical body)",
+            "സദാ ശിവൻ (നിത്യ പവിത്രൻ), ഒരിക്കലും ശരീരത്തിൽ ജനിക്കുകയോ കർമ്മബന്ധനത്തിലോ ദുഃഖത്തിലോ വീഴുകയോ ചെയ്യുന്നില്ല (Sada-Shiva: ever-liberated, never enters the cycle of birth and sorrow)",
+            "കലിയുഗത്തിൽ ഭഗവാൻ സ്വന്തം ജ്ഞാനം മറന്നുപോകുന്നു (He forgets His knowledge)",
+            "മനുഷ്യ ആത്മാക്കളും പരമാത്മാവും തമ്മിൽ യാതൊരു വ്യത്യാസവുമില്ല (No difference)"
+          ],
+          correctIndex: 1,
+          explanation: "മനുഷ്യ ആത്മാക്കൾ ശരീരമെടുത്ത് ജനന-മരണ ചക്രത്തിലൂടെ കടന്നുപോകുന്നു; എന്നാൽ പരമാത്മാവ് സദാ മുക്തനും ശാന്തിയുടെ അനന്ത സാഗരവുമായി നിലകൊള്ളുന്നു."
+        }
+      ]
     },
     {
       day: 3,
+      keyword: "Three Worlds",
       title: "The Three Worlds & Paramdham (Soul World)",
       titleMl: "ത്രിമൂർത്തി ലോകങ്ങളും പരന്ധാമവും",
-      description: "Explore the physical universe (Corporeal World), the Subtle Angels' realm (Vyakta Watan), and the Golden-Red silent realm of liberation (Paramdham / Nirvana).",
-      summary: "Explore the physical universe (Corporeal World), the Subtle Angels' realm (Vyakta Watan), and the Golden-Red silent realm of liberation (Paramdham / Nirvana).",
-      keyInsight: "Paramdham is our sweet original home where all souls rest in eternal, unbroken silence before taking bodily costumes.",
       duration: "50 mins",
-      youtubeUrl: "",
-      youtubeVideoId: "",
+      youtubeUrl: "https://youtu.be/s_pvQAkXVe8",
+      youtubeVideoId: "s_pvQAkXVe8",
       thumbnail: "",
-      published: true
+      published: true,
+      description: "Explore the geography of existence: the Corporeal World (matter and sound), the Subtle Angelic World (Vyakta Watan of pure thoughts and light), and Paramdham (Shantidham / Nirvana), the silent golden-red abode of souls.",
+      summary: "Explore the geography of existence: the Corporeal World (matter and sound), the Subtle Angelic World (Vyakta Watan of pure thoughts and light), and Paramdham (Shantidham / Nirvana), the silent golden-red abode of souls.",
+      keyInsight: "പരന്ധാമം നമ്മുടെ നിത്യ ശാന്തിയുടെ ഭവനമാണ്. ലോകനാടക വേദിയിലേക്ക് വരുന്നതിന് മുൻപ് എല്ലാ ആത്മാക്കളും അവിടെയാണ് പരമശാന്തിയിൽ വിശ്രമിക്കുന്നത്.",
+      reflectionPrompt: "കണ്ണുകൾ അടച്ച് ഭൗതിക ലോകത്തിന് മുകളിലേക്ക് പറന്ന് പരന്ധാമത്തിലെ മനോഹരമായ ശാന്തി സാഗരത്തിൽ ലയിക്കുന്നതായി സങ്കൽപ്പിക്കുക. നിങ്ങളുടെ ഉള്ളിൽ തോന്നുന്ന നിശബ്ദത എന്താണ്?",
+      quizQuestions: [
+        {
+          id: "d3_q1",
+          question: "പരന്ധാമം (ശാന്തിധാമം / മുക്തിധാമം) എന്നാൽ എന്താണ്? (What is Paramdham?)",
+          options: [
+            "മറ്റ് സൗരയൂഥത്തിലെ ഒരു ഭൗതിക ഗ്രഹം (A distant physical planet)",
+            "ശബ്ദത്തിനും ദ്രവ്യത്തിനും അതീതമായ, സുവർണ്ണ-ചുവപ്പ് ദിവ്യ പ്രകാശത്താൽ നിറഞ്ഞ ആത്മാക്കളുടെ ശാശ്വത ഭവനം (The supreme silent realm of golden-red light, eternal home of all souls)",
+            "ഭൂമിയുടെ അന്തരീക്ഷത്തിലെ മേഘക്കൂട്ടം (Clouds in earth's atmosphere)",
+            "വലിയ പർവതങ്ങളിലെ ഗുഹ (A cave in high mountains)"
+          ],
+          correctIndex: 1,
+          explanation: "പരന്ധാമം (മുക്തിധാമം) ബ്രഹ്മതത്വം നിറഞ്ഞ നിത്യശാന്തിയുടെ ലോകമാണ്. അവിടെ ഭൗതിക ദ്രവ്യമോ ശബ്ദമോ ദുഃഖമോ ഇല്ല."
+        },
+        {
+          id: "d3_q2",
+          question: "സൂക്ഷ്മ വതനത്തിന്റെ (സൂക്ഷ്മ ലോകത്തിന്റെ) പ്രത്യേകത എന്താണ്? (What characterizes the Subtle World?)",
+          options: [
+            "ഭാരമുള്ള മണ്ണും ഭൗതിക ശരീരങ്ങളും (Heavy matter and biological bodies)",
+            "പ്രകാശമയമായ ദിവ്യ രൂപങ്ങൾ, ശുദ്ധമായ സങ്കൽപ്പങ്ങളിലൂടെയുള്ള ആശയവിനിമയം (Angelic light forms and pure thought communication)",
+            "കത്തുന്ന തീയും കൊടുങ്കാറ്റും (Intense heat and burning storms)",
+            "ആഴത്തിലുള്ള സമുദ്ര തരംഗങ്ങൾ (Deep ocean waves)"
+          ],
+          correctIndex: 1,
+          explanation: "സ്ഥൂല ലോകത്തിനും പരന്ധാമത്തിനും ഇടയിലുള്ള പ്രകാശ ലോകമാണ് സൂക്ഷ്മ വതനം. അവിടെ ഫരിഷ്തകൾ ദിവ്യ പ്രകാശ രൂപത്തിൽ സഞ്ചരിക്കുന്നു."
+        }
+      ]
     },
     {
       day: 4,
-      title: "The Infallible Law of Karma",
+      keyword: "Karma Law",
+      title: "The Infallible Law of Karma & Destiny",
       titleMl: "കർമ്മ സിദ്ധാന്തം - കർമ്മത്തിന്റെ നിയമം",
-      description: "Learn the deep mechanics of cause and effect. Every thought, word, and action creates an impression and returns multifold to the performer.",
-      summary: "Learn the deep mechanics of cause and effect. Every thought, word, and action creates an impression and returns multifold to the performer.",
-      keyInsight: "Perform elevated, selfless actions rooted in soul consciousness to dissolve past accounts and create an auspicious future.",
       duration: "50 mins",
-      youtubeUrl: "",
-      youtubeVideoId: "",
+      youtubeUrl: "https://youtu.be/bRbhufP2LP8",
+      youtubeVideoId: "bRbhufP2LP8",
       thumbnail: "",
-      published: true
+      published: true,
+      description: "Unveil the universal mechanics of cause and effect. Every thought, intention, and action plants an energetic seed that unfailingly yields its harvest to the performer.",
+      summary: "Unveil the universal mechanics of cause and effect. Every thought, intention, and action plants an energetic seed that unfailingly yields its harvest to the performer.",
+      keyInsight: "നാം വിതയ്ക്കുന്നത് തന്നെ കൊയ്യുന്നു. ആത്മീയ ബോധത്തോടെയുള്ള ശ്രേഷ്ഠ കർമ്മങ്ങളിലൂടെ ഉജ്ജ്വലമായ ഭാഗ്യം സൃഷ്ടിക്കാം.",
+      reflectionPrompt: "ഈയടുത്ത് നിങ്ങളിൽ ഉണ്ടായ ഒരു അസ്വസ്ഥതയോ പ്രതികരണമോ ഓർക്കുക. ആ സാഹചര്യത്തിൽ ക്ഷമയോടും ആത്മീയ വിവേകത്തോടും കൂടി എങ്ങനെ പ്രതികരിക്കാൻ ഇന്ന് നിങ്ങൾക്ക് സാധിക്കും?",
+      quizQuestions: [
+        {
+          id: "d4_q1",
+          question: "കർമ്മ നിയമമനുസരിച്ച് നമ്മുടെ സന്തോഷങ്ങൾക്കും ദുഃഖങ്ങൾക്കും വിധിക്കും കാരണം ആരാണ്? (Who creates our destiny according to Karma Law?)",
+          options: [
+            "ഗ്രഹങ്ങളുടെ സ്ഥാനങ്ങളും അന്ധമായ ഭാഗ്യക്കേടും (Planets and blind luck)",
+            "നമ്മെ വേദനിപ്പിക്കുന്ന ചുറ്റുമുള്ള മറ്റ് ആളുകൾ (Other people around us)",
+            "നമ്മുടെ സ്വന്തം ചിന്തകളും സങ്കൽപ്പങ്ങളും വാക്കുകളും മുൻകാല കർമ്മങ്ങളും (Our own thoughts, intentions, words, and actions)",
+            "ദൈവം ചിലർക്ക് ദുരിതവും ചിലർക്ക് സമ്പത്തും സ്വയം നൽകുന്നു (God decides arbitrarily)"
+          ],
+          correctIndex: 2,
+          explanation: "കർമ്മ നിയമം സമ്പൂർണ്ണവും നീതിപൂർവ്വവുമാണ്. നമ്മുടെ ചിന്തകളുടെയും തിരഞ്ഞെടുപ്പുകളുടെയും ഫലമായാണ് നാം ഭാഗ്യം നിർമ്മിക്കുന്നത്."
+        },
+        {
+          id: "d4_q2",
+          question: "മുൻകാലങ്ങളിലെ തെറ്റായ കർമ്മങ്ങളുടെ ഫലവും സംസ്കാരങ്ങളും എങ്ങനെ ശുദ്ധീകരിക്കാം? (How to purify past negative karmas?)",
+          options: [
+            "മറ്റുള്ളവരെ പഴിചാരി സങ്കടപ്പെട്ടുകൊണ്ട് (Blaming others and feeling helpless)",
+            "പരമാത്മാവുമായുള്ള സ്നേഹപൂർണ്ണമായ യോഗത്തിലൂടെയും (യോഗാഗ്നി) നിസ്വാർത്ഥമായ ശ്രേഷ്ഠ കർമ്മങ്ങളിലൂടെയും (Through communion with the Supreme Soul and elevated selfless actions)",
+            "ഉള്ളിൽ മാറ്റമില്ലാതെ ബാഹ്യ ചടങ്ങുകൾ മാത്രം നടത്തി (Outer rituals without inner purity)",
+            "കർമ്മക്കണക്കുകൾ മാറ്റാൻ ഒരിക്കലും സാധ്യമല്ല (Impossible to change)"
+          ],
+          correctIndex: 1,
+          explanation: "പരമാത്മാവിന്റെ സ്നേഹപൂർണ്ണമായ ഓർമ്മ (യോഗാഗ്നി) മുൻകാല പാപങ്ങളെ ദഹിപ്പിച്ച് ആത്മാവിനെ പരിശുദ്ധമാക്കുന്നു."
+        }
+      ]
     },
     {
       day: 5,
-      title: "The 8 Spiritual Powers of Rajyoga",
+      keyword: "8 Powers",
+      title: "The 8 Spiritual Powers of Raja Yoga",
       titleMl: "രാജയോഗത്തിന്റെ 8 ആത്മീയ ശക്തികൾ",
-      description: "Master the spiritual powers: Withdrawing, Packing Up, Tolerating, Accommodating, Discerning, Judging, Facing, and Cooperating in daily life.",
-      summary: "Master the spiritual powers: Withdrawing, Packing Up, Tolerating, Accommodating, Discerning, Judging, Facing, and Cooperating in daily life.",
-      keyInsight: "Rajyoga transforms spiritual knowledge into practical inner resilience and unconditional calm.",
       duration: "45 mins",
-      youtubeUrl: "",
-      youtubeVideoId: "",
+      youtubeUrl: "https://youtu.be/kmVjGkJjxUY",
+      youtubeVideoId: "kmVjGkJjxUY",
       thumbnail: "",
-      published: true
+      published: true,
+      description: "Master the eight practical spiritual powers: Withdrawing, Packing Up, Tolerating, Accommodating, Discerning, Judging, Facing, and Cooperating to remain stable in all life situations.",
+      summary: "Master the eight practical spiritual powers: Withdrawing, Packing Up, Tolerating, Accommodating, Discerning, Judging, Facing, and Cooperating to remain stable in all life situations.",
+      keyInsight: "ആത്മീയ ശക്തികൾ ദൈനംദിന ജീവിതത്തിൽ സമ്മർദ്ദവും ഭയവും ഇല്ലാതെ മനസ്സിന് അചഞ്ചലമായ ശാന്തി നൽകുന്നു.",
+      reflectionPrompt: "രാജയോഗത്തിന്റെ 8 ശക്തികളിൽ (സങ്കോച ശക്തി, സഹന ശക്തി, ഉൾക്കൊള്ളാനുള്ള ശക്തി, നിർണ്ണയ ശക്തി തുടങ്ങിയവ) ഇപ്പോൾ നിങ്ങളുടെ ജീവിതത്തിൽ ഏറ്റവും ആവശ്യമുള്ളത് ഏതാണ്? അത് എങ്ങനെ പ്രാവർത്തികമാക്കും?",
+      quizQuestions: [
+        {
+          id: "d5_q1",
+          question: "ഒരു ആമ സ്വന്തം അവയവങ്ങൾ ഉള്ളിലേക്ക് വലിക്കുന്നതുപോലെ, ബാഹ്യ വിക്ഷോഭങ്ങളിൽ നിന്ന് മനസ്സിനെ നിമിഷനേരം കൊണ്ട് മാറ്റിവെക്കാൻ സഹായിക്കുന്ന ശക്തി ഏതാണ്? (Which power helps withdraw the mind like a tortoise?)",
+          options: [
+            "നേരിടാനുള്ള ശക്തി (Power to Face)",
+            "സങ്കോച ശക്തി / പിൻവലിയാനുള്ള ശക്തി (Power to Withdraw / Sametna)",
+            "തിരിച്ചറിയാനുള്ള ശക്തി (Power to Discern)",
+            "തീരുമാനമെടുക്കാനുള്ള ശക്തി (Power to Judge)"
+          ],
+          correctIndex: 1,
+          explanation: "സങ്കോച ശക്തിയിലൂടെ (Power to Withdraw) ഒരാൾക്ക് ബാഹ്യമായ ശബ്ദങ്ങളിൽ നിന്നും സമ്മർദ്ദങ്ങളിൽ നിന്നും ഉടൻ ശാന്തമായ ആത്മീയ ബോധത്തിലേക്ക് പിൻവലിയാൻ സാധിക്കുന്നു."
+        },
+        {
+          id: "d5_q2",
+          question: "ദൈനംദിന ബന്ധങ്ങളിൽ 'ഉൾക്കൊള്ളാനുള്ള ശക്തി' (Power to Accommodate) എന്നാൽ എന്താണ്? (What is the Power to Accommodate?)",
+          options: [
+            "എല്ലാവരെയും നമ്മുടെ ഇഷ്ടത്തിനനുസരിച്ച് മാറ്റാൻ നിർബന്ധിക്കുക (Forcing everyone else)",
+            "ഒരു സമുദ്രം എല്ലാ നദികളെയും സ്വീകരിക്കുന്നതുപോലെ, മറ്റുള്ളവരുടെ സ്വഭാവ വൈവിധ്യങ്ങളെ ഉൾക്കൊണ്ട് ശാന്തത കാത്തുസൂക്ഷിക്കുക (Accepting differing personalities like an ocean without losing serenity)",
+            "ഭയം കാരണം തെറ്റുകൾക്ക് വഴങ്ങുക (Weak surrender)",
+            "സമൂഹത്തിൽ ആരോടും ഇടപഴകാതിരിക്കുക (Avoiding everyone)"
+          ],
+          correctIndex: 1,
+          explanation: "സമുദ്രം നദികളുടെ കുറവുകൾ നോക്കാതെ തന്നിലേക്ക് ഉൾക്കൊള്ളുന്നതുപോലെ, ഈ ശക്തി മറ്റുള്ളവരുടെ കുറവുകൾ സഹിച്ച് ദിവ്യ സ്നേഹം പകരാൻ സഹായിക്കുന്നു."
+        }
+      ]
     },
     {
       day: 6,
+      keyword: "World Drama",
       title: "The World Drama Cycle & Tree of Humanity",
       titleMl: "സൃഷ്ടി ചക്രവും മനുഷ്യ കുടുംബ വൃക്ഷവും",
-      description: "Understand the eternal 5000-year cycle of 4 ages (Golden, Silver, Copper, Iron) and the auspicious Confluence Age (Sangam Yuga) of spiritual renewal.",
-      summary: "Understand the eternal 5000-year cycle of 4 ages (Golden, Silver, Copper, Iron) and the auspicious Confluence Age (Sangam Yuga) of spiritual renewal.",
-      keyInsight: "We are currently living in the dawn of spiritual awakening, transitioning humanity from darkness to golden divinity.",
       duration: "55 mins",
-      youtubeUrl: "",
-      youtubeVideoId: "",
+      youtubeUrl: "https://youtu.be/xYBiS4eQrUs",
+      youtubeVideoId: "xYBiS4eQrUs",
       thumbnail: "",
-      published: true
+      published: true,
+      description: "Understand the eternal 5,000-year cycle of human civilization comprising four equal ages (Golden, Silver, Copper, Iron) and the auspicious Confluence Age (Sangam Yuga) of spiritual renewal.",
+      summary: "Understand the eternal 5,000-year cycle of human civilization comprising four equal ages (Golden, Silver, Copper, Iron) and the auspicious Confluence Age (Sangam Yuga) of spiritual renewal.",
+      keyInsight: "ഈ ലോകനാടകത്തിലെ ഓരോ രംഗവും കല്യാണകാരിയാണ് (benevolent). നാം ശാശ്വത ആത്മീയ അഭിനേതാക്കളാണ്.",
+      reflectionPrompt: "നിങ്ങൾ ഈ പ്രപഞ്ച നാടക വേദിയിലെ അമരനായ ഒരു ആത്മീയ നടനാണെന്ന തിരിച്ചറിവ് നിങ്ങളുടെ ജീവിതത്തിലെ ഭയങ്ങളും ഉത്കണ്ഠകളും അകറ്റാൻ എങ്ങനെ സഹായിക്കുന്നു?",
+      quizQuestions: [
+        {
+          id: "d6_q1",
+          question: "രാജയോഗ ജ്ഞാനപ്രകാരം ലോക നാടക ചക്രത്തിന്റെ (World Drama Cycle) കാലയളവും ഘടനയും എന്താണ്? (What is the duration of the World Drama Cycle?)",
+          options: [
+            "ലക്ഷക്കണക്കിന് വർഷങ്ങളുടെ ക്രമരഹിതമായ കാലം (Millions of random years)",
+            "5,000 വർഷം നീളുന്ന, 4 തുല്യ യുഗങ്ങളും സംഗമയുഗവും അടങ്ങിയ നിത്യ ആവർത്തന ചക്രം (An eternal 5,000-year cycle of 4 equal eras plus the Confluence Age)",
+            "വെറും 100 വർഷം മാത്രം (Just 100 years)",
+            "ഒരു കോടി വർഷങ്ങൾ (10 million years)"
+          ],
+          correctIndex: 1,
+          explanation: "ലോകനാടകം കൃത്യമായി 5000 വർഷങ്ങളിൽ ആവർത്തിക്കുന്നു (സത്യയുഗം, ത്രേതായുഗം, ദ്വാപരയുഗം, കലിയുഗം - ഓരോന്നും 1250 വർഷങ്ങൾ വീതം)."
+        },
+        {
+          id: "d6_q2",
+          question: "സംഗമയുഗത്തിന്റെ (Confluence Age) സവിശേഷതയും പ്രാധാന്യവും എന്താണ്? (What is the significance of the Confluence Age?)",
+          options: [
+            "എല്ലാം നശിച്ചുപോകുന്ന പ്രതീക്ഷയില്ലാത്ത ഇരുണ്ട കാലം (Hopeless destruction)",
+            "പരമാത്മാവ് ഭൂമിയിൽ അവതരിച്ച് കലിയുഗ ഇരുട്ടിൽ നിന്ന് മനുഷ്യരെ സത്യയുഗ പ്രകാശത്തിലേക്ക് നയിക്കുന്ന അമൃത കാലം (The auspicious transition dawn when God descends to rejuvenate souls)",
+            "ആത്മാക്കൾ സദാ ഉറങ്ങുന്ന കാലം (Eternal slumber)",
+            "ആത്മീയ അറിവില്ലാത്ത കാലം (Era without spiritual study)"
+          ],
+          correctIndex: 1,
+          explanation: "സംഗമയുഗം രാത്രിയും പുലർച്ചയും ചേരുന്ന പ്രഭാതമാണ്; പരമപിതാവ് ശിവബാബ സ്വയം രാജയോഗ ജ്ഞാനം പകർന്ന് മനുഷ്യരെ ദേവതുല്യരാക്കുന്ന പുണ്യകാലം."
+        }
+      ]
     },
     {
       day: 7,
+      keyword: "Pure Living",
       title: "Rajyoga in Practical Daily Life & Pure Living",
       titleMl: "നിത്യജീവിതത്തിൽ രാജയോഗവും സാത്വിക ജീവിതരീതിയും",
-      description: "Integrate early morning Amritvela meditation (4:00 AM), pure satvik diet, elevated association, and Traffic Control into everyday family and professional routines.",
-      summary: "Integrate early morning Amritvela meditation (4:00 AM), pure satvik diet, elevated association, and Traffic Control into everyday family and professional routines.",
-      keyInsight: "Purity of diet, thoughts, and vision makes the mind an undisturbed mirror reflecting divine peace.",
       duration: "60 mins",
-      youtubeUrl: "",
-      youtubeVideoId: "",
+      youtubeUrl: "https://youtu.be/gKTyHX3YuTQ",
+      youtubeVideoId: "gKTyHX3YuTQ",
       thumbnail: "",
-      published: true
+      published: true,
+      description: "Integrate Raja Yoga into modern everyday living: early morning Amritvela meditation, pure Satvik diet, spiritual study (Murli), positive associations, and hourly Traffic Control pauses.",
+      summary: "Integrate Raja Yoga into modern everyday living: early morning Amritvela meditation, pure Satvik diet, spiritual study (Murli), positive associations, and hourly Traffic Control pauses.",
+      keyInsight: "സാത്വിക ഭക്ഷണവും, ഈശ്വര സ്മരണയും, അമൃതവേള ധ്യാനവും മനസ്സിനെ സദാ സമാധാനത്തിന്റെ തടാകമാക്കി മാറ്റുന്നു.",
+      reflectionPrompt: "ശാന്തവും സന്തുഷ്ടവുമായ ജീവിതത്തിനായി ഇന്ന് മുതൽ നിങ്ങളുടെ ജീവിതചര്യയിൽ ഉൾപ്പെടുത്താൻ ആഗ്രഹിക്കുന്ന ഒരു സാത്വിക ശീലം (ഉദാ: അമൃതവേള, ട്രാഫിക് കൺട്രോൾ, സാത്വിക ഭക്ഷണം) എന്താണ്?",
+      quizQuestions: [
+        {
+          id: "d7_q1",
+          question: "ഒരു രാജയോഗ അഭ്യാസിയുടെ ദിനചര്യയിലെ 'അമൃതവേള' (Amritvela) എന്നാൽ എന്താണ്? (What is Amritvela in Rajyoga meditation?)",
+          options: [
+            "രാത്രി വൈകിയുള്ള വിനോദ സമയം (Late night entertainment)",
+            "പുലർച്ചെ 4 മണിക്ക് ശാന്തതയിൽ പരമാത്മാവുമായി ധ്യാനത്തിൽ ഒന്നാകുന്ന അമൃത സമയം (The ambrosial early morning hours around 4:00 AM dedicated to quiet meditation)",
+            "ഉച്ചയുറക്ക സമയം (Afternoon nap)",
+            "വൈകുന്നേരത്തെ സന്ധ്യാ സമയം (Evening twilight)"
+          ],
+          correctIndex: 1,
+          explanation: "പുലർച്ചെയുള്ള അമൃതവേള പ്രകൃതി ഏറ്റവും നിശ്ശബ്ദവും പരിശുദ്ധവുമായ സമയമാണ്; പരമാത്മാവിൽ നിന്ന് ദിവ്യശക്തികൾ സ്വീകരിക്കാൻ ഏറ്റവും ഉത്തമം."
+        },
+        {
+          id: "d7_q2",
+          question: "ദൈനംദിന ജീവിതത്തിലെ 'ട്രാഫിക് കൺട്രോൾ' (Traffic Control) കൊണ്ട് അർത്ഥമാക്കുന്നത് എന്താണ്? (What is Traffic Control pause in daily routine?)",
+          options: [
+            "റോഡിലെ ട്രാഫിക് നിയന്ത്രിക്കൽ (Traffic control on roads)",
+            "പകൽസമയത്ത് 1-2 മണിക്കൂർ കൂടുമ്പോൾ 1 മിനിറ്റ് മനസ്സിന്റെ ചിന്തകളെ നിർത്തി ആത്മീയ ശാന്തി അനുഭവിക്കൽ (Short 1-minute mindful pauses throughout the day to stop wasteful thoughts)",
+            "ദിവസേനയുള്ള പണച്ചെലവ് കുറയ്ക്കൽ (Expense management)",
+            "പത്രവായന നടത്തൽ (Reading newspapers)"
+          ],
+          correctIndex: 1,
+          explanation: "ട്രാഫിക് കൺട്രോൾ എന്നത് ദിവസവും ഇടയ്ക്കിടെ മനസ്സിനെ ഒരു നിമിഷം ശാന്തമാക്കി വീണ്ടും കർമ്മത്തിലേക്ക് ഇറങ്ങുന്ന വിശിഷ്ട പരിശീലനമാണ്."
+        }
+      ]
     }
   ],
 
   centers: [
     {
-      id: 'ashokapuram',
-      name: "Light Palace (Ashokapuram Main Center)",
-      nameMl: "ലൈറ്റ് പാലസ്, അശോകാപുരം (പ്രധാന കേന്ദ്രം)",
+      id: 'kozhikode-main',
+      name: "Kozhikode Main",
+      nameMl: "കോഴിക്കോട് മെയിൻ (ലൈറ്റ് പാലസ്)",
       area: "Ashokapuram, Kozhikode",
       contactPerson: "BK Sister Sunanda / BK Brother Manoj",
       phone: "+91 9746334202",
@@ -280,7 +477,6 @@ const DEFAULT_DATA = {
       timings: "Morning: 6:30 AM – 9:00 AM | Evening: 5:00 PM – 8:00 PM",
       facilities: ["Air-cooled Meditation Hall", "Spiritual Library", "Counseling Room", "Daily Murli Classroom", "Visitor Parking"],
       description: "Zonal main spiritual center with spacious meditation sanctuary, regular daily Murli classes, and counseling.",
-      mapUrl: "https://maps.google.com/?q=Brahma+Kumaris+Ashokapuram+Kozhikode",
       mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Ashokapuram+Kozhikode",
       isPrimary: true,
       isMain: true,
@@ -288,83 +484,54 @@ const DEFAULT_DATA = {
       image: "assets/images/light_palace_center.jpg"
     },
     {
-      id: 'westhill',
-      name: "Sivalayanam (West Hill Center)",
-      nameMl: "ശിവാലയനം, വെസ്റ്റ് ഹിൽ",
-      area: "West Hill, Kozhikode",
-      contactPerson: "BK Sister Geetha",
-      phone: "+91 9895777017",
-      whatsapp: "+91 9895777017",
-      landline: "0495-2384883",
-      address: "Sivalayanam, Valakkettunilam Road, West Hill, Kozhikode - 673005",
-      landmark: "Near West Hill Railway Station Road",
-      phones: ["0495-2384883", "+91 9895777017"],
-      incharge: "BK Sister Geetha",
-      morningTimings: "7:00 AM – 8:30 AM",
-      eveningTimings: "5:30 PM – 7:30 PM",
-      timings: "Morning: 7:00 AM – 8:30 AM | Evening: 5:30 PM – 7:30 PM",
-      facilities: ["Tranquil Meditation Hall", "Youth Value Education", "Daily Peace Sessions"],
-      description: "Serene neighborhood center providing morning and evening guided meditation and Rajyoga classes.",
-      mapUrl: "https://maps.google.com/?q=Brahma+Kumaris+West+Hill+Kozhikode",
-      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+West+Hill+Kozhikode",
+      id: 'ashokapuram',
+      name: "Ashokapuram",
+      nameMl: "ലൈറ്റ് പാലസ്, അശോകാപുരം",
+      area: "Ashokapuram, Kozhikode",
+      contactPerson: "BK Sister Sunanda",
+      phone: "+91 9746334202",
+      whatsapp: "+91 9746334202",
+      landline: "0495-2770568",
+      address: "Balan K Nair Road, Ashokapuram, Kozhikode - 673006",
+      landmark: "Balan K Nair Road",
+      phones: ["0495-2770568", "+91 9746334202"],
+      incharge: "BK Sister Sunanda",
+      morningTimings: "6:30 AM – 9:00 AM",
+      eveningTimings: "5:00 PM – 8:00 PM",
+      timings: "Morning: 6:30 AM – 9:00 AM | Evening: 5:00 PM – 8:00 PM",
+      facilities: ["Spiritual Library", "Meditation Sanctuary"],
+      description: "Ashokapuram spiritual center and meditation hall.",
+      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Ashokapuram+Kozhikode",
       isPrimary: false,
-      isMain: false,
-      published: true,
-      image: "assets/images/meditation_hall.jpg"
-    },
-    {
-      id: 'balussery',
-      name: "Sukhadham (Balussery Center)",
-      nameMl: "സുഖധാം, ബാലുശ്ശേരി",
-      area: "Balussery, Kozhikode",
-      contactPerson: "BK Sister Bindu",
-      phone: "+91 9895516762",
-      whatsapp: "+91 9895516762",
-      landline: "+91 9995586665",
-      address: "Sukhadham, Near Co-operative Arts & Science College, Kairali Road, Balussery, Kozhikode - 673612",
-      landmark: "Near Co-op College",
-      phones: ["+91 9895516762", "+91 9995586665"],
-      incharge: "BK Sister Bindu",
-      morningTimings: "7:00 AM – 8:30 AM",
-      eveningTimings: "5:00 PM – 7:30 PM",
-      timings: "Morning: 7:00 AM – 8:30 AM | Evening: 5:00 PM – 7:30 PM",
-      facilities: ["Spiritual Garden", "Children Value Education", "Stress Relief Sessions"],
-      description: "Peaceful spiritual retreat center in Balussery with lush meditation garden and weekly workshops.",
-      mapUrl: "https://maps.google.com/?q=Brahma+Kumaris+Balussery+Kozhikode",
-      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Balussery+Kozhikode",
-      isPrimary: false,
-      isMain: false,
       published: true,
       image: "assets/images/light_palace_center.jpg"
     },
     {
-      id: 'koyilandy',
-      name: "Vasantham (Koyilandy Center)",
-      nameMl: "വസന്തം, കൊയിലാണ്ടി",
-      area: "Koyilandy, Kozhikode",
-      contactPerson: "BK Sister Radha",
-      phone: "+91 9447432109",
-      whatsapp: "+91 9447432109",
+      id: 'feroke',
+      name: "Feroke",
+      nameMl: "ഫറോക്ക് ശാഖാ കേന്ദ്രം",
+      area: "Feroke, Kozhikode",
+      contactPerson: "BK Brother Rajesh",
+      phone: "+91 9447123890",
+      whatsapp: "+91 9447123890",
       landline: "",
-      address: "H.No: 31/397, Vasantham, Kothamangalam, Panthalayani, Koyilandy, Kozhikode - 673305",
-      landmark: "Panthalayani, Kothamangalam",
-      phones: ["+91 9447432109", "+91 9746334202"],
-      incharge: "BK Sister Radha",
+      address: "Brahma Kumaris Center, Near Old Bridge, Feroke, Kozhikode - 673631",
+      landmark: "Near Feroke Old Bridge",
+      phones: ["+91 9447123890"],
+      incharge: "BK Brother Rajesh",
       morningTimings: "7:00 AM – 8:30 AM",
       eveningTimings: "5:30 PM – 7:30 PM",
       timings: "Morning: 7:00 AM – 8:30 AM | Evening: 5:30 PM – 7:30 PM",
-      facilities: ["Meditation Room", "Free 7-Day Courses", "Spiritual Counseling"],
-      description: "Community center offering complimentary 7-Day foundation courses and stress-free living programs.",
-      mapUrl: "https://maps.google.com/?q=Brahma+Kumaris+Koyilandy",
-      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Koyilandy",
+      facilities: ["Meditation Hall", "Youth Rajyoga Classes", "Spiritual Counseling"],
+      description: "Community Rajayoga meditation center serving Feroke and South Kozhikode.",
+      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Feroke",
       isPrimary: false,
-      isMain: false,
       published: true,
       image: "assets/images/meditation_hall.jpg"
     },
     {
       id: 'vadakara',
-      name: "Layam (Vadakara Center)",
+      name: "Vadakara",
       nameMl: "ലയം, വടകര",
       area: "Vadakara, Kozhikode",
       contactPerson: "BK Sister Preetha",
@@ -380,16 +547,83 @@ const DEFAULT_DATA = {
       timings: "Morning: 7:00 AM – 8:30 AM | Evening: 5:00 PM – 7:30 PM",
       facilities: ["Peace Sanctuary", "Daily Murli Class", "Women Empowerment Sessions"],
       description: "Dedicated spiritual haven in Vadakara providing personalized counseling and values-based classes.",
-      mapUrl: "https://maps.google.com/?q=Brahma+Kumaris+Vadakara",
       mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Vadakara",
       isPrimary: false,
-      isMain: false,
       published: true,
       image: "assets/images/rajyoga_peace.jpg"
     },
     {
+      id: 'westhill',
+      name: "West Hill",
+      nameMl: "ശിവാലയനം, വെസ്റ്റ് ഹിൽ",
+      area: "West Hill, Kozhikode",
+      contactPerson: "BK Sister Geetha",
+      phone: "+91 9895777017",
+      whatsapp: "+91 9895777017",
+      landline: "0495-2384883",
+      address: "Sivalayanam, Valakkettunilam Road, West Hill, Kozhikode - 673005",
+      landmark: "Near West Hill Railway Station Road",
+      phones: ["0495-2384883", "+91 9895777017"],
+      incharge: "BK Sister Geetha",
+      morningTimings: "7:00 AM – 8:30 AM",
+      eveningTimings: "5:30 PM – 7:30 PM",
+      timings: "Morning: 7:00 AM – 8:30 AM | Evening: 5:30 PM – 7:30 PM",
+      facilities: ["Tranquil Meditation Hall", "Youth Value Education", "Daily Peace Sessions"],
+      description: "Serene neighborhood center providing morning and evening guided meditation and Rajyoga classes.",
+      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+West+Hill+Kozhikode",
+      isPrimary: false,
+      published: true,
+      image: "assets/images/meditation_hall.jpg"
+    },
+    {
+      id: 'balussery',
+      name: "Balussery",
+      nameMl: "സുഖധാം, ബാലുശ്ശേരി",
+      area: "Balussery, Kozhikode",
+      contactPerson: "BK Sister Bindu",
+      phone: "+91 9895516762",
+      whatsapp: "+91 9895516762",
+      landline: "+91 9995586665",
+      address: "Sukhadham, Near Co-operative Arts & Science College, Kairali Road, Balussery, Kozhikode - 673612",
+      landmark: "Near Co-op College",
+      phones: ["+91 9895516762", "+91 9995586665"],
+      incharge: "BK Sister Bindu",
+      morningTimings: "7:00 AM – 8:30 AM",
+      eveningTimings: "5:00 PM – 7:30 PM",
+      timings: "Morning: 7:00 AM – 8:30 AM | Evening: 5:00 PM – 7:30 PM",
+      facilities: ["Spiritual Garden", "Children Value Education", "Stress Relief Sessions"],
+      description: "Peaceful spiritual retreat center in Balussery with lush meditation garden and weekly workshops.",
+      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Balussery+Kozhikode",
+      isPrimary: false,
+      published: true,
+      image: "assets/images/light_palace_center.jpg"
+    },
+    {
+      id: 'koyilandy',
+      name: "Koyilandy",
+      nameMl: "വസന്തം, കൊയിലാണ്ടി",
+      area: "Koyilandy, Kozhikode",
+      contactPerson: "BK Sister Radha",
+      phone: "+91 9447432109",
+      whatsapp: "+91 9447432109",
+      landline: "",
+      address: "H.No: 31/397, Vasantham, Kothamangalam, Panthalayani, Koyilandy, Kozhikode - 673305",
+      landmark: "Panthalayani, Kothamangalam",
+      phones: ["+91 9447432109", "+91 9746334202"],
+      incharge: "BK Sister Radha",
+      morningTimings: "7:00 AM – 8:30 AM",
+      eveningTimings: "5:30 PM – 7:30 PM",
+      timings: "Morning: 7:00 AM – 8:30 AM | Evening: 5:30 PM – 7:30 PM",
+      facilities: ["Meditation Room", "Free 7-Day Courses", "Spiritual Counseling"],
+      description: "Community center offering complimentary 7-Day foundation courses and stress-free living programs.",
+      mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Koyilandy",
+      isPrimary: false,
+      published: true,
+      image: "assets/images/meditation_hall.jpg"
+    },
+    {
       id: 'chevayoor',
-      name: "Chevayoor Meditation Sub-Center",
+      name: "Chevayoor",
       nameMl: "ചേവായൂർ ഉപകേന്ദ്രം",
       area: "Chevayoor, Kozhikode",
       contactPerson: "BK Sister Latha",
@@ -405,10 +639,8 @@ const DEFAULT_DATA = {
       timings: "Morning: 7:00 AM – 8:30 AM | Evening: 6:00 PM – 7:30 PM",
       facilities: ["Neighborhood Meditation Space", "Introductory Rajyoga Classes"],
       description: "Neighborhood meditation hub for residents and students near Calicut Medical College.",
-      mapUrl: "https://maps.google.com/?q=Brahma+Kumaris+Chevayoor+Kozhikode",
       mapsUrl: "https://maps.google.com/?q=Brahma+Kumaris+Chevayoor+Kozhikode",
       isPrimary: false,
-      isMain: false,
       published: true,
       image: "assets/images/meditation_hall.jpg"
     }
@@ -485,23 +717,33 @@ const DEFAULT_DATA = {
 
   events: [
     {
-      id: "evt-navathi-90",
-      title: "90th Anniversary: Navathi Celebrations of Brahma Kumaris",
-      titleMl: "ബ്രഹ്മാകുമാരീസ് നവതി ആത്മീയ മഹോത്സവം",
-      category: "navathi",
+      id: "evt-navathi-kozhikode-2026",
+      title: "90th Navathi Celebrations: Grand Spiritual Conclave & Peace Gathering",
+      titleMl: "ബ്രഹ്മാകുമാരീസ് 90-ാം നവതി ആത്മീയ മഹാസമ്മേളനം",
       date: "2026-10-15",
-      time: "9:30 AM - 1:00 PM",
-      location: "Ashokapuram Light Palace, Kozhikode",
-      shortDesc: "A momentous milestone commemorating 90 years of world renewal, values education, and soul consciousness across humanity.",
-      fullDesc: "Celebrating 90 glorious years of dedicated service to humanity, spiritual empowerment, and universal peace education. The Navathi celebrations bring together truth seekers, Rajyogis, and distinguished citizens of Kerala for divine remembrance, cultural harmony, and dedication to universal peace.",
+      year: "2026",
+      centre: "Kozhikode Main",
+      category: "Festivals",
+      isNavathi: true,
+      coverImage: "assets/images/light_palace_center.jpg",
+      photos: [
+        "assets/images/meditation_hall.jpg",
+        "assets/images/paramdham_sunset.jpg",
+        "assets/images/rajyoga_peace.jpg"
+      ],
+      youtubeUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
+      description: "Commemorating 90 glorious years of Brahma Kumaris (1936-2026) dedicated to world renewal, spiritual enlightenment of women, and global harmony. Features divine flag unfurling, amritvela mass meditation, and special address by senior Rajyogis.",
       image: "assets/images/light_palace_center.jpg",
       additionalImages: [
         "assets/images/meditation_hall.jpg",
-        "assets/images/paramdham_sunset.jpg"
+        "assets/images/paramdham_sunset.jpg",
+        "assets/images/rajyoga_peace.jpg"
       ],
-      videoUrl: "",
-      registrationUrl: "",
-      externalUrl: "",
+      videoUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
+      location: "Kozhikode Main",
+      shortDesc: "A momentous milestone commemorating 90 years of world renewal, values education, and soul consciousness.",
+      fullDesc: "Commemorating 90 glorious years of Brahma Kumaris (1936-2026) dedicated to world renewal, spiritual enlightenment of women, and global harmony. Features divine flag unfurling, amritvela mass meditation, and special address by senior Rajyogis.",
+      time: "9:30 AM - 1:00 PM",
       schedule: [
         { time: "09:30 AM", session: "Welcome & Deep Meditation" },
         { time: "10:15 AM", session: "Inaugural Blessings & Keynote Discourse" },
@@ -514,82 +756,212 @@ const DEFAULT_DATA = {
       createdAt: "2026-08-18"
     },
     {
-      id: "evt-shivarathri-fest",
-      title: "Maha Shivratri Spiritual Festival & Jyotirlingam Exhibition",
-      titleMl: "മഹാശിവരാത്രി ആത്മീയ മേളയും ജ്യോതിർലിംഗ ദർശനവും",
-      category: "shivarathri",
-      date: "Sacred Festival Period",
-      time: "Full Day (8:00 AM - 9:00 PM)",
-      location: "Light Palace Grounds, Ashokapuram, Kozhikode",
-      shortDesc: "Experience the profound spiritual significance of Shivratri with 3D Jyotirlingam darshan, flag unfurling, and continuous peace meditation.",
-      fullDesc: "Maha Shivratri marks the divine descent of Incorporeal Supreme Soul Shiva, the Ocean of Peace and Purity, to dispel darkness and sorrow. The festival features the sacred flag hoisting ceremony, divine knowledge stalls, 3D spiritual cave of Paramdham, and sacred pledge for purity in thoughts and actions.",
-      image: "assets/images/paramdham_sunset.jpg",
+      id: "evt-navathi-feroke-2026",
+      title: "Navathi 90: Harmony & Stress-Free Youth Leadership Summit",
+      titleMl: "നവതി യുവ നേതൃത്വ ശിൽപശാല",
+      date: "2026-08-22",
+      year: "2026",
+      centre: "Feroke",
+      category: "Youth Program",
+      isNavathi: true,
+      coverImage: "assets/images/meditation_hall.jpg",
+      photos: [
+        "assets/images/rajyoga_peace.jpg",
+        "assets/images/light_palace_center.jpg"
+      ],
+      youtubeUrl: "https://www.youtube.com/live/YMXD1FmGleg",
+      description: "Special youth convention organized as part of the 90th Navathi celebrations, inspiring students and young professionals towards emotional resilience, concentration, and ethical living.",
+      image: "assets/images/meditation_hall.jpg",
       additionalImages: [
-        "assets/images/meditation_hall.jpg"
+        "assets/images/rajyoga_peace.jpg",
+        "assets/images/light_palace_center.jpg"
       ],
-      videoUrl: "",
-      registrationUrl: "",
-      externalUrl: "",
+      videoUrl: "https://www.youtube.com/live/YMXD1FmGleg",
+      location: "Feroke",
+      shortDesc: "Special youth convention organized as part of the 90th Navathi celebrations.",
+      fullDesc: "Special youth convention organized as part of the 90th Navathi celebrations, inspiring students and young professionals towards emotional resilience, concentration, and ethical living.",
+      time: "10:00 AM - 2:00 PM",
       schedule: [
-        { time: "08:00 AM", session: "Sacred Shiva Dhwaj Flag Hoisting" },
-        { time: "10:00 AM", session: "Spiritual Discourse: The Secret of Shivratri" },
-        { time: "04:00 PM", session: "3D Paramdham Meditation Journey" },
-        { time: "07:00 PM", session: "Maha Deepotsav & 108 Light Darshan" }
+        { time: "10:00 AM", session: "Mind Power & Memory Dynamics" },
+        { time: "11:30 AM", session: "Peer Pressure & Habits Overcoming" },
+        { time: "01:00 PM", session: "Interactive Youth Forum" }
       ],
-      isFeatured: true,
+      isFeatured: false,
       status: "published",
       order: 2,
       createdAt: "2026-08-18"
     },
     {
-      id: "evt-raksha-bandhan-gathering",
-      title: "Sacred Raksha Bandhan: Festival of Divine Purity & Brotherhood",
-      titleMl: "വിശുദ്ധി ദിവ്യസ്നേഹ രക്ഷാബന്ധൻ ഉത്സവം",
-      category: "rakshabandhan",
-      date: "August Sacred Purnima",
-      time: "10:00 AM - 6:00 PM",
-      location: "All Kozhikode Center Branches",
-      shortDesc: "Tying the sacred thread of purity, spiritual protection, and mutual goodwill with soul consciousness.",
-      fullDesc: "Raksha Bandhan in its true spiritual essence signifies tying the divine bond of purity and receiving God Shiva's protection from vices. Seekers receive sacred tilak of soul realization, pure sweet blessings (Toli), and take an elevated pledge of living with unconditional peace and goodwill.",
-      image: "assets/images/rajyoga_peace.jpg",
-      additionalImages: [],
-      videoUrl: "",
-      registrationUrl: "",
-      externalUrl: "",
+      id: "evt-navathi-vadakara-2025",
+      title: "Navathi Milestones: Value Education & Meditation Camp",
+      titleMl: "നവതി മൂല്യവിദ്യാഭ്യാസ മെഡിറ്റേഷൻ ക്യാമ്പ്",
+      date: "2025-11-18",
+      year: "2025",
+      centre: "Vadakara",
+      category: "Rajayoga Shivir",
+      isNavathi: true,
+      coverImage: "assets/images/paramdham_sunset.jpg",
+      photos: [
+        "assets/images/meditation_hall.jpg",
+        "assets/images/rajyoga_peace.jpg"
+      ],
+      youtubeUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
+      description: "A divine 3-day Rajayoga meditation shivir heralding the 90th year anniversary, guiding families through self-empowerment and soul consciousness.",
+      image: "assets/images/paramdham_sunset.jpg",
+      additionalImages: [
+        "assets/images/meditation_hall.jpg",
+        "assets/images/rajyoga_peace.jpg"
+      ],
+      videoUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
+      location: "Vadakara",
+      shortDesc: "A divine Rajayoga meditation shivir heralding the 90th year anniversary.",
+      fullDesc: "A divine 3-day Rajayoga meditation shivir heralding the 90th year anniversary, guiding families through self-empowerment and soul consciousness.",
+      time: "6:00 PM - 8:00 PM",
       schedule: [
-        { time: "10:00 AM", session: "Soul-Conscious Rakhi Blessing & Tilak" },
-        { time: "11:30 AM", session: "Discourse on Spiritual Bond of Purity" },
-        { time: "04:00 PM", session: "Special Gathering for Families" }
+        { time: "06:00 PM", session: "Understanding True Identity of the Soul" },
+        { time: "07:00 PM", session: "Connecting with the Supreme Ocean of Peace" }
       ],
       isFeatured: false,
       status: "published",
       order: 3,
-      createdAt: "2026-08-18"
+      createdAt: "2025-11-01"
     },
     {
-      id: "evt-peace-workshop",
-      title: "Stress-Free Living & Emotional Detox for Professionals",
-      titleMl: "സമ്മർദ്ദരഹിത ജീവിതം - പ്രൊഫഷണലുകൾക്കായുള്ള ശിൽപശാല",
-      category: "other",
-      date: "Every 3rd Sunday",
-      time: "10:00 AM - 1:00 PM",
-      location: "Main Auditorium, Light Palace, Kozhikode",
-      shortDesc: "Practical spiritual techniques and mindfulness practices to eliminate burnout, enhance mental clarity, and maintain harmony.",
-      fullDesc: "An intensive, interactive seminar designed for educators, corporate executives, doctors, and professionals. Learn the art of response control, mental detox, positive affirmations, and 5-minute workplace meditation pauses to sustain peak performance and inner peace.",
-      image: "assets/images/meditation_hall.jpg",
-      additionalImages: [],
-      videoUrl: "",
-      registrationUrl: "",
-      externalUrl: "",
+      id: "evt-shivarathri-ashokapuram-2026",
+      title: "Maha Shivratri Spiritual Festival & 12 Jyotirlingam Darshan",
+      titleMl: "മഹാശിവരാത്രി ആത്മീയോത്സവവും ജ്യോതിർലിംഗ ദർശനവും",
+      date: "2026-03-08",
+      year: "2026",
+      centre: "Ashokapuram",
+      category: "Festivals",
+      isNavathi: false,
+      coverImage: "assets/images/paramdham_sunset.jpg",
+      photos: [
+        "assets/images/light_palace_center.jpg",
+        "assets/images/meditation_hall.jpg"
+      ],
+      youtubeUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
+      description: "Experience the profound spiritual significance of Shivratri with 3D Jyotirlingam darshan, flag unfurling, and continuous 24-hour peace meditation.",
+      image: "assets/images/paramdham_sunset.jpg",
+      additionalImages: [
+        "assets/images/light_palace_center.jpg",
+        "assets/images/meditation_hall.jpg"
+      ],
+      videoUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
+      location: "Ashokapuram",
+      shortDesc: "Experience the profound spiritual significance of Shivratri with 3D Jyotirlingam darshan.",
+      fullDesc: "Maha Shivratri marks the divine descent of Incorporeal Supreme Soul Shiva. Features flag unfurling, 3D spiritual cave darshan, and sacred pledge for purity.",
+      time: "8:00 AM - 9:00 PM",
       schedule: [
-        { time: "10:00 AM", session: "Understanding Stress & The Mind Machine" },
-        { time: "11:00 AM", session: "Emotional Detox Guided Meditation" },
-        { time: "12:00 PM", session: "Q&A and Practical Toolkits" }
+        { time: "08:00 AM", session: "Sacred Shiva Dhwaj Flag Hoisting" },
+        { time: "10:00 AM", session: "Spiritual Discourse: The Secret of Shivratri" },
+        { time: "07:00 PM", session: "Maha Deepotsav & 108 Light Darshan" }
+      ],
+      isFeatured: true,
+      status: "published",
+      order: 4,
+      createdAt: "2026-03-01"
+    },
+    {
+      id: "evt-wellness-kozhikode-2026",
+      title: "De-Addiction & Mind Wellness Campaign for Community Health",
+      titleMl: "ലഹരിവിമുക്ത ആരോഗ്യ ബോധവൽക്കരണ പരിപാടി",
+      date: "2026-05-14",
+      year: "2026",
+      centre: "Kozhikode Main",
+      category: "Social Service",
+      isNavathi: false,
+      coverImage: "assets/images/rajyoga_peace.jpg",
+      photos: [
+        "assets/images/meditation_hall.jpg"
+      ],
+      youtubeUrl: "",
+      description: "Community outreach initiative offering free health checkups, subconscious mind empowerment, and lifestyle coaching for tobacco and stress de-addiction.",
+      image: "assets/images/rajyoga_peace.jpg",
+      additionalImages: [
+        "assets/images/meditation_hall.jpg"
+      ],
+      videoUrl: "",
+      location: "Kozhikode Main",
+      shortDesc: "Community outreach initiative offering subconscious mind empowerment and lifestyle coaching.",
+      fullDesc: "Community outreach initiative offering free health checkups, subconscious mind empowerment, and lifestyle coaching for tobacco and stress de-addiction.",
+      time: "10:00 AM - 1:00 PM",
+      schedule: [
+        { time: "10:00 AM", session: "Medical Doctors Panel Presentation" },
+        { time: "11:30 AM", session: "Subconscious Reprogramming Meditation" }
       ],
       isFeatured: false,
       status: "published",
-      order: 4,
-      createdAt: "2026-08-18"
+      order: 5,
+      createdAt: "2026-05-01"
+    },
+    {
+      id: "evt-shivir-balussery-2025",
+      title: "Raja Yoga Deep Meditation Shivir for Inner Peace",
+      titleMl: "രാജയോഗ ആഴത്തിലുള്ള ധ്യാന ശിബിരം",
+      date: "2025-09-10",
+      year: "2025",
+      centre: "Balussery",
+      category: "Rajayoga Shivir",
+      isNavathi: false,
+      coverImage: "assets/images/light_palace_center.jpg",
+      photos: [
+        "assets/images/paramdham_sunset.jpg"
+      ],
+      youtubeUrl: "",
+      description: "Comprehensive 7-day experiential retreat on mind mastery, karmic philosophy, and experiencing God's supreme unconditional love.",
+      image: "assets/images/light_palace_center.jpg",
+      additionalImages: [
+        "assets/images/paramdham_sunset.jpg"
+      ],
+      videoUrl: "",
+      location: "Balussery",
+      shortDesc: "Comprehensive 7-day experiential retreat on mind mastery and karmic philosophy.",
+      fullDesc: "Comprehensive 7-day experiential retreat on mind mastery, karmic philosophy, and experiencing God's supreme unconditional love.",
+      time: "6:30 AM - 8:00 AM",
+      schedule: [
+        { time: "06:30 AM", session: "Morning Amritvela Meditation" },
+        { time: "07:15 AM", session: "Wisdom of Raja Yoga Philosophy" }
+      ],
+      isFeatured: false,
+      status: "published",
+      order: 6,
+      createdAt: "2025-09-01"
+    },
+    {
+      id: "evt-navathi-koyilandy-2026",
+      title: "Navathi Special: Women Empowerment & Values in Governance",
+      titleMl: "നവതി വിശേഷ വനിതാ ശാക്തീകരണ സെമിനാർ",
+      date: "2026-04-20",
+      year: "2026",
+      centre: "Koyilandy",
+      category: "Social Service",
+      isNavathi: true,
+      coverImage: "assets/images/meditation_hall.jpg",
+      photos: [
+        "assets/images/light_palace_center.jpg",
+        "assets/images/rajyoga_peace.jpg"
+      ],
+      youtubeUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
+      description: "Special seminar recognizing maternal leadership and spiritual qualities in society, hosted under the 90th year celebrations banner.",
+      image: "assets/images/meditation_hall.jpg",
+      additionalImages: [
+        "assets/images/light_palace_center.jpg",
+        "assets/images/rajyoga_peace.jpg"
+      ],
+      videoUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
+      location: "Koyilandy",
+      shortDesc: "Special seminar recognizing maternal leadership and spiritual qualities in society.",
+      fullDesc: "Special seminar recognizing maternal leadership and spiritual qualities in society, hosted under the 90th year celebrations banner.",
+      time: "10:00 AM - 1:00 PM",
+      schedule: [
+        { time: "10:00 AM", session: "Spiritual Values in Family & Governance" },
+        { time: "11:30 AM", session: "Guided Rajayoga Experience" }
+      ],
+      isFeatured: false,
+      status: "published",
+      order: 7,
+      createdAt: "2026-04-10"
     }
   ],
 
@@ -660,7 +1032,7 @@ const DEFAULT_DATA = {
 function extractYouTubeVideoId(url) {
   if (!url || typeof url !== 'string') return '';
   url = url.trim();
-  const regExp = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?.*?v=|embed\/|shorts\/|v\/)|youtu\.be\/|youtube-nocookie\.com\/embed\/)([a-zA-Z0-9_-]{11})/i;
+  const regExp = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?.*?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/|youtube-nocookie\.com\/embed\/)([a-zA-Z0-9_-]{11})/i;
   const match = url.match(regExp);
   if (match && match[1]) {
     return match[1];
@@ -700,14 +1072,26 @@ class SiteStore {
           mergedCourseModules = DEFAULT_DATA.courseModules.map(defaultMod => {
             const existing = parsed.courseModules.find(m => m.day === defaultMod.day);
             if (!existing) return defaultMod;
-            const ytUrl = existing.youtubeUrl !== undefined ? existing.youtubeUrl : defaultMod.youtubeUrl;
+            const oldPlaceholders = ['xZhO2wbz_0E', 'lB_O7PP0Uh4', '7swHqPtUSmE', 'xbW8AWKK-mo', 'cRRkM_zxV_o', 'Q2llFc3ifd0', 'xxIxyi9w_6k'];
+            let ytUrl = existing.youtubeUrl || defaultMod.youtubeUrl;
+            let ytVid = existing.youtubeVideoId || extractYouTubeVideoId(ytUrl || '') || defaultMod.youtubeVideoId;
+            if (oldPlaceholders.includes(ytVid) || (existing.youtubeUrl && oldPlaceholders.some(p => existing.youtubeUrl.includes(p)))) {
+              ytUrl = defaultMod.youtubeUrl;
+              ytVid = defaultMod.youtubeVideoId;
+            }
+            const quizQs = (Array.isArray(existing.quizQuestions) && existing.quizQuestions.length > 0) 
+              ? existing.quizQuestions 
+              : defaultMod.quizQuestions;
+            const refPrompt = existing.reflectionPrompt || defaultMod.reflectionPrompt;
             return {
               ...defaultMod,
               ...existing,
               description: existing.description || existing.summary || defaultMod.description,
               youtubeUrl: ytUrl,
-              youtubeVideoId: existing.youtubeVideoId || extractYouTubeVideoId(ytUrl || ''),
-              duration: existing.duration || defaultMod.duration
+              youtubeVideoId: ytVid,
+              duration: existing.duration || defaultMod.duration,
+              quizQuestions: quizQs,
+              reflectionPrompt: refPrompt
             };
           });
         }
@@ -720,17 +1104,35 @@ class SiteStore {
             if (t.id === 'gallery') return { ...t, label: 'Gallery' };
             if (t.id === 'centers') return { ...t, label: 'Center List' };
             if (t.id === 'contact') return { ...t, label: 'Contact Us' };
-            if (t.id === 'events') return { ...t, label: 'Events', type: 'events-dropdown' };
+            if (t.id === 'events') return { ...t, label: 'Events', type: 'system' };
             if (t.id === 'media') return { ...t, label: 'Media', type: 'media-dropdown' };
             return t;
           }).filter(t => t.id !== 'wisdom'); // replace old wisdom with murali
 
+          // Ensure Events tab is system type
+          const evTab = mergedTabs.find(t => t.id === 'events');
+          if (evTab) {
+            evTab.type = 'system';
+            evTab.order = 8;
+          }
+
+          // Ensure Navathi tab exists alongside Events
+          if (!mergedTabs.some(t => t.id === 'navathi')) {
+            const eventsIdx = mergedTabs.findIndex(t => t.id === 'events');
+            const navathiTab = { id: 'navathi', label: 'Navathi', icon: 'award', isCore: true, enabled: true, order: 9, type: 'system' };
+            if (eventsIdx !== -1) {
+              mergedTabs.splice(eventsIdx + 1, 0, navathiTab);
+            } else {
+              mergedTabs.push(navathiTab);
+            }
+          }
+
           // Ensure Daily Murali tab exists
           if (!mergedTabs.some(t => t.id === 'murali')) {
-            const eventsIdx = mergedTabs.findIndex(t => t.id === 'events');
-            const muraliTab = { id: 'murali', label: 'Daily Murali', icon: 'sun', isCore: true, enabled: true, order: 9, type: 'system' };
-            if (eventsIdx !== -1) {
-              mergedTabs.splice(eventsIdx + 1, 0, muraliTab);
+            const navathiIdx = mergedTabs.findIndex(t => t.id === 'navathi');
+            const muraliTab = { id: 'murali', label: 'Daily Murali', icon: 'sun', isCore: true, enabled: true, order: 10, type: 'system' };
+            if (navathiIdx !== -1) {
+              mergedTabs.splice(navathiIdx + 1, 0, muraliTab);
             } else {
               mergedTabs.push(muraliTab);
             }
@@ -752,21 +1154,39 @@ class SiteStore {
         let mergedEvents = DEFAULT_DATA.events;
         if (Array.isArray(parsed.events) && parsed.events.length > 0) {
           mergedEvents = parsed.events.map(ev => {
+            const date = ev.date && ev.date.trim() ? ev.date : '2026-10-15';
+            const year = ev.year || (date.length >= 4 && !isNaN(date.substring(0, 4)) ? date.substring(0, 4) : '2026');
+            const centre = ev.centre || ev.center || ev.location || 'Kozhikode Main';
+            const isNavathi = Boolean(ev.isNavathi !== undefined ? ev.isNavathi : (ev.category === 'navathi' || (ev.title && ev.title.toLowerCase().includes('navathi'))));
+            const coverImage = ev.coverImage || ev.image || 'assets/images/light_palace_center.jpg';
+            let youtubeUrl = ev.youtubeUrl || ev.videoUrl || '';
+            if (youtubeUrl.includes('1zxJA_XoEog')) {
+              if (ev.id === 'evt-navathi-kozhikode-2026') youtubeUrl = 'https://www.youtube.com/live/xeZ_HBW1mq4';
+              else if (ev.id === 'evt-navathi-feroke-2026') youtubeUrl = 'https://www.youtube.com/live/YMXD1FmGleg';
+            }
+            const description = ev.description || ev.fullDesc || ev.shortDesc || '';
+            const photos = Array.isArray(ev.photos) && ev.photos.length > 0 ? ev.photos : (Array.isArray(ev.additionalImages) ? ev.additionalImages : []);
+
             return {
               id: ev.id || `evt_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
               title: ev.title || 'Spiritual Gathering',
               titleMl: ev.titleMl || '',
-              category: ev.category || 'other',
-              date: ev.date || 'Upcoming',
+              date,
+              year,
+              centre,
+              category: ev.category && ev.category !== 'navathi' ? ev.category : (isNavathi ? 'Festivals' : 'Festivals'),
+              isNavathi,
+              coverImage,
+              photos,
+              youtubeUrl,
+              description,
+              image: coverImage,
+              additionalImages: photos,
+              videoUrl: youtubeUrl,
+              location: centre,
+              shortDesc: description.length > 150 ? description.substring(0, 150) + '...' : description,
+              fullDesc: description,
               time: ev.time || '10:00 AM - 1:00 PM',
-              location: ev.location || ev.venue || 'Ashokapuram Light Palace, Kozhikode',
-              shortDesc: ev.shortDesc || (ev.description ? ev.description.substring(0, 140) + '...' : ''),
-              fullDesc: ev.fullDesc || ev.description || '',
-              image: ev.image || 'assets/images/light_palace_center.jpg',
-              additionalImages: Array.isArray(ev.additionalImages) ? ev.additionalImages : [],
-              videoUrl: ev.videoUrl || '',
-              registrationUrl: ev.registrationUrl || '',
-              externalUrl: ev.externalUrl || '',
               schedule: Array.isArray(ev.schedule) ? ev.schedule : [],
               isFeatured: ev.isFeatured !== undefined ? ev.isFeatured : false,
               status: ev.status || 'published',
@@ -775,15 +1195,25 @@ class SiteStore {
             };
           });
 
-          // Ensure default events exist if category is missing
-          ['navathi', 'shivarathri', 'rakshabandhan'].forEach(cat => {
-            const hasCat = mergedEvents.some(e => e.category === cat);
-            if (!hasCat) {
-              const defaultForCat = DEFAULT_DATA.events.find(e => e.category === cat);
-              if (defaultForCat) mergedEvents.push(defaultForCat);
+          // Ensure default events exist if missing
+          DEFAULT_DATA.events.forEach(defEv => {
+            if (!mergedEvents.some(e => e.id === defEv.id || e.title === defEv.title)) {
+              mergedEvents.push(defEv);
             }
           });
         }
+
+        // Ensure key centres are present
+        let mergedCenters = parsed.centers || DEFAULT_DATA.centers;
+        if (Array.isArray(mergedCenters)) {
+          DEFAULT_DATA.centers.forEach(defC => {
+            if (!mergedCenters.some(c => (c.name || '').toLowerCase() === (defC.name || '').toLowerCase())) {
+              mergedCenters.push(defC);
+            }
+          });
+        }
+
+        let mergedSocialChannels = Array.isArray(parsed.socialChannels) && parsed.socialChannels.length > 0 ? parsed.socialChannels : DEFAULT_DATA.socialChannels;
 
         return {
           ...DEFAULT_DATA,
@@ -797,7 +1227,7 @@ class SiteStore {
           customPages: parsed.customPages || DEFAULT_DATA.customPages,
           courseModules: mergedCourseModules,
           socialChannels: mergedSocialChannels,
-          centers: parsed.centers || DEFAULT_DATA.centers,
+          centers: mergedCenters,
           gallery: parsed.gallery || DEFAULT_DATA.gallery,
           events: mergedEvents,
           registrations: parsed.registrations || DEFAULT_DATA.registrations
@@ -1008,18 +1438,57 @@ class SiteStore {
     if (!this.data.events) {
       this.data.events = JSON.parse(JSON.stringify(DEFAULT_DATA.events));
     }
-    
+
+    const date = event.date && event.date.trim() ? event.date.trim() : new Date().toISOString().split('T')[0];
+    const year = event.year && event.year.trim() ? event.year.trim() : (date.length >= 4 && !isNaN(date.substring(0, 4)) ? date.substring(0, 4) : '2026');
+    const centre = event.centre || event.center || event.location || 'Kozhikode Main';
+    const isNavathi = Boolean(event.isNavathi !== undefined ? event.isNavathi : (event.category === 'navathi'));
+    const coverImage = event.coverImage || event.image || 'assets/images/light_palace_center.jpg';
+    const photos = Array.isArray(event.photos) ? event.photos : (Array.isArray(event.additionalImages) ? event.additionalImages : []);
+    const youtubeUrl = event.youtubeUrl || event.videoUrl || '';
+    const description = event.description || event.fullDesc || event.shortDesc || '';
+
     // Auto-extract YouTube video ID if URL provided
-    if (event.videoUrl) {
-      event.youtubeVideoId = extractYouTubeVideoId(event.videoUrl);
+    let youtubeVideoId = event.youtubeVideoId || '';
+    if (youtubeUrl) {
+      youtubeVideoId = extractYouTubeVideoId(youtubeUrl);
     }
+
+    const normalizedData = {
+      ...event,
+      title: event.title || 'Spiritual Gathering',
+      titleMl: event.titleMl || '',
+      date,
+      year,
+      centre,
+      location: centre,
+      category: event.category || (isNavathi ? 'Festivals' : 'Festivals'),
+      isNavathi,
+      coverImage,
+      image: coverImage,
+      photos,
+      additionalImages: photos,
+      youtubeUrl,
+      videoUrl: youtubeUrl,
+      youtubeVideoId,
+      description,
+      shortDesc: description.length > 150 ? description.substring(0, 150) + '...' : description,
+      fullDesc: description,
+      time: event.time || '10:00 AM - 1:00 PM',
+      registrationUrl: event.registrationUrl || '',
+      externalUrl: event.externalUrl || '',
+      schedule: Array.isArray(event.schedule) ? event.schedule : [],
+      isFeatured: Boolean(event.isFeatured),
+      status: event.status || 'published',
+      order: parseInt(event.order, 10) || 1
+    };
 
     if (event.id) {
       const idx = this.data.events.findIndex(e => e.id === event.id);
       if (idx !== -1) {
         this.data.events[idx] = {
           ...this.data.events[idx],
-          ...event
+          ...normalizedData
         };
         this.saveData();
         return this.data.events[idx];
@@ -1028,25 +1497,8 @@ class SiteStore {
 
     // New event
     const newEvent = {
+      ...normalizedData,
       id: event.id || `evt_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
-      title: event.title || 'Spiritual Program',
-      titleMl: event.titleMl || '',
-      category: event.category || 'other',
-      date: event.date || 'Upcoming',
-      time: event.time || '10:00 AM - 1:00 PM',
-      location: event.location || 'Ashokapuram Light Palace, Kozhikode',
-      shortDesc: event.shortDesc || '',
-      fullDesc: event.fullDesc || event.shortDesc || '',
-      image: event.image || 'assets/images/light_palace_center.jpg',
-      additionalImages: Array.isArray(event.additionalImages) ? event.additionalImages : [],
-      videoUrl: event.videoUrl || '',
-      youtubeVideoId: event.youtubeVideoId || '',
-      registrationUrl: event.registrationUrl || '',
-      externalUrl: event.externalUrl || '',
-      schedule: Array.isArray(event.schedule) ? event.schedule : [],
-      isFeatured: Boolean(event.isFeatured),
-      status: event.status || 'published',
-      order: parseInt(event.order, 10) || (this.data.events.length + 1),
       createdAt: event.createdAt || new Date().toISOString().split('T')[0]
     };
 

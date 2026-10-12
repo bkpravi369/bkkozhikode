@@ -8,8 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=28">
-  <link rel="stylesheet" href="../css/hero.css?v=28">
+  <link rel="stylesheet" href="../css/style.css?v=36">
+  <link rel="stylesheet" href="../css/hero.css?v=36">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png?v=36">
+  <link rel="apple-touch-icon" href="../assets/images/logo-128.png?v=36">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     body {
@@ -76,6 +78,98 @@
       right: 24px;
       z-index: 99999;
     }
+    /* Quiz Editor in Admin */
+    .admin-quiz-section {
+      margin-top: 1.5rem;
+      border-top: 2px dashed #fed7aa;
+      background: #faf7f2;
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+    .admin-quiz-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .admin-quiz-q-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.15rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .admin-quiz-q-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    .admin-quiz-opt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    @media (max-width: 680px) {
+      .admin-quiz-opt-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .admin-quiz-opt-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f8fafc;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+    }
+    .admin-quiz-opt-item input[type="radio"] {
+      cursor: pointer;
+      accent-color: #d94514;
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+    }
+    .admin-btn-add-q {
+      background: #1e3a8a;
+      color: #ffffff;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.2s ease;
+    }
+    .admin-btn-add-q:hover {
+      background: #1d4ed8;
+    }
+    .admin-btn-del-q {
+      background: rgba(239, 68, 68, 0.1);
+      color: #b91c1c;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .admin-btn-del-q:hover {
+      background: rgba(239, 68, 68, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -86,7 +180,7 @@
       <!-- Admin Header -->
       <div class="admin-header">
         <h2>
-          <i data-lucide="shield-check"></i>
+          <img src="../assets/images/logo.png" alt="BK Logo" class="admin-header-logo">
           <span>Brahma Kumaris Kozhikode — Admin Management Portal</span>
         </h2>
         <div style="display:flex;align-items:center;gap:0.75rem;"><a href="/" class="btn-view-site" style="color:#ffd68a;text-decoration:none;font-size:0.85rem;padding:6px 12px;border:1px solid rgba(255,214,138,0.3);border-radius:6px;">View Public Site ↗</a><button class="btn-admin-logout" onclick="bkAdmin.handleLogout()" style="background:rgba(217,69,20,0.8);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:0.85rem;cursor:pointer;">Sign Out</button></div>
@@ -94,7 +188,7 @@
 
       <!-- Admin Login View (if not authenticated) -->
       <div id="adminLoginView" style="padding:3rem 2rem;text-align:center;max-width:480px;margin:0 auto;">
-        <div class="soul-light-symbol" style="margin:0 auto 1.5rem;"></div>
+        <img src="../assets/images/logo.png" alt="Brahma Kumaris Official Emblem" class="brand-logo-img admin-login-logo">
         <h3 style="font-size:1.6rem;margin-bottom:0.5rem;color:var(--sunset-dark-base);">Admin Authentication</h3>
         <p style="color:var(--text-muted);font-size:0.92rem;margin-bottom:1.5rem;">
           Please enter the administrative security PIN to manage tabs, gallery media, events, and student registrations. 
@@ -140,7 +234,7 @@
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('centers-mgr', this)">Center List</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('youtube-mgr', this)">YouTube Channels & Videos</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('social-channels-mgr', this)">Social Media Links</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('course-mgr', this)">7-Day Course Videos</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('course-mgr', this)">7-Day Course &amp; Quizzes</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('gallery-mgr', this)">Gallery Manager</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('events-mgr', this)">Events & Retreats</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('registrations-mgr', this)">Registrations & Inquiries</button>
@@ -205,13 +299,13 @@
             </div>
           </div>
 
-          <!-- PANE: 7-DAY RAJYOGA COURSE VIDEO MANAGER -->
+          <!-- PANE: 7-DAY RAJYOGA COURSE & MALAYALAM QUIZ MANAGER -->
           <div class="admin-pane" id="pane-course-mgr">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
-                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">7-Day Rajyoga Course Video Manager</h3>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">7-Day Rajayoga Course &amp; Malayalam Quiz Manager</h3>
                 <p style="color:var(--text-muted);font-size:0.88rem;">
-                  Paste YouTube video URLs (Public or Unlisted), update lesson titles, descriptions, and durations for each of the seven daily lessons. Videos will embed directly on the course page.
+                  Easily update YouTube video URLs/IDs, lesson titles, Malayalam titles, durations, reflection prompts, and edit or add Malayalam quiz questions for all 7 days. Changes save immediately to the live public course page.
                 </p>
               </div>
             </div>
@@ -374,11 +468,12 @@
             <!-- Admin Category Filter Bar -->
             <div class="admin-event-filter-bar" id="adminEventFilterBar">
               <button class="admin-ev-filter-btn active" data-cat="all" onclick="bkAdmin.filterAdminEvents('all', this)">All Events</button>
-              <button class="admin-ev-filter-btn" data-cat="latest" onclick="bkAdmin.filterAdminEvents('latest', this)">Latest Events</button>
-              <button class="admin-ev-filter-btn" data-cat="navathi" onclick="bkAdmin.filterAdminEvents('navathi', this)">Navathi Celebrations</button>
-              <button class="admin-ev-filter-btn" data-cat="shivarathri" onclick="bkAdmin.filterAdminEvents('shivarathri', this)">Shivarathri</button>
-              <button class="admin-ev-filter-btn" data-cat="rakshabandhan" onclick="bkAdmin.filterAdminEvents('rakshabandhan', this)">Raksha Bandhan</button>
-              <button class="admin-ev-filter-btn" data-cat="other" onclick="bkAdmin.filterAdminEvents('other', this)">Other Programs</button>
+              <button class="admin-ev-filter-btn" data-cat="navathi" onclick="bkAdmin.filterAdminEvents('navathi', this)">✨ Navathi Only</button>
+              <button class="admin-ev-filter-btn" data-cat="Festivals" onclick="bkAdmin.filterAdminEvents('Festivals', this)">Festivals</button>
+              <button class="admin-ev-filter-btn" data-cat="Rajayoga Shivir" onclick="bkAdmin.filterAdminEvents('Rajayoga Shivir', this)">Rajayoga Shivir</button>
+              <button class="admin-ev-filter-btn" data-cat="Youth Program" onclick="bkAdmin.filterAdminEvents('Youth Program', this)">Youth Program</button>
+              <button class="admin-ev-filter-btn" data-cat="Social Service" onclick="bkAdmin.filterAdminEvents('Social Service', this)">Social Service</button>
+              <button class="admin-ev-filter-btn" data-cat="Celebrations" onclick="bkAdmin.filterAdminEvents('Celebrations', this)">Celebrations</button>
               <button class="admin-ev-filter-btn" data-cat="drafts" onclick="bkAdmin.filterAdminEvents('drafts', this)">Drafts Only</button>
             </div>
 
@@ -403,54 +498,79 @@
                   </div>
                 </div>
 
+                <!-- 90th Navathi Tag Flag (Prominent Golden Highlight) -->
+                <div style="background:linear-gradient(135deg, rgba(254,243,199,0.95), rgba(254,215,170,0.6));border:1.5px solid #d97706;border-radius:var(--radius-sm);padding:0.9rem 1.2rem;margin:1rem 0;">
+                  <label style="display:flex;align-items:center;gap:0.65rem;cursor:pointer;font-weight:700;color:#92400e;font-size:0.95rem;">
+                    <input type="checkbox" id="eventFormIsNavathi" style="width:20px;height:20px;accent-color:#d97706;">
+                    <span>✨ Tag as 90th Navathi Celebration (isNavathi)</span>
+                  </label>
+                  <p style="margin:0.25rem 0 0 1.9rem;font-size:0.8rem;color:#78350f;">
+                    Programs tagged as Navathi are automatically highlighted with golden badges and featured in the dedicated "Navathi" celebrations tab.
+                  </p>
+                </div>
+
                 <div class="form-row">
-                  <div class="form-group">
-                    <label for="eventFormCategory">Category Section *</label>
+                  <div class="form-group" style="flex:1.2;">
+                    <label for="eventFormCentre">Center / Branch *</label>
+                    <select id="eventFormCentre" class="form-control" required>
+                      <!-- Dynamically populated from window.bkStore.getCenters() -->
+                    </select>
+                    <small style="color:var(--text-muted);font-size:0.75rem;">Dynamically fetched from the Kozhikode Center List Manager</small>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label for="eventFormVenue">Specific Hall / Venue (Optional)</label>
+                    <input type="text" id="eventFormVenue" class="form-control" placeholder="e.g. Diamond Jubilee Meditation Hall">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group" style="flex:1;">
+                    <label for="eventFormCategory">Category *</label>
                     <select id="eventFormCategory" class="form-control" required>
-                      <option value="latest">Latest Events (General)</option>
-                      <option value="navathi">Navathi Celebrations</option>
-                      <option value="shivarathri">Festivals → Shivarathri</option>
-                      <option value="rakshabandhan">Festivals → Raksha Bandhan</option>
-                      <option value="other">Festivals → Other Programs</option>
+                      <option value="Festivals">Festivals</option>
+                      <option value="Rajayoga Shivir">Rajayoga Shivir</option>
+                      <option value="Youth Program">Youth Program</option>
+                      <option value="Social Service">Social Service</option>
+                      <option value="Celebrations">Celebrations</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label for="eventFormOrder">Display Order (1 = Top)</label>
+                  <div class="form-group" style="width:130px;">
+                    <label for="eventFormOrder">Display Order</label>
                     <input type="number" id="eventFormOrder" class="form-control" value="1" min="1">
                   </div>
                 </div>
 
                 <div class="form-row">
-                  <div class="form-group">
-                    <label for="eventFormDate">Date / Period *</label>
-                    <input type="text" id="eventFormDate" class="form-control" placeholder="e.g. 2026-10-15 or Every 3rd Sunday" required>
+                  <div class="form-group" style="flex:1.2;">
+                    <label for="eventFormDate">Event Date *</label>
+                    <input type="date" id="eventFormDate" class="form-control" required onchange="bkAdmin.onEventDateChange(this.value)">
                   </div>
-                  <div class="form-group">
-                    <label for="eventFormTime">Time *</label>
-                    <input type="text" id="eventFormTime" class="form-control" placeholder="e.g. 9:30 AM - 1:00 PM" required>
+                  <div class="form-group" style="width:130px;">
+                    <label for="eventFormYear">Year *</label>
+                    <input type="text" id="eventFormYear" class="form-control" placeholder="2026" required>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label for="eventFormTime">Time</label>
+                    <input type="text" id="eventFormTime" class="form-control" placeholder="e.g. 9:30 AM - 1:00 PM">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="eventFormVenue">Location / Venue *</label>
-                  <input type="text" id="eventFormVenue" class="form-control" placeholder="e.g. Ashokapuram Light Palace, Kozhikode" required>
+                  <label for="eventFormShortDesc">Description *</label>
+                  <textarea id="eventFormShortDesc" class="form-control" rows="3" placeholder="Full summary and spiritual significance of the event..." required></textarea>
                 </div>
 
                 <div class="form-group">
-                  <label for="eventFormShortDesc">Short Summary (for Cards & Highlights) *</label>
-                  <textarea id="eventFormShortDesc" class="form-control" rows="2" placeholder="Brief 1-2 sentence overview of the event..." required></textarea>
-                </div>
-
-                <div class="form-group">
-                  <label for="eventFormFullDesc">Full Editorial Description</label>
-                  <textarea id="eventFormFullDesc" class="form-control" rows="4" placeholder="Detailed description of the program, spiritual significance, and guest speakers..."></textarea>
+                  <label for="eventFormFullDesc">Detailed Notes / Guest Speakers (Optional)</label>
+                  <textarea id="eventFormFullDesc" class="form-control" rows="2" placeholder="Additional details, guest dignitaries, schedule highlights..."></textarea>
                 </div>
 
                 <!-- Main Image Upload & URL with Preview -->
                 <div class="form-row" style="background:#fafafa;padding:1rem;border-radius:var(--radius-sm);margin-bottom:1rem;border:1px solid #f0f0f0;">
                   <div class="form-group" style="flex:1;">
-                    <label for="eventFormImageUrl">Main Cover Image URL</label>
-                    <input type="text" id="eventFormImageUrl" class="form-control" placeholder="assets/images/light_palace_center.jpg or https://..." oninput="bkAdmin.previewEventMainImage(this.value)">
+                    <label for="eventFormImageUrl">Cover Image URL *</label>
+                    <input type="text" id="eventFormImageUrl" class="form-control" placeholder="https://images.unsplash.com/... or assets/images/..." oninput="bkAdmin.previewEventMainImage(this.value)" required>
                     <div style="margin-top:0.5rem;">
                       <label style="font-size:0.8rem;color:var(--text-muted);">Or Upload Image File from Device:</label>
                       <input type="file" id="eventFormImageFileInput" class="form-control" accept="image/*" onchange="bkAdmin.handleEventImageUpload(event)">
@@ -466,8 +586,9 @@
 
                 <!-- Additional Gallery Images -->
                 <div class="form-group">
-                  <label for="eventFormAdditionalImages">Additional Gallery Images (Comma-separated URLs)</label>
-                  <input type="text" id="eventFormAdditionalImages" class="form-control" placeholder="e.g. assets/images/meditation_hall.jpg, assets/images/paramdham_sunset.jpg">
+                  <label for="eventFormAdditionalImages">Additional Photo Gallery URLs (Comma or newline separated)</label>
+                  <textarea id="eventFormAdditionalImages" class="form-control" rows="2" placeholder="https://images.unsplash.com/..., https://images.unsplash.com/..."></textarea>
+                  <small style="color:var(--text-muted);font-size:0.75rem;">These photos will appear as an interactive image gallery in the public event popup modal.</small>
                 </div>
 
                 <!-- Optional Video URL (YouTube) with Auto ID & Preview -->
@@ -961,8 +1082,8 @@
 
   <div class="toast-container" id="toastContainer"></div>
 
-  <script src="../js/store.js?v=28"></script>
-  <script src="../js/admin.js?v=28"></script>
+  <script src="../js/store.js?v=38"></script>
+  <script src="../js/admin.js?v=38"></script>
   <script>
     // Minimal app toast helper for admin
     window.bkApp = window.bkApp || {
