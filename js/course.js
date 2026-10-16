@@ -396,6 +396,14 @@
     }
 
     selectDay(dayNumber) {
+      if (!window.bkAuth || !window.bkAuth.isLoggedIn()) {
+        this.render();
+        if (window.bkAuth && window.bkAuth.openAuthModal) {
+          window.bkAuth.openAuthModal();
+        }
+        return;
+      }
+
       if (dayNumber > this.state.currentUnlockedDay) {
         const requiredDay = dayNumber - 1;
         if (window.bkApp && window.bkApp.toast) {
@@ -410,6 +418,14 @@
       this.state.selectedAnswers = {};
       this.saveProgress();
       this.render();
+
+      // Scroll smoothly to active day in mobile touch stepper if applicable
+      const activeStepBtn = document.querySelector(`.step-day-btn.active`);
+      if (activeStepBtn && typeof activeStepBtn.scrollIntoView === 'function') {
+        try {
+          activeStepBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } catch (_) {}
+      }
 
       // Scroll smoothly to lesson stage
       const stage = document.getElementById('rajyogaLessonStage');
@@ -594,6 +610,9 @@
       const container = document.getElementById('dailyReflectionQuizSection');
       if (!container) return;
 
+      const user = (window.bkAuth && window.bkAuth.getUser) ? window.bkAuth.getUser() : null;
+      const initialStudentName = (user && user.name) ? user.name : "Dedicated Seeker of Peace";
+
       const dateStr = new Date().toLocaleDateString('en-IN', {
         year: 'numeric',
         month: 'long',
@@ -614,7 +633,7 @@
           </p>
 
           <div class="student-name-input-group">
-            <input type="text" id="certStudentName" class="student-name-input" placeholder="Enter Your Name for Certificate" value="Dedicated Seeker of Peace">
+            <input type="text" id="certStudentName" class="student-name-input" placeholder="Enter Your Name for Certificate" value="${initialStudentName}">
           </div>
 
           <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-bottom:1.5rem;">
@@ -651,10 +670,199 @@
       container.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    switchGateTab(tab) {
+      const signinBtn = document.getElementById('gateTabBtnSignin');
+      const signupBtn = document.getElementById('gateTabBtnSignup');
+      const nameGroup = document.getElementById('gateNameGroup');
+      const modeInput = document.getElementById('gateFormMode');
+      const submitBtnText = document.getElementById('gateSubmitBtnText');
+
+      if (tab === 'signup') {
+        if (signupBtn) signupBtn.classList.add('active');
+        if (signinBtn) signinBtn.classList.remove('active');
+        if (nameGroup) nameGroup.style.display = 'block';
+        if (modeInput) modeInput.value = 'signup';
+        if (submitBtnText) submitBtnText.textContent = 'Create Account & Begin';
+      } else {
+        if (signinBtn) signinBtn.classList.add('active');
+        if (signupBtn) signupBtn.classList.remove('active');
+        if (nameGroup) nameGroup.style.display = 'none';
+        if (modeInput) modeInput.value = 'signin';
+        if (submitBtnText) submitBtnText.textContent = 'Sign In to 7-Day Course';
+      }
+    }
+
+    handleGateSubmit(e) {
+      e.preventDefault();
+      const mode = (document.getElementById('gateFormMode') || {}).value || 'signin';
+      const name = (document.getElementById('gateInputName') || {}).value || '';
+      const email = (document.getElementById('gateInputEmail') || {}).value || '';
+      const pass = (document.getElementById('gateInputPassword') || {}).value || '';
+
+      if (mode === 'signup' && !name.trim()) {
+        if (window.bkApp && window.bkApp.toast) {
+          window.bkApp.toast('Please enter your full name.', 'warning');
+        }
+        return;
+      }
+
+      if (!email.trim()) {
+        if (window.bkApp && window.bkApp.toast) {
+          window.bkApp.toast('Please enter your email address.', 'warning');
+        }
+        return;
+      }
+
+      if (window.bkAuth) {
+        window.bkAuth.loginWithEmail(name || email.split('@')[0], email, pass);
+      }
+    }
+
+    renderAuthGate(container) {
+      container.innerHTML = `
+        <div class="section-padding" style="padding-top:1.5rem;padding-bottom:3.5rem;">
+          <div class="container course-platform-wrapper">
+            
+            <!-- High Contrast Section Header -->
+            <div class="section-header">
+              <span class="section-kicker">Complimentary Spiritual Education • സൗജന്യ രാജയോഗ പഠനം</span>
+              <h2>7-Day Rajayoga Meditation Course</h2>
+              <div class="section-title-ml">7 ദിവസത്തെ രാജയോഗ ആത്മീയ പഠന യാത്ര</div>
+              <div class="divider-sun"></div>
+              <p class="section-subtitle">
+                A structured, step-by-step foundation course in Raja Yoga meditation. Sign in or create your student account to access the daily video lessons, submit your reflections, and track your 7-day path to self-mastery.
+              </p>
+            </div>
+
+            <!-- Modern Auth Gate Card -->
+            <div class="course-auth-gate-card">
+              <div class="auth-gate-aura">
+                <div class="auth-gate-om-icon">
+                  <i data-lucide="shield-check" style="width:36px;height:36px;color:#ffd700;"></i>
+                </div>
+                <div class="auth-gate-badge">
+                  <i data-lucide="lock" style="width:12px;height:12px;"></i>
+                  <span>Student Access Required • വിദ്യാർത്ഥി ലോഗിൻ</span>
+                </div>
+                <h3 class="auth-gate-title">Enter the Sacred Sanctuary</h3>
+                <p class="auth-gate-desc">
+                  Sign in to unlock Day 1–7 video modules, save your reflection notes, and earn your verified <strong>Certificate of Spiritual Study</strong>.
+                </p>
+              </div>
+
+              <!-- 1-Click Google Sign In -->
+              <button type="button" class="btn-auth-google" onclick="window.bkAuth.loginWithGoogle()">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span>Continue with Google</span>
+              </button>
+
+              <div class="auth-divider">
+                <span>or continue with email</span>
+              </div>
+
+              <!-- Auth Gate Tabs (Sign In / Register) -->
+              <div class="auth-gate-tabs">
+                <button type="button" class="auth-gate-tab-btn active" id="gateTabBtnSignin" onclick="bkCourse.switchGateTab('signin')">
+                  Sign In
+                </button>
+                <button type="button" class="auth-gate-tab-btn" id="gateTabBtnSignup" onclick="bkCourse.switchGateTab('signup')">
+                  Create Student Account
+                </button>
+              </div>
+
+              <!-- Email Form -->
+              <form class="auth-gate-form" id="courseGateAuthForm" onsubmit="bkCourse.handleGateSubmit(event)">
+                <input type="hidden" id="gateFormMode" value="signin">
+                
+                <div class="auth-input-group" id="gateNameGroup" style="display:none;">
+                  <label for="gateInputName">Your Full Name (for Certificate)</label>
+                  <input type="text" id="gateInputName" class="auth-input" placeholder="e.g. Anand Sharma">
+                </div>
+
+                <div class="auth-input-group">
+                  <label for="gateInputEmail">Email Address</label>
+                  <input type="email" id="gateInputEmail" class="auth-input" placeholder="you@example.com" required>
+                </div>
+
+                <div class="auth-input-group">
+                  <label for="gateInputPassword">Password</label>
+                  <input type="password" id="gateInputPassword" class="auth-input" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-auth-submit" id="gateSubmitBtn">
+                  <i data-lucide="sparkles" style="width:16px;height:16px;"></i>
+                  <span id="gateSubmitBtnText">Sign In to 7-Day Course</span>
+                </button>
+              </form>
+
+              <!-- 1-Click Instant Demo Access -->
+              <div class="auth-demo-box">
+                <div class="auth-demo-label">Just exploring? Try instant access:</div>
+                <button type="button" class="btn-demo-access" onclick="window.bkAuth.loginDemo()">
+                  <i data-lucide="zap" style="width:15px;height:15px;color:#ffd700;"></i>
+                  <span>1-Click Instant Guest Access (Demo Student)</span>
+                </button>
+              </div>
+
+              <!-- Course Perks Grid -->
+              <div class="auth-perks-grid">
+                <div class="auth-perk-item">
+                  <i data-lucide="play-circle" style="width:18px;height:18px;color:#ffd700;"></i>
+                  <div>
+                    <strong>Sequential Learning</strong>
+                    <span>Day 1–7 video lectures & reflection guides</span>
+                  </div>
+                </div>
+                <div class="auth-perk-item">
+                  <i data-lucide="award" style="width:18px;height:18px;color:#ffd700;"></i>
+                  <div>
+                    <strong>Course Certificate</strong>
+                    <span>Personalized completion credential</span>
+                  </div>
+                </div>
+                <div class="auth-perk-item">
+                  <i data-lucide="cloud" style="width:18px;height:18px;color:#ffd700;"></i>
+                  <div>
+                    <strong>Sync Progress</strong>
+                    <span>Resume smoothly anytime on any device</span>
+                  </div>
+                </div>
+                <div class="auth-perk-item">
+                  <i data-lucide="heart-handshake" style="width:18px;height:18px;color:#ffd700;"></i>
+                  <div>
+                    <strong>100% Complimentary</strong>
+                    <span>Universal spiritual knowledge for all souls</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      `;
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
     render() {
       const container = document.getElementById('tab-course');
       if (!container) return;
 
+      const isAuthed = Boolean(window.bkAuth && window.bkAuth.isLoggedIn());
+      if (!isAuthed) {
+        this.renderAuthGate(container);
+        return;
+      }
+
+      const currentUser = window.bkAuth.getUser() || { name: 'Enrolled Seeker', email: 'seeker@bkkozhikode.com' };
       this.curriculum = this.getCurriculum();
       const activeMod = this.curriculum.find(m => m.day === this.state.activeDay) || this.curriculum[0];
       const completedCount = this.state.completedDays.length;
@@ -679,6 +887,29 @@
 
             <!-- Overall Course Progress Card -->
             <div class="course-progress-card" id="courseProgressCard">
+              <div class="user-auth-badge-row">
+                <div class="user-auth-info">
+                  <div class="user-auth-avatar-circle">
+                    ${currentUser.avatar 
+                      ? `<img src="${currentUser.avatar}" alt="${currentUser.name}" class="user-auth-avatar-img" onerror="this.parentElement.innerHTML='<i data-lucide=\\'user\\' style=\\'width:18px;height:18px;color:#ffd700;\\'></i>'">` 
+                      : `<i data-lucide="user" style="width:18px;height:18px;color:#ffd700;"></i>`}
+                  </div>
+                  <div class="user-auth-details">
+                    <div class="user-auth-name-line">
+                      <span class="user-auth-name">${currentUser.name}</span>
+                      <span class="user-auth-badge">Enrolled Seeker</span>
+                    </div>
+                    <div class="user-auth-email">${currentUser.email} • 7-Day Journey Synced</div>
+                  </div>
+                </div>
+                <div class="user-auth-actions">
+                  <button type="button" class="btn-auth-logout" onclick="window.bkAuth.logout()" title="Sign out of student account">
+                    <i data-lucide="log-out" style="width:13px;height:13px;"></i>
+                    <span>Sign Out</span>
+                  </button>
+                </div>
+              </div>
+
               <div class="course-progress-header">
                 <div class="progress-title-group">
                   <h3>
@@ -953,8 +1184,10 @@
               enablejsapi: 1,
               rel: 0,
               modestbranding: 1,
+              iv_load_policy: 3,
               playsinline: 1,
-              fs: 1
+              fs: 1,
+              disablekb: 0
             },
             events: {
               onStateChange: (event) => {
@@ -983,7 +1216,7 @@
       container.innerHTML = `
         <iframe 
           id="rajyogaCoursePlayer"
-          src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1&playsinline=1" 
+          src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&iv_load_policy=3&enablejsapi=1&playsinline=1&fs=1" 
           title="Day ${dayNumber} Video Lesson" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

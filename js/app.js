@@ -48,6 +48,11 @@ class AppController {
     this.initHeroCanvas();
     this.setupEventListeners();
 
+    if (window.bkConnectGod) {
+      window.bkConnectGod.loadDailyVardanAndMurli();
+      window.bkConnectGod.renderLiveZoomBanner('mediaZoomBannerContainer');
+    }
+
     // Listen for store updates
     window.addEventListener('bk_store_updated', () => {
       this.renderNavigation();
@@ -68,12 +73,16 @@ class AppController {
     
     if (cleanPath === 'rajayoga-course' || cleanPath === 'rajyoga-course' || cleanPath === 'course') {
       this.switchTab('course');
+    } else if (cleanPath === 'murali' || cleanPath === 'murli') {
+      this.switchTab('murali');
     } else if (cleanPath === 'navathi') {
       this.switchTab('navathi');
     } else if (cleanPath === 'events') {
       this.switchTab('events');
     } else if (hash) {
-      if (hash === 'navathi' || hash.startsWith('navathi-')) {
+      if (hash === 'murali' || hash === 'murli' || hash === 'tab-murali') {
+        this.switchTab('murali');
+      } else if (hash === 'navathi' || hash.startsWith('navathi-')) {
         const sub = hash.replace('navathi-', '');
         this.switchTab('navathi', sub !== 'navathi' ? sub : null);
       } else if (hash.startsWith('events-')) {
@@ -87,7 +96,7 @@ class AppController {
         const dayNum = dayMatch ? parseInt(dayMatch[1], 10) : null;
         this.switchTab('course', dayNum);
       } else {
-        this.switchTab(hash);
+        this.switchTab(hash.replace(/^tab-/, ''));
       }
     } else {
       this.updateHeaderTheme('home');
@@ -578,6 +587,11 @@ class AppController {
 
   // --- Render Daily Murali Sacred Reading Page ---
   renderDailyMuraliPage() {
+    if (window.bkMurli && typeof window.bkMurli.render === 'function') {
+      window.bkMurli.render();
+      return;
+    }
+
     const container = document.getElementById('dailyMuraliDisplayContainer');
     if (!container) return;
 
@@ -658,6 +672,9 @@ class AppController {
         <!-- Audio, Video & Center Join Actions -->
         <div class="murali-reader-footer-actions">
           ${mediaActionsHtml}
+          <button class="btn-hero-primary" style="background:linear-gradient(135deg, #b91c1c, #991b1b);" onclick="window.bkConnectGod ? window.bkConnectGod.openFullMurliModal() : bkApp.toast('Loading Murli...')">
+            <i data-lucide="book-open" style="width:15px;height:15px;"></i> സമ്പൂർണ്ണ മുരളി വായിക്കുക
+          </button>
           <button class="btn-hero-primary" onclick="bkApp.openRegistrationModal('Daily Murli Class at Center')">
             <i data-lucide="check-circle" style="width:15px;height:15px;"></i> Join Daily Class at Center
           </button>
@@ -670,6 +687,10 @@ class AppController {
 
   // --- Render Kozhikode Center List Directory (with Click-to-Call) ---
   renderCenters(filterType = 'all') {
+    if (window.bkConnectGod && window.bkConnectGod.renderContactsAndCenters) {
+      window.bkConnectGod.renderContactsAndCenters(filterType);
+      return;
+    }
     const container = document.getElementById('centersGridContainer');
     if (!container) return;
 
@@ -896,6 +917,10 @@ class AppController {
 
   // --- Render Filterable Gallery & Media ---
   renderGallery(category = 'all') {
+    if (window.bkConnectGod && window.bkConnectGod.loadCloudinaryWallpapers) {
+      window.bkConnectGod.loadCloudinaryWallpapers();
+      return;
+    }
     const container = document.getElementById('galleryGridContainer');
     if (!container) return;
 
@@ -941,6 +966,11 @@ class AppController {
 
   // --- Render Media Hub (Songs, Commentaries, Music, Videos, Films, Others, Social Channels) ---
   renderMediaHub(selectedCategory = 'all') {
+    if (window.bkConnectGod) {
+      window.bkConnectGod.render4ColumnChannelHub();
+      window.bkConnectGod.renderCloudflareAudioHub(selectedCategory);
+      return;
+    }
     const gridContainer = document.getElementById('mediaGridContainer');
     const socialGrid = document.getElementById('socialChannelsGridContainer');
     if (!gridContainer) return;
@@ -2081,7 +2111,7 @@ class AppController {
     const resize = () => {
       W = heroUniverse ? heroUniverse.offsetWidth : window.innerWidth;
       H = heroUniverse ? heroUniverse.offsetHeight : window.innerHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 2.5); // High-DPI Retina scaling for extreme sharpness
+      dpr = Math.min(window.devicePixelRatio || 1, 2); // High-DPI Retina scaling up to 2x for maximum sharpness
 
       canvas.width = Math.round(W * dpr);
       canvas.height = Math.round(H * dpr);
@@ -2092,11 +2122,12 @@ class AppController {
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
 
-      // Adaptive coordinates for Desktop vs Tablet vs Mobile
-      if (W < 600) {
-        p0 = { x: W * 0.5, y: H * 0.125 };
-        cy_forehead = H * 0.485;
-      } else if (W < 992) {
+      // Adaptive coordinates for Desktop vs Tablet vs Mobile Portrait (< 768px)
+      if (W < 768) {
+        // Specifically tuned for mobile portrait screens (9:16) so elements are not overly zoomed or cropped
+        p0 = { x: W * 0.5, y: H * 0.16 };
+        cy_forehead = H * 0.45;
+      } else if (W < 1024) {
         p0 = { x: W * 0.5, y: H * 0.135 };
         cy_forehead = H * 0.495;
       } else {

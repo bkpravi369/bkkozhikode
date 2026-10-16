@@ -211,79 +211,87 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             # Default placeholder channels data
             default_channels = [
                 {
+                    "id": "bks-calicut",
+                    "name": "BK S Calicut Live",
+                    "nameMl": "ബികെഎസ് കോഴിക്കോട് ലൈവ്",
+                    "contentType": "Latest Live",
+                    "categoryLabel": "Daily Live Murli & Meditation",
+                    "channelId": "UCTrf0g3Dpi5lW-jddmPlOpA",
+                    "playlistId": "",
+                    "youtubeUrl": "https://youtube.com/@bkscalicut9425",
+                    "instagramUrl": "https://instagram.com/bkscalicut",
+                    "facebookUrl": "https://facebook.com/bkscalicut",
+                    "logo": "assets/images/channel-logos/bks_calicut_logo.jpg",
+                    "active": True,
+                    "video": {
+                        "id": "u31qwQUeGuM",
+                        "title": "Live Daily Murli Class & Meditation",
+                        "thumbnail": "https://images.pexels.com/photos/7458079/pexels-photo-7458079.jpeg?auto=compress&cs=tinysrgb&h=400&w=600",
+                        "publishedAt": "Daily Broadcast",
+                        "description": "Daily Live Murli, Morning Classes, and Spiritual Discourses from Calicut center."
+                    }
+                },
+                {
                     "id": "supreme-light-creations",
                     "name": "Supreme Light Creations",
+                    "nameMl": "സുപ്രീം ലൈറ്റ് ക്രിയേഷൻസ്",
                     "contentType": "Podcast",
                     "categoryLabel": "Spiritual Podcast",
-                    "channelId": "",
+                    "channelId": "UC98sbhynzcgLlx9x-SYi6zg",
                     "playlistId": "",
                     "youtubeUrl": "https://youtube.com/@supremelightcreations",
                     "instagramUrl": "https://instagram.com/supremelightcreations",
                     "facebookUrl": "https://facebook.com/supremelightcreations",
+                    "logo": "assets/images/channel-logos/Supremelight_creation_logo_new.png",
                     "active": True,
                     "video": {
-                        "id": "",
-                        "title": "Awakening Higher Consciousness & Soul Healing",
-                        "thumbnail": "assets/images/paramdham_sunset.jpg",
+                        "id": "8_UXOgXz7MA",
+                        "title": "Daily Murli Malayalam Podcast - Supreme Light",
+                        "thumbnail": "https://i.ytimg.com/vi/8_UXOgXz7MA/hqdefault.jpg",
                         "publishedAt": "Recent Episode",
-                        "description": "Weekly spiritual podcast series exploring deep meditation, soul consciousness, and divine virtues."
-                    }
-                },
-                {
-                    "id": "bks-calicut",
-                    "name": "BKs Calicut",
-                    "contentType": "Latest Live",
-                    "categoryLabel": "Live / Discourse",
-                    "channelId": "",
-                    "playlistId": "",
-                    "youtubeUrl": "https://youtube.com/@bkscalicut",
-                    "instagramUrl": "https://instagram.com/bkscalicut",
-                    "facebookUrl": "https://facebook.com/bkscalicut",
-                    "active": True,
-                    "video": {
-                        "id": "",
-                        "title": "Daily Rajyoga Meditation & Satsang Discourse",
-                        "thumbnail": "assets/images/meditation_hall.jpg",
-                        "publishedAt": "Live Broadcasts",
-                        "description": "Daily collective Rajyoga meditation broadcasts, Murli reflections, and spiritual empowerment sessions."
+                        "description": "Deep spiritual podcasts, soul realization series, and transformative reflections."
                     }
                 },
                 {
                     "id": "bk-sheeba",
                     "name": "BK Sheeba",
+                    "nameMl": "ബികെ ഷീബ",
                     "contentType": "Latest Video",
                     "categoryLabel": "Discourse / Class",
                     "channelId": "",
                     "playlistId": "",
-                    "youtubeUrl": "https://youtube.com/@bksheeba",
+                    "youtubeUrl": "https://youtube.com/@BKSheeba",
                     "instagramUrl": "https://instagram.com/bksheeba",
                     "facebookUrl": "https://facebook.com/bksheeba",
+                    "logo": "assets/images/channel-logos/BK_sheeba_logo.png",
                     "active": True,
                     "video": {
-                        "id": "",
-                        "title": "Mastering the Mind & Overcoming Life Challenges",
-                        "thumbnail": "assets/images/light_palace_center.jpg",
-                        "publishedAt": "Recent Video",
-                        "description": "Practical insights and inspiring spiritual classes on peace, emotional resilience, and Rajyoga lifestyle."
+                        "id": "_kKSsaZaklI",
+                        "title": "Think This Way, And You Can Manifest Anything - BK Sheeba",
+                        "thumbnail": "https://i.ytimg.com/vi/_kKSsaZaklI/hqdefault.jpg",
+                        "publishedAt": "Featured Class",
+                        "description": "Rajayoga meditation experiences, spiritual lectures, and lifestyle guidance by BK Sheeba."
                     }
                 },
                 {
                     "id": "bk-sheeja",
                     "name": "BK Sheeja",
+                    "nameMl": "ബികെ ഷീജ",
                     "contentType": "Latest Video",
                     "categoryLabel": "Spiritual Insights",
                     "channelId": "",
                     "playlistId": "",
-                    "youtubeUrl": "https://youtube.com/@bksheeja",
+                    "youtubeUrl": "https://youtube.com/@BKSheeja",
                     "instagramUrl": "https://instagram.com/bksheeja",
                     "facebookUrl": "",
+                    "logo": "assets/images/channel-logos/BK_Sheeja_real.png",
                     "active": True,
                     "video": {
-                        "id": "",
-                        "title": "Inner Power & Harmonious Relationships",
-                        "thumbnail": "assets/images/rajyoga_peace.jpg",
-                        "publishedAt": "Recent Video",
-                        "description": "Gentle guidance on cultivating divine virtues, soul-conscious vision, and pure intentions."
+                        "id": "tiKb43faieY",
+                        "title": "Spiritual Class & Meditation - BK Sheeja",
+                        "thumbnail": "https://i.ytimg.com/vi/tiKb43faieY/hqdefault.jpg",
+                        "publishedAt": "Featured Meditation",
+                        "description": "Heart-touching songs, spiritual commentary, and empowering classes by BK Sheeja."
                     }
                 }
             ]
@@ -338,6 +346,96 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                 with open(admin_index, 'rb') as f:
                     self.wfile.write(f.read())
                 return
+
+        # API: Daily Murli Sync Proxy
+        if clean_path.startswith('/api/daily-murli-sync') or clean_path.startswith('/api/daily-murli'):
+            parsed_url = urllib.parse.urlparse(self.path)
+            query_str = parsed_url.query
+            remote_url = "https://connect-god-app.vercel.app/api/daily-murli-sync"
+            if query_str:
+                remote_url += f"?{query_str}"
+            try:
+                req = urllib.request.Request(
+                    remote_url,
+                    headers={'User-Agent': 'Mozilla/5.0 (BK-Kozhikode-Website)'}
+                )
+                with urllib.request.urlopen(req, timeout=8) as resp:
+                    resp_bytes = resp.read()
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json; charset=utf-8')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+                    self.end_headers()
+                    self.wfile.write(resp_bytes)
+                    return
+            except Exception as e:
+                pass
+
+        # API: Get Murli & Vardan Proxy
+        if clean_path.startswith('/api/get-murli'):
+            parsed_url = urllib.parse.urlparse(self.path)
+            query_str = parsed_url.query
+            remote_url = f"https://connect-god-app.vercel.app/api/get-murli?{query_str}" if query_str else "https://connect-god-app.vercel.app/api/get-murli"
+            try:
+                req = urllib.request.Request(
+                    remote_url,
+                    headers={'User-Agent': 'Mozilla/5.0 (BK-Kozhikode-Website)'}
+                )
+                with urllib.request.urlopen(req, timeout=8) as resp:
+                    resp_bytes = resp.read()
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json; charset=utf-8')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+                    self.end_headers()
+                    self.wfile.write(resp_bytes)
+                    return
+            except Exception:
+                pass
+
+            query_params = urllib.parse.parse_qs(parsed_url.query)
+            lang = query_params.get('lang', ['ml'])[0]
+            raw_date = query_params.get('date', [''])[0]
+            
+            # Format today date DD.MM.YY
+            now_dt = time.localtime()
+            today_ddmmyy = f"{now_dt.tm_mday:02d}.{now_dt.tm_mon:02d}.{str(now_dt.tm_year)[-2:]}"
+            today_ymd = f"{now_dt.tm_year:04d}-{now_dt.tm_mon:02d}-{now_dt.tm_mday:02d}"
+            date_to_use = raw_date if raw_date else today_ddmmyy
+            
+            # Attempt to read from data/malayalam_murli_vardans.json fallback
+            fallback_vardan = ""
+            vardan_file = os.path.join(os.getcwd(), 'data', 'malayalam_murli_vardans.json')
+            if os.path.exists(vardan_file):
+                try:
+                    with open(vardan_file, 'r', encoding='utf-8') as vf:
+                        vardans_list = json.load(vf)
+                        if isinstance(vardans_list, list):
+                            for v_item in vardans_list:
+                                if v_item.get('date') == today_ymd:
+                                    fallback_vardan = v_item.get('vardan', '')
+                                    break
+                            if not fallback_vardan and len(vardans_list) > 0:
+                                fallback_vardan = vardans_list[-1].get('vardan', '')
+                except Exception:
+                    pass
+
+            response_data = {
+                "success": True,
+                "lang": lang,
+                "date": date_to_use,
+                "date_ymd": today_ymd,
+                "vardan": fallback_vardan,
+                "source": "local_proxy"
+            }
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+            return
 
         # API: Admin Verify Session
         if clean_path.startswith('/api/admin/verify'):

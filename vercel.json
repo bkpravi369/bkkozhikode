@@ -4,6 +4,8 @@
     { "source": "/rajayoga-course", "destination": "/index.html" },
     { "source": "/rajyoga-course", "destination": "/index.html" },
     { "source": "/course", "destination": "/index.html" },
+    { "source": "/murali", "destination": "/index.html" },
+    { "source": "/murli", "destination": "/index.html" },
     { "source": "/navathi", "destination": "/index.html" },
     { "source": "/events", "destination": "/index.html" },
     { "source": "/bk-admin", "destination": "/admin/index.html" },

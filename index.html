@@ -30,9 +30,11 @@
   <link rel="preload" as="image" href="assets/video/rajyoga-poster-mobile.jpg" media="(max-width: 640px)">
 
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=38">
-  <link rel="stylesheet" href="css/hero.css?v=38">
-  <link rel="stylesheet" href="css/course.css?v=38">
+  <link rel="stylesheet" href="css/style.css?v=41">
+  <link rel="stylesheet" href="css/hero.css?v=41">
+  <link rel="stylesheet" href="css/course.css?v=41">
+  <link rel="stylesheet" href="css/connect-god.css?v=41">
+  <link rel="stylesheet" href="css/murli.css?v=42">
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=38">
   <link rel="apple-touch-icon" href="assets/images/logo-128.png?v=38">
 
@@ -434,10 +436,10 @@
 
           <!-- Centers Filter -->
           <div class="centers-filter-bar" id="centersFilterBar">
-            <button class="center-filter-btn active" onclick="bkApp.filterCenters('all', this)">All Centers</button>
-            <button class="center-filter-btn" onclick="bkApp.filterCenters('main', this)">Main Center (Ashokapuram)</button>
-            <button class="center-filter-btn" onclick="bkApp.filterCenters('city', this)">City Branches</button>
-            <button class="center-filter-btn" onclick="bkApp.filterCenters('rural', this)">District Centers (Vadakara, Balussery, Koyilandy)</button>
+            <button class="center-filter-btn active" onclick="bkApp.filterCenters('all', this)">All Centers (19)</button>
+            <button class="center-filter-btn" onclick="bkApp.filterCenters('kozhikode', this)">Kozhikode Main & Branches (17)</button>
+            <button class="center-filter-btn" onclick="bkApp.filterCenters('wayanad', this)">Wayanad District (2)</button>
+            <button class="center-filter-btn" onclick="bkApp.filterCenters('hq', this)">14 Kerala District HQs (14)</button>
           </div>
 
           <div class="centers-grid" id="centersGridContainer">
@@ -494,6 +496,9 @@
               Explore spiritual songs, guided meditation commentaries, peaceful instrumental music, video discourses, short films, and official social channels.
             </p>
           </div>
+
+          <!-- Live Zoom Session Quick Access Banner -->
+          <div id="mediaZoomBannerContainer"></div>
 
           <!-- Media Category Filter Pills -->
           <div class="media-filter-bar" id="mediaFilterBar">
@@ -729,21 +734,11 @@
          SECTION: DAILY MURALI (SACRED DAILY WISDOM READING)
          ========================================================================= -->
     <section id="tab-murali" class="tab-pane">
-      <div class="section-padding">
+      <div class="section-padding" style="padding-top:1.5rem;">
         <div class="container">
-          <div class="section-header">
-            <span class="section-kicker">Divine Sustenance • ഈശ്വരീയ മഹാവാക്യങ്ങൾ</span>
-            <h2>Daily Murali</h2>
-            <div class="section-title-ml">നിത്യ മുരളി & ആത്മീയ സന്ദേശം</div>
-            <div class="divider-sun"></div>
-            <p class="section-subtitle">
-              Daily elevated spiritual versions spoken by Shiv Baba for personal transformation, soul consciousness, and divine purity.
-            </p>
-          </div>
-
-          <!-- Dynamic Daily Murali Reading Card -->
+          <!-- Official Daily Murli Platform (Exact connect-god-app layout) -->
           <div id="dailyMuraliDisplayContainer">
-            <!-- Injected by js/app.js -->
+            <!-- Injected by js/murli.js -->
           </div>
         </div>
       </div>
@@ -1037,15 +1032,86 @@
     </div>
   </div>
 
+  <!-- 7-Day Rajyoga Course Auth Modal -->
+  <div class="modal-backdrop" id="courseAuthModal" style="display:none;" onclick="if(event.target === this) bkAuth.closeAuthModal()">
+    <div class="modal-card course-auth-modal-card">
+      <button class="modal-close-btn" onclick="bkAuth.closeAuthModal()" aria-label="Close authentication modal">✕</button>
+      <div class="auth-modal-header">
+        <img src="assets/images/logo.png" alt="Brahma Kumaris Emblem" class="auth-modal-logo">
+        <h3>7-Day Rajyoga Course Access</h3>
+        <p>സൗജന്യ രാജയോഗ ആത്മീയ പഠന യാത്രയിലേക്ക് സ്വാഗതം</p>
+      </div>
+
+      <div class="auth-tabs-nav">
+        <button type="button" class="auth-tab-btn active" id="authTabBtnSignin" onclick="bkAuth.switchAuthTab('signin')">Sign In</button>
+        <button type="button" class="auth-tab-btn" id="authTabBtnSignup" onclick="bkAuth.switchAuthTab('signup')">Create Free Account</button>
+      </div>
+
+      <div class="auth-modal-body">
+        <button type="button" class="btn-auth-google" onclick="bkAuth.loginWithGoogle()">
+          <svg class="google-icon-svg" width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <div class="auth-divider">
+          <span>or with email</span>
+        </div>
+
+        <form class="auth-form" onsubmit="bkAuth.handleFormSubmit(event)">
+          <input type="hidden" id="authFormMode" value="signin">
+          
+          <div class="auth-input-group" id="authNameFieldGroup" style="display:none;">
+            <label for="authInputName">Your Full Name (for Certificate)</label>
+            <input type="text" id="authInputName" placeholder="e.g. Anjali Nair" class="auth-input">
+          </div>
+
+          <div class="auth-input-group">
+            <label for="authInputEmail">Email Address</label>
+            <input type="email" id="authInputEmail" placeholder="your.name@example.com" class="auth-input" required>
+          </div>
+
+          <div class="auth-input-group">
+            <label for="authInputPassword">Password</label>
+            <input type="password" id="authInputPassword" placeholder="••••••••" class="auth-input">
+          </div>
+
+          <button type="submit" class="btn-auth-submit">
+            <span id="authSubmitBtnText">Sign In to Course</span>
+            <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+          </button>
+        </form>
+
+        <div class="auth-demo-shortcut">
+          <button type="button" class="btn-demo-access" onclick="bkAuth.loginDemo()">
+            <i data-lucide="zap" style="width:15px;height:15px;color:#ffd700;"></i>
+            <span>1-Click Instant Demo Access</span>
+          </button>
+        </div>
+
+        <div class="auth-security-perks">
+          <span>🔒 Free spiritual study</span> • <span>🕊️ Progress saved in real-time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
 
 
   <!-- Scripts -->
-  <script src="js/hero.js?v=38"></script>
-  <script src="js/store.js?v=38"></script>
-  <script src="js/course.js?v=38"></script>
-  <script src="js/app.js?v=38"></script>
+  <script src="js/hero.js?v=41"></script>
+  <script src="js/store.js?v=41"></script>
+  <script src="js/auth.js?v=41"></script>
+  <script src="js/course.js?v=41"></script>
+  <script src="js/connect-god.js?v=41"></script>
+  <script src="js/murli.js?v=42"></script>
+  <script src="js/app.js?v=41"></script>
   <script>
     // Initialize Lucide Icons on load
     document.addEventListener('DOMContentLoaded', () => {
