@@ -93,8 +93,13 @@
 
     initAudioElement() {
       if (typeof window === 'undefined') return;
+      this.candidates = this.getAudioCandidates(this.selectedLang);
+      this.candidateIndex = 0;
       this.audio = new Audio();
       this.audio.preload = 'metadata';
+      if (this.candidates && this.candidates[0]) {
+        this.audio.src = this.candidates[0];
+      }
 
       this.audio.addEventListener('play', () => {
         this.isPlaying = true;
@@ -163,6 +168,7 @@
         ];
       }
       return [
+        `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/03.%20Malayalam%20Murli%20-%20MP3/${ddmmyy}-Mal.mp3`,
         `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/03.%20Malayalam%20Murli%20-%20Mp3/${ddmmyy}-Mal.mp3`,
         `https://bkdrluhar.com/00.%20Mp3/06.%20Malayalam/${ddmmyy}.mp3`
       ];
@@ -244,7 +250,7 @@
             code: 'ml',
             html: '',
             pdfUrl: `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/02.%20Malayalam%20Murli%20-%20Pdf/${ddmmyy}-Mal.pdf`,
-            audioUrl: `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/03.%20Malayalam%20Murli%20-%20Mp3/${ddmmyy}-Mal.mp3`,
+            audioUrl: `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/03.%20Malayalam%20Murli%20-%20MP3/${ddmmyy}-Mal.mp3`,
             htmlUrl: `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/01.%20Malayalam%20Murli%20-%20Htm/${ddmmyy}-Mal.htm`
           },
           hi: {
@@ -308,10 +314,12 @@
 
     togglePlay() {
       if (!this.audio) return;
-      if (!this.audio.src || this.audio.src === window.location.href) {
+      if (!this.audio.src || this.audio.src === window.location.href || this.candidateIndex >= this.candidates.length) {
         this.candidates = this.getAudioCandidates(this.selectedLang);
         this.candidateIndex = 0;
-        this.audio.src = this.candidates[0];
+        if (this.candidates[0]) {
+          this.audio.src = this.candidates[0];
+        }
       }
 
       if (this.audio.paused) {

@@ -208,7 +208,7 @@ export default async function handler(req, res) {
   // Babamurli.com direct media paths
   const mlHtmlUrl = `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/01.%20Malayalam%20Murli%20-%20Htm/${ddmmyy}-Mal.htm`;
   const mlPdfUrl = `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/02.%20Malayalam%20Murli%20-%20Pdf/${ddmmyy}-Mal.pdf`;
-  const mlAudioUrl = `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/03.%20Malayalam%20Murli%20-%20Mp3/${ddmmyy}-Mal.mp3`;
+  const mlAudioUrl = `https://www.babamurli.com/01.%20Daily%20Murli/06.%20Malayalam/03.%20Malayalam%20Murli%20-%20MP3/${ddmmyy}-Mal.mp3`;
 
   const hiHtmlUrl = `https://www.babamurli.com/01.%20Daily%20Murli/01.%20Hindi/01.%20Hindi%20Murli%20-%20Htm/${ddmmyy}-H.htm`;
   const hiPdfUrl = `https://www.babamurli.com/01.%20Daily%20Murli/01.%20Hindi/02.%20Hindi%20Murli%20-%20Pdf/${ddmmyy}-h.pdf`;

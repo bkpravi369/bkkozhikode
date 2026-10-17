@@ -362,54 +362,88 @@
   // ──────────────────────────────────────────────────────────────────────────
   // 4. 4-Column Channel Hub Grid
   // ──────────────────────────────────────────────────────────────────────────
-  function render4ColumnChannelHub() {
-    const channelsContainer = document.getElementById('socialChannelsGridContainer');
+  let channelHubDataCache = null;
+
+  async function fetchLiveMediaHubData() {
+    if (channelHubDataCache) return channelHubDataCache;
+    const endpoints = [
+      '/api/media-hub',
+      'https://connect-god-app.vercel.app/api/media-hub'
+    ];
+    for (const ep of endpoints) {
+      try {
+        const res = await fetch(ep, {
+          headers: { 'Cache-Control': 'no-cache' }
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json && json.success) {
+            channelHubDataCache = json;
+            return json;
+          }
+        }
+      } catch (_) {}
+    }
+    return null;
+  }
+
+  async function render4ColumnChannelHub() {
+    const channelsContainer = document.getElementById('homeChannelsGridContainer') || document.getElementById('socialChannelsGridContainer');
     if (!channelsContainer) return;
 
+    // 1. Base channel definitions with reliable defaults
     const channels = [
       {
         id: 'bks-calicut',
         name: 'BK S Calicut Live',
         nameMl: 'ബികെഎസ് കോഴിക്കോട് ലൈവ്',
+        badge: 'LIVE CLASS',
+        badgeColor: '#dc2626',
         description: 'Daily Live Murli, Morning Classes, and Spiritual Discourses from Calicut center.',
         youtubeUrl: 'https://youtube.com/@bkscalicut9425',
         instagramUrl: 'https://instagram.com/bkscalicut',
         facebookUrl: 'https://facebook.com/bkscalicut',
-        thumbnail: 'https://images.pexels.com/photos/7458079/pexels-photo-7458079.jpeg?auto=compress&cs=tinysrgb&h=400&w=600',
+        thumbnail: 'https://i.ytimg.com/vi/CBZDqt2d-eE/hqdefault.jpg',
         logo: 'assets/images/channel-logos/bks_calicut_logo.jpg',
-        featuredVideoId: 'u31qwQUeGuM',
+        featuredVideoId: 'CBZDqt2d-eE',
         featuredVideoTitle: 'Live Daily Murli Class & Meditation'
       },
       {
         id: 'supreme-light',
         name: 'Supreme Light Creations',
         nameMl: 'സുപ്രീം ലൈറ്റ് ക്രിയേഷൻസ്',
+        badge: 'PODCAST',
+        badgeColor: '#d97706',
         description: 'Deep spiritual podcasts, soul realization series, and transformative reflections.',
         youtubeUrl: 'https://youtube.com/@supremelightcreations',
         instagramUrl: 'https://instagram.com/supremelightcreations',
         facebookUrl: 'https://facebook.com/supremelightcreations',
-        thumbnail: 'https://i.ytimg.com/vi/8_UXOgXz7MA/hqdefault.jpg',
+        thumbnail: 'https://i.ytimg.com/vi/g7iSs6nLa0M/hqdefault.jpg',
         logo: 'assets/images/channel-logos/Supremelight_creation_logo_new.png',
-        featuredVideoId: '8_UXOgXz7MA',
+        featuredVideoId: 'g7iSs6nLa0M',
         featuredVideoTitle: 'Daily Murli Malayalam Podcast - Supreme Light'
       },
       {
         id: 'bk-sheeba',
         name: 'BK Sheeba',
         nameMl: 'ബികെ ഷീബ',
+        badge: 'CLASSES',
+        badgeColor: '#c13584',
         description: 'Rajayoga meditation experiences, spiritual lectures, and lifestyle guidance by BK Sheeba.',
         youtubeUrl: 'https://youtube.com/@BKSheeba',
         instagramUrl: 'https://instagram.com/bksheeba',
         facebookUrl: 'https://facebook.com/bksheeba',
-        thumbnail: 'https://i.ytimg.com/vi/_kKSsaZaklI/hqdefault.jpg',
+        thumbnail: 'https://i.ytimg.com/vi/p6BYgXs0AAY/hqdefault.jpg',
         logo: 'assets/images/channel-logos/BK_sheeba_logo.png',
-        featuredVideoId: '_kKSsaZaklI',
-        featuredVideoTitle: 'Think This Way, And You Can Manifest Anything - BK Sheeba'
+        featuredVideoId: 'p6BYgXs0AAY',
+        featuredVideoTitle: 'Learn To Bless Yourself With Your Own Words - BK Sheeba'
       },
       {
         id: 'bk-sheeja',
         name: 'BK Sheeja',
         nameMl: 'ബികെ ഷീജ',
+        badge: 'MEDITATION',
+        badgeColor: '#7c3aed',
         description: 'Heart-touching songs, spiritual commentary, and empowering classes by BK Sheeja.',
         youtubeUrl: 'https://youtube.com/@BKSheeja',
         instagramUrl: 'https://instagram.com/bksheeja',
@@ -421,65 +455,121 @@
       }
     ];
 
-    channelsContainer.innerHTML = '';
-    channelsContainer.className = 'channel-hub-grid';
+    // Helper to paint cards
+    function renderCards(list) {
+      channelsContainer.innerHTML = '';
+      channelsContainer.className = 'channel-hub-grid';
 
-    channels.forEach(ch => {
-      const card = document.createElement('div');
-      card.className = 'channel-hub-card';
-      card.innerHTML = `
-        <div class="channel-thumb-box">
-          <img src="${ch.thumbnail}" alt="${ch.name}" class="channel-thumb-img">
-          <div class="channel-thumb-overlay"></div>
-          <div class="channel-avatar-ring">
-            <img src="${ch.logo}" alt="${ch.name}" class="channel-avatar-img" onerror="this.src='assets/images/logo.png'">
+      list.forEach(ch => {
+        const card = document.createElement('div');
+        card.className = 'channel-hub-card';
+        card.innerHTML = `
+          <div class="channel-thumb-box" onclick="bkConnectGod.playFeaturedVideo('${ch.featuredVideoId}', '${ch.featuredVideoTitle.replace(/'/g, "\\'")}', '${ch.name.replace(/'/g, "\\'")}')" style="cursor:pointer;" title="Click to watch ${ch.featuredVideoTitle}">
+            <img src="${ch.thumbnail}" alt="${ch.name}" class="channel-thumb-img" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80'">
+            <div class="channel-thumb-overlay"></div>
+            <div style="position:absolute;top:10px;right:10px;background:${ch.badgeColor || '#dc2626'};color:#ffffff;font-size:0.7rem;font-weight:800;padding:3px 8px;border-radius:6px;letter-spacing:0.5px;box-shadow:0 2px 6px rgba(0,0,0,0.3);z-index:2;">
+              ${ch.badge || 'LATEST'}
+            </div>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;pointer-events:none;">
+              <div style="width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,0.6);border:1.5px solid rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;color:#ffffff;">
+                <i data-lucide="play" style="width:16px;height:16px;fill:currentColor;margin-left:2px;"></i>
+              </div>
+            </div>
+            <div class="channel-avatar-ring">
+              <img src="${ch.logo}" alt="${ch.name}" class="channel-avatar-img" onerror="this.src='assets/images/logo.png'">
+            </div>
           </div>
-        </div>
-        <div class="channel-card-body">
-          <div class="channel-card-title">${ch.name}</div>
-          <div class="channel-card-title-ml">${ch.nameMl}</div>
-          <div class="channel-card-desc">${ch.description}</div>
-          
-          <div class="channel-social-actions">
-            ${ch.youtubeUrl ? `
-              <a href="${ch.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="channel-social-btn yt" title="YouTube Channel">
-                <i data-lucide="youtube" style="width:16px;height:16px;"></i>
-              </a>
-            ` : ''}
-            ${ch.instagramUrl ? `
-              <a href="${ch.instagramUrl}" target="_blank" rel="noopener noreferrer" class="channel-social-btn ig" title="Instagram Profile">
-                <i data-lucide="instagram" style="width:16px;height:16px;"></i>
-              </a>
-            ` : ''}
-            ${ch.facebookUrl ? `
-              <a href="${ch.facebookUrl}" target="_blank" rel="noopener noreferrer" class="channel-social-btn fb" title="Facebook Page">
-                <i data-lucide="facebook" style="width:16px;height:16px;"></i>
-              </a>
-            ` : ''}
+          <div class="channel-card-body">
+            <div class="channel-card-title">${ch.name}</div>
+            <div class="channel-card-title-ml">${ch.nameMl}</div>
+            <div class="channel-card-desc" style="font-weight:600;color:#1e293b;margin-bottom:0.75rem;" title="${ch.featuredVideoTitle}">
+              ${ch.featuredVideoTitle}
+            </div>
+            
+            <div class="channel-social-actions">
+              ${ch.youtubeUrl ? `
+                <a href="${ch.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="channel-social-btn yt" title="Visit YouTube Channel">
+                  <i data-lucide="youtube" style="width:16px;height:16px;"></i>
+                </a>
+              ` : ''}
+              ${ch.instagramUrl ? `
+                <a href="${ch.instagramUrl}" target="_blank" rel="noopener noreferrer" class="channel-social-btn ig" title="Instagram Profile">
+                  <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+                </a>
+              ` : ''}
+              ${ch.facebookUrl ? `
+                <a href="${ch.facebookUrl}" target="_blank" rel="noopener noreferrer" class="channel-social-btn fb" title="Facebook Page">
+                  <i data-lucide="facebook" style="width:16px;height:16px;"></i>
+                </a>
+              ` : ''}
+            </div>
+
+            <button class="channel-btn-play" onclick="bkConnectGod.playFeaturedVideo('${ch.featuredVideoId}', '${ch.featuredVideoTitle.replace(/'/g, "\\'")}', '${ch.name.replace(/'/g, "\\'")}')">
+              <i data-lucide="play" style="width:14px;height:14px;fill:currentColor;"></i>
+              <span>Watch Latest Broadcast</span>
+            </button>
           </div>
+        `;
+        channelsContainer.appendChild(card);
+      });
 
-          <button class="channel-btn-play" onclick="bkConnectGod.playFeaturedVideo('${ch.featuredVideoId}', '${ch.name}')">
-            <i data-lucide="play" style="width:14px;height:14px;fill:currentColor;"></i>
-            <span>Watch Featured Video</span>
-          </button>
-        </div>
-      `;
-      channelsContainer.appendChild(card);
-    });
+      if (window.lucide) window.lucide.createIcons();
+    }
 
-    if (window.lucide) window.lucide.createIcons();
+    // Immediate initial render with reliable defaults so there's zero UI delay
+    renderCards(channels);
+
+    // 2. Fetch live updates dynamically from serverless media-hub
+    try {
+      const liveData = await fetchLiveMediaHubData();
+      if (liveData) {
+        if (liveData.liveVideo && liveData.liveVideo.videoId) {
+          channels[0].featuredVideoId = liveData.liveVideo.videoId;
+          channels[0].featuredVideoTitle = liveData.liveVideo.title || channels[0].featuredVideoTitle;
+          channels[0].thumbnail = liveData.liveVideo.thumbnail || channels[0].thumbnail;
+          if (liveData.liveVideo.badge) channels[0].badge = liveData.liveVideo.badge;
+          if (liveData.liveVideo.badgeColor) channels[0].badgeColor = liveData.liveVideo.badgeColor;
+        }
+        if (liveData.podcastVideo && liveData.podcastVideo.videoId) {
+          channels[1].featuredVideoId = liveData.podcastVideo.videoId;
+          channels[1].featuredVideoTitle = liveData.podcastVideo.title || channels[1].featuredVideoTitle;
+          channels[1].thumbnail = liveData.podcastVideo.thumbnail || channels[1].thumbnail;
+          if (liveData.podcastVideo.badge) channels[1].badge = liveData.podcastVideo.badge;
+          if (liveData.podcastVideo.badgeColor) channels[1].badgeColor = liveData.podcastVideo.badgeColor;
+        }
+        if (liveData.sheebaVideo && liveData.sheebaVideo.videoId) {
+          channels[2].featuredVideoId = liveData.sheebaVideo.videoId;
+          channels[2].featuredVideoTitle = liveData.sheebaVideo.title || channels[2].featuredVideoTitle;
+          channels[2].thumbnail = liveData.sheebaVideo.thumbnail || channels[2].thumbnail;
+          if (liveData.sheebaVideo.badge) channels[2].badge = liveData.sheebaVideo.badge;
+          if (liveData.sheebaVideo.badgeColor) channels[2].badgeColor = liveData.sheebaVideo.badgeColor;
+        }
+        if (liveData.sheejaVideo && liveData.sheejaVideo.videoId) {
+          channels[3].featuredVideoId = liveData.sheejaVideo.videoId;
+          channels[3].featuredVideoTitle = liveData.sheejaVideo.title || channels[3].featuredVideoTitle;
+          channels[3].thumbnail = liveData.sheejaVideo.thumbnail || channels[3].thumbnail;
+          if (liveData.sheejaVideo.badge) channels[3].badge = liveData.sheejaVideo.badge;
+          if (liveData.sheejaVideo.badgeColor) channels[3].badgeColor = liveData.sheejaVideo.badgeColor;
+        }
+
+        // Re-render with dynamic live data
+        renderCards(channels);
+      }
+    } catch (e) {
+      console.warn('[render4ColumnChannelHub] dynamic update fallback:', e);
+    }
   }
 
-  function playFeaturedVideo(videoId, title) {
+  function playFeaturedVideo(videoId, title, channelName) {
     if (window.bkApp && window.bkApp.openEmbeddedVideo) {
-      window.bkApp.openEmbeddedVideo(videoId, title, 'Brahma Kumaris Channel Broadcast');
+      window.bkApp.openEmbeddedVideo(videoId, title, channelName || 'Brahma Kumaris Channel Broadcast');
     } else {
       window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
     }
   }
 
   // ──────────────────────────────────────────────────────────────────────────
-  // 5. Cloudflare R2 Audio Player & Downloader
+  // 5. Cloudflare R2 Audio Player & Downloader (Strictly Songs & Commentaries)
   // ──────────────────────────────────────────────────────────────────────────
   const AUDIO_SUBTABS = [
     // Songs
@@ -491,11 +581,7 @@
     // Commentaries
     { key: 'commentary-sheeba', label: 'BK Sheeba Sister', group: 'commentaries', folder: 'commentary-sheeba sister' },
     { key: 'commentary-sheeja', label: 'BK Sheeja Sister', group: 'commentaries', folder: 'commentary-sheeja sister' },
-    { key: 'commentary-others', label: 'Other Commentaries', group: 'commentaries', folder: 'commentary-others' },
-    // Music
-    { key: 'Meditation-music', label: 'Meditation Music', group: 'music', folder: 'Meditation-music' },
-    { key: 'own-music', label: 'Own Music', group: 'music', folder: 'own-music ' },
-    { key: 'function-music', label: 'Function Music', group: 'music', folder: 'function-music' }
+    { key: 'commentary-others', label: 'Other Commentaries', group: 'commentaries', folder: 'commentary-others' }
   ];
 
   function formatAudioTitle(raw) {

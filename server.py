@@ -361,6 +361,11 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                 )
                 with urllib.request.urlopen(req, timeout=8) as resp:
                     resp_bytes = resp.read()
+                    # Guarantee uppercase MP3 for Malayalam Murli
+                    resp_bytes = resp_bytes.replace(
+                        b'03.%20Malayalam%20Murli%20-%20Mp3',
+                        b'03.%20Malayalam%20Murli%20-%20MP3'
+                    )
                     self.send_response(200)
                     self.send_header('Content-Type', 'application/json; charset=utf-8')
                     self.send_header('Access-Control-Allow-Origin', '*')
@@ -389,7 +394,6 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                     self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
                     self.end_headers()
                     self.wfile.write(resp_bytes)
-                    return
             except Exception:
                 pass
 
@@ -436,6 +440,28 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
             return
+
+        # API: Media Hub Proxy (Dynamic 4-channel feeds)
+        if clean_path.startswith('/api/media-hub'):
+            parsed_url = urllib.parse.urlparse(self.path)
+            query_str = parsed_url.query
+            remote_url = f"https://connect-god-app.vercel.app/api/media-hub?{query_str}" if query_str else "https://connect-god-app.vercel.app/api/media-hub"
+            try:
+                req = urllib.request.Request(
+                    remote_url,
+                    headers={'User-Agent': 'Mozilla/5.0 (BK-Kozhikode-Website)'}
+                )
+                with urllib.request.urlopen(req, timeout=10) as resp:
+                    resp_bytes = resp.read()
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json; charset=utf-8')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+                    self.end_headers()
+                    self.wfile.write(resp_bytes)
+                    return
+            except Exception:
+                pass
 
         # API: Admin Verify Session
         if clean_path.startswith('/api/admin/verify'):

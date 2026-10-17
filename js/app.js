@@ -50,7 +50,7 @@ class AppController {
 
     if (window.bkConnectGod) {
       window.bkConnectGod.loadDailyVardanAndMurli();
-      window.bkConnectGod.renderLiveZoomBanner('mediaZoomBannerContainer');
+      window.bkConnectGod.render4ColumnChannelHub();
     }
 
     // Listen for store updates
@@ -221,37 +221,13 @@ class AppController {
               <li>
                 <button class="dropdown-item" onclick="bkApp.switchTab('media', 'songs'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
                   <i data-lucide="music-2" style="width:15px;height:15px;"></i>
-                  <span>Songs</span>
+                  <span>Songs (ഗാനങ്ങൾ)</span>
                 </button>
               </li>
               <li>
                 <button class="dropdown-item" onclick="bkApp.switchTab('media', 'commentaries'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
                   <i data-lucide="mic" style="width:15px;height:15px;"></i>
-                  <span>Commentaries</span>
-                </button>
-              </li>
-              <li>
-                <button class="dropdown-item" onclick="bkApp.switchTab('media', 'music'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
-                  <i data-lucide="headphones" style="width:15px;height:15px;"></i>
-                  <span>Music</span>
-                </button>
-              </li>
-              <li>
-                <button class="dropdown-item" onclick="bkApp.switchTab('media', 'videos'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
-                  <i data-lucide="video" style="width:15px;height:15px;"></i>
-                  <span>Videos</span>
-                </button>
-              </li>
-              <li>
-                <button class="dropdown-item" onclick="bkApp.switchTab('media', 'films'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
-                  <i data-lucide="film" style="width:15px;height:15px;"></i>
-                  <span>Films</span>
-                </button>
-              </li>
-              <li>
-                <button class="dropdown-item" onclick="bkApp.switchTab('media', 'others'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
-                  <i data-lucide="folder-heart" style="width:15px;height:15px;"></i>
-                  <span>Others</span>
+                  <span>Commentaries (കമന്ററികൾ)</span>
                 </button>
               </li>
               
@@ -414,8 +390,13 @@ class AppController {
       if (tabId === 'gallery') {
         this.renderGallery('all');
       }
+      if (tabId === 'home') {
+        if (window.bkConnectGod && window.bkConnectGod.render4ColumnChannelHub) {
+          window.bkConnectGod.render4ColumnChannelHub();
+        }
+      }
       if (tabId === 'media') {
-        this.filterMediaCategory(subCategory || 'all');
+        this.filterMediaCategory(subCategory || 'songs');
       }
       if (tabId === 'events') {
         this.renderEventsPage(subCategory);
@@ -964,10 +945,9 @@ class AppController {
     this.renderGallery(category);
   }
 
-  // --- Render Media Hub (Songs, Commentaries, Music, Videos, Films, Others, Social Channels) ---
-  renderMediaHub(selectedCategory = 'all') {
+  // --- Render Media Hub (Strictly Audios: Songs & Commentaries) ---
+  renderMediaHub(selectedCategory = 'songs') {
     if (window.bkConnectGod) {
-      window.bkConnectGod.render4ColumnChannelHub();
       window.bkConnectGod.renderCloudflareAudioHub(selectedCategory);
       return;
     }
@@ -1121,14 +1101,15 @@ class AppController {
   }
 
   filterMediaCategory(category, btn) {
+    const activeCat = (category === 'commentaries') ? 'commentaries' : 'songs';
     document.querySelectorAll('.media-filter-btn').forEach(b => {
-      b.classList.toggle('active', b.getAttribute('onclick')?.includes(`'${category}'`));
+      b.classList.toggle('active', b.getAttribute('onclick')?.includes(`'${activeCat}'`));
     });
     if (btn) {
       document.querySelectorAll('.media-filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     }
-    this.renderMediaHub(category);
+    this.renderMediaHub(activeCat);
   }
 
   // --- Lightbox Modal ---

@@ -25,16 +25,14 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   
-  <!-- Preload Hero Poster for Instant Visual Paint -->
-  <link rel="preload" as="image" href="assets/video/rajyoga-poster.jpg" media="(min-width: 641px)">
-  <link rel="preload" as="image" href="assets/video/rajyoga-poster-mobile.jpg" media="(max-width: 640px)">
+  <!-- Preload Hero Poster for Instant High-Res Visual Paint -->
+  <link rel="preload" as="image" href="assets/video/rajyoga-poster.jpg">
 
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=41">
-  <link rel="stylesheet" href="css/hero.css?v=41">
-  <link rel="stylesheet" href="css/course.css?v=41">
-  <link rel="stylesheet" href="css/connect-god.css?v=41">
-  <link rel="stylesheet" href="css/murli.css?v=42">
+  <link rel="stylesheet" href="css/style.css?v=43">
+  <link rel="stylesheet" href="css/hero.css?v=43">
+  <link rel="stylesheet" href="css/course.css?v=43">
+  <link rel="stylesheet" href="css/connect-god.css?v=43">
+  <link rel="stylesheet" href="css/murli.css?v=43">
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=38">
   <link rel="apple-touch-icon" href="assets/images/logo-128.png?v=38">
 
@@ -146,9 +144,8 @@
             <video id="rajyogaVideo" class="rajyoga-video" width="1280" height="720"
               preload="auto" autoplay muted loop playsinline
               poster="assets/video/rajyoga-poster.jpg"
+              src="assets/video/rajyoga-hero.mp4"
               aria-label="Rajyoga meditation: seven rays of light flow from the Supreme Light towards a meditator seated on a lotus.">
-              <source src="assets/video/rajyoga-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
-              <source src="assets/video/rajyoga-tablet.mp4" type="video/mp4" media="(max-width: 1024px)">
               <source src="assets/video/rajyoga-hero.mp4" type="video/mp4">
             </video>
             <!-- Feathered gradient veil for cinematic depth & seamless transition into page -->
@@ -257,6 +254,26 @@
                 <strong>View All Centers →</strong>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Homepage Media Hub: Official Channels & Dynamic Live Feeds -->
+      <section class="section-padding home-media-hub-section" id="homeMediaHubSection" style="padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">Digital Spiritual Presence • തത്സമയ സംപ്രേഷണം</span>
+            <h2>Official Channels & Live Broadcasts</h2>
+            <div class="section-title-ml">ഔദ്യോഗിക യൂട്യൂബ് & പോഡ്‌കാസ്റ്റ് ചാനലുകൾ</div>
+            <div class="divider-sun"></div>
+            <p class="section-subtitle">
+              Daily live Murli classes, Malayalam spiritual podcasts, meditation series, and soul-awakening discourses updated dynamically from our official channels.
+            </p>
+          </div>
+
+          <!-- 4-Channel Dynamic Grid -->
+          <div class="channel-hub-grid" id="homeChannelsGridContainer">
+            <!-- Dynamically populated from /api/media-hub -->
           </div>
         </div>
       </section>
@@ -493,20 +510,13 @@
             <div class="section-title-ml">ആത്മീയ മാധ്യമ ശേഖരം</div>
             <div class="divider-sun"></div>
             <p class="section-subtitle">
-              Explore spiritual songs, guided meditation commentaries, peaceful instrumental music, video discourses, short films, and official social channels.
+              Explore spiritual songs, guided meditation commentaries, and elevated soul-conscious audio collections.
             </p>
           </div>
 
-          <!-- Live Zoom Session Quick Access Banner -->
-          <div id="mediaZoomBannerContainer"></div>
-
-          <!-- Media Category Filter Pills -->
+          <!-- Media Category Filter Pills (Strictly Audios: Songs & Commentaries) -->
           <div class="media-filter-bar" id="mediaFilterBar">
-            <button class="media-filter-btn active" onclick="bkApp.filterMediaCategory('all', this)">
-              <i data-lucide="layout-grid" style="width:15px;height:15px;"></i>
-              <span>All Media</span>
-            </button>
-            <button class="media-filter-btn" onclick="bkApp.filterMediaCategory('songs', this)">
+            <button class="media-filter-btn active" onclick="bkApp.filterMediaCategory('songs', this)">
               <i data-lucide="music-2" style="width:15px;height:15px;"></i>
               <span>Songs (ഗാനങ്ങൾ)</span>
             </button>
@@ -514,39 +524,11 @@
               <i data-lucide="mic" style="width:15px;height:15px;"></i>
               <span>Commentaries (കമന്ററികൾ)</span>
             </button>
-            <button class="media-filter-btn" onclick="bkApp.filterMediaCategory('music', this)">
-              <i data-lucide="headphones" style="width:15px;height:15px;"></i>
-              <span>Music (സംഗീതം)</span>
-            </button>
-            <button class="media-filter-btn" onclick="bkApp.filterMediaCategory('videos', this)">
-              <i data-lucide="video" style="width:15px;height:15px;"></i>
-              <span>Videos (വീഡിയോകൾ)</span>
-            </button>
-            <button class="media-filter-btn" onclick="bkApp.filterMediaCategory('films', this)">
-              <i data-lucide="film" style="width:15px;height:15px;"></i>
-              <span>Films (ചലച്ചിത്രങ്ങൾ)</span>
-            </button>
-            <button class="media-filter-btn" onclick="bkApp.filterMediaCategory('others', this)">
-              <i data-lucide="folder-heart" style="width:15px;height:15px;"></i>
-              <span>Others (മറ്റു മാധ്യമങ്ങൾ)</span>
-            </button>
           </div>
 
           <!-- Media Grid / Placeholders Container -->
           <div class="media-grid" id="mediaGridContainer">
             <!-- Injected by js/app.js -->
-          </div>
-
-          <!-- Official Social Media Channels Hub -->
-          <div class="media-social-channels-hub" id="mediaSocialChannelsHub">
-            <div class="social-hub-header">
-              <div class="social-hub-badge"><i data-lucide="share-2" style="width:14px;height:14px;"></i> Official Digital Presence</div>
-              <h3>Official Social Media Channels</h3>
-              <p>Follow and subscribe to our official digital channels on YouTube, Instagram, and Facebook for daily peace thoughts, guided commentaries, and spiritual inspiration.</p>
-            </div>
-            <div class="social-channels-grid" id="socialChannelsGridContainer">
-              <!-- Injected by js/app.js -->
-            </div>
           </div>
         </div>
       </div>
@@ -1105,13 +1087,13 @@
 
 
   <!-- Scripts -->
-  <script src="js/hero.js?v=41"></script>
-  <script src="js/store.js?v=41"></script>
-  <script src="js/auth.js?v=41"></script>
-  <script src="js/course.js?v=41"></script>
-  <script src="js/connect-god.js?v=41"></script>
-  <script src="js/murli.js?v=42"></script>
-  <script src="js/app.js?v=41"></script>
+  <script src="js/hero.js?v=43"></script>
+  <script src="js/store.js?v=43"></script>
+  <script src="js/auth.js?v=43"></script>
+  <script src="js/course.js?v=43"></script>
+  <script src="js/connect-god.js?v=43"></script>
+  <script src="js/murli.js?v=43"></script>
+  <script src="js/app.js?v=43"></script>
   <script>
     // Initialize Lucide Icons on load
     document.addEventListener('DOMContentLoaded', () => {

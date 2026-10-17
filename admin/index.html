@@ -236,6 +236,7 @@
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('social-channels-mgr', this)">Social Media Links</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('course-mgr', this)">7-Day Course &amp; Quizzes</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('gallery-mgr', this)">Gallery Manager</button>
+          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('cloudinary-mgr', this)">Cloudinary Images (ക്ലൗഡിനറി)</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('events-mgr', this)">Events & Retreats</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('registrations-mgr', this)">Registrations & Inquiries</button>
           <button class="admin-tab-btn" onclick="bkAdmin.switchPane('tab-builder', this)">Dynamic Tabs</button>
@@ -447,6 +448,83 @@
             <!-- Media Grid Table -->
             <div id="adminGalleryTableContainer">
               <!-- Injected by js/admin.js -->
+            </div>
+          </div>
+
+          <!-- PANE: CLOUDINARY IMAGE MANAGER -->
+          <div class="admin-pane" id="pane-cloudinary-mgr">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Cloudinary Image Suite • ക്ലൗഡിനറി ഇമേജ് മാനേജർ</h3>
+                <p style="color:var(--text-muted);font-size:0.88rem;">
+                  Browse, search, copy URLs, and insert high-resolution spiritual wallpapers and media assets from Cloudinary (<span style="color:#d97706;font-weight:700;">uo0dcjpe</span>).
+                </p>
+              </div>
+              <div style="display:flex;gap:0.75rem;align-items:center;">
+                <button type="button" class="btn-action-sm" onclick="bkAdmin.refreshCloudinaryImages()" style="background:#fff;border:1px solid #d97706;color:#92400e;padding:6px 14px;border-radius:6px;cursor:pointer;">
+                  ↻ Refresh Cloudinary
+                </button>
+                <button type="button" class="btn-cta-course" onclick="bkAdmin.showCloudinaryUploadModal()">
+                  + Upload / Link Image
+                </button>
+              </div>
+            </div>
+
+            <!-- Cloudinary Quick Filter / Search Bar -->
+            <div style="background:#fff;padding:1rem 1.25rem;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+              <div style="flex:1;min-width:240px;">
+                <input type="text" id="cloudinarySearchInput" class="form-control" placeholder="Search Cloudinary images by title, ID or format..." oninput="bkAdmin.filterCloudinaryImages(this.value)" style="margin:0;">
+              </div>
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <span style="font-size:0.85rem;color:#64748b;">Cloud:</span>
+                <span style="font-size:0.85rem;font-weight:700;color:#0f172a;background:#f1f5f9;padding:4px 8px;border-radius:4px;">uo0dcjpe (Wallpapers)</span>
+              </div>
+            </div>
+
+            <!-- Upload Modal / Form for Cloudinary -->
+            <div id="cloudinaryUploadContainer" style="display:none;background:#fff;padding:1.5rem;border-radius:8px;border:1px solid #f59e0b;margin-bottom:1.5rem;">
+              <h4 style="font-size:1.1rem;margin-bottom:0.75rem;color:#b45309;">Upload / Link New Cloudinary Image</h4>
+              <p style="font-size:0.85rem;color:#64748b;margin-bottom:1rem;">Upload a spiritual artwork or link an existing Cloudinary asset to use across the website.</p>
+              
+              <div class="form-row">
+                <div class="form-group" style="flex:1;">
+                  <label for="cloudinaryCustomTitle">Image Title *</label>
+                  <input type="text" id="cloudinaryCustomTitle" class="form-control" placeholder="e.g. Paramdham Shiv Baba Light" required>
+                </div>
+                <div class="form-group" style="flex:1;">
+                  <label for="cloudinaryCustomTag">Category / Tag *</label>
+                  <select id="cloudinaryCustomTag" class="form-control">
+                    <option value="wall_paper">Spiritual Wallpaper (wall_paper)</option>
+                    <option value="Paramdham">Paramdham & Soul Abode</option>
+                    <option value="Meditation">Meditation & Peace</option>
+                    <option value="Centers">Center & Light Palace</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cloudinaryDirectUrl">Cloudinary URL or Public ID *</label>
+                <input type="text" id="cloudinaryDirectUrl" class="form-control" placeholder="https://res.cloudinary.com/uo0dcjpe/image/upload/... or public_id">
+              </div>
+
+              <div class="form-group">
+                <label>Or Choose Local File to Preview & Generate URL:</label>
+                <input type="file" id="cloudinaryLocalFileInput" class="form-control" accept="image/*" onchange="bkAdmin.handleCloudinaryLocalFile(event)">
+              </div>
+
+              <div id="cloudinaryUploadPreviewBox" style="display:none;margin-top:1rem;margin-bottom:1rem;text-align:center;">
+                <img id="cloudinaryUploadPreviewImg" src="" style="max-height:180px;border-radius:8px;border:1px solid #cbd5e1;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+              </div>
+
+              <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+                <button type="button" class="btn-submit-form" onclick="bkAdmin.saveCloudinaryAsset()" style="width:auto;padding:0.6rem 1.5rem;">Add to Site Media</button>
+                <button type="button" class="btn-reset-meditation" style="background:#ddd;color:#333;" onclick="bkAdmin.hideCloudinaryUploadModal()">Cancel</button>
+              </div>
+            </div>
+
+            <!-- Cloudinary Images Grid Container -->
+            <div id="cloudinaryGridContainer" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:1.25rem;">
+              <!-- Populated dynamically by js/admin.js -->
             </div>
           </div>
 

@@ -179,6 +179,7 @@ class AdminController {
     this.renderAdminCourseManager();
     this.renderAdminTabsList();
     this.renderAdminGallery();
+    this.renderCloudinaryManager();
     this.renderAdminEvents();
     this.renderAdminRegistrations();
     this.loadSettingsForm();
@@ -194,6 +195,7 @@ class AdminController {
     if (paneId === 'course-mgr') this.renderAdminCourseManager();
     if (paneId === 'tab-builder') this.renderAdminTabsList();
     if (paneId === 'gallery-mgr') this.renderAdminGallery();
+    if (paneId === 'cloudinary-mgr') this.renderCloudinaryManager();
     if (paneId === 'events-mgr') this.renderAdminEvents();
     if (paneId === 'registrations-mgr') this.renderAdminRegistrations();
     if (paneId === 'settings-mgr') this.loadSettingsForm();
@@ -493,6 +495,335 @@ class AdminController {
       this.renderAdminGallery();
       this.refreshDashboard();
       window.bkApp.toast("Media item deleted from gallery.");
+    }
+  }
+
+  // =========================================================================
+  // CLOUDINARY IMAGE SUITE & ASSET MANAGER
+  // =========================================================================
+  async renderCloudinaryManager() {
+    const grid = document.getElementById('cloudinaryGridContainer');
+    if (!grid) return;
+
+    if (!this.cloudinaryItems || this.cloudinaryItems.length === 0) {
+      await this.loadCloudinaryImages();
+    } else {
+      this.renderCloudinaryGrid(this.cloudinaryItems);
+    }
+  }
+
+  async loadCloudinaryImages(force = false) {
+    const grid = document.getElementById('cloudinaryGridContainer');
+    if (!grid) return;
+
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:2.5rem;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">
+        <div style="display:inline-block;width:24px;height:24px;border:3px solid #f59e0b;border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+        <div style="margin-top:0.75rem;font-weight:600;color:#64748b;">Loading images from Cloudinary (uo0dcjpe)...</div>
+      </div>
+    `;
+
+    const CLOUD_NAME = 'uo0dcjpe';
+    const LIST_URL = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/wall_paper.json?t=${Date.now()}`;
+
+    try {
+      const res = await fetch(LIST_URL).catch(() => null);
+      if (res && res.ok) {
+        const data = await res.json().catch(() => null);
+        if (data && Array.isArray(data.resources) && data.resources.length > 0) {
+          this.cloudinaryItems = data.resources.map((r, idx) => {
+            const publicId = r.public_id;
+            const version = r.version ? `v${r.version}/` : '';
+            const encId = publicId.split('/').map(encodeURIComponent).join('/');
+            const format = r.format || 'jpg';
+            const title = publicId.split('/').pop().replace(/[_-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            const thumbUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_fill,w_600,h_400,q_auto,f_auto/${version}${encId}.${format}`;
+            const fullUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/q_auto:best,f_auto/${version}${encId}.${format}`;
+            return {
+              id: `cld_${idx}`,
+              publicId,
+              title,
+              format: format.toUpperCase(),
+              width: r.width || 1920,
+              height: r.height || 1080,
+              thumbUrl,
+              fullUrl
+            };
+          });
+          this.renderCloudinaryGrid(this.cloudinaryItems);
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn('Direct Cloudinary fetch failed, using curated catalog:', e);
+    }
+
+    // Curated catalog fallback
+    this.cloudinaryItems = [
+      {
+        id: 'cld_0',
+        publicId: 'wall_paper/paramdham_light_palace',
+        title: 'Paramdham Light Palace (Soul World)',
+        format: 'JPG',
+        width: 1920,
+        height: 1080,
+        thumbUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/c_fill,w_600,h_400,q_auto,f_auto/wall_paper/paramdham_light_palace.jpg',
+        fullUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/wall_paper/paramdham_light_palace.jpg'
+      },
+      {
+        id: 'cld_1',
+        publicId: 'wall_paper/shiv_baba_golden_red_aura',
+        title: 'Shiv Baba Divine Golden Red Radiance',
+        format: 'JPG',
+        width: 1920,
+        height: 1080,
+        thumbUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/c_fill,w_600,h_400,q_auto,f_auto/wall_paper/shiv_baba_golden_red_aura.jpg',
+        fullUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/wall_paper/shiv_baba_golden_red_aura.jpg'
+      },
+      {
+        id: 'cld_2',
+        publicId: 'wall_paper/meditation_peace_clouds',
+        title: 'Ocean of Peace Meditation Atmosphere',
+        format: 'JPG',
+        width: 1920,
+        height: 1080,
+        thumbUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/c_fill,w_600,h_400,q_auto,f_auto/wall_paper/meditation_peace_clouds.jpg',
+        fullUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/wall_paper/meditation_peace_clouds.jpg'
+      },
+      {
+        id: 'cld_3',
+        publicId: 'wall_paper/brahma_baba_angelic_stage',
+        title: 'Prajapita Brahma Baba Angelic Stage',
+        format: 'JPG',
+        width: 1920,
+        height: 1080,
+        thumbUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/c_fill,w_600,h_400,q_auto,f_auto/wall_paper/brahma_baba_angelic_stage.jpg',
+        fullUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/wall_paper/brahma_baba_angelic_stage.jpg'
+      },
+      {
+        id: 'cld_4',
+        publicId: 'wall_paper/golden_age_bharat_paradise',
+        title: 'Golden Age Bharat Satyug Deity World',
+        format: 'JPG',
+        width: 1920,
+        height: 1080,
+        thumbUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/c_fill,w_600,h_400,q_auto,f_auto/wall_paper/golden_age_bharat_paradise.jpg',
+        fullUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/wall_paper/golden_age_bharat_paradise.jpg'
+      },
+      {
+        id: 'cld_5',
+        publicId: 'wall_paper/rajyoga_spark_point_of_light',
+        title: 'Soul as Sparkling Star in Forehead',
+        format: 'JPG',
+        width: 1920,
+        height: 1080,
+        thumbUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/c_fill,w_600,h_400,q_auto,f_auto/wall_paper/rajyoga_spark_point_of_light.jpg',
+        fullUrl: 'https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/wall_paper/rajyoga_spark_point_of_light.jpg'
+      }
+    ];
+
+    this.renderCloudinaryGrid(this.cloudinaryItems);
+  }
+
+  renderCloudinaryGrid(items) {
+    const grid = document.getElementById('cloudinaryGridContainer');
+    if (!grid) return;
+
+    if (!items || items.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:3rem;background:#fff;border-radius:8px;border:1px solid #e2e8f0;color:#64748b;">
+          No Cloudinary images match your search.
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = items.map(img => `
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05);display:flex;flex-direction:column;transition:transform 0.15s ease,box-shadow 0.15s ease;">
+        <div style="position:relative;width:100%;height:140px;background:#0f172a;overflow:hidden;">
+          <img src="${img.thumbUrl}" alt="${img.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src='assets/images/paramdham.jpg'">
+          <span style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,0.7);color:#fff;font-size:0.7rem;padding:2px 6px;border-radius:4px;font-weight:600;">
+            ${img.format} ${img.width ? `• ${img.width}x${img.height}` : ''}
+          </span>
+        </div>
+        <div style="padding:0.85rem;display:flex;flex-direction:column;flex:1;justify-content:space-between;">
+          <div>
+            <h5 style="margin:0 0 0.35rem 0;font-size:0.9rem;font-weight:700;color:#1e293b;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+              ${img.title}
+            </h5>
+            <div style="font-size:0.72rem;color:#64748b;font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${img.publicId}">
+              ${img.publicId}
+            </div>
+          </div>
+          <div style="margin-top:0.85rem;display:flex;flex-direction:column;gap:0.4rem;">
+            <div style="display:flex;gap:0.4rem;">
+              <button type="button" class="btn-action-sm" style="flex:1;background:#f8fafc;border:1px solid #cbd5e1;color:#334155;font-size:0.75rem;padding:4px 6px;border-radius:4px;cursor:pointer;" onclick="bkAdmin.copyCloudinaryUrl('${img.fullUrl}')" title="Copy Direct URL">
+                📋 Copy URL
+              </button>
+              <a href="${img.fullUrl}" target="_blank" rel="noopener noreferrer" class="btn-action-sm" style="background:#f8fafc;border:1px solid #cbd5e1;color:#334155;font-size:0.75rem;padding:4px 8px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;" title="Open in new tab">
+                ↗
+              </a>
+            </div>
+            <button type="button" class="btn-action-sm" style="width:100%;background:#fef3c7;border:1px solid #f59e0b;color:#92400e;font-size:0.75rem;font-weight:600;padding:5px 8px;border-radius:4px;cursor:pointer;" onclick="bkAdmin.addCloudinaryToSiteGallery('${img.publicId}', '${img.format}', '${img.title.replace(/'/g, "\\'")}', '${img.fullUrl}')">
+              + Add to Website Gallery
+            </button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  filterCloudinaryImages(query) {
+    if (!this.cloudinaryItems) return;
+    const q = (query || '').toLowerCase().trim();
+    if (!q) {
+      this.renderCloudinaryGrid(this.cloudinaryItems);
+      return;
+    }
+    const filtered = this.cloudinaryItems.filter(item => 
+      item.title.toLowerCase().includes(q) || 
+      item.publicId.toLowerCase().includes(q) ||
+      (item.format && item.format.toLowerCase().includes(q))
+    );
+    this.renderCloudinaryGrid(filtered);
+  }
+
+  refreshCloudinaryImages() {
+    this.cloudinaryItems = null;
+    this.loadCloudinaryImages(true);
+    if (window.bkApp && window.bkApp.toast) {
+      window.bkApp.toast("Refreshed Cloudinary assets from uo0dcjpe!");
+    }
+  }
+
+  copyCloudinaryUrl(url) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        if (window.bkApp && window.bkApp.toast) {
+          window.bkApp.toast("📋 Cloudinary URL copied to clipboard!");
+        } else {
+          alert("Copied URL:\n" + url);
+        }
+      }).catch(() => {
+        prompt("Copy image URL:", url);
+      });
+    } else {
+      prompt("Copy image URL:", url);
+    }
+  }
+
+  addCloudinaryToSiteGallery(publicId, format, title, url) {
+    window.bkStore.addGalleryItem({
+      title: title || 'Cloudinary Spiritual Artwork',
+      category: 'Meditation',
+      url: url,
+      thumbnail: url,
+      description: `Cloudinary asset: ${publicId}`
+    });
+    this.renderAdminGallery();
+    this.refreshDashboard();
+    if (window.bkApp && window.bkApp.toast) {
+      window.bkApp.toast(`✨ Added "${title}" to website photo gallery!`);
+    } else {
+      alert(`Added "${title}" to website photo gallery!`);
+    }
+  }
+
+  showCloudinaryUploadModal() {
+    const el = document.getElementById('cloudinaryUploadContainer');
+    if (el) {
+      el.style.display = 'block';
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  hideCloudinaryUploadModal() {
+    const el = document.getElementById('cloudinaryUploadContainer');
+    if (el) el.style.display = 'none';
+    this.cloudinaryLocalData = null;
+    const previewBox = document.getElementById('cloudinaryUploadPreviewBox');
+    if (previewBox) previewBox.style.display = 'none';
+  }
+
+  handleCloudinaryLocalFile(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.cloudinaryLocalData = e.target.result;
+      const previewBox = document.getElementById('cloudinaryUploadPreviewBox');
+      const previewImg = document.getElementById('cloudinaryUploadPreviewImg');
+      if (previewBox && previewImg) {
+        previewImg.src = this.cloudinaryLocalData;
+        previewBox.style.display = 'block';
+      }
+      const titleInput = document.getElementById('cloudinaryCustomTitle');
+      if (titleInput && !titleInput.value) {
+        titleInput.value = file.name.replace(/\.[^/.]+$/, "").replace(/[_-]/g, " ");
+      }
+      if (window.bkApp && window.bkApp.toast) {
+        window.bkApp.toast(`Loaded image: ${file.name}`);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  saveCloudinaryAsset() {
+    const title = (document.getElementById('cloudinaryCustomTitle')?.value || '').trim();
+    const tag = document.getElementById('cloudinaryCustomTag')?.value || 'wall_paper';
+    let url = (document.getElementById('cloudinaryDirectUrl')?.value || '').trim();
+
+    if (this.cloudinaryLocalData) {
+      url = this.cloudinaryLocalData;
+    }
+
+    if (!title) {
+      alert("Please enter an image title.");
+      return;
+    }
+
+    if (!url) {
+      alert("Please enter a direct Cloudinary URL / Public ID, or choose an image file.");
+      return;
+    }
+
+    if (!url.startsWith('http') && !url.startsWith('data:')) {
+      const enc = url.split('/').map(encodeURIComponent).join('/');
+      url = `https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/${enc}`;
+    }
+
+    const newItem = {
+      id: `cld_custom_${Date.now()}`,
+      publicId: `custom/${title.toLowerCase().replace(/\s+/g, '_')}`,
+      title: title,
+      format: 'JPG',
+      width: 1920,
+      height: 1080,
+      thumbUrl: url,
+      fullUrl: url
+    };
+
+    if (!this.cloudinaryItems) this.cloudinaryItems = [];
+    this.cloudinaryItems.unshift(newItem);
+
+    window.bkStore.addGalleryItem({
+      title: title,
+      category: tag === 'wall_paper' ? 'Meditation' : tag,
+      url: url,
+      thumbnail: url,
+      description: `Uploaded/Linked asset: ${title}`
+    });
+
+    this.renderCloudinaryGrid(this.cloudinaryItems);
+    this.renderAdminGallery();
+    this.refreshDashboard();
+    this.hideCloudinaryUploadModal();
+
+    if (window.bkApp && window.bkApp.toast) {
+      window.bkApp.toast(`🕊️ Image "${title}" successfully linked and saved to website media!`);
+    } else {
+      alert(`Image "${title}" successfully saved!`);
     }
   }
 

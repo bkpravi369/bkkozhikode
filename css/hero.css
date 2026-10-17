@@ -358,20 +358,21 @@
     align-items: flex-start;
   }
 
-  /* Smooth scaling for portrait screens: prevents extreme center over-zoom and blur */
+  /* Balanced, high-clarity framing for portrait mobile screens: prevents over-zooming & preserves crispness */
   .rajyoga-hero.cinematic-hero .rajyoga-video {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    height: 62dvh;
-    min-height: 380px;
-    max-height: 520px;
+    max-width: 100vw;
+    height: 56dvh;
+    min-height: 320px;
+    max-height: 480px;
     object-fit: cover;
-    object-position: 50% 12%; /* Supreme Light & divine rays remain crisp and in focal view */
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
+    object-position: 50% 18%; /* Supreme Jyoti Beacon & meditational rays remain centered and sharp */
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 74%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 74%, rgba(0, 0, 0, 0) 100%);
   }
 
   /* Enhanced atmospheric glow tailored for portrait orientation */

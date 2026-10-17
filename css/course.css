@@ -550,31 +550,45 @@
   background: #000000;
   overflow: hidden;
   border-radius: 20px 20px 0 0;
+  border: 0 !important;
 }
 
-/* Top crop: shifts iframe up by -48px and compensates height so title & channel avatar are hidden */
+/* Seamless frame clipping: shifts iframe up by -64px and compensates height to hide YouTube title & channel avatar */
 .video-frame-wrapper iframe,
 .video-frame-wrapper #rajyogaCoursePlayer {
   position: absolute;
-  top: -48px;
+  top: -64px;
   left: 0;
   width: 100%;
-  height: calc(100% + 56px);
-  border: 0;
+  height: calc(100% + 72px);
+  border: 0 !important;
   pointer-events: auto;
 }
 
-/* Subtle top edge gradient for cinema aesthetic */
-.video-frame-wrapper::before {
-  content: '';
+/* Protective Top Shield: catches cursor hover over the top 52px so YouTube title bar & avatar never pop down */
+.yt-header-shield {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
-  background: linear-gradient(180deg, rgba(11, 7, 20, 0.8) 0%, transparent 100%);
-  z-index: 2;
-  pointer-events: none;
+  height: 52px;
+  z-index: 4;
+  background: transparent;
+  pointer-events: all;
+  cursor: default;
+}
+
+/* Protective Watermark Shield: absorbs clicks on bottom-right 'Watch on YouTube' logo while keeping scrub bar & controls open */
+.yt-watermark-shield {
+  position: absolute;
+  bottom: 38px;
+  right: 0;
+  width: 115px;
+  height: 48px;
+  z-index: 4;
+  background: transparent;
+  pointer-events: all;
+  cursor: default;
 }
 
 .video-status-bar {

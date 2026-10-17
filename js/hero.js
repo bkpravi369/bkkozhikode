@@ -28,23 +28,10 @@
   // Select optimal video asset based on viewport & high-DPI pixel density
   function selectSource() {
     const width = window.innerWidth;
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Enforce crisp 720p HD rajyoga-hero.mp4 across mobile Retina and desktop displays
     let selectedFile = 'rajyoga-hero.mp4';
     let selectedPoster = 'rajyoga-poster.jpg';
-
-    if (width <= 768) {
-      // On mobile, if high-DPI screen (Retina), use 720p stream to prevent blurriness
-      if (dpr >= 1.5) {
-        selectedFile = 'rajyoga-tablet.mp4';
-        selectedPoster = 'rajyoga-poster.jpg';
-      } else {
-        selectedFile = 'rajyoga-mobile.mp4';
-        selectedPoster = 'rajyoga-poster-mobile.jpg';
-      }
-    } else if (width <= 1024) {
-      selectedFile = 'rajyoga-tablet.mp4';
-      selectedPoster = 'rajyoga-poster.jpg';
-    }
 
     const targetSrc = `assets/video/${selectedFile}`;
     const targetPoster = `assets/video/${selectedPoster}`;

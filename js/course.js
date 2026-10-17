@@ -1044,6 +1044,8 @@
                 <!-- Video Player Stage Card -->
                 <section class="video-stage-card" aria-label="Lesson Video Player">
                   <div class="video-frame-wrapper" id="ytVideoFrameWrapper">
+                    <div class="yt-header-shield" aria-hidden="true" title="Brahma Kumaris Rajyoga Meditation"></div>
+                    <div class="yt-watermark-shield" aria-hidden="true"></div>
                     <div id="rajyogaCoursePlayer"></div>
                   </div>
                   <div class="video-status-bar">
@@ -1214,9 +1216,11 @@
       const container = document.getElementById('ytVideoFrameWrapper');
       if (!container) return;
       container.innerHTML = `
+        <div class="yt-header-shield" aria-hidden="true" title="Brahma Kumaris Rajyoga Meditation"></div>
+        <div class="yt-watermark-shield" aria-hidden="true"></div>
         <iframe 
           id="rajyogaCoursePlayer"
-          src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&iv_load_policy=3&enablejsapi=1&playsinline=1&fs=1" 
+          src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&iv_load_policy=3&enablejsapi=1&playsinline=1&fs=1&color=white" 
           title="Day ${dayNumber} Video Lesson" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
