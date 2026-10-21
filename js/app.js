@@ -346,15 +346,19 @@ class AppController {
 
   updateHeaderTheme(tabId) {
     const isInterior = Boolean(tabId && tabId !== 'home');
+    const isCourse = Boolean(tabId === 'course');
     const header = document.getElementById('siteHeader');
     if (header) {
-      header.classList.toggle('header-interior', isInterior);
+      header.classList.toggle('header-interior', isInterior && !isCourse);
+      header.classList.toggle('header-course-theme', isCourse);
     }
     if (document.body) {
-      document.body.classList.toggle('is-interior-page', isInterior);
+      document.body.classList.toggle('is-interior-page', isInterior && !isCourse);
+      document.body.classList.toggle('is-course-page', isCourse);
     }
     if (document.documentElement) {
-      document.documentElement.classList.toggle('is-interior-page', isInterior);
+      document.documentElement.classList.toggle('is-interior-page', isInterior && !isCourse);
+      document.documentElement.classList.toggle('is-course-page', isCourse);
     }
   }
 
@@ -648,7 +652,7 @@ class AppController {
       const card = document.createElement('div');
       card.className = `center-card ${c.isPrimary ? 'main-center' : ''}`;
 
-      const primaryPhone = c.phone || (c.phones && c.phones[0]) || '+91 9746334202';
+      const primaryPhone = c.phone || (c.phones && c.phones[0]) || '+91 9539933699';
       const cleanPhone = primaryPhone.replace(/[^0-9+]/g, '');
       const cleanWa = (c.whatsapp || primaryPhone).replace(/[^0-9]/g, '');
 

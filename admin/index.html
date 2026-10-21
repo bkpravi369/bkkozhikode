@@ -311,6 +311,58 @@
               </div>
             </div>
 
+            <!-- COURSE ORIENTATION & INTRODUCTORY VIDEO FORM -->
+            <div class="admin-course-day-card" style="margin-bottom:2rem;border:1px solid #f59e0b;background:#fffdfa;">
+              <div class="admin-course-day-header" style="background:linear-gradient(135deg, #fffbeb, #fef3c7);border-bottom:1px solid #fde68a;">
+                <div class="admin-course-day-title">
+                  <span class="admin-course-day-num" style="background:#d97706;color:#fff;">Orientation</span>
+                  <strong style="font-size:1.15rem;color:var(--sunset-dark-base);">Course Orientation &amp; Introductory Video</strong>
+                  <span style="font-size:0.9rem;color:#b45309;font-weight:600;">(കോഴ്‌സ് ആരംഭിക്കുന്നതിന് മുൻപ് കാണുന്ന ആമുഖ വീഡിയോ)</span>
+                </div>
+                <span id="courseIntroStatusBadge" style="font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:4px;background:#d1fae5;color:#065f46;">
+                  ✅ Ready
+                </span>
+              </div>
+
+              <form onsubmit="event.preventDefault(); bkAdmin.handleSaveCourseIntro();" style="padding:1.5rem;">
+                <div class="admin-course-grid-form">
+                  <div class="form-group">
+                    <label for="adminCourseIntroTitle">Orientation Title (English) *</label>
+                    <input type="text" id="adminCourseIntroTitle" class="form-control" placeholder="7-Day Rajayoga Course Orientation &amp; Spiritual Guide" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="adminCourseIntroTitleMl">Orientation Title (Malayalam)</label>
+                    <input type="text" id="adminCourseIntroTitleMl" class="form-control" placeholder="രാജയോഗ കോഴ്‌സ് ആമുഖം - കോഴ്‌സ് ആരംഭിക്കുന്നതിന് മുൻപ് കാണുക">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="adminCourseIntroVideoUrl">Orientation YouTube Video URL *</label>
+                  <input type="text" id="adminCourseIntroVideoUrl" class="form-control" placeholder="e.g. https://www.youtube.com/watch?v=xeZ_HBW1mq4 or https://youtu.be/..." oninput="bkAdmin.handleIntroVideoUrlInput(this)">
+                  <div id="ytFeedbackIntro" class="yt-valid-feedback">
+                    ℹ️ Paste any Public or Unlisted YouTube URL for the introductory video.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="adminCourseIntroDesc">Spiritual Guidance &amp; Course Overview Description</label>
+                  <textarea id="adminCourseIntroDesc" class="form-control" rows="2" placeholder="Watch this short introductory orientation to understand the foundation of Raja Yoga meditation..."></textarea>
+                </div>
+
+                <!-- Intro Video Live Preview Box -->
+                <div id="ytPreviewIntro" class="admin-course-preview-box" style="margin-bottom:1.5rem;">
+                  <!-- preview injected -->
+                </div>
+
+                <div style="display:flex;justify-content:flex-end;">
+                  <button type="submit" class="btn-cta-course" style="padding:0.65rem 1.8rem;background:linear-gradient(135deg, #d97706, #b45309);">
+                    <i data-lucide="save" style="width:16px;height:16px;"></i>
+                    <span>Save Course Orientation Video</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
             <div class="admin-course-days-list" id="adminCourseDaysList">
               <!-- Injected by js/admin.js -->
             </div>
@@ -970,15 +1022,15 @@
                 <div class="form-row">
                   <div class="form-group">
                     <label for="centerFormPhone">Mobile Phone (for Click-to-Call) *</label>
-                    <input type="tel" id="centerFormPhone" class="form-control" placeholder="+91 9746334202" required>
+                    <input type="tel" id="centerFormPhone" class="form-control" placeholder="+91 9539933699" required>
                   </div>
                   <div class="form-group">
                     <label for="centerFormWhatsapp">WhatsApp Number</label>
-                    <input type="tel" id="centerFormWhatsapp" class="form-control" placeholder="+91 9746334202">
+                    <input type="tel" id="centerFormWhatsapp" class="form-control" placeholder="+91 9539933699">
                   </div>
                   <div class="form-group">
                     <label for="centerFormLandline">Landline Phone (Optional)</label>
-                    <input type="text" id="centerFormLandline" class="form-control" placeholder="0495-2770568">
+                    <input type="text" id="centerFormLandline" class="form-control" placeholder="+91 9539933699">
                   </div>
                 </div>
 

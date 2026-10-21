@@ -290,7 +290,8 @@
         activeDay: 1,
         watchedVideos: {},
         dayReflections: {},
-        selectedAnswers: {}
+        selectedAnswers: {},
+        showIntroVideo: true
       };
 
       this.ytPlayer = null;
@@ -370,6 +371,19 @@
         if (window.bkApp && window.bkApp.toast) {
           window.bkApp.toast("🕊️ Course progress has been reset to Day 1.");
         }
+      }
+    }
+
+    toggleIntroVideo() {
+      this.state.showIntroVideo = !this.state.showIntroVideo;
+      const box = document.getElementById('courseIntroVideoBox');
+      const btn = document.querySelector('.btn-toggle-intro');
+      if (box && btn) {
+        box.style.display = this.state.showIntroVideo ? 'block' : 'none';
+        btn.innerHTML = `<i data-lucide="${this.state.showIntroVideo ? 'chevron-up' : 'play-circle'}" style="width:14px;height:14px;"></i><span>${this.state.showIntroVideo ? 'Hide Orientation Video' : 'Watch Course Overview Video'}</span>`;
+        if (window.lucide) window.lucide.createIcons();
+      } else {
+        this.render();
       }
     }
 
@@ -870,6 +884,11 @@
       const isVideoWatched = Boolean(this.state.watchedVideos[activeMod.day]) || this.state.completedDays.includes(activeMod.day);
       const isDayCompleted = this.state.completedDays.includes(activeMod.day);
 
+      const introData = (window.bkStore && typeof window.bkStore.getCourseIntro === 'function')
+        ? window.bkStore.getCourseIntro()
+        : { videoUrl: '', title: '', titleMl: '', description: '' };
+      const introVideoId = introData.videoId || (window.bkUtils ? window.bkUtils.extractYouTubeVideoId(introData.videoUrl || '') : '');
+
       container.innerHTML = `
         <div class="section-padding" style="padding-top:1rem;">
           <div class="container course-platform-wrapper">
@@ -935,6 +954,45 @@
                 <div class="course-progress-bar-fill" style="width: ${progressPercent}%;"></div>
               </div>
             </div>
+
+            <!-- Course Orientation Video Card (Before starting the course) -->
+            ${introVideoId ? `
+              <div class="course-intro-card" style="margin-bottom:2rem;background:linear-gradient(135deg, rgba(30,17,48,0.92), rgba(15,9,26,0.96));border:1px solid rgba(255,215,0,0.35);border-radius:18px;overflow:hidden;box-shadow:0 12px 36px rgba(0,0,0,0.5);">
+                <div style="padding:1.15rem 1.75rem;background:rgba(255,215,0,0.08);border-bottom:1px solid rgba(255,215,0,0.2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                  <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <span style="background:linear-gradient(135deg, #f59e0b, #d97706);color:#fff;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;">
+                      Course Orientation
+                    </span>
+                    <div>
+                      <h3 style="margin:0;font-size:1.15rem;color:#fef08a;font-weight:700;">
+                        ${introData.title || '7-Day Rajayoga Course Orientation & Spiritual Guide'}
+                      </h3>
+                      ${introData.titleMl ? `
+                        <div style="font-size:0.85rem;color:#ffd700;margin-top:0.15rem;">${introData.titleMl}</div>
+                      ` : ''}
+                    </div>
+                  </div>
+                  <button type="button" class="btn-toggle-intro" onclick="bkCourse.toggleIntroVideo()" style="background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.4);color:#ffd700;padding:0.35rem 0.9rem;border-radius:6px;cursor:pointer;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
+                    <i data-lucide="${this.state.showIntroVideo ? 'chevron-up' : 'play-circle'}" style="width:14px;height:14px;"></i>
+                    <span>${this.state.showIntroVideo ? 'Hide Orientation Video' : 'Watch Course Overview Video'}</span>
+                  </button>
+                </div>
+
+                ${introData.description ? `
+                  <div style="padding:1rem 1.75rem 0.5rem;color:rgba(255,255,255,0.85);font-size:0.9rem;line-height:1.6;">
+                    ${introData.description}
+                  </div>
+                ` : ''}
+
+                <div id="courseIntroVideoBox" style="display:${this.state.showIntroVideo ? 'block' : 'none'};padding:1rem 1.75rem 1.5rem;">
+                  <div class="video-frame-wrapper" style="border-radius:14px;">
+                    <div class="yt-header-shield" aria-hidden="true"></div>
+                    <div class="yt-watermark-shield" aria-hidden="true"></div>
+                    <iframe src="https://www.youtube.com/embed/${introVideoId}?rel=0&modestbranding=1&controls=1" frameborder="0" allowfullscreen style="position:absolute;top:-64px;left:0;width:100%;height:calc(100% + 72px);border:0;"></iframe>
+                  </div>
+                </div>
+              </div>
+            ` : ''}
 
             <!-- Top Stepper Navigation (Days 1–7) -->
             <nav class="course-stepper-nav" aria-label="7-Day Course Stepper">
@@ -1059,6 +1117,54 @@
                     </div>
                   </div>
                 </section>
+
+                <!-- Supplementary Spiritual Learning (Extra Video, Audio, Notes) -->
+                ${(activeMod.extraVideoUrl || activeMod.audioUrl || activeMod.studyNotes) ? `
+                  <section class="course-extra-section" style="margin-top:2rem;background:rgba(20,12,32,0.88);border:1px solid rgba(255,215,0,0.25);border-radius:18px;padding:1.5rem;box-shadow:0 12px 36px rgba(0,0,0,0.5);">
+                    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;border-bottom:1px solid rgba(255,215,0,0.15);padding-bottom:0.75rem;">
+                      <i data-lucide="sparkles" style="width:18px;height:18px;color:#ffd700;"></i>
+                      <h4 style="margin:0;font-size:1.1rem;color:#fef08a;font-weight:700;">
+                        Day 0${activeMod.day} Additional Study &amp; Meditation Resources
+                      </h4>
+                    </div>
+
+                    ${(activeMod.extraVideoUrl) ? `
+                      <div class="course-extra-video-card" style="margin-bottom:1.5rem;">
+                        <div style="font-size:0.92rem;color:#ffd700;font-weight:600;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                          <i data-lucide="video" style="width:16px;height:16px;"></i>
+                          <span>${activeMod.extraVideoTitle || 'Deep-Dive Spiritual Commentary Video'}</span>
+                        </div>
+                        <div class="video-frame-wrapper" style="border-radius:12px;">
+                          <div class="yt-header-shield" aria-hidden="true"></div>
+                          <div class="yt-watermark-shield" aria-hidden="true"></div>
+                          <iframe src="https://www.youtube.com/embed/${activeMod.extraVideoId || (window.bkUtils ? window.bkUtils.extractYouTubeVideoId(activeMod.extraVideoUrl) : '')}?rel=0&modestbranding=1&controls=1" frameborder="0" allowfullscreen style="position:absolute;top:-64px;left:0;width:100%;height:calc(100% + 72px);border:0;"></iframe>
+                        </div>
+                      </div>
+                    ` : ''}
+
+                    ${(activeMod.audioUrl) ? `
+                      <div class="course-extra-audio-card" style="margin-bottom:1.5rem;background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);padding:1.2rem;border-radius:14px;">
+                        <div style="font-size:0.92rem;color:#ffd700;font-weight:600;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem;">
+                          <i data-lucide="headphones" style="width:16px;height:16px;"></i>
+                          <span>${activeMod.audioTitle || 'Guided Meditation Commentary (Audio)'}</span>
+                        </div>
+                        <audio controls src="${activeMod.audioUrl}" style="width:100%;height:44px;border-radius:22px;margin-top:0.35rem;outline:none;" preload="none">
+                          Your browser does not support the audio element.
+                        </audio>
+                      </div>
+                    ` : ''}
+
+                    ${(activeMod.studyNotes) ? `
+                      <div class="course-extra-notes-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,215,0,0.18);padding:1.25rem 1.5rem;border-radius:14px;">
+                        <div style="font-size:0.92rem;color:#ffd700;font-weight:600;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                          <i data-lucide="book-open" style="width:16px;height:16px;"></i>
+                          <span>Sacred Study Notes &amp; Contemplative Insights (ആത്മീയ പഠന കുറിപ്പുകൾ)</span>
+                        </div>
+                        <div style="font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.9);white-space:pre-wrap;">${activeMod.studyNotes}</div>
+                      </div>
+                    ` : ''}
+                  </section>
+                ` : ''}
 
                 <!-- Daily Reflection & Quiz Section -->
                 <section class="quiz-section-card" id="dailyReflectionQuizSection" aria-label="Daily Reflection and Quiz">

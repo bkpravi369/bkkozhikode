@@ -19,9 +19,10 @@ const DEFAULT_DATA = {
     keralaPortalUrl: 'https://kerala.brahmakumaris.com',
     mainCenterName: "Light Palace (Ashokapuram)",
     mainAddress: "'Light Palace', H.no: 44/284, Balan K Nair Road, Ashokapuram, PO: Eranhipalam, Kozhikode - 673006, Kerala, India",
-    phonePrimary: "0495-2770568",
-    phoneSecondary: "+91 9746334202",
+    phonePrimary: "+91 9539933699",
+    phoneSecondary: "+91 9539933699",
     email: "calicut@bkivv.org",
+    secondaryEmail: "contact@bkkozhikode.com",
     timingsMorning: "7:00 AM – 9:00 AM",
     timingsEvening: "5:00 PM – 8:00 PM",
     adminPin: "",
@@ -175,6 +176,13 @@ const DEFAULT_DATA = {
       createdAt: '2026-08-18'
     }
   ],
+
+  courseIntro: {
+    videoUrl: "https://www.youtube.com/watch?v=xeZ_HBW1mq4",
+    title: "7-Day Rajayoga Course Orientation & Spiritual Guide",
+    titleMl: "രാജയോഗ കോഴ്‌സ് ആമുഖം - കോഴ്‌സ് ആരംഭിക്കുന്നതിന് മുൻപ് കാണുക",
+    description: "Watch this short introductory orientation to understand the foundation of Raja Yoga meditation, how soul consciousness elevates your daily life, and how to practice daily meditation with pure focus."
+  },
 
   courseModules: [
     {
@@ -475,9 +483,9 @@ const DEFAULT_DATA = {
       area: 'Ashokapuram, Kozhikode',
       contactPerson: 'ലൈറ്റ് പാലസ്',
       phone: '9539933699',
-      secondaryPhone: '9746334202',
+      secondaryPhone: '',
       whatsapp: '9539933699',
-      phones: ['9539933699', '9746334202'],
+      phones: ['9539933699'],
       address: 'ലൈറ്റ് പാലസ്, അശോകപുരം, എരഞ്ഞിപ്പാലം, കോഴിക്കോട് - 673006',
       landmark: 'Near Eranhipalam Junction / Balan K Nair Road',
       category: 'kozhikode-main',
@@ -772,7 +780,7 @@ const DEFAULT_DATA = {
     { district: 'Thrissur', phones: ['0487-2422345', '9388350847'] },
     { district: 'Palakkad', phones: ['0491-2578525', '9446820448'] },
     { district: 'Malappuram', phones: ['0494-2499939', '8281602918'] },
-    { district: 'Kozhikode', phones: ['0495-2770568', '9746334202'] },
+    { district: 'Kozhikode', phones: ['9539933699'] },
     { district: 'Wayanad', phones: ['0493-6206179', '9995586665'] },
     { district: 'Kannur', phones: ['0497-2712456', '9995009519'] },
     { district: 'Kasargode', phones: ['0499-4222901', '7975134264'] }
@@ -1263,7 +1271,13 @@ class SiteStore {
               youtubeVideoId: ytVid,
               duration: existing.duration || defaultMod.duration,
               quizQuestions: quizQs,
-              reflectionPrompt: refPrompt
+              reflectionPrompt: refPrompt,
+              extraVideoUrl: existing.extraVideoUrl || defaultMod.extraVideoUrl || '',
+              extraVideoTitle: existing.extraVideoTitle || defaultMod.extraVideoTitle || '',
+              extraVideoId: existing.extraVideoId || extractYouTubeVideoId(existing.extraVideoUrl || ''),
+              audioUrl: existing.audioUrl || defaultMod.audioUrl || '',
+              audioTitle: existing.audioTitle || defaultMod.audioTitle || '',
+              studyNotes: existing.studyNotes || defaultMod.studyNotes || ''
             };
           });
         }
@@ -1388,12 +1402,46 @@ class SiteStore {
           });
         }
 
+        // Cleanse centres: remove legacy numbers 0495-2770568 and 9746334202, enforce 9539933699
+        if (Array.isArray(mergedCenters)) {
+          mergedCenters = mergedCenters.map(c => {
+            if (c.id === 'kzh-main' || (c.name && c.name.toLowerCase().includes('light palace'))) {
+              return {
+                ...c,
+                phone: '9539933699',
+                secondaryPhone: '',
+                whatsapp: '9539933699',
+                phones: ['9539933699']
+              };
+            }
+            return c;
+          });
+        }
+
         let mergedSocialChannels = Array.isArray(parsed.socialChannels) && parsed.socialChannels.length > 0 ? parsed.socialChannels : DEFAULT_DATA.socialChannels;
         let mergedCategories = Array.isArray(parsed.categories) && parsed.categories.length > 0 ? parsed.categories : DEFAULT_DATA.categories;
+        let mergedCourseIntro = { ...DEFAULT_DATA.courseIntro, ...(parsed.courseIntro || {}) };
+
+        let mergedDistrictSummary = Array.isArray(parsed.districtCentresSummary) && parsed.districtCentresSummary.length > 0 ? parsed.districtCentresSummary : DEFAULT_DATA.districtCentresSummary;
+        mergedDistrictSummary = mergedDistrictSummary.map(d => {
+          if (d.district === 'Kozhikode') {
+            return { ...d, phones: ['9539933699'] };
+          }
+          return d;
+        });
+
+        const siteInfoMerged = {
+          ...DEFAULT_DATA.siteInfo,
+          ...(parsed.siteInfo || {}),
+          phonePrimary: "+91 9539933699",
+          phoneSecondary: "+91 9539933699",
+          secondaryEmail: "contact@bkkozhikode.com"
+        };
 
         return {
           ...DEFAULT_DATA,
           ...parsed,
+          siteInfo: siteInfoMerged,
           settings: { ...DEFAULT_DATA.settings, ...(parsed.settings || {}) },
           dailyThought: { ...DEFAULT_DATA.dailyThought, ...(parsed.dailyThought || {}) },
           aboutData: { ...DEFAULT_DATA.aboutData, ...(parsed.aboutData || {}) },
@@ -1401,10 +1449,12 @@ class SiteStore {
           youtubeChannels: parsed.youtubeChannels && parsed.youtubeChannels.length > 0 ? parsed.youtubeChannels : DEFAULT_DATA.youtubeChannels,
           tabs: mergedTabs,
           customPages: parsed.customPages || DEFAULT_DATA.customPages,
+          courseIntro: mergedCourseIntro,
           courseModules: mergedCourseModules,
           socialChannels: mergedSocialChannels,
           categories: mergedCategories,
           centers: mergedCenters,
+          districtCentresSummary: mergedDistrictSummary,
           gallery: parsed.gallery || DEFAULT_DATA.gallery,
           events: mergedEvents,
           registrations: parsed.registrations || DEFAULT_DATA.registrations
@@ -1955,6 +2005,26 @@ class SiteStore {
     return this.data.youtubeChannels;
   }
 
+  // --- Course Intro ---
+  getCourseIntro() {
+    return this.data.courseIntro || DEFAULT_DATA.courseIntro;
+  }
+
+  updateCourseIntro(updatedFields) {
+    if (!this.data.courseIntro) {
+      this.data.courseIntro = { ...DEFAULT_DATA.courseIntro };
+    }
+    const videoUrl = updatedFields.videoUrl !== undefined ? updatedFields.videoUrl : (this.data.courseIntro.videoUrl || '');
+    const videoId = extractYouTubeVideoId(videoUrl);
+    this.data.courseIntro = {
+      ...this.data.courseIntro,
+      ...updatedFields,
+      videoId: videoId || ''
+    };
+    this.saveData();
+    return this.data.courseIntro;
+  }
+
   // --- Course Modules ---
   getCourseModules() {
     return this.data.courseModules || [];
@@ -1974,6 +2044,9 @@ class SiteStore {
     if (idx !== -1) {
       if (updatedFields.youtubeUrl !== undefined) {
         updatedFields.youtubeVideoId = extractYouTubeVideoId(updatedFields.youtubeUrl);
+      }
+      if (updatedFields.extraVideoUrl !== undefined) {
+        updatedFields.extraVideoId = extractYouTubeVideoId(updatedFields.extraVideoUrl);
       }
       this.data.courseModules[idx] = {
         ...this.data.courseModules[idx],

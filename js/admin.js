@@ -1760,7 +1760,7 @@ class AdminController {
           ${c.nameMl ? `<div style="font-size:0.85rem;color:var(--sunset-crimson);margin-bottom:0.35rem;">${c.nameMl}</div>` : ''}
           <div style="font-size:0.85rem;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:1rem;">
             <span><i data-lucide="user" style="width:13px;height:13px;display:inline-block;vertical-align:middle;"></i> ${c.contactPerson || 'BK Center In-charge'}</span>
-            <span><i data-lucide="phone" style="width:13px;height:13px;display:inline-block;vertical-align:middle;"></i> <a href="tel:${c.phone || '+91 9746334202'}" style="color:var(--sunset-dark-base);font-weight:600;">${c.phone || 'No phone'}</a></span>
+            <span><i data-lucide="phone" style="width:13px;height:13px;display:inline-block;vertical-align:middle;"></i> <a href="tel:${c.phone || '+91 9539933699'}" style="color:var(--sunset-dark-base);font-weight:600;">${c.phone || 'No phone'}</a></span>
             ${c.whatsapp ? `<span><i data-lucide="message-circle" style="width:13px;height:13px;display:inline-block;vertical-align:middle;color:#10b981;"></i> WA: ${c.whatsapp}</span>` : ''}
           </div>
         </div>
@@ -2180,6 +2180,8 @@ class AdminController {
 
   // --- 7-Day Rajyoga Course Video Manager ---
   renderAdminCourseManager() {
+    this.renderAdminCourseIntro();
+
     const container = document.getElementById('adminCourseDaysList');
     if (!container) return;
 
@@ -2227,7 +2229,7 @@ class AdminController {
             </div>
 
             <div class="form-group">
-              <label for="adminCourseYt_${mod.day}">YouTube Video URL (Public, Unlisted, or 11-char ID)</label>
+              <label for="adminCourseYt_${mod.day}">Primary YouTube Video URL (Public, Unlisted, or 11-char ID)</label>
               <input type="text" id="adminCourseYt_${mod.day}" class="form-control" value="${mod.youtubeUrl || ''}" placeholder="e.g. https://www.youtube.com/watch?v=... or https://youtu.be/..." oninput="bkAdmin.handleYouTubeUrlInput(${mod.day}, this)">
               <div id="ytFeedbackDay${mod.day}" class="yt-valid-feedback ${hasValidVideo ? 'valid' : ''}">
                 ${hasValidVideo ? `✅ Valid YouTube ID: <code>${videoId}</code>` : 'ℹ️ Paste any Public or Unlisted YouTube URL.'}
@@ -2259,6 +2261,44 @@ class AdminController {
                 No video linked yet. The website will display the elegant "Day 0${mod.day} Video Coming Soon" placeholder.
               </div>
             `}
+          </div>
+
+          <!-- Extra Video, Audio, and Study Notes Section -->
+          <div style="margin-top:1.5rem;background:#fdfcf7;padding:1.25rem;border-radius:10px;border:1px solid #e2d9c8;">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+              <span style="background:#fef3c7;color:#92400e;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.8rem;font-weight:700;">Bonus Section Media</span>
+              <strong style="color:var(--sunset-dark-base);font-size:0.95rem;">🎬 Extra Video, 🎵 Divine Audio &amp; 📝 Study Notes / Text</strong>
+            </div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;">
+              Enrich Day ${mod.day} with supplemental YouTube commentary video, audio meditation link, and contemplative study notes. Rendered cleanly on the public course portal without third-party distraction.
+            </p>
+
+            <div class="admin-course-grid-form">
+              <div class="form-group">
+                <label for="adminCourseExtraVideoTitle_${mod.day}">Extra Video Title / Topic</label>
+                <input type="text" id="adminCourseExtraVideoTitle_${mod.day}" class="form-control" value="${(mod.extraVideoTitle || '').replace(/"/g, '&quot;')}" placeholder="e.g. Guided Spiritual Commentary &amp; In-Depth Discussion">
+              </div>
+              <div class="form-group">
+                <label for="adminCourseExtraVideo_${mod.day}">Extra Video YouTube URL</label>
+                <input type="text" id="adminCourseExtraVideo_${mod.day}" class="form-control" value="${mod.extraVideoUrl || ''}" placeholder="e.g. https://www.youtube.com/watch?v=...">
+              </div>
+            </div>
+
+            <div class="admin-course-grid-form" style="margin-top:0.75rem;">
+              <div class="form-group">
+                <label for="adminCourseAudioTitle_${mod.day}">Meditation Audio Title</label>
+                <input type="text" id="adminCourseAudioTitle_${mod.day}" class="form-control" value="${(mod.audioTitle || '').replace(/"/g, '&quot;')}" placeholder="e.g. 15-Minute Soul Consciousness Meditation Commentary">
+              </div>
+              <div class="form-group">
+                <label for="adminCourseAudio_${mod.day}">Meditation Audio Link / MP3 URL</label>
+                <input type="text" id="adminCourseAudio_${mod.day}" class="form-control" value="${mod.audioUrl || ''}" placeholder="e.g. https://domain.com/audio/day${mod.day}-meditation.mp3">
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:0.75rem;margin-bottom:0;">
+              <label for="adminCourseNotes_${mod.day}">Extra Study Notes &amp; Spiritual Wisdom Text (ആത്മീയ പഠന കുറിപ്പുകൾ)</label>
+              <textarea id="adminCourseNotes_${mod.day}" class="form-control" rows="3" placeholder="Enter deep contemplation points, spiritual steps, or Malayalam study notes for Day ${mod.day}...">${mod.studyNotes || ''}</textarea>
+            </div>
           </div>
 
           <!-- Reflection Prompt Editor -->
@@ -2385,6 +2425,101 @@ class AdminController {
     }
   }
 
+  renderAdminCourseIntro() {
+    const intro = (window.bkStore && typeof window.bkStore.getCourseIntro === 'function') 
+      ? window.bkStore.getCourseIntro() 
+      : { videoUrl: '', title: '', titleMl: '', description: '' };
+
+    const titleEl = document.getElementById('adminCourseIntroTitle');
+    const titleMlEl = document.getElementById('adminCourseIntroTitleMl');
+    const urlEl = document.getElementById('adminCourseIntroVideoUrl');
+    const descEl = document.getElementById('adminCourseIntroDesc');
+
+    if (titleEl) titleEl.value = intro.title || '';
+    if (titleMlEl) titleMlEl.value = intro.titleMl || '';
+    if (urlEl) urlEl.value = intro.videoUrl || '';
+    if (descEl) descEl.value = intro.description || '';
+
+    this.updateIntroPreview(intro.videoUrl || '');
+  },
+
+  handleIntroVideoUrlInput(inputEl) {
+    const url = inputEl.value.trim();
+    this.updateIntroPreview(url);
+  },
+
+  updateIntroPreview(url) {
+    const feedbackEl = document.getElementById('ytFeedbackIntro');
+    const previewBox = document.getElementById('ytPreviewIntro');
+    const badgeEl = document.getElementById('courseIntroStatusBadge');
+    if (!feedbackEl || !previewBox) return;
+
+    const videoId = window.bkUtils ? window.bkUtils.extractYouTubeVideoId(url) : '';
+    if (!url || !videoId) {
+      feedbackEl.className = 'yt-valid-feedback';
+      feedbackEl.innerHTML = `ℹ️ Paste any Public or Unlisted YouTube URL for the introductory video.`;
+      previewBox.innerHTML = `
+        <div style="font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;color:var(--sunset-dark-base);">
+          📺 Orientation Video Preview:
+        </div>
+        <div style="font-size:0.84rem;color:var(--text-muted);padding:0.75rem;background:#fff;border-radius:4px;border:1px dashed #e5e7eb;">
+          No orientation video linked yet.
+        </div>
+      `;
+      if (badgeEl) {
+        badgeEl.style.background = '#fef3c7';
+        badgeEl.style.color = '#92400e';
+        badgeEl.textContent = '⏳ No Video';
+      }
+      return;
+    }
+
+    feedbackEl.className = 'yt-valid-feedback valid';
+    feedbackEl.innerHTML = `✅ Valid YouTube ID: <code>${videoId}</code>`;
+    previewBox.innerHTML = `
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;color:var(--sunset-dark-base);">
+        📺 Orientation Video Preview:
+      </div>
+      <div class="course-video-wrapper" style="margin:0;max-width:480px;">
+        <iframe src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1" frameborder="0" allowfullscreen></iframe>
+      </div>
+    `;
+    if (badgeEl) {
+      badgeEl.style.background = '#d1fae5';
+      badgeEl.style.color = '#065f46';
+      badgeEl.textContent = '✅ Video Ready';
+    }
+  },
+
+  handleSaveCourseIntro() {
+    const title = (document.getElementById('adminCourseIntroTitle')?.value || '').trim();
+    const titleMl = (document.getElementById('adminCourseIntroTitleMl')?.value || '').trim();
+    const videoUrl = (document.getElementById('adminCourseIntroVideoUrl')?.value || '').trim();
+    const description = (document.getElementById('adminCourseIntroDesc')?.value || '').trim();
+
+    if (!title) {
+      alert('Orientation video title is required.');
+      return;
+    }
+
+    if (window.bkStore && typeof window.bkStore.updateCourseIntro === 'function') {
+      window.bkStore.updateCourseIntro({
+        title,
+        titleMl,
+        videoUrl,
+        description
+      });
+      if (window.bkCourse && typeof window.bkCourse.render === 'function') {
+        window.bkCourse.render();
+      }
+      if (window.bkApp && window.bkApp.toast) {
+        window.bkApp.toast('✨ Course orientation video details saved successfully!');
+      } else {
+        alert('Course orientation video saved successfully!');
+      }
+    }
+  },
+
   handleSaveCourseDay(dayNumber) {
     const titleEl = document.getElementById(`adminCourseTitle_${dayNumber}`);
     const titleMlEl = document.getElementById(`adminCourseTitleMl_${dayNumber}`);
@@ -2393,6 +2528,12 @@ class AdminController {
     const descEl = document.getElementById(`adminCourseDesc_${dayNumber}`);
     const ytEl = document.getElementById(`adminCourseYt_${dayNumber}`);
     const reflectionEl = document.getElementById(`adminCourseReflection_${dayNumber}`);
+
+    const extraVideoTitleEl = document.getElementById(`adminCourseExtraVideoTitle_${dayNumber}`);
+    const extraVideoEl = document.getElementById(`adminCourseExtraVideo_${dayNumber}`);
+    const audioTitleEl = document.getElementById(`adminCourseAudioTitle_${dayNumber}`);
+    const audioEl = document.getElementById(`adminCourseAudio_${dayNumber}`);
+    const notesEl = document.getElementById(`adminCourseNotes_${dayNumber}`);
 
     if (!titleEl) return;
 
@@ -2403,6 +2544,12 @@ class AdminController {
     const description = descEl ? descEl.value.trim() : '';
     const youtubeUrl = ytEl ? ytEl.value.trim() : '';
     const reflectionPrompt = reflectionEl ? reflectionEl.value.trim() : '';
+
+    const extraVideoTitle = extraVideoTitleEl ? extraVideoTitleEl.value.trim() : '';
+    const extraVideoUrl = extraVideoEl ? extraVideoEl.value.trim() : '';
+    const audioTitle = audioTitleEl ? audioTitleEl.value.trim() : '';
+    const audioUrl = audioEl ? audioEl.value.trim() : '';
+    const studyNotes = notesEl ? notesEl.value.trim() : '';
 
     if (!title) {
       alert(`Lesson title for Day ${dayNumber} is required.`);
@@ -2441,6 +2588,11 @@ class AdminController {
       description,
       summary: description,
       youtubeUrl,
+      extraVideoTitle,
+      extraVideoUrl,
+      audioTitle,
+      audioUrl,
+      studyNotes,
       reflectionPrompt,
       quizQuestions: quizQuestions.length > 0 ? quizQuestions : undefined
     });

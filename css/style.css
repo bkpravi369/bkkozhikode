@@ -433,6 +433,70 @@ button, input, select, textarea {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
+/* =========================================================================
+   3. RAJYOGA COURSE PAGE ONLY: RADIANT GOLDEN & YELLOW NAVBAR THEME
+   Strictly applied only to Course page; all other pages remain intact.
+   ========================================================================= */
+.is-course-page .site-header .desktop-nav .nav-link,
+.site-header.header-course-theme .desktop-nav .nav-link {
+  color: #fef08a !important; /* Soft warm yellow */
+  font-weight: 700 !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7) !important;
+  letter-spacing: 0.01em;
+}
+
+.is-course-page .site-header .desktop-nav .nav-link:hover,
+.site-header.header-course-theme .desktop-nav .nav-link:hover {
+  color: #ffd700 !important; /* Divine Gold */
+  background: rgba(255, 215, 0, 0.14) !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+}
+
+.is-course-page .site-header .desktop-nav .nav-link.active,
+.site-header.header-course-theme .desktop-nav .nav-link.active {
+  color: #ffd700 !important; /* Pure Golden */
+  background: rgba(255, 215, 0, 0.2) !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.7) !important;
+}
+
+.is-course-page .site-header .desktop-nav .nav-link.active::after,
+.site-header.header-course-theme .desktop-nav .nav-link.active::after {
+  background: #ffd700 !important;
+  box-shadow: 0 0 8px #ffd700 !important;
+}
+
+.is-course-page .site-header .brand-text h1,
+.site-header.header-course-theme .brand-text h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+.is-course-page .site-header .brand-text .brand-tag,
+.site-header.header-course-theme .brand-text .brand-tag {
+  color: #ffd700 !important;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4) !important;
+}
+
+.is-course-page .site-header .brand-text .brand-ml,
+.site-header.header-course-theme .brand-text .brand-ml {
+  color: #fef08a !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6) !important;
+  opacity: 1 !important;
+}
+
+.is-course-page .site-header .desktop-nav .dropdown-arrow-icon,
+.site-header.header-course-theme .desktop-nav .dropdown-arrow-icon {
+  color: #ffd700 !important;
+}
+
+.is-course-page .site-header .btn-mobile-nav-toggle,
+.site-header.header-course-theme .btn-mobile-nav-toggle {
+  color: #ffd700 !important;
+  background: rgba(255, 215, 0, 0.12) !important;
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
 /* Navathi Badge in Nav */
 .navathi-nav-badge {
   display: inline-flex;
