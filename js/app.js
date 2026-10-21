@@ -134,10 +134,22 @@ class AppController {
       }
     });
 
+    // Delegated click handler for Event Cards across Events & Navathi tabs
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.event-dynamic-card');
+      if (card && card.dataset.eventId) {
+        const isInteractive = e.target.closest('a:not(.btn-card-explore)');
+        if (!isInteractive) {
+          this.openEventMediaModal(card.dataset.eventId);
+        }
+      }
+    });
+
     // Keyboard support for Lightbox
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         this.closeLightbox();
+        this.closeImageLightbox();
       }
     });
   }
@@ -509,60 +521,6 @@ class AppController {
 
   // --- Render About Us Editorial Page ---
   renderAboutPage() {
-    const bkContainer = document.getElementById('aboutBkDisplayContainer');
-    const kozhikodeContainer = document.getElementById('aboutKozhikodeDisplayContainer');
-    const aboutData = window.bkStore.getAboutData();
-
-    if (bkContainer && aboutData.aboutBk) {
-      const bk = aboutData.aboutBk;
-      if (bk.published !== false) {
-        bkContainer.style.display = 'block';
-        const paragraphs = (bk.text || '').split('\n').filter(p => p.trim().length > 0);
-        const pTags = paragraphs.map(p => `<p>${p}</p>`).join('');
-
-        bkContainer.innerHTML = `
-          <div class="about-editorial-grid">
-            <div class="about-editorial-media">
-              <img src="${bk.image || 'assets/images/light_palace_center.jpg'}" alt="${bk.heading || 'About Brahma Kumaris'}">
-            </div>
-            <div class="about-editorial-text">
-              <span class="editorial-badge">Global Spiritual Movement • Est. 1936</span>
-              <h3>${bk.heading || 'About Brahma Kumaris'}</h3>
-              ${bk.headingMl ? `<div class="about-ml-heading">${bk.headingMl}</div>` : ''}
-              <div class="about-body-paragraphs">${pTags}</div>
-            </div>
-          </div>
-        `;
-      } else {
-        bkContainer.style.display = 'none';
-      }
-    }
-
-    if (kozhikodeContainer && aboutData.aboutKozhikode) {
-      const kzk = aboutData.aboutKozhikode;
-      if (kzk.published !== false) {
-        kozhikodeContainer.style.display = 'block';
-        const paragraphs = (kzk.text || '').split('\n').filter(p => p.trim().length > 0);
-        const pTags = paragraphs.map(p => `<p>${p}</p>`).join('');
-
-        kozhikodeContainer.innerHTML = `
-          <div class="about-editorial-grid reverse">
-            <div class="about-editorial-text">
-              <span class="editorial-badge local">North Kerala Sub-Zone • Light Palace</span>
-              <h3>${kzk.heading || 'About Brahma Kumaris Kozhikode'}</h3>
-              ${kzk.headingMl ? `<div class="about-ml-heading">${kzk.headingMl}</div>` : ''}
-              <div class="about-body-paragraphs">${pTags}</div>
-            </div>
-            <div class="about-editorial-media">
-              <img src="${kzk.image || 'assets/images/meditation_hall.jpg'}" alt="${kzk.heading || 'About Brahma Kumaris Kozhikode'}">
-            </div>
-          </div>
-        `;
-      } else {
-        kozhikodeContainer.style.display = 'none';
-      }
-    }
-
     if (window.lucide) window.lucide.createIcons();
   }
 
@@ -697,7 +655,7 @@ class AppController {
       card.innerHTML = `
         <div class="center-card-header">
           <img src="${c.image || 'assets/images/light_palace_center.jpg'}" alt="${c.name}">
-          ${c.isPrimary ? '<span class="main-badge">★ Kozhikode Main Sub-Zone Center</span>' : ''}
+          ${c.isPrimary ? '<span class="main-badge">★ Kozhikode Main Center</span>' : ''}
           <span class="center-area-tag">${c.area || 'Kozhikode'}</span>
         </div>
         <div class="center-card-body">
@@ -1186,16 +1144,15 @@ class AppController {
       centreSelect.innerHTML = `<option value="all">All Centres</option>` + centreNames.map(c => `<option value="${c}" ${c === currentCentreVal ? 'selected' : ''}>${c}</option>`).join('');
     }
 
-    // 3. Populate Category Filter Pills
+    // 3. Populate Category Filter Pills (Synced dynamically with admin categories)
     const pillsWrap = document.getElementById('eventsCategoryPills');
     if (pillsWrap) {
-      const standardCats = ['all', 'Festivals', 'Rajayoga Shivir', 'Youth Program', 'Social Service'];
-      const eventCats = Array.from(new Set(allEvents.map(e => e.category).filter(Boolean)));
-      const combinedCats = ['all', ...Array.from(new Set([...standardCats.filter(c => c !== 'all'), ...eventCats]))];
+      const storeCats = window.bkStore.getCategories ? window.bkStore.getCategories() : ['Festivals', 'Rajayoga Shivir', 'Youth Program', 'Social Service', 'Celebrations'];
+      const combinedCats = ['all', 'Navathi', ...storeCats.filter(c => c.toLowerCase() !== 'navathi')];
 
       pillsWrap.innerHTML = combinedCats.map(cat => {
         const isAct = (this.eventsFilter.category || 'all').toLowerCase() === cat.toLowerCase();
-        const label = cat === 'all' ? 'All Categories' : cat;
+        const label = cat === 'all' ? 'All Programs' : (cat === 'Navathi' ? '✨ Navathi' : cat);
         return `
           <button type="button" class="category-pill-btn ${isAct ? 'active' : ''}" onclick="bkApp.setEventsCategory('${cat}')">
             ${label}
@@ -1211,8 +1168,8 @@ class AppController {
   setEventsCategory(category) {
     this.eventsFilter.category = category;
     document.querySelectorAll('#eventsCategoryPills .category-pill-btn').forEach(btn => {
-      const txt = btn.textContent.trim();
-      const isAct = (category === 'all' && txt === 'All Categories') || txt.toLowerCase() === category.toLowerCase();
+      const txt = btn.textContent.trim().replace(/^✨\s*/, '');
+      const isAct = (category === 'all' && (txt === 'All Programs' || txt === 'All Categories')) || txt.toLowerCase() === category.toLowerCase();
       btn.classList.toggle('active', isAct);
     });
     this.applyEventsFilterAndRender();
@@ -1284,10 +1241,14 @@ class AppController {
       });
     }
 
-    // Category Filter
+    // Category Filter (supporting Navathi and dynamic categories)
     if (this.eventsFilter.category && this.eventsFilter.category !== 'all') {
       const targetCat = this.eventsFilter.category.toLowerCase();
-      events = events.filter(e => (e.category || '').toLowerCase() === targetCat);
+      if (targetCat === 'navathi') {
+        events = events.filter(e => Boolean(e.isNavathi || (e.category || '').toLowerCase() === 'navathi'));
+      } else {
+        events = events.filter(e => (e.category || '').toLowerCase() === targetCat);
+      }
     }
 
     // Search Keyword Filter
@@ -1343,17 +1304,20 @@ class AppController {
 
   renderEventCardHtml(ev) {
     const isNavathi = Boolean(ev.isNavathi || ev.category === 'navathi');
-    const ytUrl = ev.youtubeUrl || ev.videoUrl || '';
-    const hasVideo = Boolean(ytUrl && ytUrl.trim());
+    const videos = Array.isArray(ev.videos) && ev.videos.length > 0 
+      ? ev.videos 
+      : ((ev.youtubeUrl || ev.videoUrl) ? [{ url: ev.youtubeUrl || ev.videoUrl }] : []);
+    const hasVideo = videos.length > 0;
     const photosCount = Array.isArray(ev.photos) ? ev.photos.length : (Array.isArray(ev.additionalImages) ? ev.additionalImages.length : 0);
     const cover = ev.coverImage || ev.image || 'assets/images/light_palace_center.jpg';
     const centreName = ev.centre || ev.location || 'Kozhikode Main';
     const dateFormatted = ev.date || 'Upcoming';
-    const desc = ev.description || ev.shortDesc || ev.fullDesc || '';
 
     return `
-      <article class="event-dynamic-card ${isNavathi ? 'is-navathi-special' : ''}" onclick="bkApp.openEventMediaModal('${ev.id}')">
-        <!-- Media Wrap -->
+      <article class="event-dynamic-card ${isNavathi ? 'is-navathi-special' : ''}" 
+               data-event-id="${ev.id}" 
+               onclick="window.bkApp ? window.bkApp.openEventMediaModal('${ev.id}') : null">
+        <!-- Strictly Uniform Media Container -->
         <div class="event-card-media">
           <img src="${cover}" alt="${ev.title}" loading="lazy">
           <div class="media-top-badges">
@@ -1367,44 +1331,43 @@ class AppController {
                 <span>Navathi Special</span>
               </span>
             ` : ''}
+            <span class="badge-event-cat">${ev.category || 'Gathering'}</span>
           </div>
 
           <div class="media-indicators-bar">
             ${hasVideo ? `
-              <span class="media-chip video-chip" title="Includes YouTube Video Broadcast">
+              <span class="media-chip video-chip" title="${videos.length} YouTube Video${videos.length > 1 ? 's' : ''}">
                 <i data-lucide="play" style="width:11px;height:11px;fill:currentColor;"></i>
-                <span>Video</span>
+                <span>${videos.length > 1 ? `${videos.length} Videos` : 'Video'}</span>
               </span>
             ` : ''}
-            ${photosCount > 0 ? `
-              <span class="media-chip photos-chip" title="${photosCount} photo${photosCount > 1 ? 's' : ''} in gallery">
+            ${photosCount > 1 ? `
+              <span class="media-chip photos-chip" title="${photosCount} photos in gallery">
                 <i data-lucide="camera" style="width:11px;height:11px;"></i>
-                <span>${photosCount} Photo${photosCount > 1 ? 's' : ''}</span>
+                <span>${photosCount} Photos</span>
               </span>
             ` : ''}
           </div>
         </div>
 
-        <!-- Card Body -->
+        <!-- Clean, Minimal Card Body -->
         <div class="event-card-content">
           <div class="event-tags-row">
             <span class="event-centre-tag">
               <i data-lucide="map-pin" style="width:12px;height:12px;"></i>
               <span>${centreName}</span>
             </span>
-            <span class="event-category-tag">${ev.category || 'Gathering'}</span>
           </div>
 
           <h3 class="event-card-title">${ev.title}</h3>
           ${ev.titleMl ? `<div class="event-card-title-ml">${ev.titleMl}</div>` : ''}
 
-          <p class="event-card-snippet">${desc}</p>
-
           <div class="event-card-footer">
-            <span class="btn-card-explore">
-              <span>View Details & Media</span>
+            <button type="button" class="btn-card-explore" 
+                    onclick="event.stopPropagation(); window.bkApp ? window.bkApp.openEventMediaModal('${ev.id}') : null">
+              <span>View Gallery / Details</span>
               <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
-            </span>
+            </button>
           </div>
         </div>
       </article>
@@ -1533,7 +1496,7 @@ class AppController {
   // =========================================================================
 
   openEventMediaModal(eventId) {
-    const ev = window.bkStore.getEvent(eventId);
+    const ev = window.bkStore ? window.bkStore.getEvent(eventId) : null;
     if (!ev) return;
 
     const modal = document.getElementById('eventDetailModal');
@@ -1541,11 +1504,30 @@ class AppController {
     if (!modal || !content) return;
 
     const isNavathi = Boolean(ev.isNavathi || ev.category === 'navathi');
-    const ytUrl = ev.youtubeUrl || ev.videoUrl || '';
-    const ytEmbedUrl = ytUrl ? window.bkUtils.getYouTubeEmbedUrl(ytUrl) : '';
     const centreName = ev.centre || ev.location || 'Kozhikode Main';
     const dateFormatted = ev.date || 'Upcoming';
     const desc = ev.description || ev.fullDesc || ev.shortDesc || '';
+
+    // Collect all videos
+    const videosList = [];
+    if (Array.isArray(ev.videos) && ev.videos.length > 0) {
+      ev.videos.forEach((v, idx) => {
+        if (v && (v.url || v.title)) {
+          videosList.push({
+            title: v.title || `Session Video #${idx + 1}`,
+            url: v.url || ''
+          });
+        }
+      });
+    }
+    // Backward compatibility with single youtubeUrl / videoUrl
+    const legacyYt = ev.youtubeUrl || ev.videoUrl || '';
+    if (legacyYt && !videosList.some(v => v.url === legacyYt)) {
+      videosList.unshift({
+        title: ev.videoTitle || (videosList.length === 0 ? 'Official Video Broadcast / Highlights' : 'Introductory Session'),
+        url: legacyYt
+      });
+    }
 
     // Collect all unique photos
     const allPhotos = [];
@@ -1556,46 +1538,66 @@ class AppController {
       if (p && !allPhotos.includes(p)) allPhotos.push(p);
     });
 
-    // YouTube Video section (at top if present)
-    let videoSectionHtml = '';
-    if (ytEmbedUrl) {
-      videoSectionHtml = `
-        <div class="modal-media-top-video">
-          <div class="video-responsive-player">
-            <iframe 
-              src="${ytEmbedUrl}" 
-              title="${ev.title}" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="video-broadcast-tag">
-            <i data-lucide="youtube" style="width:14px;height:14px;color:#ef4444;"></i>
-            <span>Video Broadcast / Highlights</span>
+    // Store for Lightbox Gallery navigation
+    this.currentModalEventPhotos = allPhotos;
+    this.currentModalEventTitle = ev.title || 'Event Gallery';
+
+    // 1. YouTube Videos Section
+    let videosSectionHtml = '';
+    const validVideos = videosList.filter(v => v.url && v.url.trim());
+    if (validVideos.length > 0) {
+      videosSectionHtml = `
+        <div class="modal-media-videos-section">
+          <h4 class="modal-section-title">
+            <i data-lucide="video" style="width:18px;height:18px;color:#ef4444;"></i>
+            <span>Video Broadcasts &amp; Discourses (${validVideos.length} Video${validVideos.length > 1 ? 's' : ''})</span>
+          </h4>
+          <div class="modal-videos-grid">
+            ${validVideos.map(v => {
+              const embedUrl = window.bkUtils ? window.bkUtils.getYouTubeEmbedUrl(v.url.trim()) : '';
+              if (!embedUrl) return '';
+              return `
+                <div class="modal-video-card">
+                  <div class="video-responsive-player">
+                    <iframe 
+                      src="${embedUrl}" 
+                      title="${v.title}" 
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen>
+                    </iframe>
+                  </div>
+                  <div class="video-card-meta">
+                    <i data-lucide="youtube" style="width:16px;height:16px;color:#ef4444;flex-shrink:0;"></i>
+                    <span class="video-card-title">${v.title}</span>
+                  </div>
+                </div>
+              `;
+            }).join('')}
           </div>
         </div>
       `;
     }
 
-    // Photo Gallery Section (Grid below)
+    // 2. Interactive Photo Gallery Section
     let gallerySectionHtml = '';
     if (allPhotos.length > 0) {
       gallerySectionHtml = `
         <div class="modal-media-gallery-section">
           <div class="gallery-section-header">
             <h4>
-              <i data-lucide="camera" style="width:16px;height:16px;color:var(--sunset-primary);"></i>
-              <span>Event Photo Gallery (${allPhotos.length} Photos)</span>
+              <i data-lucide="camera" style="width:18px;height:18px;color:var(--sunset-primary);"></i>
+              <span>Event Photo Gallery (${allPhotos.length} Photo${allPhotos.length > 1 ? 's' : ''})</span>
             </h4>
-            <span class="gallery-hint">Click any photo to enlarge</span>
+            <span class="gallery-hint">Click any photo for fullscreen view with next/prev controls</span>
           </div>
           <div class="modal-photos-grid">
             ${allPhotos.map((photoUrl, idx) => `
-              <div class="modal-photo-thumb-wrap" onclick="bkApp.openImageLightbox('${photoUrl}', '${(ev.title || '').replace(/'/g, "\\'")}')">
+              <div class="modal-photo-thumb-wrap" onclick="bkApp.openImageLightbox(${idx})">
                 <img src="${photoUrl}" alt="${ev.title} photo ${idx + 1}" loading="lazy">
                 <div class="thumb-hover-overlay">
-                  <i data-lucide="zoom-in" style="width:18px;height:18px;"></i>
+                  <i data-lucide="zoom-in" style="width:20px;height:20px;"></i>
+                  <span>View #${idx + 1}</span>
                 </div>
               </div>
             `).join('')}
@@ -1604,112 +1606,84 @@ class AppController {
       `;
     }
 
-    // Schedule Section if available
-    let scheduleSectionHtml = '';
-    if (Array.isArray(ev.schedule) && ev.schedule.length > 0) {
-      scheduleSectionHtml = `
-        <div class="modal-schedule-section">
-          <h4>
-            <i data-lucide="clock-4" style="width:16px;height:16px;color:var(--sunset-primary);"></i>
-            <span>Ceremonial Schedule & Sessions</span>
-          </h4>
-          <div class="modal-schedule-table-wrap">
-            <table class="modal-schedule-table">
-              <thead>
-                <tr>
-                  <th style="width:130px;">Time</th>
-                  <th>Session & Spiritual Discourse</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${ev.schedule.map(s => `
-                  <tr>
-                    <td class="sched-col-time"><strong>${s.time}</strong></td>
-                    <td class="sched-col-session">${s.session}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      `;
-    }
-
     content.innerHTML = `
-      <!-- Top Video Player if present -->
-      ${videoSectionHtml}
-
-      <!-- Header details -->
-      <div class="modal-event-header-block">
-        <div class="modal-badges-row">
-          ${isNavathi ? `
-            <span class="modal-badge-navathi">
-              <i data-lucide="sparkles" style="width:13px;height:13px;"></i>
-              <span>90th Navathi Celebrations Special</span>
+      <div class="event-modal-body-container">
+        <!-- Header details -->
+        <div class="modal-event-header-block">
+          <div class="modal-badges-row">
+            ${isNavathi ? `
+              <span class="modal-badge-navathi">
+                <i data-lucide="sparkles" style="width:13px;height:13px;"></i>
+                <span>90th Navathi Celebrations Special</span>
+              </span>
+            ` : ''}
+            <span class="modal-badge-cat">${ev.category || 'Gathering'}</span>
+            <span class="modal-badge-centre">
+              <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
+              <span>${centreName}</span>
             </span>
-          ` : ''}
-          <span class="modal-badge-cat">${ev.category || 'Gathering'}</span>
-          <span class="modal-badge-centre">
-            <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
-            <span>${centreName}</span>
-          </span>
-        </div>
-
-        <h2 class="modal-event-title">${ev.title}</h2>
-        ${ev.titleMl ? `<div class="modal-event-title-ml">${ev.titleMl}</div>` : ''}
-
-        <div class="modal-meta-grid">
-          <div class="modal-meta-item">
-            <i data-lucide="calendar"></i>
-            <div>
-              <span class="meta-label">Date / Period</span>
-              <span class="meta-val">${dateFormatted} (${ev.year || '2026'})</span>
-            </div>
           </div>
-          <div class="modal-meta-item">
-            <i data-lucide="clock"></i>
-            <div>
-              <span class="meta-label">Timings</span>
-              <span class="meta-val">${ev.time || '10:00 AM - 1:00 PM'}</span>
+
+          <h2 class="modal-event-title">${ev.title}</h2>
+          ${ev.titleMl ? `<div class="modal-event-title-ml">${ev.titleMl}</div>` : ''}
+
+          <div class="modal-meta-grid">
+            <div class="modal-meta-item">
+              <i data-lucide="calendar"></i>
+              <div>
+                <span class="meta-label">Date / Period</span>
+                <span class="meta-val">${dateFormatted} (${ev.year || '2026'})</span>
+              </div>
             </div>
-          </div>
-          <div class="modal-meta-item">
-            <i data-lucide="map-pin"></i>
-            <div>
-              <span class="meta-label">Centre / Location</span>
-              <span class="meta-val">${centreName}</span>
+            <div class="modal-meta-item">
+              <i data-lucide="clock"></i>
+              <div>
+                <span class="meta-label">Timings</span>
+                <span class="meta-val">${ev.time || '10:00 AM - 1:00 PM'}</span>
+              </div>
+            </div>
+            <div class="modal-meta-item">
+              <i data-lucide="map-pin"></i>
+              <div>
+                <span class="meta-label">Centre / Location</span>
+                <span class="meta-val">${centreName}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Description Content -->
-      <div class="modal-event-desc-block">
-        <div class="modal-desc-text">
-          ${desc.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('')}
+        <!-- Description Content -->
+        <div class="modal-event-desc-block">
+          <h4 class="modal-section-title">
+            <i data-lucide="file-text" style="width:17px;height:17px;color:var(--sunset-primary);"></i>
+            <span>Program Overview &amp; Significance</span>
+          </h4>
+          <div class="modal-desc-text">
+            ${desc ? desc.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('') : '<p>Join us for this auspicious Brahma Kumaris spiritual initiative.</p>'}
+          </div>
         </div>
-      </div>
 
-      <!-- Schedule if present -->
-      ${scheduleSectionHtml}
+        <!-- Multiple YouTube Videos if present -->
+        ${videosSectionHtml}
 
-      <!-- Photo Gallery below video & description -->
-      ${gallerySectionHtml}
+        <!-- Interactive Photo Gallery Grid -->
+        ${gallerySectionHtml}
 
-      <!-- Footer CTA actions -->
-      <div class="modal-footer-actions">
-        <div class="modal-notice">
-          <i data-lucide="info" style="width:15px;height:15px;"></i>
-          <span>All Brahma Kumaris spiritual events and meditation sessions are free public service.</span>
-        </div>
-        <div class="modal-buttons">
-          <button class="btn-event-outline" onclick="bkApp.closeEventDetail()">
-            <span>Close</span>
-          </button>
-          <a href="https://wa.me/919539933699?text=Om%20Shanti,%20I%20would%20like%20information%20about%20${encodeURIComponent(ev.title)}" target="_blank" rel="noopener noreferrer" class="btn-cta-course" style="display:inline-flex;align-items:center;gap:0.4rem;">
-            <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
-            <span>Inquire on WhatsApp</span>
-          </a>
+        <!-- Footer CTA actions -->
+        <div class="modal-footer-actions">
+          <div class="modal-notice">
+            <i data-lucide="info" style="width:15px;height:15px;"></i>
+            <span>All Brahma Kumaris spiritual events and meditation sessions are free public service.</span>
+          </div>
+          <div class="modal-buttons">
+            <button type="button" class="btn-event-outline" onclick="bkApp.closeEventDetail()">
+              <span>Close</span>
+            </button>
+            <a href="https://wa.me/919539933699?text=Om%20Shanti,%20I%20would%20like%20information%20about%20${encodeURIComponent(ev.title)}" target="_blank" rel="noopener noreferrer" class="btn-cta-course" style="display:inline-flex;align-items:center;gap:0.4rem;">
+              <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+              <span>Inquire on WhatsApp</span>
+            </a>
+          </div>
         </div>
       </div>
     `;
@@ -1727,8 +1701,8 @@ class AppController {
   closeEventDetail() {
     const modal = document.getElementById('eventDetailModal');
     if (modal) {
-      const iframe = modal.querySelector('iframe');
-      if (iframe) iframe.src = '';
+      const iframes = modal.querySelectorAll('iframe');
+      iframes.forEach(f => f.src = '');
       modal.classList.remove('active');
       modal.style.display = 'none';
     }
@@ -1745,23 +1719,95 @@ class AppController {
     }
   }
 
-  openImageLightbox(src, caption = '') {
+  openImageLightbox(photoIndexOrUrl, caption = '') {
     const modal = document.getElementById('imageLightboxModal');
     const img = document.getElementById('lightboxLargeImg');
-    const cap = document.getElementById('lightboxCaption');
     if (!modal || !img) return;
 
-    img.src = src;
-    if (cap) cap.textContent = caption || '';
+    if (typeof photoIndexOrUrl === 'number') {
+      this.lightboxIndex = photoIndexOrUrl;
+      this.lightboxPhotos = Array.isArray(this.currentModalEventPhotos) && this.currentModalEventPhotos.length > 0
+        ? this.currentModalEventPhotos
+        : [];
+      this.lightboxCaption = this.currentModalEventTitle || '';
+    } else {
+      const src = photoIndexOrUrl;
+      this.lightboxPhotos = [src];
+      this.lightboxIndex = 0;
+      this.lightboxCaption = caption || '';
+    }
+
+    this.renderLightboxPhoto();
     modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // Keyboard navigation
+    if (this._boundLightboxKeyHandler) {
+      window.removeEventListener('keydown', this._boundLightboxKeyHandler);
+    }
+    this._boundLightboxKeyHandler = (e) => {
+      if (e.key === 'ArrowRight') this.nextLightboxPhoto(e);
+      else if (e.key === 'ArrowLeft') this.prevLightboxPhoto(e);
+      else if (e.key === 'Escape') this.closeImageLightbox();
+    };
+    window.addEventListener('keydown', this._boundLightboxKeyHandler);
   }
 
-  closeImageLightbox(event) {
-    if (event && event.target && event.target.id !== 'imageLightboxModal' && !event.target.classList.contains('lightbox-close-btn')) {
-      return;
+  renderLightboxPhoto() {
+    const img = document.getElementById('lightboxLargeImg');
+    const cap = document.getElementById('lightboxCaption');
+    const counter = document.getElementById('lightboxCounter');
+    const prevBtn = document.getElementById('lightboxPrevBtn');
+    const nextBtn = document.getElementById('lightboxNextBtn');
+    if (!img) return;
+
+    const total = this.lightboxPhotos ? this.lightboxPhotos.length : 1;
+    const current = (this.lightboxIndex !== undefined && this.lightboxIndex >= 0 && this.lightboxIndex < total) ? this.lightboxIndex : 0;
+    const src = this.lightboxPhotos && this.lightboxPhotos[current] ? this.lightboxPhotos[current] : '';
+
+    img.src = src;
+    if (counter) {
+      counter.textContent = `Photo ${current + 1} of ${total}`;
+      counter.style.display = total > 1 ? 'inline-block' : 'none';
     }
+    if (cap) {
+      cap.textContent = this.lightboxCaption ? `${this.lightboxCaption} • Photo ${current + 1}` : '';
+    }
+    if (prevBtn) prevBtn.style.display = total > 1 ? 'flex' : 'none';
+    if (nextBtn) nextBtn.style.display = total > 1 ? 'flex' : 'none';
+  }
+
+  nextLightboxPhoto(e) {
+    if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+    if (!this.lightboxPhotos || this.lightboxPhotos.length <= 1) return;
+    this.lightboxIndex = (this.lightboxIndex + 1) % this.lightboxPhotos.length;
+    this.renderLightboxPhoto();
+  }
+
+  prevLightboxPhoto(e) {
+    if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+    if (!this.lightboxPhotos || this.lightboxPhotos.length <= 1) return;
+    this.lightboxIndex = (this.lightboxIndex - 1 + this.lightboxPhotos.length) % this.lightboxPhotos.length;
+    this.renderLightboxPhoto();
+  }
+
+  closeImageLightbox() {
     const modal = document.getElementById('imageLightboxModal');
     if (modal) modal.style.display = 'none';
+    const eventModal = document.getElementById('eventDetailModal');
+    if (!eventModal || eventModal.style.display === 'none') {
+      document.body.style.overflow = '';
+    }
+    if (this._boundLightboxKeyHandler) {
+      window.removeEventListener('keydown', this._boundLightboxKeyHandler);
+      this._boundLightboxKeyHandler = null;
+    }
+  }
+
+  handleLightboxBackdrop(event) {
+    if (event && event.target && (event.target.id === 'imageLightboxModal' || event.target.classList.contains('lightbox-backdrop'))) {
+      this.closeImageLightbox();
+    }
   }
 
   formatEventCategory(cat) {

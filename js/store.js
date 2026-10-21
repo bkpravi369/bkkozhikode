@@ -47,13 +47,21 @@ const DEFAULT_DATA = {
     { id: 'about', label: 'About Us', icon: 'info', isCore: true, enabled: true, order: 2, type: 'system' },
     { id: 'meditation', label: 'Meditation Room', icon: 'sparkles', isCore: true, enabled: true, order: 3, type: 'system' },
     { id: 'course', label: '7-Day Rajyoga Course', icon: 'book-open', isCore: true, enabled: true, order: 4, type: 'system' },
-    { id: 'centers', label: 'Center List', icon: 'map-pin', isCore: true, enabled: true, order: 5, type: 'system' },
+    { id: 'centers', label: 'Centers', icon: 'map-pin', isCore: true, enabled: true, order: 5, type: 'system' },
     { id: 'gallery', label: 'Gallery', icon: 'image', isCore: true, enabled: true, order: 6, type: 'system' },
     { id: 'media', label: 'Media', icon: 'film', isCore: true, enabled: true, order: 7, type: 'media-dropdown' },
     { id: 'events', label: 'Events', icon: 'calendar', isCore: true, enabled: true, order: 8, type: 'system' },
     { id: 'navathi', label: 'Navathi', icon: 'award', isCore: true, enabled: true, order: 9, type: 'system' },
     { id: 'murali', label: 'Daily Murali', icon: 'sun', isCore: true, enabled: true, order: 10, type: 'system' },
     { id: 'contact', label: 'Contact Us', icon: 'mail', isCore: true, enabled: true, order: 11, type: 'system' }
+  ],
+
+  categories: [
+    "Festivals",
+    "Rajayoga Shivir",
+    "Youth Program",
+    "Social Service",
+    "Celebrations"
   ],
 
   aboutData: {
@@ -67,7 +75,7 @@ const DEFAULT_DATA = {
     aboutKozhikode: {
       heading: "About Brahma Kumaris Kozhikode",
       headingMl: "കോഴിക്കോട് ബ്രഹ്മാകുമാരീസ് സേവനങ്ങൾ",
-      text: "The Kozhikode spiritual sub-zone serves as a peaceful haven for spiritual study and Raja Yoga meditation across North Kerala. Headquartered at the Light Palace, Ashokapuram, our centers conduct daily meditation sessions, 7-day foundation courses, youth de-addiction and concentration seminars, and stress-management workshops for healthcare workers, educators, and professionals.\n\nAll meditation classes, foundational study courses, and publications are offered completely free of charge as a noble spiritual service to the community.",
+      text: "Brahma Kumaris Kozhikode serves as a peaceful haven for spiritual study and Raja Yoga meditation across North Kerala. Headquartered at the Light Palace, Ashokapuram, our centers conduct daily meditation sessions, 7-day foundation courses, youth de-addiction and concentration seminars, and stress-management workshops for healthcare workers, educators, and professionals.\n\nAll meditation classes, foundational study courses, and publications are offered completely free of charge as a noble spiritual service to the community.",
       image: "assets/images/meditation_hall.jpg",
       published: true
     }
@@ -856,6 +864,16 @@ const DEFAULT_DATA = {
         "assets/images/rajyoga_peace.jpg"
       ],
       youtubeUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
+      videos: [
+        {
+          title: "Inaugural Ceremony & Divine Flag Unfurling",
+          url: "https://www.youtube.com/live/xeZ_HBW1mq4"
+        },
+        {
+          title: "Keynote Spiritual Discourse: 90 Years of World Renewal",
+          url: "https://www.youtube.com/live/YMXD1FmGleg"
+        }
+      ],
       description: "Commemorating 90 glorious years of Brahma Kumaris (1936-2026) dedicated to world renewal, spiritual enlightenment of women, and global harmony. Features divine flag unfurling, amritvela mass meditation, and special address by senior Rajyogis.",
       image: "assets/images/light_palace_center.jpg",
       additionalImages: [
@@ -1256,7 +1274,7 @@ class SiteStore {
           mergedTabs = parsed.tabs.map(t => {
             if (t.id === 'about') return { ...t, label: 'About Us' };
             if (t.id === 'gallery') return { ...t, label: 'Gallery' };
-            if (t.id === 'centers') return { ...t, label: 'Center List' };
+            if (t.id === 'centers') return { ...t, label: 'Centers' };
             if (t.id === 'contact') return { ...t, label: 'Contact Us' };
             if (t.id === 'events') return { ...t, label: 'Events', type: 'system' };
             if (t.id === 'media') return { ...t, label: 'Media', type: 'media-dropdown' };
@@ -1332,6 +1350,9 @@ class SiteStore {
               isNavathi,
               coverImage,
               photos,
+              videos: Array.isArray(ev.videos) && ev.videos.length > 0 
+                ? ev.videos 
+                : (youtubeUrl ? [{ title: ev.videoTitle || 'Program Video Broadcast / Highlights', url: youtubeUrl }] : []),
               youtubeUrl,
               description,
               image: coverImage,
@@ -1368,6 +1389,7 @@ class SiteStore {
         }
 
         let mergedSocialChannels = Array.isArray(parsed.socialChannels) && parsed.socialChannels.length > 0 ? parsed.socialChannels : DEFAULT_DATA.socialChannels;
+        let mergedCategories = Array.isArray(parsed.categories) && parsed.categories.length > 0 ? parsed.categories : DEFAULT_DATA.categories;
 
         return {
           ...DEFAULT_DATA,
@@ -1381,6 +1403,7 @@ class SiteStore {
           customPages: parsed.customPages || DEFAULT_DATA.customPages,
           courseModules: mergedCourseModules,
           socialChannels: mergedSocialChannels,
+          categories: mergedCategories,
           centers: mergedCenters,
           gallery: parsed.gallery || DEFAULT_DATA.gallery,
           events: mergedEvents,
@@ -1561,6 +1584,43 @@ class SiteStore {
     return true;
   }
 
+  // --- Dynamic Categories ---
+  getCategories() {
+    if (!Array.isArray(this.data.categories) || this.data.categories.length === 0) {
+      this.data.categories = ["Festivals", "Rajayoga Shivir", "Youth Program", "Social Service", "Celebrations"];
+      this.saveData();
+    }
+    return [...this.data.categories];
+  }
+
+  addCategory(name) {
+    if (!name || typeof name !== 'string') return this.getCategories();
+    const clean = name.trim();
+    if (!clean) return this.getCategories();
+    if (!Array.isArray(this.data.categories) || this.data.categories.length === 0) {
+      this.data.categories = ["Festivals", "Rajayoga Shivir", "Youth Program", "Social Service", "Celebrations"];
+    }
+    const exists = this.data.categories.some(c => c.toLowerCase() === clean.toLowerCase());
+    if (!exists) {
+      this.data.categories.push(clean);
+      this.saveData();
+    }
+    return [...this.data.categories];
+  }
+
+  deleteCategory(name) {
+    if (!name) return this.getCategories();
+    const clean = name.trim().toLowerCase();
+    if (Array.isArray(this.data.categories)) {
+      this.data.categories = this.data.categories.filter(c => c.toLowerCase() !== clean);
+      if (this.data.categories.length === 0) {
+        this.data.categories = ["Festivals", "Rajayoga Shivir", "Youth Program", "Social Service", "Celebrations"];
+      }
+      this.saveData();
+    }
+    return this.getCategories();
+  }
+
   // --- Events ---
   getEvents(filterCategory = 'all', includeDrafts = false) {
     let list = this.data.events || [];
@@ -1597,10 +1657,35 @@ class SiteStore {
     const year = event.year && event.year.trim() ? event.year.trim() : (date.length >= 4 && !isNaN(date.substring(0, 4)) ? date.substring(0, 4) : '2026');
     const centre = event.centre || event.center || event.location || 'Kozhikode Main';
     const isNavathi = Boolean(event.isNavathi !== undefined ? event.isNavathi : (event.category === 'navathi'));
-    const coverImage = event.coverImage || event.image || 'assets/images/light_palace_center.jpg';
     const photos = Array.isArray(event.photos) ? event.photos : (Array.isArray(event.additionalImages) ? event.additionalImages : []);
-    const youtubeUrl = event.youtubeUrl || event.videoUrl || '';
+    let coverImage = event.coverImage || event.image || '';
+    if (!coverImage && photos.length > 0) {
+      coverImage = photos[0];
+    }
+    if (!coverImage) {
+      coverImage = 'assets/images/light_palace_center.jpg';
+    }
+    let youtubeUrl = event.youtubeUrl || event.videoUrl || '';
     const description = event.description || event.fullDesc || event.shortDesc || '';
+
+    // Multiple YouTube Videos support with backward compatibility
+    let videos = Array.isArray(event.videos) 
+      ? event.videos.filter(v => v && (v.url || v.title)).map(v => ({
+          title: v.title ? v.title.trim() : 'Session Video',
+          url: v.url ? v.url.trim() : ''
+        }))
+      : [];
+
+    if (videos.length === 0 && youtubeUrl && youtubeUrl.trim()) {
+      videos.push({
+        title: event.videoTitle || 'Program Video Broadcast / Highlights',
+        url: youtubeUrl.trim()
+      });
+    }
+
+    if (videos.length > 0 && !youtubeUrl && videos[0].url) {
+      youtubeUrl = videos[0].url;
+    }
 
     // Auto-extract YouTube video ID if URL provided
     let youtubeVideoId = event.youtubeVideoId || '';
@@ -1622,6 +1707,7 @@ class SiteStore {
       image: coverImage,
       photos,
       additionalImages: photos,
+      videos,
       youtubeUrl,
       videoUrl: youtubeUrl,
       youtubeVideoId,

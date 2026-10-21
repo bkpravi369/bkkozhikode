@@ -1055,7 +1055,7 @@
       const cleanWa = waNum.startsWith('91') ? waNum : `91${waNum}`;
 
       card.innerHTML = `
-        ${c.isPrimary ? '<span class="contact-badge-main">Main Sub-Zone Center</span>' : ''}
+        ${c.isPrimary ? '<span class="contact-badge-main">Main Center</span>' : ''}
         <div class="contact-card-name">${c.name}</div>
         <div class="contact-card-name-ml">${c.nameMl || ''}</div>
         
@@ -1094,7 +1094,7 @@
         <div style="padding:1.4rem;background:#fafaf9;border:1px solid #e2e8f0;border-radius:16px;">
           <h3 style="font-size:1.15rem;font-weight:700;color:#0f172a;display:flex;align-items:center;gap:8px;margin-bottom:4px;">
             <i data-lucide="building-2" style="width:20px;height:20px;color:#b91c1c;"></i>
-            14 Kerala District HeadQuarters (ജില്ലാ ഹെഡ്ക്വാർട്ടേഴ്സുകൾ)
+            14 Kerala District Centers (സേവാകേന്ദ്രങ്ങൾ)
           </h3>
           <p style="font-size:0.86rem;color:#64748b;margin-bottom:1rem;">
             Direct phone directory for Brahma Kumaris main district centers across Kerala.

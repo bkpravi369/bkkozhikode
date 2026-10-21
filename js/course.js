@@ -623,7 +623,7 @@
         <div class="certificate-card" id="courseCertificateCard">
           <img src="assets/images/logo.png" alt="Brahma Kumaris Logo" class="certificate-emblem">
           <h2 class="certificate-header-org">PRAJAPITA BRAHMA KUMARIS ISHWARIYA VISHWA VIDYALAYA</h2>
-          <div class="certificate-sub-org">LIGHT PALACE, ASHOKAPURAM, KOZHIKODE SUB-ZONE</div>
+          <div class="certificate-sub-org">LIGHT PALACE, ASHOKAPURAM, KOZHIKODE</div>
 
           <h3 class="certificate-title">CERTIFICATE OF SPIRITUAL STUDY</h3>
           <p class="certificate-body">

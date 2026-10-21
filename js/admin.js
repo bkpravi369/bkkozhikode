@@ -840,6 +840,8 @@ class AdminController {
   }
 
   renderAdminEvents(filterCat = this.currentEventFilter || 'all') {
+    this.renderAdminCategories();
+    this.renderAdminFilterBar();
     const container = document.getElementById('adminEventsCardsContainer');
     if (!container) return;
 
@@ -955,6 +957,72 @@ class AdminController {
     return map[cat] || cat || 'Event';
   }
 
+  // --- Dynamic Category Management (Requirement 3) ---
+  renderAdminCategories() {
+    const wrap = document.getElementById('adminCategoriesListWrap');
+    if (!wrap) return;
+    const cats = window.bkStore.getCategories();
+    wrap.innerHTML = cats.map(cat => `
+      <span style="display:inline-flex;align-items:center;gap:0.4rem;background:#ffffff;border:1px solid #d97706;color:#92400e;padding:0.25rem 0.65rem;border-radius:999px;font-size:0.82rem;font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+        <span>${cat}</span>
+        <button type="button" onclick="bkAdmin.handleDeleteCategory('${cat.replace(/'/g, "\\'")}')" style="background:none;border:none;cursor:pointer;color:#dc2626;font-size:0.85rem;padding:0;line-height:1;font-weight:700;" title="Delete category">✕</button>
+      </span>
+    `).join('');
+  }
+
+  handleAddCategory() {
+    const input = document.getElementById('newCategoryInput');
+    if (!input) return;
+    const val = input.value.trim();
+    if (!val) return;
+    window.bkStore.addCategory(val);
+    input.value = '';
+    this.renderAdminCategories();
+    this.renderAdminFilterBar();
+    this.populateEventCategoriesDropdown();
+    if (window.bkApp && typeof window.bkApp.renderEventsPage === 'function') {
+      window.bkApp.renderEventsPage();
+    }
+    if (window.bkApp && window.bkApp.toast) {
+      window.bkApp.toast(`✨ Category "${val}" added successfully!`);
+    }
+  }
+
+  handleDeleteCategory(cat) {
+    if (!cat) return;
+    if (confirm(`Are you sure you want to delete the category "${cat}"?`)) {
+      window.bkStore.deleteCategory(cat);
+      this.renderAdminCategories();
+      this.renderAdminFilterBar();
+      this.populateEventCategoriesDropdown();
+      if (window.bkApp && typeof window.bkApp.renderEventsPage === 'function') {
+        window.bkApp.renderEventsPage();
+      }
+      if (window.bkApp && window.bkApp.toast) {
+        window.bkApp.toast(`Category "${cat}" removed.`);
+      }
+    }
+  }
+
+  renderAdminFilterBar() {
+    const bar = document.getElementById('adminEventFilterBar');
+    if (!bar) return;
+    const cats = window.bkStore.getCategories();
+    const curr = this.currentEventFilter || 'all';
+
+    let html = `
+      <button class="admin-ev-filter-btn ${curr === 'all' ? 'active' : ''}" data-cat="all" onclick="bkAdmin.filterAdminEvents('all', this)">All Events</button>
+      <button class="admin-ev-filter-btn ${curr === 'navathi' ? 'active' : ''}" data-cat="navathi" onclick="bkAdmin.filterAdminEvents('navathi', this)">✨ Navathi Only</button>
+    `;
+
+    cats.forEach(c => {
+      html += `<button class="admin-ev-filter-btn ${curr.toLowerCase() === c.toLowerCase() ? 'active' : ''}" data-cat="${c}" onclick="bkAdmin.filterAdminEvents('${c.replace(/'/g, "\\'")}', this)">${c}</button>`;
+    });
+
+    html += `<button class="admin-ev-filter-btn ${curr === 'drafts' ? 'active' : ''}" data-cat="drafts" onclick="bkAdmin.filterAdminEvents('drafts', this)">Drafts Only</button>`;
+    bar.innerHTML = html;
+  }
+
   populateEventCentresDropdown(selectedCentre = '') {
     const sel = document.getElementById('eventFormCentre');
     if (!sel) return;
@@ -989,54 +1057,202 @@ class AdminController {
     });
   }
 
+  populateEventCategoriesDropdown(selectedCategory = '') {
+    const sel = document.getElementById('eventFormCategory');
+    if (!sel) return;
+    const cats = window.bkStore.getCategories();
+    sel.innerHTML = cats.map(c => {
+      const isSel = selectedCategory && (selectedCategory.toLowerCase() === c.toLowerCase());
+      return `<option value="${c}" ${isSel ? 'selected' : ''}>${c}</option>`;
+    }).join('');
+  }
+
   onEventDateChange(dateVal) {
-    if (!dateVal) return;
-    const yearInput = document.getElementById('eventFormYear');
-    if (yearInput) {
-      const y = dateVal.substring(0, 4);
-      if (y && !isNaN(parseInt(y, 10))) {
-        yearInput.value = y;
+    // Handled seamlessly
+  }
+
+  // --- Bulk Image Selection & Automatic Upload (Requirement 2) ---
+  async handleBulkEventImages(event) {
+    const files = Array.from(event.target.files || []);
+    if (files.length === 0) return;
+
+    const statusEl = document.getElementById('bulkUploadStatus');
+    if (statusEl) statusEl.textContent = `Uploading ${files.length} photo(s)...`;
+
+    if (!Array.isArray(this.currentEventPhotos)) {
+      this.currentEventPhotos = [];
+    }
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (statusEl) statusEl.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}...`;
+      try {
+        const url = await this.uploadSingleEventImage(file);
+        if (url) {
+          this.currentEventPhotos.push(url);
+          if (!this.currentEventCover) {
+            this.currentEventCover = url;
+          }
+        }
+      } catch (err) {
+        console.warn('Upload failed for file:', file.name, err);
+      }
+    }
+
+    if (statusEl) {
+      statusEl.textContent = `✓ ${files.length} photo(s) added!`;
+      setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 4000);
+    }
+
+    this.renderEventThumbnails();
+    event.target.value = '';
+  }
+
+  async uploadSingleEventImage(file) {
+    // 1. Direct Cloudinary upload attempt
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'uo0dcjpe');
+      const cldRes = await fetch('https://api.cloudinary.com/v1_1/uo0dcjpe/image/upload', {
+        method: 'POST',
+        body: formData
+      }).catch(() => null);
+
+      if (cldRes && cldRes.ok) {
+        const cldData = await cldRes.json().catch(() => null);
+        if (cldData && (cldData.secure_url || cldData.url)) {
+          return cldData.secure_url || cldData.url;
+        }
+      }
+    } catch (e) {
+      console.warn('Direct Cloudinary upload attempt:', e);
+    }
+
+    // 2. Server upload proxy (/api/upload on localhost)
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const base64Data = e.target.result;
+        try {
+          const resp = await fetch('/api/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: file.name, data: base64Data })
+          }).catch(() => null);
+
+          if (resp && resp.ok) {
+            const resJson = await resp.json().catch(() => null);
+            if (resJson && resJson.url) {
+              resolve(resJson.secure_url || resJson.url);
+              return;
+            }
+          }
+        } catch (err) {
+          console.warn('/api/upload request error, falling back to data URL:', err);
+        }
+
+        // 3. Fallback to base64 Data URL
+        resolve(base64Data);
+      };
+      reader.onerror = () => resolve('');
+      reader.readAsDataURL(file);
+    });
+  }
+
+  renderEventThumbnails() {
+    const container = document.getElementById('eventThumbnailsContainer');
+    const hiddenCover = document.getElementById('eventFormImageUrl');
+    if (!container) return;
+
+    if (!Array.isArray(this.currentEventPhotos)) {
+      this.currentEventPhotos = [];
+    }
+
+    if (!this.currentEventCover && this.currentEventPhotos.length > 0) {
+      this.currentEventCover = this.currentEventPhotos[0];
+    }
+
+    if (hiddenCover) {
+      hiddenCover.value = this.currentEventCover || '';
+    }
+
+    if (this.currentEventPhotos.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column:1/-1;font-size:0.8rem;color:#9ca3af;padding:0.6rem 0;text-align:center;">
+          No photos selected yet. Click "Select Multiple Photos" above to add event images.
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = this.currentEventPhotos.map((url, idx) => {
+      const isCover = url === this.currentEventCover || (!this.currentEventCover && idx === 0);
+      return `
+        <div style="position:relative;border-radius:6px;overflow:hidden;border:2px solid ${isCover ? '#d97706' : '#e5e7eb'};box-shadow:0 1px 3px rgba(0,0,0,0.1);background:#0f172a;height:90px;">
+          <img src="${url}" alt="Event Photo ${idx + 1}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          ${isCover ? `
+            <span style="position:absolute;top:4px;left:4px;background:#d97706;color:#ffffff;font-size:0.65rem;font-weight:800;padding:2px 5px;border-radius:3px;">
+              ★ Cover
+            </span>
+          ` : `
+            <button type="button" onclick="bkAdmin.setEventCoverPhoto(${idx})" style="position:absolute;top:4px;left:4px;background:rgba(0,0,0,0.7);color:#ffffff;border:none;font-size:0.65rem;font-weight:700;padding:2px 5px;border-radius:3px;cursor:pointer;">
+              Set Cover
+            </button>
+          `}
+          <button type="button" onclick="bkAdmin.removeEventPhoto(${idx})" style="position:absolute;top:4px;right:4px;background:#ef4444;color:#ffffff;border:none;width:20px;height:20px;border-radius:50%;font-size:0.75rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,0.3);" title="Remove this photo">
+            ✕
+          </button>
+        </div>
+      `;
+    }).join('');
+  }
+
+  setEventCoverPhoto(idx) {
+    if (this.currentEventPhotos && this.currentEventPhotos[idx]) {
+      this.currentEventCover = this.currentEventPhotos[idx];
+      this.renderEventThumbnails();
+      if (window.bkApp && window.bkApp.toast) {
+        window.bkApp.toast('★ Cover photo updated!');
       }
     }
   }
 
+  removeEventPhoto(idx) {
+    if (!this.currentEventPhotos) return;
+    const removed = this.currentEventPhotos.splice(idx, 1)[0];
+    if (removed === this.currentEventCover) {
+      this.currentEventCover = this.currentEventPhotos[0] || '';
+    }
+    this.renderEventThumbnails();
+  }
+
+  // --- Simplified Event Modals & Saving (Requirement 1) ---
   openAddEventModal() {
     const form = document.getElementById('addEventFormContainer');
     if (!form) return;
 
     this.populateEventCentresDropdown();
+    this.populateEventCategoriesDropdown();
 
     document.getElementById('eventFormId').value = '';
     document.getElementById('eventFormTitleInput').value = '';
     document.getElementById('eventFormTitleMl').value = '';
+    
     const isNavathiCheck = document.getElementById('eventFormIsNavathi');
     if (isNavathiCheck) isNavathiCheck.checked = false;
 
-    document.getElementById('eventFormCategory').value = 'Festivals';
-    document.getElementById('eventFormOrder').value = '1';
-
     const todayStr = new Date().toISOString().split('T')[0];
     document.getElementById('eventFormDate').value = todayStr;
-    const yearInput = document.getElementById('eventFormYear');
-    if (yearInput) yearInput.value = todayStr.substring(0, 4) || '2026';
-
-    document.getElementById('eventFormTime').value = '10:00 AM - 1:00 PM';
-    const venueInput = document.getElementById('eventFormVenue');
-    if (venueInput) venueInput.value = '';
-
     document.getElementById('eventFormShortDesc').value = '';
-    document.getElementById('eventFormFullDesc').value = '';
-    document.getElementById('eventFormImageUrl').value = 'assets/images/light_palace_center.jpg';
-    document.getElementById('eventFormAdditionalImages').value = '';
-    document.getElementById('eventFormVideoUrl').value = '';
-    document.getElementById('eventFormRegUrl').value = '';
-    document.getElementById('eventFormExternalUrl').value = '';
     document.getElementById('eventFormIsFeatured').checked = false;
     document.getElementById('eventFormIsPublished').checked = true;
 
-    this.previewEventMainImage('assets/images/light_palace_center.jpg');
-    this.previewEventVideo('');
-    this.renderAdminScheduleRows([]);
+    this.currentEventPhotos = [];
+    this.currentEventCover = '';
+    this.currentEventVideos = [{ title: '', url: '' }];
+    this.renderEventThumbnails();
+    this.renderEventVideosList();
 
     document.getElementById('eventFormTitle').textContent = 'Create New Event / Gathering';
     document.getElementById('btnSaveEventText').textContent = 'Save & Publish Event';
@@ -1052,6 +1268,7 @@ class AdminController {
     if (!form || !ev) return;
 
     this.populateEventCentresDropdown(ev.centre || ev.location || '');
+    this.populateEventCategoriesDropdown(ev.category || 'Festivals');
 
     document.getElementById('eventFormId').value = ev.id;
     document.getElementById('eventFormTitleInput').value = ev.title || '';
@@ -1060,49 +1277,43 @@ class AdminController {
     const isNavathiCheck = document.getElementById('eventFormIsNavathi');
     if (isNavathiCheck) isNavathiCheck.checked = Boolean(ev.isNavathi);
 
-    const centreSel = document.getElementById('eventFormCentre');
-    if (centreSel && (ev.centre || ev.location)) {
-      const match = ev.centre || ev.location;
-      for (let i = 0; i < centreSel.options.length; i++) {
-        if (centreSel.options[i].value.toLowerCase() === match.toLowerCase() ||
-            match.toLowerCase().includes(centreSel.options[i].value.toLowerCase())) {
-          centreSel.selectedIndex = i;
-          break;
+    document.getElementById('eventFormDate').value = ev.date || '';
+    document.getElementById('eventFormShortDesc').value = ev.description || ev.shortDesc || '';
+
+    // Multi-video list with backward compatibility
+    const vids = [];
+    if (Array.isArray(ev.videos) && ev.videos.length > 0) {
+      ev.videos.forEach(v => {
+        if (v && (v.url || v.title)) {
+          vids.push({ title: v.title || '', url: v.url || '' });
         }
-      }
+      });
+    }
+    const legacyYt = ev.youtubeUrl || ev.videoUrl || '';
+    if (legacyYt && !vids.some(v => v.url === legacyYt)) {
+      vids.unshift({ title: ev.videoTitle || 'Program Video Broadcast / Highlights', url: legacyYt });
+    }
+    if (vids.length === 0) {
+      vids.push({ title: '', url: '' });
     }
 
-    const venueInput = document.getElementById('eventFormVenue');
-    if (venueInput) venueInput.value = ev.venue || '';
+    this.currentEventVideos = vids;
+    this.renderEventVideosList();
 
-    document.getElementById('eventFormCategory').value = ev.category || 'Festivals';
-    document.getElementById('eventFormOrder').value = ev.order || 1;
-    document.getElementById('eventFormDate').value = ev.date || '';
-
-    const yearInput = document.getElementById('eventFormYear');
-    if (yearInput) yearInput.value = ev.year || (ev.date ? ev.date.substring(0, 4) : '2026');
-
-    document.getElementById('eventFormTime').value = ev.time || '';
-    document.getElementById('eventFormShortDesc').value = ev.description || ev.shortDesc || '';
-    document.getElementById('eventFormFullDesc').value = ev.fullDesc || '';
-
-    const img = ev.coverImage || ev.image || '';
-    document.getElementById('eventFormImageUrl').value = img;
-
-    const photosList = Array.isArray(ev.photos) && ev.photos.length > 0 ? ev.photos : (Array.isArray(ev.additionalImages) ? ev.additionalImages : []);
-    document.getElementById('eventFormAdditionalImages').value = photosList.join(', ');
-
-    const vid = ev.youtubeUrl || ev.videoUrl || '';
-    document.getElementById('eventFormVideoUrl').value = vid;
-
-    document.getElementById('eventFormRegUrl').value = ev.registrationUrl || '';
-    document.getElementById('eventFormExternalUrl').value = ev.externalUrl || '';
     document.getElementById('eventFormIsFeatured').checked = Boolean(ev.isFeatured);
     document.getElementById('eventFormIsPublished').checked = ev.status !== 'draft';
 
-    this.previewEventMainImage(img);
-    this.previewEventVideo(vid);
-    this.renderAdminScheduleRows(ev.schedule || []);
+    // Photos
+    const photosList = Array.isArray(ev.photos) && ev.photos.length > 0 
+      ? [...ev.photos] 
+      : (Array.isArray(ev.additionalImages) && ev.additionalImages.length > 0 
+          ? [...ev.additionalImages] 
+          : (ev.coverImage || ev.image ? [ev.coverImage || ev.image] : []));
+
+    this.currentEventPhotos = photosList;
+    this.currentEventCover = ev.coverImage || ev.image || (photosList.length > 0 ? photosList[0] : '');
+    
+    this.renderEventThumbnails();
 
     document.getElementById('eventFormTitle').textContent = `Edit Event: ${ev.title}`;
     document.getElementById('btnSaveEventText').textContent = 'Update Event';
@@ -1117,106 +1328,82 @@ class AdminController {
     if (form) form.style.display = 'none';
   }
 
-  handleEventImageUpload(e) {
-    const file = e.target.files[0];
-    if (!file) return;
+  renderEventVideosList() {
+    const container = document.getElementById('eventVideosListContainer');
+    if (!container) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const base64 = event.target.result;
-      document.getElementById('eventFormImageUrl').value = base64;
-      this.previewEventMainImage(base64);
-    };
-    reader.readAsDataURL(file);
-  }
-
-  previewEventMainImage(url) {
-    const wrap = document.getElementById('eventMainImagePreviewWrap');
-    const removeBtn = document.getElementById('btnRemoveEventMainImg');
-    if (!wrap) return;
-
-    if (url && url.trim()) {
-      wrap.innerHTML = `<img src="${url.trim()}" alt="Preview" style="width:100%;height:100%;object-fit:cover;">`;
-      if (removeBtn) removeBtn.style.display = 'inline-block';
-    } else {
-      wrap.innerHTML = `<span style="font-size:0.75rem;color:#888;">No Image</span>`;
-      if (removeBtn) removeBtn.style.display = 'none';
+    if (!Array.isArray(this.currentEventVideos) || this.currentEventVideos.length === 0) {
+      this.currentEventVideos = [{ title: '', url: '' }];
     }
+
+    container.innerHTML = this.currentEventVideos.map((v, idx) => {
+      const embedUrl = v.url && v.url.trim() ? (window.bkUtils ? window.bkUtils.getYouTubeEmbedUrl(v.url.trim()) : '') : '';
+      return `
+        <div class="event-video-row-item" data-idx="${idx}" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:6px;padding:0.85rem;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <span style="font-size:0.78rem;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:0.04em;">
+              🎬 Video #${idx + 1}
+            </span>
+            ${this.currentEventVideos.length > 1 ? `
+              <button type="button" onclick="bkAdmin.removeEventVideoRow(${idx})" style="background:none;border:none;color:#dc2626;font-size:0.75rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.25rem;font-weight:600;">
+                <i data-lucide="trash-2" style="width:13px;height:13px;"></i>
+                <span>Remove</span>
+              </button>
+            ` : ''}
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:0.5rem;">
+            <div>
+              <label style="font-size:0.75rem;font-weight:600;color:#4b5563;margin-bottom:0.25rem;display:block;">Video Title / Session Name</label>
+              <input type="text" class="form-control video-row-title-input" placeholder="e.g. Inaugural Address, Morning Meditation..." value="${(v.title || '').replace(/"/g, '&quot;')}" oninput="bkAdmin.updateEventVideoField(${idx}, 'title', this.value)" style="padding:0.4rem 0.65rem;font-size:0.85rem;">
+            </div>
+            <div>
+              <label style="font-size:0.75rem;font-weight:600;color:#4b5563;margin-bottom:0.25rem;display:block;">YouTube Video URL</label>
+              <input type="url" class="form-control video-row-url-input" placeholder="https://youtube.com/watch?v=... or https://youtu.be/..." value="${(v.url || '').replace(/"/g, '&quot;')}" oninput="bkAdmin.updateEventVideoField(${idx}, 'url', this.value)" style="padding:0.4rem 0.65rem;font-size:0.85rem;">
+            </div>
+          </div>
+
+          ${embedUrl ? `
+            <div style="margin-top:0.5rem;position:relative;padding-bottom:32%;height:0;overflow:hidden;border-radius:4px;background:#000;">
+              <iframe src="${embedUrl}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
+
+    if (window.lucide) window.lucide.createIcons();
   }
 
-  removeEventMainImage() {
-    const urlInput = document.getElementById('eventFormImageUrl');
-    const fileInput = document.getElementById('eventFormImageFileInput');
-    if (urlInput) urlInput.value = '';
-    if (fileInput) fileInput.value = '';
-    this.previewEventMainImage('');
+  addEventVideoRow(title = '', url = '') {
+    if (!Array.isArray(this.currentEventVideos)) this.currentEventVideos = [];
+    this.currentEventVideos.push({ title, url });
+    this.renderEventVideosList();
+  }
+
+  removeEventVideoRow(idx) {
+    if (!Array.isArray(this.currentEventVideos)) return;
+    this.currentEventVideos.splice(idx, 1);
+    if (this.currentEventVideos.length === 0) {
+      this.currentEventVideos.push({ title: '', url: '' });
+    }
+    this.renderEventVideosList();
+  }
+
+  updateEventVideoField(idx, field, val) {
+    if (this.currentEventVideos && this.currentEventVideos[idx]) {
+      this.currentEventVideos[idx][field] = val;
+      if (field === 'url') {
+        clearTimeout(this._videoDebounceTimer);
+        this._videoDebounceTimer = setTimeout(() => {
+          this.renderEventVideosList();
+        }, 700);
+      }
+    }
   }
 
   previewEventVideo(url) {
-    const container = document.getElementById('eventVideoPreviewContainer');
-    if (!container) return;
-
-    if (!url || !url.trim()) {
-      container.style.display = 'none';
-      container.innerHTML = '';
-      return;
-    }
-
-    const embedUrl = window.bkUtils.getYouTubeEmbedUrl(url.trim());
-    if (embedUrl) {
-      container.style.display = 'block';
-      container.innerHTML = `
-        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius-sm);border:1px solid #ddd;">
-          <iframe src="${embedUrl}" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allowfullscreen></iframe>
-        </div>
-      `;
-    } else {
-      container.style.display = 'block';
-      container.innerHTML = `<div style="font-size:0.8rem;color:#dc2626;padding:0.4rem;">Invalid YouTube URL. Please use a valid youtube.com or youtu.be link.</div>`;
-    }
-  }
-
-  renderAdminScheduleRows(schedule = []) {
-    const container = document.getElementById('adminScheduleRowsContainer');
-    if (!container) return;
-
-    container.innerHTML = '';
-    if (schedule.length === 0) {
-      schedule = [{ time: '', session: '' }];
-    }
-
-    schedule.forEach((s) => {
-      this.addScheduleRow(s.time, s.session);
-    });
-  }
-
-  addScheduleRow(time = '', session = '') {
-    const container = document.getElementById('adminScheduleRowsContainer');
-    if (!container) return;
-
-    const row = document.createElement('div');
-    row.className = 'admin-sched-row';
-    row.style = 'display:flex;gap:0.5rem;align-items:center;margin-bottom:0.5rem;';
-
-    row.innerHTML = `
-      <input type="text" class="form-control admin-sched-time" style="width:140px;" placeholder="e.g. 10:00 AM" value="${time || ''}">
-      <input type="text" class="form-control admin-sched-session" style="flex:1;" placeholder="Session / Discourse Topic" value="${session || ''}">
-      <button type="button" class="btn-sm" style="background:#fee2e2;color:#ef4444;border:none;padding:0.35rem 0.55rem;border-radius:4px;cursor:pointer;" onclick="this.closest('.admin-sched-row').remove()">✕</button>
-    `;
-    container.appendChild(row);
-  }
-
-  getScheduleFromForm() {
-    const rows = document.querySelectorAll('#adminScheduleRowsContainer .admin-sched-row');
-    const schedule = [];
-    rows.forEach(r => {
-      const time = r.querySelector('.admin-sched-time')?.value.trim();
-      const session = r.querySelector('.admin-sched-session')?.value.trim();
-      if (time || session) {
-        schedule.push({ time: time || '', session: session || '' });
-      }
-    });
-    return schedule;
+    // Kept for backward compatibility
   }
 
   handleSaveEvent(e) {
@@ -1226,59 +1413,55 @@ class AdminController {
     const titleMl = document.getElementById('eventFormTitleMl').value.trim();
     const isNavathi = document.getElementById('eventFormIsNavathi')?.checked || false;
     const centre = document.getElementById('eventFormCentre')?.value.trim() || 'Kozhikode Main';
-    const venue = document.getElementById('eventFormVenue')?.value.trim() || '';
-    const category = document.getElementById('eventFormCategory').value;
-    const order = parseInt(document.getElementById('eventFormOrder').value, 10) || 1;
+    const category = document.getElementById('eventFormCategory')?.value.trim() || 'Festivals';
     const date = document.getElementById('eventFormDate').value.trim();
-    
-    let year = document.getElementById('eventFormYear')?.value.trim();
-    if (!year && date) year = date.substring(0, 4);
-    if (!year) year = '2026';
-
-    const time = document.getElementById('eventFormTime').value.trim();
+    const year = date && date.length >= 4 ? date.substring(0, 4) : '2026';
     const shortDesc = document.getElementById('eventFormShortDesc').value.trim();
-    const fullDesc = document.getElementById('eventFormFullDesc').value.trim();
-    const coverImage = document.getElementById('eventFormImageUrl').value.trim() || 'assets/images/light_palace_center.jpg';
-    
-    const rawPhotos = document.getElementById('eventFormAdditionalImages').value.trim();
-    const photos = rawPhotos ? rawPhotos.split(/[\n,]+/).map(s => s.trim()).filter(Boolean) : [];
-
-    const youtubeUrl = document.getElementById('eventFormVideoUrl').value.trim();
-    const registrationUrl = document.getElementById('eventFormRegUrl').value.trim();
-    const externalUrl = document.getElementById('eventFormExternalUrl').value.trim();
     const isFeatured = document.getElementById('eventFormIsFeatured').checked;
     const isPublished = document.getElementById('eventFormIsPublished').checked;
     const status = isPublished ? 'published' : 'draft';
 
-    const schedule = this.getScheduleFromForm();
+    // Collect multi-video entries from DOM and currentEventVideos
+    const videoRows = document.querySelectorAll('.event-video-row-item');
+    const videos = [];
+    videoRows.forEach((row, i) => {
+      const titleInput = row.querySelector('.video-row-title-input');
+      const urlInput = row.querySelector('.video-row-url-input');
+      const vTitle = titleInput ? titleInput.value.trim() : '';
+      const vUrl = urlInput ? urlInput.value.trim() : '';
+      if (vUrl || vTitle) {
+        videos.push({ title: vTitle || `Video #${i + 1}`, url: vUrl });
+      }
+    });
+
+    const primaryYoutubeUrl = videos.length > 0 && videos[0].url ? videos[0].url : '';
+
+    const photos = Array.isArray(this.currentEventPhotos) ? [...this.currentEventPhotos] : [];
+    const coverImage = this.currentEventCover || (photos.length > 0 ? photos[0] : 'assets/images/light_palace_center.jpg');
 
     const eventData = {
       id: id || undefined,
       title,
       titleMl,
       category,
-      order,
+      order: 1,
       date,
       year,
       centre,
-      venue,
-      location: venue ? `${centre} (${venue})` : centre,
+      location: centre,
       isNavathi,
       description: shortDesc,
       shortDesc,
-      fullDesc: fullDesc || shortDesc,
+      fullDesc: shortDesc,
       coverImage,
       image: coverImage,
       photos,
       additionalImages: photos,
-      youtubeUrl,
-      videoUrl: youtubeUrl,
-      time,
-      registrationUrl,
-      externalUrl,
+      videos,
+      youtubeUrl: primaryYoutubeUrl,
+      videoUrl: primaryYoutubeUrl,
       isFeatured,
-      status,
-      schedule
+      status
     };
 
     const saved = window.bkStore.saveEvent(eventData);
@@ -1567,7 +1750,7 @@ class AdminController {
       card.innerHTML = `
         <div style="flex:1;min-width:260px;">
           <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem;">
-            ${c.isPrimary ? '<span style="background:var(--sunset-primary);color:#fff;font-size:0.7rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px;">★ Main Sub-Zone</span>' : ''}
+            ${c.isPrimary ? '<span style="background:var(--sunset-primary);color:#fff;font-size:0.7rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px;">Main Center</span>' : ''}
             <span style="background:#f3f4f6;color:#555;font-size:0.75rem;padding:0.15rem 0.45rem;border-radius:4px;">${c.area || 'Kozhikode'}</span>
             <span style="font-size:0.75rem;color:${c.published !== false ? '#10b981' : '#ef4444'};font-weight:600;">
               ${c.published !== false ? '● Live Published' : '○ Draft / Hidden'}

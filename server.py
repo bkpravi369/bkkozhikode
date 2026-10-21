@@ -612,6 +612,56 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps({"success": True, "message": "Settings saved successfully."}).encode('utf-8'))
             return
 
+        # API: Bulk Image Upload Handler
+        if clean_path == '/api/upload':
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
+            try:
+                data = json.loads(post_data)
+            except Exception:
+                data = {}
+            file_name = data.get('name', 'image.jpg')
+            data_url = data.get('data', '')
+            if not data_url or ';base64,' not in data_url:
+                self.send_response(400)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": "Invalid image payload."}).encode('utf-8'))
+                return
+
+            try:
+                import base64
+                import re
+                header, base64_str = data_url.split(';base64,', 1)
+                img_bytes = base64.b64decode(base64_str)
+                # Clean filename
+                clean_name = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', file_name)
+                ts = int(time.time())
+                unique_name = f"{ts}_{clean_name}"
+                upload_dir = os.path.join(os.getcwd(), 'assets', 'images', 'uploads')
+                os.makedirs(upload_dir, exist_ok=True)
+                file_path = os.path.join(upload_dir, unique_name)
+                with open(file_path, 'wb') as f:
+                    f.write(img_bytes)
+
+                rel_url = f"assets/images/uploads/{unique_name}"
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "success": True,
+                    "url": rel_url,
+                    "secure_url": rel_url,
+                    "name": file_name
+                }).encode('utf-8'))
+                return
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode('utf-8'))
+                return
+
         self.send_error(404, "Not found")
 
 if __name__ == '__main__':
