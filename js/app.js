@@ -14,12 +14,17 @@ class AppController {
     this.breathInterval = null;
     this.audioCtx = null;
     this.soundscapeType = 'tanpura';
+    this.soundscapeAudios = {};
+    this.currentActiveAudio = null;
+    this.customSoundscapeAudio = null;
+    this.soundscapeVolume = 0.7;
     this.activeAudioNodes = [];
     
     // Dynamic Events and Navathi state filters
     this.eventsFilter = {
       year: 'all',
       centre: 'all',
+      wing: 'all',
       category: 'all',
       search: ''
     };
@@ -45,6 +50,7 @@ class AppController {
     this.renderMediaHub('all');
     this.renderEvents();
     this.renderContactPage();
+    this.renderMeditationSoundscapeLabels();
     this.initHeroCanvas();
     this.setupEventListeners();
 
@@ -53,8 +59,8 @@ class AppController {
       window.bkConnectGod.render4ColumnChannelHub();
     }
 
-    // Listen for store updates
-    window.addEventListener('bk_store_updated', () => {
+    // Dedicated function to refresh all UI views in real-time
+    this.refreshAllLiveViews = () => {
       this.renderNavigation();
       this.renderDailyThought();
       this.renderAboutPage();
@@ -65,6 +71,33 @@ class AppController {
       this.renderMediaHub('all');
       this.renderEvents();
       this.renderContactPage();
+      this.renderMeditationSoundscapeLabels();
+    };
+
+    // Listen for local store updates
+    window.addEventListener('bk_store_updated', () => {
+      this.refreshAllLiveViews();
+    });
+
+    // Listen for cross-tab realtime sync via BroadcastChannel (instant multi-tab synchronization)
+    if (typeof BroadcastChannel !== 'undefined') {
+      try {
+        const syncChannel = new BroadcastChannel('bk_cms_realtime_sync');
+        syncChannel.onmessage = (event) => {
+          if (event.data && event.data.type === 'bk_store_change' && window.bkStore) {
+            window.bkStore.data = window.bkStore.loadData();
+            this.refreshAllLiveViews();
+          }
+        };
+      } catch (e) {}
+    }
+
+    // Listen for storage events across all tabs/windows (fallback cross-tab sync)
+    window.addEventListener('storage', (e) => {
+      if ((e.key === 'bk_kozhikode_site_data_v2' || e.key === 'bk_kozhikode_cms_store') && window.bkStore) {
+        window.bkStore.data = window.bkStore.loadData();
+        this.refreshAllLiveViews();
+      }
     });
 
     // Check clean pathname or hash URL for direct routing
@@ -391,6 +424,9 @@ class AppController {
         targetPane.classList.add('active');
         targetPane.style.display = 'block';
       }
+      if (tabId === 'meditation') {
+        this.renderMeditationSoundscapeLabels();
+      }
       if (tabId === 'about') {
         this.renderAboutPage();
       }
@@ -407,6 +443,7 @@ class AppController {
         this.renderGallery('all');
       }
       if (tabId === 'home') {
+        this.renderHomeEvents();
         if (window.bkConnectGod && window.bkConnectGod.render4ColumnChannelHub) {
           window.bkConnectGod.render4ColumnChannelHub();
         }
@@ -858,47 +895,183 @@ class AppController {
     if (modal) modal.style.display = 'none';
   }
 
-  // --- Render Filterable Gallery & Media ---
-  renderGallery(category = 'all') {
-    if (window.bkConnectGod && window.bkConnectGod.loadCloudinaryWallpapers) {
-      window.bkConnectGod.loadCloudinaryWallpapers();
-      return;
+  // --- Render Filterable Gallery & Media (Integrated Cloudinary Multi-Tag + Store) ---
+  renderGalleryFilterBar() {
+    const filterBar = document.getElementById('galleryFilterBar');
+    if (!filterBar || !window.bkStore) return;
+
+    const categories = window.bkStore.getGalleryCategories ? window.bkStore.getGalleryCategories() : [
+      { id: 'all', name: 'All Photos', nameMl: 'എല്ലാ ചിത്രങ്ങളും' },
+      { id: 'mobile_wallpaper', name: 'Mobile Wallpapers', nameMl: 'മൊബൈൽ വാൾപേപ്പറുകൾ', cloudinaryTag: 'wall_paper' },
+      { id: 'center_images', name: 'Center Images', nameMl: 'കേന്ദ്രങ്ങൾ', cloudinaryTag: 'center_images' },
+      { id: 'program_images', name: 'Program Images', nameMl: 'പ്രോഗ്രാമുകൾ', cloudinaryTag: 'program_images' },
+      { id: 'festival_images', name: 'Festivals', nameMl: 'ആഘോഷങ്ങൾ', cloudinaryTag: 'festival_images' }
+    ];
+
+    const currentCat = this.activeGalleryCategory || 'all';
+
+    filterBar.innerHTML = categories.map(cat => `
+      <button class="gallery-filter-btn ${cat.id === currentCat ? 'active' : ''}" 
+              data-cat="${cat.id}"
+              onclick="bkApp.filterGallery('${cat.id}', this)">
+        <span>${cat.name}</span>
+        ${cat.nameMl ? `<span style="font-size:0.75rem;opacity:0.85;display:block;margin-top:1px;">${cat.nameMl}</span>` : ''}
+      </button>
+    `).join('');
+  }
+
+  async fetchCloudinaryTagImages(tag) {
+    if (!tag || tag === 'all') return [];
+    this.cloudinaryTagCache = this.cloudinaryTagCache || {};
+    if (this.cloudinaryTagCache[tag]) {
+      return this.cloudinaryTagCache[tag];
     }
+
+    try {
+      const url = `https://res.cloudinary.com/uo0dcjpe/image/list/${encodeURIComponent(tag)}.json`;
+      const res = await fetch(url).catch(() => null);
+      if (res && res.ok) {
+        const data = await res.json().catch(() => null);
+        if (data && Array.isArray(data.resources)) {
+          const items = data.resources.map((r, idx) => {
+            const publicId = r.public_id;
+            const version = r.version ? `v${r.version}/` : '';
+            const encId = publicId.split('/').map(encodeURIComponent).join('/');
+            const format = r.format || 'jpg';
+            let title = publicId.split('/').pop() || publicId;
+            title = title.replace(/\.(jpe?g|png|webp|gif|avif)$/i, '')
+                         .replace(/_1080p$|_4k$|_hd$/i, '')
+                         .replace(/^0*(\d{1,2})[._\-\s]+(?=[A-Za-z])/i, '')
+                         .replace(/[_-]+/g, ' ').trim()
+                         .split(' ')
+                         .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+                         .join(' ');
+
+            return {
+              id: `cld_${tag}_${idx}`,
+              title: title || 'Spiritual Image',
+              tag: tag,
+              url: `https://res.cloudinary.com/uo0dcjpe/image/upload/q_auto:best,f_auto/${version}${encId}.${format}`,
+              thumbnail: `https://res.cloudinary.com/uo0dcjpe/image/upload/c_fill,w_600,h_800,q_auto,f_auto/${version}${encId}.${format}`,
+              downloadUrl: `https://res.cloudinary.com/uo0dcjpe/image/upload/fl_attachment/${version}${encId}.${format}`,
+              width: r.width,
+              height: r.height,
+              isCloudinary: true
+            };
+          });
+          this.cloudinaryTagCache[tag] = items;
+          return items;
+        }
+      }
+    } catch (e) {
+      console.warn(`Error fetching Cloudinary tag ${tag}:`, e);
+    }
+
+    this.cloudinaryTagCache[tag] = [];
+    return [];
+  }
+
+  async renderGallery(categoryId = 'all') {
+    this.activeGalleryCategory = categoryId;
+    this.renderGalleryFilterBar();
+
     const container = document.getElementById('galleryGridContainer');
     if (!container) return;
 
-    let items = window.bkStore.getGallery();
-    if (category !== 'all') {
-      items = items.filter(i => i.category === category);
+    container.className = 'gallery-wallpapers-grid';
+    container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#94a3b8;">Loading images...</div>`;
+
+    const allCats = window.bkStore.getGalleryCategories ? window.bkStore.getGalleryCategories() : [];
+    const selectedCat = allCats.find(c => c.id === categoryId) || { id: categoryId, name: categoryId, tag: categoryId };
+
+    let combinedItems = [];
+
+    if (categoryId === 'all') {
+      // 1. Fetch mobile wallpapers from Cloudinary
+      const cldWallpapers = await this.fetchCloudinaryTagImages('wall_paper');
+      // 2. Fetch other configured tags if any
+      const otherTags = allCats.filter(c => c.cloudinaryTag && c.cloudinaryTag !== 'wall_paper');
+      const otherTagPromises = otherTags.map(c => this.fetchCloudinaryTagImages(c.cloudinaryTag));
+      const otherTagResults = await Promise.all(otherTagPromises);
+
+      combinedItems = [...cldWallpapers];
+      otherTagResults.forEach(list => {
+        combinedItems = combinedItems.concat(list);
+      });
+
+      // 3. Add local store items
+      const localItems = window.bkStore.getGallery();
+      combinedItems = combinedItems.concat(localItems);
+    } else {
+      // Fetch only for the selected category's Cloudinary tag
+      const cldTag = selectedCat.cloudinaryTag || selectedCat.tag;
+      if (cldTag) {
+        const cldItems = await this.fetchCloudinaryTagImages(cldTag);
+        combinedItems = combinedItems.concat(cldItems);
+      }
+
+      // Add local store items matching this category
+      const localItems = window.bkStore.getGallery().filter(item => {
+        return item.category === selectedCat.name || 
+               item.category === selectedCat.id ||
+               item.category === selectedCat.tag ||
+               (categoryId === 'mobile_wallpaper' && (item.category === 'Mobile Wallpapers' || item.category === 'wall_paper')) ||
+               (categoryId === 'center_images' && (item.category === 'Center Images' || item.category === 'Kozhikode Centers' || item.category === 'Headquarters')) ||
+               (categoryId === 'program_images' && (item.category === 'Program Images' || item.category === 'Meditation Hall' || item.category === 'Peace Initiatives')) ||
+               (categoryId === 'festival_images' && (item.category === 'Festivals' || item.category === 'festival_images'));
+      });
+      combinedItems = combinedItems.concat(localItems);
     }
 
-    container.innerHTML = '';
-
-    if (items.length === 0) {
-      container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:3rem; color:var(--text-muted);">No media items found in this category.</div>`;
+    if (combinedItems.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1/-1; text-align:center; padding:3.5rem 1rem; color:var(--text-muted);">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🖼️</div>
+          <p style="font-size:1.05rem;font-weight:600;color:#475569;">No images found in "${selectedCat.name}".</p>
+          <p style="font-size:0.85rem;color:#94a3b8;margin-top:0.25rem;">
+            Upload images from the Admin Panel or tag them in Cloudinary with <code>${selectedCat.cloudinaryTag || selectedCat.tag}</code> to auto-display here!
+          </p>
+        </div>`;
       return;
     }
 
-    items.forEach(item => {
-      const el = document.createElement('div');
-      el.className = 'gallery-item';
-      el.onclick = () => this.openLightbox(item);
+    container.innerHTML = combinedItems.map((item, idx) => {
+      const isUhd = item.width && item.width >= 2000;
+      const downloadBtnHtml = item.downloadUrl ? `
+        <a href="${item.downloadUrl}" target="_blank" class="wallpaper-download-btn" title="Download HD Image" onclick="event.stopPropagation()">
+          <i data-lucide="download" style="width:16px;height:16px;"></i>
+        </a>
+      ` : '';
 
-      el.innerHTML = `
-        <div class="gallery-thumb-wrap">
-          <img src="${item.thumbnail || item.url}" alt="${item.title}">
-          <span class="gallery-overlay-badge">${item.category}</span>
-          <div class="gallery-zoom-icon"><i data-lucide="maximize-2"></i></div>
-        </div>
-        <div class="gallery-caption">
-          <h4>${item.title}</h4>
-          <p>${item.description || ''}</p>
+      return `
+        <div class="wallpaper-card">
+          <div class="wallpaper-img-wrap" onclick="bkApp.openLightboxFromItem(${idx})">
+            <img src="${item.thumbnail || item.thumbUrl || item.url}" alt="${item.title}" class="wallpaper-img" loading="lazy">
+            <span class="wallpaper-badge">${isUhd ? '4K UHD' : (item.badge || 'HD 1080p')}</span>
+            <div class="wallpaper-zoom-overlay">
+              <i data-lucide="maximize-2" style="width:28px;height:28px;"></i>
+            </div>
+          </div>
+          <div class="wallpaper-info">
+            <div class="wallpaper-title" title="${item.title}">${item.title}</div>
+            ${downloadBtnHtml}
+          </div>
         </div>
       `;
-      container.appendChild(el);
-    });
+    }).join('');
 
+    this.currentDisplayedGalleryItems = combinedItems;
     if (window.lucide) window.lucide.createIcons();
+  }
+
+  openLightboxFromItem(idx) {
+    const item = (this.currentDisplayedGalleryItems || [])[idx];
+    if (!item) return;
+    this.openLightbox({
+      url: item.fullUrl || item.url || item.thumbnail,
+      title: item.title,
+      description: item.description || (item.width && item.height ? `Resolution: ${item.width} × ${item.height}` : '')
+    });
   }
 
   filterGallery(category, btn) {
@@ -1102,6 +1275,42 @@ class AppController {
 
   renderEvents(subCategory = null) {
     this.renderEventsPage(subCategory);
+    this.renderHomeEvents();
+  }
+
+  renderHomeEvents() {
+    const container = document.getElementById('homeEventsGridContainer');
+    if (!container) return;
+    const events = window.bkStore ? window.bkStore.getEvents('all') : [];
+    // Sort logic: newly created/updated events (by updatedAt/createdAt or ID timestamp) take top precedence, followed by featured, then date
+    const sorted = [...events].sort((a, b) => {
+      const timeA = a.updatedAt || a.createdAt || '';
+      const timeB = b.updatedAt || b.createdAt || '';
+      if (timeB !== timeA) return timeB.localeCompare(timeA);
+
+      const tsA = (a.id && a.id.startsWith('evt_')) ? parseInt(a.id.split('_')[1], 10) || 0 : 0;
+      const tsB = (b.id && b.id.startsWith('evt_')) ? parseInt(b.id.split('_')[1], 10) || 0 : 0;
+      if (tsB !== tsA) return tsB - tsA;
+
+      if (a.isFeatured && !b.isFeatured) return -1;
+      if (!a.isFeatured && b.isFeatured) return 1;
+
+      const dateA = a.date || '';
+      const dateB = b.date || '';
+      return dateB.localeCompare(dateA);
+    }).slice(0, 4);
+
+    if (sorted.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-muted);">
+          <p>No upcoming events at this moment.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = sorted.map(ev => this.renderEventCardHtml(ev)).join('');
+    if (window.lucide) window.lucide.createIcons();
   }
 
   renderEventsSection(viewType = 'latest') {
@@ -1148,10 +1357,19 @@ class AppController {
       centreSelect.innerHTML = `<option value="all">All Centres</option>` + centreNames.map(c => `<option value="${c}" ${c === currentCentreVal ? 'selected' : ''}>${c}</option>`).join('');
     }
 
+    // 2b. Populate Dynamic BK Wing Filter Dropdown
+    const wingSelect = document.getElementById('eventsFilterWing');
+    if (wingSelect) {
+      const currentWingVal = (this.eventsFilter.wing || 'all').toLowerCase();
+      const storeWings = window.bkStore.getWings ? window.bkStore.getWings() : [];
+      wingSelect.innerHTML = `<option value="all">All Wings (എല്ലാ വിഭാഗങ്ങളും)</option>` + 
+        storeWings.map(w => `<option value="${w}" ${w.toLowerCase() === currentWingVal ? 'selected' : ''}>${w} Wing</option>`).join('');
+    }
+
     // 3. Populate Category Filter Pills (Synced dynamically with admin categories)
     const pillsWrap = document.getElementById('eventsCategoryPills');
     if (pillsWrap) {
-      const storeCats = window.bkStore.getCategories ? window.bkStore.getCategories() : ['Festivals', 'Rajayoga Shivir', 'Youth Program', 'Social Service', 'Celebrations'];
+      const storeCats = window.bkStore.getCategories ? window.bkStore.getCategories() : ['Festivals', 'Youth Program', 'Social Service', 'Celebrations'];
       const combinedCats = ['all', 'Navathi', ...storeCats.filter(c => c.toLowerCase() !== 'navathi')];
 
       pillsWrap.innerHTML = combinedCats.map(cat => {
@@ -1182,11 +1400,13 @@ class AppController {
   onEventsFilterChange() {
     const yearSelect = document.getElementById('eventsFilterYear');
     const centreSelect = document.getElementById('eventsFilterCentre');
+    const wingSelect = document.getElementById('eventsFilterWing');
     const searchInput = document.getElementById('eventsSearchInput');
     const clearBtn = document.getElementById('btnClearEventsSearch');
 
     if (yearSelect) this.eventsFilter.year = yearSelect.value;
     if (centreSelect) this.eventsFilter.centre = centreSelect.value;
+    if (wingSelect) this.eventsFilter.wing = wingSelect.value;
     if (searchInput) {
       this.eventsFilter.search = searchInput.value.trim().toLowerCase();
       if (clearBtn) clearBtn.style.display = this.eventsFilter.search ? 'inline-block' : 'none';
@@ -1205,14 +1425,16 @@ class AppController {
   }
 
   resetEventsFilters() {
-    this.eventsFilter = { year: 'all', centre: 'all', category: 'all', search: '' };
+    this.eventsFilter = { year: 'all', centre: 'all', wing: 'all', category: 'all', search: '' };
     const yearSelect = document.getElementById('eventsFilterYear');
     const centreSelect = document.getElementById('eventsFilterCentre');
+    const wingSelect = document.getElementById('eventsFilterWing');
     const searchInput = document.getElementById('eventsSearchInput');
     const clearBtn = document.getElementById('btnClearEventsSearch');
 
     if (yearSelect) yearSelect.value = 'all';
     if (centreSelect) centreSelect.value = 'all';
+    if (wingSelect) wingSelect.value = 'all';
     if (searchInput) searchInput.value = '';
     if (clearBtn) clearBtn.style.display = 'none';
 
@@ -1245,6 +1467,12 @@ class AppController {
       });
     }
 
+    // BK Wing Filter
+    if (this.eventsFilter.wing && this.eventsFilter.wing !== 'all') {
+      const targetWing = this.eventsFilter.wing.toLowerCase();
+      events = events.filter(e => (e.wing || '').toLowerCase() === targetWing);
+    }
+
     // Category Filter (supporting Navathi and dynamic categories)
     if (this.eventsFilter.category && this.eventsFilter.category !== 'all') {
       const targetCat = this.eventsFilter.category.toLowerCase();
@@ -1263,19 +1491,31 @@ class AppController {
         const titleMl = (e.titleMl || '').toLowerCase();
         const desc = (e.description || e.fullDesc || e.shortDesc || '').toLowerCase();
         const centre = (e.centre || '').toLowerCase();
-        return title.includes(q) || titleMl.includes(q) || desc.includes(q) || centre.includes(q);
+        const wing = (e.wing || '').toLowerCase();
+        return title.includes(q) || titleMl.includes(q) || desc.includes(q) || centre.includes(q) || wing.includes(q);
       });
     }
 
-    // Sort: featured first, then date
+    // Sort: newly created/updated events first (by updatedAt/createdAt or ID timestamp), then featured, then date
     events.sort((a, b) => {
+      const timeA = a.updatedAt || a.createdAt || '';
+      const timeB = b.updatedAt || b.createdAt || '';
+      if (timeB !== timeA) return timeB.localeCompare(timeA);
+
+      const tsA = (a.id && a.id.startsWith('evt_')) ? parseInt(a.id.split('_')[1], 10) || 0 : 0;
+      const tsB = (b.id && b.id.startsWith('evt_')) ? parseInt(b.id.split('_')[1], 10) || 0 : 0;
+      if (tsB !== tsA) return tsB - tsA;
+
       if (a.isFeatured && !b.isFeatured) return -1;
       if (!a.isFeatured && b.isFeatured) return 1;
-      return (b.date || '').localeCompare(a.date || '');
+
+      const dateA = a.date || '';
+      const dateB = b.date || '';
+      return dateB.localeCompare(dateA);
     });
 
     // Update Meta Count
-    const isFiltered = this.eventsFilter.year !== 'all' || this.eventsFilter.centre !== 'all' || this.eventsFilter.category !== 'all' || Boolean(this.eventsFilter.search);
+    const isFiltered = this.eventsFilter.year !== 'all' || this.eventsFilter.centre !== 'all' || this.eventsFilter.wing !== 'all' || this.eventsFilter.category !== 'all' || Boolean(this.eventsFilter.search);
     if (countEl) {
       countEl.textContent = `Showing ${events.length} ${events.length === 1 ? 'program' : 'programs'}${isFiltered ? ' (filtered)' : ''}`;
     }
@@ -1291,7 +1531,7 @@ class AppController {
             <i data-lucide="calendar-x" style="width:36px;height:36px;color:var(--sunset-primary);"></i>
           </div>
           <h3>No Programs Match Your Filter</h3>
-          <p>Try resetting your year, centre, or category filters to view other upcoming spiritual gatherings in Kozhikode.</p>
+          <p>Try resetting your year, centre, wing, or category filters to view other upcoming spiritual gatherings in Kozhikode.</p>
           <button class="btn-cta-course" onclick="bkApp.resetEventsFilters()" style="margin-top:1rem;">
             <i data-lucide="rotate-ccw"></i>
             <span>Reset All Filters</span>
@@ -1361,6 +1601,12 @@ class AppController {
               <i data-lucide="map-pin" style="width:12px;height:12px;"></i>
               <span>${centreName}</span>
             </span>
+            ${ev.wing ? `
+              <span class="event-wing-tag" style="display:inline-flex;align-items:center;gap:0.3rem;background:#fef3c7;color:#92400e;border:1px solid #fde68a;font-size:0.75rem;font-weight:700;padding:2px 8px;border-radius:4px;">
+                <i data-lucide="award" style="width:12px;height:12px;color:#d97706;"></i>
+                <span>${ev.wing} Wing</span>
+              </span>
+            ` : ''}
           </div>
 
           <h3 class="event-card-title">${ev.title}</h3>
@@ -1843,10 +2089,9 @@ class AppController {
     const targetBtn = document.getElementById(`snd-${type}`);
     if (targetBtn) targetBtn.classList.add('active');
 
-    if (this.meditationActive) {
-      this.stopSoundscapeAudio();
-      this.startSoundscapeAudio();
-    }
+    // Immediate playback on selection so user directly experiences the soundscape!
+    this.stopSoundscapeAudio(false);
+    this.startSoundscapeAudio();
   }
 
   setDuration(minutes, el) {
@@ -1903,7 +2148,7 @@ class AppController {
     this.meditationActive = false;
     clearInterval(this.meditationInterval);
     clearInterval(this.breathInterval);
-    this.stopSoundscapeAudio();
+    this.stopSoundscapeAudio(false); // Pause audio, keep current position so Resume plays instantly!
 
     const btn = document.getElementById('btnMeditationToggle');
     if (btn) {
@@ -1923,6 +2168,7 @@ class AppController {
 
   resetMeditation() {
     this.stopMeditation();
+    this.stopSoundscapeAudio(true); // Reset audio back to 0:00
     this.remainingSec = this.meditationDurationSec;
     this.updateTimerDisplay();
 
@@ -1977,23 +2223,207 @@ class AppController {
     this.breathInterval = setInterval(runPhase, 4000);
   }
 
+  preloadMeditationAudios() {
+    try {
+      if (!window.bkStore || typeof window.bkStore.getMeditationSoundscapes !== 'function') return;
+      const soundscapes = window.bkStore.getMeditationSoundscapes();
+      if (!Array.isArray(soundscapes)) return;
+      soundscapes.forEach(s => {
+        if (s && s.audioUrl && s.audioUrl.trim()) {
+          const url = s.audioUrl.trim();
+          let audio = this.soundscapeAudios[s.id];
+          if (!audio) {
+            audio = new Audio();
+            audio.preload = 'auto';
+            audio.loop = true;
+            audio.volume = this.soundscapeVolume !== undefined ? this.soundscapeVolume : 0.7;
+            audio.src = url;
+            this.soundscapeAudios[s.id] = audio;
+          } else if (audio.src !== url) {
+            audio.src = url;
+          }
+        }
+      });
+    } catch (e) {
+      console.warn("Preload meditation audios error:", e);
+    }
+  }
+
+  renderMeditationSoundscapeLabels() {
+    if (!window.bkStore || typeof window.bkStore.getMeditationSoundscapes !== 'function') return;
+    const soundscapes = window.bkStore.getMeditationSoundscapes();
+    const selector = document.querySelector('.soundscape-selector');
+    if (selector && soundscapes && soundscapes.length > 0) {
+      selector.innerHTML = soundscapes.map(s => {
+        const isActive = this.soundscapeType === s.id;
+        const iconName = s.icon || (s.id === 'flute' ? 'wind' : (s.id === 'waves' ? 'waves' : (s.id === 'silence' ? 'volume-x' : 'music')));
+        const mlLabel = s.nameMl ? `<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">${s.nameMl}</small>` : '';
+        return `
+          <button class="sound-btn ${isActive ? 'active' : ''}" onclick="bkApp.setSoundscape('${s.id}')" id="snd-${s.id}">
+            <i data-lucide="${iconName}"></i>
+            <span>${s.name || s.id}${mlLabel}</span>
+          </button>
+        `;
+      }).join('');
+      if (window.lucide) window.lucide.createIcons();
+    } else if (soundscapes) {
+      soundscapes.forEach(s => {
+        const btn = document.getElementById(`snd-${s.id}`);
+        if (btn) {
+          const span = btn.querySelector('span');
+          if (span && s.name) {
+            span.textContent = s.name;
+          }
+        }
+      });
+    }
+    // Preload audio files so there is 0 delay when clicking
+    this.preloadMeditationAudios();
+  }
+
+  setVolume(val) {
+    this.soundscapeVolume = parseFloat(val);
+    if (this.currentActiveAudio) {
+      this.currentActiveAudio.volume = this.soundscapeVolume;
+    }
+    if (this.soundscapeAudios) {
+      Object.values(this.soundscapeAudios).forEach(a => {
+        if (a) a.volume = this.soundscapeVolume;
+      });
+    }
+  }
+
+  updateSoundscapeStatus(text, isLoading = false) {
+    const statusText = document.getElementById('soundscapeStatusText');
+    const statusIcon = document.getElementById('soundscapeStatusIcon');
+    if (statusText) statusText.textContent = text;
+    if (statusIcon && window.lucide) {
+      statusIcon.setAttribute('data-lucide', isLoading ? 'loader-2' : (text.includes('Playing') ? 'volume-2' : 'volume-x'));
+      window.lucide.createIcons();
+    }
+  }
+
   startSoundscapeAudio() {
     try {
-      const ctx = this.getAudioContext();
-      this.stopSoundscapeAudio();
+      // 1. Terminate any synth oscillators immediately
+      this.activeAudioNodes.forEach(node => {
+        try {
+          if (node.stop) node.stop();
+          if (node.disconnect) node.disconnect();
+        } catch (e) {}
+      });
+      this.activeAudioNodes = [];
 
-      if (this.soundscapeType === 'tanpura') {
-        // Paramdham 432Hz warmth drone synthesizer
+      // 2. Fetch track info from store
+      const soundscape = window.bkStore && typeof window.bkStore.getMeditationSoundscape === 'function' 
+        ? window.bkStore.getMeditationSoundscape(this.soundscapeType) 
+        : null;
+
+      const trackName = soundscape ? (soundscape.name || this.soundscapeType) : this.soundscapeType;
+
+      // 3. Play custom MP3 track (zero delay, no synth fallback)
+      if (soundscape && soundscape.audioUrl && soundscape.audioUrl.trim()) {
+        const url = soundscape.audioUrl.trim();
+
+        // Pause other active soundscape without resetting src
+        if (this.currentActiveAudio && this.currentActiveAudio !== this.soundscapeAudios[this.soundscapeType]) {
+          try {
+            this.currentActiveAudio.pause();
+            this.currentActiveAudio.currentTime = 0;
+          } catch (e) {}
+        }
+
+        // Get preloaded audio or create
+        let audio = this.soundscapeAudios[this.soundscapeType];
+        if (!audio || audio.src !== url) {
+          audio = new Audio();
+          audio.preload = 'auto';
+          audio.loop = true;
+          audio.src = url;
+          this.soundscapeAudios[this.soundscapeType] = audio;
+        }
+
+        audio.volume = this.soundscapeVolume !== undefined ? this.soundscapeVolume : 0.7;
+        this.currentActiveAudio = audio;
+        this.customSoundscapeAudio = audio;
+
+        if (audio.readyState >= 2) {
+          this.updateSoundscapeStatus(`Playing: ${trackName}`);
+        } else {
+          this.updateSoundscapeStatus(`Playing: ${trackName}`);
+        }
+
+        audio.onplaying = () => {
+          if (this.currentActiveAudio === audio) {
+            this.updateSoundscapeStatus(`Playing: ${trackName}`);
+          }
+        };
+
+        audio.onerror = (err) => {
+          console.warn("Soundscape stream warning:", err);
+          // STRICT RULE: NEVER call playSynthSoundscape!
+          if (this.currentActiveAudio === audio) {
+            this.updateSoundscapeStatus(`Connecting stream: ${trackName}...`, true);
+          }
+        };
+
+        const currentTarget = this.soundscapeType;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            if (this.soundscapeType === currentTarget && this.currentActiveAudio === audio) {
+              this.updateSoundscapeStatus(`Playing: ${trackName}`);
+            }
+          }).catch(err => {
+            // Silently swallow AbortError (interrupted by rapid switching or pause)
+            if (err && (err.name === 'AbortError' || err.code === 20)) {
+              return;
+            }
+            console.warn("Audio play issue:", err);
+            // STRICT RULE: NEVER fall back to playSynthSoundscape!
+          });
+        }
+        return;
+      }
+
+      if (this.soundscapeType === 'silence') {
+        this.updateSoundscapeStatus("Pure Silence & Mindfulness Bells active");
+        return;
+      }
+
+      // Only if no URL is present at all and not silence:
+      this.playSynthSoundscape(this.soundscapeType);
+    } catch (err) {
+      console.warn("Soundscape start error:", err);
+    }
+  }
+
+  playSynthSoundscape(type) {
+    try {
+      // Guard: If custom audio exists, NEVER play synth
+      const soundscape = window.bkStore && typeof window.bkStore.getMeditationSoundscape === 'function' 
+        ? window.bkStore.getMeditationSoundscape(type) 
+        : null;
+      if (soundscape && soundscape.audioUrl && soundscape.audioUrl.trim()) {
+        return;
+      }
+
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+      if (ctx.state === 'suspended') ctx.resume();
+
+      const trackName = soundscape ? (soundscape.name || type) : type;
+      this.updateSoundscapeStatus(`Playing: ${trackName} (432Hz Synth)`);
+
+      if (type === 'tanpura') {
         const baseFreq = 216; // A3
-        const freqs = [baseFreq, baseFreq * 1.5, baseFreq * 2, baseFreq * 2.5]; // Sa, Pa, Sa', Ga'
-        
+        const freqs = [baseFreq, baseFreq * 1.5, baseFreq * 2, baseFreq * 2.5];
         freqs.forEach((freq, i) => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = i % 2 === 0 ? 'sine' : 'triangle';
           osc.frequency.setValueAtTime(freq, ctx.currentTime);
 
-          // Subtle LFO for breathing drone effect
           const lfo = ctx.createOscillator();
           const lfoGain = ctx.createGain();
           lfo.frequency.value = 0.2 + (i * 0.1);
@@ -2001,15 +2431,14 @@ class AppController {
           lfo.connect(gain.gain);
           lfo.start();
 
-          gain.gain.setValueAtTime(0.08 / (i + 1), ctx.currentTime);
+          gain.gain.setValueAtTime((0.08 / (i + 1)) * (this.soundscapeVolume !== undefined ? this.soundscapeVolume : 0.7), ctx.currentTime);
           osc.connect(gain);
           gain.connect(ctx.destination);
           osc.start();
 
           this.activeAudioNodes.push(osc, lfo, gain, lfoGain);
         });
-      } else if (this.soundscapeType === 'flute') {
-        // Serene flute acoustic harmonic synthesis
+      } else if (type === 'flute') {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
@@ -2022,14 +2451,13 @@ class AppController {
         vibrato.connect(osc.frequency);
         vibrato.start();
 
-        gain.gain.setValueAtTime(0.09, ctx.currentTime);
+        gain.gain.setValueAtTime(0.09 * (this.soundscapeVolume !== undefined ? this.soundscapeVolume : 0.7), ctx.currentTime);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
 
         this.activeAudioNodes.push(osc, vibrato, gain, vibratoGain);
-      } else if (this.soundscapeType === 'waves') {
-        // Pink noise filter sweep generator
+      } else if (type === 'waves') {
         const bufferSize = ctx.sampleRate * 2;
         const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const output = noiseBuffer.getChannelData(0);
@@ -2047,13 +2475,13 @@ class AppController {
 
         const lfo = ctx.createOscillator();
         const lfoGain = ctx.createGain();
-        lfo.frequency.value = 0.12; // 8s wave cycle
+        lfo.frequency.value = 0.12;
         lfoGain.gain.value = 350;
         lfo.connect(filter.frequency);
         lfo.start();
 
         const gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.setValueAtTime(0.12 * (this.soundscapeVolume !== undefined ? this.soundscapeVolume : 0.7), ctx.currentTime);
 
         whiteNoise.connect(filter);
         filter.connect(gain);
@@ -2063,11 +2491,20 @@ class AppController {
         this.activeAudioNodes.push(whiteNoise, filter, lfo, gain);
       }
     } catch (e) {
-      console.warn("Web Audio initialization error", e);
+      console.warn("Synth initialization error:", e);
     }
   }
 
-  stopSoundscapeAudio() {
+  stopSoundscapeAudio(resetPosition = false) {
+    if (this.currentActiveAudio) {
+      try {
+        this.currentActiveAudio.pause();
+        if (resetPosition) {
+          this.currentActiveAudio.currentTime = 0;
+        }
+      } catch (e) {}
+    }
+
     this.activeAudioNodes.forEach(node => {
       try {
         if (node.stop) node.stop();
@@ -2075,6 +2512,7 @@ class AppController {
       } catch (e) {}
     });
     this.activeAudioNodes = [];
+    this.updateSoundscapeStatus("Soundscape Paused / Ready");
   }
 
   playTibetanChime() {

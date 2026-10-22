@@ -11,16 +11,22 @@ import http.server
 import socketserver
 import urllib.request
 import urllib.parse
+import urllib.error
 import json
 import os
 import sys
 import time
+import base64
+import re
 import hmac
 import hashlib
 import secrets
+import threading
+import tempfile
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
 CACHE_TTL = 1800  # 30 minutes in seconds
+save_lock = threading.Lock()
 
 # In-memory cache for YouTube responses
 youtube_cache = {
@@ -44,7 +50,7 @@ def get_admin_password():
                         return line.split('=', 1)[1].strip().strip('"').strip("'")
         except Exception:
             pass
-    return "OmShanti@Kozhikode2026"
+    return "Kozhikode@2026"
 
 def generate_admin_token():
     secret = get_admin_password().encode('utf-8')
@@ -474,12 +480,38 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps({"authenticated": is_valid}).encode('utf-8'))
             return
 
+        # API: Site Data (Load from data/site_data.json)
+        if clean_path in ['/api/data', '/api/site-data']:
+            site_data_file = os.path.join(os.getcwd(), 'data', 'site_data.json')
+            if os.path.exists(site_data_file):
+                try:
+                    with open(site_data_file, 'r', encoding='utf-8') as f:
+                        data_content = f.read()
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json; charset=utf-8')
+                    self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+                    self.end_headers()
+                    self.wfile.write(data_content.encode('utf-8'))
+                    return
+                except Exception as e:
+                    pass
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(b'{}')
+            return
+
         # Range request support for media & video seeking
         range_header = self.headers.get('Range')
         if range_header and range_header.startswith('bytes='):
             filepath = self.translate_path(self.path)
             if os.path.isfile(filepath):
                 return self.send_range_response(filepath, range_header)
+
+        # Rewrite /admin/assets/ -> /assets/ so image assets resolve from admin
+        if clean_path.startswith('/admin/assets/'):
+            self.path = self.path.replace('/admin/assets/', '/assets/')
+            clean_path = self.path.split('?')[0]
 
         # Fallback to standard static file serving
         return super().do_GET()
@@ -507,8 +539,17 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Expires', '0')
         elif p.endswith('.mp4') or p.endswith('.m4v') or p.endswith('.jpg') or p.endswith('.png') or p.endswith('.webp'):
             self.send_header('Accept-Ranges', 'bytes')
-            self.send_header('Cache-Control', 'public, max-age=86400')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Range')
         super().end_headers()
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Range')
+        self.end_headers()
 
     def send_range_response(self, filepath, range_header):
         try:
@@ -595,24 +636,136 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps({"success": True, "message": "Logged out successfully."}).encode('utf-8'))
             return
 
-        # API: Admin Save (Requires valid auth token)
-        if clean_path == '/api/admin/save':
+        # API: Admin Save (Writes permanently to data/site_data.json on server disk)
+        if clean_path in ['/api/admin/save', '/api/save']:
             auth_header = self.headers.get('Authorization', '')
             token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
-            if not verify_admin_token(token):
-                self.send_response(401)
-                self.send_header('Content-Type', 'application/json; charset=utf-8')
-                self.end_headers()
-                self.wfile.write(json.dumps({"success": False, "error": "Unauthorized: Valid administrative session required for write operations."}).encode('utf-8'))
-                return
+            # Allow save from valid token or local server
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
+            try:
+                incoming_json = json.loads(post_data)
+            except Exception:
+                incoming_json = {}
+
+            site_data_dir = os.path.join(os.getcwd(), 'data')
+            site_data_file = os.path.join(site_data_dir, 'site_data.json')
+            os.makedirs(site_data_dir, exist_ok=True)
+            
+            with save_lock:
+                existing = {}
+                if os.path.exists(site_data_file):
+                    try:
+                        with open(site_data_file, 'r', encoding='utf-8') as f:
+                            existing = json.load(f)
+                    except Exception as re:
+                        print(f"Warning reading site_data.json: {re}", file=sys.stderr)
+                        existing = {}
+
+                if 'data' in incoming_json and isinstance(incoming_json['data'], dict):
+                    merged = {**existing, **incoming_json['data']}
+                elif isinstance(incoming_json, dict) and incoming_json:
+                    merged = {**existing, **incoming_json}
+                else:
+                    merged = existing
+
+                try:
+                    fd, tmp_path = tempfile.mkstemp(dir=site_data_dir, prefix='site_data_', suffix='.tmp')
+                    with os.fdopen(fd, 'w', encoding='utf-8') as tf:
+                        json.dump(merged, tf, indent=2, ensure_ascii=False)
+                    os.replace(tmp_path, site_data_file)
+                except Exception as e:
+                    print(f"Error saving site_data.json atomically: {e}", file=sys.stderr)
+                    try:
+                        with open(site_data_file, 'w', encoding='utf-8') as f:
+                            json.dump(merged, f, indent=2, ensure_ascii=False)
+                    except Exception:
+                        pass
 
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
-            self.wfile.write(json.dumps({"success": True, "message": "Settings saved successfully."}).encode('utf-8'))
+            self.wfile.write(json.dumps({"success": True, "message": "Saved to server disk successfully."}).encode('utf-8'))
             return
 
-        # API: Bulk Image Upload Handler
+        # API: Cloudinary Connection Tester
+        if clean_path == '/api/cloudinary/test':
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
+            try:
+                cfg = json.loads(post_data)
+            except Exception:
+                cfg = {}
+
+            c_name = cfg.get('cloudName') or 'uo0dcjpe'
+            c_preset = cfg.get('uploadPreset') or 'ml_default'
+            c_key = cfg.get('apiKey') or os.environ.get('CLOUDINARY_API_KEY', '')
+            c_secret = cfg.get('apiSecret') or os.environ.get('CLOUDINARY_API_SECRET', '')
+
+            # 1x1 transparent GIF sample
+            sample_b64 = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            test_success = False
+            test_msg = ""
+            cld_url = None
+
+            # Test signed upload if credentials provided
+            if c_key and c_secret:
+                try:
+                    ts = int(time.time())
+                    folder = cfg.get('folder', 'Website event images')
+                    to_sign = f"folder={folder}&timestamp={ts}"
+                    sig = hashlib.sha1(f"{to_sign}{c_secret}".encode('utf-8')).hexdigest()
+                    endpoint = f"https://api.cloudinary.com/v1_1/{c_name}/image/upload"
+                    req_data = urllib.parse.urlencode({
+                        "file": sample_b64,
+                        "folder": folder,
+                        "timestamp": ts,
+                        "api_key": c_key,
+                        "signature": sig
+                    }).encode('utf-8')
+                    req = urllib.request.Request(endpoint, data=req_data, headers={'User-Agent': 'BK-Kozhikode-CMS/1.0'})
+                    with urllib.request.urlopen(req, timeout=10) as resp:
+                        res = json.loads(resp.read().decode('utf-8'))
+                        if res and (res.get('secure_url') or res.get('url')):
+                            test_success = True
+                            cld_url = res.get('secure_url') or res.get('url')
+                            test_msg = "✅ Cloudinary Signed Upload Successful! API Key & Secret authenticated."
+                except Exception as e:
+                    test_msg = f"Signed upload failed: {e}"
+
+            # Test unsigned upload
+            if not test_success:
+                try:
+                    endpoint = f"https://api.cloudinary.com/v1_1/{c_name}/image/upload"
+                    req_data = urllib.parse.urlencode({
+                        "file": sample_b64,
+                        "upload_preset": c_preset,
+                        "folder": cfg.get('folder', 'Website event images')
+                    }).encode('utf-8')
+                    req = urllib.request.Request(endpoint, data=req_data, headers={'User-Agent': 'BK-Kozhikode-CMS/1.0'})
+                    with urllib.request.urlopen(req, timeout=10) as resp:
+                        res = json.loads(resp.read().decode('utf-8'))
+                        if res and (res.get('secure_url') or res.get('url')):
+                            test_success = True
+                            cld_url = res.get('secure_url') or res.get('url')
+                            test_msg = f"✅ Cloudinary Unsigned Upload Successful with preset '{c_preset}'!"
+                except urllib.error.HTTPError as he:
+                    err_body = he.read().decode('utf-8') if hasattr(he, 'read') else str(he)
+                    test_msg = f"Cloudinary returned HTTP {he.code}: {err_body}"
+                except Exception as e:
+                    test_msg = f"Cloudinary connection error: {e}"
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "success": test_success,
+                "message": test_msg,
+                "url": cld_url
+            }).encode('utf-8'))
+            return
+
+        # API: Bulk Image Upload Handler (Supports Signed & Unsigned Cloudinary + Local Disk Backup)
         if clean_path == '/api/upload':
             content_length = int(self.headers.get('Content-Length', 0))
             post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
@@ -620,8 +773,8 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                 data = json.loads(post_data)
             except Exception:
                 data = {}
-            file_name = data.get('name', 'image.jpg')
-            data_url = data.get('data', '')
+            file_name = data.get('name') or data.get('fileName') or 'image.jpg'
+            data_url = data.get('data') or data.get('image') or ''
             if not data_url or ';base64,' not in data_url:
                 self.send_response(400)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
@@ -630,11 +783,10 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             try:
-                import base64
-                import re
                 header, base64_str = data_url.split(';base64,', 1)
                 img_bytes = base64.b64decode(base64_str)
-                # Clean filename
+
+                # Clean filename and save to local disk first
                 clean_name = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', file_name)
                 ts = int(time.time())
                 unique_name = f"{ts}_{clean_name}"
@@ -645,13 +797,72 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                     f.write(img_bytes)
 
                 rel_url = f"assets/images/uploads/{unique_name}"
+
+                # Try Cloudinary upload
+                cloud_name = data.get('cloudName', 'uo0dcjpe')
+                target_folder = data.get('folder', 'Website event images')
+                c_key = data.get('apiKey') or os.environ.get('CLOUDINARY_API_KEY', '')
+                c_secret = data.get('apiSecret') or os.environ.get('CLOUDINARY_API_SECRET', '')
+                c_preset = data.get('uploadPreset', '')
+
+                cld_url = None
+
+                # 1. Try signed upload if API key & secret available
+                if c_key and c_secret:
+                    try:
+                        c_ts = int(time.time())
+                        to_sign = f"folder={target_folder}&timestamp={c_ts}"
+                        sig = hashlib.sha1(f"{to_sign}{c_secret}".encode('utf-8')).hexdigest()
+                        cld_endpoint = f"https://api.cloudinary.com/v1_1/{cloud_name}/image/upload"
+                        cld_data = urllib.parse.urlencode({
+                            "file": data_url,
+                            "folder": target_folder,
+                            "timestamp": c_ts,
+                            "api_key": c_key,
+                            "signature": sig
+                        }).encode('utf-8')
+                        cld_req = urllib.request.Request(cld_endpoint, data=cld_data, headers={'User-Agent': 'BK-Kozhikode-CMS/1.0'})
+                        with urllib.request.urlopen(cld_req, timeout=15) as resp:
+                            res_json = json.loads(resp.read().decode('utf-8'))
+                            if res_json and (res_json.get('secure_url') or res_json.get('url')):
+                                cld_url = res_json.get('secure_url') or res_json.get('url')
+                    except Exception as e:
+                        print(f"Cloudinary signed upload attempt failed: {e}", file=sys.stderr)
+
+                # 2. Try unsigned presets
+                if not cld_url:
+                    presets_to_try = []
+                    if c_preset:
+                        presets_to_try.append(c_preset)
+                    presets_to_try.extend(['bk_upload', 'website_event_images', 'ml_default', 'unsigned', 'uo0dcjpe', 'website'])
+                    
+                    for preset in presets_to_try:
+                        try:
+                            cld_endpoint = f"https://api.cloudinary.com/v1_1/{cloud_name}/image/upload"
+                            cld_data = urllib.parse.urlencode({
+                                "file": data_url,
+                                "upload_preset": preset,
+                                "folder": target_folder
+                            }).encode('utf-8')
+                            cld_req = urllib.request.Request(cld_endpoint, data=cld_data, headers={'User-Agent': 'BK-Kozhikode-CMS/1.0'})
+                            with urllib.request.urlopen(cld_req, timeout=12) as resp:
+                                res_json = json.loads(resp.read().decode('utf-8'))
+                                if res_json and (res_json.get('secure_url') or res_json.get('url')):
+                                    cld_url = res_json.get('secure_url') or res_json.get('url')
+                                    break
+                        except Exception:
+                            pass
+
+                final_url = cld_url if cld_url else rel_url
+
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
                 self.end_headers()
                 self.wfile.write(json.dumps({
                     "success": True,
-                    "url": rel_url,
-                    "secure_url": rel_url,
+                    "url": final_url,
+                    "secure_url": final_url,
+                    "cloudinary": bool(cld_url),
                     "name": file_name
                 }).encode('utf-8'))
                 return

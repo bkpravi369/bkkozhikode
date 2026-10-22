@@ -25,7 +25,10 @@ const DEFAULT_DATA = {
     secondaryEmail: "contact@bkkozhikode.com",
     timingsMorning: "7:00 AM – 9:00 AM",
     timingsEvening: "5:00 PM – 8:00 PM",
-    adminPin: "",
+    adminPin: "Kozhikode@2026",
+    cloudinaryCloudName: "uo0dcjpe",
+    cloudinaryFolder: "Website event images",
+    cloudinaryUploadPreset: "qux0sq4f",
     announcement: "🕊️ Join our Complimentary 7-Day Rajyoga Meditation Foundation Course — Morning & Evening Batches available at Ashokapuram Light Palace and all Kozhikode branches!",
     heroTitle: "Awaken Your Inner Peace & Divine Radiance",
     heroSubtitle: "Experience the timeless serenity of Rajyoga Meditation in Kozhikode. Connect with your true spiritual self and the Supreme Source of peace, love, and power in the divine light of Paramdham.",
@@ -59,10 +62,34 @@ const DEFAULT_DATA = {
 
   categories: [
     "Festivals",
-    "Rajayoga Shivir",
     "Youth Program",
     "Social Service",
     "Celebrations"
+  ],
+
+  wings: [
+    "Administrator",
+    "Agriculture & Rural Development",
+    "Art & Culture",
+    "Business & Industry",
+    "Design & Innovation",
+    "Education",
+    "IT",
+    "Jurists",
+    "Media",
+    "Medical",
+    "Politicians",
+    "Religious",
+    "Scientists Engineers & Architects",
+    "Security",
+    "Shipping Aviation",
+    "Social",
+    "SpARC",
+    "Sports",
+    "Transport & Travel",
+    "Women",
+    "Youth",
+    "VishwaKarma Nirman Wing"
   ],
 
   aboutData: {
@@ -791,7 +818,7 @@ const DEFAULT_DATA = {
       id: 'g1',
       title: "Paramdham - The Realm of Golden-Red Supreme Light",
       titleMl: "പരന്ധാമം - ശാന്തിയുടെ നിത്യലോകം",
-      category: "Spiritual Art",
+      category: "Mobile Wallpapers",
       type: "image",
       url: "assets/images/paramdham_sunset.jpg",
       thumbnail: "assets/images/paramdham_sunset.jpg",
@@ -802,7 +829,7 @@ const DEFAULT_DATA = {
       id: 'g2',
       title: "Light Palace Ashokapuram Meditation Hall & Retreat Center",
       titleMl: "അശോകാപുരം ലൈറ്റ് പാലസ് ധ്യാനകേന്ദ്രം",
-      category: "Kozhikode Centers",
+      category: "Center Images",
       type: "image",
       url: "assets/images/light_palace_center.jpg",
       thumbnail: "assets/images/light_palace_center.jpg",
@@ -813,7 +840,7 @@ const DEFAULT_DATA = {
       id: 'g3',
       title: "Sacred Meditation Gathering at Ashokapuram Light Palace",
       titleMl: "സാമൂഹിക രാജയോഗ ധ്യാന സംഗമം",
-      category: "Meditation Hall",
+      category: "Program Images",
       type: "image",
       url: "assets/images/meditation_hall.jpg",
       thumbnail: "assets/images/meditation_hall.jpg",
@@ -824,7 +851,7 @@ const DEFAULT_DATA = {
       id: 'g4',
       title: "Rajyoga Practitioner in Soul Consciousness & Bliss",
       titleMl: "ആത്മീയ അനുഭൂതിയിൽ മുഴുകിയ സാധകൻ",
-      category: "Rajyoga Experience",
+      category: "Mobile Wallpapers",
       type: "image",
       url: "assets/images/rajyoga_peace.jpg",
       thumbnail: "assets/images/rajyoga_peace.jpg",
@@ -835,7 +862,7 @@ const DEFAULT_DATA = {
       id: 'g5',
       title: "World Peace Meditation Hour & Candle Lighting Gathering",
       titleMl: "ലോക സമാധാന ധ്യാന മണിക്കൂറും ദീപം തെളിയിക്കലും",
-      category: "Peace Initiatives",
+      category: "Program Images",
       type: "image",
       url: "assets/images/meditation_hall.jpg",
       thumbnail: "assets/images/meditation_hall.jpg",
@@ -846,13 +873,21 @@ const DEFAULT_DATA = {
       id: 'g6',
       title: "Brahma Kumaris Mount Abu Global Headquarters Heritage",
       titleMl: "മൗണ്ട് അബു അന്താരാഷ്ട്ര ആസ്ഥാനം",
-      category: "Headquarters",
+      category: "Center Images",
       type: "image",
       url: "assets/images/light_palace_center.jpg",
       thumbnail: "assets/images/light_palace_center.jpg",
       description: "Connecting our Kozhikode spiritual family with the international spiritual university headquarters at Shantivan & Pandav Bhawan, Mount Abu.",
       date: "2026-06-15"
     }
+  ],
+
+  galleryCategories: [
+    { id: 'all', name: 'All Photos', nameMl: 'എല്ലാ ചിത്രങ്ങളും', tag: 'all', isDefault: true },
+    { id: 'mobile_wallpaper', name: 'Mobile Wallpapers', nameMl: 'മൊബൈൽ വാൾപേപ്പറുകൾ', tag: 'wall_paper', cloudinaryTag: 'wall_paper' },
+    { id: 'center_images', name: 'Center Images', nameMl: 'കേന്ദ്രങ്ങൾ', tag: 'center_images', cloudinaryTag: 'center_images' },
+    { id: 'program_images', name: 'Program Images', nameMl: 'പ്രോഗ്രാമുകൾ', tag: 'program_images', cloudinaryTag: 'program_images' },
+    { id: 'festival_images', name: 'Festivals', nameMl: 'ആഘോഷങ്ങൾ', tag: 'festival_images', cloudinaryTag: 'festival_images' }
   ],
 
   events: [
@@ -865,11 +900,28 @@ const DEFAULT_DATA = {
       centre: "Kozhikode Main",
       category: "Festivals",
       isNavathi: true,
-      coverImage: "assets/images/light_palace_center.jpg",
+      coverImage: "assets/images/uploads/1792577267_P1314528.jpg",
       photos: [
-        "assets/images/meditation_hall.jpg",
-        "assets/images/paramdham_sunset.jpg",
-        "assets/images/rajyoga_peace.jpg"
+        "assets/images/uploads/1792577267_P1314528.jpg",
+        "assets/images/uploads/1792577294_P1314531.jpg",
+        "assets/images/uploads/1792577319_P1314534.jpg",
+        "assets/images/uploads/1792577345_P1314537.jpg",
+        "assets/images/uploads/1792577373_P1314540.jpg",
+        "assets/images/uploads/1792577397_P1314543.jpg",
+        "assets/images/uploads/1792577422_P1314545.jpg",
+        "assets/images/uploads/1792577461_P1314549.jpg",
+        "assets/images/uploads/1792577489_P1314553.jpg",
+        "assets/images/uploads/1792577519_P1314561.jpg",
+        "assets/images/uploads/1792577544_P1314564.jpg",
+        "assets/images/uploads/1792577572_P1314570.jpg",
+        "assets/images/uploads/1792577598_P1314573.jpg",
+        "assets/images/uploads/1792577627_P1314577.jpg",
+        "assets/images/uploads/1792577657_P1314583.jpg",
+        "assets/images/uploads/1792577681_P1314584.jpg",
+        "assets/images/uploads/1792577705_P1314588.jpg",
+        "assets/images/uploads/1792577731_P1314592.jpg",
+        "assets/images/uploads/1792577754_P1314596.jpg",
+        "assets/images/uploads/1792577779_P1314601.jpg"
       ],
       youtubeUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
       videos: [
@@ -883,11 +935,28 @@ const DEFAULT_DATA = {
         }
       ],
       description: "Commemorating 90 glorious years of Brahma Kumaris (1936-2026) dedicated to world renewal, spiritual enlightenment of women, and global harmony. Features divine flag unfurling, amritvela mass meditation, and special address by senior Rajyogis.",
-      image: "assets/images/light_palace_center.jpg",
+      image: "assets/images/uploads/1792577267_P1314528.jpg",
       additionalImages: [
-        "assets/images/meditation_hall.jpg",
-        "assets/images/paramdham_sunset.jpg",
-        "assets/images/rajyoga_peace.jpg"
+        "assets/images/uploads/1792577267_P1314528.jpg",
+        "assets/images/uploads/1792577294_P1314531.jpg",
+        "assets/images/uploads/1792577319_P1314534.jpg",
+        "assets/images/uploads/1792577345_P1314537.jpg",
+        "assets/images/uploads/1792577373_P1314540.jpg",
+        "assets/images/uploads/1792577397_P1314543.jpg",
+        "assets/images/uploads/1792577422_P1314545.jpg",
+        "assets/images/uploads/1792577461_P1314549.jpg",
+        "assets/images/uploads/1792577489_P1314553.jpg",
+        "assets/images/uploads/1792577519_P1314561.jpg",
+        "assets/images/uploads/1792577544_P1314564.jpg",
+        "assets/images/uploads/1792577572_P1314570.jpg",
+        "assets/images/uploads/1792577598_P1314573.jpg",
+        "assets/images/uploads/1792577627_P1314577.jpg",
+        "assets/images/uploads/1792577657_P1314583.jpg",
+        "assets/images/uploads/1792577681_P1314584.jpg",
+        "assets/images/uploads/1792577705_P1314588.jpg",
+        "assets/images/uploads/1792577731_P1314592.jpg",
+        "assets/images/uploads/1792577754_P1314596.jpg",
+        "assets/images/uploads/1792577779_P1314601.jpg"
       ],
       videoUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
       location: "Kozhikode Main",
@@ -1205,7 +1274,50 @@ const DEFAULT_DATA = {
     meetingId: '5043349232',
     password: 'N3c3VHFzWjRJMTV2UTJqY001SFI1dz09',
     joinUrl: 'https://us02web.zoom.us/j/5043349232?pwd=N3c3VHFzWjRJMTV2UTJqY001SFI1dz09'
-  }
+  },
+
+  meditationSoundscapes: [
+    {
+      id: 'tanpura',
+      name: 'Paramdham',
+      nameMl: 'പരന്ധാമം',
+      description: 'Soothing golden Paramdham acoustic drone frequency for deep stillness and soul consciousness.',
+      audioUrl: 'https://cloudflare.bkkozhikode.com/Meditation-music/01%20Nirwan%20.mp3',
+      icon: 'music',
+      active: true,
+      type: 'custom'
+    },
+    {
+      id: 'flute',
+      name: 'Peaceful Bansuri Flute',
+      nameMl: 'ശാന്തമായ പുല്ലാങ്കുഴൽ നാദം',
+      description: 'Devotional Indian classical bamboo flute melodies evoking purity, innocence, and sacred stillness.',
+      audioUrl: 'https://cloudflare.bkkozhikode.com/own-music%20/Meditation%20to%20Activate%20LUCK%201.mp3',
+      icon: 'wind',
+      active: true,
+      type: 'custom'
+    },
+    {
+      id: 'waves',
+      name: 'Ocean of Peace Waves',
+      nameMl: 'ശാന്തി സാഗര തിരമാലകൾ',
+      description: 'Gentle, continuous ocean wave resonance creating emotional equilibrium and mental calm.',
+      audioUrl: 'https://cloudflare.bkkozhikode.com/Meditation-music/01%20Kind%20of%20Music(58.00).mp3',
+      icon: 'waves',
+      active: true,
+      type: 'custom'
+    },
+    {
+      id: 'silence',
+      name: 'Bliss',
+      nameMl: 'ആനന്ദം',
+      description: 'Profound sacred silence punctuated by gentle, periodic mindfulness bells for Raja Yoga silence.',
+      audioUrl: 'https://cloudflare.bkkozhikode.com/Meditation-music/03-Dancing%20in%20Bliss.mp3',
+      icon: 'volume-x',
+      active: true,
+      type: 'custom'
+    }
+  ]
 };
 
 // YouTube Utility Helpers
@@ -1239,11 +1351,60 @@ window.bkUtils = {
 class SiteStore {
   constructor() {
     this.data = this.loadData();
+    this.initCrossTabSync();
+    this.initServerSync();
   }
 
-  loadData() {
+  initCrossTabSync() {
+    if (typeof BroadcastChannel !== 'undefined') {
+      try {
+        this.syncChannel = new BroadcastChannel('bk_cms_realtime_sync');
+        this.syncChannel.onmessage = (event) => {
+          if (event.data && event.data.type === 'bk_store_change') {
+            this.data = this.loadData();
+            if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+              window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
+            }
+          }
+        };
+      } catch (e) {
+        console.warn('BroadcastChannel sync init:', e);
+      }
+    }
+  }
+
+  async initServerSync() {
+    if (typeof fetch === 'undefined') return;
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      const res = await fetch('/api/data', { cache: 'no-cache' }).catch(() => null);
+      if (res && res.ok) {
+        const serverData = await res.json().catch(() => null);
+        if (serverData && typeof serverData === 'object' && Object.keys(serverData).length > 0) {
+          this.mergeServerData(serverData);
+        }
+      }
+    } catch (e) {
+      console.warn('Server sync note:', e);
+    }
+  }
+
+  mergeServerData(serverData) {
+    if (!serverData || typeof serverData !== 'object') return;
+    this.data = this.loadData(serverData);
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
+      try { localStorage.setItem('bk_kozhikode_cms_store', JSON.stringify(this.data)); } catch (e) {}
+    } catch (e) {}
+
+    if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
+    }
+  }
+
+  loadData(customSource = null) {
+    try {
+      const saved = customSource ? JSON.stringify(customSource) : localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
         // Ensure course modules merge with new schema fields seamlessly
@@ -1361,6 +1522,7 @@ class SiteStore {
               year,
               centre,
               category: ev.category && ev.category !== 'navathi' ? ev.category : (isNavathi ? 'Festivals' : 'Festivals'),
+              wing: ev.wing || '',
               isNavathi,
               coverImage,
               photos,
@@ -1380,16 +1542,11 @@ class SiteStore {
               isFeatured: ev.isFeatured !== undefined ? ev.isFeatured : false,
               status: ev.status || 'published',
               order: ev.order || 1,
-              createdAt: ev.createdAt || '2026-08-18'
+              createdAt: ev.createdAt || '2026-08-18',
+              updatedAt: ev.updatedAt || ''
             };
           });
 
-          // Ensure default events exist if missing
-          DEFAULT_DATA.events.forEach(defEv => {
-            if (!mergedEvents.some(e => e.id === defEv.id || e.title === defEv.title)) {
-              mergedEvents.push(defEv);
-            }
-          });
         }
 
         // Ensure key centres are present
@@ -1419,16 +1576,38 @@ class SiteStore {
         }
 
         let mergedSocialChannels = Array.isArray(parsed.socialChannels) && parsed.socialChannels.length > 0 ? parsed.socialChannels : DEFAULT_DATA.socialChannels;
-        let mergedCategories = Array.isArray(parsed.categories) && parsed.categories.length > 0 ? parsed.categories : DEFAULT_DATA.categories;
+        let mergedCategories = Array.isArray(parsed.categories) ? parsed.categories : [...DEFAULT_DATA.categories];
+        let mergedWings = Array.isArray(parsed.wings) && parsed.wings.length > 0 ? [...parsed.wings] : [...DEFAULT_DATA.wings];
+        DEFAULT_DATA.wings.forEach(w => {
+          if (!mergedWings.some(mw => mw.toLowerCase() === w.toLowerCase())) {
+            mergedWings.push(w);
+          }
+        });
         let mergedCourseIntro = { ...DEFAULT_DATA.courseIntro, ...(parsed.courseIntro || {}) };
 
-        let mergedDistrictSummary = Array.isArray(parsed.districtCentresSummary) && parsed.districtCentresSummary.length > 0 ? parsed.districtCentresSummary : DEFAULT_DATA.districtCentresSummary;
-        mergedDistrictSummary = mergedDistrictSummary.map(d => {
-          if (d.district === 'Kozhikode') {
-            return { ...d, phones: ['9539933699'] };
-          }
-          return d;
-        });
+        let mergedDistrictSummary = Array.isArray(parsed.districtCentresSummary) ? parsed.districtCentresSummary : [];
+        if (mergedDistrictSummary.length > 0) {
+          mergedDistrictSummary = mergedDistrictSummary.map(d => {
+            if (d && d.district === 'Kozhikode') {
+              return { ...d, phones: ['9539933699'] };
+            }
+            return d;
+          });
+        }
+
+
+        let mergedSoundscapes = DEFAULT_DATA.meditationSoundscapes;
+        if (Array.isArray(parsed.meditationSoundscapes) && parsed.meditationSoundscapes.length > 0) {
+          mergedSoundscapes = DEFAULT_DATA.meditationSoundscapes.map(defS => {
+            const existing = parsed.meditationSoundscapes.find(s => s.id === defS.id);
+            return existing ? { ...defS, ...existing } : defS;
+          });
+          parsed.meditationSoundscapes.forEach(s => {
+            if (!mergedSoundscapes.some(ms => ms.id === s.id)) {
+              mergedSoundscapes.push(s);
+            }
+          });
+        }
 
         const siteInfoMerged = {
           ...DEFAULT_DATA.siteInfo,
@@ -1438,11 +1617,28 @@ class SiteStore {
           secondaryEmail: "contact@bkkozhikode.com"
         };
 
+        let mergedGalleryCats = DEFAULT_DATA.galleryCategories;
+        if (Array.isArray(parsed.galleryCategories) && parsed.galleryCategories.length > 0) {
+          mergedGalleryCats = DEFAULT_DATA.galleryCategories.map(defC => {
+            const existing = parsed.galleryCategories.find(c => c.id === defC.id);
+            return existing ? { ...defC, ...existing } : defC;
+          });
+          parsed.galleryCategories.forEach(c => {
+            if (!mergedGalleryCats.some(mc => mc.id === c.id)) {
+              mergedGalleryCats.push(c);
+            }
+          });
+        }
+
         return {
           ...DEFAULT_DATA,
           ...parsed,
           siteInfo: siteInfoMerged,
-          settings: { ...DEFAULT_DATA.settings, ...(parsed.settings || {}) },
+          settings: {
+            ...DEFAULT_DATA.settings,
+            ...(parsed.settings || {}),
+            adminPin: (!parsed.settings || !parsed.settings.adminPin || parsed.settings.adminPin === 'OmShanti@Kozhikode2026' || parsed.settings.adminPin === '3699') ? 'Kozhikode@2026' : parsed.settings.adminPin
+          },
           dailyThought: { ...DEFAULT_DATA.dailyThought, ...(parsed.dailyThought || {}) },
           aboutData: { ...DEFAULT_DATA.aboutData, ...(parsed.aboutData || {}) },
           dailyMurali: { ...DEFAULT_DATA.dailyMurali, ...(parsed.dailyMurali || {}) },
@@ -1453,9 +1649,12 @@ class SiteStore {
           courseModules: mergedCourseModules,
           socialChannels: mergedSocialChannels,
           categories: mergedCategories,
+          wings: mergedWings,
           centers: mergedCenters,
           districtCentresSummary: mergedDistrictSummary,
+          meditationSoundscapes: mergedSoundscapes,
           gallery: parsed.gallery || DEFAULT_DATA.gallery,
+          galleryCategories: mergedGalleryCats,
           events: mergedEvents,
           registrations: parsed.registrations || DEFAULT_DATA.registrations
         };
@@ -1469,14 +1668,33 @@ class SiteStore {
   saveData() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
+      try { localStorage.setItem('bk_kozhikode_cms_store', JSON.stringify(this.data)); } catch (e) {}
+
       if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
         window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
       }
-      return true;
+      if (this.syncChannel) {
+        this.syncChannel.postMessage({ type: 'bk_store_change', timestamp: Date.now() });
+      }
     } catch (err) {
       console.error('Failed to save to localStorage', err);
-      return false;
     }
+
+    // Persist permanently to backend server disk
+    if (typeof fetch !== 'undefined') {
+      try {
+        const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+        fetch('/api/admin/save', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': 'Bearer ' + token } : {})
+          },
+          body: JSON.stringify({ data: this.data })
+        }).catch(() => null);
+      } catch (e) {}
+    }
+    return true;
   }
 
   // --- Settings ---
@@ -1634,11 +1852,65 @@ class SiteStore {
     return true;
   }
 
+  // --- Gallery Categories & Cloudinary Tagged Tabs ---
+  getGalleryCategories() {
+    if (!Array.isArray(this.data.galleryCategories) || this.data.galleryCategories.length === 0) {
+      this.data.galleryCategories = [
+        { id: 'all', name: 'All Photos', nameMl: 'എല്ലാ ചിത്രങ്ങളും', tag: 'all', isDefault: true },
+        { id: 'mobile_wallpaper', name: 'Mobile Wallpapers', nameMl: 'മൊബൈൽ വാൾപേപ്പറുകൾ', tag: 'wall_paper', cloudinaryTag: 'wall_paper' },
+        { id: 'center_images', name: 'Center Images', nameMl: 'കേന്ദ്രങ്ങൾ', tag: 'center_images', cloudinaryTag: 'center_images' },
+        { id: 'program_images', name: 'Program Images', nameMl: 'പ്രോഗ്രാമുകൾ', tag: 'program_images', cloudinaryTag: 'program_images' },
+        { id: 'festival_images', name: 'Festivals', nameMl: 'ആഘോഷങ്ങൾ', tag: 'festival_images', cloudinaryTag: 'festival_images' }
+      ];
+      this.saveData();
+    }
+    return [...this.data.galleryCategories];
+  }
+
+  addGalleryCategory(cat) {
+    if (!cat || !cat.name) return null;
+    const categories = this.getGalleryCategories();
+    const id = cat.id || 'cat_' + Date.now();
+    const tag = cat.tag || cat.name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+    const newCat = {
+      id,
+      name: cat.name.trim(),
+      nameMl: (cat.nameMl || '').trim(),
+      tag,
+      cloudinaryTag: (cat.cloudinaryTag || tag).trim(),
+      isDefault: false
+    };
+    categories.push(newCat);
+    this.data.galleryCategories = categories;
+    this.saveData();
+    return newCat;
+  }
+
+  updateGalleryCategory(id, updates) {
+    const categories = this.getGalleryCategories();
+    const idx = categories.findIndex(c => c.id === id);
+    if (idx !== -1) {
+      categories[idx] = { ...categories[idx], ...updates };
+      this.data.galleryCategories = categories;
+      this.saveData();
+      return categories[idx];
+    }
+    return null;
+  }
+
+  deleteGalleryCategory(id) {
+    if (id === 'all') return false;
+    let categories = this.getGalleryCategories();
+    categories = categories.filter(c => c.id !== id);
+    this.data.galleryCategories = categories;
+    this.saveData();
+    return true;
+  }
+
   // --- Dynamic Categories ---
   getCategories() {
-    if (!Array.isArray(this.data.categories) || this.data.categories.length === 0) {
-      this.data.categories = ["Festivals", "Rajayoga Shivir", "Youth Program", "Social Service", "Celebrations"];
-      this.saveData();
+    if (!Array.isArray(this.data.categories)) {
+      this.data.categories = ["Festivals", "Youth Program", "Social Service", "Celebrations"];
     }
     return [...this.data.categories];
   }
@@ -1647,8 +1919,8 @@ class SiteStore {
     if (!name || typeof name !== 'string') return this.getCategories();
     const clean = name.trim();
     if (!clean) return this.getCategories();
-    if (!Array.isArray(this.data.categories) || this.data.categories.length === 0) {
-      this.data.categories = ["Festivals", "Rajayoga Shivir", "Youth Program", "Social Service", "Celebrations"];
+    if (!Array.isArray(this.data.categories)) {
+      this.data.categories = ["Festivals", "Youth Program", "Social Service", "Celebrations"];
     }
     const exists = this.data.categories.some(c => c.toLowerCase() === clean.toLowerCase());
     if (!exists) {
@@ -1662,13 +1934,47 @@ class SiteStore {
     if (!name) return this.getCategories();
     const clean = name.trim().toLowerCase();
     if (Array.isArray(this.data.categories)) {
-      this.data.categories = this.data.categories.filter(c => c.toLowerCase() !== clean);
-      if (this.data.categories.length === 0) {
-        this.data.categories = ["Festivals", "Rajayoga Shivir", "Youth Program", "Social Service", "Celebrations"];
-      }
+      this.data.categories = this.data.categories.filter(c => c.trim().toLowerCase() !== clean);
       this.saveData();
     }
     return this.getCategories();
+  }
+
+  // --- BK Wings Management ---
+  getWings() {
+    if (!Array.isArray(this.data.wings) || this.data.wings.length === 0) {
+      this.data.wings = [...DEFAULT_DATA.wings];
+      this.saveData();
+    }
+    return [...this.data.wings];
+  }
+
+  addWing(name) {
+    if (!name || typeof name !== 'string') return this.getWings();
+    const clean = name.trim();
+    if (!clean) return this.getWings();
+    if (!Array.isArray(this.data.wings) || this.data.wings.length === 0) {
+      this.data.wings = [...DEFAULT_DATA.wings];
+    }
+    const exists = this.data.wings.some(w => w.toLowerCase() === clean.toLowerCase());
+    if (!exists) {
+      this.data.wings.push(clean);
+      this.saveData();
+    }
+    return [...this.data.wings];
+  }
+
+  deleteWing(name) {
+    if (!name) return this.getWings();
+    const clean = name.trim().toLowerCase();
+    if (Array.isArray(this.data.wings)) {
+      this.data.wings = this.data.wings.filter(w => w.toLowerCase() !== clean);
+      if (this.data.wings.length === 0) {
+        this.data.wings = [...DEFAULT_DATA.wings];
+      }
+      this.saveData();
+    }
+    return this.getWings();
   }
 
   // --- Events ---
@@ -1677,21 +1983,41 @@ class SiteStore {
     if (!includeDrafts) {
       list = list.filter(e => e.status !== 'draft');
     }
-    if (filterCategory !== 'all') {
-      if (filterCategory === 'latest') {
-        // Return published events sorted: featured first, then order / date
-        return [...list].sort((a, b) => {
-          if (a.isFeatured && !b.isFeatured) return -1;
-          if (!a.isFeatured && b.isFeatured) return 1;
-          return (a.order || 99) - (b.order || 99);
-        });
-      } else if (filterCategory === 'festivals') {
-        list = list.filter(e => ['shivarathri', 'rakshabandhan', 'other'].includes(e.category));
+    if (filterCategory && filterCategory !== 'all') {
+      const targetCat = filterCategory.toLowerCase();
+      if (targetCat === 'latest') {
+        // latest shows all published events sorted by recency
+      } else if (targetCat === 'navathi') {
+        list = list.filter(e => Boolean(e.isNavathi || (e.category || '').toLowerCase() === 'navathi'));
+      } else if (targetCat === 'festivals') {
+        list = list.filter(e => ['shivarathri', 'rakshabandhan', 'other', 'festivals'].includes((e.category || '').toLowerCase()));
       } else {
-        list = list.filter(e => e.category === filterCategory);
+        list = list.filter(e => (e.category || '').toLowerCase() === targetCat);
       }
     }
-    return [...list].sort((a, b) => (a.order || 99) - (b.order || 99));
+
+    // Sort consistently: newly created/updated events (updatedAt / createdAt / ID timestamp) at the very top,
+    // then featured, then event date descending
+    return [...list].sort((a, b) => {
+      const timeA = a.updatedAt || a.createdAt || '';
+      const timeB = b.updatedAt || b.createdAt || '';
+      if (timeB && timeA && timeB !== timeA) return timeB.localeCompare(timeA);
+      if (timeB && !timeA) return 1;
+      if (!timeB && timeA) return -1;
+
+      const tsA = (a.id && a.id.startsWith('evt_')) ? parseInt(a.id.split('_')[1], 10) || 0 : 0;
+      const tsB = (b.id && b.id.startsWith('evt_')) ? parseInt(b.id.split('_')[1], 10) || 0 : 0;
+      if (tsB !== tsA) return tsB - tsA;
+
+      if (a.isFeatured && !b.isFeatured) return -1;
+      if (!a.isFeatured && b.isFeatured) return 1;
+
+      const dateA = a.date || '';
+      const dateB = b.date || '';
+      if (dateB !== dateA) return dateB.localeCompare(dateA);
+
+      return (a.order || 99) - (b.order || 99);
+    });
   }
 
   getEvent(id) {
@@ -1752,6 +2078,7 @@ class SiteStore {
       centre,
       location: centre,
       category: event.category || (isNavathi ? 'Festivals' : 'Festivals'),
+      wing: event.wing && typeof event.wing === 'string' ? event.wing.trim() : '',
       isNavathi,
       coverImage,
       image: coverImage,
@@ -1776,12 +2103,16 @@ class SiteStore {
     if (event.id) {
       const idx = this.data.events.findIndex(e => e.id === event.id);
       if (idx !== -1) {
-        this.data.events[idx] = {
+        const updated = {
           ...this.data.events[idx],
-          ...normalizedData
+          ...normalizedData,
+          updatedAt: new Date().toISOString()
         };
+        // Move updated event to the top of list
+        this.data.events.splice(idx, 1);
+        this.data.events.unshift(updated);
         this.saveData();
-        return this.data.events[idx];
+        return updated;
       }
     }
 
@@ -1789,7 +2120,8 @@ class SiteStore {
     const newEvent = {
       ...normalizedData,
       id: event.id || `evt_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
-      createdAt: event.createdAt || new Date().toISOString().split('T')[0]
+      createdAt: event.createdAt || new Date().toISOString().split('T')[0],
+      updatedAt: new Date().toISOString()
     };
 
     this.data.events.unshift(newEvent);
@@ -1805,6 +2137,33 @@ class SiteStore {
     this.data.events = (this.data.events || []).filter(e => e.id !== id);
     this.saveData();
     return true;
+  }
+
+  async persistToServer() {
+    if (typeof fetch === 'undefined') return true;
+    try {
+      const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+      const res = await fetch('/api/admin/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': 'Bearer ' + token } : {})
+        },
+        body: JSON.stringify({ data: this.data })
+      });
+      return res.ok;
+    } catch (e) {
+      console.warn('Persist to server error:', e);
+      return false;
+    }
+  }
+
+  resetEventsToDefault() {
+    this.data.events = JSON.parse(JSON.stringify(DEFAULT_DATA.events));
+    this.data.categories = ["Festivals", "Youth Program", "Social Service", "Celebrations"];
+    this.data.wings = [...DEFAULT_DATA.wings];
+    this.saveData();
+    return this.data.events;
   }
 
   duplicateEvent(id) {
@@ -2083,6 +2442,58 @@ class SiteStore {
     return null;
   }
 
+  // --- Meditation Soundscapes Manager ---
+  getMeditationSoundscapes() {
+    return this.data.meditationSoundscapes || DEFAULT_DATA.meditationSoundscapes;
+  }
+
+  getMeditationSoundscape(id) {
+    return (this.data.meditationSoundscapes || DEFAULT_DATA.meditationSoundscapes).find(s => s.id === id) || null;
+  }
+
+  updateMeditationSoundscape(id, updatedFields) {
+    if (!this.data.meditationSoundscapes) {
+      this.data.meditationSoundscapes = JSON.parse(JSON.stringify(DEFAULT_DATA.meditationSoundscapes));
+    }
+    const idx = this.data.meditationSoundscapes.findIndex(s => s.id === id);
+    if (idx !== -1) {
+      this.data.meditationSoundscapes[idx] = {
+        ...this.data.meditationSoundscapes[idx],
+        ...updatedFields
+      };
+      this.saveData();
+      return this.data.meditationSoundscapes[idx];
+    }
+    return null;
+  }
+
+  addMeditationSoundscape(soundscape) {
+    if (!this.data.meditationSoundscapes) {
+      this.data.meditationSoundscapes = JSON.parse(JSON.stringify(DEFAULT_DATA.meditationSoundscapes));
+    }
+    const id = soundscape.id || ('snd_' + Date.now());
+    const newSnd = {
+      id,
+      name: soundscape.name || 'Divine Meditation Music',
+      nameMl: soundscape.nameMl || '',
+      description: soundscape.description || '',
+      audioUrl: soundscape.audioUrl || '',
+      type: soundscape.audioUrl ? 'custom' : 'synth',
+      icon: soundscape.icon || 'music',
+      active: true
+    };
+    this.data.meditationSoundscapes.push(newSnd);
+    this.saveData();
+    return newSnd;
+  }
+
+  deleteMeditationSoundscape(id) {
+    if (!this.data.meditationSoundscapes) return false;
+    this.data.meditationSoundscapes = this.data.meditationSoundscapes.filter(s => s.id !== id);
+    this.saveData();
+    return true;
+  }
+
   // --- Zoom Config & Kerala HQ Helpers ---
   getZoomConfig() {
     return this.data.zoomConfig || DEFAULT_DATA.zoomConfig;
@@ -2129,7 +2540,7 @@ class SiteStore {
       sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
       return true;
     }
-    if (pin === 'OmShanti@Kozhikode2026') {
+    if (pin === 'Kozhikode@2026') {
       sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
       return true;
     }

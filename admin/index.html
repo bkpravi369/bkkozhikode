@@ -8,10 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=36">
-  <link rel="stylesheet" href="../css/hero.css?v=36">
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png?v=36">
-  <link rel="apple-touch-icon" href="../assets/images/logo-128.png?v=36">
+  <link rel="stylesheet" href="../css/style.css?v=81">
+  <link rel="stylesheet" href="../css/hero.css?v=81">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png?v=81">
+  <link rel="apple-touch-icon" href="../assets/images/logo-128.png?v=81">
+
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     body {
@@ -77,6 +78,106 @@
       bottom: 24px;
       right: 24px;
       z-index: 99999;
+    }
+    /* Sticky Navigation & Always-Visible Tabs */
+    .admin-sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: #180608;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+      border-bottom: 2px solid rgba(245, 158, 11, 0.4);
+    }
+    .admin-nav-tabs {
+      background: #180608 !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 0.45rem !important;
+      padding: 0.75rem 1.25rem !important;
+      border-bottom: none !important;
+      overflow-x: visible !important;
+    }
+    .admin-tab-btn {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid rgba(251, 191, 36, 0.25) !important;
+      border-radius: 8px !important;
+      color: #ffd6be !important;
+      padding: 0.5rem 0.9rem !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.4rem !important;
+      transition: all 0.2s ease !important;
+    }
+    .admin-tab-btn i,
+    .admin-tab-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
+    }
+    .admin-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.16) !important;
+      color: #ffffff !important;
+      border-color: #f59e0b !important;
+      transform: translateY(-1px);
+    }
+    .admin-tab-btn.active {
+      background: linear-gradient(135deg, #d94514, #f59e0b) !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      border-color: #fbbf24 !important;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35) !important;
+    }
+    .admin-pane-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1.25rem;
+      background: #180608;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 10px;
+    }
+    .btn-admin-back {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffd064;
+      border: 1px solid rgba(255, 208, 100, 0.4);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .btn-admin-back:hover {
+      background: rgba(255, 208, 100, 0.2);
+      color: #ffffff;
+      border-color: #f59e0b;
+      transform: translateX(-2px);
+    }
+    .admin-soundscape-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+    }
+    .admin-soundscape-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     /* Quiz Editor in Admin */
     .admin-quiz-section {
@@ -183,7 +284,13 @@
           <img src="../assets/images/logo.png" alt="BK Logo" class="admin-header-logo">
           <span>Brahma Kumaris Kozhikode — Admin Management Portal</span>
         </h2>
-        <div style="display:flex;align-items:center;gap:0.75rem;"><a href="/" class="btn-view-site" style="color:#ffd68a;text-decoration:none;font-size:0.85rem;padding:6px 12px;border:1px solid rgba(255,214,138,0.3);border-radius:6px;">View Public Site ↗</a><button class="btn-admin-logout" onclick="bkAdmin.handleLogout()" style="background:rgba(217,69,20,0.8);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:0.85rem;cursor:pointer;">Sign Out</button></div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <button type="button" class="btn-admin-nav-home" onclick="bkAdmin.switchPane('dashboard', document.querySelector('.admin-tab-btn[data-pane=\'dashboard\']'))" style="background:rgba(245,158,11,0.18);color:#ffd700;border:1px solid #f59e0b;padding:6px 14px;border-radius:6px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;">
+            <i data-lucide="layout-dashboard" style="width:14px;height:14px;"></i> Dashboard
+          </button>
+          <a href="/" class="btn-view-site" style="color:#ffd68a;text-decoration:none;font-size:0.85rem;padding:6px 12px;border:1px solid rgba(255,214,138,0.3);border-radius:6px;">View Public Site ↗</a>
+          <button class="btn-admin-logout" onclick="bkAdmin.handleLogout()" style="background:rgba(217,69,20,0.8);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:0.85rem;cursor:pointer;">Sign Out</button>
+        </div>
       </div>
 
       <!-- Admin Login View (if not authenticated) -->
@@ -207,40 +314,52 @@
       <!-- Admin Panel Body (Visible when authenticated) -->
       <div id="adminPanelView" style="display:none;flex-direction:column;flex-grow:1;overflow:hidden;">
         
-        <!-- Live Viewport Device Preview Simulator Toolbar -->
-        <div class="admin-preview-toolbar" id="adminDevicePreviewBar" style="display:flex;align-items:center;justify-content:space-between;background:#241208;color:#ffd064;padding:0.45rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.1);font-size:0.82rem;flex-wrap:wrap;gap:0.5rem;">
-          <div style="display:flex;align-items:center;gap:0.5rem;">
-            <i data-lucide="smartphone" style="width:14px;height:14px;"></i>
-            <span><strong>Responsive Viewport Simulator:</strong> Preview public website on different devices</span>
+        <!-- Sticky Sub-Nav Tabs (Always visible, clean wrap, never clipped) -->
+        <div class="admin-sticky-nav">
+          <div class="admin-nav-tabs">
+            <button class="admin-tab-btn active" data-pane="dashboard" onclick="bkAdmin.switchPane('dashboard', this)">
+              <i data-lucide="layout-dashboard"></i> <span>Dashboard</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="meditation-mgr" onclick="bkAdmin.switchPane('meditation-mgr', this)">
+              <i data-lucide="music"></i> <span>Meditation Music</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="course-mgr" onclick="bkAdmin.switchPane('course-mgr', this)">
+              <i data-lucide="graduation-cap"></i> <span>7-Day Course &amp; Quizzes</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="about-mgr" onclick="bkAdmin.switchPane('about-mgr', this)">
+              <i data-lucide="info"></i> <span>About Us</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="murali-mgr" onclick="bkAdmin.switchPane('murali-mgr', this)">
+              <i data-lucide="sun"></i> <span>Daily Murali</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="centers-mgr" onclick="bkAdmin.switchPane('centers-mgr', this)">
+              <i data-lucide="map-pin"></i> <span>Centers</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="youtube-mgr" onclick="bkAdmin.switchPane('youtube-mgr', this)">
+              <i data-lucide="video"></i> <span>YouTube Channels</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="social-channels-mgr" onclick="bkAdmin.switchPane('social-channels-mgr', this)">
+              <i data-lucide="share-2"></i> <span>Social Media</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="gallery-mgr" onclick="bkAdmin.switchPane('gallery-mgr', this)">
+              <i data-lucide="image"></i> <span>Gallery</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="cloudinary-mgr" onclick="bkAdmin.switchPane('cloudinary-mgr', this)">
+              <i data-lucide="cloud"></i> <span>Cloudinary Photos</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="events-mgr" onclick="bkAdmin.switchPane('events-mgr', this)">
+              <i data-lucide="calendar"></i> <span>Events &amp; Retreats</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="registrations-mgr" onclick="bkAdmin.switchPane('registrations-mgr', this)">
+              <i data-lucide="users"></i> <span>Registrations</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="tab-builder" onclick="bkAdmin.switchPane('tab-builder', this)">
+              <i data-lucide="layers"></i> <span>Dynamic Tabs</span>
+            </button>
+            <button class="admin-tab-btn" data-pane="settings-mgr" onclick="bkAdmin.switchPane('settings-mgr', this)">
+              <i data-lucide="settings"></i> <span>Site Settings</span>
+            </button>
           </div>
-          <div class="device-preview-buttons" style="display:flex;gap:0.4rem;">
-            <button type="button" class="btn-device-prev active" data-device="desktop" onclick="bkAdmin.setDevicePreview('desktop', this)">
-              <i data-lucide="monitor" style="width:13px;height:13px;"></i> Desktop
-            </button>
-            <button type="button" class="btn-device-prev" data-device="tablet" onclick="bkAdmin.setDevicePreview('tablet', this)">
-              <i data-lucide="tablet" style="width:13px;height:13px;"></i> Tablet (768px)
-            </button>
-            <button type="button" class="btn-device-prev" data-device="mobile" onclick="bkAdmin.setDevicePreview('mobile', this)">
-              <i data-lucide="smartphone" style="width:13px;height:13px;"></i> Mobile (390px)
-            </button>
-          </div>
-        </div>
-
-        <!-- Sub-Nav Tabs -->
-        <div class="admin-nav-tabs">
-          <button class="admin-tab-btn active" onclick="bkAdmin.switchPane('dashboard', this)">Dashboard</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('about-mgr', this)">About Us Content</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('murali-mgr', this)">Daily Murali</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('centers-mgr', this)">Centers</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('youtube-mgr', this)">YouTube Channels & Videos</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('social-channels-mgr', this)">Social Media Links</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('course-mgr', this)">7-Day Course &amp; Quizzes</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('gallery-mgr', this)">Gallery Manager</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('cloudinary-mgr', this)">Cloudinary Images (ക്ലൗഡിനറി)</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('events-mgr', this)">Events & Retreats</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('registrations-mgr', this)">Registrations & Inquiries</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('tab-builder', this)">Dynamic Tabs</button>
-          <button class="admin-tab-btn" onclick="bkAdmin.switchPane('settings-mgr', this)">Site Settings</button>
         </div>
 
         <div class="admin-body">
@@ -300,8 +419,92 @@
             </div>
           </div>
 
+          <!-- PANE: INTERACTIVE PEACE MEDITATION & AMBIENT SOUNDSCAPES MANAGER -->
+          <div class="admin-pane" id="pane-meditation-mgr">
+            <div class="admin-pane-breadcrumb">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:#fed7aa;">
+                <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">
+                  <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Back to Dashboard
+                </button>
+                <span style="color:rgba(255,255,255,0.4);">/</span>
+                <span style="color:#ffffff;font-weight:600;">Interactive Peace Meditation &amp; Soundscapes</span>
+              </div>
+            </div>
+
+            <div style="margin-bottom:1.5rem;background:#180608;padding:1.5rem;border-radius:12px;border:1px solid rgba(245,158,11,0.3);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:0.75rem;">
+                <div style="display:flex;align-items:center;gap:0.6rem;">
+                  <i data-lucide="music" style="width:22px;height:22px;color:#fbbf24;"></i>
+                  <h3 style="font-size:1.35rem;margin:0;color:#ffd68a;">Interactive Peace Meditation Soundscapes &amp; Music Manager</h3>
+                </div>
+                <button type="button" class="btn-cta-course" onclick="bkAdmin.toggleAddSoundscapeForm()" style="background:linear-gradient(135deg, #d97706, #b45309);padding:0.5rem 1.25rem;">
+                  <i data-lucide="plus-circle" style="width:15px;height:15px;"></i>
+                  <span>+ Add New Meditation Track</span>
+                </button>
+              </div>
+              <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;line-height:1.6;margin:0;">
+                Customize the ambient music and soundscapes used in the public Peace Meditation Room. By default, the browser generates pure, continuous, mathematical <strong>Web Audio API Synthesizers</strong> (432Hz Paramdham resonance drone, acoustic bansuri flute vibrato, and ocean filter sweeps). You can also set <strong>Custom MP3 or Audio URLs</strong> to play authentic meditation music or guided commentaries.
+              </p>
+            </div>
+
+            <!-- Add New Soundscape Form (Collapsible) -->
+            <div id="addSoundscapeFormContainer" style="display:none;background:#ffffff;border:1px solid #f59e0b;border-radius:12px;padding:1.5rem;margin-bottom:1.75rem;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid #fed7aa;padding-bottom:0.5rem;">
+                <h4 style="margin:0;color:var(--sunset-primary);font-size:1.15rem;display:flex;align-items:center;gap:0.4rem;">
+                  <i data-lucide="sparkles" style="width:16px;height:16px;"></i> Add New Meditation Music / Commentary Track
+                </h4>
+                <button type="button" onclick="bkAdmin.toggleAddSoundscapeForm()" style="background:none;border:none;cursor:pointer;font-size:1.25rem;color:#6b7280;">✕</button>
+              </div>
+              <form onsubmit="bkAdmin.handleSaveNewSoundscape(event)">
+                <div class="form-row">
+                  <div class="form-group" style="flex:1;">
+                    <label>Track Name (English) *</label>
+                    <input type="text" id="newSndName" class="form-control" placeholder="e.g. Soul Awakening Commentary" required>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label>Track Name (Malayalam)</label>
+                    <input type="text" id="newSndNameMl" class="form-control" placeholder="e.g. ആത്മീയ ധ്യാനം">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Audio Stream / MP3 URL (Online MP3 link or Cloudinary Audio link) *</label>
+                  <input type="url" id="newSndUrl" class="form-control" placeholder="https://example.com/audio/guided_meditation.mp3" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Description / Spiritual Guidance Note</label>
+                  <textarea id="newSndDesc" class="form-control" rows="2" placeholder="Brief tip for the soul during this meditation..."></textarea>
+                </div>
+
+                <div style="display:flex;gap:0.75rem;margin-top:1.25rem;">
+                  <button type="submit" class="btn-submit-form" style="width:auto;padding:0.6rem 1.8rem;">
+                    <i data-lucide="check" style="width:14px;height:14px;margin-right:0.35rem;"></i> Save Track
+                  </button>
+                  <button type="button" class="btn-reset-meditation" style="background:#e2e8f0;color:#334155;" onclick="bkAdmin.toggleAddSoundscapeForm()">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div id="adminSoundscapesList">
+              <!-- Rendered dynamically by js/admin.js -->
+            </div>
+          </div>
+
           <!-- PANE: 7-DAY RAJYOGA COURSE & MALAYALAM QUIZ MANAGER -->
           <div class="admin-pane" id="pane-course-mgr">
+            <div class="admin-pane-breadcrumb">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:#fed7aa;">
+                <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">
+                  <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Back to Dashboard
+                </button>
+                <span style="color:rgba(255,255,255,0.4);">/</span>
+                <span style="color:#ffffff;font-weight:600;">7-Day Rajayoga Course &amp; Malayalam Quizzes</span>
+              </div>
+            </div>
+
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">7-Day Rajayoga Course &amp; Malayalam Quiz Manager</h3>
@@ -370,6 +573,16 @@
 
           <!-- PANE: SOCIAL MEDIA CHANNELS MANAGER -->
           <div class="admin-pane" id="pane-social-channels-mgr">
+            <div class="admin-pane-breadcrumb">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:#fed7aa;">
+                <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">
+                  <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Back to Dashboard
+                </button>
+                <span style="color:rgba(255,255,255,0.4);">/</span>
+                <span style="color:#ffffff;font-weight:600;">Social Media Channels</span>
+              </div>
+            </div>
+
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Official Social Media Channels Management</h3>
@@ -386,6 +599,15 @@
 
           <!-- PANE 2: DYNAMIC TABS BUILDER -->
           <div class="admin-pane" id="pane-tab-builder">
+            <div class="admin-pane-breadcrumb">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:#fed7aa;">
+                <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">
+                  <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Back to Dashboard
+                </button>
+                <span style="color:rgba(255,255,255,0.4);">/</span>
+                <span style="color:#ffffff;font-weight:600;">Dynamic Navigation Tabs &amp; Custom Pages</span>
+              </div>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Dynamic Tab & Page Builder</h3>
@@ -443,6 +665,10 @@
 
           <!-- PANE 3: MEDIA & GALLERY MANAGER -->
           <div class="admin-pane" id="pane-gallery-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ Gallery & Media Manager</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Gallery & Media Manager</h3>
@@ -497,6 +723,53 @@
               </form>
             </div>
 
+            <!-- Dynamic Gallery Categories & Cloudinary Tags Management -->
+            <div style="background:#fdfcfb;border:1px solid #fed7aa;border-radius:var(--radius-sm);padding:1.25rem;margin-bottom:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+                <div>
+                  <h4 style="margin:0;font-size:1.05rem;color:#9a3412;display:flex;align-items:center;gap:0.4rem;">
+                    <i data-lucide="tags" style="width:16px;height:16px;"></i>
+                    Gallery Tabs & Cloudinary Auto-Fetch Tags • ഗാലറി ടാബുകൾ & ടാഗുകൾ
+                  </h4>
+                  <p style="margin:0.25rem 0 0 0;font-size:0.8rem;color:#78350f;">
+                    Each gallery tab connects to a Cloudinary tag (Cloud: <strong>uo0dcjpe</strong>). Photos tagged with that name in Cloudinary automatically appear on the website!
+                  </p>
+                </div>
+                <button type="button" class="btn-action-sm" onclick="bkAdmin.toggleAddGalleryCategoryForm()" style="background:#ea580c;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:600;">
+                  + Add New Tab
+                </button>
+              </div>
+
+              <!-- Add New Category Form (Collapsible) -->
+              <div id="addGalleryCategoryForm" style="display:none;background:#fff;border:1px solid #fdba74;border-radius:6px;padding:1rem;margin-bottom:1rem;">
+                <form onsubmit="bkAdmin.handleSaveGalleryCategory(event)">
+                  <div class="form-row">
+                    <div class="form-group" style="flex:1;">
+                      <label style="font-size:0.82rem;font-weight:600;">Tab Label (English) *</label>
+                      <input type="text" id="newGalCatName" class="form-control" placeholder="e.g. Youth Retreats" required>
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                      <label style="font-size:0.82rem;font-weight:600;">Tab Label (Malayalam)</label>
+                      <input type="text" id="newGalCatNameMl" class="form-control" placeholder="e.g. യുവ സംഗമങ്ങൾ">
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                      <label style="font-size:0.82rem;font-weight:600;">Cloudinary Tag for Auto-Fetch *</label>
+                      <input type="text" id="newGalCatTag" class="form-control" placeholder="e.g. youth_retreats" required>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:0.5rem;">
+                    <button type="submit" class="btn-submit-form" style="width:auto;padding:6px 18px;font-size:0.85rem;">Save Tab</button>
+                    <button type="button" class="btn-action-sm" onclick="bkAdmin.toggleAddGalleryCategoryForm()" style="background:#e2e8f0;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;">Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Active Gallery Categories Badges Grid -->
+              <div id="adminGalleryCategoriesList" style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.75rem;">
+                <!-- Injected by js/admin.js -->
+              </div>
+            </div>
+
             <!-- Media Grid Table -->
             <div id="adminGalleryTableContainer">
               <!-- Injected by js/admin.js -->
@@ -505,6 +778,10 @@
 
           <!-- PANE: CLOUDINARY IMAGE MANAGER -->
           <div class="admin-pane" id="pane-cloudinary-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ Cloudinary Image Suite</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Cloudinary Image Suite • ക്ലൗഡിനറി ഇമേജ് മാനേജർ</h3>
@@ -582,6 +859,10 @@
 
           <!-- PANE 4: EVENTS & RETREATS MANAGER -->
           <div class="admin-pane" id="pane-events-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ Events & Gatherings</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Events & Gatherings Management</h3>
@@ -589,10 +870,16 @@
                   Create, edit, duplicate, and publish events for Latest Events, Navathi Celebrations, Shivarathri, Raksha Bandhan, and Other Programs.
                 </p>
               </div>
-              <button class="btn-cta-course" onclick="bkAdmin.openAddEventModal()">
-                <i data-lucide="plus-circle" style="width:16px;height:16px;"></i>
-                <span>+ Add New Event</span>
-              </button>
+              <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+                <a href="/#events" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1rem;background:#f3f4f6;color:#374151;border:1px solid #d1d5db;border-radius:6px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">
+                  <i data-lucide="external-link" style="width:15px;height:15px;"></i>
+                  <span>View on Public Site ↗</span>
+                </a>
+                <button class="btn-cta-course" onclick="bkAdmin.openAddEventModal()">
+                  <i data-lucide="plus-circle" style="width:16px;height:16px;"></i>
+                  <span>+ Add New Event</span>
+                </button>
+              </div>
             </div>
 
             <!-- Dynamic Category Management Section (Requirement 3) -->
@@ -668,6 +955,30 @@
                   </div>
                 </div>
 
+                <!-- BK Wing Selection (Dedicated Wing field separate from Category, with dynamic + button) -->
+                <div class="form-row" style="margin-top:0.25rem;">
+                  <div class="form-group" style="flex:1.6;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem;">
+                      <label for="eventFormWing" style="margin:0;font-weight:600;display:flex;align-items:center;gap:0.35rem;font-size:0.88rem;">
+                        <i data-lucide="award" style="width:15px;height:15px;color:#d97706;"></i>
+                        <span>BK Wing / Spiritual Wing (ആത്മീയ വിഭാഗം)</span>
+                      </label>
+                      <button type="button" onclick="bkAdmin.openAddNewWingModal()" style="background:#fef3c7;border:1px solid #f59e0b;color:#92400e;padding:3px 9px;border-radius:5px;font-size:0.75rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:0.3rem;" title="Add a new Brahma Kumaris Wing for future programs">
+                        <i data-lucide="plus" style="width:13px;height:13px;color:#b45309;"></i>
+                        <span>+ Add New Wing</span>
+                      </button>
+                    </div>
+                    <select id="eventFormWing" class="form-control">
+                      <option value="">-- General / No Specific Wing (പൊതു പരിപാടി) --</option>
+                      <!-- Dynamically populated with all 22 Wings + user additions -->
+                    </select>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label for="eventFormTime" style="font-size:0.88rem;font-weight:600;">Time / Schedule (Optional)</label>
+                    <input type="text" id="eventFormTime" class="form-control" placeholder="e.g. 10:00 AM - 1:00 PM">
+                  </div>
+                </div>
+
                 <!-- d) Easy Option / Toggle for 'Navathi' / Festivals -->
                 <div style="background:linear-gradient(135deg, rgba(254,243,199,0.92), rgba(254,215,170,0.55));border:1.5px solid #d97706;border-radius:var(--radius-sm);padding:0.75rem 1rem;margin:0.5rem 0 1rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
                   <label style="display:flex;align-items:center;gap:0.65rem;cursor:pointer;font-weight:700;color:#92400e;font-size:0.92rem;margin:0;">
@@ -679,8 +990,8 @@
 
                 <!-- e) Description -->
                 <div class="form-group">
-                  <label for="eventFormShortDesc">Description *</label>
-                  <textarea id="eventFormShortDesc" class="form-control" rows="3" placeholder="Enter concise summary and spiritual significance of the event..." required></textarea>
+                  <label for="eventFormShortDesc">Description (വിവരണം)</label>
+                  <textarea id="eventFormShortDesc" class="form-control" rows="3" placeholder="Enter concise summary and spiritual significance of the event..."></textarea>
                 </div>
 
                 <!-- f) Dynamic Multiple YouTube Videos Section -->
@@ -734,20 +1045,20 @@
                 </div>
 
                 <!-- Status & Featured -->
-                <div class="form-row" style="align-items:center;padding:0.75rem 0;border-top:1px solid #eee;">
-                  <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-weight:600;font-size:0.9rem;">
-                    <input type="checkbox" id="eventFormIsFeatured" style="width:18px;height:18px;accent-color:var(--sunset-primary);">
-                    <span>Featured Event (Pinned prominently at top)</span>
+                <div class="form-row" style="align-items:center;padding:1rem 0;border-top:1px solid #e2e8f0;gap:1rem;flex-wrap:wrap;">
+                  <label style="display:flex;align-items:center;gap:0.65rem;cursor:pointer;font-weight:700;font-size:0.92rem;color:#0f172a !important;background:#f8fafc;padding:0.65rem 1.1rem;border-radius:8px;border:1px solid #cbd5e1;flex:1;min-width:240px;">
+                    <input type="checkbox" id="eventFormIsFeatured" style="width:20px;height:20px;accent-color:#d97706;cursor:pointer;">
+                    <span style="color:#0f172a !important;">⭐ Featured Event <small style="display:block;font-size:0.78rem;color:#64748b;font-weight:500;">(പ്രധാനപ്പെട്ട ഇവന്റായി മുകളിൽ കാണിക്കുക)</small></span>
                   </label>
-                  <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-weight:600;font-size:0.9rem;">
-                    <input type="checkbox" id="eventFormIsPublished" checked style="width:18px;height:18px;accent-color:var(--sunset-primary);">
-                    <span>Published (Visible publicly on website)</span>
+                  <label style="display:flex;align-items:center;gap:0.65rem;cursor:pointer;font-weight:700;font-size:0.92rem;color:#0f172a !important;background:#f8fafc;padding:0.65rem 1.1rem;border-radius:8px;border:1px solid #cbd5e1;flex:1;min-width:240px;">
+                    <input type="checkbox" id="eventFormIsPublished" checked style="width:20px;height:20px;accent-color:#059669;cursor:pointer;">
+                    <span style="color:#0f172a !important;">🌐 Published Live <small style="display:block;font-size:0.78rem;color:#059669;font-weight:600;">(വെബ്‌സൈറ്റിൽ ലൈവ് ആയി കാണിക്കുക)</small></span>
                   </label>
                 </div>
 
                 <div style="display:flex;gap:0.75rem;margin-top:1.25rem;justify-content:flex-end;">
                   <button type="button" class="btn-reset-meditation" style="background:#f3f4f6;color:#374151;" onclick="bkAdmin.hideAddEventForm()">Cancel</button>
-                  <button type="submit" class="btn-cta-course" style="padding:0.6rem 1.6rem;">
+                  <button type="submit" class="btn-cta-course" style="padding:0.6rem 1.6rem;" onclick="bkAdmin.handleSaveEvent(event)">
                     <i data-lucide="check" style="width:16px;height:16px;"></i>
                     <span id="btnSaveEventText">Save &amp; Publish Event</span>
                   </button>
@@ -763,6 +1074,10 @@
 
           <!-- PANE 5: REGISTRATIONS & INQUIRIES -->
           <div class="admin-pane" id="pane-registrations-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ Course Registrations</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Course Registrations & Visitor Inquiries</h3>
@@ -796,6 +1111,10 @@
 
           <!-- PANE: ABOUT US CONTENT MANAGER -->
           <div class="admin-pane" id="pane-about-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ About Us Content</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">About Us Page Content Manager</h3>
@@ -889,6 +1208,10 @@
 
           <!-- PANE: DAILY MURALI MANAGER -->
           <div class="admin-pane" id="pane-murali-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ Daily Murali Manager</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Daily Murali & Sacred Wisdom Manager</h3>
@@ -978,6 +1301,10 @@
 
           <!-- PANE: CENTERS MANAGER -->
           <div class="admin-pane" id="pane-centers-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ Centers Manager</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">Kozhikode Centers Manager</h3>
@@ -1087,6 +1414,10 @@
 
           <!-- PANE: YOUTUBE CHANNELS & AUTOMATIC VIDEO MANAGER -->
           <div class="admin-pane" id="pane-youtube-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ YouTube Channels</span>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
               <div>
                 <h3 style="font-size:1.3rem;margin-bottom:0.25rem;">YouTube Channels & Automatic Video Integration</h3>
@@ -1117,6 +1448,10 @@
 
           <!-- PANE 7: SITE SETTINGS & BACKUP -->
           <div class="admin-pane" id="pane-settings-mgr">
+            <div class="admin-pane-breadcrumb">
+              <button type="button" class="btn-admin-back" onclick="bkAdmin.switchPane('dashboard')">← Back to Dashboard</button>
+              <span>/ Settings & Backup</span>
+            </div>
             <h3 style="font-size:1.3rem;margin-bottom:0.5rem;">Site Settings & Data Backup</h3>
             <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1.5rem;">Modify contact details, change admin PIN, or download complete site backup.</p>
 
@@ -1151,6 +1486,55 @@
               <div class="form-group">
                 <label for="setAnnouncement">Top Banner Announcement Ticker</label>
                 <input type="text" id="setAnnouncement" class="form-control" required>
+              </div>
+
+              <!-- Cloudinary Upload & Media Folder Settings -->
+              <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:1.25rem;margin:1.5rem 0;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+                  <h4 style="font-size:1.05rem;margin:0;color:#0f172a;display:flex;align-items:center;gap:0.4rem;">
+                    <i data-lucide="cloud" style="width:16px;height:16px;color:#d97706;"></i> Cloudinary Upload &amp; Folder Settings
+                  </h4>
+                  <button type="button" class="btn-action-sm" onclick="bkAdmin.testCloudinaryConnection()" style="background:#0284c7;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:0.35rem;">
+                    <i data-lucide="zap" style="width:14px;height:14px;"></i> Test Cloudinary Connection
+                  </button>
+                </div>
+                
+                <p style="font-size:0.82rem;color:#64748b;margin-bottom:1rem;">
+                  All event &amp; gallery photos upload directly to Cloudinary (<strong>uo0dcjpe</strong>) inside folder <strong>Website event images</strong>.
+                </p>
+
+                <div id="cldTestFeedback" style="display:none;padding:0.75rem 1rem;border-radius:6px;font-size:0.85rem;margin-bottom:1rem;"></div>
+
+                <div class="form-row">
+                  <div class="form-group" style="flex:1;">
+                    <label for="setCldCloudName">Cloud Name</label>
+                    <input type="text" id="setCldCloudName" class="form-control" value="uo0dcjpe" required>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label for="setCldFolder">Target Upload Folder</label>
+                    <input type="text" id="setCldFolder" class="form-control" value="Website event images" required>
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label for="setCldPreset">Upload Preset (Unsigned)</label>
+                    <input type="text" id="setCldPreset" class="form-control" placeholder="e.g. bk_upload or unsigned">
+                  </div>
+                </div>
+
+                <div class="form-row" style="margin-top:0.75rem;">
+                  <div class="form-group" style="flex:1;">
+                    <label for="setCldApiKey">Cloudinary API Key <span style="font-weight:normal;color:#64748b;">(Optional for direct signed uploads)</span></label>
+                    <input type="text" id="setCldApiKey" class="form-control" placeholder="e.g. 123456789012345">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label for="setCldApiSecret">Cloudinary API Secret <span style="font-weight:normal;color:#64748b;">(Optional for direct signed uploads)</span></label>
+                    <input type="password" id="setCldApiSecret" class="form-control" placeholder="Enter API Secret to enable signed upload">
+                  </div>
+                </div>
+
+                <div style="background:#fffbeb;border:1px dashed #f59e0b;padding:0.75rem 1rem;border-radius:6px;font-size:0.8rem;color:#92400e;margin-top:0.75rem;line-height:1.5;">
+                  💡 <strong>How to Enable Unsigned Upload in Cloudinary:</strong><br>
+                  Log into your Cloudinary console &gt; Click <strong>Settings (⚙️)</strong> &gt; <strong>Upload</strong> tab &gt; Scroll down to <strong>Upload presets</strong> &gt; Click <strong>Add upload preset</strong> &gt; Change Signing Mode to <strong>"Unsigned"</strong> &gt; Set Folder to <code>Website event images</code> &gt; Click <strong>Save</strong>. Copy the preset name here!
+                </div>
               </div>
 
               <div class="form-group">
@@ -1189,8 +1573,9 @@
 
   <div class="toast-container" id="toastContainer"></div>
 
-  <script src="../js/store.js?v=44"></script>
-  <script src="../js/admin.js?v=44"></script>
+  <script src="../js/store.js?v=81"></script>
+  <script src="../js/admin.js?v=81"></script>
+
   <script>
     // Minimal app toast helper for admin
     window.bkApp = window.bkApp || {

@@ -258,6 +258,33 @@
         </div>
       </section>
 
+      <!-- Homepage Events & Gatherings Preview Section -->
+      <section class="section-padding home-events-preview-section" id="homeEventsSection" style="background:linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(217,119,6,0.04) 100%);padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.06);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">Upcoming Spiritual Gatherings • പരിപാടികൾ</span>
+            <h2>Events & Gatherings</h2>
+            <div class="section-title-ml">ആത്മീയ സംഗമങ്ങളും ഉത്സവങ്ങളും</div>
+            <div class="divider-sun"></div>
+            <p class="section-subtitle">
+              Participate in soul-enriching spiritual gatherings, 90th Navathi celebrations, and meditation camps across Kozhikode.
+            </p>
+          </div>
+
+          <!-- 3 Latest / Featured Events Grid -->
+          <div class="events-cards-grid" id="homeEventsGridContainer">
+            <!-- Injected dynamically by js/app.js -->
+          </div>
+
+          <div style="text-align:center;margin-top:2.5rem;">
+            <button class="btn-cta-course" onclick="bkApp.switchTab('events')" style="padding:0.75rem 2rem;display:inline-flex;align-items:center;gap:0.5rem;font-size:0.95rem;">
+              <i data-lucide="calendar"></i>
+              <span>View All Events & Programs (എല്ലാ പരിപാടികളും കാണുക) →</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- Homepage Media Hub: Official Channels & Dynamic Live Feeds -->
       <section class="section-padding home-media-hub-section" id="homeMediaHubSection" style="padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06);">
         <div class="container">
@@ -627,20 +654,32 @@
                 <div class="soundscape-selector">
                   <button class="sound-btn active" onclick="bkApp.setSoundscape('tanpura')" id="snd-tanpura">
                     <i data-lucide="music"></i>
-                    <span>Paramdham Tanpura (432Hz)</span>
+                    <span>Paramdham<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">പരന്ധാമം</small></span>
                   </button>
                   <button class="sound-btn" onclick="bkApp.setSoundscape('flute')" id="snd-flute">
                     <i data-lucide="wind"></i>
-                    <span>Peaceful Bansuri Flute</span>
+                    <span>Peaceful Bansuri Flute<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">ശാന്തമായ പുല്ലാങ്കുഴൽ നാദം</small></span>
                   </button>
                   <button class="sound-btn" onclick="bkApp.setSoundscape('waves')" id="snd-waves">
                     <i data-lucide="waves"></i>
-                    <span>Ocean of Peace Waves</span>
+                    <span>Ocean of Peace Waves<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">ശാന്തി സാഗര തിരമാലകൾ</small></span>
                   </button>
                   <button class="sound-btn" onclick="bkApp.setSoundscape('silence')" id="snd-silence">
                     <i data-lucide="volume-x"></i>
-                    <span>Pure Silence & Bells</span>
+                    <span>Bliss<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">ആനന്ദം</small></span>
                   </button>
+                </div>
+
+                <!-- Live Audio Status & Volume Bar -->
+                <div id="soundscapeStatusBar" class="soundscape-status-bar" style="margin:0.75rem 0 1rem;padding:0.6rem 0.9rem;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:space-between;gap:0.75rem;font-size:0.85rem;color:var(--text-light, #f8fafc);">
+                  <div style="display:flex;align-items:center;gap:0.5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <i data-lucide="volume-2" id="soundscapeStatusIcon" style="width:16px;height:16px;color:#f59e0b;flex-shrink:0;"></i>
+                    <span id="soundscapeStatusText" style="font-weight:600;">Paramdham Tanpura (432Hz) Ready</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:0.4rem;flex-shrink:0;">
+                    <label for="soundscapeVolume" style="font-size:0.75rem;color:#94a3b8;margin:0;">Vol</label>
+                    <input type="range" id="soundscapeVolume" min="0" max="1" step="0.05" value="0.7" oninput="bkApp.setVolume(this.value)" style="width:70px;cursor:pointer;accent-color:#f59e0b;">
+                  </div>
                 </div>
 
                 <label style="display:block;margin-bottom:0.4rem;font-size:0.85rem;color:var(--sunset-glow);font-weight:600;">Meditation Duration:</label>
@@ -716,13 +755,13 @@
             </p>
           </div>
 
-          <!-- Category Filters -->
+          <!-- Category Filters (Dynamic from Store & Cloudinary tags) -->
           <div class="gallery-filter-bar" id="galleryFilterBar">
             <button class="gallery-filter-btn active" onclick="bkApp.filterGallery('all', this)">All Photos</button>
-            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('Kozhikode Centers', this)">Kozhikode Centers</button>
-            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('Meditation Hall', this)">Meditation Halls</button>
-            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('Spiritual Art', this)">Spiritual Art</button>
-            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('Peace Initiatives', this)">Peace Initiatives</button>
+            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('mobile_wallpaper', this)">Mobile Wallpapers</button>
+            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('center_images', this)">Center Images</button>
+            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('program_images', this)">Program Images</button>
+            <button class="gallery-filter-btn" onclick="bkApp.filterGallery('festival_images', this)">Festivals</button>
           </div>
 
           <div class="gallery-grid" id="galleryGridContainer">
@@ -806,6 +845,18 @@
                 <select id="eventsFilterCentre" class="event-filter-select" onchange="bkApp.onEventsFilterChange()">
                   <option value="all">All Centres</option>
                   <!-- Populated dynamically from bkStore.getCenters() -->
+                </select>
+              </div>
+
+              <!-- Dynamic BK Wing Filter Dropdown -->
+              <div class="filter-field-group">
+                <label for="eventsFilterWing" class="filter-field-label">
+                  <i data-lucide="award"></i>
+                  <span>BK Wing</span>
+                </label>
+                <select id="eventsFilterWing" class="event-filter-select" onchange="bkApp.onEventsFilterChange()">
+                  <option value="all">All Wings (എല്ലാ വിഭാഗങ്ങളും)</option>
+                  <!-- Populated dynamically from bkStore.getWings() -->
                 </select>
               </div>
 
@@ -1334,14 +1385,14 @@
   <div class="toast-container" id="toastContainer"></div>
 
 
-  <!-- Scripts -->
-  <script src="js/hero.js?v=45"></script>
-  <script src="js/store.js?v=45"></script>
-  <script src="js/auth.js?v=45"></script>
-  <script src="js/course.js?v=45"></script>
-  <script src="js/connect-god.js?v=45"></script>
-  <script src="js/murli.js?v=45"></script>
-  <script src="js/app.js?v=45"></script>
+  <script src="js/hero.js?v=81"></script>
+  <script src="js/store.js?v=81"></script>
+  <script src="js/auth.js?v=81"></script>
+  <script src="js/course.js?v=81"></script>
+  <script src="js/connect-god.js?v=81"></script>
+  <script src="js/murli.js?v=81"></script>
+  <script src="js/app.js?v=81"></script>
+
   <script>
     // Initialize Lucide Icons on load
     document.addEventListener('DOMContentLoaded', () => {

@@ -24,7 +24,7 @@ module.exports = async function handler(req, res) {
 
   const authHeader = req.headers['authorization'] || '';
   const token = authHeader.startsWith('Bearer ') ? authHeader.substring(7).trim() : '';
-  const correctPassword = process.env.ADMIN_PASSWORD || 'OmShanti@Kozhikode2026';
+  const correctPassword = process.env.ADMIN_PASSWORD || 'Kozhikode@2026';
 
   const isValid = verifyToken(token, correctPassword);
 

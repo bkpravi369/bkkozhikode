@@ -16,7 +16,7 @@ module.exports = async function handler(req, res) {
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
     const password = (body && body.password ? body.password : '').trim();
-    const correctPassword = process.env.ADMIN_PASSWORD || 'OmShanti@Kozhikode2026';
+    const correctPassword = process.env.ADMIN_PASSWORD || 'Kozhikode@2026';
 
     if (!password || password !== correctPassword) {
       return res.status(401).json({ success: false, error: 'Invalid administrative credentials.' });
