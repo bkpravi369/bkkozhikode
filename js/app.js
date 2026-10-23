@@ -37,6 +37,8 @@ class AppController {
     // Bind methods
     this.init = this.init.bind(this);
     this.switchTab = this.switchTab.bind(this);
+    this.switchAboutSubtab = this.switchAboutSubtab.bind(this);
+    window.switchAboutSubtab = this.switchAboutSubtab;
   }
 
   init() {
@@ -115,6 +117,9 @@ class AppController {
     } else if (hash) {
       if (hash === 'murali' || hash === 'murli' || hash === 'tab-murali') {
         this.switchTab('murali');
+      } else if (hash === 'about' || hash.startsWith('about-')) {
+        const sub = hash.replace('about-', '');
+        this.switchTab('about', sub !== 'about' ? sub : 'us');
       } else if (hash === 'navathi' || hash.startsWith('navathi-')) {
         const sub = hash.replace('navathi-', '');
         this.switchTab('navathi', sub !== 'navathi' ? sub : null);
@@ -429,6 +434,9 @@ class AppController {
       }
       if (tabId === 'about') {
         this.renderAboutPage();
+        if (subCategory) {
+          this.switchAboutSubtab(subCategory);
+        }
       }
       if (tabId === 'course') {
         this.renderCourseModules(subCategory);
@@ -563,6 +571,24 @@ class AppController {
   // --- Render About Us Editorial Page ---
   renderAboutPage() {
     if (window.lucide) window.lucide.createIcons();
+  }
+
+  switchAboutSubtab(subtabId) {
+    const btns = document.querySelectorAll('.bk-subtab-btn');
+    const panels = document.querySelectorAll('.about-subpanel');
+    btns.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-subtab') === subtabId);
+    });
+    panels.forEach(panel => {
+      panel.classList.toggle('active', panel.id === 'about-panel-' + subtabId);
+    });
+    const activeBtn = document.querySelector(`.bk-subtab-btn[data-subtab="${subtabId}"]`);
+    if (activeBtn) {
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, null, subtabId === 'us' ? '#about' : `#about-${subtabId}`);
+    }
   }
 
   // --- Render Daily Murali Sacred Reading Page ---

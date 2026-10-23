@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="css/connect-god.css?v=82">
   <link rel="stylesheet" href="css/murli.css?v=82">
   <link rel="stylesheet" href="css/meditation.css?v=82">
+  <link rel="stylesheet" href="css/about.css?v=84">
 
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=38">
   <link rel="apple-touch-icon" href="assets/images/logo-128.png?v=38">
@@ -318,269 +319,1099 @@
       <div class="section-padding">
         <div class="container about-page-container">
           
-          <!-- 1. Hero Header Card with Official Emblem & Motto -->
-          <div class="about-hero-card">
-            <div class="about-hero-top-row">
-              <div class="about-emblem-wrap">
-                <img src="assets/images/logo.png" alt="Prajapita Brahma Kumaris Official Emblem" class="about-emblem-img">
-              </div>
-              <span class="about-tag-badge">
-                <i data-lucide="sparkles" style="width:13px;height:13px;"></i>
-                GLOBAL SPIRITUAL MOVEMENT • ESTD. 1937
-              </span>
+          <!-- 1. HERO HEADER: Official Organization Title -->
+          <header class="bk-about-header text-center">
+            <div class="bk-header-badge">
+              <span class="bk-pulse-dot"></span>
+              <span>Official Heritage · Prajapita Brahma Kumaris Ishwariya Vishwa Vidyalaya</span>
             </div>
-
-            <h1 class="about-official-title">Prajapita Brahma Kumaris Ishwariya Vishwa Vidyalaya</h1>
-            <div class="about-official-ml">പ്രജാപീതാ ബ്രഹ്മാകുമാരീസ് ഈശ്വരീയ വിശ്വവിദ്യാലയം</div>
-            <p class="about-hero-sub">Brahma Kumaris Kozhikode • Spiritual Knowledge &amp; Rajyoga Meditation</p>
-
-            <div class="about-motto-box">
-              <span class="about-motto-kicker">DIVINE MOTTO</span>
-              <div class="about-motto-en">"Self Transformation leads to World Transformation"</div>
-              <div class="about-motto-ml">"സ്വയം പരിവർത്തനത്തിലൂടെ വിശ്വ പരിവർത്തനം"</div>
-            </div>
-          </div>
-
-          <!-- 2. Global Mission & Legacy (Since 1937) -->
-          <div class="about-section-card">
-            <div class="about-card-title-row">
-              <div class="about-icon-pill blue">
-                <i data-lucide="globe" style="width:22px;height:22px;"></i>
-              </div>
-              <div>
-                <h2 class="about-card-title">Global Mission &amp; Legacy</h2>
-                <div class="about-card-subtitle">ആഗോള സേവന ചരിത്രം • Since 1937</div>
-              </div>
-            </div>
-
-            <p class="about-body-text">
-              Prajapita Brahma Kumaris Ishwariya Vishwa Vidyalaya is a worldwide spiritual movement dedicated to personal transformation and world renewal. Founded in 1937 in Hyderabad Sindh by <strong>Prajapita Brahma</strong> (Dada Lekhraj), the organization is headquartered at the peaceful heights of <strong>Mount Abu, Rajasthan (Madhuban)</strong>.
+            <h1 class="bk-about-h1">About Brahma Kumaris</h1>
+            <div class="bk-about-ml-title">പ്രജാപീതാ ബ്രഹ്മാകുമാരീസ് ഈശ്വരീയ വിശ്വവിദ്യാലയം</div>
+            <p class="bk-about-lead">
+              A worldwide spiritual movement dedicated to personal transformation and world renewal.
             </p>
+          </header>
 
-            <!-- Quick Stats Grid -->
-            <div class="about-stats-grid">
-              <div class="about-stat-item">
-                <div class="stat-num">1937</div>
-                <div class="stat-lbl">Founded in</div>
-              </div>
-              <div class="about-stat-item">
-                <div class="stat-num">110+</div>
-                <div class="stat-lbl">Countries</div>
-              </div>
-              <div class="about-stat-item">
-                <div class="stat-num">8,500+</div>
-                <div class="stat-lbl">Centers</div>
-              </div>
-              <div class="about-stat-item">
-                <div class="stat-num">100%</div>
-                <div class="stat-lbl">Free Service</div>
-              </div>
+          <!-- 2. SUB-TABS NAVIGATION BAR -->
+          <nav class="bk-subtabs-nav" aria-label="About Sub-tabs">
+            <div class="bk-subtabs-scroll">
+              <button type="button" class="bk-subtab-btn active" data-subtab="us" onclick="switchAboutSubtab('us')">
+                <span class="bk-subtab-icon">🕊️</span>
+                <span class="bk-subtab-text">About Us</span>
+              </button>
+              <button type="button" class="bk-subtab-btn" data-subtab="journey" onclick="switchAboutSubtab('journey')">
+                <span class="bk-subtab-icon">⏳</span>
+                <span class="bk-subtab-text">Our Journey</span>
+              </button>
+              <button type="button" class="bk-subtab-btn" data-subtab="founder" onclick="switchAboutSubtab('founder')">
+                <span class="bk-subtab-icon">👑</span>
+                <span class="bk-subtab-text">Founder & Instruments</span>
+              </button>
+              <button type="button" class="bk-subtab-btn" data-subtab="wings" onclick="switchAboutSubtab('wings')">
+                <span class="bk-subtab-icon">🌐</span>
+                <span class="bk-subtab-text">Service Wings</span>
+              </button>
+              <button type="button" class="bk-subtab-btn" data-subtab="leaders" onclick="switchAboutSubtab('leaders')">
+                <span class="bk-subtab-icon">👥</span>
+                <span class="bk-subtab-text">Current Leaders</span>
+              </button>
+              <button type="button" class="bk-subtab-btn" data-subtab="kozhikode" onclick="switchAboutSubtab('kozhikode')">
+                <span class="bk-subtab-icon">📍</span>
+                <span class="bk-subtab-text">Kozhikode Centre</span>
+              </button>
             </div>
+          </nav>
 
-            <!-- Global Highlights List -->
-            <div class="about-highlights-list">
-              <div class="about-highlight-box">
-                <div class="highlight-icon-gold">
-                  <i data-lucide="award" style="width:20px;height:20px;"></i>
-                </div>
-                <div>
-                  <h3 class="highlight-title">Led Entirely by Women (സ്ത്രീ ശാക്തീകരണത്തിന്റെ ആഗോള മാതൃക)</h3>
-                  <p class="highlight-desc">
-                    It is the largest global spiritual institution led exclusively by women (revered Dadis and Didis), championing spiritual equality and feminine spiritual leadership for over eight decades.
-                  </p>
-                </div>
-              </div>
-
-              <div class="about-highlight-box">
-                <div class="highlight-icon-green">
-                  <i data-lucide="shield-check" style="width:20px;height:20px;"></i>
-                </div>
-                <div>
-                  <h3 class="highlight-title">United Nations Affiliation (ഐക്യരാഷ്ട്രസഭാ അംഗീകാരം)</h3>
-                  <p class="highlight-desc">
-                    An active international non-governmental organization (NGO) holding <strong>General Consultative Status with UN ECOSOC</strong> and consultative status with <strong>UNICEF</strong>, contributing to global peace, human rights, and environmental harmony.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. Three Sacred Pillars -->
-          <div class="about-section-card">
-            <div class="about-card-title-row">
-              <div class="about-icon-pill amber">
-                <i data-lucide="compass" style="width:22px;height:22px;"></i>
-              </div>
-              <div>
-                <h2 class="about-card-title">Three Sacred Pillars</h2>
-                <div class="about-card-subtitle">ആത്മീയ ജീവിതത്തിന്റെ മൂന്ന് സ്തംഭങ്ങൾ</div>
-              </div>
-            </div>
-
-            <div class="about-pillars-grid">
-              <!-- Pillar 1 -->
-              <div class="about-pillar-card">
-                <div class="pillar-icon-wrap orange">
-                  <i data-lucide="sparkles" style="width:20px;height:20px;"></i>
-                </div>
-                <h3 class="pillar-name">1. Rajyoga Meditation</h3>
-                <div class="pillar-name-ml">രാജയോഗ ധ്യാനം</div>
-                <p class="pillar-desc">
-                  A practical, open-eye meditation connecting the conscious soul with the Supreme Soul (Shiva Baba), awakening inner peace, purity, and spiritual strength.
-                </p>
-              </div>
-
-              <!-- Pillar 2 -->
-              <div class="about-pillar-card">
-                <div class="pillar-icon-wrap red">
-                  <i data-lucide="book-open" style="width:20px;height:20px;"></i>
-                </div>
-                <h3 class="pillar-name">2. Daily Murli</h3>
-                <div class="pillar-name-ml">ദൈനംദിന ഈശ്വരീയ മഹാവാക്യം</div>
-                <p class="pillar-desc">
-                  Daily spoken spiritual wisdom and guidance direct from the Supreme Father, providing nourishment for elevated contemplation and divine character building.
-                </p>
-              </div>
-
-              <!-- Pillar 3 -->
-              <div class="about-pillar-card">
-                <div class="pillar-icon-wrap green">
-                  <i data-lucide="heart" style="width:20px;height:20px;"></i>
-                </div>
-                <h3 class="pillar-name">3. Universal Free Service</h3>
-                <div class="pillar-name-ml">നിസ്വാർത്ഥ സേവനം</div>
-                <p class="pillar-desc">
-                  All meditation courses, spiritual retreats, and counseling sessions are offered unconditionally free of charge to all humanity, irrespective of religion, caste, or background.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. Brahma Kumaris Kozhikode Service & Offerings -->
-          <div class="about-section-card local-card">
-            <div class="about-card-title-row">
-              <div class="about-icon-pill maroon">
-                <i data-lucide="map-pin" style="width:22px;height:22px;"></i>
-              </div>
-              <div>
-                <h2 class="about-card-title">Brahma Kumaris Kozhikode</h2>
-                <div class="about-card-subtitle">കോഴിക്കോട് സേവന കേന്ദ്രം • Malabar Region</div>
-              </div>
-            </div>
-
-            <p class="about-body-text">
-              The Kozhikode service center has been actively serving the people of Kozhikode and the broader Malabar region of Kerala for decades. Our serene meditation halls provide an oasis of peace amidst modern life's busy pace.
-            </p>
-
-            <div class="about-subhead-mini">KEY SERVICES &amp; ACTIVITIES:</div>
-
-            <div class="about-activities-list">
-              <div class="about-activity-item">
-                <i data-lucide="check-circle-2" class="activity-check-icon"></i>
-                <div>
-                  <h4 class="activity-item-title">Free 7-Day Rajyoga Foundation Course</h4>
-                  <p class="activity-item-desc">Learn soul consciousness, God's true identity, the law of Karma, and world cycle secrets.</p>
-                </div>
-              </div>
-
-              <div class="about-activity-item">
-                <i data-lucide="check-circle-2" class="activity-check-icon"></i>
-                <div>
-                  <h4 class="activity-item-title">Daily Murli Study Classes</h4>
-                  <p class="activity-item-desc">Conducted daily in Malayalam and Hindi every morning and evening.</p>
-                </div>
-              </div>
-
-              <div class="about-activity-item">
-                <i data-lucide="check-circle-2" class="activity-check-icon"></i>
-                <div>
-                  <h4 class="activity-item-title">Traffic Control Meditation Pauses</h4>
-                  <p class="activity-item-desc">Hourly pauses to silence the mind, refresh the intellect, and cultivate mindfulness.</p>
-                </div>
-              </div>
-
-              <div class="about-activity-item">
-                <i data-lucide="check-circle-2" class="activity-check-icon"></i>
-                <div>
-                  <h4 class="activity-item-title">Youth, Student &amp; Family Workshops</h4>
-                  <p class="activity-item-desc">Stress-relief, positive thinking, de-addiction, and moral values development.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Invitation Box -->
-            <div class="about-invitation-box">
-              <div class="invitation-box-header">
-                <i data-lucide="clock" style="width:18px;height:18px;color:#d97706;"></i>
-                <span class="invitation-title">Open Daily to Everyone</span>
-              </div>
-              <p class="invitation-text">
-                All souls are cordially invited to visit our Kozhikode center anytime to experience quiet meditation, read spiritual literature, or enroll in a free introductory Rajyoga course.
+          <!-- 3. SUBPANEL 1: ABOUT US -->
+          <div id="about-panel-us" class="about-subpanel active">
+            <div class="bk-subpanel-intro">
+              <div class="bk-subpanel-kicker">🕊️ Who We Are · ആരാണ് ബ്രഹ്മാകുമാരീസ്?</div>
+              <h2 class="bk-subpanel-title">A Worldwide Spiritual Movement</h2>
+              <p class="bk-subpanel-lead">
+                Brahma Kumaris, officially known as <strong>‘Prajapita Brahma Kumaris Ishwariya Vishwa Vidyalaya’</strong>, is a worldwide spiritual movement dedicated to personal transformation and world renewal. Founded in 1937 in Hyderabad, Sindh (then a part of undivided India) by <strong>Prajapita Brahma</strong>, Brahma Kumaris has spread to over <strong>130 countries in 5 continents</strong> of the world and has had an extensive impact on many sectors as an international NGO.
               </p>
-              <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-                <button class="btn-hero-primary" onclick="bkApp.switchTab('centers')" style="padding:0.6rem 1.4rem;font-size:0.9rem;">
-                  <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
-                  <span>Find Centers in Kozhikode</span>
-                </button>
-                <button class="btn-reset-meditation" onclick="bkApp.switchTab('course')" style="padding:0.6rem 1.4rem;font-size:0.9rem;background:#ffffff;border:1px solid #d4af37;color:#92400e;font-weight:700;">
-                  <i data-lucide="book-open" style="width:16px;height:16px;"></i>
-                  <span>Start 7-Day Course</span>
-                </button>
+            </div>
+
+            <div class="bk-about-pillars-grid">
+              <div class="bk-pillar-card">
+                <div class="bk-pillar-icon">👑</div>
+                <h3 class="bk-pillar-title">A Women-Led Spiritual Family</h3>
+                <p class="bk-pillar-text">
+                  It supports the cultivation of a deep collective consciousness of peace and of the individual dignity of each soul. The Brahma Kumaris has the unique distinction of being the world’s largest spiritual organisation led by women. It was the founder, Prajapita Brahma Baba, who put women in front from the very beginning, appointing Mateshwari Jagdamba, fondly known as Mamma, as its first administrative head.
+                </p>
               </div>
+
+              <div class="bk-pillar-card">
+                <div class="bk-pillar-icon">🏔️</div>
+                <h3 class="bk-pillar-title">From Mount Abu to the World</h3>
+                <p class="bk-pillar-text">
+                  In 1950, this spiritual group relocated to India, and found place in the beautiful Aravalli Ranges of Mount Abu, Rajasthan, India, which serves as the international headquarters (Madhuban). From here, the teachings of Rajyoga spread overseas, with the first foreign center established in London in 1971.
+                </p>
+              </div>
+            </div>
+
+            <!-- Lineage of Spiritual Leadership -->
+            <div class="bk-section-card">
+              <div class="bk-card-header">
+                <span class="bk-badge-gold">Spiritual Lineage</span>
+                <h3 class="bk-card-heading">A Lineage of Spiritual Leadership</h3>
+                <p class="bk-card-sub">Guided by pure souls who dedicated every breath to selfless spiritual service.</p>
+              </div>
+              
+              <div class="bk-lineage-flow">
+                <div class="bk-lineage-node">
+                  <div class="bk-lineage-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_363d38e61a.webp" alt="Prajapita Brahma Baba" loading="lazy">
+                  </div>
+                  <div class="bk-lineage-info">
+                    <h4>Prajapita Brahma Baba</h4>
+                    <span class="bk-lineage-role">Founding Father & Instrument (1936 – 1969)</span>
+                  </div>
+                </div>
+
+                <div class="bk-lineage-arrow">↓</div>
+
+                <div class="bk-lineage-node">
+                  <div class="bk-lineage-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Mateshwari_mamma_bacd4ca0ce.webp" alt="Mateshwari Saraswati Mamma" loading="lazy">
+                  </div>
+                  <div class="bk-lineage-info">
+                    <h4>Mateshwari Saraswati (Mamma)</h4>
+                    <span class="bk-lineage-role">First Administrative Head (1937 – 1965)</span>
+                  </div>
+                </div>
+
+                <div class="bk-lineage-arrow">↓</div>
+
+                <div class="bk-lineage-node">
+                  <div class="bk-lineage-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_03_Dadi_Prakashmani_Ji_Face_16_e1633512632427_adaf412260.webp" alt="Rajyogini Dadi Prakashmani" loading="lazy">
+                  </div>
+                  <div class="bk-lineage-info">
+                    <h4>Rajyogini Dadi Prakashmani</h4>
+                    <span class="bk-lineage-role">Administrative Head (1969 – 2007)</span>
+                  </div>
+                </div>
+
+                <div class="bk-lineage-arrow">↓</div>
+
+                <div class="bk-lineage-node">
+                  <div class="bk-lineage-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_01_Dadi_Janki_Ji_portrait_39_e1633512150246_60b8509def.webp" alt="Rajyogini Dadi Janki" loading="lazy">
+                  </div>
+                  <div class="bk-lineage-info">
+                    <h4>Rajyogini Dadi Janki</h4>
+                    <span class="bk-lineage-role">Administrative Head (2007 – 2020)</span>
+                  </div>
+                </div>
+
+                <div class="bk-lineage-arrow">↓</div>
+
+                <div class="bk-lineage-node">
+                  <div class="bk-lineage-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_02_Dadi_Gulzar_Ji_e1633512398452_0718dfeff3.webp" alt="Rajyogini Dadi Hridaymohini" loading="lazy">
+                  </div>
+                  <div class="bk-lineage-info">
+                    <h4>Rajyogini Dadi Hridaymohini (Gulzar)</h4>
+                    <span class="bk-lineage-role">Administrative Head (2020 – 2021)</span>
+                  </div>
+                </div>
+
+                <div class="bk-lineage-arrow">↓</div>
+
+                <div class="bk-lineage-node">
+                  <div class="bk-lineage-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_07_Dadi_ratanmohini_Ji_Passport_Size_Photo_2_e1633513980741_8a86908c9f.webp" alt="Rajyogini Dadi Ratanmohini" loading="lazy">
+                  </div>
+                  <div class="bk-lineage-info">
+                    <h4>Rajyogini Dadi Ratanmohini</h4>
+                    <span class="bk-lineage-role">Administrative Head (2021 – 2024)</span>
+                  </div>
+                </div>
+
+                <div class="bk-lineage-arrow">↓</div>
+
+                <div class="bk-lineage-node">
+                  <div class="bk-lineage-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Mohini_Didi_41aa305101.webp" alt="BK Mohini Didi" loading="lazy">
+                  </div>
+                  <div class="bk-lineage-info">
+                    <h4>BK Mohini Didi</h4>
+                    <span class="bk-lineage-role">Current Administrative Head</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Our Trusts & Societies -->
+            <div class="bk-section-card">
+              <div class="bk-card-header">
+                <span class="bk-badge-gold">Institutional Foundations</span>
+                <h3 class="bk-card-heading">Our Trusts & Societies — The Tree and its Branches</h3>
+                <p class="bk-card-sub">The Brahma Kumaris perform their various socio-spiritual roles and responsibilities with the help of specialized sister institutions.</p>
+              </div>
+
+              <div class="bk-trusts-grid">
+                <div class="bk-trust-item">
+                  <div class="bk-trust-badge">Since 1968</div>
+                  <h4 class="bk-trust-title">The World Renewal Spiritual Trust (WRST)</h4>
+                  <p class="bk-trust-desc">
+                    Registered as a charitable trust with its Head-Office in Mumbai. Dedicated to promotion, propagation, and research in ancient Indian culture, spiritual knowledge, yoga, and philosophy, as well as establishing spiritual museums and value education seminars.
+                  </p>
+                </div>
+
+                <div class="bk-trust-item">
+                  <div class="bk-trust-badge">Since 1982</div>
+                  <h4 class="bk-trust-title">The Rajyoga Education and Research Foundation (RE&RF)</h4>
+                  <p class="bk-trust-desc">
+                    Registered under the Societies Registration Act, serving all sections of society through 24 dedicated professional wings — including Medical, Education, Jurists, Youth, Scientists, Rural, and Women's wings.
+                  </p>
+                </div>
+
+                <div class="bk-trust-item">
+                  <div class="bk-trust-badge">Since 2008</div>
+                  <h4 class="bk-trust-title">The Brahma Kumaris Education Society (BKES)</h4>
+                  <p class="bk-trust-desc">
+                    Incorporated to establish, run, and manage educational institutions that provide value-based, moral, and spiritual education alongside academic curriculum.
+                  </p>
+                </div>
+
+                <div class="bk-trust-item">
+                  <div class="bk-trust-badge">Since 2011</div>
+                  <h4 class="bk-trust-title">The Radio Madhuban Community Society (RMCS)</h4>
+                  <p class="bk-trust-desc">
+                    Educational and charitable society operating Community Radio Station ‘Radio Madhuban 90.4 FM’ from Mount Abu, uplifting rural and tribal communities through developmental, cultural, and spiritual broadcasts.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Global Cooperation: United Nations -->
+            <div class="bk-section-card bk-un-card">
+              <div class="bk-un-header">
+                <div class="bk-un-emblem">🌐</div>
+                <div>
+                  <span class="bk-badge-gold">Global Cooperation</span>
+                  <h3 class="bk-card-heading">Brahma Kumaris at the United Nations</h3>
+                  <p class="bk-card-sub">An international non-governmental organisation (NGO) in consultative status with key UN bodies.</p>
+                </div>
+              </div>
+              
+              <p class="bk-un-intro">
+                The principles of the Brahma Kumaris are aligned in particular with the tenet contained in the Preamble to the United Nations Charter: <em>"to reaffirm faith in fundamental human rights, in the dignity and worth of the human person, in the equal rights of men and women..."</em>
+              </p>
+
+              <div class="bk-un-affiliations-grid">
+                <div class="bk-un-item">
+                  <div class="bk-un-year">Since 1980</div>
+                  <h4>Department of Public Information (DPI)</h4>
+                  <p>Associate Status promoting UN goals and world peace education.</p>
+                </div>
+                <div class="bk-un-item">
+                  <div class="bk-un-year">Since 1987</div>
+                  <h4>UNICEF</h4>
+                  <p>Consultative Status with the United Nations Children’s Education Fund.</p>
+                </div>
+                <div class="bk-un-item">
+                  <div class="bk-un-year">Since 1998</div>
+                  <h4>ECOSOC (United Nations)</h4>
+                  <p>General Consultative Status with the Economic and Social Council.</p>
+                </div>
+                <div class="bk-un-item">
+                  <div class="bk-un-year">Global Member</div>
+                  <h4>FAO / ERP</h4>
+                  <p>Flagship Member of Education for Rural People, Food and Agriculture Organisation.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bk-next-subpanel-bar">
+              <button type="button" class="bk-next-subpanel-btn" onclick="switchAboutSubtab('journey')">
+                Explore Our Illustrious Journey (1935 – Present) →
+              </button>
             </div>
           </div>
+          <!-- 4. SUBPANEL 2: OUR JOURNEY -->
+          <div id="about-panel-journey" class="about-subpanel">
+            <div class="bk-subpanel-intro">
+              <div class="bk-subpanel-kicker">⏳ Historical Milestones · ചരിത്ര നാൾവഴികൾ</div>
+              <h2 class="bk-subpanel-title">Our Journey</h2>
+              <p class="bk-subpanel-lead">
+                From a humble beginning to becoming a World Spiritual Organization, the journey of Brahma Kumaris has been a unique one. Explore the 12 pivotal eras that shaped this global movement.
+              </p>
+            </div>
 
-          <!-- 5. Official Portals & Global Links -->
-          <div class="about-section-card">
-            <div class="about-card-title-row">
-              <div class="about-icon-pill purple">
-                <i data-lucide="external-link" style="width:20px;height:20px;"></i>
+            <div class="bk-timeline-vertical">
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1935</div>
+                  <h3 class="bk-timeline-heading">1935 — Unexpected Turn of Events</h3>
+                  <p class="bk-timeline-text">Dada Lekhraj was the son of a schoolmaster. Although from a middle class family, with honesty and hard work he rose to become one of the richest men in India. He was a diamond merchant of international repute. In 1935, when he was around sixty years of age, he began having divine visions of the Supreme Soul Shiva and world renewal, prompting him to dedicate his life entirely to Godly service.</p>
+                </div>
               </div>
-              <div>
-                <h2 class="about-card-title">Official Portals &amp; Resources</h2>
-                <div class="about-card-subtitle">ഔദ്യോഗിക വെബ്സൈറ്റുകൾ</div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1936 – 37</div>
+                  <h3 class="bk-timeline-heading">1936 – 37 — Embarkation on the New Path</h3>
+                  <p class="bk-timeline-text">Subsequent to the revelations and having heard the secret voice of God, Dada started sharing the knowledge with his friends and relatives. They began congregating for satsang (spiritual gatherings), which came to be known as Om Mandali. Dada Lekhraj constituted a managing committee of eight young women, headed by Om Radhe (Mateshwari Saraswati Mamma), and surrendered all his worldly fortune to this spiritual trust.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1938 – 39</div>
+                  <h3 class="bk-timeline-heading">1938 – 39 — Opposition on the road less travelled</h3>
+                  <p class="bk-timeline-text">A group of the community was against the Om Mandali and at any cost wanted to cease its operations. This group, called the Anti-Om Mandali Committee, subjected the spiritual gathering to immense pressure. However, the spiritual seekers remained steadfast in their vow of purity, celibacy, and intense remembrance of God.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1940 – 50</div>
+                  <h3 class="bk-timeline-heading">1940 – 50 — New Premises, Same Routine</h3>
+                  <p class="bk-timeline-text">The members of the institution, in Karachi (now in Pakistan) were involved in intense meditation and deep spiritual study. They were around 300 in number. For 14 years, this dedicated group underwent deep spiritual tapasya, refining their character and acquiring spiritual power.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1951 – 60</div>
+                  <h3 class="bk-timeline-heading">1951 – 60 — Glorious Propagation - The Planting of a Sapling</h3>
+                  <p class="bk-timeline-text">In 1950, the institution relocated to Mount Abu, Rajasthan, India, which became its international headquarters (Madhuban). After empowering themselves with deep self-realization, young Brahma Kumari sisters set out in batches to establish spiritual service centers across India. In 1954, a delegation attended the World Religious Conference in Japan.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1961 – 70</div>
+                  <h3 class="bk-timeline-heading">1961 – 70 — The Turning Point</h3>
+                  <p class="bk-timeline-text">This period was witness to the ascension of two extraordinary great souls: Mateshwari Jagdamba (fondly known as Mamma), the first Administrative Head, on 24 June 1965; and Prajapita Brahma Baba, who attained his complete (Sampoorna) stage of perfection on 18 January 1969. The administration was entrusted to Rajyogini Dadi Prakashmani and Didi Manmohini.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1971 – 80</div>
+                  <h3 class="bk-timeline-heading">1971 – 80 — BK Services Spread Far and Wide</h3>
+                  <p class="bk-timeline-text">Guided directly by the Supreme Soul and spearheaded by Rajyogini Dadi Janki, BK services expanded overseas. In 1971, the first center outside India opened in London. Within a few years, centres were established across the UK, Europe, the Americas, Australia, and Africa.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1981 – 90</div>
+                  <h3 class="bk-timeline-heading">1981 – 90 — Institution Gains National and International Recognition</h3>
+                  <p class="bk-timeline-text">Raja Yoga Centers were established in around 40 countries. In 1980, Brahma Kumaris was affiliated to the United Nations Department of Public Information (DPI). The institution received seven UN Peace Messenger Awards for initiatives including The Million Minutes of Peace (1986) and Global Cooperation for a Better World (1988).</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">1991 – 2000</div>
+                  <h3 class="bk-timeline-heading">1991 – 2000 — Emergence of Brahma Kumaris Internationally</h3>
+                  <p class="bk-timeline-text">In 1991, the multi-specialty Global Hospital and Research Centre was commissioned at Mount Abu. In 1998, Brahma Kumaris was granted General Consultative Status with the UN Economic and Social Council (ECOSOC). Major retreat centers like Peace Village (New York) were established.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">2001 – 2010</div>
+                  <h3 class="bk-timeline-heading">2001 – 2010 — Important Milestones In Services of BK</h3>
+                  <p class="bk-timeline-text">The UN designated Brahma Kumaris as Messenger for Manifesto 2000. Iconic spiritual retreat centres like Shanti Sarovar (Hyderabad, 2004) and Om Shanti Retreat Centre (Gurugram) were inaugurated, hosting mega peace conferences for hundreds of thousands of people.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">2011 – 2020</div>
+                  <h3 class="bk-timeline-heading">2011 – 2020 — Institution Soars in Education, Healthcare, Media Sectors and Rural Area</h3>
+                  <p class="bk-timeline-text">In 2011, the Platinum Jubilee (75 years) of the organization was celebrated. Community Radio Station Radio Madhuban 90.4 FM was launched. Large retreat campuses like Jagdamba Bhawan (Pune) were established, along with major national campaigns in value education and rural welfare.</p>
+                </div>
+              </div>
+              <div class="bk-timeline-item">
+                <div class="bk-timeline-marker">
+                  <div class="bk-marker-dot"></div>
+                  <div class="bk-marker-line"></div>
+                </div>
+                <div class="bk-timeline-card">
+                  <div class="bk-era-pill">2021 – Present</div>
+                  <h3 class="bk-timeline-heading">2021 – Until the Present — Changes in the Administrative Heads</h3>
+                  <p class="bk-timeline-text">The Brahma Kumaris continues to expand its reach across 130+ nations. Following the angelic ascension of Dadi Hridaymohini (2021) and Dadi Ratanmohini (2024), current leadership under Administrative Head BK Mohini Didi and Additional Heads guides millions toward inner peace and positive self-transformation.</p>
+                </div>
               </div>
             </div>
 
-            <div class="about-portals-grid">
-              <a href="https://brahmakumaris.org" target="_blank" rel="noopener noreferrer" class="about-portal-row">
-                <div class="portal-text-wrap">
-                  <div class="portal-title">Brahma Kumaris International</div>
-                  <div class="portal-url">brahmakumaris.org</div>
-                </div>
-                <i data-lucide="external-link" class="portal-arrow"></i>
-              </a>
-
-              <a href="https://madhubanmurli.org" target="_blank" rel="noopener noreferrer" class="about-portal-row">
-                <div class="portal-text-wrap">
-                  <div class="portal-title">Official Madhuban Murli Portal</div>
-                  <div class="portal-url">madhubanmurli.org</div>
-                </div>
-                <i data-lucide="external-link" class="portal-arrow"></i>
-              </a>
-
-              <a href="https://godlywoodstudio.org" target="_blank" rel="noopener noreferrer" class="about-portal-row">
-                <div class="portal-text-wrap">
-                  <div class="portal-title">Godlywood Studio (Spiritual Media)</div>
-                  <div class="portal-url">godlywoodstudio.org</div>
-                </div>
-                <i data-lucide="external-link" class="portal-arrow"></i>
-              </a>
-
-              <a href="https://peaceofmind.tv" target="_blank" rel="noopener noreferrer" class="about-portal-row">
-                <div class="portal-text-wrap">
-                  <div class="portal-title">Peace of Mind TV (Live Broadcast)</div>
-                  <div class="portal-url">peaceofmind.tv</div>
-                </div>
-                <i data-lucide="external-link" class="portal-arrow"></i>
-              </a>
+            <div class="bk-next-subpanel-bar">
+              <button type="button" class="bk-next-subpanel-btn" onclick="switchAboutSubtab('founder')">
+                Meet the Founder & Instruments →
+              </button>
             </div>
           </div>
+          <!-- 5. SUBPANEL 3: FOUNDER & INSTRUMENTS -->
+          <div id="about-panel-founder" class="about-subpanel">
+            <div class="bk-subpanel-intro">
+              <div class="bk-subpanel-kicker">👑 Divine Instruments · ദിവ്യ സ്ഥാപകർ</div>
+              <h2 class="bk-subpanel-title">Founder & Instruments</h2>
+              <p class="bk-subpanel-lead">
+                The pure souls through whom the Almighty Supreme Father Shiva established this world-transforming spiritual university.
+              </p>
+            </div>
 
-          <!-- 6. Footer Blessing Note -->
-          <div class="about-footer-note">
-            <div class="about-om-shanti">Om Shanti • ഓം ശാന്തി</div>
-            <div class="about-footer-location">Light Palace, Ashokapuram, Kozhikode, Kerala</div>
+            <!-- Supreme Light Shiva Card -->
+            <div class="bk-supreme-card">
+              <div class="bk-supreme-visual">
+                <div class="bk-supreme-jyoti">
+                  <div class="bk-jyoti-core"></div>
+                  <div class="bk-jyoti-glow"></div>
+                  <div class="bk-jyoti-rays"></div>
+                </div>
+              </div>
+              <div class="bk-supreme-content">
+                <span class="bk-badge-gold">The Source · പരമാത്മാ ശിവൻ</span>
+                <h3 class="bk-supreme-title">Supreme Soul Shiva (Paramatma)</h3>
+                <blockquote class="bk-supreme-quote">
+                  "Dear children, I am a self-luminous Being and am the subtlest of all the subtle things. Just as you all, human souls, are points of light, I, the Supreme Soul (Shiva), am also a Point of Light. I am the Ocean of Peace, Love, and Purity."
+                </blockquote>
+                <p class="bk-supreme-desc">
+                  The incorporeal Supreme Light who revealed eternal spiritual truths and Rajyoga meditation for world renewal.
+                </p>
+              </div>
+            </div>
+
+            <!-- Founders Dual Card: Brahma Baba & Mamma with REAL PHOTOS -->
+            <div class="bk-founders-dual-grid">
+              <!-- Prajapita Brahma Baba -->
+              <div class="bk-founder-hero-card" onclick="openJewelProfile('brahma-baba')" title="ക്ലിക്ക് ചെയ്ത് പൂർണ്ണ ജീവചരിത്രവും വീഡിയോയും കാണുക">
+                <div class="bk-founder-img-box">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_363d38e61a.webp" alt="Pitashri Prajapita Brahma Baba" loading="lazy">
+                  <div class="bk-click-hint-badge"><span>📖 ആത്മീയ ജീവചരിത്രം & വീഡിയോ</span></div>
+                </div>
+                <div class="bk-founder-info-box">
+                  <span class="bk-badge-gold">Founding Father</span>
+                  <h3 class="bk-founder-name">Brahma Baba - Founding Father - The Instrument</h3>
+                  <div class="bk-founder-ml">പിതാശ്രീ പ്രജാപീതാ ബ്രഹ്മാ ബാബ</div>
+                  <p class="bk-founder-bio">
+                    Pitashri Prajapita Brahma was the founding father of the Brahma Kumaris. He became the instrument of the Almighty God Shiva for the establishment of the institution in 1936. Prior to the establishment of the institution, he was well known as Dada Lekhraj. Though by birth he was an ordinary man, there were many special qualities in him, qualities apparent though indefinable, even at first glance. He surrendered his entire wealth to the spiritual trust managed by young women.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Mateshwari Saraswati Mamma -->
+              <div class="bk-founder-hero-card" onclick="openJewelProfile('mamma')" title="ക്ലിക്ക് ചെയ്ത് പൂർണ്ണ ജീവചരിത്രവും വീഡിയോയും കാണുക">
+                <div class="bk-founder-img-box">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Mateshwari_mamma_bacd4ca0ce.webp" alt="Mateshwari Saraswati Mamma" loading="lazy">
+                  <div class="bk-click-hint-badge"><span>📖 ആത്മീയ ജീവചരിത്രം & വീഡിയോ</span></div>
+                </div>
+                <div class="bk-founder-info-box">
+                  <span class="bk-badge-gold">First Administrative Head</span>
+                  <h3 class="bk-founder-name">Mamma - First Administrative Head</h3>
+                  <div class="bk-founder-ml">മാതേശ്വരി സരസ്വതി മമ്മ</div>
+                  <p class="bk-founder-bio">
+                    Mateshwari Saraswati was the first administrative head of Brahma Kumaris. She was merely 16 years old when she came into the fold during the early period of its inception. She was able to digest Godly Knowledge, relate it very accurately to others and stood out from the rest. She had a very sharp intellect, which she mobilised in the service of God. Her original name was Radhe. She came to be known as 'Mamma', the mother of the spiritual family.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Adi Ratan - Instruments -->
+            <div class="bk-section-card">
+              <div class="bk-card-header">
+                <span class="bk-badge-gold">Founding Jewels · ആദി രത്നങ്ങൾ</span>
+                <h3 class="bk-card-heading">Adi Ratan - Instruments</h3>
+                <p class="bk-card-sub">
+                  "The deeper the roots of a tree, the stronger and more durable it is. Similarly, how deep are the roots of renunciation and tapasya of the people who run any organization, that organization is equally powerful, long-lived and free of obstacles."
+                </p>
+              </div>
+
+              <div class="bk-adi-ratans-grid">
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-janki')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_01_Dadi_Janki_Ji_portrait_39_e1633512150246_60b8509def.webp" alt="Dadi Janki - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Janki</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-gulzar')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_02_Dadi_Gulzar_Ji_e1633512398452_0718dfeff3.webp" alt="Dadi Gulzar - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Gulzar</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-prakashmani')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_03_Dadi_Prakashmani_Ji_Face_16_e1633512632427_adaf412260.webp" alt="Dadi Prakashmani - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Prakashmani</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('didi-manmohini')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_04_Didi_Manmohini_JI_e1633513151341_819c6e6d85.webp" alt="Didi Manmohini - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Didi Manmohini</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-nirmalshanta')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_05_Dadi_Nirmal_Shanta_ji_Ind_004_e1633513299705_dc9f0a4ff5.webp" alt="Dadi Nirmalshanta - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Nirmalshanta</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-brijendra')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_06_Dadi_Brijendra_Ji_e1633513436149_5fbea91b94.webp" alt="Dadi Brij Indra - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Brij Indra</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-ratan-mohini')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_07_Dadi_ratanmohini_Ji_Passport_Size_Photo_2_e1633513980741_8a86908c9f.webp" alt="Dadi Ratan Mohini - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Ratan Mohini</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-shantamani')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_08_Dadi_Shantamani_Ji_8fcbd1ae35.webp" alt="Dadi Shantamani - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Shantamani</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-manohar-indra')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_09_Dadi_Manohar_Indra_117928ac76.webp" alt="Dadi Manohar Indra - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Manohar Indra</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-hriday-pushpa')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_10_Dadi_Hriday_Pushpa_Ji_a4e025ee77.webp" alt="Dadi Hridaypushpa - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Hridaypushpa</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-gange')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_11_Dadi_Gange_ji_7112697f9d.webp" alt="Dadi Gange - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Gange</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-allrounder')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_12_Dadi_All_Rounder_ead589fede.webp" alt="Dadi Allrounder - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Allrounder</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-ishu')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_13_Dadi_Ishu_Pic_01_0cd8a8e416.webp" alt="Dadi Ishu - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Ishu</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-pushpashanta')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_14_Dadi_Pushpashanta_2_434f6e6388.webp" alt="Dadi Pushpashanta - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Pushpashanta</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-santri')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_15_Dadi_Santr2i_1653dd1c06.webp" alt="Dadi Santri - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Santri</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-sheelindra')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_16_Dadi_Sheelindra_4108055ae2.webp" alt="Dadi Sheelindra - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Sheelindra</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-dhyani')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_17_Dadi_Dhyani_c7648cd816.webp" alt="Dadi Dhyaani - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Dhyaani</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-sandeshi')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_18_Dadi_Sandeshi_Ji_904dadf840.webp" alt="Dadi Sandeshi - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Sandeshi</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dadi-kunj')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_19_Dadi_Kuj_5696932309.webp" alt="Dadi Kunj - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dadi Kunj</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dada-vishwakishore')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_20_Dada_Vishwa_Kishore_68a4f0981c.webp" alt="Dada Vishwakishore - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dada Vishwakishore</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+                <div class="bk-ratan-card" onclick="openJewelProfile('dada-anandkishore')" title="ക്ലിക്ക് ചെയ്ത് ജീവചരിത്രം വായിക്കുക">
+                  <div class="bk-ratan-avatar">
+                    <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_21_Dada_Anand_Kishor_ac5f6894e2.webp" alt="Dada Anand Kishore - Authentic Portrait" loading="lazy">
+                  </div>
+                  <h4 class="bk-ratan-name">Dada Anand Kishore</h4>
+                  <span class="bk-ratan-label">Adi Ratan</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bk-next-subpanel-bar">
+              <button type="button" class="bk-next-subpanel-btn" onclick="switchAboutSubtab('wings')">
+                Explore the 24 Service Wings →
+              </button>
+            </div>
+          </div>
+          <!-- 6. SUBPANEL 4: SERVICE WINGS -->
+          <div id="about-panel-wings" class="about-subpanel">
+            <div class="bk-subpanel-intro">
+              <div class="bk-subpanel-kicker">🌐 Socio-Spiritual Wings · സേവന വിഭാഗങ്ങൾ</div>
+              <h2 class="bk-subpanel-title">The Rajyoga Education and Research Foundation (RE&RF)</h2>
+              <p class="bk-subpanel-lead">
+                Serving society through 24 dedicated professional and social service wings, taking spiritual wisdom, ethical values, and stress management into every walk of life.
+              </p>
+            </div>
+
+            <div class="bk-wings-grid">
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Administrators_Service_Wing_4d188adffe.webp" alt="Administrators’ Service Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Administrators’ Service Wing</h3>
+                  <p class="bk-wing-desc">To foster and support moral and ethical behaviour in individuals in executive and administrative positions in both public and private institutions. To facilitate the ability of administrators and executives to lead by example. To provide training in Self Management and Rajyoga Meditation as a means of stress management and other skills which enable value-based, spiritually empowered administrative practices.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Agriculture_and_Rural_Development_Wing_10c3fdda94.webp" alt="Agriculture & Rural Development Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Agriculture & Rural Development Wing</h3>
+                  <p class="bk-wing-desc">To improve the condition of rural children and youth through leadership programmes, child development camps, and character development programmes which emphasise moral values. To eliminate mistrust, superstition, blind faith and unhealthy social practices through awareness campaigns, slide shows and lectures. To foster healthy lifestyles through educational programmes in health and hygiene, special medical camps, and exhibitions and lectures aimed at reducing the incidences of smoking, drinking, tobacco chewing and drug addiction. To eradicate illiteracy through value-based educational activities for the young, as well as adult education programmes. To enable individual spiritual empowerment of the indigenous masses through courses in Rajyoga meditation.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Art_and_Culture_Wing_5924722429.webp" alt="Art & Culture Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Art & Culture Wing</h3>
+                  <p class="bk-wing-desc">Promotion of the spiritual empowerment of artists and performers. To bring about spiritually empowered culture based on spiritual and moral values.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Business_and_Industry_Wing_508c9e831c.webp" alt="Business and Industry Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Business and Industry Wing</h3>
+                  <p class="bk-wing-desc">To encourage the attainment of individual excellence and collective satisfaction. To inspire and activate business and industry to move towards their highest potential. To induce the consciousness of responsibility and service. To provide educational training programmes. To inspire businessmen and industrialists to become instruments of change for a new world order of global peace and harmony.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Design_and_Innovation_Wing_2727af067c.webp" alt="Design & Innovation Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Design & Innovation Wing</h3>
+                  <p class="bk-wing-desc"></p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Divyang_Jan_Seva_Wing_d405a77a72.webp" alt="Divyang Jan Seva Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Divyang Jan Seva Wing</h3>
+                  <p class="bk-wing-desc"></p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Education_Wing_7e39b782f5.webp" alt="Education Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Education Wing</h3>
+                  <p class="bk-wing-desc">To provide training and refresher courses for educators which will enable the spiritual empowerment of the educators themselves as well as their students. To support dedicated, devoted educators in being inspiring and effective role models. To give moral and spiritual education as well as instruction in Rajyoga meditation to teachers in various schools and colleges. To strengthen confidence, courage and commitment to value-based education and other innovative, uplifting educational measures. To re-establish, through education and research, a society based on spiritual, moral and human values. To remove ignorance, superstition, and social evils through spiritual education. To raise awareness through education and counselling about the negative effects of alcohol, drugs and tobacco.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Finance_Fraternity_Seva_Wing_017be32ea1.webp" alt="Finance Fraternity Seva Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Finance Fraternity Seva Wing</h3>
+                  <p class="bk-wing-desc"></p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Information_Technology_Wing_17abf4aa80.webp" alt="Information Technology Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Information Technology Wing</h3>
+                  <p class="bk-wing-desc">To introduce the basic concepts of meditation and spirituality in a very gentle, interactive and practical way through various events. To make simple and profound principles of Rajyoga Meditation accessible and applicable to IT Professionals so that they can lead peaceful personal life and productive professional life. To give spiritual sustenance to the IT Professionals who practice Rajyoga Meditation through retreats/programs.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Jurists_Wing_727f43b6ee.webp" alt="Jurists Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Jurists Wing</h3>
+                  <p class="bk-wing-desc">To facilitate and support the application of moral values and ethical behaviour within the legal and judicial systems. To foster lawfulness in the general public through education in spiritual and moral values. To promote love and logic in the dispensing of justice.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Media_Wing_Logo_b429c500b4.webp" alt="Media Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Media Wing</h3>
+                  <p class="bk-wing-desc">To inspire media personnel to take up the challenge of promoting positivity in an industry which perpetuates negativity. To encourage media responsibility in promoting religious harmony, national solidarity and national character and in protecting the interests of the weak, victimised and voiceless millions. To discourage media malpractice in the form of misreporting, slandering, giving undue attention to violence, obscenity and vulgarity.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Medical_Wing_b34866bbd1.webp" alt="Medical Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Medical Wing</h3>
+                  <p class="bk-wing-desc">To develop awareness among the masses of the importance of maintaining a healthy life-style. To reintroduce the ancient concept of holistic health care into the practice of modern medicine and affirm the role of meditation in developing a healthy world. To encourage a high standard of ethics and exemplary conduct among medical and health professionals. To provide an environment in which distinguished medical scientists and specialists can dialogue and exchange experiences. To conduct and publish research into the psycho-physiology of Rajyoga Meditation and its application in the prevention of sickness and promotion of health. To encourage public and professional responsibility in meeting the World Health Organisation’s objectives.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Politicians_Service_Wing_d7eaf6d568.webp" alt="Politicians Service Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Politicians Service Wing</h3>
+                  <p class="bk-wing-desc">The wing aims to support politicians in their difficult task of leadership in these tumultuous times. In the modern world, politics attracts very little appreciation. Much of this is due to a history of corruption and graft which has led people to a response of mistrust. Part of the wing’s objective is to encourage and support those politicians who are working from a set of principles that guard their integrity at each step.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Religious_Wing_adf4d2adb5.webp" alt="Religious Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Religious Wing</h3>
+                  <p class="bk-wing-desc">To stress the parallel and common points, values and practices between the religions as well as the elements of love and reconciliation asserted by all faiths. To inspire people to follow, in practice, the teachings of their respective religious traditions rather than putting emphasis on ritual or proselytisation. To promote religious harmony by bringing religious leaders together in an atmosphere of co-operation, dialogue and meditation or prayer. To encourage members of all faith traditions to develop a broad and liberal attitude as well as a spirit of accommodation and reverence towards those of other faith traditions.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Scientists_and_Engineers_Wing_7dc5addf2c.webp" alt="Scientists and Engineers Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Scientists and Engineers Wing</h3>
+                  <p class="bk-wing-desc">To bridge the gap between science and spirituality. To enable scientists and technologists to lead a happy and self-fulfilling life. To help scientists and engineers cope with stress, adapt to change and work in ways reflective of the needs of humanity. To stimulate new thinking about the role of science and technology in creating a sustainable future. To educate the scientific community about values and help them integrate spiritual and ethical values into the areas of science and technology. To raise awareness about underlying spiritual causes of environmental dangers. To undertake programmes of scientific research in Rajyoga.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Security_Services_Wing_d5379a036d.webp" alt="Security Services Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Security Services Wing</h3>
+                  <p class="bk-wing-desc">To strengthen security forces personnel internally to enhance their efficiency and help them take quick and correct decisions in challenging situations. To help security forces personnel cope with the stress caused by the hazardous nature of their work. To raise the morale of security personnel by making them self-aware and fostering their innate spiritual qualities.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Shipping_Aviation_and_Tourism_Services_Wing_103e123aab.webp" alt="Shipping, Aviation and Tourism Services Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Shipping, Aviation and Tourism Services Wing</h3>
+                  <p class="bk-wing-desc">To promote peace through shipping, aviation and tourism, which bring people together. To help those working in these sectors overcome stress and worry. To help people in these sectors discover their true identity by undertaking a spiritual journey into their inner world.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Social_Service_Wing_94f95d25a0.webp" alt="Social Service Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Social Service Wing</h3>
+                  <p class="bk-wing-desc">To awaken in people a sense of service and inspire them to engage in spiritual social service. To raise public awareness in order to bring about the eradication of social evils such as child marriage and bride-burning. To offer spiritual education and a simple system of meditation which can aid the eradication of substance abuse and addiction.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Sparc_wing_rerf_Sp_ARC_Wing_ff65e447a2.webp" alt="SpARC Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">SpARC Wing</h3>
+                  <p class="bk-wing-desc">Inviting specialists to do research and enhance their understanding of the physical and the metaphysical. Inspiring scientists and research scholars to channel their creative potential towards the establishing and building of a better world. Initiating joint projects with other institutions and individuals for sharing similar goals. Providing an infrastructure based on electronic communication facilities to make collaborative work by experts around the world. Developing a library of reference material on diverse subjects related to the above research and providing facilities to research scientists to conduct experiments for the same.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Sports_Wing_e70e2b145e.webp" alt="Sports Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Sports Wing</h3>
+                  <p class="bk-wing-desc">The basic purpose of this wing is to help sports persons understand the psychological aspects for enhancing sports performance as they have to face the challenge of competition. The wing focuses on the development of inner strength and the improvement of the inner state of mind through which one can achieve an optimum level of concentration, motivation and relaxation.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Transport_and_Travel_Wing_7d9b03c889.webp" alt="Transport and Travel Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Transport and Travel Wing</h3>
+                  <p class="bk-wing-desc">To control emotions with a balanced state of mind. To enhance concentration for excellence in profession. To inculcate moral, ethical and spiritual values in members of society connected with this field. To give special training to change thought processes to overcome anger. To enhance self-control to give up drugs and alcohol by self-discipline. To build up self-confidence by higher concentration of mind. To rediscover the inner resources. To conduct separate Residential Training Programmes for all categories of officers and staff members. To organise seminars, workshops and talks for spiritual orientation.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Vishwakarma_Nirman_Wing_ad42ab4613.webp" alt="VishwaKarma Nirmaan Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">VishwaKarma Nirmaan Wing</h3>
+                  <p class="bk-wing-desc"></p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Womens_Wing_d1cc120c68.webp" alt="Womens Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Womens Wing</h3>
+                  <p class="bk-wing-desc">To provide opportunities in which women can learn meditation and gain spiritual empowerment. To raise women’s awareness of their potential while raising men’s awareness of women’s contributions. To encourage women to embody moral and spiritual values and provide children with good role models. To encourage women to make the home a peaceful, happy, tension-free place. To empower women to combat the social evils of obscene literature/films, treatment as a sex object, early marriage, and the dowry system of bride-burning. To enable women to play an effective role in relieving society of alcoholism, drug addiction, smoking, and other negative social habits. To help women to play a leading role in eradicating ignorance, blind faith, religious intolerance and war.</p>
+                </div>
+              </div>
+              <div class="bk-wing-card">
+                <div class="bk-wing-logo-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Youth_Wing_74a533a0c6.webp" alt="Youth Wing Official Emblem" loading="lazy">
+                </div>
+                <div class="bk-wing-content">
+                  <h3 class="bk-wing-title">Youth Wing</h3>
+                  <p class="bk-wing-desc">To awaken youth towards their responsibilities. Youth Wing has been organising different types of programmes since 1985 in slums, villages, schools, colleges, youth institutions and many other organisations. Through spiritual knowledge and Rajyoga Meditation, one can develop self-confidence and self-reliance, which increases the courage to work for the betterment of society.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bk-next-subpanel-bar">
+              <button type="button" class="bk-next-subpanel-btn" onclick="switchAboutSubtab('leaders')">
+                Meet Current Spiritual Leaders →
+              </button>
+            </div>
+          </div>
+          <!-- 7. SUBPANEL 5: CURRENT LEADERS -->
+          <div id="about-panel-leaders" class="about-subpanel">
+            <div class="bk-subpanel-intro">
+              <div class="bk-subpanel-kicker">👥 Spiritual Stewardship · നിലവിലെ നേതൃത്വം</div>
+              <h2 class="bk-subpanel-title">Current Spiritual Leaders</h2>
+              <p class="bk-subpanel-lead">
+                Get to know the current spiritual leaders of the Brahma Kumaris and in what way, as instruments of God, they are committed to bringing positive transformation to the world.
+              </p>
+            </div>
+
+            <div class="bk-leaders-grid">
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Mohini_Didi_41aa305101.webp" alt="BK Mohini Didi - Administrative Head" loading="lazy">
+                  <div class="bk-leader-badge">Administrative Head</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Mohini Didi</h3>
+                  <div class="bk-leader-role-text">Administrative Head</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Jayanti_Didi_ab4452313d.webp" alt="BK Jayanti Didi - Additional Administrative Head" loading="lazy">
+                  <div class="bk-leader-badge">Additional Administrative Head</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Jayanti Didi</h3>
+                  <div class="bk-leader-role-text">Additional Administrative Head</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Munni_Didi_af1dd3d8a0.webp" alt="BK Munni Didi - Additional Administrative Head" loading="lazy">
+                  <div class="bk-leader-badge">Additional Administrative Head</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Munni Didi</h3>
+                  <div class="bk-leader-role-text">Additional Administrative Head</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Sashi_Prabha_Didi_1a558ac889.webp" alt="BK Sashi Prabha Didi - Joint Administrative Head" loading="lazy">
+                  <div class="bk-leader-badge">Joint Administrative Head</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Sashi Prabha Didi</h3>
+                  <div class="bk-leader-role-text">Joint Administrative Head</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Santosh_Didi_9c0086d223.webp" alt="BK Santosh Didi - Joint Administrative Head" loading="lazy">
+                  <div class="bk-leader-badge">Joint Administrative Head</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Santosh Didi</h3>
+                  <div class="bk-leader-role-text">Joint Administrative Head</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Sudesh_Didi_5e03fc8c22.webp" alt="BK Sudesh Didi - Joint Administrative Head" loading="lazy">
+                  <div class="bk-leader-badge">Joint Administrative Head</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Sudesh Didi</h3>
+                  <div class="bk-leader-role-text">Joint Administrative Head</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Karuna_Ji_feb63c5e87.webp" alt="BK Karuna Ji - Secretary General" loading="lazy">
+                  <div class="bk-leader-badge">Secretary General</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Karuna Ji</h3>
+                  <div class="bk-leader-role-text">Secretary General</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Mruthyunjaya_Ji_38df24cc6b.webp" alt="BK Mruthyunjaya Ji - Additional Secretary General" loading="lazy">
+                  <div class="bk-leader-badge">Additional Secretary General</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Mruthyunjaya Ji</h3>
+                  <div class="bk-leader-role-text">Additional Secretary General</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+              <div class="bk-leader-card">
+                <div class="bk-leader-avatar-wrap">
+                  <img src="https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Dr_Pratap_Midha_Ji_6e14ab24f2.webp" alt="BK Dr Pratap Midha Ji - Additional Secretary General" loading="lazy">
+                  <div class="bk-leader-badge">Additional Secretary General</div>
+                </div>
+                <div class="bk-leader-details">
+                  <h3 class="bk-leader-name">BK Dr Pratap Midha Ji</h3>
+                  <div class="bk-leader-role-text">Additional Secretary General</div>
+                  <div class="bk-leader-org">Prajapita Brahma Kumaris</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bk-next-subpanel-bar">
+              <button type="button" class="bk-next-subpanel-btn" onclick="switchAboutSubtab('kozhikode')">
+                View Kozhikode Centre Details →
+              </button>
+            </div>
+          </div>
+          <!-- 8. SUBPANEL 6: KOZHIKODE CENTRE (VERIFIED OFFICIAL DETAILS ONLY) -->
+          <div id="about-panel-kozhikode" class="about-subpanel">
+            <div class="bk-subpanel-intro">
+              <div class="bk-subpanel-kicker">📍 Local Sanctuary · കോഴിക്കോട് സേവന കേന്ദ്രം</div>
+              <h2 class="bk-subpanel-title">Brahma Kumaris Kozhikode</h2>
+              <p class="bk-subpanel-lead">
+                'Light Palace', the main service centre of Prajapita Brahma Kumaris Ishwariya Vishwa Vidyalaya in Kozhikode, serving the community with pure vibrations and Raja Yoga meditation since 1978.
+              </p>
+            </div>
+
+            <div class="bk-kozhikode-card">
+              <div class="bk-kozhikode-info-grid">
+                <!-- Contact info item 1: Main Centre -->
+                <div class="bk-info-item">
+                  <div class="bk-info-icon">🏛️</div>
+                  <div>
+                    <h4 class="bk-info-label">Main Centre</h4>
+                    <p class="bk-info-val"><strong>'Light Palace'</strong>, Prajapita Brahma Kumaris</p>
+                  </div>
+                </div>
+
+                <!-- Contact info item 2: Address -->
+                <div class="bk-info-item">
+                  <div class="bk-info-icon">📍</div>
+                  <div>
+                    <h4 class="bk-info-label">Address</h4>
+                    <p class="bk-info-val">
+                      H.No: 44/284, Balan K Nair Road, Ashokapuram,<br>
+                      PO: Eranhipalam, Kozhikode - 673006, Kerala
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Contact info item 3: Merged Phone & WhatsApp -->
+                <div class="bk-info-item">
+                  <div class="bk-info-icon">📞</div>
+                  <div>
+                    <h4 class="bk-info-label">Phone & WhatsApp</h4>
+                    <p class="bk-info-val">
+                      <a href="tel:+919539933699" class="bk-contact-link">+91 95399 33699</a><br>
+                      <a href="https://wa.me/919539933699?text=Om%20Shanti,%20I%20would%20like%20to%20know%20more%20about%20Rajyoga%20Meditation%20at%20Kozhikode%20Centre" target="_blank" rel="noopener" class="bk-contact-link" style="font-size:0.85rem;color:#16a34a;display:inline-flex;align-items:center;gap:4px;margin-top:4px;">💬 Chat on WhatsApp</a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Contact info item 4: Email -->
+                <div class="bk-info-item">
+                  <div class="bk-info-icon">✉️</div>
+                  <div>
+                    <h4 class="bk-info-label">Email</h4>
+                    <p class="bk-info-val">
+                      <a href="mailto:calicut@bkivv.org" class="bk-contact-link">calicut@bkivv.org</a> / 
+                      <a href="mailto:contact@bkkozhikode.com" class="bk-contact-link">contact@bkkozhikode.com</a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Contact info item 5: Associated Sub-Centres (Thamarassery & Mavoor removed) -->
+                <div class="bk-info-item">
+                  <div class="bk-info-icon">🕊️</div>
+                  <div>
+                    <h4 class="bk-info-label">Associated Sub-Centres</h4>
+                    <p class="bk-info-val">
+                      West Hill • Balussery • Koyilandy
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Contact info item 6: Subzonal Office Mysore (New 6th column) -->
+                <div class="bk-info-item">
+                  <div class="bk-info-icon">🏛️</div>
+                  <div>
+                    <h4 class="bk-info-label">Subzonal Office</h4>
+                    <p class="bk-info-val">
+                      <strong>Mysore</strong><br>
+                      <span style="font-size:0.85rem;color:#78350f;">സബ് സോണൽ ഓഫീസ് - മൈസൂർ</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="bk-kozhikode-actions">
+                <a href="https://wa.me/919539933699?text=Om%20Shanti,%20I%20would%20like%20to%20know%20more%20about%20Rajyoga%20Meditation%20at%20Kozhikode%20Centre" target="_blank" rel="noopener" class="bk-action-btn bk-btn-wa">
+                  <span>💬 WhatsApp Us</span>
+                </a>
+                <a href="tel:+919539933699" class="bk-action-btn bk-btn-call">
+                  <span>📞 Call Centre</span>
+                </a>
+                <a href="https://maps.google.com/?q=Brahma+Kumaris+Light+Palace+Ashokapuram+Kozhikode" target="_blank" rel="noopener" class="bk-action-btn bk-btn-map">
+                  <span>🗺️ Google Maps Directions</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Om Shanti Blessing Footer -->
+            <div class="bk-about-footer-blessing">
+              <div class="bk-om-shanti-text">Om Shanti</div>
+              <div class="bk-om-shanti-sub">ഓം ശാന്തി • ബ്രഹ്മാകുമാരീസ് കോഴിക്കോട് സേവന കേന്ദ്രം</div>
+              <p class="bk-blessing-quote">
+                "When you transform yourself, the whole world transforms with you. May divine peace, love, and spiritual light radiate from your soul to all souls."
+                <br><span style="font-size:0.85rem;color:#b45309;font-weight:600;margin-top:4px;display:inline-block;">Light Palace, Ashokapuram, Kozhikode, Kerala</span>
+              </p>
+            </div>
           </div>
 
         </div>
@@ -1447,7 +2278,9 @@
   <script src="js/course.js?v=81"></script>
   <script src="js/connect-god.js?v=81"></script>
   <script src="js/murli.js?v=81"></script>
-  <script src="js/app.js?v=81"></script>
+    <script src="js/jewels-data.js?v=84"></script>
+  <script src="js/jewel-modal.js?v=84"></script>
+  <script src="js/app.js?v=84"></script>
 
   <script>
     // Initialize Lucide Icons on load
@@ -1455,5 +2288,95 @@
       lucide.createIcons();
     });
   </script>
+
+  <!-- =========================================================================
+       MODAL: ADI RATAN & FOUNDER DEEP BIOGRAPHY VIEWER
+       ========================================================================= -->
+  <div id="bkJewelProfileModal" class="bk-jewel-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="bk-jewel-modal-backdrop" onclick="closeJewelProfile()"></div>
+    <div class="bk-jewel-modal-container">
+      
+      <!-- Modal Navigation Header -->
+      <div class="bk-jewel-modal-header">
+        <div class="bk-jewel-modal-nav-arrows">
+          <button type="button" class="bk-modal-nav-btn" onclick="prevJewelProfile()" title="Previous Soul (←)">
+            <span>← മുൻപ്</span>
+          </button>
+          <span class="bk-modal-counter" id="bkModalCounter">1 / 23</span>
+          <button type="button" class="bk-modal-nav-btn" onclick="nextJewelProfile()" title="Next Soul (→)">
+            <span>അടുത്തത് →</span>
+          </button>
+        </div>
+        <button type="button" class="bk-jewel-modal-close" onclick="closeJewelProfile()" aria-label="Close Profile">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="bk-jewel-modal-body">
+        <!-- Left Column: Visual, Video & Sacred Quote -->
+        <div class="bk-jewel-modal-visual-col">
+          <div class="bk-jewel-avatar-hero">
+            <img id="bkModalPhoto" src="" alt="Portrait" class="bk-jewel-modal-img">
+          </div>
+
+          <div class="bk-jewel-meta-badges">
+            <span id="bkModalLifespan" class="bk-badge-lifespan"></span>
+            <span id="bkModalRoleBadge" class="bk-badge-role"></span>
+          </div>
+
+          <!-- YouTube Video Embed (if available) -->
+          <div id="bkModalVideoWrap" class="bk-jewel-video-container">
+            <div class="bk-video-title-bar">
+              <span>📹 ജീവചരിത്ര വീഡിയോ / Documentary</span>
+            </div>
+            <div class="bk-video-iframe-wrap">
+              <iframe id="bkModalVideoIframe" src="" title="Video Documentary" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Sacred Quote Box -->
+          <div class="bk-jewel-quote-card">
+            <div class="bk-quote-icon">“</div>
+            <p id="bkModalQuote" class="bk-quote-text"></p>
+          </div>
+
+          <!-- Spiritual Virtues List -->
+          <div class="bk-jewel-virtues-wrap">
+            <div class="bk-virtues-heading">ആത്മീയ ദിവ്യഗുണങ്ങൾ:</div>
+            <div id="bkModalVirtues" class="bk-virtues-tags"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Literary Malayalam Biography -->
+        <div class="bk-jewel-modal-text-col">
+          <div class="bk-jewel-header-group">
+            <span class="bk-jewel-kicker">✨ ദിവ്യ സ്ഥാപകർ & ആദി രത്നങ്ങൾ</span>
+            <h2 id="bkModalNameEn" class="bk-jewel-name-en"></h2>
+            <div id="bkModalNameMl" class="bk-jewel-name-ml"></div>
+            <div id="bkModalTitleMl" class="bk-jewel-title-ml"></div>
+            <p id="bkModalSummaryMl" class="bk-jewel-summary-lead"></p>
+          </div>
+
+          <hr class="bk-jewel-divider">
+
+          <!-- Deep Malayalam Biography Content -->
+          <div id="bkModalBioContent" class="bk-jewel-bio-content">
+            <!-- Dynamically populated from jewels-data.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer: Quick Soul Switcher Carousel -->
+      <div class="bk-jewel-modal-footer">
+        <div class="bk-switcher-title">മറ്റു ദിവ്യാത്മാക്കൾ (Click to View):</div>
+        <div class="bk-jewels-quick-carousel" id="bkJewelsThumbCarousel">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
