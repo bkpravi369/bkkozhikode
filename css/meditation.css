@@ -1,0 +1,928 @@
+/* ==========================================================================
+   Brahma Kumaris Kozhikode — Redesigned Peace Meditation Sanctuary
+   Ultra-Aesthetic, Modern, Divine, Mobile-Optimised Styles
+   ========================================================================== */
+
+/* Universal box-sizing for meditation tab components */
+#tab-meditation,
+#tab-meditation * {
+  box-sizing: border-box;
+}
+
+/* Sanctuary Main Stage Container */
+.meditation-sanctuary {
+  position: relative;
+  background: radial-gradient(circle at 50% 12%, rgba(240, 100, 24, 0.25) 0%, rgba(124, 45, 18, 0.16) 38%, rgba(15, 4, 3, 0.98) 75%),
+              linear-gradient(180deg, #170503 0%, #0d0202 100%);
+  color: var(--divine-white, #ffffff);
+  border-radius: 24px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 50px rgba(234, 88, 12, 0.15);
+  padding: 3rem 2.25rem;
+  margin: 1.5rem 0 3rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Subtle Divine Paramdham Rays Overlay */
+.meditation-sanctuary::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  max-width: 100%;
+  height: 400px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, rgba(234, 88, 12, 0.14) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header badge on the sanctuary */
+.sanctuary-top-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sanctuary-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fde68a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.sanctuary-badge i {
+  color: #f59e0b;
+}
+
+.sanctuary-peace-quote {
+  font-size: 0.88rem;
+  color: rgba(253, 230, 138, 0.85);
+  font-style: italic;
+  font-family: var(--font-heading, 'Cinzel', serif);
+}
+
+/* 2-Column Sanctuary Grid */
+.meditation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT: Breathing Orb Visualizer & Digital Timer
+   -------------------------------------------------------------------------- */
+.breath-visualizer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  width: 100%;
+}
+
+/* Sacred Guidance Hint above Orb */
+.orb-guidance-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffd68a;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 1.75rem;
+  backdrop-filter: blur(8px);
+}
+
+/* Outer Pulsing Aura Ring */
+.breath-circle-outer {
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  border: 2px dashed rgba(245, 158, 11, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 16px;
+  box-shadow: 0 0 45px rgba(245, 158, 11, 0.15), inset 0 0 35px rgba(234, 88, 12, 0.15);
+  animation: rotate-sacred-ring 45s linear infinite;
+  transition: all 0.5s ease;
+}
+
+@keyframes rotate-sacred-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Inner Point of Light Orb (Supreme Soul & Soul Consciousness) */
+.breath-circle-inner {
+  width: 226px;
+  height: 226px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #ffffff 0%, #fff7ed 15%, #fdba74 38%, #ea580c 68%, #7c2d12 90%, #431407 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.25rem;
+  box-shadow: 0 0 55px rgba(234, 88, 12, 0.85), 0 0 110px rgba(245, 158, 11, 0.45);
+  transition: transform 3.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 3.8s ease;
+  color: #2a0802;
+  position: relative;
+  user-select: none;
+}
+
+/* Center Incorporeal Divine Spark */
+.breath-circle-inner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 15px #ffffff, 0 0 30px #fef08a, 0 0 60px #f97316;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Breath Cycle Animations */
+.breath-circle-inner.inhale {
+  transform: scale(1.18);
+  box-shadow: 0 0 80px rgba(251, 191, 36, 0.95), 0 0 140px rgba(240, 100, 24, 0.75), inset 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+.breath-circle-inner.hold {
+  transform: scale(1.18);
+  box-shadow: 0 0 100px rgba(255, 255, 255, 0.95), 0 0 160px rgba(251, 191, 36, 0.85), inset 0 0 60px rgba(255, 255, 255, 0.8);
+}
+
+.breath-circle-inner.exhale {
+  transform: scale(0.88);
+  box-shadow: 0 0 40px rgba(234, 88, 12, 0.55), 0 0 70px rgba(180, 83, 9, 0.35);
+}
+
+/* Orb Text */
+.breath-state-text {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #2c0803;
+  margin-bottom: 0.2rem;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.breath-sub-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #581c0c;
+  z-index: 2;
+  font-family: var(--font-malayalam, 'Anek Malayalam', sans-serif);
+}
+
+/* Digital Chronometer */
+.timer-countdown {
+  margin-top: 1.75rem;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #fbbf24;
+  font-family: 'Outfit', monospace;
+  letter-spacing: 2.5px;
+  text-shadow: 0 0 25px rgba(245, 158, 11, 0.55);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.4rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT: Glassmorphic Soundscapes & Control Console
+   -------------------------------------------------------------------------- */
+.meditation-controls-panel {
+  background: rgba(24, 7, 5, 0.78);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  padding: 2.25rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.meditation-controls-panel h3 {
+  color: #fef3c7;
+  font-size: 1.4rem;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+}
+
+.meditation-controls-panel h3 i {
+  color: #f59e0b;
+}
+
+.meditation-controls-panel p {
+  color: rgba(253, 230, 138, 0.75);
+  font-size: 0.9rem;
+  margin-bottom: 1.35rem;
+  line-height: 1.45;
+}
+
+/* Soundscapes 2x2 Grid */
+.soundscape-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.sound-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.sound-btn i {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: #f59e0b;
+  transition: transform 0.2s ease;
+}
+
+.sound-btn span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.sound-btn small {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(253, 230, 138, 0.75);
+  margin-top: 3px;
+  font-family: var(--font-malayalam, 'Anek Malayalam', sans-serif);
+  font-weight: 500;
+}
+
+.sound-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(245, 158, 11, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.sound-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* Active Soundscape Card */
+.sound-btn.active {
+  background: linear-gradient(135deg, #d97706 0%, #ea580c 60%, #b45309 100%);
+  border-color: #fbbf24;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.sound-btn.active i {
+  color: #ffffff;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.sound-btn.active small {
+  color: #fef3c7;
+}
+
+/* Live Audio Status & Volume Bar */
+.soundscape-status-bar {
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  font-size: 0.85rem;
+  color: #f8fafc;
+  backdrop-filter: blur(10px);
+}
+
+.soundscape-status-bar input[type="range"] {
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+/* Duration Selector */
+.duration-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.85rem;
+  color: #fde68a;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.duration-pills {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.duration-pill {
+  flex: 1;
+  min-width: 70px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(253, 230, 138, 0.85);
+  padding: 0.65rem 0.4rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.duration-pill:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.duration-pill.active {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border-color: #fbbf24;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
+
+/* Master Actions Bar */
+.meditation-action-bar {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.btn-start-meditation {
+  flex: 2;
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #c2410c 100%);
+  color: #ffffff;
+  padding: 0.95rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  box-shadow: 0 6px 25px rgba(234, 88, 12, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-start-meditation i {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-start-meditation:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(234, 88, 12, 0.7);
+  filter: brightness(1.05);
+}
+
+.btn-start-meditation:active {
+  transform: translateY(0);
+}
+
+.btn-reset-meditation {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f8fafc;
+  padding: 0.95rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-reset-meditation:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   LOWER SECTION: The Art of Soul-Conscious Meditation (Wisdom Card)
+   -------------------------------------------------------------------------- */
+.meditation-visual-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(217, 69, 20, 0.15);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.meditation-visual-card:hover {
+  box-shadow: 0 16px 45px rgba(217, 69, 20, 0.1);
+}
+
+.meditation-visual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+}
+
+.meditation-visual-media {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+}
+
+.meditation-visual-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.meditation-visual-card:hover .meditation-visual-media img {
+  transform: scale(1.03);
+}
+
+.meditation-visual-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(10px);
+  color: #f8fafc;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.meditation-visual-badge i {
+  color: #f59e0b;
+}
+
+.meditation-visual-content {
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.meditation-visual-content h3 {
+  font-size: 1.75rem;
+  color: #1e293b;
+  margin: 0.5rem 0 0.35rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.about-ml-heading {
+  font-size: 0.98rem;
+  color: #92400e;
+  font-family: var(--font-malayalam, 'Anek Malayalam', sans-serif);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.meditation-visual-content p {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+}
+
+.meditation-key-virtues {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.virtue-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #92400e;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.virtue-pill:hover {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: #d97706;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(217, 69, 20, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   3-Step Practical Raja Yoga Pathway Cards
+   -------------------------------------------------------------------------- */
+.rajyoga-pathway-section {
+  margin: 3rem 0;
+}
+
+.pathway-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pathway-header h3 {
+  font-size: 1.6rem;
+  color: #1e293b;
+  margin-bottom: 0.35rem;
+  font-weight: 800;
+}
+
+.pathway-header p {
+  color: #64748b;
+  font-size: 0.92rem;
+}
+
+.rajyoga-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.rajyoga-step-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #fed7aa;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.rajyoga-step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(217, 69, 20, 0.12);
+  border-color: #f97316;
+}
+
+.step-number-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.3);
+}
+
+.rajyoga-step-card h4 {
+  font-size: 1.15rem;
+  color: #9a3412;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.rajyoga-step-card .step-ml-title {
+  font-size: 0.88rem;
+  color: #b45309;
+  font-family: var(--font-malayalam, 'Anek Malayalam', sans-serif);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.rajyoga-step-card p {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   7-Day Course Invitation Banner inside Meditation Tab
+   -------------------------------------------------------------------------- */
+.meditation-course-invite {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #ffedd5 100%);
+  border: 1px solid #fcd34d;
+  border-radius: 18px;
+  padding: 2rem 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.1);
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.meditation-course-invite-text h4 {
+  font-size: 1.35rem;
+  color: #92400e;
+  margin-bottom: 0.35rem;
+  font-weight: 800;
+}
+
+.meditation-course-invite-text p {
+  color: #78350f;
+  font-size: 0.92rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.btn-learn-course-cta {
+  background: linear-gradient(135deg, #d97706 0%, #ea580c 100%);
+  color: #ffffff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.35);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-learn-course-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(234, 88, 12, 0.5);
+}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE OPTIMIZATIONS
+   ========================================================================== */
+@media (max-width: 992px) {
+  .meditation-sanctuary {
+    padding: 2.25rem 1.5rem;
+    border-radius: 20px;
+    margin: 1rem 0 2.5rem;
+  }
+
+  .meditation-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .breath-circle-outer {
+    width: 250px;
+    height: 250px;
+  }
+
+  .breath-circle-inner {
+    width: 195px;
+    height: 195px;
+  }
+
+  .timer-countdown {
+    font-size: 2.4rem;
+    padding: 0.35rem 1.35rem;
+  }
+
+  .meditation-controls-panel {
+    padding: 1.75rem 1.35rem;
+  }
+
+  .meditation-visual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meditation-visual-media {
+    min-height: 280px;
+    max-height: 340px;
+  }
+
+  .meditation-visual-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .rajyoga-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .meditation-sanctuary {
+    padding: 1.75rem 1rem;
+    border-radius: 18px;
+    margin: 0.75rem 0 2rem;
+  }
+
+  .sanctuary-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .sanctuary-peace-quote {
+    font-size: 0.8rem;
+  }
+
+  .orb-guidance-pill {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .breath-circle-outer {
+    width: 220px;
+    height: 220px;
+    padding: 12px;
+  }
+
+  .breath-circle-inner {
+    width: 172px;
+    height: 172px;
+    padding: 1rem;
+  }
+
+  .breath-state-text {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .breath-sub-text {
+    font-size: 0.75rem;
+  }
+
+  .timer-countdown {
+    font-size: 2.1rem;
+    padding: 0.3rem 1.1rem;
+    margin-top: 1.25rem;
+  }
+
+  .meditation-controls-panel {
+    padding: 1.35rem 1rem;
+    border-radius: 16px;
+  }
+
+  .meditation-controls-panel h3 {
+    font-size: 1.2rem;
+  }
+
+  .soundscape-selector {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .sound-btn {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.88rem;
+  }
+
+  .soundscape-status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .soundscape-status-bar > div:last-child {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .soundscape-status-bar input[type="range"] {
+    flex-grow: 1;
+    max-width: 150px;
+  }
+
+  .duration-pills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .duration-pill {
+    padding: 0.55rem 0.2rem;
+    font-size: 0.78rem;
+  }
+
+  .meditation-action-bar {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .btn-start-meditation, .btn-reset-meditation {
+    width: 100%;
+    padding: 0.85rem;
+  }
+
+  .meditation-visual-content {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .meditation-visual-content h3 {
+    font-size: 1.35rem;
+  }
+
+  .virtue-pill {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .meditation-course-invite {
+    padding: 1.5rem 1.25rem;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .btn-learn-course-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

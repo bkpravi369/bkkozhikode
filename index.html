@@ -28,11 +28,13 @@
   <!-- Preload Hero Poster for Instant High-Res Visual Paint -->
   <link rel="preload" as="image" href="assets/video/rajyoga-poster.jpg">
 
-  <link rel="stylesheet" href="css/style.css?v=45">
-  <link rel="stylesheet" href="css/hero.css?v=45">
-  <link rel="stylesheet" href="css/course.css?v=45">
-  <link rel="stylesheet" href="css/connect-god.css?v=45">
-  <link rel="stylesheet" href="css/murli.css?v=45">
+  <link rel="stylesheet" href="css/style.css?v=82">
+  <link rel="stylesheet" href="css/hero.css?v=82">
+  <link rel="stylesheet" href="css/course.css?v=82">
+  <link rel="stylesheet" href="css/connect-god.css?v=82">
+  <link rel="stylesheet" href="css/murli.css?v=82">
+  <link rel="stylesheet" href="css/meditation.css?v=82">
+
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=38">
   <link rel="apple-touch-icon" href="assets/images/logo-128.png?v=38">
 
@@ -592,18 +594,103 @@
       <div class="section-padding">
         <div class="container">
           <div class="section-header">
-            <span class="section-kicker">Soul Connection • ആത്മീയ ശാന്തി</span>
-            <h2>Interactive Peace Meditation Room</h2>
+            <span class="section-kicker">🕊️ Soul Awakening • ശാന്തിയുടെ സാന്നിധ്യം</span>
+            <h2>Interactive Peace Meditation Sanctuary</h2>
             <div class="section-title-ml">മനസ്സിന് ശാന്തി നൽകുന്ന രാജയോഗ ധ്യാനാനുഭവം</div>
             <div class="divider-sun"></div>
             <p class="section-subtitle">Take a few mindful moments to detach from worldly worries and bathe in the golden-red divine light of Paramdham</p>
           </div>
 
-          <!-- Youthful Rajyoga Meditation Showcase Card -->
+          <!-- TOP: Interactive Breath & Sound Sanctuary (Moved to Top as Requested) -->
+          <div class="meditation-sanctuary">
+            <div class="sanctuary-top-bar">
+              <span class="sanctuary-badge">
+                <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+                <span>Divine Rajyoga Experience • ആത്മീയ ശാന്തി അനുഭവം</span>
+              </span>
+              <span class="sanctuary-peace-quote">"I am a peaceful soul, connected to the Supreme Ocean of Peace."</span>
+            </div>
+
+            <div class="meditation-grid">
+              <!-- Left: Breath Visualizer Orb -->
+              <div class="breath-visualizer-container">
+                <div class="orb-guidance-pill">
+                  <i data-lucide="sparkles" style="width:13px;height:13px;color:#f59e0b;"></i>
+                  <span>Focus at Center of Forehead • ആത്മാവിൽ ഏകാഗ്രത</span>
+                </div>
+                <div class="breath-circle-outer">
+                  <div class="breath-circle-inner" id="breathOrb">
+                    <div class="breath-state-text" id="breathStateText">READY</div>
+                    <div class="breath-sub-text" id="breathSubText">Click Start to Begin</div>
+                  </div>
+                </div>
+                <div class="timer-countdown" id="meditationTimerDisplay">05:00</div>
+              </div>
+
+              <!-- Right: Sound & Guidance Panel -->
+              <div class="meditation-controls-panel">
+                <h3><i data-lucide="music-2" style="width:20px;height:20px;"></i> Select Ambient Soundscape</h3>
+                <p>Choose soothing natural resonance, sacred bamboo flute, ocean waves, or pure soul silence:</p>
+
+                <div class="soundscape-selector">
+                  <button class="sound-btn active" onclick="bkApp.setSoundscape('tanpura')" id="snd-tanpura">
+                    <i data-lucide="music"></i>
+                    <span>Paramdham<small>പരന്ധാമം</small></span>
+                  </button>
+                  <button class="sound-btn" onclick="bkApp.setSoundscape('flute')" id="snd-flute">
+                    <i data-lucide="wind"></i>
+                    <span>Peaceful Bansuri Flute<small>ശാന്തമായ പുല്ലാങ്കുഴൽ നാദം</small></span>
+                  </button>
+                  <button class="sound-btn" onclick="bkApp.setSoundscape('waves')" id="snd-waves">
+                    <i data-lucide="waves"></i>
+                    <span>Ocean of Peace Waves<small>ശാന്തി സാഗര തിരമാലകൾ</small></span>
+                  </button>
+                  <button class="sound-btn" onclick="bkApp.setSoundscape('silence')" id="snd-silence">
+                    <i data-lucide="volume-x"></i>
+                    <span>Bliss<small>ആനന്ദം</small></span>
+                  </button>
+                </div>
+
+                <!-- Live Audio Status & Volume Bar -->
+                <div id="soundscapeStatusBar" class="soundscape-status-bar">
+                  <div style="display:flex;align-items:center;gap:0.5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <i data-lucide="volume-2" id="soundscapeStatusIcon" style="width:16px;height:16px;color:#f59e0b;flex-shrink:0;"></i>
+                    <span id="soundscapeStatusText" style="font-weight:600;">Paramdham Tanpura (432Hz) Ready</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:0.4rem;flex-shrink:0;">
+                    <label for="soundscapeVolume" style="font-size:0.75rem;color:#fde68a;margin:0;">Vol</label>
+                    <input type="range" id="soundscapeVolume" min="0" max="1" step="0.05" value="0.7" oninput="bkApp.setVolume(this.value)" style="width:75px;cursor:pointer;accent-color:#f59e0b;">
+                  </div>
+                </div>
+
+                <label class="duration-label">Meditation Duration • ധ്യാന സമയം:</label>
+                <div class="duration-pills">
+                  <div class="duration-pill" onclick="bkApp.setDuration(1, this)">1 Min (Traffic Control)</div>
+                  <div class="duration-pill active" onclick="bkApp.setDuration(5, this)">5 Mins</div>
+                  <div class="duration-pill" onclick="bkApp.setDuration(10, this)">10 Mins</div>
+                  <div class="duration-pill" onclick="bkApp.setDuration(15, this)">15 Mins</div>
+                </div>
+
+                <div class="meditation-action-bar">
+                  <button class="btn-start-meditation" id="btnMeditationToggle" onclick="bkApp.toggleMeditation()">
+                    <i data-lucide="play"></i>
+                    <span>Start Meditation</span>
+                  </button>
+                  <button class="btn-reset-meditation" onclick="bkApp.resetMeditation()">
+                    <i data-lucide="rotate-ccw" style="width:16px;height:16px;"></i>
+                    <span>Reset</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LOWER SECTION: The Art of Soul-Conscious Meditation (Wisdom & Reflection) -->
           <div class="meditation-visual-card">
             <div class="meditation-visual-grid">
               <div class="meditation-visual-media">
-                <img src="assets/images/meditation_youth.jpg" alt="Youthful Rajyoga Meditation Practitioners in Kozhikode" loading="lazy">
+                <img src="assets/images/meditation_youth.jpg" alt="Youthful Rajyoga Meditation Practitioners in Kozhikode" loading="eager">
+
                 <div class="meditation-visual-badge">
                   <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
                   <span>Raja Yoga Meditation • നിശ്ശബ്ദതയുടെ അനുഭവം</span>
@@ -619,7 +706,7 @@
                 <p>
                   This practice restores clarity, emotional resilience, pure love, and effortless mastery over thoughts, speech, and actions in daily family and professional life.
                 </p>
-                <div class="meditation-key-virtues" style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.25rem;">
+                <div class="meditation-key-virtues">
                   <span class="virtue-pill">🕊️ Shanti (Peace)</span>
                   <span class="virtue-pill">✨ Pavitrata (Purity)</span>
                   <span class="virtue-pill">💖 Prem (Love)</span>
@@ -630,81 +717,50 @@
             </div>
           </div>
 
-          <div style="height: 2.5rem;"></div>
-
-          <!-- Interactive Breath & Sound Sanctuary -->
-          <div class="meditation-sanctuary">
-            <div class="meditation-grid">
-              <!-- Left: Breath Visualizer Orb -->
-              <div class="breath-visualizer-container">
-                <div class="breath-circle-outer">
-                  <div class="breath-circle-inner" id="breathOrb">
-                    <div class="breath-state-text" id="breathStateText">READY</div>
-                    <div class="breath-sub-text" id="breathSubText">Click Start to Begin</div>
-                  </div>
-                </div>
-                <div class="timer-countdown" id="meditationTimerDisplay">05:00</div>
+          <!-- 3-Step Practical Raja Yoga Pathway -->
+          <div class="rajyoga-pathway-section">
+            <div class="pathway-header">
+              <h3>3 Steps to Raja Yoga Meditation • ലളിതമായ 3 ഘട്ടങ്ങൾ</h3>
+              <p>Simple daily practice to recharge your mind with peace, purity, and spiritual powers</p>
+            </div>
+            <div class="rajyoga-steps-grid">
+              <div class="rajyoga-step-card">
+                <div class="step-number-badge">1</div>
+                <h4>Soul Realization</h4>
+                <div class="step-ml-title">ആത്മബോധം (സ്വരൂപ സ്മൃതി)</div>
+                <p>Detach from the physical body and roles. Realize: "I am a sparkling point of conscious spiritual light seated gently at the center of the forehead."</p>
               </div>
-
-              <!-- Right: Sound & Guidance Panel -->
-              <div class="meditation-controls-panel">
-                <h3>Select Ambient Soundscape</h3>
-                <p>Choose soothing natural resonance or guided soul consciousness commentary:</p>
-
-                <div class="soundscape-selector">
-                  <button class="sound-btn active" onclick="bkApp.setSoundscape('tanpura')" id="snd-tanpura">
-                    <i data-lucide="music"></i>
-                    <span>Paramdham<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">പരന്ധാമം</small></span>
-                  </button>
-                  <button class="sound-btn" onclick="bkApp.setSoundscape('flute')" id="snd-flute">
-                    <i data-lucide="wind"></i>
-                    <span>Peaceful Bansuri Flute<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">ശാന്തമായ പുല്ലാങ്കുഴൽ നാദം</small></span>
-                  </button>
-                  <button class="sound-btn" onclick="bkApp.setSoundscape('waves')" id="snd-waves">
-                    <i data-lucide="waves"></i>
-                    <span>Ocean of Peace Waves<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">ശാന്തി സാഗര തിരമാലകൾ</small></span>
-                  </button>
-                  <button class="sound-btn" onclick="bkApp.setSoundscape('silence')" id="snd-silence">
-                    <i data-lucide="volume-x"></i>
-                    <span>Bliss<small style="display:block;font-size:0.75rem;opacity:0.85;margin-top:2px;">ആനന്ദം</small></span>
-                  </button>
-                </div>
-
-                <!-- Live Audio Status & Volume Bar -->
-                <div id="soundscapeStatusBar" class="soundscape-status-bar" style="margin:0.75rem 0 1rem;padding:0.6rem 0.9rem;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:space-between;gap:0.75rem;font-size:0.85rem;color:var(--text-light, #f8fafc);">
-                  <div style="display:flex;align-items:center;gap:0.5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                    <i data-lucide="volume-2" id="soundscapeStatusIcon" style="width:16px;height:16px;color:#f59e0b;flex-shrink:0;"></i>
-                    <span id="soundscapeStatusText" style="font-weight:600;">Paramdham Tanpura (432Hz) Ready</span>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:0.4rem;flex-shrink:0;">
-                    <label for="soundscapeVolume" style="font-size:0.75rem;color:#94a3b8;margin:0;">Vol</label>
-                    <input type="range" id="soundscapeVolume" min="0" max="1" step="0.05" value="0.7" oninput="bkApp.setVolume(this.value)" style="width:70px;cursor:pointer;accent-color:#f59e0b;">
-                  </div>
-                </div>
-
-                <label style="display:block;margin-bottom:0.4rem;font-size:0.85rem;color:var(--sunset-glow);font-weight:600;">Meditation Duration:</label>
-                <div class="duration-pills">
-                  <div class="duration-pill" onclick="bkApp.setDuration(1, this)">1 Min (Traffic Control)</div>
-                  <div class="duration-pill active" onclick="bkApp.setDuration(5, this)">5 Mins</div>
-                  <div class="duration-pill" onclick="bkApp.setDuration(10, this)">10 Mins</div>
-                  <div class="duration-pill" onclick="bkApp.setDuration(15, this)">15 Mins</div>
-                </div>
-
-                <div class="meditation-action-bar">
-                  <button class="btn-start-meditation" id="btnMeditationToggle" onclick="bkApp.toggleMeditation()">
-                    <i data-lucide="play"></i>
-                    <span>Start Meditation</span>
-                  </button>
-                  <button class="btn-reset-meditation" onclick="bkApp.resetMeditation()">
-                    <span>Reset</span>
-                  </button>
-                </div>
+              <div class="rajyoga-step-card">
+                <div class="step-number-badge">2</div>
+                <h4>Supreme Connection</h4>
+                <div class="step-ml-title">പരമാത്മ ബന്ധം (ശിവബാബയുമായുള്ള യോഗം)</div>
+                <p>Direct your mind beyond the physical world to Paramdham (the Soul World of golden-red light). Connect with Supreme Soul Shiva Baba with deep love.</p>
+              </div>
+              <div class="rajyoga-step-card">
+                <div class="step-number-badge">3</div>
+                <h4>Drawing Divine Virtues</h4>
+                <div class="step-ml-title">ശക്തി സ്വീകരിക്കൽ (വരദാനങ്ങൾ)</div>
+                <p>Absorb divine rays of peace, unconditional love, and spiritual power from Shiv Baba into the soul, radiating them into your thoughts and deeds.</p>
               </div>
             </div>
           </div>
+
+          <!-- Free 7-Day Foundation Course Invitation -->
+          <div class="meditation-course-invite">
+            <div class="meditation-course-invite-text">
+              <h4>Want to Deepen Your Meditation Practice? • ധ്യാനം ആഴത്തിൽ പഠിക്കാം</h4>
+              <p>Join our 100% Free 7-Day Rajyoga Foundation Course with interactive daily videos, guided Malayalam commentary, quizzes, and digital certificate.</p>
+            </div>
+            <button class="btn-learn-course-cta" onclick="bkApp.switchTab('course')">
+              <span>Start Free 7-Day Course</span>
+              <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
+
 
     <!-- =========================================================================
          SECTION: 7-DAY RAJAYOGA COURSE (INTERACTIVE LEARNING PLATFORM)
