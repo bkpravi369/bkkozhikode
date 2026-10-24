@@ -226,11 +226,20 @@
     const prevSoul = window.BK_JEWELS_DATA[(currentIndex - 1 + totalCount) % totalCount];
     const nextSoul = window.BK_JEWELS_DATA[(currentIndex + 1) % totalCount];
 
-    // Split bio into Malayalam paragraphs
+    // Parse bio into styled subheadings and Malayalam paragraphs
     const bioParagraphs = (soul.bio || '')
-      .split('\n\n')
-      .filter(p => p.trim().length > 0)
-      .map(p => `<p class="bk-detail-paragraph">${p.trim()}</p>`)
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .map(line => {
+        if (line.startsWith('#### ')) {
+          return `<h4 class="bk-bio-subheading"><span class="bk-subheading-icon">✦</span> ${line.replace(/^####\s+/, '')}</h4>`;
+        }
+        if (line.startsWith('### ')) {
+          return `<h3 class="bk-bio-subheading"><span class="bk-subheading-icon">✦</span> ${line.replace(/^###\s+/, '')}</h3>`;
+        }
+        return `<p class="bk-detail-paragraph">${line}</p>`;
+      })
       .join('');
 
     detailView.innerHTML = `
@@ -319,6 +328,46 @@
             ${bioParagraphs}
           </div>
         </section>
+
+        <!-- PHOTO GALLERY SECTION: DIVYA SMARANAKAL -->
+        ${(soul.galleryImages && soul.galleryImages.length > 0) ? `
+        <section class="bk-detail-gallery-section">
+          <div class="bk-section-header-modern">
+            <span class="bk-sec-kicker">ചിത്രശേഖരം · Visual Memories</span>
+            <h2 class="bk-sec-title">ഫോട്ടോ ഗാലറി - ദിവ്യ സ്മരണകൾ</h2>
+            <div class="bk-sec-divider"></div>
+            <p class="bk-sec-subtitle">ആത്മീയ ജീവിതത്തിലെ അപൂർവ്വവും പവിത്രവുമായ നിറമുള്ള മുഹൂർത്തങ്ങൾ</p>
+          </div>
+
+          <div class="bk-gallery-modern-grid">
+            ${soul.galleryImages.map((img) => `
+              <figure class="bk-gallery-item-card" 
+                      tabindex="0" 
+                      role="button" 
+                      aria-label="${img.title || 'ഫോട്ടോ'}"
+                      onclick="window.openAdiRatnaLightbox('${img.src}', '${(img.title || '').replace(/'/g, "\\'")}', '${(img.caption || '').replace(/'/g, "\\'")}', '${img.fallback || img.src}')"
+                      onkeydown="if(event.key==='Enter'||event.key===' ') window.openAdiRatnaLightbox('${img.src}', '${(img.title || '').replace(/'/g, "\\'")}', '${(img.caption || '').replace(/'/g, "\\'")}', '${img.fallback || img.src}')">
+                <div class="bk-gallery-media-box">
+                  <img src="${img.src}" 
+                       alt="${img.title || soul.name}" 
+                       class="bk-gallery-thumb-img" 
+                       ${img.position ? `style="object-position: ${img.position};"` : ''}
+                       onerror="this.onerror=null; this.src='${img.fallback || img.src}';">
+                  <div class="bk-gallery-overlay-gradient"></div>
+                  <div class="bk-gallery-zoom-badge">
+                    <span class="bk-zoom-icon">🔍</span>
+                    <span class="bk-zoom-text">വലുതാക്കി കാണുക</span>
+                  </div>
+                </div>
+                <figcaption class="bk-gallery-caption-box">
+                  <h5 class="bk-gallery-photo-title">${img.title}</h5>
+                  ${img.caption ? `<p class="bk-gallery-photo-desc">${img.caption}</p>` : ''}
+                </figcaption>
+              </figure>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
 
         <!-- VERIFIED VIDEO SECTION: STRICTLY RENDERED ONLY IF VIDEO_URL IS NOT NULL -->
         ${(soul.videoUrl || soul.videoEmbedUrl) ? `
@@ -472,10 +521,77 @@
   window.addEventListener('popstate', handleUrlRouting);
   window.addEventListener('hashchange', handleUrlRouting);
 
+  /**
+   * Open Lightbox Modal for Photo Gallery
+   */
+  function openAdiRatnaLightbox(src, title, caption, fallback) {
+    let overlay = document.getElementById('bkAdiLightboxModal');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'bkAdiLightboxModal';
+      overlay.className = 'bk-adi-lightbox-overlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', 'Photo Lightbox');
+      overlay.innerHTML = `
+        <div class="bk-adi-lightbox-container" onclick="event.stopPropagation()">
+          <button type="button" class="bk-adi-lightbox-close-btn" onclick="window.closeAdiRatnaLightbox()" aria-label="Close Lightbox">✕</button>
+          <div class="bk-adi-lightbox-img-wrap">
+            <img id="bkAdiLightboxImg" src="" alt="" class="bk-adi-lightbox-img">
+          </div>
+          <div class="bk-adi-lightbox-caption">
+            <h4 id="bkAdiLightboxTitle" class="bk-adi-lightbox-title"></h4>
+            <p id="bkAdiLightboxText" class="bk-adi-lightbox-text"></p>
+          </div>
+        </div>
+      `;
+      overlay.addEventListener('click', closeAdiRatnaLightbox);
+      document.body.appendChild(overlay);
+    }
+
+    const imgEl = document.getElementById('bkAdiLightboxImg');
+    const titleEl = document.getElementById('bkAdiLightboxTitle');
+    const textEl = document.getElementById('bkAdiLightboxText');
+
+    if (imgEl) {
+      imgEl.onerror = function() {
+        if (fallback && this.src !== fallback) {
+          this.src = fallback;
+        }
+      };
+      imgEl.src = src;
+      imgEl.alt = title || 'ഫോട്ടോ';
+    }
+    if (titleEl) titleEl.textContent = title || '';
+    if (textEl) textEl.textContent = caption || '';
+
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    // Trap Escape key
+    const escHandler = function(e) {
+      if (e.key === 'Escape') {
+        closeAdiRatnaLightbox();
+        window.removeEventListener('keydown', escHandler);
+      }
+    };
+    window.addEventListener('keydown', escHandler);
+  }
+
+  function closeAdiRatnaLightbox() {
+    const overlay = document.getElementById('bkAdiLightboxModal');
+    if (overlay) {
+      overlay.classList.remove('is-open');
+    }
+    document.body.style.overflow = '';
+  }
+
   // Expose global methods
   window.renderAdiRatnaGrid = renderAdiRatnaGrid;
   window.navigateToAdiRatna = navigateToAdiRatna;
   window.navigateBackToGrid = navigateBackToGrid;
+  window.openAdiRatnaLightbox = openAdiRatnaLightbox;
+  window.closeAdiRatnaLightbox = closeAdiRatnaLightbox;
   window.openJewelProfile = function(slug) {
     // Legacy bridge
     navigateToAdiRatna(slug, true);
