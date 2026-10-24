@@ -1,18 +1,18 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/rajayoga-course", "destination": "/index.html" },
-    { "source": "/rajyoga-course", "destination": "/index.html" },
-    { "source": "/course", "destination": "/index.html" },
-    { "source": "/murali", "destination": "/index.html" },
-    { "source": "/murli", "destination": "/index.html" },
-    { "source": "/navathi", "destination": "/index.html" },
-    { "source": "/events", "destination": "/index.html" },
-    { "source": "/adi-ratna", "destination": "/index.html" },
-    { "source": "/adi-ratna/:slug*", "destination": "/index.html" },
-    { "source": "/bk-admin", "destination": "/admin/index.html" },
+    { "source": "/rajayoga-course", "destination": "/" },
+    { "source": "/rajyoga-course", "destination": "/" },
+    { "source": "/course", "destination": "/" },
+    { "source": "/murali", "destination": "/" },
+    { "source": "/murli", "destination": "/" },
+    { "source": "/navathi", "destination": "/" },
+    { "source": "/events", "destination": "/" },
+    { "source": "/adi-ratna", "destination": "/" },
+    { "source": "/adi-ratna/:slug*", "destination": "/" },
+    { "source": "/bk-admin", "destination": "/admin" },
     { "source": "/bk-admin/:path*", "destination": "/admin/:path*" },
-    { "source": "/admin", "destination": "/admin/index.html" }
+    { "source": "/admin", "destination": "/admin" }
   ],
   "headers": [
     {
