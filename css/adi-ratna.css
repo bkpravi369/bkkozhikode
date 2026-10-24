@@ -1,0 +1,1050 @@
+/**
+ * ============================================================================
+ * ADI RATNA & FOUNDERS PREMIUM SPIRITUAL STYLING
+ * Golden Aura, 3D Float, Soft Glassmorphism, Photo Enhancements & Responsive Layout
+ * Typography: Noto Sans Malayalam, Manjari, Gayathri
+ * ============================================================================
+ */
+
+/* Spiritual Color Palette Tokens */
+:root {
+  --bk-gold-50: #fffbeb;
+  --bk-gold-100: #fef3c7;
+  --bk-gold-200: #fde68a;
+  --bk-gold-300: #fcd34d;
+  --bk-gold-400: #fbbf24;
+  --bk-gold-500: #f59e0b;
+  --bk-gold-600: #d97706;
+  --bk-gold-700: #b45309;
+  --bk-gold-800: #92400e;
+  --bk-gold-900: #78350f;
+  --bk-saffron-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+  --bk-gold-aura-shadow: 0 20px 40px -12px rgba(245, 158, 11, 0.32), 0 0 28px 4px rgba(251, 191, 36, 0.28);
+}
+
+/* Category Headers (Malayalam Typography) */
+.bk-founders-category-header,
+.bk-adi-ratnas-category-header {
+  text-align: center;
+  margin: 3rem auto 2rem;
+  max-width: 820px;
+  padding: 0 1rem;
+}
+
+.bk-category-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #b45309;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.bk-category-title {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.35rem);
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.35;
+  margin: 0.35rem 0 0.75rem;
+  background: linear-gradient(135deg, #0f172a 0%, #78350f 55%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bk-category-desc {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: clamp(0.98rem, 2vw, 1.12rem);
+  color: #475569;
+  line-height: 1.8;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   1. FOUNDERS LUXURY DUAL GRID (Brahma Baba & Mamma)
+   ============================================================================ */
+.bk-founders-luxury-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.bk-founder-luxury-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-radius: 1.75rem;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 12px 35px -8px rgba(180, 83, 9, 0.12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Staggered Scroll Animation */
+.bk-ratan-card-modern {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--card-index, 0) * 0.04s);
+}
+
+.bk-ratan-card-modern.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3D Float / Lift Effect on Hover */
+.bk-founder-luxury-card:hover,
+.bk-ratan-card-modern:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: var(--bk-gold-aura-shadow);
+}
+
+.bk-founder-luxury-card:hover .bk-portrait-halo-frame,
+.bk-ratan-card-modern:hover .bk-avatar-glowing-ring {
+  box-shadow: 0 0 0 5px rgba(251, 191, 36, 0.35), 0 0 35px 8px rgba(245, 158, 11, 0.45);
+  transform: scale(1.04);
+}
+
+/* Ambient spiritual halo backdrop */
+.bk-card-ambient-aura {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, rgba(245, 158, 11, 0.05) 60%, transparent 75%);
+  filter: blur(24px);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  opacity: 0.6;
+}
+
+.bk-ratan-card-modern:hover .bk-card-ambient-aura {
+  opacity: 1;
+}
+
+/* Founder Media Wrap */
+.bk-founder-media-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.bk-portrait-halo-frame {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.25), 0 10px 25px -4px rgba(180, 83, 9, 0.28);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.bk-portrait-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  background: #1e1b18;
+  filter: contrast(1.08) brightness(1.03) saturate(1.15) sepia(0.08);
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+.bk-founder-luxury-card:hover .bk-portrait-img,
+.bk-ratan-card-modern:hover .bk-avatar-portrait {
+  transform: scale(1.06);
+  filter: contrast(1.1) brightness(1.05) saturate(1.2) sepia(0.05);
+}
+
+/* Subtle divine golden overlay tint */
+.bk-portrait-warm-tint {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.18) 0%, rgba(245, 158, 11, 0.05) 60%, transparent 100%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.bk-lifespan-pill {
+  display: inline-block;
+  margin-top: 0.85rem;
+  padding: 0.28rem 0.95rem;
+  border-radius: 9999px;
+  background: #fffbeb;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #92400e;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Founder Details */
+.bk-founder-details-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.bk-role-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.3rem 0.85rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%);
+  color: #b45309;
+  font-family: 'Noto Sans Malayalam', 'Anek Malayalam', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.bk-soul-name {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.3;
+  margin: 0 0 0.35rem;
+}
+
+.bk-loukik-name {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.92rem;
+  color: #78350f;
+  margin-bottom: 0.85rem;
+}
+
+.bk-soul-summary {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.96rem;
+  color: #475569;
+  line-height: 1.75;
+  margin: 0 0 1.25rem;
+  flex: 1;
+}
+
+/* Virtues Chips Preview */
+.bk-virtues-chips-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+}
+
+.bk-chip-virtue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: #fef3c7;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #92400e;
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Action Bar & CTA Button */
+.bk-card-action-bar {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(245, 158, 11, 0.3);
+}
+
+.bk-ratan-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.78rem 1.25rem;
+  border-radius: 9999px;
+  border: none;
+  background: var(--bk-saffron-gradient);
+  color: #ffffff;
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.28);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.bk-ratan-cta-btn:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(217, 119, 6, 0.4);
+}
+
+.bk-cta-arrow {
+  display: inline-block;
+  font-size: 1.15rem;
+  transition: transform 0.3s ease;
+}
+
+.bk-ratan-card-modern:hover .bk-cta-arrow {
+  transform: translateX(5px);
+}
+
+/* ============================================================================
+   2. ADI RATNAS GRID (21 SOULS)
+   ============================================================================ */
+.bk-adi-ratnas-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.bk-adi-ratnas-cards-grid .bk-ratan-card-modern {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(245, 158, 11, 0.28);
+  border-radius: 1.5rem;
+  padding: 1.6rem 1.4rem;
+  box-shadow: 0 10px 28px -8px rgba(180, 83, 9, 0.09);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Top Meta Row */
+.bk-ratan-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.bk-soul-role-pill {
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.5rem;
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  font-family: 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.bk-years-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.74rem;
+  color: #78350f;
+  font-weight: 600;
+  background: #fffbeb;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  white-space: nowrap;
+}
+
+/* Avatar Center Frame */
+.bk-ratan-avatar-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.bk-avatar-glowing-ring {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.22), 0 8px 20px -4px rgba(180, 83, 9, 0.24);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.bk-avatar-portrait {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  background: #1e1b18;
+  filter: contrast(1.08) brightness(1.03) saturate(1.15) sepia(0.08);
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+/* Body */
+.bk-ratan-card-body {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bk-ratan-title {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.25rem;
+  line-height: 1.35;
+}
+
+.bk-ratan-loukik {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.85rem;
+  color: #78350f;
+  margin-bottom: 0.75rem;
+}
+
+.bk-ratan-snippet {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+  flex: 1;
+}
+
+/* Footer CTA */
+.bk-ratan-card-footer {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(245, 158, 11, 0.25);
+}
+
+.bk-adi-ratnas-cards-grid .bk-ratan-cta-btn {
+  font-size: 0.85rem;
+  padding: 0.65rem 1rem;
+}
+
+/* ============================================================================
+   3. DEDICATED INDIVIDUAL DETAIL PAGE (/adi-ratna/[slug])
+   ============================================================================ */
+#adiRatnaGridSection,
+#adiRatnaDetailSection {
+  scroll-margin-top: 96px;
+}
+
+.bk-detail-view-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+  scroll-margin-top: 96px;
+  animation: bkFadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bkFadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Breadcrumb & Back Nav */
+.bk-detail-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.bk-back-to-grid-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(245, 158, 11, 0.4);
+  background: #ffffff;
+  color: #b45309;
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.12);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.bk-back-to-grid-btn:hover {
+  background: #fffbeb;
+  border-color: #f59e0b;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.24);
+}
+
+.bk-back-arrow {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.bk-detail-breadcrumbs {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.bk-detail-breadcrumbs a {
+  color: #b45309;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bk-detail-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.bk-bc-sep {
+  margin: 0 0.4rem;
+  color: #cbd5e1;
+}
+
+.bk-bc-current {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* HERO SECTION */
+.bk-detail-hero-section {
+  position: relative;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-radius: 2rem;
+  padding: 2.75rem 2.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 16px 45px -12px rgba(180, 83, 9, 0.14);
+  overflow: hidden;
+}
+
+.bk-hero-ambient-glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.08) 60%, transparent 75%);
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+.bk-hero-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .bk-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.75rem;
+  }
+}
+
+.bk-hero-visual-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bk-hero-portrait-frame {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  box-shadow: 0 0 0 5px rgba(251, 191, 36, 0.3), 0 14px 35px -6px rgba(180, 83, 9, 0.35);
+  overflow: hidden;
+}
+
+.bk-hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  background: #1e1b18;
+  filter: contrast(1.08) brightness(1.03) saturate(1.15) sepia(0.08);
+}
+
+.bk-hero-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.bk-hero-badge-years,
+.bk-hero-badge-status {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.bk-hero-badge-years {
+  background: #fffbeb;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #92400e;
+}
+
+.bk-hero-badge-status {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #b45309;
+}
+
+/* Hero Content Col */
+.bk-hero-content-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.bk-hero-kicker {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #b45309;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.bk-hero-soul-name {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.bk-hero-role-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.35rem 0.95rem;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.16) 0%, rgba(217, 119, 6, 0.16) 100%);
+  color: #b45309;
+  font-family: 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .bk-hero-role-badge {
+    align-self: center;
+  }
+}
+
+.bk-hero-loukik-box {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1.02rem;
+  color: #78350f;
+  background: #fffbeb;
+  border-left: 3px solid #f59e0b;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0.6rem 0.6rem 0;
+  margin-bottom: 1.25rem;
+}
+
+.bk-hero-quote-card {
+  position: relative;
+  background: #fffdf5;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem 1.25rem 2.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.08);
+}
+
+.bk-quote-icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.85rem;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #f59e0b;
+  font-family: Georgia, serif;
+}
+
+.bk-hero-quote-text {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #78350f;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Key Virtues Chips */
+.bk-hero-virtues-section {
+  margin-top: 0.5rem;
+}
+
+.bk-virtues-heading {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.65rem;
+}
+
+.bk-virtues-chips-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+@media (max-width: 768px) {
+  .bk-virtues-chips-list {
+    justify-content: center;
+  }
+}
+
+.bk-virtue-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #78350f;
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.bk-virtue-chip:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+}
+
+.bk-virtue-sparkle {
+  color: #d97706;
+}
+
+/* SECTION HEADERS */
+.bk-section-header-modern {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.bk-sec-kicker {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #b45309;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bk-sec-title {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0.35rem 0 0.6rem;
+}
+
+.bk-sec-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--bk-saffron-gradient);
+  border-radius: 9999px;
+  margin: 0 auto;
+}
+
+/* BIOGRAPHY SECTION */
+.bk-detail-bio-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(245, 158, 11, 0.25);
+  border-radius: 1.75rem;
+  padding: 2.5rem 2.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 12px 35px -8px rgba(180, 83, 9, 0.1);
+}
+
+.bk-bio-content-body {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.bk-detail-paragraph {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1.08rem;
+  color: #334155;
+  line-height: 1.95;
+  margin-bottom: 1.4rem;
+  text-align: justify;
+}
+
+.bk-detail-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* VERIFIED VIDEO SECTION */
+.bk-detail-video-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(245, 158, 11, 0.25);
+  border-radius: 1.75rem;
+  padding: 2.5rem 2.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 12px 35px -8px rgba(180, 83, 9, 0.1);
+}
+
+.bk-video-player-card {
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.22);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  background: #0f172a;
+}
+
+.bk-video-header-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.4rem;
+  background: #1e293b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bk-video-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.bk-yt-badge {
+  background: #ef4444;
+  color: #ffffff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.bk-video-main-title {
+  color: #f8fafc;
+  font-size: 0.96rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.bk-video-source-pill {
+  color: #fcd34d;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.bk-video-responsive-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+}
+
+.bk-video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* FOOTER SIBLING NAV */
+.bk-detail-footer-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .bk-detail-footer-bar {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.bk-nav-sibling-btn {
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem 1.25rem;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  background: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bk-nav-sibling-btn:hover {
+  background: #fffbeb;
+  border-color: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.18);
+}
+
+.bk-nav-sibling-btn.next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.bk-sibling-direction {
+  font-size: 0.8rem;
+  color: #b45309;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.bk-sibling-name {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.bk-back-to-grid-btn.center {
+  padding: 0.85rem 1.6rem;
+}
+
+/* QUICK THUMBNAIL SWITCHER */
+.bk-quick-switcher-wrap {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 1.5rem;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 8px 24px rgba(180, 83, 9, 0.08);
+}
+
+.bk-quick-switcher-title {
+  font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #78350f;
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.bk-quick-switcher-scroll {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #f59e0b #fef3c7;
+}
+
+.bk-quick-switcher-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.bk-quick-switcher-scroll::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+  border-radius: 9999px;
+}
+
+.bk-quick-thumb-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 0.85rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  width: 76px;
+}
+
+.bk-quick-thumb-btn img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+  transition: all 0.25s ease;
+}
+
+.bk-quick-thumb-btn:hover img {
+  border-color: #f59e0b;
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+.bk-quick-thumb-btn.active img {
+  border-color: #d97706;
+  border-width: 3px;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.4), 0 4px 12px rgba(217, 119, 6, 0.35);
+  transform: scale(1.1);
+}
+
+.bk-quick-thumb-name {
+  font-family: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.bk-quick-thumb-btn.active .bk-quick-thumb-name {
+  color: #b45309;
+  font-weight: 800;
+}

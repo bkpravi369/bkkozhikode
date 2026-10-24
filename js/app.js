@@ -106,7 +106,20 @@ class AppController {
     const cleanPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
     const hash = window.location.hash.replace('#', '');
     
-    if (cleanPath === 'rajayoga-course' || cleanPath === 'rajyoga-course' || cleanPath === 'course') {
+    if (cleanPath.startsWith('adi-ratna')) {
+      const slug = cleanPath.replace(/^adi-ratna\/?/, '');
+      this.switchTab('about', 'founder');
+      if (slug) {
+        const triggerNav = () => {
+          if (window.navigateToAdiRatna) {
+            window.navigateToAdiRatna(slug, false);
+          } else {
+            setTimeout(triggerNav, 30);
+          }
+        };
+        triggerNav();
+      }
+    } else if (cleanPath === 'rajayoga-course' || cleanPath === 'rajyoga-course' || cleanPath === 'course') {
       this.switchTab('course');
     } else if (cleanPath === 'murali' || cleanPath === 'murli') {
       this.switchTab('murali');
@@ -115,7 +128,15 @@ class AppController {
     } else if (cleanPath === 'events') {
       this.switchTab('events');
     } else if (hash) {
-      if (hash === 'murali' || hash === 'murli' || hash === 'tab-murali') {
+      if (hash.startsWith('adi-ratna')) {
+        const slug = hash.replace(/^adi-ratna\/?-?/, '');
+        this.switchTab('about', 'founder');
+        if (slug) {
+          setTimeout(() => {
+            if (window.navigateToAdiRatna) window.navigateToAdiRatna(slug, false);
+          }, 120);
+        }
+      } else if (hash === 'murali' || hash === 'murli' || hash === 'tab-murali') {
         this.switchTab('murali');
       } else if (hash === 'about' || hash.startsWith('about-')) {
         const sub = hash.replace('about-', '');
@@ -405,7 +426,9 @@ class AppController {
       tabId = 'course';
     }
     this.currentTab = tabId;
-    window.location.hash = (tabId === 'course' && subCategory) ? `course-day-${subCategory}` : (subCategory ? `${tabId}-${subCategory}` : tabId);
+    if (!window.location.pathname.startsWith('/adi-ratna')) {
+      window.location.hash = (tabId === 'course' && subCategory) ? `course-day-${subCategory}` : (subCategory ? `${tabId}-${subCategory}` : tabId);
+    }
 
     // Update Header and Body theme immediately for interior vs home
     this.updateHeaderTheme(tabId);
@@ -586,8 +609,16 @@ class AppController {
     if (activeBtn) {
       activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
+    if (subtabId === 'founder') {
+      const isDetailPath = window.location.pathname.startsWith('/adi-ratna/') && window.location.pathname.length > '/adi-ratna/'.length;
+      if (!isDetailPath && window.renderAdiRatnaGrid) {
+        window.renderAdiRatnaGrid();
+      }
+    }
     if (window.history && window.history.replaceState) {
-      window.history.replaceState(null, null, subtabId === 'us' ? '#about' : `#about-${subtabId}`);
+      if (!window.location.pathname.startsWith('/adi-ratna')) {
+        window.history.replaceState(null, null, subtabId === 'us' ? '#about' : `#about-${subtabId}`);
+      }
     }
   }
 

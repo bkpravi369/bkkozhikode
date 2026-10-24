@@ -8,6 +8,8 @@
     { "source": "/murli", "destination": "/index.html" },
     { "source": "/navathi", "destination": "/index.html" },
     { "source": "/events", "destination": "/index.html" },
+    { "source": "/adi-ratna", "destination": "/index.html" },
+    { "source": "/adi-ratna/:slug*", "destination": "/index.html" },
     { "source": "/bk-admin", "destination": "/admin/index.html" },
     { "source": "/bk-admin/:path*", "destination": "/admin/:path*" },
     { "source": "/admin", "destination": "/admin/index.html" }

@@ -327,7 +327,7 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # Direct tab routes served by index.html
         clean_path = self.path.split('?')[0]
-        if clean_path in ['/rajayoga-course', '/rajyoga-course', '/course', '/navathi', '/events']:
+        if clean_path in ['/rajayoga-course', '/rajyoga-course', '/course', '/navathi', '/events', '/murali', '/murli', '/adi-ratna'] or (clean_path.startswith('/adi-ratna/') and '.' not in os.path.basename(clean_path)):
             index_path = os.path.join(os.getcwd(), 'index.html')
             if os.path.isfile(index_path):
                 self.send_response(200)
@@ -518,7 +518,7 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_HEAD(self):
         clean_path = self.path.split('?')[0]
-        if clean_path in ['/rajayoga-course', '/rajyoga-course', '/course', '/navathi', '/events']:
+        if clean_path in ['/rajayoga-course', '/rajyoga-course', '/course', '/navathi', '/events', '/murali', '/murli', '/adi-ratna'] or (clean_path.startswith('/adi-ratna/') and '.' not in os.path.basename(clean_path)):
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
             self.end_headers()
