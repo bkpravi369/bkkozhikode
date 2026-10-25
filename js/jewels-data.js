@@ -12,13 +12,18 @@ window.BK_JEWELS_DATA = [
     slug: "brahma-baba",
     id: "brahma-baba",
     name: "പ്രജാപീതാ ബ്രഹ്മാ ബാബ",
+    nameEn: "Prajapita Brahma Baba",
     loukikName: "ദാദാ ലേഖ്രാജ് കൃപലാനി",
+    loukikNameEn: "Dada Lekhraj Kripalani",
     role: "സ്ഥാപക പിതാവ് & സാകാര മാധ്യമം",
+    roleEn: "Founding Father & Corporeal Medium",
     years: "15 ഡിസംബർ 1876 – 18 ജനുവരി 1969",
+    yearsEn: "15 December 1876 – 18 January 1969",
     category: "founder",
     photo: "assets/images/adi-ratna/brahma-baba.jpg",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_hd_photo_7_3cc38c763a.jpg",
     summary: "സാധാരണ മനുഷ്യനായി ജനിച്ച്, ഈശ്വരീയ ജ്ഞാനത്താൽ സ്വയം രൂപാന്തരപ്പെട്ട്, ലോകനന്മയ്ക്കായി സർവ്വതും സമർപ്പിച്ച ആത്മീയ വിപ്ലവകാരി.",
+    summaryEn: "A visionary merchant turned spiritual instrument who renounced all worldly wealth to pioneer a global spiritual awakening under God's guidance.",
     bio: `#### ബാല്യകാലവും ലൗകിക ജീവിതവും
 1876 ഡിസംബർ 15-ന് അവിഭക്ത ഇന്ത്യയിലെ സിന്ധ് പ്രവിശ്യയിലുള്ള ഹൈദരാബാദിൽ ഒരു സാധാരണ സ്കൂൾ ഹെഡ്മാസ്റ്ററുടെ മകനായാണ് ദാദാ ലേഖ്രാജ് കൃപലാനി ജനിച്ചത്. വല്ലഭാചാര്യ സമ്പ്രദായത്തിൽപ്പെട്ട തികഞ്ഞ ഭക്തകുടുംബമായിരുന്നു അദ്ദേഹത്തിന്റേത്. ചെറുപ്പം മുതലേ ശ്രീനാരായണനോട് അഗാധമായ ഭക്തി പുലർത്തിയിരുന്ന അദ്ദേഹം, സത്യസന്ധതയും കഠിനാധ്വാനവും കൈമുതലാക്കി ഗോതമ്പ് വ്യാപാരത്തിൽ നിന്ന് ആരംഭിച്ച് പിന്നീട് കൽക്കത്തയിലും മുംബൈയിലും അറിയപ്പെടുന്ന വജ്രവ്യാപാരിയായി (രത്നവ്യാപാരി) ഉയർന്നു. അക്കാലത്തെ രാജാക്കന്മാരുടെയും പ്രഭുക്കന്മാരുടെയും ബ്രിട്ടീഷ് വൈസ്രോയിമാരുടെയും കൊട്ടാരങ്ങളിൽ പോലും അത്രമേൽ വിശ്വസ്തനായ വ്യക്തിയായിരുന്നു ദാദാ ലേഖ്രാജ്. ഭൗതിക സമ്പത്തിന്റെയും പ്രശസ്തിയുടെയും കൊടുമുടിയിൽ നിൽക്കുമ്പോഴും അദ്ദേഹത്തിന്റെ മനസ്സ് ആത്മീയ സത്യങ്ങൾക്കായി ദാഹിച്ചിരുന്നു.
 
@@ -36,47 +41,80 @@ window.BK_JEWELS_DATA = [
 
 #### അവ്യക്ത പദവി (സമ്പൂർണ്ണത)
 തന്റെ ജീവിതം മുഴുവൻ 'നിർമ്മാൺ ഭാവം' (പരമമായ വിനയം), 'നിമിത്ത ഭാവം' എന്നിവയിൽ അധിഷ്ഠിതമായി നയിച്ച ബ്രഹ്മാ ബാബ, 1969 ജനുവരി 18-ന് രാത്രി മധുബനിൽ വെച്ച് സാകാര ശരീരം വെടിഞ്ഞ് സമ്പൂർണ്ണ ഫരിഷ്താ (അവ്യക്ത) പദവി പ്രാപിച്ചു. അദ്ദേഹത്തിന്റെ ഭൗതിക ശരീരം അടക്കം ചെയ്ത മധുബനിലെ 'ശാന്തി സ്തംഭം' ഇന്ന് ലോകമെമ്പാടുമുള്ള ദശലക്ഷക്കണക്കിന് സാധകർക്ക് ശക്തി പകരുന്ന തപോഭൂമിയാണ്.`,
+    bioEn: `#### Early Life & Worldly Success
+Born on 15 December 1876 in Hyderabad, Sindh, as the son of a school headmaster, Dada Lekhraj Kripalani grew up in a devout family following the Vallabhacharya tradition. Starting from a humble grain business, his integrity and sharp acumen elevated him to become one of India's most renowned diamond merchants in Kolkata and Mumbai. Though highly respected by royal families and British dignitaries, his heart remained deeply inclined toward spiritual truth and benevolence.
+
+#### The Divine Visions of 1936
+At the age of 60, while spending time in deep solitude and meditation in Mount Abu and Varanasi, he experienced a series of profound divine visions. He witnessed the four-armed Vishnu, the incorporeal Supreme Soul Shiva as a point of divine light, the destruction of the old iron-aged world, and the dawn of a golden-aged paradise. God Shiva adopted his corporeal form as a medium (Chariot), bestowing upon him the spiritual name 'Prajapita Brahma'.
+
+#### Founding of Om Mandali & Empowerment of Women
+Following divine directions in 1936–37, he wound up his diamond business and returned to Sindh, surrendering his entire fortune to spiritual service. He established the spiritual gathering known as 'Om Mandali'. In a revolutionary step for that era, he placed the entire administration and legal trust of the organization into the hands of a committee of eight young women led by Mateshwari Saraswati (Mama).
+
+#### 14 Years of Tapasya in Karachi
+Amid intense societal opposition, around 300 members moved to Karachi in late 1937. For 14 years (1937–1950), this spiritual community lived in deep solitude, meditation, and study—a period known as the spiritual furnace ('Bhatti'). Brahma Baba nurtured every seeker with immense paternal love, moulding them into spiritual jewels ('Adi Ratnas').
+
+#### Relocation to Mount Abu & Global Service
+After the Partition, in 1950, following God's direction, the headquarters moved to Madhuban in Mount Abu, Rajasthan. From 1952 onwards, Baba sent young sisters across major Indian cities to establish Rajyoga centres, guiding them personally through thousands of handwritten letters.
+
+#### Attaining the Avyakt (Angelic) Stage
+Living as an embodiment of humility ('Nirman Bhav') and trusteeship ('Nimitt Bhav'), Brahma Baba shed his mortal coil on the night of 18 January 1969 in Madhuban, attaining the complete angelic stage. His memorial, 'Shanti Stambh' (Tower of Peace), continues to inspire millions worldwide.`,
     virtues: ["അപാരമായ പിതൃവാത്സല്യം", "നിർമ്മാൺ ഭാവം (പരമമായ വിനയം)", "ത്യാഗവും തപസ്യയും", "മാതൃശക്തിയുടെ ഉന്നമനം", "നിമിത്ത ഭാവം"],
+    virtuesEn: ["Immense Paternal Love", "Utmost Humility (Nirman Bhav)", "Renunciation & Tapasya", "Empowerment of Women", "Trustee Consciousness"],
     videoUrl: "https://www.youtube.com/embed/kLZynDI0Q_8",
     videoEmbedUrl: "https://www.youtube.com/embed/kLZynDI0Q_8",
     videoTitle: "Brahma Baba Special Story",
     quote: "കുഞ്ഞുങ്ങളേ, സ്വയം ഒരു പ്രകാശബിന്ദുവായ ആത്മാവായി ദർശിക്കൂ; പരമപിതാവായ ശിവനെ സ്മരിക്കൂ. നിങ്ങളിൽ സ്നേഹവും ശാന്തിയും പവിത്രതയും താനേ നിറയും.",
+    quoteEn: "Children, constantly experience yourselves as radiant points of spiritual light. Remember Supreme Father Shiva; love, peace, and purity will naturally overflow within you.",
     galleryImages: [
       {
         src: "assets/images/adi-ratna/gallery/bb_divine_smile.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_hd_photo_7_3cc38c763a.jpg",
         title: "ദിവ്യ സാന്നിധ്യം",
-        caption: "സ്നേഹവും ശാന്തിയും പ്രസരിപ്പിക്കുന്ന ബാബയുടെ മനോഹരമായ മന്ദസ്മിതം"
+        titleEn: "Divine Presence",
+        caption: "സ്നേഹവും ശാന്തിയും പ്രസരിപ്പിക്കുന്ന ബാബയുടെ മനോഹരമായ മന്ദസ്മിതം",
+        captionEn: "Baba's beautiful divine smile radiating peace and unconditional love"
       },
       {
         src: "assets/images/adi-ratna/gallery/bb_sitting_meditation.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_hd_photo_1_e62f1fb65a.jpg",
         title: "മധുബനിലെ തപസ്യ",
-        caption: "മധുബൻ തപോഭൂമിയിൽ ആഴമേറിയ രാജയോഗ ധ്യാനസ്ഥിതിയിൽ ബാബ"
+        titleEn: "Tapasya in Madhuban",
+        caption: "മധുബൻ തപോഭൂമിയിൽ ആഴമേറിയ രാജയോഗ ധ്യാനസ്ഥിതിയിൽ ബാബ",
+        captionEn: "Brahma Baba absorbed in deep Rajyoga meditation in Madhuban"
       },
       {
         src: "assets/images/adi-ratna/gallery/baba_and_mamma_swing.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_hd_photo_4_b45d5fd1d1.jpg",
         title: "ബാബയും മമ്മയും ഒന്നിച്ച്",
-        caption: "മധുബനിലെ ഊഞ്ഞാലിൽ പിതാശ്രീ ബ്രഹ്മാ ബാബയും മാതേശ്വരി സരസ്വതി മമ്മയും"
+        titleEn: "Baba and Mamma Together",
+        caption: "മധുബനിലെ ഊഞ്ഞാലിൽ പിതാശ്രീ ബ്രഹ്മാ ബാബയും മാതേശ്വരി സരസ്വതി മമ്മയും",
+        captionEn: "Prajapita Brahma Baba and Mateshwari Saraswati Mamma on a swing in Madhuban",
+        position: "center"
       },
       {
         src: "assets/images/adi-ratna/gallery/bb_color_portrait.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_colored_photo_small_size_20_2e2d3a8dd3.jpg",
         title: "ആനന്ദസ്വരൂപൻ",
-        caption: "മധുബൻ പൂന്തോട്ടത്തിൽ പ്രകൃതിയോട് ചേർന്ന് ശാന്തസുന്ദരമായ ഭാവത്തിൽ"
+        titleEn: "Embodiment of Bliss",
+        caption: "മധുബൻ പൂന്തോട്ടത്തിൽ പ്രകൃതിയോട് ചേർന്ന് ശാന്തസുന്ദരമായ ഭാവത്തിൽ",
+        captionEn: "Baba seated peacefully in the scenic garden of Madhuban",
+        position: "center"
       },
       {
         src: "assets/images/adi-ratna/gallery/bb_giving_drishti.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_hd_photo_10_6f024597d9.jpg",
         title: "ദിവ്യ ദൃഷ്ടി",
-        caption: "ആത്മാക്കളെ ശാന്തിയുടെ അതീന്ദ്രിയ തലത്തിലേക്ക് ഉയർത്തുന്ന ബാബയുടെ നയനങ്ങൾ"
+        titleEn: "Divine Drishti",
+        caption: "ആത്മാക്കളെ ശാന്തിയുടെ അതീന്ദ്രിയ തലത്തിലേക്ക് ഉയർത്തുന്ന ബാബയുടെ നയനങ്ങൾ",
+        captionEn: "Baba's transformative spiritual vision uplifting souls into super-sensory peace"
       },
       {
         src: "assets/images/adi-ratna/gallery/bb_golden_light.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_hd_photo_5_f13e83db31.jpg",
         title: "ദിവ്യാലങ്കാരം",
-        caption: "ഈശ്വരീയ സ്നേഹത്തിന്റെ കിരീടമണിഞ്ഞ ബ്രഹ്മാ ബാബയുടെ പുണ്യസ്മരണ"
+        titleEn: "Divine Radiance",
+        caption: "ഈശ്വരീയ സ്നേഹത്തിന്റെ കിരീടമണിഞ്ഞ ബ്രഹ്മാ ബാബയുടെ പുണ്യസ്മരണ",
+        captionEn: "Sacred memory of Brahma Baba adorned in Godly love and majesty"
       }
     ]
   },
@@ -84,13 +122,18 @@ window.BK_JEWELS_DATA = [
     slug: "mamma-saraswati",
     id: "mamma-saraswati",
     name: "മാതേശ്വരി ജഗദംബാ സരസ്വതി (മമ്മ)",
+    nameEn: "Mateshwari Jagadamba Saraswati (Mama)",
     loukikName: "രാധേ പൊകർദാസ് രാജ്വാനി (ഓം രാധേ)",
+    loukikNameEn: "Radhe Pokardas Rajwani (Om Radhe)",
     role: "പ്രഥമ മുഖ്യ ഭരണാധികാരി & യജ്ഞ മാതാവ്",
+    roleEn: "First Chief Administrator & Spiritual Mother",
     years: "1919 – 24 ജൂൺ 1965",
+    yearsEn: "1919 – 24 June 1965",
     category: "founder",
     photo: "assets/images/adi-ratna/mamma-saraswati.jpg",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Jagadamba_Saraswati_d430abd39e.webp",
     summary: "ഈശ്വരീയ ജ്ഞാനത്തെ ജീവിതാമൃതമാക്കി മാറ്റിയ, നിസ്തുലമായ വിവേകത്തിന്റെയും മാതൃസഹജമായ വാത്സല്യത്തിന്റെയും ദിവ്യപ്രതീകം.",
+    summaryEn: "The epitome of spiritual wisdom, divine discipline, and maternal affection who steered the Yagya with supreme grace.",
     bio: `#### ജനനവും ബാല്യകാലവും
 1919-ൽ പഞ്ചാബിലെ അമൃത്സറിന് സമീപം ജനിച്ച് സിന്ധിലെ ഹൈദരാബാദിൽ വളർന്ന രാധേ പൊകർദാസ് രാജ്വാനി, കുട്ടിക്കാലം മുതൽക്കേ അതീവ ബുദ്ധിശാലിയും കലാപരമായ കഴിവുകളുള്ളവളുമായിരുന്നു. ചിത്രകലയിലും സംഗീതത്തിലും പഠനത്തിലും ഒരുപോലെ മികവ് പുലർത്തിയിരുന്ന രാധേയ്ക്ക് ലൗകികമായ ആഡംബരങ്ങളേക്കാൾ ആത്മീയ ചിന്തകളോടായിരുന്നു താല്പര്യം.
 
@@ -105,47 +148,76 @@ window.BK_JEWELS_DATA = [
 
 #### സമ്പൂർണ്ണതയിലേക്കുള്ള പ്രയാണം
 ശാരീരികമായ അസ്വസ്ഥതകൾ ഉണ്ടായിരുന്ന അവസാന നാളുകളിൽ പോലും മമ്മയുടെ മുഖത്ത് വേദനയുടെ ലാഞ്ഛന പോലും ഉണ്ടായിരുന്നില്ല. സ്വന്തം ശരീരത്തിൽ നിന്ന് പൂർണ്ണമായും വേറിട്ട് ആത്മീയ സ്ഥിതിയിൽ (കമ്പ്ലീറ്റ് കർമ്മാതീത അവസ്ഥ) നിലകൊണ്ട മമ്മ, 1965 ജൂൺ 24-ന് തന്റെ 45-ാം വയസ്സിൽ മധുബനിൽ വെച്ച് അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Birth & Early Childhood
+Born in 1919 near Amritsar and raised in Hyderabad, Sindh, Radhe Pokardas Rajwani was an extraordinarily gifted child. Excelling in academics, music, and art, she possessed a natural inclination toward purity and spiritual reflection over worldly luxury.
+
+#### Entry into Om Mandali & Becoming 'Mama'
+In 1937, at the age of 17, Radhe attended Dada Lekhraj's satsang along with her mother, Jaswanti. Recognizing the divine truth in her very first class, she surrendered her life to the Yagya. Seeing her clarity of intellect and spiritual maturity, Brahma Baba named her 'Saraswati' and appointed her as the President of the Om Mandali Managing Committee. Seekers, including those decades older than her, affectionately called her 'Mama' (Mother).
+
+#### Embodiment of Discipline & Maternal Love
+During the 14 years of Tapasya in Karachi, Mama stood as the administrative and spiritual backbone of the organization. She fearlessly represented Om Mandali before government authorities and tribunals, authoring the historic book 'Is This Justice?'. She was an absolute example of following spiritual directions ('Shrimat'), never missing early morning meditation (Amritvela) or Murli study.
+
+#### All-India Tours & Spiritual Service
+After moving to Mount Abu in 1950, Mama travelled extensively across Delhi, Mumbai, Punjab, and Uttar Pradesh to establish service centres. Both scholars and common people were captivated by her sweet yet logical discourses, earning her the beloved title 'Meethi Mama' (Sweet Mother).
+
+#### Journey to Completeness
+Even during physical illness in her final days, Mama remained completely detached from bodily pain, radiating peace and spiritual power. On 24 June 1965, at the age of 45, she attained the complete karmateet (angelic) stage in Madhuban.`,
     virtues: ["സമ്പൂർണ്ണ ശ്രീമത പാലന", "മാതൃവാത്സല്യം (മീഠി മമ്മ)", "ജ്ഞാനസ്വരൂപിണി", "നിർഭയമായ നേതൃത്വം", "കർമ്മാതീത സ്ഥിതി"],
+    virtuesEn: ["Absolute Obedience to Shrimat", "Motherly Love (Meethi Mama)", "Goddess of Wisdom", "Fearless Leadership", "Karmateet Stage"],
     videoUrl: "https://www.youtube.com/embed/67I4HiZty1U",
     videoEmbedUrl: "https://www.youtube.com/embed/67I4HiZty1U",
     videoTitle: "Meethi Mamma Ka Jeevan Parichay",
     quote: "ഓരോ നിമിഷവും ഓരോ ചിന്തയും ഈശ്വരീയ സേവനത്തിൽ അർപ്പിക്കുക; പവിത്രതയാണ് സമാധാനത്തിന്റെയും വിജയത്തിന്റെയും അടിസ്ഥാനം.",
+    quoteEn: "Dedicate every second and every thought to Godly service. Purity is the foundation of peace and eternal victory.",
     galleryImages: [
       {
         src: "assets/images/adi-ratna/gallery/mamma_divine_portrait.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Jagadamba_Saraswati_d430abd39e.webp",
         title: "ജ്ഞാനസരസ്വതി",
-        caption: "തേജസ്സും ഗാംഭീര്യവും തുളുമ്പുന്ന മാതേശ്വരി ജഗദംബാ സരസ്വതി"
+        titleEn: "Goddess of Wisdom (Jnana Saraswati)",
+        caption: "തേജസ്സും ഗാംഭീര്യവും തുളുമ്പുന്ന മാതേശ്വരി ജഗദംബാ സരസ്വതി",
+        captionEn: "Mateshwari Jagadamba Saraswati radiating divine majesty and grace"
       },
       {
         src: "assets/images/adi-ratna/gallery/mamma_on_lotus.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Mamma_sitting_on_Lotus_ff0be39b5a.jpg",
         title: "താമരപ്പൂവിലെ മാതാവ്",
-        caption: "സമ്പൂർണ്ണ പവിത്രതയുടെ പ്രതീകമായ താമരപ്പൂവിൽ ഉപവിഷ്ടയായ മമ്മ"
+        titleEn: "Mother Seated on Lotus",
+        caption: "സമ്പൂർണ്ണ പവിത്രതയുടെ പ്രതീകമായ താമരപ്പൂവിൽ ഉപവിഷ്ടയായ മമ്മ",
+        captionEn: "Mamma seated in divine peace on a sacred lotus representing supreme purity"
       },
       {
         src: "assets/images/adi-ratna/gallery/mamma_on_globe.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Mamma_standing_on_Globe_15cba29dd0.jpg",
         title: "വിശ്വകല്യാണി",
-        caption: "ഭൂമണ്ഡലത്തെ പരമാത്മ ശാന്തിയാൽ അനുഗ്രഹിക്കുന്ന ജഗദംബ"
+        titleEn: "Universal Benefactor",
+        caption: "ഭൂമണ്ഡലത്തെ പരമാത്മ ശാന്തിയാൽ അനുഗ്രഹിക്കുന്ന ജഗദംബ",
+        captionEn: "Jagadamba showering Supreme Peace upon the entire world globe"
       },
       {
         src: "assets/images/adi-ratna/gallery/mamma_giving_grapes.webp",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Mamma_giving_Grapes_36_inches_width_x_44_inches_height_f4caa55a16.webp",
         title: "ഈശ്വരീയ പ്രസാദം",
-        caption: "കുഞ്ഞുങ്ങൾക്ക് സ്നേഹത്തോടെ ഈശ്വരീയ പ്രസാദം പകരുന്ന മമ്മ"
+        titleEn: "Godly Prasad",
+        caption: "കുഞ്ഞുങ്ങൾക്ക് സ്നേഹത്തോടെ ഈശ്വരീയ പ്രസാദം പകരുന്ന മമ്മ",
+        captionEn: "Mamma lovingly sharing divine prasad and blessings with spiritual children"
       },
       {
         src: "assets/images/adi-ratna/gallery/mamma_speech_delhi.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Standing_Mamma_05_2aa5610a32.jpg",
         title: "മാതേശ്വരി ജഗദംബ",
-        caption: "അംഗീകരിക്കപ്പെട്ട ആത്മീയ നേതൃത്വത്തിന്റെ പ്രഭാവപൂർണ്ണമായ രൂപം"
+        titleEn: "Mateshwari Jagadamba",
+        caption: "അംഗീകരിക്കപ്പെട്ട ആത്മീയ നേതൃത്വത്തിന്റെ പ്രഭാവപൂർണ്ണമായ രൂപം",
+        captionEn: "Dignified spiritual leadership of Mateshwari Mamma addressing gatherings"
       },
       {
         src: "assets/images/adi-ratna/gallery/baba_and_mamma_swing.jpg",
         fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Brahma_Baba_hd_photo_4_b45d5fd1d1.jpg",
         title: "ബാപ്ദാദയും മമ്മയും",
-        caption: "മധുബനിൽ ബ്രഹ്മാ ബാബയോടൊപ്പം ആത്മീയ സംഭാഷണത്തിൽ മമ്മ"
+        titleEn: "Bapdada and Mamma",
+        caption: "മധുബനിൽ ബ്രഹ്മാ ബാബയോടൊപ്പം ആത്മീയ സംഭാഷണത്തിൽ മമ്മ",
+        captionEn: "Mamma in sweet spiritual conversation with Brahma Baba in Madhuban",
+        position: "center"
       }
     ]
   },

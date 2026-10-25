@@ -81,6 +81,12 @@ class AppController {
       this.refreshAllLiveViews();
     });
 
+    // Listen for global language changes (EN | മലയാളം)
+    window.addEventListener('bk_language_changed', () => {
+      this.renderNavigation();
+      this.renderDailyThought();
+    });
+
     // Listen for cross-tab realtime sync via BroadcastChannel (instant multi-tab synchronization)
     if (typeof BroadcastChannel !== 'undefined') {
       try {
@@ -227,6 +233,8 @@ class AppController {
       { el: desktopContainer, isDesktop: true }
     ].filter(t => t.el);
 
+    const currentLang = (window.bkGetLanguage && window.bkGetLanguage()) || 'ml';
+
     targets.forEach(({ el, isDesktop }) => {
       el.innerHTML = '';
       const suffix = isDesktop ? '_d' : '';
@@ -234,9 +242,17 @@ class AppController {
       tabs.forEach(tab => {
         const li = document.createElement('li');
         const isCurrent = this.currentTab === tab.id;
-        const displayLabel = isDesktop
-          ? (tab.id === 'about' ? 'About' : tab.id === 'meditation' ? 'Meditation' : tab.id === 'course' ? 'Rajyoga Course' : tab.id === 'centers' ? 'Centers' : tab.id === 'murali' ? 'Murali' : tab.id === 'contact' ? 'Contact' : tab.label)
-          : tab.label;
+        let displayLabel = tab.label;
+        if (window.bkT) {
+          const transKey = 'nav_' + tab.id;
+          const translated = window.bkT(transKey);
+          if (translated && translated !== transKey) {
+            displayLabel = translated;
+          }
+        }
+        if (!displayLabel) {
+          displayLabel = isDesktop ? (tab.name || tab.label) : tab.label;
+        }
 
         if (tab.id === 'media' || tab.type === 'media-dropdown') {
           li.className = 'nav-item-dropdown';
@@ -292,13 +308,13 @@ class AppController {
               <li>
                 <button class="dropdown-item" onclick="bkApp.switchTab('media', 'songs'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
                   <i data-lucide="music-2" style="width:15px;height:15px;"></i>
-                  <span>Songs (ഗാനങ്ങൾ)</span>
+                  <span>${currentLang === 'en' ? 'Songs (Audio & Melodies)' : 'ഗാനങ്ങൾ (ഭക്തിഗാനങ്ങൾ)'}</span>
                 </button>
               </li>
               <li>
                 <button class="dropdown-item" onclick="bkApp.switchTab('media', 'commentaries'); ${!isDesktop ? 'bkApp.toggleMobileMenu(true);' : ''}">
                   <i data-lucide="mic" style="width:15px;height:15px;"></i>
-                  <span>Commentaries (കമന്ററികൾ)</span>
+                  <span>${currentLang === 'en' ? 'Commentaries (Meditation Guidance)' : 'കമന്ററികൾ (ധ്യാന നിർദ്ദേശങ്ങൾ)'}</span>
                 </button>
               </li>
               
@@ -308,7 +324,7 @@ class AppController {
                 <div class="dropdown-item dropdown-toggle-nested" onclick="bkApp.toggleNestedDropdown(event, 'nestedSocialMenu${suffix}')">
                   <div style="display:flex;align-items:center;gap:0.5rem;">
                     <i data-lucide="share-2" style="width:15px;height:15px;color:var(--sunset-amber);"></i>
-                    <span>Social Media</span>
+                    <span>${currentLang === 'en' ? 'Social Media Channels' : 'സോഷ്യൽ മീഡിയ'}</span>
                   </div>
                   <i data-lucide="chevron-right" class="nested-arrow-icon" style="width:14px;height:14px;"></i>
                 </div>
@@ -557,10 +573,20 @@ class AppController {
     const dateEl = document.getElementById('dailyDate');
     const authorEl = document.getElementById('dailyAuthor');
 
+    const lang = (window.bkGetLanguage && window.bkGetLanguage()) || 'ml';
+
     if (quoteEl) quoteEl.textContent = `"${thought.quote}"`;
     if (quoteMlEl) quoteMlEl.textContent = thought.quoteMl || '';
-    if (dateEl) dateEl.textContent = `Daily Murli Essence • ${new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}`;
-    if (authorEl) authorEl.textContent = thought.author || 'Brahma Kumaris Godly Wisdom';
+    if (dateEl) {
+      dateEl.textContent = lang === 'en'
+        ? `Daily Murli Essence • ${new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}`
+        : `നിത്യ മുരളി മഹാവാക്യം • ${new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+    }
+    if (authorEl) {
+      authorEl.textContent = lang === 'en'
+        ? (thought.author || 'Brahma Kumaris Godly Wisdom')
+        : 'ബ്രഹ്മാകുമാരീസ് ഈശ്വരീയ മഹാവാക്യം';
+    }
   }
 
   shareDailyThought() {

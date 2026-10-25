@@ -667,6 +667,98 @@ button, input, select, textarea {
   transform: translateY(-1px);
 }
 
+/* =========================================================================
+   GLOBAL LANGUAGE SWITCHER (EN | മലയാളം)
+   ========================================================================= */
+.bk-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem 0.35rem;
+  background: rgba(22, 18, 14, 0.75);
+  border: 1px solid rgba(251, 191, 36, 0.32);
+  border-radius: var(--radius-full, 9999px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(251, 191, 36, 0.05);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.bk-lang-switcher:hover {
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 12px rgba(251, 191, 36, 0.2);
+}
+
+.bk-lang-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-full, 9999px);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.bk-lang-btn:hover {
+  color: #ffffff;
+}
+
+.bk-lang-btn.active {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #120b02;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.45);
+  transform: translateY(-0.5px);
+}
+
+.bk-lang-divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.72rem;
+  pointer-events: none;
+  margin: 0;
+}
+
+/* Mobile Drawer Switcher Wrap */
+.drawer-lang-wrap {
+  padding: 0.85rem 1.25rem 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.bk-lang-switcher.bk-lang-switcher-drawer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.bk-lang-switcher.bk-lang-switcher-drawer .bk-lang-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 480px) {
+  .bk-lang-switcher {
+    padding: 0.18rem 0.25rem;
+  }
+  .bk-lang-btn {
+    padding: 0.22rem 0.45rem;
+    font-size: 0.74rem;
+  }
+}
+
 /* Responsive Navigation Breakpoints */
 @media (max-width: 991px) {
   .desktop-nav {
