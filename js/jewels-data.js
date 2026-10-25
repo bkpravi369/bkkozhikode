@@ -624,92 +624,487 @@ In 2021, following Dadi Gulzar's passing, she became the Fifth Chief Administrat
   {
     slug: "didi-manmohini",
     id: "didi-manmohini",
-    name: "ദീദി മൻമോഹിനി",
-    loukikName: "ഗോപി",
-    role: "അഡീഷണൽ ചീഫ് അഡ്മിനിസ്ട്രേറ്റർ",
-    years: "1915 – 1984",
+    name: "രാജയോഗിനി ദീദി മൻമോഹിനി",
+    nameEn: "Rajyogini Didi Manmohini",
+    loukikName: "ഗോപി (ഗോപിചന്ദ്)",
+    loukikNameEn: "Gopi",
+    role: "അഡീഷണൽ ചീഫ് അഡ്മിനിസ്ട്രേറ്റർ & മധുബൻ കണ്ടെത്തിയ ആദിരത്നം",
+    roleEn: "Additional Chief Administrator & Architect of Madhuban Relocation",
+    years: "1915 – 28 ജൂലൈ 1984",
+    yearsEn: "1915 – 28 July 1984",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/didi-manmohini.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_04_Didi_Manmohini_JI_e1633513151341_819c6e6d85.webp",
-    summary: "സർവ്വ ഭൗതിക സമ്പത്തും ത്യജിച്ച് യജ്ഞത്തിന്റെ അച്ചടക്കവും ആത്മീയ രാജകീയതയും പരിപാലിച്ച കരുത്തുറ്റ സ്തംഭം.",
-    bio: "സർവ്വ ഭൗതിക പദവികളും ഉപേക്ഷിച്ച് ഓം മണ്ഡലിയിൽ ചേർന്ന ദീദി, യജ്ഞത്തിലെ ആത്മീയ ചിട്ടവട്ടങ്ങളും അച്ചടക്കവും സംരക്ഷിക്കുന്നതിൽ കർക്കശമായ ജാഗ്രത പുലർത്തി. ദാദി പ്രകാശമണിക്കൊപ്പം പ്രസ്ഥാനത്തിന്റെ ഇരട്ട സ്തംഭങ്ങളിലൊന്നായി നിലകൊണ്ട രാജകീയ വ്യക്തിത്വം.\n\nസാധകരുടെ ആത്മീയ നിലവാരം ഉയർത്തുന്നതിൽ ദീദി കാണിച്ച കൃത്യതയും ഭരണപാടവവും അവിസ്മരണീയമാണ്. കഠിനമായ അച്ചടക്കത്തോടൊപ്പം ഓരോരുത്തർക്കും ഉള്ളിൽ തോന്നുന്ന അമ്മയുടെ കരുതലും ദീദിയുടെ പ്രത്യേകതയായിരുന്നു.",
-    virtues: ["രാജകീയ ഗാംഭീര്യം", "ആത്മീയ ചിട്ട", "നേതൃത്വപാടവം"],
+    summary: "രാജകീയ ഗാംഭീര്യവും കർക്കശമായ ആത്മീയ അച്ചടക്കവും സമന്വയിപ്പിച്ച് മധുബന്റെ അടിത്തറ പാകിയ ഇരട്ട സ്തംഭം.",
+    summaryEn: "The royal pillar of spiritual discipline and administrative brilliance who scouted Mount Abu and co-steered the global Yagya.",
+    bio: `#### രാജകീയ കുടുംബപശ്ചാത്തലവും സമർപ്പണവും
+1915-ൽ സിന്ധിലെ ഹൈദരാബാദിൽ രാജകുടുംബാംഗങ്ങൾക്ക് തുല്യമായ അതിസമ്പന്ന കുടുംബത്തിൽ ഗോപി ജനിച്ചു. ഭൗതികമായ എല്ലാ സുഖസൗകര്യങ്ങളും ആഡംബരങ്ങളും ഉണ്ടായിരുന്നിട്ടും, 1936-ൽ ബ്രഹ്മാ ബാബയിലൂടെ പരമാത്മാവിന്റെ ജ്ഞാനം കേട്ട നിമിഷം തന്നെ തന്റെ സർവ്വസ്വവും യജ്ഞത്തിനായി സമർപ്പിച്ചു. എല്ലാവരുടെയും മനസ്സുകളെ ഈശ്വരനിലേക്ക് ആകർഷിക്കുന്ന വ്യക്തിത്വമായതിനാൽ ബാബ അവർക്ക് 'മൻമോഹിനി' എന്ന് പേരിട്ടു. സാധകർ അവരെ ആദരവോടെ 'ദീദി' (മൂത്ത സഹോദരി) എന്ന് വിളിച്ചു.
+
+#### മൗണ്ട് അബു (മധുബൻ) കണ്ടെത്തിയ ചരിത്ര ദൗത്യം
+ഇന്ത്യ-പാക് വിഭജനത്തിന് ശേഷം 1949–50 കാലഘട്ടത്തിൽ കറാച്ചിയിൽ നിന്ന് പ്രസ്ഥാനത്തിന്റെ ആസ്ഥാനം ഭാരതത്തിലേക്ക് മാറ്റാൻ പരമാത്മാവിന്റെ നിർദ്ദേശം ലഭിച്ചപ്പോൾ, മൗണ്ട് അബുവിൽ അനുയോജ്യമായ സ്ഥലം കണ്ടെത്താൻ ബ്രഹ്മാ ബാബ നിയോഗിച്ചത് ദീദി മൻമോഹിനിയെയും ദാദാ വിശ്വ കിശോറിനെയുമായിരുന്നു. കഠിനമായ യാത്രകൾക്കൊടുവിൽ മൗണ്ട് അബുവിലെ കുന്നുകളിൽ തപസ്യയ്ക്ക് ഏറ്റവും അനുയോജ്യമായ കെട്ടിടങ്ങൾ (ബൃജ് കോഠി, പാണ്ഡവ ഭവൻ) കണ്ടെത്തി പ്രസ്ഥാനത്തിന്റെ പുതിയ യുഗത്തിന് അടിത്തറയിട്ടത് ദീദിയാണ്.
+
+#### ഭാരതത്തിലെ സേവന കേന്ദ്രങ്ങളുടെ ശില്പി
+1952 മുതൽ ഡൽഹി, മുംബൈ, അജ്മീർ തുടങ്ങിയ പ്രധാന നഗരങ്ങളിൽ ആദ്യകാല സേവന കേന്ദ്രങ്ങൾ ആരംഭിക്കുന്നതിന് ദീദി നേതൃത്വം നൽകി. പ്രമുഖ വ്യക്തികളെയും സർക്കാർ പ്രതിനിധികളെയും ഈശ്വരീയ ജ്ഞാനത്തിലേക്ക് ആകർഷിക്കുന്നതിൽ ദീദിയുടെ രാജകീയ വ്യക്തിത്വവും ബുദ്ധിശക്തിയും വലിയ പങ്കുവഹിച്ചു.
+
+#### ദാദി പ്രകാശമണിക്കൊപ്പമുള്ള ഇരട്ട നേതൃത്വം
+1969-ൽ ബ്രഹ്മാ ബാബ അവ്യക്തനായ ശേഷം, ദാദി പ്രകാശമണിയോടൊപ്പം പ്രസ്ഥാനത്തിന്റെ അഡീഷണൽ ചീഫ് അഡ്മിനിസ്ട്രേറ്ററായി ദീദി മൻമോഹിനി പ്രവർത്തിച്ചു. ദാദി പ്രകാശമണി മാതൃവാത്സല്യത്തിന്റെ പ്രതീകമായിരുന്നെങ്കിൽ, യജ്ഞത്തിലെ ആത്മീയ അച്ചടക്കവും ശ്രീമത്തും (ഈശ്വരീയ നിയമങ്ങൾ) അണുവിട തെറ്റാതെ പരിപാലിക്കുന്ന കരുത്തുറ്റ കാവൽക്കാരിയായിരുന്നു ദീദി. 1984 ജൂലൈ 28-ന് മുംബൈയിൽ വെച്ച് ദീദി സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Aristocratic Background & Total Surrender
+Born in 1915 into one of the wealthiest aristocratic families of Hyderabad, Sindh, Gopi was raised in royal luxury. Yet, upon hearing the divine knowledge through Brahma Baba in 1936, she immediately renounced worldly comforts and dedicated her life to Om Mandali. Baba gave her the spiritual name 'Manmohini' (One who captivates minds toward God), and the spiritual family affectionately addressed her as 'Didi' (Elder Sister).
+
+#### Historic Mission of Discovering Mount Abu
+After the Partition in 1949–50, when Baba received divine indications to shift the spiritual headquarters from Karachi to India, he entrusted Didi Manmohini and Dada Vishwa Kishore with the mission of scouting Mount Abu. It was through Didi's tireless efforts and foresight that Brij Kothi and Pandav Bhavan were secured in Mount Abu, establishing the sacred land of Madhuban.
+
+#### Pioneer of Urban Service Centres
+From 1952 onwards, Didi spearheaded the establishment of key service centres in Delhi, Mumbai, and Ajmer. Her royal grace, intellectual clarity, and administrative precision drew numerous dignitaries and seekers toward Rajyoga.
+
+#### Twin Pillar of Global Administration
+Following Brahma Baba's passing in 1969, Didi Manmohini served as the Additional Chief Administrator alongside Dadi Prakashmani. Together they formed the twin pillars of the Yagya—while Dadi radiated motherly warmth, Didi upheld the spiritual laws (Maryadas) and discipline of Madhuban with unyielding dedication until she attained the angelic stage on 28 July 1984.`,
+    virtues: ["രാജകീയ ഗാംഭീര്യം", "ആത്മീയ ചിട്ടയും അച്ചടക്കവും", "ധീരമായ നേതൃത്വം", "സൂക്ഷ്മ നിരീക്ഷണ പാടവം", "ഈശ്വരീയ നിയമപാലനം"],
+    virtuesEn: ["Royal Dignity", "Spiritual Discipline", "Fearless Leadership", "Sharp Administrative Acumen", "Custodian of Shrimat"],
     videoUrl: "https://www.youtube.com/embed/y39a23mpHto",
     videoEmbedUrl: "https://www.youtube.com/embed/y39a23mpHto",
-    videoTitle: "Didi Manmohini Animation Movie",
-    quote: "ആത്മീയ അച്ചടക്കം ഒരു ഭാരമല്ല, മറിച്ച് ആത്മാവിനെ പരമോന്നത സ്വാതന്ത്ര്യത്തിലേക്ക് നയിക്കുന്ന ചിറകുകളാണ്."
+    videoTitle: "ദീദി മൻമോഹിനി ജീവിതരേഖ (ആനിമേഷൻ)",
+    videoTitleEn: "Didi Manmohini Life Story",
+    quote: "ആത്മീയ അച്ചടക്കം ഒരു ഭാരമല്ല, മറിച്ച് ആത്മാവിനെ പരമോന്നത സ്വാതന്ത്ര്യത്തിലേക്ക് നയിക്കുന്ന ചിറകുകളാണ്.",
+    quoteEn: "Spiritual discipline is not a bondage; it is the very wings that enable the soul to fly into the highest freedom.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/didi_manmohini_royal_portrait.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/1_Didi_Manmohini_Ji_1b0f4be637.jpg",
+        title: "രാജകീയ പ്രൗഢി",
+        titleEn: "Royal Grace & Dignity",
+        caption: "ആത്മീയ ഗാംഭീര്യവും ശാന്തതയും പ്രസരിപ്പിക്കുന്ന ദീദി മൻമോഹിനി",
+        captionEn: "Radiating spiritual royalty, serenity, and divine dignity"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/didi_manmohini_disciplined_tapasya.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/2_Didi_Manmohini_Ji_fddb3a8684.jpg",
+        title: "ആത്മീയ അച്ചടക്കത്തിന്റെ കാവൽക്കാരി",
+        titleEn: "Guardian of Spiritual Discipline",
+        caption: "യജ്ഞത്തിലെ ഓരോ നിയമവും ശ്രീമത്തും അണുവിട തെറ്റാതെ പാലിച്ച ദീദി",
+        captionEn: "Upholding every spiritual law and discipline of the Yagya with immaculate precision"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/didi_manmohini_madhuban_foundation.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/3_Didi_Manmohini_Ji_bdd055d54d.jpg",
+        title: "മധുബന്റെ ശില്പി",
+        titleEn: "Architect of Madhuban",
+        caption: "മൗണ്ട് അബുവിൽ പാണ്ഡവ ഭവനും ബൃജ് കോഠിയും കണ്ടെത്തി മധുബന് അടിത്തറയിട്ട ചരിത്ര ദൗത്യം",
+        captionEn: "Securing Pandav Bhavan and Brij Kothi on Mount Abu, laying the foundation of Madhuban"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/didi_manmohini_divine_drishti.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/4_Didi_Manmohini_Ji_8a34fb12c5.jpg",
+        title: "ദിവ്യദൃഷ്ടിയും സാന്നിധ്യവും",
+        titleEn: "Divine Drishti & Pure Presence",
+        caption: "ആത്മാക്കളെ പരമാത്മ സ്നേഹത്തിലേക്ക് ആകർഷിക്കുന്ന ശാന്തമായ ദൃഷ്ടി",
+        captionEn: "Drawing seeking souls toward Godly love through pure, transcendent drishti"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/didi_manmohini_twin_pillar.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/5_Didi_Manmohini_Ji_0d7fa6ba1d.jpg",
+        title: "ദാദി പ്രകാശമണിക്കൊപ്പം ഇരട്ട സ്തംഭം",
+        titleEn: "Twin Pillar with Dadi Prakashmani",
+        caption: "യജ്ഞത്തിന്റെ ആത്മീയ അച്ചടക്കവും മാതൃസ്നേഹവും സമന്വയിപ്പിച്ച ഇരട്ട നേതൃത്വം",
+        captionEn: "Balancing administrative discipline and boundless maternal love as twin leaders of the Yagya"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/didi_manmohini_with_bapdada.png",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Bapdada_and_Didi_57e00da128.png",
+        title: "ബാപ്ദാദയുടെ ദിവ്യ സാന്നിധ്യത്തിൽ",
+        titleEn: "In the Divine Presence of Bapdada",
+        caption: "പരമാത്മാവിന്റെയും ബ്രഹ്മാ ബാബയുടെയും അനുഗ്രഹഛായയിൽ സമ്പൂർണ്ണ സമർപ്പണം",
+        captionEn: "In the loving shelter and guidance of Bapdada, epitomizing total surrender"
+      }
+    ]
   },
   {
     slug: "dadi-chandramani",
     id: "dadi-chandramani",
-    name: "ദാദി ചന്ദ്രമണി",
+    name: "രാജയോഗിനി ദാദി ചന്ദ്രമണി",
+    nameEn: "Rajyogini Dadi Chandramani",
     loukikName: "ചന്ദ്രമണി",
-    role: "മധുബൻ ജനറൽ",
-    years: "ആദിരത്നം",
+    loukikNameEn: "Chandramani",
+    role: "പാണ്ഡവ ഭവൻ ഇൻ-ചാർജ് & പഞ്ചാബ് സോൺ ഡയറക്ടർ ('ജനറൽ')",
+    roleEn: "In-charge of Pandav Bhavan & Director of Punjab Zone ('The General')",
+    years: "1918 – 27 മെയ് 1997",
+    yearsEn: "1918 – 27 May 1997",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-chandramani.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Chandramani_da24972ea9.webp",
-    summary: "മധുബനിലെ പ്രവർത്തനങ്ങളെയും പാണ്ഡവ ഭവനിലെ സാധകരെയും ഒരൊറ്റ ചരടിൽ കോർത്തുനിർത്തിയ യജ്ഞത്തിന്റെ 'ജനറൽ'.",
-    bio: "മധുബനിലെ പ്രവർത്തനങ്ങളെയും പാണ്ഡവ ഭവനിലെ സാധകരെയും ഒരൊറ്റ ചരടിൽ കോർത്തുനിർത്തിയ യജ്ഞത്തിന്റെ 'ജനറൽ'. നിശ്ശബ്ദതയുടെ ശക്തിയും പർവ്വതസമാനമായ സ്ഥിരതയും പുലർത്തിയ വലിയ മനസ്സിന്റെ ഉടമ.\n\nപഞ്ചാബ്, ഹരിയാന, കർണ്ണാടക തുടങ്ങിയ മേഖലകളിൽ സേവനം നയിച്ച് 'പഞ്ചാബിലെ സിംഹിണി' എന്ന് അറിയപ്പെട്ടു. പാണ്ഡവ ഭവനിലെ നിത്യജീവിത ക്രമീകരണങ്ങളും സാധകരുടെ ആത്മീയ സാധനകളും കാത്തുസൂക്ഷിക്കുന്നതിൽ അത്യന്തം ശ്രദ്ധാലുവായിരുന്നു.",
-    virtues: ["നിശ്ശബ്ദതയുടെ ശക്തി", "പർവ്വതസമാനമായ സ്ഥിരത", "ക്ഷമാശീലത"],
+    summary: "പർവ്വതസമാനമായ സ്ഥിരതയും നിശ്ശബ്ദതയുടെ ശക്തിയും കൊണ്ട് പാണ്ഡവ ഭവനെയും പഞ്ചാബ് മേഖലയെയും കാത്തുസൂക്ഷിച്ച 'ജനറൽ'.",
+    summaryEn: "The unshakeable 'General' of Pandav Bhavan and Punjab Zone who transformed thousands of lives through the power of silence.",
+    bio: `#### ബാല്യകാലവും ഓം മണ്ഡലിയിലെ സമർപ്പണവും
+1918-ൽ സിന്ധിൽ ജനിച്ച ചന്ദ്രമണി, തന്റെ 18-ാം വയസ്സിൽ ഓം മണ്ഡലിയിൽ ചേരുകയും ബാബയുടെ സന്ദേശത്തിൽ അടിയുറച്ച് നിൽക്കുകയും ചെയ്തു. പൂർണ്ണചന്ദ്രനെപ്പോലെ എല്ലാവർക്കും ശീതളതയും ശാന്തിയും പകരുന്ന സ്വഭാവമായതിനാൽ 'ചന്ദ്രമണി' എന്ന ആത്മീയ നാമം അവർക്ക് ലഭിച്ചു.
+
+#### യജ്ഞത്തിന്റെ 'ജനറൽ' എന്ന പദവി
+കറാച്ചിയിലെ തപസ്യക്കാലത്തും തുടർന്ന് മൗണ്ട് അബുവിലെ പാണ്ഡവ ഭവനിലും യജ്ഞത്തിന്റെ ആഭ്യന്തര കാര്യങ്ങൾ നിയന്ത്രിച്ചിരുന്ന പ്രമുഖ ശക്തിയായിരുന്നു ദാദി ചന്ദ്രമണി. ഏതൊരു വലിയ പ്രതിസന്ധിയെയും തെല്ലും പതറാതെ, പർവ്വതസമാനമായ അചഞ്ചലതയോടെ നേരിട്ടിരുന്നതിനാൽ ബ്രഹ്മാ ബാബ അവരെ യജ്ഞത്തിന്റെ 'ജനറൽ' (സേനാനായക) എന്ന് വിശേഷിപ്പിച്ചു.
+
+#### പഞ്ചാബ് സോണിലെ സേവന വിപ്ലവം
+അമൃത്സർ ആസ്ഥാനമാക്കി പഞ്ചാബ്, ഹിമാചൽ പ്രദേശ്, ജമ്മു കശ്മീർ തുടങ്ങിയ വടക്കേ ഇന്ത്യൻ സംസ്ഥാനങ്ങളിൽ ബ്രഹ്മാകുമാരീസ് സേവന കേന്ദ്രങ്ങൾ വ്യാപിപ്പിക്കുന്നതിന് ദാദി ചന്ദ്രമണി ദശാബ്ദങ്ങളോളം നേതൃത്വം നൽകി. പഞ്ചാബിലെ സംഘർഷഭരിതമായ കാലഘട്ടങ്ങളിൽ പോലും ദാദിയുടെ സാന്നിധ്യം അനേകർക്ക് സമാധാനവും ആത്മവിശ്വാസവും പകർന്നു.
+
+#### മധുബനിലെ നിശ്ശബ്ദ തപസ്വിനി
+അവസാന നാളുകളിൽ പാണ്ഡവ ഭവന്റെ മുഖ്യ ചുമതല വഹിച്ച ദാദി, വളരെ കുറച്ചു മാത്രം സംസാരിക്കുകയും ആഴത്തിലുള്ള യോഗയിലൂടെ (Power of Silence) അന്തരീക്ഷം ശുദ്ധീകരിക്കുകയും ചെയ്തു. സാധകരുടെ ചെറിയ തെറ്റുകളെപ്പോലും മാതൃഹൃദയത്തോടെ ക്ഷമിച്ച ദാദി 1997 മെയ് 27-ന് സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Early Life & Surrender in Om Mandali
+Born in 1918 in Sindh, Chandramani joined Om Mandali at the age of 18. Because of her cool, soothing, and peaceful temperament—akin to the full moon—Brahma Baba named her 'Chandramani' (Jewel of the Moon).
+
+#### 'The General' of the Yagya
+During the 14 years in Karachi and later at Pandav Bhavan in Mount Abu, Dadi Chandramani managed the internal organization with remarkable composure. Recognizing her unshakeable, mountain-like stability in the face of tests and challenges, Brahma Baba affectionately titled her the 'General' of the spiritual army.
+
+#### Pioneering Services in the Punjab Zone
+Based in Amritsar, Dadi spearheaded the expansion of Rajyoga centres across Punjab, Himachal Pradesh, and Jammu & Kashmir. Even during periods of regional unrest in Punjab, her fearless spiritual vibrations brought peace and harmony to thousands of families.
+
+#### Silent Tapaswini of Madhuban
+In her later years as the head of Pandav Bhavan, Dadi spoke very few words, guiding seekers primarily through the 'Power of Silence' and forgiving grace. She attained the complete angelic stage on 27 May 1997.`,
+    virtues: ["നിശ്ശബ്ദതയുടെ ശക്തി", "പർവ്വതസമാനമായ സ്ഥിരത", "ക്ഷമാശീലതയും ഉദാരമനസ്കതയും", "ആത്മീയ സേനാനായകത്വം", "ശാന്തമായ മുഖഭാവം"],
+    virtuesEn: ["Power of Silence", "Mountain-like Stability", "Forgiveness & Generosity", "Spiritual Command", "Serene Countenance"],
     videoUrl: "https://www.youtube.com/embed/2qZALNAPTj4",
     videoEmbedUrl: "https://www.youtube.com/embed/2qZALNAPTj4",
-    videoTitle: "Inspirations from Dadi Chandramani Ji",
-    quote: "മനസ്സ് പർവ്വതം പോലെ സ്ഥിരമായിരിക്കുമ്പോൾ ഏത് കൊടുങ്കാറ്റും ശാന്തമായി വഴിമാറും."
+    videoTitle: "ദാദി ചന്ദ്രമണി ജി - പ്രചോദനാത്മക സ്മരണകൾ",
+    videoTitleEn: "Inspirations from Dadi Chandramani Ji",
+    quote: "മനസ്സ് പർവ്വതം പോലെ സ്ഥിരമായിരിക്കുമ്പോൾ ഏത് കൊടുങ്കാറ്റും ശാന്തമായി വഴിമാറും.",
+    quoteEn: "When the mind remains unshakeable like a mountain, even the fiercest storm turns into a gentle breeze.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_chandramani_general.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/FullHD_Dadi_Chandramani_da24972ea9.jpg",
+        title: "യജ്ഞത്തിന്റെ സേനാനായിക ('ജനറൽ')",
+        titleEn: "'The General' of the Spiritual Army",
+        caption: "പർവ്വതസമാനമായ അചഞ്ചലതയോടെ പാണ്ഡവ ഭവനെ നയിച്ച ദാദി ചന്ദ്രമണി",
+        captionEn: "Leading Pandav Bhavan with mountain-like stability, unshakeable courage, and spiritual authority"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_chandramani_silence_tapasya.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Chandramani_01_82d8975775.webp",
+        title: "നിശ്ശബ്ദതയുടെ ശക്തി (Power of Silence)",
+        titleEn: "The Power of Silence",
+        caption: "വാക്കുകളേക്കാൾ മൗനത്തിലൂടെ അന്തരീക്ഷം ശുദ്ധീകരിച്ച നിശ്ശബ്ദ തപസ്വിനി",
+        captionEn: "Purifying the atmosphere through profound silence and deep introverted meditation"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_chandramani_portrait_grace.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Chandramani_ji_12_X_15_36621ae7ea.jpg",
+        title: "പൂർണ്ണചന്ദ്രന്റെ ശീതളത",
+        titleEn: "Cool Radiance of the Full Moon",
+        caption: "ഏവർക്കും ശാന്തിയും സ്നേഹവും പകർന്നുനൽകിയ ശാന്ത ഗംഭീര ഭാവം",
+        captionEn: "Bestowing soothing peace and motherly forgiveness like a jewel of the moon"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_chandramani_pandav_bhavan.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Chandramani_ji_16_Inch_x_20_Inch_0d3868654c.jpg",
+        title: "പാണ്ഡവ ഭവന്റെ മാതൃഹൃദയം",
+        titleEn: "The Motherly Heart of Pandav Bhavan",
+        caption: "മധുബനിലെത്തുന്ന ഓരോ സാധകന്റെയും ആത്മീയ സാധനകളെ കാത്തുസൂക്ഷിച്ച കരുതൽ",
+        captionEn: "Nurturing the spiritual practice and daily discipline of every resident and visitor at Madhuban"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_chandramani_punjab_services.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/bd_chandramani_641e47f3a3.jpg",
+        title: "പഞ്ചാബ് സോണിലെ ആത്മീയ നായിക",
+        titleEn: "Pioneer of Punjab Zone Services",
+        caption: "അമൃത്സറും വടക്കേ ഇന്ത്യയും കേന്ദ്രീകരിച്ച് ശാന്തി സന്ദേശമെത്തിച്ച ധീര നേതൃത്വം",
+        captionEn: "Fearlessly spreading the light of Rajyoga across Punjab and northern India during turbulent times"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_chandramani_divine_remembrance.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Chandramani_Biodata_6f9e5fcba6.jpg",
+        title: "ദിവ്യ ജീവിത സ്മരണകൾ",
+        titleEn: "Divine Life Journey",
+        caption: "18-ാം വയസ്സിൽ ഓം മണ്ഡലിയിൽ സമർപ്പിച്ച് സമ്പൂർണ്ണത പ്രാപിച്ച ആദിരത്നം",
+        captionEn: "Dedicating six decades in complete spiritual devotion from Om Mandali to angelic perfection"
+      }
+    ]
   },
   {
     slug: "dadi-nirmal-shanta",
     id: "dadi-nirmal-shanta",
-    name: "ദാദി നിർമ്മൽ ശാന്ത",
-    loukikName: "ശാന്ത",
-    role: "കിഴക്കൻ ഭാരത സേവന തുടക്കക്കാരി",
-    years: "ആദിരത്നം",
+    name: "രാജയോഗിനി ദാദി നിർമ്മൽ ശാന്ത",
+    nameEn: "Rajyogini Dadi Nirmal Shanta",
+    loukikName: "ശാന്ത കൃപലാനി",
+    loukikNameEn: "Shanta Kripalani",
+    role: "കിഴക്കൻ ഭാരത സോൺ ഡയറക്ടർ & ബ്രഹ്മാ ബാബയുടെ ലൗകിക പുത്രി",
+    roleEn: "Director of Eastern India Zone & Loukik Daughter of Brahma Baba",
+    years: "22 നവംബർ 1919 – 28 ആഗസ്റ്റ് 2006",
+    yearsEn: "22 November 1919 – 28 August 2006",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-nirmal-shanta.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_05_Dadi_Nirmal_Shanta_ji_Ind_004_e1633513299705_dc9f0a4ff5.webp",
-    summary: "ബ്രഹ്മാ ബാബയുടെ സാകാര മകൾ; കൊൽക്കത്തയും കിഴക്കൻ ഇന്ത്യയും ആത്മീയ പ്രകാശത്തിലേക്ക് നയിച്ച ധീര വനിത.",
-    bio: "ബ്രഹ്മാ ബാബയുടെ സാകാര ലൗകിക മകൾ. കൊൽക്കത്ത, പട്ന, ഗുവാഹത്തി തുടങ്ങിയ നഗരങ്ങളിൽ കേന്ദ്രങ്ങൾ ആരംഭിച്ച് കിഴക്കൻ ഇന്ത്യയിൽ പ്രസ്ഥാനത്തിന്റെ സന്ദേശം വ്യാപിപ്പിച്ചു.\n\nപിതാവിന്റെ ആത്മീയ വഴി സ്വയം സ്വീകരിച്ച് സ്വന്തം ജീവിതം ലോകക്ഷേമത്തിനായി സമർപ്പിച്ചു. തീക്ഷ്ണമായ പ്രഭാഷണ ചാതുര്യവും നിർഭയത്വവും കൊണ്ട് നിരവധി പ്രമുഖരെയും ബുദ്ധിജീവികളെയും ഈശ്വരീയ ജ്ഞാനത്തിലേക്ക് ആകർഷിക്കാൻ ദാദിക്ക് സാധിച്ചു.",
-    virtues: ["നിർഭയത്വം", "പ്രഭാഷണ ചാതുരി", "അർപ്പണബോധം"],
+    summary: "ലൗകിക പിതാവിലെ പരമാത്മാവിനെ ആദ്യമായി തിരിച്ചറിഞ്ഞ് കിഴക്കൻ ഭാരതത്തിൽ ആത്മീയ വിപ്ലവം സൃഷ്ടിച്ച ധീര വനിത.",
+    summaryEn: "Brahma Baba's physical daughter who renounced all worldly wealth to pioneer the spiritual renaissance of Eastern India.",
+    bio: `#### ദാദാ ലേഖ്രാജിന്റെ പുത്രിയിൽ നിന്ന് ഈശ്വരീയ രത്നത്തിലേക്ക്
+1919 നവംബർ 22-ന് ദാദാ ലേഖ്രാജ് കൃപലാനിയുടെയും (ബ്രഹ്മാ ബാബ) ജശോദാ മാതാവിന്റെയും ലൗകിക പുത്രിയായി ജനിച്ചു. സ്വന്തം പിതാവിനെ കേവലം ഒരു ലൗകിക അച്ഛനായി കാണുന്നതിന് പകരം, അദ്ദേഹത്തിലൂടെ വെളിപ്പെട്ട പരമാത്മാ ശിവനെ ആദ്യം തിരിച്ചറിഞ്ഞ് പിതാവിനെ ആത്മീയ ഗുരുവായി സ്വീകരിച്ച മഹത്തായ മാതൃകയാണ് ദാദി നിർമ്മൽ ശാന്ത. ബാബ അവർക്ക് 'നിർമ്മൽ ശാന്ത' (പരിശുദ്ധമായ ശാന്തിയുടെ രൂപം) എന്ന പേര് നൽകി.
+
+#### കറാച്ചിയിലെ തപസ്യയും അഗ്നിപരീക്ഷകളും
+1937-ൽ ഓം മണ്ഡലി രൂപീകൃതമായപ്പോൾ ലൗകികമായ രാജകീയ സൗകര്യങ്ങൾ ഉപേക്ഷിച്ച് സാധാരണ സാധകരിൽ ഒരാളായി കറാച്ചിയിലെ തപസ്യയിൽ പങ്കുചേർന്നു. ബ്രഹ്മാ ബാബയുടെ മകളായിരുന്നിട്ടും യാതൊരു പ്രത്യേക പരിഗണനയും ആഗ്രഹിക്കാതെ യജ്ഞത്തിലെ എല്ലാ കഠിന സേവനങ്ങളിലും പങ്കാളിയായി.
+
+#### കൊൽക്കത്തയും കിഴക്കൻ ഭാരത സേവനവും
+1953-ൽ ബാബയുടെ നിർദ്ദേശപ്രകാരം കൊൽക്കത്തയിലേക്ക് പോയ ദാദി നിർമ്മൽ ശാന്ത, നീണ്ട അഞ്ച് പതിറ്റാണ്ടിലധികം കിഴക്കൻ ഭാരതത്തിലെ (പശ്ചിമ ബംഗാൾ, ബീഹാർ, ഒഡീഷ, ആസാം, വടക്കുകിഴക്കൻ സംസ്ഥാനങ്ങൾ) സേവനങ്ങൾക്ക് നേതൃത്വം നൽകി. അതുപോലെ നേപ്പാളിലും ബംഗ്ലാദേശിലും രാജയോഗ സന്ദേശമെത്തിക്കുന്നതിൽ മുഖ്യ പങ്കുവഹിച്ചു.
+
+#### സമ്പൂർണ്ണ സമർപ്പണവും അവ്യക്ത പ്രയാണവും
+വ്യക്തവും ശക്തവുമായ ഭാഷയിൽ ഈശ്വരീയ സത്യം പ്രചരിപ്പിച്ച ദാദി, ആയിരക്കണക്കിന് അധ്യാപികമാരെ വാർത്തെടുത്തു. 2006 ആഗസ്റ്റ് 28-ന് തന്റെ 87-ാം വയസ്സിൽ ദാദി അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### From Loukik Daughter to Spiritual Jewel
+Born on 22 November 1919 as the physical (loukik) daughter of Dada Lekhraj Kripalani (Brahma Baba) and Mata Jashoda, Shanta set a rare spiritual example. Transcending her physical relationship with her father, she was among the very first to recognize the Supreme Soul Shiva operating through him, accepting him wholeheartedly as her spiritual father and teacher. Baba named her 'Nirmal Shanta' (Embodiment of Pure Peace).
+
+#### Tapasya in Karachi
+Renouncing the immense wealth of her family, she lived like a humble student during the 14 years of Tapasya in Karachi, never seeking any special privilege as the founder's daughter.
+
+#### Architect of Eastern India Services
+In 1953, following Baba's direction, she moved to Kolkata. For over five decades, she served as the Director of the Eastern Zone, establishing hundreds of centres across West Bengal, Bihar, Odisha, Assam, North-East India, as well as Nepal and Bangladesh.
+
+#### Legacy & Angelic Ascent
+Known for her powerful, crystal-clear discourses and fearless devotion to truth, she nurtured thousands of seekers until she attained the angelic stage on 28 August 2006 at the age of 87.`,
+    virtues: ["നിർഭയമായ സത്യപ്രഖ്യാപനം", "അഗാധമായ ഈശ്വരവിശ്വാസം", "നിസ്വാർത്ഥ സേവനം", "പ്രചോദനാത്മക പ്രഭാഷണം", "ലൗകിക-അലൗകിക സമന്വയം"],
+    virtuesEn: ["Fearless Proclamation of Truth", "Unshakeable Faith", "Selfless Service", "Inspiring Oratory", "Detachment from Worldly Ties"],
     videoUrl: "https://www.youtube.com/embed/RGt8nO5Vx-4",
     videoEmbedUrl: "https://www.youtube.com/embed/RGt8nO5Vx-4",
-    videoTitle: "Dadi Nirmal Shanta Ji Special Interview",
-    quote: "സത്യത്തിന്റെ പാതയിൽ സഞ്ചരിക്കുന്നവർക്ക് ഒന്നിനെയും ഭയക്കേണ്ടതില്ല; പരമാത്മാവ് സദാ തുണയായിരിക്കും."
+    videoTitle: "ദാദി നിർമ്മൽ ശാന്ത ജി സ്പെഷ്യൽ ഇൻറർവ്യൂ",
+    videoTitleEn: "Dadi Nirmal Shanta Ji Special Interview",
+    quote: "സത്യത്തിന്റെ പാതയിൽ സഞ്ചരിക്കുന്നവർക്ക് ഒന്നിനെയും ഭയക്കേണ്ടതില്ല; പരമാത്മാവ് സദാ തുണയായിരിക്കും.",
+    quoteEn: "Those who walk on the path of truth need fear nothing; the Almighty is their eternal companion.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_nirmal_shanta_portrait.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Nirmal_Shanta_01_ce385ee5b3.webp",
+        title: "നിർമ്മല ശാന്തിയുടെ സാക്ഷാൽ രൂപം",
+        titleEn: "Embodiment of Pure Peace",
+        caption: "ബ്രഹ്മാ ബാബയുടെ ലൗകിക പുത്രിയിൽ നിന്ന് പരമാത്മ ദാസിയായി മാറിയ ദാദി നിർമ്മൽ ശാന്ത",
+        captionEn: "From physical daughter of Brahma Baba to a radiant instrument of the Supreme Soul"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_nirmal_shanta_truth.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Nirmal_Shanta_05_ee18beb76e.webp",
+        title: "നിർഭയമായ സത്യപ്രഖ്യാപനം",
+        titleEn: "Fearless Proclamation of Truth",
+        caption: "ഈശ്വരീയ സത്യം ലോകത്തിന് മുന്നിൽ ധീരമായി പ്രഖ്യാപിച്ച ഉജ്ജ്വല വ്യക്തിത്വം",
+        captionEn: "Proclaiming Godly truth with unshakeable conviction and intellectual boldness"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_nirmal_shanta_eastern_mission.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Nirmal_Shanta_16_Inch_x_20_Inch_743c615a00.webp",
+        title: "കിഴക്കൻ ഭാരത സേവന ശില്പി",
+        titleEn: "Architect of Eastern India Services",
+        caption: "കൊൽക്കത്തയും കിഴക്കൻ സംസ്ഥാനങ്ങളും നേപ്പാളും ആത്മീയ പ്രകാശത്തിലേക്ക് നയിച്ച ദാദി",
+        captionEn: "Guiding Kolkata, West Bengal, Assam, North-East India, and Nepal towards spiritual awakening"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_nirmal_shanta_with_dadi_janki.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Janki_Dadi_Nirmal_Shanta_001_035e7e5c0d.jpg",
+        title: "ദാദി ജാനകിക്കൊപ്പം ആത്മീയ സ്നേഹം",
+        titleEn: "Spiritual Companionship with Dadi Janki",
+        caption: "യജ്ഞത്തിന്റെ ആദ്യകാലം മുതൽ സത്യത്തിന്റെ കാവൽക്കാരായി ഒപ്പം നിന്ന ആദിരത്നങ്ങൾ",
+        captionEn: "Pillars of truth and tapasya standing together in sweet spiritual camaraderie from Om Mandali days"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_nirmal_shanta_discourse.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Nirmalshanta_b1a258f20c.webp",
+        title: "ആത്മീയ പ്രഭാഷണ ചാതുരി",
+        titleEn: "Inspiring Spiritual Discourse",
+        caption: "ആയിരക്കണക്കിന് സാധകർക്ക് ബാബയുടെ സ്നേഹവും ശ്രീമത്തും പകർന്നുനൽകിയ അനുഗ്രഹ നിമിഷങ്ങൾ",
+        captionEn: "Igniting spiritual zeal and wisdom among thousands of seekers across generations"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_nirmal_shanta_divine_grace.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Nirmal_Shanta_Ji_2_e9281bd3ff.jpg",
+        title: "സമ്പൂർണ്ണ സമർപ്പണത്തിന്റെ പരിമളം",
+        titleEn: "Fragrance of Complete Surrender",
+        caption: "87 വർഷം ലൗകിക ബന്ധങ്ങളെ അതിജീവിച്ച് പരമാത്മ സേവനത്തിൽ ലയിച്ച പുണ്യജീവിതം",
+        captionEn: "A consecrated life of 87 years transcending physical bonds in supreme service of humanity"
+      }
+    ]
   },
   {
     slug: "dada-vishwa-kishore",
     id: "dada-vishwa-kishore",
-    name: "ദാദാ വിശ്വ കിശോർ (ഭാവ്ജീ)",
-    loukikName: "വിശ്വ കിശോർ",
-    role: "പ്രഥമ മാനേജർ & മുഖ്യ ട്രസ്റ്റി",
-    years: "ആദിരത്നം",
+    name: "രാജയോഗി ദാദാ വിശ്വ കിശോർ (ഭാവ്ജീ)",
+    nameEn: "Rajyogi Dada Vishwa Kishore (Bhauji)",
+    loukikName: "ദാദാ നാരായണൻ (നാരായണൻ കൃപലാനി)",
+    loukikNameEn: "Dada Narayan Kripalani",
+    role: "യജ്ഞത്തിന്റെ പ്രഥമ മാനേജർ & മുഖ്യ ട്രസ്റ്റി",
+    roleEn: "First Manager & Chief Trustee of the Yagya",
+    years: "1906 – 1986",
+    yearsEn: "1906 – 1986",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dada-vishwa-kishore.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_20_Dada_Vishwa_Kishore_68a4f0981c.webp",
-    summary: "ബാബയുടെ വലംകൈയായി നിന്ന് ഓം മണ്ഡലിയുടെ സാമ്പത്തിക-നിയമ അടിത്തറ കാത്തുസൂക്ഷിച്ച മുഖ്യ ട്രസ്റ്റി.",
-    bio: "ബാബയുടെ അനന്തരവനും ബിസിനസ്സ് പങ്കാളിയുമായിരുന്ന അദ്ദേഹം ഓം മണ്ഡലിയുടെ സാമ്പത്തിക-ഭരണ അടിത്തറ കാത്തുസൂക്ഷിച്ച മുഖ്യ ട്രസ്റ്റിയായിരുന്നു. പ്രതിസന്ധികളെ ധീരമായി നേരിട്ട കരുത്തുറ്റ സ്തംഭം.\n\nതുടക്കകാലത്തുണ്ടായ കടുത്ത സാമൂഹിക എതിർപ്പുകളിലും കോടതി കേസുകളിലും നിയമപരമായ സുതാര്യതയോടെ യജ്ഞത്തെ സംരക്ഷിച്ചു. ബാബയോടുള്ള സമ്പൂർണ്ണ അർപ്പണവും പക്വതയാർന്ന ആലോചനകളും യജ്ഞത്തിന്റെ ആദ്യകാല വിജയങ്ങൾക്ക് വലിയ കരുത്തായി.",
-    virtues: ["സാമ്പത്തിക സുതാര്യത", "നിയമപരിജ്ഞാനം", "സ്ഥിരത"],
+    summary: "ബാബയുടെ വലംകൈയായി നിന്ന് യജ്ഞത്തിന്റെ സാമ്പത്തിക-നിയമ അടിത്തറ കാത്തുസൂക്ഷിച്ച നിസ്വാർത്ഥ കർമ്മയോഗി.",
+    summaryEn: "Brahma Baba's trusted right hand who built and safeguarded the legal and financial foundations of the Yagya.",
+    bio: `#### ബ്രഹ്മാ ബാബയുടെ വലംകൈയും സമർപ്പണവും
+സിന്ധിൽ ബ്രഹ്മാ ബാബയുടെ അടുത്ത ബന്ധുവും വജ്രവ്യാപാരത്തിലെ വിശ്വസ്ത പങ്കാളിയുമായിരുന്നു ദാദാ നാരായണൻ. 1936-ൽ ബാബയ്ക്ക് ദിവ്യദർശനങ്ങൾ ലഭിച്ച് വ്യാപാരം അവസാനിപ്പിക്കാൻ തീരുമാനിച്ചപ്പോൾ, ഒരു നിമിഷം പോലും സംശയിക്കാതെ ബാബയോടൊപ്പം നിൽക്കുകയും കൽക്കത്തയിലെ വ്യാപാര ഇടപാടുകൾ മാന്യമായി തീർപ്പാക്കി മുഴുവൻ സമ്പത്തും യജ്ഞത്തിലേക്ക് എത്തിക്കുകയും ചെയ്തു. ബാബ അദ്ദേഹത്തിന് 'വിശ്വ കിശോർ' എന്ന് പേര് നൽകി. സാധകർ അദ്ദേഹത്തെ ആദരവോടെ 'ഭാവ്ജീ' (മൂത്ത സഹോദരൻ) എന്ന് വിളിച്ചു.
+
+#### പ്രതിസന്ധികളിൽ തളരാത്ത കോട്ട
+സിന്ധിലും കറാച്ചിയിലും ഓം മണ്ഡലിക്കെതിരെ എതിരാളികൾ കള്ളക്കേസുകളും ഉപരോധങ്ങളും സൃഷ്ടിച്ചപ്പോൾ, കോടതികളിലും സർക്കാർ ഓഫീസുകളിലും പ്രസ്ഥാനത്തിന് വേണ്ടി ധീരമായി പോരാടിയത് ഭാവ്ജീ ആയിരുന്നു. നൂറുകണക്കിന് സഹോദരിമാരുടെയും സാധകരുടെയും സുരക്ഷിതത്വവും ഭക്ഷണവും പാർപ്പിടവും ഉറപ്പുവരുത്തുന്ന വലിയ ഉത്തരവാദിത്തം അദ്ദേഹം ഒറ്റയ്ക്ക് തോളിലേറ്റി.
+
+#### മൗണ്ട് അബുവിലേക്കുള്ള പറിച്ചുനടൽ
+1950-ൽ കറാച്ചിയിൽ നിന്ന് മുന്നൂറോളം സാധകരെ സുരക്ഷിതമായി ഭാരതത്തിലെ മൗണ്ട് അബുവിലേക്ക് എത്തിക്കുന്നതിനും, അവിടെ പാണ്ഡവ ഭവനും അനുബന്ധ ഭൂമികളും വാങ്ങി യജ്ഞത്തിന്റെ നിയമപരമായ അടിത്തറ ഭദ്രമാക്കുന്നതിനും നേതൃത്വം നൽകിയത് ദാദാ വിശ്വ കിശോർ ആണ്.
+
+#### നിശ്ശബ്ദനായ കർമ്മയോഗി
+മധുബന്റെ മാനേജരായും ട്രസ്റ്റിയായും അഞ്ച് പതിറ്റാണ്ടുകാലം സേവനമനുഷ്ഠിച്ച അദ്ദേഹം, ഈശ്വരീയ സമ്പത്തിന്റെ ഓരോ പൈസയും അതീവ സൂക്ഷ്മതയോടെ കൈകാര്യം ചെയ്തു. 1986-ൽ അദ്ദേഹം സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Brahma Baba's Trusted Partner & Total Surrender
+A close relative and trusted business partner in Dada Lekhraj's famed diamond business, Dada Narayan was among the very first to recognise the divine light. When Brahma Baba experienced the spiritual revelations in 1936 and decided to wind up his business, Bhauji settled all accounts in Calcutta with immaculate integrity and dedicated all resources to Om Mandali. Baba bestowed upon him the name 'Vishwa Kishore', while the community lovingly addressed him as 'Bhauji' (Elder Brother).
+
+#### Unshakeable Fortress in Adversity
+When fierce opposition, court lawsuits, and social boycotts mounted against Om Mandali in Sindh and Karachi, Bhauji stood like an impregnable rock. He defended the organization with legal acumen and courage before British magistrates and committees, shouldering the daunting responsibility of safety, shelter, and provisions for hundreds of young surrendered women.
+
+#### Relocation to Mount Abu (Madhuban)
+In 1950, when the community shifted from Pakistan to India, Bhauji personally scouted and negotiated the acquisition of properties on Mount Abu, including Pandav Bhavan. His managerial skill and foresight laid the durable legal and infrastructural foundation for the international headquarters.
+
+#### The Silent Karmayogi
+Serving as Chief Trustee and Manager for five decades, Bhauji treated every single coin of the divine treasury with utmost sacred reverence and transparency. A true karmayogi who worked tirelessly behind the scenes with childlike simplicity and fatherly protection, he attained the angelic stage in 1986.`,
+    virtues: ["അചഞ്ചലമായ വിശ്വസ്തത", "സാമ്പത്തിക സുതാര്യതയും അച്ചടക്കവും", "നിയമപരിജ്ഞാനവും ധൈര്യവും", "നിസ്വാർത്ഥ കർമ്മയോഗം", "പിതൃസമാനമായ കരുതൽ"],
+    virtuesEn: ["Unwavering Loyalty", "Financial Integrity & Transparency", "Legal Acumen & Courage", "Selfless Karmayoga", "Fatherly Care"],
     videoUrl: "https://www.youtube.com/embed/GbaEqpAPRtA",
     videoEmbedUrl: "https://www.youtube.com/embed/GbaEqpAPRtA",
-    videoTitle: "Vishwa Kishore Dada Inspiring Life Story",
-    quote: "സത്യസന്ധതയും സുതാര്യതയും ഉള്ളിടത്ത് ഈശ്വരീയ സംരക്ഷണം കവചമായി നിൽക്കും."
+    videoTitle: "ദാദാ വിശ്വ കിശോർ (ഭാവ്ജീ) പ്രചോദനാത്മക ജീവിതകഥ",
+    videoTitleEn: "Vishwa Kishore Dada Inspiring Life Story",
+    quote: "സത്യസന്ധതയും സുതാര്യതയും ഉള്ളിടത്ത് ഈശ്വരീയ സംരക്ഷണം കവചമായി നിൽക്കും.",
+    quoteEn: "Wherever there is absolute honesty and transparency, God's divine protection stands as an impenetrable shield.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_portrait.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/DADA_NARAYAN_KRIPLANI_87b65ae09e.jpg",
+        title: "ദാദാ വിശ്വ കിശോർ (ഭാവ്ജീ)",
+        titleEn: "Dada Vishwa Kishore (Bhauji)",
+        caption: "ബ്രഹ്മാ ബാബയുടെ വലംകൈയായി നിന്ന് യജ്ഞത്തെ കാത്തുസൂക്ഷിച്ച മുഖ്യ ട്രസ്റ്റി",
+        captionEn: "Brahma Baba's trusted right hand and the chief trustee and manager of the Yagya"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_old_memories_1.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dada_Narayana_Old_Memories_1_d255bd5d23.webp",
+        title: "കറാച്ചിയിലെ ആദ്യകാല തപസ്യ",
+        titleEn: "Early Tapasya Days in Karachi",
+        caption: "ഓം മണ്ഡലിയുടെ ആദ്യ നാളുകളിൽ സാധകരുടെ സംരക്ഷണ കവചമായി മാറിയ ഭാവ്ജീ",
+        captionEn: "Standing as a protective shield for hundreds of young surrendered souls in Karachi"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_madhuban_trustee.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dada_Narayana_Old_Memories_2_ba5c435948.webp",
+        title: "മധുബന്റെ സാമ്പത്തിക-നിയമ അടിത്തറ",
+        titleEn: "Legal & Financial Pillar of Madhuban",
+        caption: "പാണ്ഡവ ഭവന്റെയും അനുബന്ധ ഭൂമികളുടെയും ക്രമീകരണങ്ങൾ സുതാര്യമായി നിർവ്വഹിച്ച കർമ്മയോഗി",
+        captionEn: "Managing property acquisition and legal safeguarding for Pandav Bhavan and Madhuban"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_old_memories_3.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dada_Narayana_Old_Memories_3_7d79ddc153.webp",
+        title: "പിതൃസമാനമായ സ്നേഹവും കരുതലും",
+        titleEn: "Fatherly Love & Protection",
+        caption: "യജ്ഞത്തിലെ ഓരോ സഹോദരിമാർക്കും സാധകർക്കും താങ്ങും തണലുമായി നിന്ന വലിയ മനസ്സ്",
+        captionEn: "Providing tireless fatherly care, nourishment, and reassurance to the spiritual family"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_godlywood.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_In_Godlywood_Narayan_Dada_7a4bc6cf41.webp",
+        title: "നിശ്ശബ്ദ കർമ്മയോഗത്തിന്റെ ഉദാത്ത മാതൃക",
+        titleEn: "Sublime Example of Silent Karmayoga",
+        caption: "പ്രശസ്തികളാഗ്രഹിക്കാതെ രാപ്പകലില്ലാതെ യജ്ഞ സേവനങ്ങളിൽ മുഴുകിയ പുണ്യാത്മാവ്",
+        captionEn: "Serving behind the scenes with pure selflessness, zero ego, and total dedication"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_serene.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Narayan_Dada_724d614417.webp",
+        title: "അചഞ്ചലമായ ഈശ്വര വിശ്വാസം",
+        titleEn: "Unshakeable Faith in God",
+        caption: "ഏത് പ്രതിസന്ധിയിലും തെല്ലും കുലുങ്ങാതെ സത്യസന്ധതയോടെ മുന്നേറിയ ആദിരത്നം",
+        captionEn: "Facing legal challenges and social storms with calm composure and immaculate integrity"
+      }
+    ]
   },
   {
     slug: "bk-jagdish-chander",
     id: "bk-jagdish-chander",
-    name: "ബി.കെ. ജഗദീഷ് ചന്ദർ ഹസീജ",
-    loukikName: "ജഗദീഷ് ചന്ദർ",
-    role: "മുഖ്യ വക്താവ് & എഴുത്തുകാരൻ",
-    years: "1929 – 2001",
+    name: "രാജയോഗി ബി.കെ. ജഗദീഷ് ചന്ദർ ഹസീജ",
+    nameEn: "Rajyogi BK Jagdish Chander Hassija",
+    loukikName: "ജഗദീഷ് ചന്ദർ ഹസീജ",
+    loukikNameEn: "Jagdish Chander Hassija",
+    role: "പ്രമുഖ വക്താവ്, ആത്മീയ ഗ്രന്ഥകാരൻ & ചിന്തകൻ",
+    roleEn: "Chief Spokesperson, Intellectual & Prolific Spiritual Author",
+    years: "13 മെയ് 1929 – 8 മെയ് 2001",
+    yearsEn: "13 May 1929 – 8 May 2001",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/bk-jagdish-chander.webp",
-    photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/miniHD_Jagdish_bhaii_Hin_6fcb39f0dc.webp",
+    photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_BK_Jagdish_Bhai_Ji_b56425959b.webp",
     summary: "ഈശ്വരീയ ജ്ഞാനത്തെ ശാസ്ത്രീയ ഗ്രന്ഥങ്ങളാക്കി ലോകത്തിന് സമ്മാനിച്ച വിശ്വപ്രസിദ്ധ ബൗദ്ധിക സ്തംഭം.",
-    bio: "ബ്രഹ്മാകുമാരീസിന്റെ ബൗദ്ധിക സ്തംഭം. ഈശ്വരീയ മുരളികളിലെ സിദ്ധാന്തങ്ങളെ ശാസ്ത്രീയവും യുക്തിസഹവുമായ രീതിയിൽ ഗ്രന്ഥങ്ങളാക്കി മാറ്റി. 'ആദിദേവ്' ഉൾപ്പെടെ എൺപതിലധികം ഗ്രന്ഥങ്ങൾ രചിച്ചു.\n\nലളിതമായ ശൈലിയിൽ ഗഹനമായ ആത്മീയ സത്യങ്ങൾ വിശദീകരിക്കാൻ അദ്ദേഹത്തിന് അസാധാരണ കഴിവുണ്ടായിരുന്നു. പത്രപ്രവർത്തകൻ, ചിന്തകൻ, പ്രഭാഷകൻ എന്നീ നിലകളിൽ ബ്രഹ്മാകുമാരീസിന്റെ അന്താരാഷ്ട്ര പദവി ഉയർത്തുന്നതിൽ മുന്നിൽ നിന്നു.",
-    virtues: ["തത്ത്വചിന്താ പാണ്ഡിത്യം", "സാഹിത്യ നിർമ്മാണം", "യുക്തിസഹമായ വിശദീകരണം"],
+    summaryEn: "The intellectual giant and prolific author who articulated Godly wisdom into scientific literature and represented BK globally.",
+    bio: `#### പ്രാരംഭ ജീവിതവും ഈശ്വരീയ ജ്ഞാന പ്രവേശനവും
+1929 മെയ് 13-ന് പഞ്ചാബിലെ മോണ്ട്ഗോമറിയിൽ (ഇന്നത്തെ സാഹിവാൾ, പാകിസ്ഥാൻ) ജനിച്ചു. വിഭജനത്തിന് ശേഷം ഡൽഹിയിൽ ഉയർന്ന സർക്കാർ ഉദ്യോഗവും പത്രപ്രവർത്തന രംഗവും നയിക്കവെ, 1952-ൽ ഈശ്വരീയ വിദ്യാലയവുമായി ബന്ധപ്പെടുകയും ബാബയുടെ ജ്ഞാനത്തിന്റെ ഗഹനത തിരിച്ചറിഞ്ഞ് സർവ്വസ്വവും ആത്മീയ സേവനത്തിനായി സമർപ്പിക്കുകയും ചെയ്തു.
+
+#### ആത്മീയ ഗ്രന്ഥങ്ങളുടെയും സാഹിത്യത്തിന്റെയും ശില്പി
+ബ്രഹ്മാ ബാബയുടെ സാന്നിധ്യത്തിൽ ഇരുന്ന് മുരളികളുടെ ആഴമേറിയ ജ്ഞാന രഹസ്യങ്ങൾ കുറിച്ചെടുക്കുകയും, അവയെ ശാസ്ത്രീയവും യുക്തിസഹവുമായ രീതിയിൽ ഗ്രന്ഥങ്ങളാക്കി ലോകത്തിന് സമർപ്പിക്കുകയും ചെയ്ത അതുല്യ സാഹിത്യകാരനാണ് ജഗദീഷ് ഭായ്. പ്രസ്ഥാനത്തിന്റെ ചരിത്രരേഖയായ 'ആദി ദേവ്' (Adi Dev - The First Man) ഉൾപ്പെടെ എൺപതിലധികം ഉത്കൃഷ്ട ആത്മീയ ഗ്രന്ഥങ്ങൾ അദ്ദേഹം ഹിന്ദിയിലും ഇംഗ്ലീഷിലുമായി രചിച്ചു. 'ഗ്യാൻ അമൃത്' മാസികയുടെ മുഖ്യ പത്രാധിപരായും അദ്ദേഹം ദീർഘകാലം സേവനമനുഷ്ഠിച്ചു.
+
+#### ബ്രഹ്മാകുമാരീസിന്റെ ബൗദ്ധിക ശബ്ദം
+അന്താരാഷ്ട്ര തലത്തിൽ ഐക്യരാഷ്ട്രസഭ (UN), അന്താരാഷ്ട്ര സമ്മേളനങ്ങൾ, പത്രസമ്മേളനങ്ങൾ എന്നിവയിൽ ബ്രഹ്മാകുമാരീസിനെ പ്രതിനിധീകരിച്ച് ലോകനേതാക്കളോടും ശാസ്ത്രജ്ഞരോടും മതനേതാക്കളോടും സംവദിച്ച ബൗദ്ധിക ശബ്ദമായിരുന്നു ജഗദീഷ് ഭായ്. ഏത് സങ്കീർണ്ണമായ വിഷയത്തെയും പരമാത്മ ജ്ഞാനത്തിന്റെ വെളിച്ചത്തിൽ ശാസ്ത്രീയമായി സമർത്ഥിക്കാൻ അദ്ദേഹത്തിന് പ്രത്യേക വരദാനമുണ്ടായിരുന്നു.
+
+#### നിസ്വാർത്ഥ കർമ്മയോഗവും സമ്പൂർണ്ണതയും
+വലിയ പാണ്ഡിത്യവും ആദരവും ഉണ്ടായിരുന്നിട്ടും കൊച്ചുകുട്ടിയുടെ നിഷ്കളങ്കതയും വിനയവും കാത്തുസൂക്ഷിച്ച മഹാനായ കർമ്മയോഗിയായിരുന്നു അദ്ദേഹം. രാപ്പകലില്ലാതെ സാഹിത്യ രചനയിലും ആത്മീയ തപസ്യയിലും മുഴുകിയ ജഗദീഷ് ഭായ്, 2001 മെയ് 8-ന് തന്റെ 72-ാം വയസ്സിൽ സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Early Life & Awakening to Godly Knowledge
+Born on 13 May 1929 in Montgomery (now Sahiwal, Pakistan), Jagdish Chander was a brilliant scholar and journalist who held prestigious positions in post-partition Delhi. In 1952, upon encountering the divine wisdom through Brahma Baba, his keen intellect recognised the transcendental truth, prompting him to dedicate his entire life, intellect, and pen to Godly service.
+
+#### Prolific Author of Spiritual Literature & 'Adi Dev'
+Sitting in the divine presence of Brahma Baba, Jagdish Bhai meticulously noted spiritual gems and articulated them into logical, philosophical, and scientific literature. He authored over 80 seminal books and hundreds of research articles in Hindi and English, including the definitive biographical history of the movement, 'Adi Dev: The First Man'. He also served as the Chief Editor of 'Gyan Amrit' and 'World Renewal' magazines for decades.
+
+#### The Intellectual Voice & UN Spokesperson
+Jagdish Bhai represented the Brahma Kumaris at the United Nations, global peace conferences, interfaith parliaments, and media summits worldwide. He had the rare divine gift of explaining profound spiritual secrets—karma philosophy, the cycle of time, and soul consciousness—in lucid language that captivated scientists, scholars, and world leaders alike.
+
+#### Selfless Karmayoga & Angelic Perfection
+Despite towering intellectual achievements and global acclaim, Jagdish Bhai radiated child-like simplicity, boundless humility, and unwavering loyalty to Shrimat. Working tirelessly day and night with ink and meditation, he left an everlasting treasure trove of spiritual literature before ascending to the angelic realm on 8 May 2001 at the age of 72.`,
+    virtues: ["തത്ത്വചിന്താ പാണ്ഡിത്യം", "സാഹിത്യ നിർമ്മാണം", "യുക്തിസഹമായ വിശദീകരണം", "അചഞ്ചല സമർപ്പണം", "വിനയം"],
+    virtuesEn: ["Philosophical Intellect", "Prolific Author", "Logical & Scientific Clarity", "Unflinching Dedication", "Childlike Humility"],
     videoUrl: "https://www.youtube.com/embed/wxHqM97F4Zo",
     videoEmbedUrl: "https://www.youtube.com/embed/wxHqM97F4Zo",
-    videoTitle: "Roohani Raahein: Jagdish Bhai Documentary",
-    quote: "ജ്ഞാനം ജീവിതത്തിൽ പ്രാവർത്തികമാകുമ്പോഴാണ് അതൊരു യഥാർത്ഥ ആത്മീയ ശക്തിയായി മാറുന്നത്."
+    videoTitle: "റൂഹാനീ രാഹേം: ബി.കെ. ജഗദീഷ് ഭായ് ഡോക്യുമെന്ററി",
+    videoTitleEn: "Roohani Raahein: BK Jagdish Bhai Documentary",
+    quote: "ജ്ഞാനം ജീവിതത്തിൽ പ്രാവർത്തികമാകുമ്പോഴാണ് അതൊരു യഥാർത്ഥ ആത്മീയ ശക്തിയായി മാറുന്നത്.",
+    quoteEn: "Spiritual knowledge becomes authentic soul power only when it is translated into living, daily practice.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/bk_jagdish_chander_author.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/BK_Jagdish_Bhai_Ji_b56425959b.jpg",
+        title: "ആത്മീയ സാഹിത്യ ശില്പി",
+        titleEn: "Master of Spiritual Literature",
+        caption: "എൺപതിലധികം ഉത്കൃഷ്ട ഗ്രന്ഥങ്ങളിലൂടെ ഈശ്വരീയ ജ്ഞാനം ലോകത്തിന് സമ്മാനിച്ച ജഗദീഷ് ഭായ്",
+        captionEn: "Gifting divine wisdom to the world through more than 80 seminal spiritual books"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/bk_jagdish_chander_portrait_peace.png",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/01_Jagdish_Bhai_ji_97cb254358.png",
+        title: "തത്ത്വചിന്താ പാണ്ഡിത്യവും ശാന്തതയും",
+        titleEn: "Philosophical Intellect & Serenity",
+        caption: "ഗഹനമായ ആത്മീയ രഹസ്യങ്ങൾ ശാസ്ത്രീയമായി വിശദീകരിച്ച ബൗദ്ധിക സ്തംഭം",
+        captionEn: "Articulating deep spiritual secrets with scientific precision and logical clarity"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/bk_jagdish_chander_meditation.png",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/02_Jagdish_Bhai_ji_1e70e482ea.png",
+        title: "ആഴത്തിലുള്ള രാജയോഗ തപസ്യ",
+        titleEn: "Profound Rajyoga Tapasya",
+        caption: "എഴുത്തിനോടൊപ്പം തീവ്രമായ ധ്യാന സാധന അനുഷ്ഠിച്ച നിസ്വാർത്ഥ കർമ്മയോഗി",
+        captionEn: "Combining tireless writing with high meditative consciousness and soul power"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/bk_jagdish_chander_writing.png",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/03_Jagdish_Bhai_ji_fd3535b0ba.png",
+        title: "'ആദിദേവ്' ഗ്രന്ഥരചന",
+        titleEn: "Authoring 'Adi Dev: The First Man'",
+        caption: "ബ്രഹ്മാ ബാബയുടെ ജീവചരിത്രവും യജ്ഞ ചരിത്രവും അനശ്വരമാക്കിയ സുവർണ്ണ തൂലിക",
+        captionEn: "Immortalising Brahma Baba's life history and divine mission with his golden pen"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/bk_jagdish_chander_speech.png",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/04_Jagdish_Bhai_ji_f5ed04d749.png",
+        title: "അന്താരാഷ്ട്ര വേദികളിലെ മുഖ്യ വക്താവ്",
+        titleEn: "International Spokesperson & Orator",
+        caption: "ഐക്യരാഷ്ട്രസഭയിലും ആഗോള സമ്മേളനങ്ങളിലും ഈശ്വരീയ സന്ദേശം എത്തിച്ച വക്താവ്",
+        captionEn: "Addressing world leaders, scientists, and UN forums with inspiring clarity"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/bk_jagdish_chander_eminent_leaders.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/1_Bhai_ji_with_Eminent_Personalities_41c353fadb.JPG",
+        title: "ലോകനേതാക്കളോടൊപ്പം ആത്മീയ സംവാദം",
+        titleEn: "Spiritual Dialogue with World Dignitaries",
+        caption: "രാഷ്ട്രത്തലവന്മാരെയും പണ്ഡിതരെയും രാജയോഗത്തിലേക്ക് ആകർഷിച്ച ജഗദീഷ് ഭായ്",
+        captionEn: "Engaging heads of state and eminent scholars with the transformative message of peace"
+      }
+    ]
   },
   {
     slug: "dadi-hriday-pushpa",
