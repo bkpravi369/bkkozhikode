@@ -48,7 +48,7 @@ Born on 15 December 1876 in Hyderabad, Sindh, as the son of a school headmaster,
 At the age of 60, while spending time in deep solitude and meditation in Mount Abu and Varanasi, he experienced a series of profound divine visions. He witnessed the four-armed Vishnu, the incorporeal Supreme Soul Shiva as a point of divine light, the destruction of the old iron-aged world, and the dawn of a golden-aged paradise. God Shiva adopted his corporeal form as a medium (Chariot), bestowing upon him the spiritual name 'Prajapita Brahma'.
 
 #### Founding of Om Mandali & Empowerment of Women
-Following divine directions in 1936–37, he wound up his diamond business and returned to Sindh, surrendering his entire fortune to spiritual service. He established the spiritual gathering known as 'Om Mandali'. In a revolutionary step for that era, he placed the entire administration and legal trust of the organization into the hands of a committee of eight young women led by Mateshwari Saraswati (Mama).
+Following divine directions in 1936–37, he wound up his diamond business and returned to Sindh, surrendering his entire fortune to spiritual service. He established the spiritual gathering known as 'Om Mandali'. In a revolutionary step for that era, he placed the entire administration and legal trust of the organization into the hands of a committee of eight young women led by Mateshwari Saraswati (Mamma).
 
 #### 14 Years of Tapasya in Karachi
 Amid intense societal opposition, around 300 members moved to Karachi in late 1937. For 14 years (1937–1950), this spiritual community lived in deep solitude, meditation, and study—a period known as the spiritual furnace ('Bhatti'). Brahma Baba nurtured every seeker with immense paternal love, moulding them into spiritual jewels ('Adi Ratnas').
@@ -122,7 +122,7 @@ Living as an embodiment of humility ('Nirman Bhav') and trusteeship ('Nimitt Bha
     slug: "mamma-saraswati",
     id: "mamma-saraswati",
     name: "മാതേശ്വരി ജഗദംബാ സരസ്വതി (മമ്മ)",
-    nameEn: "Mateshwari Jagadamba Saraswati (Mama)",
+    nameEn: "Mateshwari Jagadamba Saraswati (Mamma)",
     loukikName: "രാധേ പൊകർദാസ് രാജ്വാനി (ഓം രാധേ)",
     loukikNameEn: "Radhe Pokardas Rajwani (Om Radhe)",
     role: "പ്രഥമ മുഖ്യ ഭരണാധികാരി & യജ്ഞ മാതാവ്",
@@ -151,19 +151,19 @@ Living as an embodiment of humility ('Nirman Bhav') and trusteeship ('Nimitt Bha
     bioEn: `#### Birth & Early Childhood
 Born in 1919 near Amritsar and raised in Hyderabad, Sindh, Radhe Pokardas Rajwani was an extraordinarily gifted child. Excelling in academics, music, and art, she possessed a natural inclination toward purity and spiritual reflection over worldly luxury.
 
-#### Entry into Om Mandali & Becoming 'Mama'
-In 1937, at the age of 17, Radhe attended Dada Lekhraj's satsang along with her mother, Jaswanti. Recognizing the divine truth in her very first class, she surrendered her life to the Yagya. Seeing her clarity of intellect and spiritual maturity, Brahma Baba named her 'Saraswati' and appointed her as the President of the Om Mandali Managing Committee. Seekers, including those decades older than her, affectionately called her 'Mama' (Mother).
+#### Entry into Om Mandali & Becoming 'Mamma'
+In 1937, at the age of 17, Radhe attended Dada Lekhraj's satsang along with her mother, Jaswanti. Recognizing the divine truth in her very first class, she surrendered her life to the Yagya. Seeing her clarity of intellect and spiritual maturity, Brahma Baba named her 'Saraswati' and appointed her as the President of the Om Mandali Managing Committee. Seekers, including those decades older than her, affectionately called her 'Mamma' (Mother).
 
 #### Embodiment of Discipline & Maternal Love
-During the 14 years of Tapasya in Karachi, Mama stood as the administrative and spiritual backbone of the organization. She fearlessly represented Om Mandali before government authorities and tribunals, authoring the historic book 'Is This Justice?'. She was an absolute example of following spiritual directions ('Shrimat'), never missing early morning meditation (Amritvela) or Murli study.
+During the 14 years of Tapasya in Karachi, Mamma stood as the administrative and spiritual backbone of the organization. She fearlessly represented Om Mandali before government authorities and tribunals, authoring the historic book 'Is This Justice?'. She was an absolute example of following spiritual directions ('Shrimat'), never missing early morning meditation (Amritvela) or Murli study.
 
 #### All-India Tours & Spiritual Service
-After moving to Mount Abu in 1950, Mama travelled extensively across Delhi, Mumbai, Punjab, and Uttar Pradesh to establish service centres. Both scholars and common people were captivated by her sweet yet logical discourses, earning her the beloved title 'Meethi Mama' (Sweet Mother).
+After moving to Mount Abu in 1950, Mamma travelled extensively across Delhi, Mumbai, Punjab, and Uttar Pradesh to establish service centres. Both scholars and common people were captivated by her sweet yet logical discourses, earning her the beloved title 'Meethi Mamma' (Sweet Mother).
 
 #### Journey to Completeness
-Even during physical illness in her final days, Mama remained completely detached from bodily pain, radiating peace and spiritual power. On 24 June 1965, at the age of 45, she attained the complete karmateet (angelic) stage in Madhuban.`,
+Even during physical illness in her final days, Mamma remained completely detached from bodily pain, radiating peace and spiritual power. On 24 June 1965, at the age of 45, she attained the complete karmateet (angelic) stage in Madhuban.`,
     virtues: ["സമ്പൂർണ്ണ ശ്രീമത പാലന", "മാതൃവാത്സല്യം (മീഠി മമ്മ)", "ജ്ഞാനസ്വരൂപിണി", "നിർഭയമായ നേതൃത്വം", "കർമ്മാതീത സ്ഥിതി"],
-    virtuesEn: ["Absolute Obedience to Shrimat", "Motherly Love (Meethi Mama)", "Goddess of Wisdom", "Fearless Leadership", "Karmateet Stage"],
+    virtuesEn: ["Absolute Obedience to Shrimat", "Motherly Love (Meethi Mamma)", "Goddess of Wisdom", "Fearless Leadership", "Karmateet Stage"],
     videoUrl: "https://www.youtube.com/embed/67I4HiZty1U",
     videoEmbedUrl: "https://www.youtube.com/embed/67I4HiZty1U",
     videoTitle: "Meethi Mamma Ka Jeevan Parichay",
@@ -224,74 +224,402 @@ Even during physical illness in her final days, Mama remained completely detache
   {
     slug: "dadi-prakashmani",
     id: "dadi-prakashmani",
-    name: "ദാദി പ്രകാശമണി (കുമാർക)",
+    name: "രാജയോഗിനി ദാദി പ്രകാശമണി (കുമാർക)",
+    nameEn: "Rajyogini Dadi Prakashmani (Kumarka)",
     loukikName: "രമ",
-    role: "രണ്ടാം മുഖ്യ ഭരണാധികാരി",
-    years: "1922 – 2007",
+    loukikNameEn: "Rama",
+    role: "രണ്ടാം മുഖ്യ ഭരണാധികാരി (1969 – 2007)",
+    roleEn: "Second Chief Administrator (1969 – 2007)",
+    years: "1 സെപ്റ്റംബർ 1922 – 25 ആഗസ്റ്റ് 2007",
+    yearsEn: "1 September 1922 – 25 August 2007",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-prakashmani.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_03_Dadi_Prakashmani_Ji_Face_16_e1633512632427_adaf412260.webp",
     summary: "നാല് പതിറ്റാണ്ടുകാലം ബ്രഹ്മാകുമാരീസ് പ്രസ്ഥാനത്തെ ആഗോളതലത്തിലേക്ക് വളർത്തിയെടുത്ത സമാനതകളില്ലാത്ത പ്രകാശഗോപുരം.",
-    bio: "ബാബ നൽകിയ 'പ്രകാശമണി' എന്ന നാമം അന്വർത്ഥമാക്കിക്കൊണ്ട് പ്രസ്ഥാനത്തിന്റെ പ്രകാശഗോപുരമായി മാറി. 1969 മുതൽ നാല് പതിറ്റാണ്ടുകാലം ബ്രഹ്മാകുമാരീസിനെ ആഗോളതലത്തിലേക്ക് നയിച്ചു. ശാന്തിവൻ, ജ്ഞാനസരോവർ എന്നിവയുടെ നിർമ്മാണത്തിനും ഐക്യരാഷ്ട്രസഭയുടെ പീസ് മെസഞ്ചർ പുരസ്കാര നേട്ടത്തിനും നേതൃത്വം നൽകി.\n\nഎല്ലാവരെയും തുല്യമായി സ്നേഹിക്കുകയും സദാ പുഞ്ചിരിക്കുന്ന മുഖത്തോടെ ഏത് പ്രതിസന്ധിയെയും ലഘൂകരിക്കുകയും ചെയ്യുന്നതായിരുന്നു ദാദിയുടെ സവിശേഷത. ലോക നേതാക്കളോടും സാധാരണക്കാരോടും ഒരേ മാതൃവാത്സല്യത്തോടെ ഇടപെട്ട ദാദി പ്രകാശമണി ആധുനിക ആത്മീയ ഭാരതത്തിന്റെ അഭിമാന സ്തംഭമാണ്.",
-    virtues: ["വിശ്വ സാഹോദര്യം", "ഭരണപാടവം", "സദാ പുഞ്ചിരിക്കുന്ന പ്രകൃതം"],
+    summaryEn: "The peerless tower of light who guided the global expansion of the Brahma Kumaris for nearly four decades.",
+    bio: `#### ബാല്യകാലവും ഓം മണ്ഡലിയിലേക്കുള്ള പ്രവേശനവും
+1922 സെപ്റ്റംബർ 1-ന് സിന്ധിലെ ഹൈദരാബാദിൽ വിഷ്ണുഭക്തനും ജ്യോതിഷിയുമായിരുന്ന വിഷ്ണുദാസിന്റെ മകളായി രമ ജനിച്ചു. 1936-ൽ തന്റെ 14-ാം വയസ്സിൽ ദാദാ ലേഖ്രാജിന്റെ സത്സംഗത്തിൽ എത്തിയ രമയ്ക്ക് ആദ്യ ദർശനത്തിൽ തന്നെ അദ്ദേഹത്തിന്റെ നെറ്റിയിൽ ജ്യോതിർബിന്ദുവായ പരമാത്മാവിന്റെ ദിവ്യപ്രകാശം അനുഭവപ്പെട്ടു. തുടർന്ന് തന്റെ ജീവിതം പൂർണ്ണമായും ഈശ്വരീയ സേവനത്തിനായി സമർപ്പിച്ചു. സൂക്ഷ്മ വതനിലെ ദർശനപ്രകാരം എല്ലാവർക്കും ആത്മീയ പ്രകാശം പകരുന്ന രത്നം എന്ന അർത്ഥത്തിൽ ബാബ അവർക്ക് 'പ്രകാശമണി' എന്ന് നാമകരണം ചെയ്തു. സ്നേഹത്തോടെ ബാബയും സാധകരും അവരെ 'കുമാർക' എന്ന് വിളിച്ചു.
+
+#### യജ്ഞ സേവനവും പ്രാരംഭ ദൗത്യങ്ങളും
+കറാച്ചിയിലെ 14 വർഷത്തെ കഠിന തപസ്യക്കാലത്ത് പ്രായത്തിൽ ചെറുതായിരുന്നെങ്കിലും വലിയ ഉത്തരവാദിത്തങ്ങൾ കുമാർക ഏറ്റെടുത്തു. ഒരു ആത്മീയ സേനാനായകയെപ്പോലെ യുവതികളായ സാധകരെ സംഘടിപ്പിക്കുകയും പരിശീലിപ്പിക്കുകയും ചെയ്തു. 1950-ൽ മൗണ്ട് അബുവിലേക്ക് മാറിയ ശേഷം ഭാരതത്തിലെ വിവിധ സംസ്ഥാനങ്ങളിൽ രാജയോഗ സന്ദേശമെത്തിക്കാൻ ബാബ തിരഞ്ഞെടുത്ത പ്രധാന രത്നങ്ങളിൽ ഒരാൾ ദാദി പ്രകാശമണിയായിരുന്നു. 1954-ൽ ജപ്പാനിൽ നടന്ന ലോക മതസമ്മേളനത്തിൽ ബ്രഹ്മാകുമാരീസിനെ പ്രതിനിധീകരിച്ച് പങ്കെടുത്ത ദാദി, വിദേശരാജ്യങ്ങളിൽ പ്രസ്ഥാനത്തിന്റെ ആദ്യ വിത്തുകൾ പാകി.
+
+#### 38 വർഷത്തെ ആഗോള നേതൃത്വം
+1965-ൽ മമ്മയുടെയും 1969 ജനുവരിയിൽ ബ്രഹ്മാ ബാബയുടെയും അവ്യക്തമാകലിന് ശേഷം, പ്രസ്ഥാനത്തിന്റെ രണ്ടാമത്തെ മുഖ്യ ഭരണാധികാരിയായി ദാദി പ്രകാശമണി ചുമതലയേറ്റു. അടുത്ത 38 വർഷക്കാലം (1969–2007) ഒരമ്മയുടെ വാത്സല്യത്തോടും മികച്ച ഒരു ഭരണാധികാരിയുടെ തന്ത്രജ്ഞതയോടും കൂടി ദാദി പ്രസ്ഥാനത്തെ നയിച്ചു. മൗണ്ട് അബുവിലെ പാണ്ഡവ ഭവനിൽ നിന്ന് 'ജ്ഞാനസരോവർ' അക്കാദമിയും, ഇരുപതിനായിരത്തിലധികം പേർക്ക് ഒരേസമയം ഇരിക്കാവുന്ന 'ശാന്തിവൻ' ആസ്ഥാനവും, ഗ്ലോബൽ ഹോസ്പിറ്റലും ദാദിയുടെ നേതൃത്വത്തിൽ പടുത്തുയർത്തി.
+
+#### അന്താരാഷ്ട്ര അംഗീകാരങ്ങളും സമ്പൂർണ്ണതയും
+ദാദിയുടെ കാലഘട്ടത്തിലാണ് ബ്രഹ്മാകുമാരീസ് ഐക്യരാഷ്ട്രസഭയുടെ (UN) കൺസൾട്ടേറ്റീവ് പദവിയുള്ള അന്താരാഷ്ട്ര സംഘടനയായി വളർന്നത്. ലോകസമാധാനത്തിനായുള്ള സംഭാവനകളെ മാനിച്ച് 1987-ൽ ഐക്യരാഷ്ട്രസഭയുടെ 'പീസ് മെസഞ്ചർ' (Peace Messenger) പുരസ്കാരവും, ഉദയ്പൂർ യൂണിവേഴ്സിറ്റിയുടെ ഡോക്ടറേറ്റ് ബഹുമതിയും ദാദിക്ക് ലഭിച്ചു. "നിമിത്ത ഭാവം, നിർമ്മാൺ ഭാവം (വിനയം), നിർമ്മല വാണി" എന്നീ മൂന്ന് മന്ത്രങ്ങൾ സ്വജീവിതത്തിൽ പകർത്തിയ ദാദി പ്രകാശമണി, 2007 ആഗസ്റ്റ് 25-ന് തന്റെ 85-ാം വയസ്സിൽ ശാന്തിവനിൽ വെച്ച് സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു. ദാദിയുടെ സ്മരണാർത്ഥം ആഗസ്റ്റ് 25 'വിശ്വ സാഹോദര്യ ദിനമായി' (Universal Brotherhood Day) ആചരിക്കുന്നു.`,
+    bioEn: `#### Early Life & Entry into Om Mandali
+Born on 1 September 1922 in Hyderabad, Sindh, as the daughter of devout astrologer Vishnudas, Rama attended Dada Lekhraj's satsang in 1936 at the age of 14. In her very first meeting, she experienced a vision of the Supreme Soul as a point of light shining on Baba's forehead and dedicated her life to the Yagya. Based on a vision from the subtle region, Baba named her 'Prakashmani' (Jewel of Light) and affectionately called her 'Kumarka'.
+
+#### Early Yagya Service & Pioneering Missions
+During the 14 years of Tapasya in Karachi, despite her young age, Kumarka shouldered major responsibilities, training and organizing young sisters like a spiritual commander. After relocating to Mount Abu in 1950, she led pioneering service across Indian states. In 1954, she represented the Brahma Kumaris at the World Religion Conference in Japan, sowing the first seeds of international service.
+
+#### 38 Years of Global Leadership
+Following the passing of Mamma in 1965 and Brahma Baba in January 1969, Dadi Prakashmani became the Chief Administrator. For 38 years (1969–2007), she guided the movement with a mother's warmth and a statesman's vision. Under her leadership, the organization expanded globally and built major campuses in Mount Abu, including Gyan Sarovar Academy, the Shantivan complex, and J. Watumull Global Hospital.
+
+#### International Recognition & Angelic Perfection
+Under Dadi's stewardship, the Brahma Kumaris achieved Consultative Status with the United Nations. She received the UN Peace Messenger Award in 1987 and an Honorary Doctorate from Udaipur University. Living by the motto of "Nimitt Bhav (Instrument consciousness), Nirman Bhav (Humility), and Nirmal Vani (Sweet speech)", Dadi attained the angelic stage on 25 August 2007 at Shantivan. Her memorial day is observed globally as Universal Brotherhood Day.`,
+    virtues: ["നിമിത്ത ഭാവവും വിനയവും", "വിശ്വ സാഹോദര്യം", "ആഗോള ഭരണപാടവം", "സദാ പുഞ്ചിരിക്കുന്ന മുഖം", "മാതൃവാത്സല്യം"],
+    virtuesEn: ["Trustee Consciousness & Humility", "Universal Brotherhood", "Global Administrative Excellence", "Ever-Smiling Countenance", "Maternal Affection"],
     videoUrl: "https://www.youtube.com/embed/b3hCDoE06NI",
     videoEmbedUrl: "https://www.youtube.com/embed/b3hCDoE06NI",
-    videoTitle: "Dadi Prakashmani Ji Documentary",
-    quote: "എല്ലാവരുടെയും നന്മയിൽ സ്വന്തം നന്മ കാണുക; ചിരിക്കുന്ന മുഖത്തോടെയും സ്നേഹനിർഭരമായ ഹൃദയത്തോടെയും ലോകത്തെ സേവിക്കുക."
+    videoTitle: "ദാദി പ്രകാശമണി ജി ഡോക്യുമെന്ററി",
+    videoTitleEn: "Dadi Prakashmani Ji Documentary",
+    quote: "എല്ലാവരുടെയും നന്മയിൽ സ്വന്തം നന്മ കാണുക; ചിരിക്കുന്ന മുഖത്തോടെയും സ്നേഹനിർഭരമായ ഹൃദയത്തോടെയും ലോകത്തെ സേവിക്കുക.",
+    quoteEn: "See your own benefit in the benefit of all; serve the world with an ever-smiling face and a loving heart.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_prakashmani_smiling.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_dadi_prakashmani_ji_1_cb57e66c96.webp",
+        title: "സദാ പുഞ്ചിരിക്കുന്ന മുഖം",
+        titleEn: "The Ever-Smiling Countenance",
+        caption: "ഏതൊരു പ്രതിസന്ധിയെയും പുഞ്ചിരിയോടെ നേരിട്ട സ്നേഹനിധിയായ ദാദി പ്രകാശമണി",
+        captionEn: "Dadi Prakashmani radiating divine benevolence and her iconic ever-smiling countenance"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_prakashmani_portrait.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Prakashamani_Ji_48d4822343.webp",
+        title: "പ്രകാശഗോപുരം",
+        titleEn: "Tower of Light",
+        caption: "ബാബ നൽകിയ പ്രകാശമണി എന്ന നാമം അന്വർത്ഥമാക്കിയ ആത്മീയ തേജസ്സ്",
+        captionEn: "Embodying the spiritual jewel of light named by Brahma Baba"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_prakashmani_meditation.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_dadi_prakashmani_ji_3_ce0ed0b766.webp",
+        title: "ആത്മീയ ദൃഷ്ടി",
+        titleEn: "Spiritual Drishti",
+        caption: "നിശ്ശബ്ദതയുടെ ശക്തിയാൽ സാധകർക്ക് ശാന്തിയും ഏകാഗ്രതയും പകർന്നുനൽകുന്ന ദാദി",
+        captionEn: "Bestowing peace and soul-consciousness through powerful spiritual drishti"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_prakashmani_blessings.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_dadi_prakashmani_ji_4_7366b1ee78.webp",
+        title: "മാതൃവാത്സല്യം",
+        titleEn: "Maternal Affection",
+        caption: "വിശ്വ കുടുംബത്തിലെ സാധകർക്ക് ഒരമ്മയുടെ സ്നേഹത്തോടെ അനുഗ്രഹങ്ങൾ വർഷിക്കുന്നു",
+        captionEn: "Showering spiritual children with the unconditional warmth of a divine mother"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_prakashmani_prakash_stambh.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Prakash_Stambh_Shantivan_4_56786d3593.JPG",
+        title: "പ്രകാശ സ്തംഭം (ശാന്തിവൻ)",
+        titleEn: "Prakash Stambh (Shantivan)",
+        caption: "മൗണ്ട് അബു ശാന്തിവനിലെ ദാദി പ്രകാശമണിയുടെ പവിത്ര സ്മൃതി സ്തംഭം",
+        captionEn: "The sacred memorial column 'Prakash Stambh' honoring Dadi Prakashmani at Shantivan, Mount Abu"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_prakashmani_global.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_dadi_prakashmani_ji_8_dc8b17baed.webp",
+        title: "വിശ്വ സാഹോദര്യം",
+        titleEn: "Universal Brotherhood",
+        caption: "ഭാരതത്തിലും വിദേശങ്ങളിലുമായി ദശലക്ഷങ്ങളെ ഈശ്വരീയ പാതയിലേക്ക് നയിച്ച ധീര നായിക",
+        captionEn: "Guiding millions worldwide toward peace, harmony, and universal brotherhood"
+      }
+    ]
   },
   {
     slug: "dadi-janki",
     id: "dadi-janki",
-    name: "ദാദി ജാനകി",
-    loukikName: "ജനക്",
-    role: "മൂന്നാം മുഖ്യ ഭരണാധികാരി",
-    years: "1916 – 2020",
+    name: "രാജയോഗിനി ദാദി ജാനകി",
+    nameEn: "Rajyogini Dadi Janki",
+    loukikName: "ജനക് കൃപലാനി",
+    loukikNameEn: "Janak Kripalani",
+    role: "മൂന്നാം മുഖ്യ ഭരണാധികാരി (2007 – 2020) & അന്താരാഷ്ട്ര സേവന നായിക",
+    roleEn: "Third Chief Administrator (2007 – 2020) & Pioneer of Overseas Service",
+    years: "1 ജനുവരി 1916 – 27 മാർച്ച് 2020",
+    yearsEn: "1 January 1916 – 27 March 2020",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-janki.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_01_Dadi_Janki_Ji_portrait_39_e1633512150246_60b8509def.webp",
     summary: "നൂറ്റാണ്ടിലധികം ജീവിച്ച്, ശാസ്ത്രലോകം 'ലോകത്തിലെ ഏറ്റവും സ്ഥിരതയാർന്ന മനസ്സ്' എന്ന് സാക്ഷ്യപ്പെടുത്തിയ വിശ്വമാതാവ്.",
-    bio: "1974-ൽ ലണ്ടനിലേക്ക് പോയി പാശ്ചാത്യ ലോകത്ത് ബ്രഹ്മാകുമാരീസ് കേന്ദ്രങ്ങൾ ആരംഭിച്ചു. ഇംഗ്ലീഷ് അറിയാതെ തന്നെ ആത്മീയ സ്നേഹം വഴി 140-ലധികം രാജ്യങ്ങളിലേക്ക് വിദ്യാലയത്തെ വ്യാപിപ്പിച്ചു. ശാസ്ത്രീയ ഇ.ഇ.ജി പരിശോധനയിലൂടെ 'ലോകത്തിലെ ഏറ്റവും സ്ഥിരതയുള്ള മനസ്സ്' എന്ന് വിലയിരുത്തപ്പെട്ട ദാദി 104-ാം വയസ്സിൽ അവ്യക്തയായി.\n\nടെക്സസ് മെഡിക്കൽ ഇൻസ്റ്റിറ്റ്യൂട്ടിലെ ശാസ്ത്രജ്ഞർ നടത്തിയ തലച്ചോറിന്റെ തരംഗ പരിശോധനകളിൽ, ബാഹ്യ സമ്മർദ്ദങ്ങൾക്കിടയിലും അചഞ്ചലമായ ശാന്തത നിലനിർത്താൻ ദാദിയുടെ മനസ്സിന് കഴിഞ്ഞു. സത്യസന്ധത, സമയനിഷ്ഠ, ഈശ്വരനിലുള്ള പരിപൂർണ്ണ സമർപ്പണം എന്നിവയായിരുന്നു ദാദിയുടെ വിജയരഹസ്യം.",
-    virtues: ["അചഞ്ചലമായ മനസ്സ്", "ധൈര്യവും നിശ്ചയദാർഢ്യവും", "സത്യസന്ധത"],
+    summaryEn: "The universal mother who lived for over a century, scientifically acclaimed as 'The Most Stable Mind in the World'.",
+    bio: `#### ബാല്യകാലവും സത്യത്തോടുള്ള ദാഹവും
+1916 ജനുവരി 1-ന് സിന്ധിലെ ഹൈദരാബാദിൽ ജനിച്ച ദാദി ജാനകി, കുട്ടിക്കാലം മുതൽക്കേ ഈശ്വരീയ സത്യമറിയാനും ജനങ്ങളെ സേവിക്കാനും അതിയായി ആഗ്രഹിച്ചിരുന്നു. വെറും മൂന്നാം ക്ലാസ് വരെ മാത്രം ഔപചാരിക വിദ്യാഭ്യാസം ലഭിച്ചിരുന്നെങ്കിലും ആത്മീയ കാര്യങ്ങളിൽ അഗാധമായ പക്വത പുലർത്തി. തന്റെ 21-ാം വയസ്സിൽ ബ്രഹ്മാ ബാബയെ കണ്ടുമുട്ടിയ ജാനകി, കടുത്ത സാമൂഹിക-കുടുംബ എതിർപ്പുകളെ അതിജീവിച്ച് ഓം മണ്ഡലിയിൽ പൂർണ്ണമായും സമർപ്പിച്ചു.
+
+#### കറാച്ചിയിലെ തപസ്യയും ഇന്ത്യയിലെ സേവനങ്ങളും
+കറാച്ചിയിലെ 14 വർഷത്തെ തപസ്യക്കാലത്ത് അടുക്കള സേവനം മുതൽ ആത്മീയ പഠനം വരെയുള്ള എല്ലാ മേഖലകളിലും ദാദി മുന്നിട്ടുനിന്നു. 1950-ൽ ഭാരതത്തിലേക്ക് വന്ന ശേഷം ഡൽഹി, അഹമ്മദാബാദ്, പൂനെ, മുംബൈ തുടങ്ങിയ പ്രധാന നഗരങ്ങളിൽ സേവന കേന്ദ്രങ്ങൾ ആരംഭിക്കുന്നതിന് നേതൃത്വം നൽകി. ഏതൊരു വ്യക്തിയുടെയും ഉള്ളിലെ നന്മ തിരിച്ചറിഞ്ഞ് അവരെ ഈശ്വരീയ പാതയിലേക്ക് കൊണ്ടുവരാനുള്ള ദാദിയുടെ കഴിവ് സമാനതകളില്ലാത്തതായിരുന്നു.
+
+#### 1974-ലെ പാശ്ചാത്യ ദൗത്യവും ആഗോള വികാസവും
+1974-ൽ തന്റെ 58-ാം വയസ്സിൽ, ബാപ്ദാദയുടെ നിർദ്ദേശപ്രകാരം പാശ്ചാത്യ രാജ്യങ്ങളിൽ രാജയോഗ സന്ദേശമെത്തിക്കാൻ ദാദി ജാനകി ലണ്ടനിലേക്ക് തിരിച്ചു. ഇംഗ്ലീഷ് ഭാഷ സംസാരിക്കാൻ അറിയാതെയും, പണമോ ഭൗതിക സൗകര്യങ്ങളോ ഇല്ലാതെയും ലണ്ടനിലെത്തിയ ദാദി, തന്റെ ആത്മീയ ദൃഷ്ടിയിലൂടെയും നിശ്ശബ്ദതയുടെ ശക്തിയിലൂടെയും വിദേശികളുടെ ഹൃദയം കീഴടക്കി. നീണ്ട 35 വർഷക്കാലം ലണ്ടൻ ആസ്ഥാനമാക്കി പ്രവർത്തിച്ച ദാദി, ലോകത്തിലെ 130-ലധികം രാജ്യങ്ങളിൽ ബ്രഹ്മാകുമാരീസ് കേന്ദ്രങ്ങൾ സ്ഥാപിക്കുന്നതിന് കാരണക്കാരിയായി.
+
+#### 'ലോകത്തിലെ ഏറ്റവും സ്ഥിരതയുള്ള മനസ്സ്'
+1978-ൽ അമേരിക്കയിലെ ടെക്സസ് യൂണിവേഴ്സിറ്റിയിലെ പ്രമുഖ ശാസ്ത്രജ്ഞരും ന്യൂറോളജിസ്റ്റുകളും ദാദി ജാനകിയുടെ തലച്ചോറിന്റെ തരംഗങ്ങൾ (EEG) വിവിധ സാഹചര്യങ്ങളിൽ പരീക്ഷണത്തിന് വിധേയമാക്കി. കണക്കുകൾ കൂട്ടുമ്പോഴും സംസാരിക്കുമ്പോഴും പ്രതിസന്ധികളെ അഭിമുഖീകരിക്കുമ്പോഴും ദാദിയുടെ തലച്ചോറിൽ 'ഡെൽറ്റ തരംഗങ്ങൾ' (ഗാഢമായ ധ്യാനാവസ്ഥയിലുള്ള തരംഗങ്ങൾ) സ്ഥിരമായി നിലനിൽക്കുന്നതായി കണ്ട് ശാസ്ത്രലോകം അമ്പരന്നു. തുടർന്ന് "ലോകത്തിലെ ഏറ്റവും സ്ഥിരതയുള്ള മനസ്സിനുടമ" (The Most Stable Mind in the World) ആയി ദാദി ജാനകിയെ ശാസ്ത്രജ്ഞർ പ്രഖ്യാപിച്ചു.
+
+#### മുഖ്യ ഭരണാധികാരിയും സമ്പൂർണ്ണതയും
+2007-ൽ ദാദി പ്രകാശമണിയുടെ വിയോഗത്തിന് ശേഷം 91-ാം വയസ്സിൽ പ്രസ്ഥാനത്തിന്റെ മൂന്നാമത്തെ മുഖ്യ ഭരണാധികാരിയായി ചുമതലയേറ്റു. ഭാരത സർക്കാരിന്റെ 'സ്വച്ഛ് ഭാരത് മിഷൻ' ബ്രാൻഡ് അംബാസഡറായും ദാദി പ്രവർത്തിച്ചു. "ഞാൻ ആരാണെന്നും എന്റെ പിതാവ് ആരാണെന്നും തിരിച്ചറിയുക" എന്ന സന്ദേശം ലോകത്തിന് നൽകിയ ദാദി, 2020 മാർച്ച് 27-ന് തന്റെ 104-ാം വയസ്സിൽ മൗണ്ട് അബുവിൽ വെച്ച് അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Early Life & Thirst for Truth
+Born on 1 January 1916 in Hyderabad, Sindh, Dadi Janki possessed a deep spiritual inclination from childhood. Despite having only three years of formal schooling, she held profound spiritual wisdom. At the age of 21, she met Brahma Baba and, overcoming intense familial and societal resistance, dedicated her life to Om Mandali.
+
+#### Tapasya in Karachi & Service Across India
+During the 14 years of Tapasya in Karachi, Dadi excelled in every service from the kitchen to spiritual study. After moving to India in 1950, she established major centres in Delhi, Ahmedabad, Pune, and Mumbai, transforming thousands of lives through her spiritual drishti and unshakable faith.
+
+#### The 1974 Western Mission & Global Expansion
+In 1974, at the age of 58, Dadi moved to London to introduce Rajyoga to the Western world. Speaking no English and arriving with minimal material resources, she won hearts through the power of silence and spiritual love. Spending 35 years based in London, she inspired the establishment of centres in over 130 countries.
+
+#### 'The Most Stable Mind in the World'
+In 1978, neuroscientists at the University of Texas conducted EEG tests on Dadi Janki under various mental tasks. Scientists were astonished to find that her brain continuously emitted delta waves—normally seen only in deep sleep or profound meditation—even while talking and solving problems, declaring her "The Most Stable Mind in the World."
+
+#### Chief Administrator & Angelic Perfection
+In 2007, at age 91, she became the Chief Administrator following Dadi Prakashmani's passing and also served as the Brand Ambassador for the Government of India's Swachh Bharat Mission. Teaching the world to "Know Who I Am and Who belongs to Me," Dadi Janki attained the angelic stage on 27 March 2020 at the age of 104.`,
+    virtues: ["ലോകത്തിലെ ഏറ്റവും സ്ഥിരതയുള്ള മനസ്സ്", "അചഞ്ചലമായ സത്യസന്ധത", "അന്താരാഷ്ട്ര സേവന ധീരത", "നിശ്ശബ്ദതയുടെ ശക്തി", "സമയനിഷ്ഠ"],
+    virtuesEn: ["Most Stable Mind in the World", "Unwavering Truthfulness", "Fearless Global Service", "Power of Silence", "Punctuality"],
     videoUrl: "https://www.youtube.com/embed/mN04u5UM2M0",
     videoEmbedUrl: "https://www.youtube.com/embed/mN04u5UM2M0",
-    videoTitle: "Dadi Janki Ji Life Story",
-    quote: "ഞാൻ ആരെന്നും എന്റേത് ആരെത്തുമാണെന്ന് ഓർക്കുക. ഒരു ഈശ്വരനെ മാത്രം സർവ്വതിലും കാണുക; അപ്പോൾ ഭയവും ആശങ്കയും ഒഴിഞ്ഞുപോകും."
+    videoTitle: "ദാദി ജാനകി ജി ജീവിതരേഖ",
+    videoTitleEn: "Dadi Janki Ji Life Story",
+    quote: "ഞാൻ ആരാണെന്നും എന്റെ പിതാവ് ആരാണെന്നും തിരിച്ചറിയുക. ഒരു ഈശ്വരനെ മാത്രം സർവ്വതിലും കാണുക; അപ്പോൾ ഭയവും ആശങ്കയും ഒഴിഞ്ഞുപോകും.",
+    quoteEn: "Know who you are and who belongs to you. See only the One Father in all things, and all fear and worry will vanish.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_janki_stable_mind.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Janki_Featured_image_00d186277d.webp",
+        title: "ഏറ്റവും സ്ഥിരതയുള്ള മനസ്സ്",
+        titleEn: "The Most Stable Mind in the World",
+        caption: "ശാസ്ത്രലോകം 'ലോകത്തിലെ ഏറ്റവും സ്ഥിരതയാർന്ന മനസ്സ്' എന്ന് സാക്ഷ്യപ്പെടുത്തിയ ആത്മീയ വ്യക്തിത്വം",
+        captionEn: "Scientifically certified by neuroscientists as having the most stable and peaceful mind"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_janki_standing.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Janki_Ji_Standing_Pose_015_97a605aee9.jpg",
+        title: "സത്യത്തിന്റെയും തപസ്യയുടെയും പ്രതീകം",
+        titleEn: "Embodiment of Truth & Tapasya",
+        caption: "സത്യസന്ധതയും ഈശ്വരനിലുള്ള അചഞ്ചലമായ വിശ്വാസവും കൊണ്ട് വിശ്വത്തെ നയിച്ച ദാദി",
+        captionEn: "Leading the global spiritual family with unwavering truthfulness and supreme surrender"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_janki_london_mission.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Janki_ji_portrait_01_4b27523a07.jpg",
+        title: "അന്താരാഷ്ട്ര സേവന നായിക",
+        titleEn: "Global Service Pioneer",
+        caption: "1974-ൽ ലണ്ടനിലെത്തി 130-ലധികം രാജ്യങ്ങളിൽ രാജയോഗ സന്ദേശമെത്തിച്ച ദാദി ജാനകി",
+        captionEn: "Pioneering the Western services from London and planting spiritual roots across 130+ nations"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_janki_waving.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Janki_ji_waving_hand_02_99ed4cd780.jpg",
+        title: "സ്നേഹനിർഭരമായ അഭിവാദനം",
+        titleEn: "Greetings of Spiritual Love",
+        caption: "സാധകരെ പുഞ്ചിരിയോടെ അഭിവാദ്യം ചെയ്ത് പരമാത്മ ശാന്തി പകരുന്ന ദാദി",
+        captionEn: "Greeting the gathering of souls with affectionate smiles and bestowing peace"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_janki_discourse.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/dadi_janki_ji_while_lecturing_c480b5aa9e.jpg",
+        title: "ആത്മീയ ജ്ഞാനാമൃതം",
+        titleEn: "Divine Discourse",
+        caption: "'ഞാൻ ആരാണ്, എന്റെ പിതാവ് ആരാണ്' എന്ന പരമസത്യം ലളിതമായി പഠിപ്പിച്ച ദാദി",
+        captionEn: "Illuminating seekers with profound clarity on 'Who am I and Who is Mine'"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_janki_shringar.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Janki_Ji_Shringar_002c_a4d6c56ba0.jpg",
+        title: "ശതാബ്ദി പ്രഭാവം",
+        titleEn: "Centenary Grace & Purity",
+        caption: "104 വർഷം പൂർണ്ണ തപസ്യയിൽ ജീവിച്ച് ലോകത്തെ പ്രചോദിപ്പിച്ച ആത്മീയ അമ്മ",
+        captionEn: "Living a pure life of 104 years as an inspiration and beacon of hope for humanity"
+      }
+    ]
   },
   {
     slug: "dadi-gulzar",
     id: "dadi-gulzar",
-    name: "ദാദി ഗുൽസാർ (ഹൃദയ മോഹിനി)",
+    name: "രാജയോഗിനി ദാദി ഹൃദയ മോഹിനി (ദാദി ഗുൽസാർ)",
+    nameEn: "Rajyogini Dadi Hriday Mohini (Dadi Gulzar)",
     loukikName: "ശോഭ",
-    role: "നാലാം മുഖ്യ ഭരണാധികാരി & ബാപ്ദാദയുടെ ദിവ്യരഥം",
-    years: "1929 – 2021",
+    loukikNameEn: "Shobha",
+    role: "നാലാം മുഖ്യ ഭരണാധികാരി & അവ്യക്ത ബാപ്ദാദയുടെ ദിവ്യരഥം",
+    roleEn: "Fourth Chief Administrator & Corporeal Medium of Avyakt Bapdada",
+    years: "1 ജൂലൈ 1928 – 11 മാർച്ച് 2021",
+    yearsEn: "1 July 1928 – 11 March 2021",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-gulzar.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_02_Dadi_Gulzar_Ji_e1633512398452_0718dfeff3.webp",
     summary: "നിഷ്കളങ്കമായ ബാലഭാവവും അതീന്ദ്രിയ ദിവ്യദൃഷ്ടിയും ഒത്തുചേർന്ന, അരനൂറ്റാണ്ടുകാലം പരമാത്മാവിന്റെ ദിവ്യരഥമായി സേവിച്ച പുണ്യാത്മാവ്.",
-    bio: "ചെറുപ്പത്തിൽ തന്നെ അതീന്ദ്രിയ ധ്യാനാവസ്ഥയിലേക്കും ദിവ്യദൃഷ്ടിയിലേക്കും പ്രവേശിച്ച ആത്മാവ്. 1969 മുതൽ 2016 വരെയുള്ള 47 വർഷക്കാലം ബാപ്ദാദയുടെ അവ്യക്ത വാണികൾ പകർന്നു നൽകാനുള്ള സാകാര മാധ്യമമായി (ഭാഗീരഥി) പ്രവർത്തിച്ചു. ദില്ലി സോണിന്റെ പ്രാരംഭ വളർച്ചയ്ക്ക് നേതൃത്വം നൽകി.\n\nകേവലം എട്ടാം വയസ്സിൽ സമർപ്പിതയായ ദാദിക്ക് ശിവബാബ നൽകിയ പേരാണ് ഗുൽസാർ (റോസാത്തോട്ടം). ആഴമേറിയ ശാന്തിയും നിശ്ശബ്ദതയുടെ ശക്തിയും പ്രസരിപ്പിച്ച ദാദി ദശലക്ഷക്കണക്കിന് സാധകർക്ക് അതീന്ദ്രിയ അനുഭൂതി പകർന്നുനൽകി.",
-    virtues: ["അതീന്ദ്രിയ ധ്യാനസ്ഥിതി", "നിഷ്കളങ്കത", "ദിവ്യ സന്ദേശവാഹക"],
+    summaryEn: "The embodiment of innocence and divine trance who served as the corporeal medium of Avyakt Bapdada for nearly half a century.",
+    bio: `#### ബാല്യകാലവും ഓം മണ്ഡലി ബോർഡിംഗ് സ്കൂളും
+1928 ജൂലൈ 1-ന് സിന്ധിലെ ഹൈദരാബാദിൽ ധനികനായ ഡയമണ്ട് വ്യാപാരിയായിരുന്ന ദാദാ ജവഹർമലിന്റെ മകളായി ശോഭ ജനിച്ചു. ദാദാ ലേഖ്രാജിന്റെ അടുത്ത സുഹൃത്തായിരുന്ന ജവഹർമൽ തന്റെ കുടുംബത്തോടൊപ്പം ഓം മണ്ഡലിയിൽ ചേർന്നപ്പോൾ, എട്ടുവയസ്സുകാരിയായ ശോഭയും ഓം മണ്ഡലിയിലെ ബോർഡിംഗ് സ്കൂളിൽ വിദ്യാർത്ഥിനിയായി ചേർന്നു. എല്ലാവരുടെയും ഹൃദയങ്ങളെ ആകർഷിക്കുന്ന ശാന്തവും മധുരവുമായ സ്വഭാവമായതിനാൽ ബാബ അവർക്ക് 'ഹൃദയ മോഹിനി' എന്നും, സദാ വിടർന്ന പുഷ്പം പോലെ ഇരിക്കുന്നതിനാൽ 'ഗുൽസാർ' (പൂന്തോട്ടം) എന്നും പേരിട്ടു.
+
+#### സന്ദേശപുത്രിയും ദിവ്യദൃഷ്ടി വരദാനവും
+ചെറുപ്പത്തിൽ തന്നെ ആഴത്തിലുള്ള ധ്യാനത്തിലേക്ക് (ട്രാൻസ് / ധ്യാനാവസ്ഥ) പ്രവേശിക്കാനുള്ള ദൈവിക വരദാനം ഗുൽസാറിന് ലഭിച്ചു. കറാച്ചിയിലും തുടർന്ന് മൗണ്ട് അബുവിലും വെച്ച് സൂക്ഷ്മ വതനിലേക്ക് പ്രവേശിച്ച് ശിവബാബയുടെയും ബ്രഹ്മാ ബാബയുടെയും ദിവ്യ സന്ദേശങ്ങൾ സാധകർക്ക് എത്തിക്കുന്ന 'സന്ദേശപുത്രി' (Messenger) ആയി ദാദി പ്രവർത്തിച്ചു.
+
+#### ഇന്ത്യയിലെയും വിദേശത്തെയും സേവനങ്ങൾ
+1950-കൾക്ക് ശേഷം ഡൽഹി, മുംബൈ, ഉത്തർപ്രദേശ് എന്നിവിടങ്ങളിൽ സേവന കേന്ദ്രങ്ങൾ സ്ഥാപിക്കുന്നതിൽ ദാദി മുഖ്യ പങ്കുവഹിച്ചു. ഡൽഹിയിലെ കരോൾ ബാഗ് ആസ്ഥാനമാക്കി ഉത്തരേന്ത്യൻ സേവനങ്ങൾക്ക് ദീർഘകാലം നേതൃത്വം നൽകി. കൂടാതെ കിഴക്കൻ ആഫ്രിക്ക, ഓസ്ട്രേലിയ, ജപ്പാൻ, യൂറോപ്പ് തുടങ്ങി നിരവധി വിദേശ രാജ്യങ്ങളിൽ സഞ്ചരിച്ച് രാജയോഗ സന്ദേശം പ്രചരിപ്പിച്ചു.
+
+#### 47 വർഷക്കാലം ബാപ്ദാദയുടെ ദിവ്യരഥം (ഭാഗീരഥി)
+1969 ജനുവരി 18-ന് ബ്രഹ്മാ ബാബ സാകാര ശരീരം വെടിഞ്ഞ് അവ്യക്തനായ ശേഷം, ശിവബാബയും ബ്രഹ്മാ ബാബയും (ബാപ്ദാദ) സാധകരെ നേരിട്ട് കാണുന്നതിനും അവ്യക്ത മുരളികൾ ഉച്ചരിക്കുന്നതിനുമായി തിരഞ്ഞെടുത്ത സാകാര മാധ്യമം (ദിവ്യരഥം) ദാദി ഗുൽസാർ ആയിരുന്നു. 1969 മുതൽ 2016 വരെയുള്ള നീണ്ട 47 വർഷക്കാലം മധുബനിൽ ലക്ഷക്കണക്കിന് സാധകർക്ക് ബാപ്ദാദയുടെ പ്രത്യക്ഷ അനുഭവം നൽകാൻ സ്വന്തം ശരീരത്തെ സമർപ്പിച്ച 'ഭാഗീരഥി'യായിരുന്നു ദാദി. ഇതിനായി ജീവിതകാലം മുഴുവൻ കഠിനമായ അന്തർമുഖതയും (Introversion) ഏകാഗ്രതയും ദാദി കാത്തുസൂക്ഷിച്ചു.
+
+#### മുഖ്യ ഭരണാധികാരിയും അവ്യക്ത പ്രയാണവും
+2020 മാർച്ചിൽ ദാദി ജാനകിയുടെ വിയോഗത്തിന് ശേഷം പ്രസ്ഥാനത്തിന്റെ നാലാമത്തെ മുഖ്യ ഭരണാധികാരിയായി ചുമതലയേറ്റു. ഒരു ഫരിഷ്തയെപ്പോലെ (മാലാഖ) ഭൂമിയിൽ ജീവിച്ച ദാദി ഗുൽസാർ, തന്റെ 93-ാം വയസ്സിൽ 2021 മാർച്ച് 11-ന് (മഹാശിവരാത്രി ദിനത്തിൽ) സാകാര ശരീരം വെടിഞ്ഞ് ബാപ്ദാദയുടെ മടിത്തട്ടിലേക്ക് മടങ്ങി.`,
+    bioEn: `#### Childhood & Om Mandali Boarding School
+Born on 1 July 1928 in Hyderabad, Sindh, as the daughter of diamond merchant Dada Jawaharmal, young Shobha joined the Om Mandali boarding school at age eight when her family surrendered to the Yagya. Seeing her serene and captivating nature, Brahma Baba named her 'Hriday Mohini' (One who attracts hearts) and 'Gulzar' (Rose Garden).
+
+#### Divine Messenger (Sandesh Putri)
+From a very young age, Gulzar was blessed with the divine gift of entering deep trance (Dhyan) and travelling to the subtle region, bringing back divine messages from Shiv Baba and Brahma Baba to guide the spiritual community.
+
+#### Service in India & Abroad
+From the 1950s onwards, Dadi played a vital role in establishing centres in Delhi, Mumbai, and Uttar Pradesh, serving as the head of the Delhi Zone at Karol Bagh for decades. She also travelled extensively to East Africa, Australia, Japan, and Europe to spread the message of Rajyoga.
+
+#### 47 Years as the Divine Chariot of Bapdada (Bhagirathi)
+After Brahma Baba attained the angelic stage on 18 January 1969, Dadi Gulzar became the chosen corporeal medium (Chariot) through whom Avyakt Bapdada met millions of seekers and delivered Avyakt Murlis for 47 years (1969–2016). To keep her instrument pure and ready, Dadi lived a life of extraordinary introversion, silence, and simplicity.
+
+#### Chief Administrator & Angelic Ascent
+Following Dadi Janki's passing in March 2020, Dadi Gulzar became the Fourth Chief Administrator. Living as a true angel on earth, she ascended to the subtle region on the auspicious day of Mahashivratri, 11 March 2021, at the age of 93.`,
+    virtues: ["അവ്യക്ത ബാപ്ദാദയുടെ ദിവ്യരഥം", "അഗാധമായ അന്തർമുഖത", "ഫരിഷ്താ സ്ഥിതി (മാലാഖാ ഭാവം)", "സമ്പൂർണ്ണ നിഷ്കളങ്കത", "ഏകാഗ്രത"],
+    virtuesEn: ["Divine Chariot of Avyakt Bapdada", "Profound Introversion", "Angelic Stage (Farishta)", "Complete Innocence", "One-Pointed Concentration"],
     videoUrl: "https://www.youtube.com/embed/hyD8UBcKnCk",
     videoEmbedUrl: "https://www.youtube.com/embed/hyD8UBcKnCk",
-    videoTitle: "Bhagirath - Dadi Gulzar Documentary",
-    quote: "നിഷ്കളങ്കമായ ഹൃദയമുള്ള കുഞ്ഞുങ്ങളെ ഈശ്വരൻ സദാ തന്റെ കണ്ണുകളിൽ ഇരുത്തി സംരക്ഷിക്കുന്നു."
+    videoTitle: "ഭാഗീരഥ് - ദാദി ഗുൽസാർ ഡോക്യുമെന്ററി",
+    videoTitleEn: "Bhagirath - Dadi Gulzar Documentary",
+    quote: "നിഷ്കളങ്കമായ ഹൃദയമുള്ള കുഞ്ഞുങ്ങളെ ഈശ്വരൻ സദാ തന്റെ കണ്ണുകളിൽ ഇരുത്തി സംരക്ഷിക്കുന്നു.",
+    quoteEn: "God holds children with innocent hearts forever in His eyes, protecting them in every moment.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_gulzar_chariot.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Gulzar_08_5e78f008de.webp",
+        title: "ബാപ്ദാദയുടെ ദിവ്യരഥം",
+        titleEn: "Divine Chariot of Bapdada",
+        caption: "47 വർഷക്കാലം അവ്യക്ത ബാപ്ദാദയുടെ സാകാര മാധ്യമമായി (ഭാഗീരഥി) സേവിച്ച ദിവ്യാത്മാവ്",
+        captionEn: "The chosen corporeal instrument (Bhagirathi) of Avyakt Bapdada for 47 sacred years"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_gulzar_farishta.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Gulzar_02_64c9ef891e.webp",
+        title: "ഫരിഷ്താ സ്ഥിതി",
+        titleEn: "Angelic Stage (Farishta)",
+        caption: "ദേഹാതീതമായ പ്രകാശ ശരീരത്തിൽ (ഫരിഷ്താ ഭാവം) ലയിച്ച ദാദി ഗുൽസാർ",
+        captionEn: "Dwelling effortlessly in the light-body consciousness of an angel beyond the physical world"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_gulzar_trance.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Gulzar_05_e2bf64f1dd.webp",
+        title: "സൂക്ഷ്മ വതന ദർശനം",
+        titleEn: "Vision of the Subtle Region",
+        caption: "സൂക്ഷ്മ വതനത്തിലേക്ക് പ്രവേശിച്ച് പരമാത്മ സന്ദേശങ്ങൾ സാധകർക്ക് എത്തിച്ച സന്ദേശപുത്രി",
+        captionEn: "Blessed with divine trance to bring celestial messages directly from the subtle regions"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_gulzar_featured.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Gulzar_Featured_Image_0bb375fe78.webp",
+        title: "ഹൃദയ മോഹിനി",
+        titleEn: "Hriday Mohini",
+        caption: "സദാ വിടർന്ന റോസാപുഷ്പം പോലെ പ്രസന്നതയും നിഷ്കളങ്കതയും തുളുമ്പുന്ന ഭാവം",
+        captionEn: "Living up to the divine name Gulzar (rose garden) with purity, innocence, and sweet calm"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_gulzar_silence.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Gulzar_06_bec0bf5591.webp",
+        title: "അന്തർമുഖതയുടെ ശക്തി",
+        titleEn: "The Power of Introversion",
+        caption: "ബാഹ്യ ലോകത്തിന്റെ ബഹളങ്ങളിൽ നിന്ന് മുക്തയായി സദാ പരമാത്മ സ്മരണയിൽ",
+        captionEn: "Maintained deepest silence and one-pointed concentration to keep the divine vehicle pure"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_gulzar_milan.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Gulzar_04_f59cf3c7a2.webp",
+        title: "അവ്യക്ത മിലൻ മുഹൂർത്തം",
+        titleEn: "Sacred Avyakt Milan",
+        caption: "ഡയമണ്ട് ഹാളിൽ ലക്ഷക്കണക്കിന് സാധകർക്ക് ബാപ്ദാദയുടെ സ്നേഹാനുഭൂതി പകരുന്നു",
+        captionEn: "Conveying Bapdada's unconditioned love and divine wisdom to millions in Diamond Hall"
+      }
+    ]
   },
   {
     slug: "dadi-ratan-mohini",
     id: "dadi-ratan-mohini",
-    name: "ദാദി രത്തൻ മോഹിനി",
-    loukikName: "രത്തൻ",
-    role: "മുഖ്യ ഭരണാധികാരി & യൂത്ത് വിംഗ് അധ്യക്ഷ",
-    years: "1925 – Present",
+    name: "രാജയോഗിനി ഡോ. ദാദി രത്തൻ മോഹിനി",
+    nameEn: "Rajyogini Dr. Dadi Ratan Mohini",
+    loukikName: "ലക്ഷ്മി",
+    loukikNameEn: "Lakshmi",
+    role: "അഞ്ചാം മുഖ്യ ഭരണാധികാരി & യൂത്ത് വിംഗ് അധ്യക്ഷ",
+    roleEn: "Fifth Chief Administrator & Chairperson of Youth Wing",
+    years: "25 മാർച്ച് 1925 – 8 ഏപ്രിൽ 2025",
+    yearsEn: "25 March 1925 – 8 April 2025",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-ratan-mohini.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_07_Dadi_ratanmohini_Ji_Passport_Size_Photo_2_e1633513980741_8a86908c9f.webp",
-    summary: "നൂറ്റാണ്ടിന്റെ പടിവാതിലിലും യുവത്വത്തിന്റെ ചുറുചുറുക്കോടെ കർമ്മരംഗത്ത് സജീവമായി നിലകൊള്ളുന്ന ആത്മീയ ഭരണാധികാരി.",
-    bio: "ചെറുപ്പത്തിൽ തന്നെ യജ്ഞത്തിൽ സമർപ്പിച്ച ദാദി ദില്ലി, പഞ്ചാബ്, ഹരിയാന എന്നിവിടങ്ങളിലെ പ്രാരംഭ സേവനങ്ങൾ പടുത്തുയർത്തി. പതിനായിരക്കണക്കിന് യുവാക്കളെ സദാചാരത്തിന്റെ പാതയിലേക്ക് നയിച്ച യൂത്ത് വിംഗിന്റെ അമരക്കാരിയാണ്. നിലവിൽ മുഖ്യ ഭരണാധികാരിയായി സേവനമനുഷ്ഠിക്കുന്നു.\n\nലാളിത്യം, കഠിനാധ്വാനം, കർമ്മയോഗം എന്നിവയാണ് ദാദിയുടെ ജീവവായു. യുവതലമുറയ്ക്ക് സന്മാർഗ്ഗിക ധൈര്യവും ആത്മീയ ഊർജ്ജവും പകർന്നുനൽകുന്നതിൽ ദാദി രത്തൻ മോഹിനി വഹിച്ച പങ്ക് ചരിത്രത്തിൽ സുവർണ്ണാക്ഷരങ്ങളാൽ എഴുതപ്പെട്ടതാണ്.",
-    virtues: ["യുവാക്കൾക്കുള്ള പ്രചോദനം", "ലാളിത്യം", "കർമ്മയോഗം"],
+    summary: "നൂറ്റാണ്ടിന്റെ പടിവാതിലിലും യുവത്വത്തിന്റെ ചുറുചുറുക്കോടെ കർമ്മരംഗത്ത് സജീവമായി നിലകൊണ്ട കർമ്മയോഗിനി.",
+    summaryEn: "The exemplary karmayogini and Youth Wing leader who steered the organization with childlike humility through her centenary year.",
+    bio: `#### ബാല്യകാലവും യജ്ഞ സമർപ്പണവും
+1925 മാർച്ച് 25-ന് സിന്ധിലെ ഹൈദരാബാദിൽ ഒരു സമ്പന്ന കുടുംബത്തിൽ ലക്ഷ്മി എന്ന പേരിൽ ജനിച്ചു. 1937-ൽ തന്റെ 12-ാം വയസ്സിൽ അമ്മയോടൊപ്പം ഓം മണ്ഡലിയിൽ എത്തിയ ലക്ഷ്മി, ബ്രഹ്മാ ബാബയുടെ വാത്സല്യത്തിലും ഈശ്വരീയ ജ്ഞാനത്തിലും ആകൃഷ്ടയായി. ബാല്യത്തിൽ തന്നെ അസാധാരണമായ ആത്മീയ താല്പര്യം പ്രകടിപ്പിച്ച അവർക്ക് ബാബ 'രത്തൻ മോഹിനി' (ഏവരെയും ആകർഷിക്കുന്ന അമൂല്യ രത്നം) എന്ന ആത്മീയ നാമം നൽകി.
+
+#### കറാച്ചിയിലെ തപസ്യയും ഭാരതത്തിലെ സേവനങ്ങളും
+കറാച്ചിയിലെ ബോർഡിംഗ് സ്കൂളിൽ മമ്മയുടെയും ബാബയുടെയും നേരിട്ടുള്ള ശിക്ഷണത്തിൽ വളർന്ന രത്തൻ മോഹിനി, ചെറുപ്പത്തിൽ തന്നെ വാഹനമോടിക്കാനും യജ്ഞത്തിന്റെ ബാഹ്യമായ കാര്യങ്ങൾ ധൈര്യപൂർവ്വം നിർവ്വഹിക്കാനും പഠിച്ചു. 1950-ൽ മൗണ്ട് അബുവിലെത്തിയ ശേഷം ജയ്പൂർ, മുംബൈ, പഞ്ചാബ്, ഹരിയാന എന്നിവിടങ്ങളിൽ സേവന കേന്ദ്രങ്ങൾ ആരംഭിക്കുന്നതിന് നേതൃത്വം നൽകി. 1954-ൽ ദാദി പ്രകാശമണിക്കൊപ്പം ജപ്പാനിൽ നടന്ന ലോക മതസമ്മേളനത്തിലും പങ്കെടുത്തു.
+
+#### മധുബനിലെ അധ്യാപികയും യുവജന പ്രചോദനവും
+പതിറ്റാണ്ടുകളോളം മധുബനിൽ എത്തുന്ന രാജയോഗ അധ്യാപികമാരെ പരിശീലിപ്പിക്കുന്ന ചുമതല ദാദി രത്തൻ മോഹിനിക്കായിരുന്നു. ബ്രഹ്മാകുമാരീസിന്റെ 'യൂത്ത് വിംഗ്' (Youth Wing) ദേശീയ അധ്യക്ഷ എന്ന നിലയിൽ ഭാരതത്തിലുടനീളം ആയിരക്കണക്കിന് പദയാത്രകൾക്കും സൈക്കിൾ റാലികൾക്കും യുവജന ക്യാമ്പുകൾക്കും ദാദി നേതൃത്വം നൽകി. ലക്ഷക്കണക്കിന് യുവാക്കളെ ലഹരിവിമുക്തരാക്കി ആത്മീയതയുടെ പാതയിലേക്ക് കൊണ്ടുവന്ന ദാദിക്ക് കൽബുർഗി യൂണിവേഴ്സിറ്റി ഓണററി ഡോക്ടറേറ്റ് നൽകി ആദരിച്ചു.
+
+#### ശതാബ്ദി ജീവിതവും സമ്പൂർണ്ണതയും
+2021-ൽ ദാദി ഗുൽസാറിന്റെ വിയോഗത്തിന് ശേഷം പ്രസ്ഥാനത്തിന്റെ അഞ്ചാമത്തെ മുഖ്യ ഭരണാധികാരിയായി ചുമതലയേറ്റു. "എനിക്ക് ഒന്നുമറിയില്ല, ബാബ എല്ലാം ചെയ്യിക്കുന്നു" എന്ന പരമമായ വിനയത്തോടെ 100 വയസ്സ് പൂർത്തിയാക്കിയ ദാദി, 2025 ഏപ്രിൽ 8-ന് തന്റെ 101-ാം വയസ്സിൽ മധുബനിൽ വെച്ച് സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Childhood & Dedication to the Yagya
+Born on 25 March 1925 into a prosperous family in Hyderabad, Sindh, young Lakshmi came to Om Mandali with her mother in 1937 at the age of 12. Drawn to Brahma Baba's paternal love and divine wisdom, she dedicated her life early on. Baba named her 'Ratan Mohini' (The Most Precious Jewel that Attracts All).
+
+#### Tapasya in Karachi & Service Across India
+Raised under the direct guidance of Mamma and Baba in Karachi, she learned driving and handled external administrative tasks fearlessly. After moving to Mount Abu in 1950, she pioneered centres in Jaipur, Mumbai, Punjab, and Haryana, and accompanied Dadi Prakashmani to the 1954 World Religion Conference in Japan.
+
+#### Trainer of Teachers & Inspiration for Youth
+For decades, Dadi led the training of dedicated Rajyoga teachers in Madhuban. As the Chairperson of the Brahma Kumaris Youth Wing, she spearheaded nationwide peace marches, rallies, and youth retreats, inspiring hundreds of thousands of young people toward moral and spiritual living. Gulbarga University conferred upon her an Honorary Doctorate for her service.
+
+#### Centenary Life & Angelic Perfection
+In 2021, following Dadi Gulzar's passing, she became the Fifth Chief Administrator. Living with childlike humility and celebrating her centenary year in service, Dadi Ratan Mohini attained the complete angelic stage on 8 April 2025 at the age of 101.`,
+    virtues: ["യുവജന ശാക്തീകരണം", "പരമമായ ലാളിത്യം", "കഠിനാധ്വാനവും കർമ്മയോഗവും", "അച്ചടക്കവും ആത്മീയ പഠനവും", "നിർമ്മാൺ ചിത്തം"],
+    virtuesEn: ["Youth Empowerment", "Utmost Simplicity", "Tireless Karmayoga", "Discipline & Spiritual Study", "Humble Heart"],
     videoUrl: "https://www.youtube.com/embed/fqhFM_ZvZT4",
     videoEmbedUrl: "https://www.youtube.com/embed/fqhFM_ZvZT4",
-    videoTitle: "Dadi Ratan Mohini Special Documentary",
-    quote: "യുവത്വത്തിന്റെ ശുദ്ധമായ ഊർജ്ജം ഈശ്വരീയ സേവനത്തിനായി വിനിയോഗിക്കുമ്പോൾ ലോകത്തിന് പുതിയൊരു പ്രഭാതം പിറവിയെടുക്കുന്നു."
+    videoTitle: "ദാദി രത്തൻ മോഹിനി സ്പെഷ്യൽ ഡോക്യുമെന്ററി",
+    videoTitleEn: "Dadi Ratan Mohini Special Documentary",
+    quote: "എനിക്ക് ഒന്നുമറിയില്ല, ബാബ എല്ലാം ചെയ്യിക്കുന്നു. ഈശ്വരീയ സേവനത്തിൽ ഓരോ നിമിഷവും സഫലമാക്കുക.",
+    quoteEn: "I know nothing; Baba gets everything done. Make every single second fruitful in Godly service.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ratanmohini_portrait.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Rajyogini_Dadi_Ratanmohini_Ji_5cce84d128.webp",
+        title: "ആത്മീയ രത്നം",
+        titleEn: "Precious Jewel of God",
+        caption: "ബാബ നൽകിയ രത്തൻ മോഹിനി എന്ന പേര് സ്വജീവിതത്തിലൂടെ സാക്ഷാത്കരിച്ച ദാദി",
+        captionEn: "Radiating humility and divine virtue as the true 'Ratan Mohini' (Precious Jewel)"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ratanmohini_youth.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Ratanmohini_Ji_Standing_003_24a5d2eca9.jpg",
+        title: "യുവജന ശാക്തീകരണം",
+        titleEn: "Youth Empowerment",
+        caption: "ഭാരതത്തിലെ ലക്ഷക്കണക്കിന് യുവാക്കളെ സന്മാർഗ്ഗത്തിലേക്ക് നയിച്ച യൂത്ത് വിംഗ് അധ്യക്ഷ",
+        captionEn: "Chairperson of Youth Wing inspiring generations of youth to choose purity and purpose"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ratanmohini_blessings.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Ratanmohini_Ji_Aashirvachan_002_a5dbf362f6.jpg",
+        title: "ഈശ്വരീയ ആശീർവാദം",
+        titleEn: "Spiritual Blessings (Aashirvachan)",
+        caption: "മധുബനിലെത്തുന്ന ഓരോ സാധകനും സ്നേഹത്തോടെ ഈശ്വരീയ വരദാനങ്ങൾ പകരുന്ന ദാദി",
+        captionEn: "Loving spiritual blessings bestowed upon every seeker visiting Madhuban"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ratanmohini_service.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Ratanmohini_Ji_Face_003_773f478193.jpg",
+        title: "കർമ്മയോഗം",
+        titleEn: "Exemplary Karmayoga",
+        caption: "ഒരു നിമിഷം പോലും പാഴാക്കാതെ ഈശ്വരീയ സേവനത്തിൽ മുഴുകിയ കർമ്മയോഗിനി",
+        captionEn: "An unmatched life of continuous service, practical discipline, and dedication"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ratanmohini_centenary.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Ratanmohini_Ji_Face_010_ddd6913bf7.jpg",
+        title: "ശതാബ്ദി തിളക്കം",
+        titleEn: "Centenary Grace",
+        caption: "100 വയസ്സിലും വിനയത്തോടും ബാലഭാവത്തോടും കൂടി ഈശ്വരീയ ഭരണത്തിന് നേതൃത്വം നൽകി",
+        captionEn: "Guiding the international family with childlike simplicity during her centenary year"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ratanmohini_smile.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/Dadi_Ratanmohini_Ji_Blessing_001_4fd73922bf.jpg",
+        title: "മധുരമായ പുഞ്ചിരി",
+        titleEn: "Sweet Spiritual Smile",
+        caption: "ഏവരെയും ആകർഷിക്കുന്ന നിഷ്കളങ്കമായ മുഖഭാവവും അഗാധമായ വിനയവും",
+        captionEn: "The captivating countenance of spiritual sweetness and pure humility"
+      }
+    ]
   },
   {
     slug: "didi-manmohini",
