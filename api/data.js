@@ -7,6 +7,10 @@ import fs from 'fs';
 import path from 'path';
 
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -16,9 +20,22 @@ export default async function handler(req, res) {
   }
 
   try {
+    const tmpFilePath = path.join('/tmp', 'site_data.json');
     const dataFilePath = path.join(process.cwd(), 'data', 'site_data.json');
-    if (fs.existsSync(dataFilePath)) {
-      const content = fs.readFileSync(dataFilePath, 'utf-8');
+
+    let content = null;
+    if (fs.existsSync(tmpFilePath)) {
+      try {
+        content = fs.readFileSync(tmpFilePath, 'utf-8');
+      } catch (e) {}
+    }
+    if (!content && fs.existsSync(dataFilePath)) {
+      try {
+        content = fs.readFileSync(dataFilePath, 'utf-8');
+      } catch (e) {}
+    }
+
+    if (content) {
       res.setHeader('Content-Type', 'application/json; charset=utf-8');
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       return res.status(200).send(content);

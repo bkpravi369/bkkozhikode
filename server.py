@@ -541,14 +541,14 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Accept-Ranges', 'bytes')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Range')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Admin-Pin, X-Requested-With, Range')
         super().end_headers()
 
     def do_OPTIONS(self):
         self.send_response(204)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Range')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Admin-Pin, X-Requested-With, Range')
         self.end_headers()
 
     def send_range_response(self, filepath, range_header):

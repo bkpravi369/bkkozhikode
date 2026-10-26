@@ -1499,7 +1499,7 @@ class SiteStore {
 
         // Ensure events merge and migrate to new rich schema
         let mergedEvents = DEFAULT_DATA.events;
-        if (Array.isArray(parsed.events) && parsed.events.length > 0) {
+        if (Array.isArray(parsed.events)) {
           mergedEvents = parsed.events.map(ev => {
             const date = ev.date && ev.date.trim() ? ev.date : '2026-10-15';
             const year = ev.year || (date.length >= 4 && !isNaN(date.substring(0, 4)) ? date.substring(0, 4) : '2026');
@@ -1684,10 +1684,12 @@ class SiteStore {
     if (typeof fetch !== 'undefined') {
       try {
         const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+        const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
         fetch('/api/admin/save', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'X-Admin-Pin': pin,
             ...(token ? { 'Authorization': 'Bearer ' + token } : {})
           },
           body: JSON.stringify({ data: this.data })
@@ -2143,10 +2145,12 @@ class SiteStore {
     if (typeof fetch === 'undefined') return true;
     try {
       const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+      const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
       const res = await fetch('/api/admin/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Admin-Pin': pin,
           ...(token ? { 'Authorization': 'Bearer ' + token } : {})
         },
         body: JSON.stringify({ data: this.data })
