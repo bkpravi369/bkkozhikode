@@ -81,11 +81,6 @@ class AdminController {
   }
 
   async init() {
-    const isAuth = sessionStorage.getItem('bk_admin_session_auth') === 'true';
-    if (isAuth || (window.bkStore && window.bkStore.isAdminAuthenticated())) {
-      this.showPanelView();
-      return;
-    }
     const token = sessionStorage.getItem('bk_admin_token');
     if (token) {
       try {
@@ -96,12 +91,16 @@ class AdminController {
           const data = await res.json().catch(() => null);
           if (data && data.authenticated) {
             sessionStorage.setItem('bk_admin_session_auth', 'true');
+            sessionStorage.setItem('bk_kozhikode_admin_session', 'true');
             this.showPanelView();
             return;
           }
         }
       } catch (e) {}
     }
+    sessionStorage.removeItem('bk_admin_token');
+    sessionStorage.removeItem('bk_admin_session_auth');
+    sessionStorage.removeItem('bk_kozhikode_admin_session');
     this.showLoginView();
   }
 
@@ -110,7 +109,8 @@ class AdminController {
     if (!modal) return;
     modal.classList.add('active');
 
-    if (window.bkStore.isAdminAuthenticated() || sessionStorage.getItem('bk_admin_session_auth') === 'true') {
+    const token = sessionStorage.getItem('bk_admin_token');
+    if (token && sessionStorage.getItem('bk_admin_session_auth') === 'true') {
       this.showPanelView();
       this.refreshAllPanes();
     } else {
@@ -149,49 +149,47 @@ class AdminController {
     const errBox = document.getElementById('loginErrorMsg');
     if (errBox) { errBox.style.display = 'none'; errBox.textContent = ''; }
 
-    const validPasswords = ['Kozhikode@2026', 'OmShanti@Kozhikode2026', '3699'];
-    const storePin = window.bkStore && window.bkStore.data && window.bkStore.data.settings ? window.bkStore.data.settings.adminPin : '';
-    if (storePin) validPasswords.push(storePin);
+    if (!pin) {
+      if (errBox) {
+        errBox.textContent = "Please enter the administrative PIN.";
+        errBox.style.display = 'block';
+      }
+      return;
+    }
 
-    let serverAuthSuccess = false;
     try {
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: pin })
       });
-      if (res.ok) {
-        const data = await res.json().catch(() => null);
-        if (data && data.success && data.token) {
-          sessionStorage.setItem('bk_admin_token', data.token);
-          serverAuthSuccess = true;
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data && data.success && data.token) {
+        sessionStorage.setItem('bk_admin_token', data.token);
+        sessionStorage.setItem('bk_admin_session_auth', 'true');
+        sessionStorage.setItem('bk_kozhikode_admin_session', 'true');
+        if (pinInput) pinInput.value = '';
+        this.showPanelView();
+        if (window.bkApp && window.bkApp.toast) {
+          window.bkApp.toast("✅ Admin Authentication Successful! Welcome to Brahma Kumaris CMS.");
         }
+        return;
+      }
+
+      const errMsg = (data && data.error) ? data.error : "Invalid administrative credentials.";
+      if (errBox) {
+        errBox.textContent = errMsg;
+        errBox.style.display = 'block';
+      } else {
+        alert(errMsg);
       }
     } catch (err) {
-      console.warn("Backend login fetch error:", err);
-    }
-
-    if (serverAuthSuccess || validPasswords.includes(pin)) {
-      sessionStorage.setItem('bk_admin_session_auth', 'true');
-      if (!sessionStorage.getItem('bk_admin_token')) {
-        sessionStorage.setItem('bk_admin_token', 'local_token_' + Date.now());
+      console.error("Backend login error:", err);
+      if (errBox) {
+        errBox.textContent = "Unable to connect to authentication server. Please check connection.";
+        errBox.style.display = 'block';
       }
-      if (window.bkStore && typeof window.bkStore.authenticateAdmin === 'function') {
-        window.bkStore.authenticateAdmin(pin);
-      }
-      if (pinInput) pinInput.value = '';
-      this.showPanelView();
-      if (window.bkApp && window.bkApp.toast) {
-        window.bkApp.toast("Admin Authentication Successful! Welcome to Brahma Kumaris CMS.");
-      }
-      return;
-    }
-
-    if (errBox) {
-      errBox.textContent = "Invalid administrative credentials. Please enter Kozhikode@2026.";
-      errBox.style.display = 'block';
-    } else {
-      alert("Invalid administrative credentials.");
     }
   }
 
@@ -1704,22 +1702,25 @@ class AdminController {
     if (submitBtn) submitBtn.textContent = 'Saving...';
 
     try {
-      const id = document.getElementById('eventFormId')?.value?.trim() || '';
-      const title = document.getElementById('eventFormTitleInput')?.value?.trim() || '';
+      const sanitize = (window.bkSecurity && window.bkSecurity.sanitizeText) ? window.bkSecurity.sanitizeText : (s) => (s || '').trim();
+      const sanitizeUrl = (window.bkSecurity && window.bkSecurity.sanitizeUrl) ? window.bkSecurity.sanitizeUrl : (u) => (u || '').trim();
+
+      const id = sanitize(document.getElementById('eventFormId')?.value);
+      const title = sanitize(document.getElementById('eventFormTitleInput')?.value);
       if (!title) {
         if (typeof this.toast === 'function') this.toast('⚠️ Please enter an event title.');
         if (submitBtn) submitBtn.textContent = originalBtnText;
         return;
       }
-      const titleMl = document.getElementById('eventFormTitleMl')?.value?.trim() || '';
+      const titleMl = sanitize(document.getElementById('eventFormTitleMl')?.value);
       const isNavathi = Boolean(document.getElementById('eventFormIsNavathi')?.checked);
-      const centre = document.getElementById('eventFormCentre')?.value?.trim() || 'Kozhikode Main';
-      const category = document.getElementById('eventFormCategory')?.value?.trim() || 'Festivals';
-      const wing = document.getElementById('eventFormWing')?.value?.trim() || '';
-      const time = document.getElementById('eventFormTime')?.value?.trim() || '10:00 AM - 1:00 PM';
-      const date = document.getElementById('eventFormDate')?.value?.trim() || new Date().toISOString().split('T')[0];
+      const centre = sanitize(document.getElementById('eventFormCentre')?.value || 'Kozhikode Main');
+      const category = sanitize(document.getElementById('eventFormCategory')?.value || 'Festivals');
+      const wing = sanitize(document.getElementById('eventFormWing')?.value);
+      const time = sanitize(document.getElementById('eventFormTime')?.value || '10:00 AM - 1:00 PM');
+      const date = sanitize(document.getElementById('eventFormDate')?.value || new Date().toISOString().split('T')[0]);
       const year = date && date.length >= 4 ? date.substring(0, 4) : '2026';
-      const shortDesc = document.getElementById('eventFormShortDesc')?.value?.trim() || title;
+      const shortDesc = sanitize(document.getElementById('eventFormShortDesc')?.value || title);
       const isFeatured = Boolean(document.getElementById('eventFormIsFeatured')?.checked);
       const isPublished = document.getElementById('eventFormIsPublished') ? document.getElementById('eventFormIsPublished').checked : true;
       const status = isPublished ? 'published' : 'draft';
@@ -1730,8 +1731,8 @@ class AdminController {
       videoRows.forEach((row, i) => {
         const titleInput = row.querySelector('.video-row-title-input');
         const urlInput = row.querySelector('.video-row-url-input');
-        const vTitle = titleInput ? titleInput.value.trim() : '';
-        const vUrl = urlInput ? urlInput.value.trim() : '';
+        const vTitle = sanitize(titleInput ? titleInput.value : '');
+        const vUrl = sanitizeUrl(urlInput ? urlInput.value : '');
         if (vUrl || vTitle) {
           videos.push({ title: vTitle || `Video #${i + 1}`, url: vUrl });
         }
@@ -2292,20 +2293,23 @@ class AdminController {
 
   handleSaveDailyMurali(e) {
     e.preventDefault();
+    const sanitize = (window.bkSecurity && window.bkSecurity.sanitizeText) ? window.bkSecurity.sanitizeText : (s) => (s || '').trim();
+    const sanitizeUrl = (window.bkSecurity && window.bkSecurity.sanitizeUrl) ? window.bkSecurity.sanitizeUrl : (u) => (u || '').trim();
+
     const data = {
-      date: document.getElementById('muraliFormDate').value.trim(),
-      title: document.getElementById('muraliFormTitle').value.trim(),
-      titleMl: document.getElementById('muraliFormTitleMl').value.trim(),
-      essence: document.getElementById('muraliFormEssence').value.trim(),
-      essenceMl: document.getElementById('muraliFormEssenceMl').value.trim(),
-      blessing: document.getElementById('muraliFormBlessing').value.trim(),
-      blessingMl: document.getElementById('muraliFormBlessingMl').value.trim(),
-      slogan: document.getElementById('muraliFormSlogan').value.trim(),
-      sloganMl: document.getElementById('muraliFormSloganMl').value.trim(),
-      fullMuraliText: document.getElementById('muraliFormFullText').value.trim(),
-      audioUrl: document.getElementById('muraliFormAudioUrl').value.trim(),
-      videoUrl: document.getElementById('muraliFormVideoUrl').value.trim(),
-      published: document.getElementById('muraliFormPublished').checked
+      date: sanitize(document.getElementById('muraliFormDate')?.value),
+      title: sanitize(document.getElementById('muraliFormTitle')?.value),
+      titleMl: sanitize(document.getElementById('muraliFormTitleMl')?.value),
+      essence: sanitize(document.getElementById('muraliFormEssence')?.value),
+      essenceMl: sanitize(document.getElementById('muraliFormEssenceMl')?.value),
+      blessing: sanitize(document.getElementById('muraliFormBlessing')?.value),
+      blessingMl: sanitize(document.getElementById('muraliFormBlessingMl')?.value),
+      slogan: sanitize(document.getElementById('muraliFormSlogan')?.value),
+      sloganMl: sanitize(document.getElementById('muraliFormSloganMl')?.value),
+      fullMuraliText: sanitize(document.getElementById('muraliFormFullText')?.value),
+      audioUrl: sanitizeUrl(document.getElementById('muraliFormAudioUrl')?.value),
+      videoUrl: sanitizeUrl(document.getElementById('muraliFormVideoUrl')?.value),
+      published: Boolean(document.getElementById('muraliFormPublished')?.checked)
     };
 
     window.bkStore.updateDailyMurali(data);
@@ -2443,21 +2447,24 @@ class AdminController {
 
   handleSaveCenter(e) {
     e.preventDefault();
-    const id = document.getElementById('centerFormId').value.trim() || ('center_' + Date.now());
-    const name = document.getElementById('centerFormName').value.trim();
-    const nameMl = document.getElementById('centerFormNameMl').value.trim();
-    const area = document.getElementById('centerFormArea').value.trim();
-    const contactPerson = document.getElementById('centerFormContactPerson').value.trim();
-    const phone = document.getElementById('centerFormPhone').value.trim();
-    const whatsapp = document.getElementById('centerFormWhatsapp').value.trim();
-    const landline = document.getElementById('centerFormLandline').value.trim();
-    const address = document.getElementById('centerFormAddress').value.trim();
-    const mapsUrl = document.getElementById('centerFormMapsUrl').value.trim();
-    const timings = document.getElementById('centerFormTimings').value.trim();
-    const description = document.getElementById('centerFormDescription').value.trim();
-    const image = document.getElementById('centerFormImage').value.trim();
-    const isPrimary = document.getElementById('centerFormIsPrimary').checked;
-    const published = document.getElementById('centerFormPublished').checked;
+    const sanitize = (window.bkSecurity && window.bkSecurity.sanitizeText) ? window.bkSecurity.sanitizeText : (s) => (s || '').trim();
+    const sanitizeUrl = (window.bkSecurity && window.bkSecurity.sanitizeUrl) ? window.bkSecurity.sanitizeUrl : (u) => (u || '').trim();
+
+    const id = sanitize(document.getElementById('centerFormId')?.value) || ('center_' + Date.now());
+    const name = sanitize(document.getElementById('centerFormName')?.value);
+    const nameMl = sanitize(document.getElementById('centerFormNameMl')?.value);
+    const area = sanitize(document.getElementById('centerFormArea')?.value);
+    const contactPerson = sanitize(document.getElementById('centerFormContactPerson')?.value);
+    const phone = sanitize(document.getElementById('centerFormPhone')?.value);
+    const whatsapp = sanitize(document.getElementById('centerFormWhatsapp')?.value);
+    const landline = sanitize(document.getElementById('centerFormLandline')?.value);
+    const address = sanitize(document.getElementById('centerFormAddress')?.value);
+    const mapsUrl = sanitizeUrl(document.getElementById('centerFormMapsUrl')?.value);
+    const timings = sanitize(document.getElementById('centerFormTimings')?.value);
+    const description = sanitize(document.getElementById('centerFormDescription')?.value);
+    const image = sanitizeUrl(document.getElementById('centerFormImage')?.value);
+    const isPrimary = Boolean(document.getElementById('centerFormIsPrimary')?.checked);
+    const published = Boolean(document.getElementById('centerFormPublished')?.checked);
 
     window.bkStore.saveCenter({
       id,
@@ -2725,20 +2732,22 @@ class AdminController {
 
   async handleSaveSettings(e) {
     e.preventDefault();
-    const orgName = document.getElementById('setOrgName').value.trim();
-    const orgNameMl = document.getElementById('setOrgNameMl').value.trim();
-    const phonePrimary = document.getElementById('setPhone1').value.trim();
-    const phoneSecondary = document.getElementById('setPhone2').value.trim();
-    const email = document.getElementById('setEmail').value.trim();
-    const announcement = document.getElementById('setAnnouncement').value.trim();
-    const adminPin = document.getElementById('setAdminPin').value.trim();
-    const cloudinaryCloudName = document.getElementById('setCldCloudName')?.value.trim() || 'uo0dcjpe';
-    const cloudinaryFolder = document.getElementById('setCldFolder')?.value.trim() || 'Website event images';
-    const cloudinaryUploadPreset = document.getElementById('setCldPreset')?.value.trim() || 'qux0sq4f';
-    const cloudinaryApiKey = document.getElementById('setCldApiKey')?.value.trim() || '';
-    const cloudinaryApiSecret = document.getElementById('setCldApiSecret')?.value.trim() || '';
+    const sanitize = (window.bkSecurity && window.bkSecurity.sanitizeText) ? window.bkSecurity.sanitizeText : (s) => (s || '').trim();
+
+    const orgName = sanitize(document.getElementById('setOrgName')?.value);
+    const orgNameMl = sanitize(document.getElementById('setOrgNameMl')?.value);
+    const phonePrimary = sanitize(document.getElementById('setPhone1')?.value);
+    const phoneSecondary = sanitize(document.getElementById('setPhone2')?.value);
+    const email = sanitize(document.getElementById('setEmail')?.value);
+    const announcement = sanitize(document.getElementById('setAnnouncement')?.value);
+    const adminPin = sanitize(document.getElementById('setAdminPin')?.value);
+    const cloudinaryCloudName = sanitize(document.getElementById('setCldCloudName')?.value) || CLOUDINARY_CONFIG.cloudName;
+    const cloudinaryFolder = sanitize(document.getElementById('setCldFolder')?.value) || CLOUDINARY_CONFIG.folder;
+    const cloudinaryUploadPreset = sanitize(document.getElementById('setCldPreset')?.value) || CLOUDINARY_CONFIG.uploadPreset;
+    const cloudinaryApiKey = sanitize(document.getElementById('setCldApiKey')?.value);
+    const cloudinaryApiSecret = sanitize(document.getElementById('setCldApiSecret')?.value);
     const ghTokenInput = document.getElementById('setGhToken');
-    const githubToken = ghTokenInput ? ghTokenInput.value.trim() : '';
+    const githubToken = ghTokenInput ? sanitize(ghTokenInput.value) : '';
     if (githubToken) {
       sessionStorage.setItem('bk_github_token', githubToken);
     }

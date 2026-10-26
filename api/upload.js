@@ -14,6 +14,31 @@ export default async function handler(req, res) {
   }
 
   try {
+    const authHeader = req.headers['authorization'] || '';
+    const token = authHeader.startsWith('Bearer ') ? authHeader.substring(7).trim() : '';
+    const pinHeader = req.headers['x-admin-pin'] || '';
+    const correctPassword = process.env.ADMIN_PASSWORD || 'Kozhikode@2026';
+
+    const crypto = await import('crypto');
+    let isAuth = false;
+    if (pinHeader && pinHeader === correctPassword) {
+      isAuth = true;
+    } else if (token && token.includes('.')) {
+      const parts = token.split('.');
+      if (parts.length === 2) {
+        const [tsStr, sig] = parts;
+        const ts = parseInt(tsStr, 10);
+        if (!isNaN(ts) && (Date.now() - ts <= 24 * 60 * 60 * 1000)) {
+          const expected = crypto.default.createHmac('sha256', correctPassword).update(tsStr).digest('hex');
+          isAuth = (sig === expected);
+        }
+      }
+    }
+
+    if (!isAuth) {
+      return res.status(401).json({ success: false, error: 'Unauthorized: Administrative authentication required for uploads.' });
+    }
+
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
     const dataUrl = body.data || body.image || '';
     const fileName = body.name || body.fileName || 'image.jpg';

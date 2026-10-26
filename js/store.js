@@ -46,7 +46,6 @@ const DEFAULT_DATA = {
     secondaryEmail: "contact@bkkozhikode.com",
     timingsMorning: "7:00 AM – 9:00 AM",
     timingsEvening: "5:00 PM – 8:00 PM",
-    adminPin: "Kozhikode@2026",
     cloudinaryCloudName: "uo0dcjpe",
     cloudinaryFolder: "Website event images",
     cloudinaryUploadPreset: "qux0sq4f",
@@ -2323,24 +2322,40 @@ class SiteStore {
 
   // --- Admin Auth ---
   isAdminAuthenticated() {
-    return sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true';
+    const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+    const isAuth = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem(ADMIN_SESSION_KEY) : '';
+    return Boolean(isAuth === 'true' && token && token.includes('.'));
   }
 
-  authenticateAdmin(pin) {
+  async authenticateAdmin(pin) {
     if (!pin) return false;
-    if (this.data.settings.adminPin && pin === this.data.settings.adminPin) {
-      sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
-      return true;
-    }
-    if (pin === 'Kozhikode@2026') {
-      sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
-      return true;
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pin })
+      });
+      if (res.ok) {
+        const data = await res.json().catch(() => null);
+        if (data && data.success && data.token) {
+          sessionStorage.setItem('bk_admin_token', data.token);
+          sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
+          sessionStorage.setItem('bk_admin_session_auth', 'true');
+          return true;
+        }
+      }
+    } catch (e) {
+      console.warn('Backend admin auth error:', e);
     }
     return false;
   }
 
   logoutAdmin() {
-    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.removeItem(ADMIN_SESSION_KEY);
+      sessionStorage.removeItem('bk_admin_token');
+      sessionStorage.removeItem('bk_admin_session_auth');
+    }
   }
 }
 

@@ -1,26 +1,54 @@
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
+const { verifyToken, sanitizeObject } = require('../security');
 
-function verifyToken(token, secret) {
-  if (!token || typeof token !== 'string') return false;
-  if (token.startsWith('local_token_')) return true;
+/**
+ * Helper to commit updated siteData to GitHub if token available
+ */
+async function syncToGitHubIfConfigured(token, jsonString) {
+  if (!token) return { synced: false, reason: 'No GitHub token configured' };
+  const owner = process.env.GITHUB_OWNER || 'bkpravi369';
+  const repo = process.env.GITHUB_REPO || 'bkkozhikode';
+  const filePath = 'siteData.json';
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+  
+  const headers = {
+    'Authorization': `token ${token}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'BK-Kozhikode-Admin-Backend',
+    'Content-Type': 'application/json'
+  };
 
-  const parts = token.split('.');
-  if (parts.length !== 2) return false;
-  const [tsStr, sig] = parts;
-  const ts = parseInt(tsStr, 10);
-  if (isNaN(ts)) return false;
-  if (Date.now() - ts > 24 * 60 * 60 * 1000) return false;
-  const expected = crypto.createHmac('sha256', secret).update(tsStr).digest('hex');
-  if (sig.length !== expected.length) return false;
-  return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected));
+  try {
+    let sha = undefined;
+    const getRes = await fetch(url, { headers });
+    if (getRes.ok) {
+      const getJson = await getRes.json();
+      sha = getJson.sha;
+    }
+
+    const body = {
+      message: `chore(data): auto-sync admin update [${new Date().toISOString()}] [skip ci]`,
+      content: Buffer.from(jsonString, 'utf-8').toString('base64'),
+      branch: 'main'
+    };
+    if (sha) body.sha = sha;
+
+    const putRes = await fetch(url, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(body)
+    });
+    return { synced: putRes.ok };
+  } catch (err) {
+    return { synced: false, error: err.message };
+  }
 }
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Admin-Pin');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Admin-Pin, X-GitHub-Token');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -33,6 +61,7 @@ module.exports = async function handler(req, res) {
   const authHeader = req.headers['authorization'] || '';
   const token = authHeader.startsWith('Bearer ') ? authHeader.substring(7).trim() : '';
   const pinHeader = req.headers['x-admin-pin'] || '';
+  const ghHeader = req.headers['x-github-token'] || '';
   const correctPassword = process.env.ADMIN_PASSWORD || 'Kozhikode@2026';
 
   let body = {};
@@ -42,19 +71,23 @@ module.exports = async function handler(req, res) {
     body = {};
   }
 
-  const isAuth = verifyToken(token, correctPassword) ||
-                 pinHeader === correctPassword ||
-                 (body && body.password === correctPassword) ||
-                 token.startsWith('local_token_');
+  // Strict Token or Pin Verification
+  const isAuth = verifyToken(token, correctPassword) || (pinHeader && pinHeader === correctPassword);
 
   if (!isAuth) {
-    return res.status(401).json({ success: false, error: 'Unauthorized: Valid administrative session required for write operations.' });
+    return res.status(401).json({
+      success: false,
+      error: 'Unauthorized: Valid administrative session token required for write operations.'
+    });
   }
 
-  const incomingData = (body && body.data) ? body.data : body;
-  if (!incomingData || typeof incomingData !== 'object') {
+  const incomingPayload = (body && body.data) ? body.data : body;
+  if (!incomingPayload || typeof incomingPayload !== 'object') {
     return res.status(400).json({ success: false, error: 'No data payload provided.' });
   }
+
+  // Sanitize all incoming fields against XSS & script injection
+  const sanitizedIncoming = sanitizeObject(incomingPayload);
 
   const dataDir = path.join(process.cwd(), 'data');
   const dataFilePath = path.join(dataDir, 'site_data.json');
@@ -74,22 +107,39 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  const merged = { ...existing, ...incomingData };
-  if (Array.isArray(incomingData.events)) {
-    merged.events = incomingData.events;
+  const merged = { ...existing, ...sanitizedIncoming };
+  if (Array.isArray(sanitizedIncoming.events)) {
+    merged.events = sanitizedIncoming.events;
   }
-  if (Array.isArray(incomingData.categories)) {
-    merged.categories = incomingData.categories;
+  if (Array.isArray(sanitizedIncoming.categories)) {
+    merged.categories = sanitizedIncoming.categories;
   }
-  if (Array.isArray(incomingData.wings)) {
-    merged.wings = incomingData.wings;
+  if (Array.isArray(sanitizedIncoming.wings)) {
+    merged.wings = sanitizedIncoming.wings;
   }
+  if (Array.isArray(sanitizedIncoming.centers)) {
+    merged.centers = sanitizedIncoming.centers;
+  }
+  if (Array.isArray(sanitizedIncoming.tabs)) {
+    merged.tabs = sanitizedIncoming.tabs;
+  }
+  if (Array.isArray(sanitizedIncoming.gallery)) {
+    merged.gallery = sanitizedIncoming.gallery;
+  }
+
+  // Always protect secrets from being leaked or saved incorrectly
   delete merged.password;
   delete merged.data;
 
+  // Preserve locked Cloudinary config
+  if (!merged.settings) merged.settings = {};
+  merged.settings.cloudinaryCloudName = merged.settings.cloudinaryCloudName || 'uo0dcjpe';
+  merged.settings.cloudinaryUploadPreset = merged.settings.cloudinaryUploadPreset || 'qux0sq4f';
+  merged.settings.cloudinaryFolder = merged.settings.cloudinaryFolder || 'Website event images';
+
   const jsonString = JSON.stringify(merged, null, 2);
 
-  // 1. Write to repository data files directly if writable
+  // 1. Write to local repository paths if writable
   try {
     if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
     fs.writeFileSync(dataFilePath, jsonString, 'utf-8');
@@ -104,22 +154,27 @@ module.exports = async function handler(req, res) {
     }
   } catch (err) {}
 
-  // Write directly to root siteData.json
   try {
     fs.writeFileSync(path.join(process.cwd(), 'siteData.json'), jsonString, 'utf-8');
   } catch (err) {}
 
-  // 2. Write to /tmp/site_data.json (for serverless runtime persistence)
+  // 2. Write to /tmp for serverless container caching
   try {
     fs.writeFileSync(tmpFilePath, jsonString, 'utf-8');
-  } catch (err) {
-    console.warn('Could not write to tmpFilePath:', err.message);
+  } catch (err) {}
+
+  // 3. Auto-sync to GitHub if token configured
+  const githubToken = ghHeader || process.env.GITHUB_TOKEN || (merged.settings && merged.settings.githubToken);
+  let ghSyncResult = { synced: false };
+  if (githubToken) {
+    ghSyncResult = await syncToGitHubIfConfigured(githubToken, jsonString);
   }
 
   return res.status(200).json({
     success: true,
-    message: 'Site data saved successfully and permanently.',
+    message: 'Site data saved securely and updated centrally.',
     eventsCount: Array.isArray(merged.events) ? merged.events.length : 0,
+    githubSynced: ghSyncResult.synced,
     timestamp: Date.now()
   });
 };

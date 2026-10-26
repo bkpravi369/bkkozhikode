@@ -2970,13 +2970,14 @@ class AppController {
   // --- Registration / Contact Submission ---
   handleFormSubmit(e) {
     e.preventDefault();
-    const name = document.getElementById('regName').value.trim();
-    const phone = document.getElementById('regPhone').value.trim();
-    const email = document.getElementById('regEmail').value.trim();
-    const preferredCenter = document.getElementById('regCenter').value;
-    const courseType = document.getElementById('regCourseType').value;
-    const timePreference = document.getElementById('regTime').value;
-    const notes = document.getElementById('regNotes').value.trim();
+    const sanitize = (window.bkSecurity && window.bkSecurity.sanitizeText) ? window.bkSecurity.sanitizeText : (s) => (s || '').trim();
+    const name = sanitize(document.getElementById('regName')?.value);
+    const phone = sanitize(document.getElementById('regPhone')?.value);
+    const email = sanitize(document.getElementById('regEmail')?.value).toLowerCase();
+    const preferredCenter = sanitize(document.getElementById('regCenter')?.value);
+    const courseType = sanitize(document.getElementById('regCourseType')?.value);
+    const timePreference = sanitize(document.getElementById('regTime')?.value);
+    const notes = sanitize(document.getElementById('regNotes')?.value);
 
     if (!name || !phone) {
       this.toast("Please provide your name and contact phone number.");
@@ -2993,7 +2994,7 @@ class AppController {
       notes
     });
 
-    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm')?.reset();
     this.toast(`🕊️ Om Shanti, ${name}! Your registration for Brahma Kumaris Kozhikode has been received. Our team will contact you shortly.`);
   }
 

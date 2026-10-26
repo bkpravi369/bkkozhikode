@@ -1,21 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
-
-function verifyToken(token, secret) {
-  if (!token || typeof token !== 'string') return false;
-  if (token.startsWith('local_token_')) return true;
-
-  const parts = token.split('.');
-  if (parts.length !== 2) return false;
-  const [tsStr, sig] = parts;
-  const ts = parseInt(tsStr, 10);
-  if (isNaN(ts)) return false;
-  if (Date.now() - ts > 24 * 60 * 60 * 1000) return false;
-  const expected = crypto.createHmac('sha256', secret).update(tsStr).digest('hex');
-  if (sig.length !== expected.length) return false;
-  return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected));
-}
+const { verifyToken, sanitizeObject } = require('../security');
 
 async function commitFileToGitHub(token, repoOwner, repoName, filePath, contentString, commitMessage) {
   const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
@@ -82,19 +67,20 @@ module.exports = async function handler(req, res) {
     body = {};
   }
 
-  const isAuth = verifyToken(token, correctPassword) ||
-                 pinHeader === correctPassword ||
-                 (body && body.password === correctPassword) ||
-                 token.startsWith('local_token_');
+  const isAuth = verifyToken(token, correctPassword) || (pinHeader && pinHeader === correctPassword);
 
   if (!isAuth) {
     return res.status(401).json({ success: false, error: 'Unauthorized: Valid administrative session required for publish operations.' });
   }
 
-  const incomingData = (body && body.data) ? body.data : body;
-  if (!incomingData || typeof incomingData !== 'object') {
+  const incomingPayload = (body && body.data) ? body.data : body;
+  if (!incomingPayload || typeof incomingPayload !== 'object') {
     return res.status(400).json({ success: false, error: 'No data payload provided.' });
   }
+
+  const incomingData = sanitizeObject(incomingPayload);
+  delete incomingData.password;
+  delete incomingData.data;
 
   // 1. Prepare JSON string
   const jsonString = JSON.stringify(incomingData, null, 2);

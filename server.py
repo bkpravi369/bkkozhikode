@@ -23,6 +23,7 @@ import hashlib
 import secrets
 import threading
 import tempfile
+import copy
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
 CACHE_TTL = 1800  # 30 minutes in seconds
@@ -57,6 +58,34 @@ youtube_cache = {
 
 # Admin session tracking
 admin_sessions = set()
+
+def strip_sensitive_fields(data):
+    if not isinstance(data, dict):
+        return data
+    clean = copy.deepcopy(data)
+    if 'settings' in clean and isinstance(clean['settings'], dict):
+        clean['settings'].pop('adminPin', None)
+        clean['settings'].pop('githubToken', None)
+        clean['settings'].pop('cloudinaryApiKey', None)
+        clean['settings'].pop('cloudinaryApiSecret', None)
+    clean.pop('password', None)
+    clean.pop('adminPin', None)
+    clean.pop('githubToken', None)
+    return clean
+
+def sanitize_json_obj(val):
+    if isinstance(val, str):
+        return re.sub(r'<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>', '', val, flags=re.I).replace('javascript:', '').strip()
+    elif isinstance(val, list):
+        return [sanitize_json_obj(item) for item in val]
+    elif isinstance(val, dict):
+        clean = {}
+        for k, v in val.items():
+            if k in ['__proto__', 'constructor', 'prototype']:
+                continue
+            clean[k] = sanitize_json_obj(v)
+        return clean
+    return val
 
 def get_admin_password():
     key = os.environ.get('ADMIN_PASSWORD', '').strip()
@@ -509,12 +538,13 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             if os.path.exists(target_file):
                 try:
                     with open(target_file, 'r', encoding='utf-8') as f:
-                        data_content = f.read()
+                        raw_data = json.load(f)
+                    sanitized_data = strip_sensitive_fields(raw_data)
                     self.send_response(200)
                     self.send_header('Content-Type', 'application/json; charset=utf-8')
                     self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
                     self.end_headers()
-                    self.wfile.write(data_content.encode('utf-8'))
+                    self.wfile.write(json.dumps(sanitized_data, ensure_ascii=False).encode('utf-8'))
                     return
                 except Exception as e:
                     pass
@@ -663,11 +693,20 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
         if clean_path in ['/api/admin/save', '/api/save']:
             auth_header = self.headers.get('Authorization', '')
             token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
-            # Allow save from valid token or local server
+            pin_header = self.headers.get('X-Admin-Pin', '')
+            is_auth = verify_admin_token(token) or (pin_header and pin_header == get_admin_password())
+            if not is_auth:
+                self.send_response(401)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": "Unauthorized: Valid administrative session required."}).encode('utf-8'))
+                return
+
             content_length = int(self.headers.get('Content-Length', 0))
             post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
             try:
-                incoming_json = json.loads(post_data)
+                raw_json = json.loads(post_data)
+                incoming_json = sanitize_json_obj(raw_json)
             except Exception:
                 incoming_json = {}
 
@@ -887,6 +926,17 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # API: Bulk Image Upload Handler (Supports Signed & Unsigned Cloudinary + Local Disk Backup)
         if clean_path == '/api/upload':
+            auth_header = self.headers.get('Authorization', '')
+            token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
+            pin_header = self.headers.get('X-Admin-Pin', '')
+            is_auth = verify_admin_token(token) or (pin_header and pin_header == get_admin_password())
+            if not is_auth:
+                self.send_response(401)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": "Unauthorized: Admin session required for image uploads."}).encode('utf-8'))
+                return
+
             content_length = int(self.headers.get('Content-Length', 0))
             post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
             try:

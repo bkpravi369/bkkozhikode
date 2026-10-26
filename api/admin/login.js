@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const { generateToken } = require('../security');
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,19 +19,21 @@ module.exports = async function handler(req, res) {
     const correctPassword = process.env.ADMIN_PASSWORD || 'Kozhikode@2026';
 
     if (!password || password !== correctPassword) {
-      return res.status(401).json({ success: false, error: 'Invalid administrative credentials.' });
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid administrative credentials.'
+      });
     }
 
-    const ts = Date.now().toString();
-    const sig = crypto.createHmac('sha256', correctPassword).update(ts).digest('hex');
-    const token = `${ts}.${sig}`;
+    const token = generateToken(correctPassword);
 
     return res.status(200).json({
       success: true,
       token: token,
-      message: 'Authentication successful.'
+      expiresIn: 86400,
+      message: 'Administrative authentication successful.'
     });
   } catch (err) {
-    return res.status(500).json({ success: false, error: 'Authentication failed.' });
+    return res.status(500).json({ success: false, error: 'Authentication processing error.' });
   }
 };
