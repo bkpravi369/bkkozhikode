@@ -26,7 +26,6 @@ export default async function handler(req, res) {
     const candidatePaths = [
       path.join('/tmp', 'site_data.json'),
       path.join(process.cwd(), 'siteData.json'),
-      path.join(process.cwd(), 'public', 'siteData.json'),
       path.join(process.cwd(), 'data', 'site_data.json'),
       path.join(process.cwd(), 'src', 'data', 'siteData.json')
     ];

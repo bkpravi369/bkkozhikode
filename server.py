@@ -709,18 +709,10 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                     except Exception:
                         pass
 
-                # Save to root siteData.json and public/siteData.json
+                # Save to root siteData.json
                 root_site_data = os.path.join(os.getcwd(), 'siteData.json')
-                pub_dir = os.path.join(os.getcwd(), 'public')
-                pub_site_data = os.path.join(pub_dir, 'siteData.json')
-                os.makedirs(pub_dir, exist_ok=True)
                 try:
                     with open(root_site_data, 'w', encoding='utf-8') as f:
-                        json.dump(merged, f, indent=2, ensure_ascii=False)
-                except Exception:
-                    pass
-                try:
-                    with open(pub_site_data, 'w', encoding='utf-8') as f:
                         json.dump(merged, f, indent=2, ensure_ascii=False)
                 except Exception:
                     pass
@@ -754,7 +746,7 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             try:
                 import subprocess
-                subprocess.run(['git', 'add', 'siteData.json', 'public/siteData.json', 'data/site_data.json', 'src/data/siteData.json', 'src/data/events.json'], check=False)
+                subprocess.run(['git', 'add', 'siteData.json', 'data/site_data.json', 'src/data/siteData.json', 'src/data/events.json'], check=False)
                 subprocess.run(['git', 'commit', '-m', 'chore(data): publish admin updates to live site [skip ci]'], capture_output=True, text=True)
                 push_res = subprocess.run(['git', 'push', 'origin', 'main'], capture_output=True, text=True)
                 success = (push_res.returncode == 0)
