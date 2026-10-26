@@ -1093,220 +1093,594 @@ Despite towering intellectual achievements and global acclaim, Jagdish Bhai radi
   {
     slug: "dadi-hriday-pushpa",
     id: "dadi-hriday-pushpa",
-    name: "ദാദി ഹൃദയ പുഷ്പ",
-    loukikName: "ഹൃദയ പുഷ്പ",
-    role: "ദക്ഷിണേന്ത്യൻ സേവന പയനിയർ",
-    years: "ആദിരത്നം",
+    name: "രാജയോഗിനി ദാദി ഹൃദയ പുഷ്പ",
+    nameEn: "Rajyogini Dadi Hriday Pushpa",
+    loukikName: "പുഷ്പ (ഹൃദയ പുഷ്പ)",
+    loukikNameEn: "Pushpa",
+    role: "ദക്ഷിണേന്ത്യൻ സേവന പയനിയർ & കർണ്ണാടക സോൺ ഡയറക്ടർ",
+    roleEn: "Pioneer of South Indian Services & Director of Karnataka Zone",
+    years: "1920 – 1995",
+    yearsEn: "1920 – 1995",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-hriday-pushpa.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_10_Dadi_Hriday_Pushpa_Ji_a4e025ee77.webp",
     summary: "അതീന്ദ്രിയ ദിവ്യദർശനങ്ങൾക്കും ധ്യാനാവസ്ഥകൾക്കും സാക്ഷിയായ ദക്ഷിണേന്ത്യൻ ആത്മീയ വഴികാട്ടി.",
-    bio: "അതീന്ദ്രിയ ധ്യാനാവസ്ഥകൾക്കും ദിവ്യദർശനങ്ങൾക്കും പ്രശസ്തയായ ആദിരത്നം. ബാംഗ്ലൂർ കേന്ദ്രീകരിച്ച് കർണ്ണാടകയിലും ദക്ഷിണേന്ത്യയിലും വിദ്യാലയം വളർത്താൻ നേതൃത്വം നൽകി.\n\nതന്റെ ആഴമേറിയ അന്തർമുഖതയിലൂടെയും ദിവ്യദൃഷ്ടിയിലൂടെയും ഒട്ടനവധി ആത്മീയ അനുഭവങ്ങൾ പകർന്നുനൽകി. സൗമ്യമായ പെരുമാറ്റവും സ്നേഹനിർഭരമായ സാന്നിധ്യവും ദക്ഷിണേന്ത്യൻ സാധകർക്ക് അളവറ്റ ആശ്വാസമായിരുന്നു.",
-    virtues: ["അതീന്ദ്രിയ ധ്യാനാവസ്ഥ", "ദിവ്യദൃഷ്ടി", "നിശ്ശബ്ദ സേവനം"],
+    summaryEn: "Pioneer of South Indian services blessed with divine trance visions who established Rajyoga across Karnataka.",
+    bio: `#### ബാല്യകാലവും ദിവ്യദൃഷ്ടി വരദാനവും
+സിന്ധിലെ ഹൈദരാബാദിൽ ജനിച്ച് ചെറുപ്പത്തിൽ തന്നെ ഓം മണ്ഡലിയിൽ സമർപ്പിച്ച ആദിരത്നമാണ് ദാദി ഹൃദയ പുഷ്പ. ഹൃദയത്തിൽ സദാ ആത്മീയ സുഗന്ധം പരത്തുന്ന പുഷ്പം എന്ന അർത്ഥത്തിലാണ് ബ്രഹ്മാ ബാബ അവർക്ക് 'ഹൃദയ പുഷ്പ' എന്ന് നാമകരണം ചെയ്തത്. കറാച്ചിയിലെ തപസ്യക്കാലത്ത് ആഴത്തിലുള്ള ധ്യാനാവസ്ഥയിലേക്കും (ട്രാൻസ്) സൂക്ഷ്മ വതനിലേക്കും പ്രവേശിച്ച് ബാപ്ദാദയുടെ ദിവ്യസന്ദേശങ്ങൾ കൊണ്ടുവരുന്നതിൽ ദാദിക്ക് പ്രത്യേക വരദാനം ലഭിച്ചിരുന്നു.
+
+#### ദക്ഷിണേന്ത്യയിലെ ആത്മീയ വിപ്ലവം
+ഉത്തരേന്ത്യയിൽ മാത്രം ഒതുങ്ങിനിന്നിരുന്ന ഈശ്വരീയ സേവനങ്ങളെ ദക്ഷിണേന്ത്യയിലേക്ക് വ്യാപിപ്പിക്കാൻ ബ്രഹ്മാ ബാബ തിരഞ്ഞെടുത്ത പ്രധാന രത്നമായിരുന്നു ദാദി ഹൃദയ പുഷ്പ. ബാംഗ്ലൂർ (ബെംഗളൂരു) ആസ്ഥാനമാക്കി കർണ്ണാടകയിലും അനുബന്ധ ദക്ഷിണേന്ത്യൻ പ്രദേശങ്ങളിലും ആദ്യകാല രാജയോഗ കേന്ദ്രങ്ങൾ സ്ഥാപിക്കുന്നതിന് ദാദി നേതൃത്വം നൽകി.
+
+#### ഭാഷാ പരിമിതികളെ അതിജീവിച്ച സ്നേഹം
+ദക്ഷിണേന്ത്യൻ ഭാഷകൾ ആദ്യം വശമില്ലാതിരുന്നിട്ടും, ദാദിയുടെ മുഖത്തെ ദിവ്യതേജസ്സും മാതൃവാത്സല്യവും കണ്ട് ആയിരക്കണക്കിന് കുടുംബങ്ങൾ ഈശ്വരീയ ജ്ഞാനത്തിലേക്ക് ആകർഷിക്കപ്പെട്ടു. കർണ്ണാടകയിലെ ഗ്രാമങ്ങളിലും നഗരങ്ങളിലും സഞ്ചരിച്ച് നൂറുകണക്കിന് സമർപ്പിത സഹോദരിമാരെ വാർത്തെടുക്കാൻ ദാദിക്ക് സാധിച്ചു.
+
+#### സമ്പൂർണ്ണതയിലേക്കുള്ള പ്രയാണം
+അവസാന ശ്വാസം വരെയും ബാംഗ്ലൂർ സിറ്റി സെന്ററിന്റെയും ദക്ഷിണേന്ത്യൻ സേവനങ്ങളുടെയും നെടുംതൂണായി നിലകൊണ്ട ദാദി, 1995-ൽ തന്റെ സാകാര ശരീരം വെടിഞ്ഞ് അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Early Surrender & Gift of Divine Visions
+Born in Hyderabad, Sindh, Dadi Hriday Pushpa dedicated her life to Om Mandali in her youth. Brahma Baba named her 'Hriday Pushpa' (Flower of the Heart). During the 14 years of Tapasya in Karachi, she was blessed with the divine gift of entering deep trance (Dhyan) and visiting the subtle region.
+
+#### Pioneering Services in South India
+Entrusted by Brahma Baba with introducing Rajyoga to South India, Dadi moved to Bengaluru (Bangalore) and laid the foundation for the Karnataka Zone.
+
+#### Transcending Language Through Spiritual Love
+Despite initial language barriers in the South, her divine drishti, purity, and motherly warmth drew thousands of families and dignitaries into spiritual life, resulting in hundreds of centres across Karnataka.
+
+#### Angelic Legacy
+Serving tirelessly as the guiding light of South Indian services for decades, Dadi Hriday Pushpa attained the complete angelic stage in 1995.`,
+    virtues: ["അതീന്ദ്രിയ ധ്യാനാവസ്ഥ", "ദിവ്യദൃഷ്ടി വരദാനം", "നിശ്ശബ്ദ സേവനം", "മാതൃസമാനമായ വാത്സല്യം", "ആത്മീയ ലാളിത്യം"],
+    virtuesEn: ["Profound Trance State", "Gift of Divine Visions", "Silent Service", "Maternal Affection", "Spiritual Simplicity"],
     videoUrl: "https://www.youtube.com/embed/AGStvWLcv_4",
     videoEmbedUrl: "https://www.youtube.com/embed/AGStvWLcv_4",
-    videoTitle: "Dharohar Hamare Poorvajo Ki: Dadi Hriday Pushpa",
-    quote: "ഹൃദയപൂർവ്വമായ മൗനം പരമാത്മാവിന്റെ ഏറ്റവും അടുത്ത സന്നിധിയിലേക്കുള്ള പാലമാണ്."
+    videoTitle: "ധരോഹർ ഹമാരേ പൂർവ്വജോം കി: ദാദി ഹൃദയ പുഷ്പ",
+    videoTitleEn: "Dharohar Hamare Poorvajo Ki: Dadi Hriday Pushpa",
+    quote: "ഹൃദയപൂർവ്വമായ മൗനം പരമാത്മാവിന്റെ ഏറ്റവും അടുത്ത സന്നിധിയിലേക്കുള്ള പാലമാണ്.",
+    quoteEn: "Heartfelt silence is the divine bridge that leads directly into the supreme presence of God."
   },
   {
     slug: "dadi-manohar-indra",
     id: "dadi-manohar-indra",
-    name: "ദാദി മനോഹർ ഇന്ദ്ര",
-    loukikName: "മനോഹർ ഇന്ദ്ര",
-    role: "മധുബൻ സ്നേഹപാലന",
-    years: "ആദിരത്നം",
+    name: "രാജയോഗിനി ദാദി മനോഹർ ഇന്ദ്ര",
+    nameEn: "Rajyogini Dadi Manohar Indra",
+    loukikName: "ഇന്ദ്ര",
+    loukikNameEn: "Indra",
+    role: "സീനിയർ രാജയോഗ അധ്യാപിക & മധുബൻ-മുംബൈ സേവന സ്തംഭം",
+    roleEn: "Senior Rajyoga Teacher & Pillar of Madhuban-Mumbai Services",
+    years: "1925 – 23 ഡിസംബർ 2009",
+    yearsEn: "1925 – 23 December 2009",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-manohar-indra.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_09_Dadi_Manohar_Indra_117928ac76.webp",
     summary: "മധുബനിലെ മാതൃവാത്സല്യവും സ്നേഹപരിപാലനവും കൊണ്ട് സാധകരെ ഊട്ടിയുറപ്പിച്ച പുണ്യമാതാവ്.",
-    bio: "മധുബനിലെ മാതൃവാത്സല്യവും അന്തർമുഖതയും പകർന്നുനൽകിയ സാധക. സാധകർക്ക് ഭക്ഷണവും സ്നേഹവും ഈശ്വരീയ അച്ചടക്കവും നൽകി പരിപാലിച്ചു.\n\nസാധകർ സ്നേഹത്തോടെ വിളിച്ച അവർ മധുബനിലെ ഓരോ ആത്മാവിന്റെയും ആത്മീയ പുരോഗതിയിൽ അതീവ ശ്രദ്ധ പുലർത്തി. അവരുടെ കൈപ്പുണ്യവും പുഞ്ചിരിയും മധുബനിലെത്തിയ ഓരോരുത്തർക്കും ദിവ്യസ്നേഹത്തിന്റെ മാധുര്യമേകി.",
-    virtues: ["മാതൃവാത്സല്യം", "അന്തർമുഖത", "സമർപ്പണ ഭാവം"],
+    summaryEn: "Beloved spiritual mother and senior teacher whose sweet Murli classes and loving sustenance guided thousands of seekers.",
+    bio: `#### ഓം മണ്ഡലിയിലെ ബാല്യവും സമർപ്പണവും
+1925-ൽ സിന്ധിൽ ജനിച്ച ഇന്ദ്ര, പന്ത്രണ്ടാം വയസ്സിൽ ഓം മണ്ഡലിയിലെത്തി ബ്രഹ്മാ ബാബയുടെയും മമ്മയുടെയും വാത്സല്യത്തിൽ വളർന്നു. മനോഹരമായി ഈശ്വരീയ ജ്ഞാനവർഷം പെയ്യുന്നവൾ എന്ന അർത്ഥത്തിൽ ബാബ അവർക്ക് 'മനോഹർ ഇന്ദ്ര' എന്ന് പേരിട്ടു.
+
+#### മുംബൈയിലെയും വിവിധ സംസ്ഥാനങ്ങളിലെയും സേവനം
+1950-ൽ മൗണ്ട് അബുവിലേക്ക് മാറിയ ശേഷം, മുംബൈ, ഗുജറാത്ത്, രാജസ്ഥാൻ, മധ്യപ്രദേശ് എന്നിവിടങ്ങളിൽ സേവന കേന്ദ്രങ്ങൾ വളർത്തുന്നതിൽ ദാദി മനോഹർ ഇന്ദ്ര മുഖ്യ പങ്കുവഹിച്ചു. ബ്രഹ്മാ ബാബയോടും മമ്മയോടുമൊപ്പമുള്ള സാകാര അനുഭവങ്ങൾ കോർത്തിണക്കി ദാദി നടത്തിയിരുന്ന മുരളി ക്ലാസുകൾ സാധകർക്ക് വലിയ ആത്മീയ ഉണർവ് നൽകിയിരുന്നു.
+
+#### മധുബനിലെ സ്നേഹപാലന
+മധുബനിൽ എത്തുന്ന ആയിരക്കണക്കിന് സാധകർക്ക് ഒരമ്മയെപ്പോലെ ആത്മീയ മാർഗ്ഗനിർദ്ദേശവും സ്നേഹവും പകർന്നുനൽകിയ ദാദി, അച്ചടക്കത്തിലും യോഗസാധനയിലും വിട്ടുവീഴ്ചയില്ലാത്ത നിഷ്ഠ പുലർത്തി. 2009 ഡിസംബർ 23-ന് തന്റെ 84-ാം വയസ്സിൽ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Childhood in Om Mandali
+Born in 1925 in Sindh, young Indra joined Om Mandali at the age of 12 and blossomed under the direct sustenance of Brahma Baba and Mamma. Baba named her 'Manohar Indra'—one who showers the charming rain of divine knowledge.
+
+#### Pioneering Services Across Western & Central India
+After moving to Mount Abu in 1950, she played a key role in expanding spiritual services across Mumbai, Gujarat, Rajasthan, and Madhya Pradesh. Her classes, rich with first-hand memories of Sakar Baba and Mamma, deeply inspired generations of seekers.
+
+#### Sustenance in Madhuban & Angelic Ascent
+Known for her warm hospitality, strict spiritual discipline, and deep yoga, Dadi nurtured thousands of Rajyoga teachers in Madhuban before attaining the angelic stage on 23 December 2009 at the age of 84.`,
+    virtues: ["മധുരമായ ജ്ഞാനാവതരണം", "മാതൃവാത്സല്യം", "അന്തർമുഖത", "ശ്രീമത് പാലനയിലെ കൃത്യത", "സദാ ഉന്മേഷവതി"],
+    virtuesEn: ["Sweet Murli Exposition", "Maternal Sustenance", "Introversion", "Strict Adherence to Shrimat", "Ever-Enthusiastic Spirit"],
     videoUrl: "https://www.youtube.com/embed/bifdtKJgvRk",
     videoEmbedUrl: "https://www.youtube.com/embed/bifdtKJgvRk",
-    videoTitle: "Dadi Manohar Indra Ji Experience Class",
-    quote: "സ്നേഹത്തോടെയുള്ള ഓരോ ചെറിയ കർമ്മവും പരമാത്മാവിനുള്ള ദിവ്യപുഷ്പമാണ്."
+    videoTitle: "ദാദി മനോഹർ ഇന്ദ്ര ജി അനുഭവ ക്ലാസ്",
+    videoTitleEn: "Dadi Manohar Indra Ji Experience Class",
+    quote: "സ്നേഹത്തോടെയുള്ള ഓരോ ചെറിയ കർമ്മവും പരമാത്മാവിനുള്ള ദിവ്യപുഷ്പമാണ്.",
+    quoteEn: "Every small act performed with pure love becomes a divine flower offered to God.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_manohar_indra_portrait.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Manohar_Indra_01_ead50f4595.webp",
+        title: "ആത്മീയ തേജസ്സ്",
+        titleEn: "Spiritual Radiance",
+        caption: "സദാ ശാന്തവും പ്രസന്നവുമായ മുഖഭാവത്തോടെയുള്ള ദാദി മനോഹർ ഇന്ദ്രയുടെ ദിവ്യ രൂപം",
+        captionEn: "Radiating serene calmness and divine sweetness as an embodiment of spiritual tapasya"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_manohar_indra_drishti.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Manohar_Indra_02_c535598907.webp",
+        title: "ദിവ്യദൃഷ്ടി പാലന",
+        titleEn: "Divine Drishti & Sustenance",
+        caption: "സാധകർക്ക് മാതൃവാത്സല്യവും ആത്മീയ ശാന്തിയും പകരുന്ന ദാദിയുടെ ദൃഷ്ടി",
+        captionEn: "Nurturing seekers with deep motherly affection, peace, and spiritual power"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_manohar_indra_featured.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Manohar_Indra_Ji_Feature_image_ffce53bd68.jpg",
+        title: "മനോഹര ഇന്ദ്ര",
+        titleEn: "Manohar Indra",
+        caption: "ബാബ നൽകിയ മനോഹര ഇന്ദ്ര എന്ന ആത്മീയ നാമം സ്വജീവിതത്തിൽ സാക്ഷാത്കരിച്ച ദാദി",
+        captionEn: "Living the divine title 'Manohar Indra'—one who showers the charming rain of divine wisdom"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_manohar_indra_service.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Manohar_Indra_ji_12_X_15_15a29f7449.webp",
+        title: "മധുബനിലെ സ്നേഹപരിപാലന",
+        titleEn: "Loving Sustenance in Madhuban",
+        caption: "മധുബനിൽ എത്തുന്ന സാധകർക്ക് മാർഗ്ഗനിർദ്ദേശം നൽകുന്ന ദാദി",
+        captionEn: "Guiding and sustaining thousands of Rajyoga teachers and spiritual pilgrims in Madhuban"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_manohar_indra_tapasya.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dadi_Manohar_Indra_ji_16_Inch_x_20_Inch_5e5d54d9bf.webp",
+        title: "അചഞ്ചലമായ തപസ്യ",
+        titleEn: "Unshakeable Tapasya",
+        caption: "ശ്രീമത് പാലനയിലും ആഴത്തിലുള്ള യോഗസാധനയിലും അടിയുറച്ച തപസ്വിനി",
+        captionEn: "Deeply absorbed in meditation and strict adherence to divine disciplines (Shrimat)"
+      }
+    ]
   },
   {
     slug: "dadi-ishu",
     id: "dadi-ishu",
-    name: "ദാദി ഇഷു",
+    name: "രാജയോഗിനി ദാദി ഇഷു (നിർമ്മൽ പ്രകാശ്)",
+    nameEn: "Rajyogini Dadi Ishu (Nirmal Prakash)",
     loukikName: "ഇഷു",
-    role: "ട്രഷറർ & ബാബയുടെ സെക്രട്ടറി",
-    years: "ആദിരത്നം",
+    loukikNameEn: "Ishu",
+    role: "യജ്ഞത്തിന്റെ മുഖ്യ ട്രഷറർ & ബ്രഹ്മാ ബാബയുടെ പേഴ്സണൽ സെക്രട്ടറി",
+    roleEn: "Chief Treasurer of the Yagya & Personal Secretary to Brahma Baba",
+    years: "1926 – 29 നവംബർ 2021",
+    yearsEn: "1926 – 29 November 2021",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-ishu.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_13_Dadi_Ishu_Pic_01_0cd8a8e416.webp",
     summary: "ബ്രഹ്മാ ബാബയുടെ പേഴ്സണൽ സെക്രട്ടറിയായും വിശ്വസ്ത ട്രഷററായും സേവനമനുഷ്ഠിച്ച നിശ്ശബ്ദ സാധക.",
-    bio: "ബ്രഹ്മാ ബാബയുടെ പേഴ്സണൽ സെക്രട്ടറിയായും പ്രസ്ഥാനത്തിന്റെ ട്രഷററായും സേവനമനുഷ്ഠിച്ചു. കണക്കുകളും രേഖകളും അതീവ കൃത്യതയോടെ സൂക്ഷിച്ച നിശ്ശബ്ദ സാധക.\n\nയജ്ഞത്തിന്റെ ഒരു പൈസ പോലും പാഴാവാതെ അതീവ സൂക്ഷ്മതയോടെ കൈകാര്യം ചെയ്തു. ബാബയുടെ കത്തുകളും സന്ദേശങ്ങളും കൃത്യതയോടെ രേഖപ്പെടുത്തിവെക്കുന്നതിലും മധുബൻ രേഖകൾ കാത്തുസൂക്ഷിക്കുന്നതിലും വലിയ പങ്കുവഹിച്ചു.",
-    virtues: ["രഹസ്യ സാധന", "സത്യസന്ധത", "സാമ്പത്തിക കൃത്യത"],
+    summaryEn: "Brahma Baba's trusted personal secretary and Chief Treasurer who safeguarded the Yagya's treasury with immaculate accuracy and silence.",
+    bio: `#### ബാല്യകാല സമർപ്പണവും ബാബയുടെ വിശ്വസ്ത സെക്രട്ടറിയും
+1926-ൽ സിന്ധിൽ ജനിച്ച് കൗമാരത്തിൽ തന്നെ ഓം മണ്ഡലിയിൽ ചേർന്ന ദാദി ഇഷു, ബാബ നൽകിയ 'നിർമ്മൽ പ്രകാശ്' എന്ന പേരിലും അറിയപ്പെട്ടു. ദാദിയുടെ ശാന്തതയും സത്യസന്ധതയും കൃത്യനിഷ്ഠയും കണ്ട ബ്രഹ്മാ ബാബ, തന്റെ പേഴ്സണൽ സെക്രട്ടറിയായി കത്തുകളും രേഖകളും കൈകാര്യം ചെയ്യാൻ ദാദി ഇഷുവിനെ തിരഞ്ഞെടുത്തു.
+
+#### യജ്ഞത്തിന്റെ ഖജാൻജി (Chief Treasurer)
+പതിറ്റാണ്ടുകളോളം ബ്രഹ്മാകുമാരീസ് ആസ്ഥാനമായ മധുബന്റെ മുഖ്യ ട്രഷററായി (ഖജാൻജി) സേവനമനുഷ്ഠിച്ചത് ദാദി ഇഷുവാണ്. ലോകമെമ്പാടുമുള്ള കേന്ദ്രങ്ങളിൽ നിന്നുള്ള ഈശ്വരീയ സമ്പാദ്യവും കണക്കുകളും ഒരു പൈസയുടെ പോലും വ്യത്യാസമില്ലാതെ അതീവ സൂക്ഷ്മതയോടെയും പവിത്രതയോടെയും ദാദി കൈകാര്യം ചെയ്തു.
+
+#### രഹസ്യ ദാനത്തിന്റെയും നിശ്ശബ്ദതയുടെയും മാതൃക
+വേദികളിലോ ക്യാമറകൾക്ക് മുന്നിലോ പ്രത്യക്ഷപ്പെടാൻ ഒട്ടും ആഗ്രഹിക്കാതെ, അണിയറയിൽ ഇരുന്ന് നിശ്ശബ്ദമായി സേവനം ചെയ്ത 'ഗുപ്ത രത്നം' ആയിരുന്നു ദാദി ഇഷു. തന്റെ 95-ാം വയസ്സുവരെ മധുബന്റെ സാമ്പത്തിക കാര്യങ്ങളിൽ മാർഗ്ഗനിർദ്ദേശം നൽകിയ ദാദി, 2021 നവംബർ 29-ന് അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Early Surrender & Personal Secretary to Brahma Baba
+Born in 1926 in Sindh, Dadi Ishu (also given the spiritual name 'Nirmal Prakash') joined Om Mandali in her early teens. Recognizing her quiet efficiency, neatness, and absolute trustworthiness, Brahma Baba appointed her to assist with his personal correspondence and confidential records.
+
+#### Chief Treasurer of Madhuban
+For decades, Dadi Ishu served as the Chief Treasurer of the Brahma Kumaris headquarters in Mount Abu. She managed the sacred trust funds and financial accounts of the Yagya with impeccable accuracy, economy, and spiritual honesty.
+
+#### The Incognito Angel
+Shying away from stages and public limelight, Dadi Ishu remained behind the scenes as a 'Gupt Ratna' (Hidden Jewel), speaking very few words and remaining constantly absorbed in remembrance of Baba until she attained the angelic stage on 29 November 2021 at the age of 95.`,
+    virtues: ["അതീവ രഹസ്യവും നിശ്ശബ്ദവുമായ സാധന", "സമ്പൂർണ്ണ സാമ്പത്തിക സുതാര്യത", "മിതഭാഷിത്വം", "സത്യസന്ധതയും വിശ്വസ്തതയും", "ഫരിഷ്താ ജീവിതം"],
+    virtuesEn: ["Incognito Spiritual Effort", "Absolute Financial Integrity", "Economy of Words", "Unwavering Trustworthiness", "Angelic Simplicity"],
     videoUrl: "https://www.youtube.com/embed/AFlJRimog8s",
     videoEmbedUrl: "https://www.youtube.com/embed/AFlJRimog8s",
-    videoTitle: "God's Angel - Dadi Ishu Ji Tribute",
-    quote: "ഈശ്വരന്റെ പവിത്ര സമ്പത്ത് പവിത്രതയോടെ സംരക്ഷിക്കുക എന്നത് ഏറ്റവും വലിയ ധർമ്മമാണ്."
+    videoTitle: "ഗോഡ്സ് ഏഞ്ചൽ - ദാദി ഇഷു ജി ട്രിബ്യൂട്ട്",
+    videoTitleEn: "God's Angel - Dadi Ishu Ji Tribute",
+    quote: "ഈശ്വരന്റെ പവിത്ര സമ്പത്ത് പവിത്രതയോടെ സംരക്ഷിക്കുക എന്നത് ഏറ്റവും വലിയ ധർമ്മമാണ്.",
+    quoteEn: "Guarding God's sacred wealth with utmost purity and integrity is the highest spiritual duty.",
+    galleryImages: [
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ishu_old_memories_1.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_1_Dadi_Ishu_Old_Memories_ef2363c442.webp",
+        title: "യജ്ഞത്തിന്റെ വിശ്വസ്ത ട്രഷറർ",
+        titleEn: "Trusted Treasurer of the Yagya",
+        caption: "ബ്രഹ്മാ ബാബയുടെ പേഴ്സണൽ സെക്രട്ടറിയായും മുഖ്യ ട്രഷററായും സേവനമനുഷ്ഠിച്ച നിശ്ശബ്ദ സാധക",
+        captionEn: "Serving as Brahma Baba's confidential personal secretary and Chief Treasurer of the sacred trust"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ishu_old_memories_2.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_2_Dadi_Ishu_Old_Memories_cfd285ee42.webp",
+        title: "നിർമ്മൽ പ്രകാശ്",
+        titleEn: "Nirmal Prakash (Pure Light)",
+        caption: "ബാബ നൽകിയ നിർമ്മൽ പ്രകാശ് എന്ന ആത്മീയ നാമത്തെ അന്വർത്ഥമാക്കിയ ജീവിതം",
+        captionEn: "Embodying the spiritual name 'Nirmal Prakash' through pristine honesty and pure radiance"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ishu_old_memories_3.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_3_Dadi_Ishu_Old_Memories_c5eacf4a82.webp",
+        title: "ഗുപ്ത രത്നം",
+        titleEn: "Incognito Jewel (Gupt Ratna)",
+        caption: "പ്രശസ്തികളിൽ നിന്ന് അകന്നുനിന്ന് അണിയറയിൽ നിശ്ശബ്ദമായി യജ്ഞസേവനം നിർവ്വഹിച്ച ദാദി",
+        captionEn: "Shunning all limelight and public stage, remaining constant in silent, incognito service"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ishu_old_memories_4.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_4_Dadi_Ishu_Old_Memories_397ac1429e.webp",
+        title: "മധുബൻ സ്മരണകൾ",
+        titleEn: "Sacred Madhuban Memories",
+        caption: "മധുബനിലെ പുണ്യഭൂമിയിൽ ദാദിമാരോടൊപ്പം ആത്മീയ സ്നേഹം പങ്കിടുന്ന നിമിഷങ്ങൾ",
+        captionEn: "Cherished moments of divine companionship with senior Dadis in the sacred atmosphere of Madhuban"
+      },
+      {
+        src: "assets/images/adi-ratna/gallery/dadi_ishu_old_memories_5.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_5_Dadi_Ishu_Old_Memories_498cca9aba.webp",
+        title: "ഫരിഷ്താ രൂപം",
+        titleEn: "Angelic Radiance",
+        caption: "അവസാന ശ്വാസം വരെയും പരമാത്മ സ്മരണയിൽ പ്രകാശമയമായ ജീവിതം നയിച്ച ദാദി ഇഷു",
+        captionEn: "Constantly absorbed in the sweet remembrance of God, inspiring all with childlike purity"
+      }
+    ]
   },
   {
     slug: "dadi-bhoori",
     id: "dadi-bhoori",
-    name: "ദാദി ഭൂരി",
+    name: "രാജയോഗിനി ദാദി ഭൂരി (ഭൂരി ദാദി)",
+    nameEn: "Rajyogini Dadi Bhoori",
     loukikName: "ഭൂരി",
-    role: "ഭണ്ഡാര ഇൻ-ചാർജ് (അടുക്കള)",
-    years: "ആദിരത്നം",
+    loukikNameEn: "Bhoori",
+    role: "മധുബൻ ഭണ്ഡാര (അടുക്കള) & സ്റ്റോർ ഇൻ-ചാർജ്",
+    roleEn: "In-charge of Madhuban Bhandara (Kitchen) & Stores",
+    years: "ആദിരത്നം (1914 – 2002)",
+    yearsEn: "Adi Ratna (1914 – 2002)",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-bhoori.jpg",
     photoFallback: "https://www.brahmakumaris.com/wp-content/uploads/2024/07/Dadi-Bhoori-Ji.jpg",
     summary: "വിഭവങ്ങൾ കുറവായിരുന്ന ആദ്യകാലത്ത് 'ഏകനാമി ആൻഡ് ഇക്കോണമി'യുടെ മൂർത്തീഭാവമായി മാറിയ അന്നപൂർണ്ണ.",
-    bio: "വിഭവങ്ങൾ കുറവായിരുന്ന ആദ്യകാലത്ത് മധുബനിലെ ഭണ്ഡാര ഭംഗിയായി കൈകാര്യം ചെയ്ത് 'ഏകനാമി ആൻഡ് ഇക്കോണമി'യുടെ മൂർത്തീഭാവമായി മാറിയ അന്നപൂർണ്ണ.\n\nസാധകർക്ക് ശിവബാബയുടെ സ്മരണയിൽ പാകം ചെയ്ത ശുദ്ധ സാത്വിക ഭോജനം നൽകി ആത്മീയ ശക്തി പകർന്നു. പരിമിതമായ വിഭവങ്ങൾ കൊണ്ട് ആയിരക്കണക്കിന് സാധകർക്ക് തൃപ്തിയേകിയ അത്ഭുതകരമായ കൈപ്പുണ്യം ദാദിക്ക് ഉണ്ടായിരുന്നു.",
-    virtues: ["ഏകനാമി & ഇക്കോണമി", "അന്നപൂർണ്ണാ ഭാവം", "സേവന തല്പരത"],
-    videoUrl: null,
-    videoEmbedUrl: null,
-    videoTitle: null,
-    quote: "ഈശ്വരസ്മരണയിൽ പാകം ചെയ്യുന്ന ഭക്ഷണം ആത്മാവിനെ യോഗിയാക്കി മാറ്റുന്നു."
+    summaryEn: "The Annapurna of Madhuban who exemplified 'Eknami and Economy', turning kitchen service into the highest karmayoga.",
+    bio: `#### കറാച്ചി മുതൽ മധുബൻ വരെയുള്ള അന്നപൂർണ്ണ
+ഓം മണ്ഡലിയുടെ തുടക്കം മുതൽക്കേ യജ്ഞത്തിന്റെ അടുക്കളയുടെയും (ബ്രഹ്മാ ഭോജനം / ഭണ്ഡാര) ഭക്ഷ്യശേഖരത്തിന്റെയും ചുമതല വഹിച്ച മാതൃരത്നമാണ് ദാദി ഭൂരി. കറാച്ചിയിലും തുടർന്ന് 1950 മുതൽ മൗണ്ട് അബുവിലെ പാണ്ഡവ ഭവനിലും നൂറുകണക്കിന് സാധകർക്ക് സ്വന്തം കൈകൊണ്ട് ഭക്ഷണം പാകം ചെയ്തും വിളമ്പിയും ദാദി പരിപാലിച്ചു.
+
+#### 'ഏകനാമി ആൻഡ് ഇക്കോണമി'യുടെ ജീവിക്കുന്ന മാതൃക
+1950-കളിൽ മൗണ്ട് അബുവിൽ സാമ്പത്തികവും ഭൗതികവുമായ വിഭവങ്ങൾ വളരെ പരിമിതമായിരുന്ന കാലത്ത്, ഒരു തരി ധാന്യമോ ഒരു തുള്ളി എണ്ണയോ പോലും പാഴാക്കാതെ എങ്ങനെ സമൃദ്ധമായി യജ്ഞം നടത്താം എന്ന് ദാദി ഭൂരി തെളിയിച്ചു. ബ്രഹ്മാ ബാബയുടെ "ഏകനാമി ആൻഡ് ഇക്കോണമി" (ഒരു ഈശ്വരന്റെ ഓർമ്മയും മിതവ്യയവും) എന്ന തത്ത്വം അക്ഷരാർത്ഥത്തിൽ ജീവിച്ചു കാണിച്ച രത്നമായിരുന്നു ദാദി.
+
+#### കർമ്മയോഗത്തിന്റെ ഉന്നത മാതൃക
+പുലർച്ചെ അമൃതവേള മുതൽ രാത്രി വൈകും വരെ ഭണ്ഡാരയിൽ ജോലി ചെയ്യുമ്പോഴും ദാദിയുടെ മനസ്സ് സദാ ശിവബാബയുടെ ഓർമ്മയിലായിരുന്നു. സാധകർക്ക് കേവലം ഭക്ഷണമല്ല, മറിച്ച് യോഗയുടെ ശക്തി നിറഞ്ഞ 'ബ്രഹ്മാ ഭോജനം' ആണ് ദാദി നൽകിയിരുന്നത്.`,
+    bioEn: `#### The Annapurna of the Yagya
+From the early days in Karachi to decades in Pandav Bhavan, Mount Abu, Dadi Bhoori served as the head of the divine kitchen (Bhandara) and grain stores, lovingly feeding hundreds of surrendered seekers and guests.
+
+#### Living Embodiment of 'Eknami and Economy'
+During the early years in Mount Abu when resources were scarce, Dadi Bhoori managed the stores with extraordinary care, ensuring not a single grain was wasted. Brahma Baba frequently praised her as the practical embodiment of 'Eknami and Economy' (Remembrance of One and Economy).
+
+#### Sacred Brahma Bhojan
+Preparing meals in constant remembrance of God, she turned kitchen service into the highest form of Karmayoga, nourishing the spiritual family with pure vibrations.`,
+    virtues: ["ഏകനാമി & ഇക്കോണമി", "അന്നപൂർണ്ണാ ഭാവം", "അക്ഷീണമായ കർമ്മയോഗം", "ഈശ്വരീയ സമ്പത്തിന്റെ സംരക്ഷക", "നിസ്വാർത്ഥ സേവനം"],
+    virtuesEn: ["Eknami & Economy", "Mother Annapurna Spirit", "Tireless Karmayoga", "Guardian of Yagya Resources", "Selfless Sustenance"],
+    videoUrl: "https://www.youtube.com/embed/GbaEqpAPRtA",
+    videoEmbedUrl: "https://www.youtube.com/embed/GbaEqpAPRtA",
+    videoTitle: "പ്രേരണ സെഷൻ: ദാദി ഭൂരി ജി ജീവിതകഥ",
+    videoTitleEn: "Prerana Session: Story of Dadi Bhoori Ji",
+    quote: "ഈശ്വരസ്മരണയിൽ പാകം ചെയ്യുന്ന ഭക്ഷണം ആത്മാവിനെ യോഗിയാക്കി മാറ്റുന്നു.",
+    quoteEn: "Food prepared in loving remembrance of God transforms the soul into a true yogi."
   },
   {
     slug: "dadi-sandeshi",
     id: "dadi-sandeshi",
-    name: "ദാദി സന്ദേശി",
-    loukikName: "സന്ദേശി",
-    role: "സൂക്ഷ്മ വതൻ സന്ദേശവാഹക",
-    years: "ആദിരത്നം",
+    name: "രാജയോഗിനി ദാദി സന്ദേശി (രമണീക് മോഹിനി)",
+    nameEn: "Rajyogini Dadi Sandeshi (Ramneek Mohini)",
+    loukikName: "ലക്ഷ്മി",
+    loukikNameEn: "Lakshmi",
+    role: "സൂക്ഷ്മ വതൻ സന്ദേശവാഹക & ഒഡീഷ സേവന പയനിയർ",
+    roleEn: "Subtle Region Messenger & Pioneer of Odisha Services",
+    years: "1923 – 2013",
+    yearsEn: "1923 – 2013",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-sandeshi.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_18_Dadi_Sandeshi_Ji_904dadf840.webp",
     summary: "സൂക്ഷ്മ വതനിൽ പ്രവേശിച്ച് ബാപ്ദാദയ്ക്ക് ഭോഗ് അർപ്പിക്കുകയും ദിവ്യസന്ദേശങ്ങൾ എത്തിക്കുകയും ചെയ്ത മാധ്യമം.",
-    bio: "ധ്യാനത്തിലൂടെ സൂക്ഷ്മ വതനിൽ പ്രവേശിച്ച് ബാപ്ദാദയ്ക്ക് ഭോഗ് അർപ്പിക്കുകയും ഈശ്വരീയ സന്ദേശങ്ങൾ ഭൗതിക ലോകത്തേക്ക് എത്തിക്കുകയും ചെയ്ത മാധ്യമം.\n\nആത്മീയ ധ്യാനത്തിന്റെ ഉച്ചസ്ഥിതിയിൽ എത്തിച്ചേർന്ന് സൂക്ഷ്മ ലോകത്തെ കാഴ്ചകളും ശിവബാബയുടെ സ്നേഹനിർഭരമായ സന്ദേശങ്ങളും കുട്ടികൾക്ക് പകർന്നുനൽകി. അവരുടെ ദിവ്യാനുഭവങ്ങൾ സാധകർക്ക് വലിയ ഉത്സാഹവും ഉണർവ്വും പകർന്നു.",
-    virtues: ["സൂക്ഷ്മ വതൻ പ്രവേശം", "ഭോഗ് സമർപ്പണം", "ഈശ്വരീയ ദൂത"],
+    summaryEn: "Subtle region messenger and pioneer of Odisha services who offered Bhog in deep trance and shared Bapdada's divine directions.",
+    bio: `#### ബാല്യവും ബാബ നൽകിയ ആത്മീയ നാമങ്ങളും
+സിന്ധിൽ ജനിച്ച് ചെറുപ്പത്തിൽ തന്നെ ഓം മണ്ഡലി ബോർഡിംഗ് സ്കൂളിൽ ചേർന്ന ലക്ഷ്മി, ആത്മീയ ഗാനങ്ങൾ പാടുന്നതിലും ദിവ്യ നൃത്തം ചെയ്യുന്നതിലും അതിസമർത്ഥയായിരുന്നു. അവരുടെ സദാ പ്രസന്നമായ സ്വഭാവം കണ്ട് ബ്രഹ്മാ ബാബ അവർക്ക് 'രമണീക് മോഹിനി' എന്നും 'ബിന്ദ്രബാല' എന്നും പേരുകൾ നൽകി.
+
+#### സൂക്ഷ്മ വതനിലെ ദിവ്യ സന്ദേശവാഹക ('സന്ദേശി')
+ആഴത്തിലുള്ള ധ്യാനാവസ്ഥയിലൂടെ സൂക്ഷ്മ വതനിലേക്ക് പ്രവേശിച്ച് ബാപ്ദാദയ്ക്ക് ഭോഗ് അർപ്പിക്കുകയും, അവിടെ നിന്നുള്ള ഈശ്വരീയ സന്ദേശങ്ങൾ ഭൗതിക ലോകത്തുള്ള സാധകർക്ക് എത്തിക്കുകയും ചെയ്തിരുന്നതിനാൽ അവർ 'ദാദി സന്ദേശി' എന്ന പേരിൽ പ്രസിദ്ധയായി.
+
+#### ഒഡീഷയിലെയും കിഴക്കൻ ഇന്ത്യയിലെയും സേവനങ്ങൾ
+പിൽക്കാലത്ത് ഒഡീഷയുടെ തലസ്ഥാനമായ ഭുവനേശ്വർ കേന്ദ്രീകരിച്ച് അനേകം രാജയോഗ കേന്ദ്രങ്ങൾ സ്ഥാപിക്കുന്നതിന് ദാദി സന്ദേശി നേതൃത്വം നൽകി. നിഷ്കളങ്കമായ പുഞ്ചിരിയും ബാപ്ദാദയിലുള്ള അടിയുറച്ച വിശ്വാസവുമായിരുന്നു ദാദിയുടെ മുഖമുദ്ര.`,
+    bioEn: `#### Early Life in Om Mandali
+Raised in the Om Mandali boarding school in Sindh, young Lakshmi was gifted in devotional singing and divine dance, earning the names 'Ramneek Mohini' and 'Bindrabala' from Brahma Baba.
+
+#### Divine Messenger ('Dadi Sandeshi')
+Blessed with the ability to enter deep trance (Dhyan), she regularly offered Bhog to Bapdada in the subtle region and brought back divine messages and directions for the Yagya, becoming lovingly known as 'Dadi Sandeshi'.
+
+#### Pioneering Services in Odisha
+She later spearheaded spiritual services in Bhubaneswar and across Odisha, touching thousands of lives with her simplicity and spiritual joy until her passing in 2013.`,
+    virtues: ["സൂക്ഷ്മ വതൻ പ്രവേശം", "ഭോഗ് സമർപ്പണം", "കലാപരമായ ആത്മീയത", "നിഷ്കളങ്കമായ ഭക്തിയും സ്നേഹവും", "സദാ പ്രസന്നത"],
+    virtuesEn: ["Subtle Region Trance Messenger", "Medium for Divine Bhog", "Artistic Devotion", "Childlike Innocence", "Ever-Cheerful Nature"],
     videoUrl: "https://www.youtube.com/embed/VWFD3_DJ80c",
     videoEmbedUrl: "https://www.youtube.com/embed/VWFD3_DJ80c",
-    videoTitle: "Life Story of Rajyogini Dadi Sandeshi Ji",
-    quote: "മനസ്സ് അതിസൂക്ഷ്മമാകുമ്പോൾ ബാപ്ദാദയുടെ സൂക്ഷ്മ സാന്നിധ്യം മിഴിമുന്നിൽ പ്രകടമാകുന്നു."
+    videoTitle: "രാജയോഗിനി ദാദി സന്ദേശി ജി ജീവിതകഥ",
+    videoTitleEn: "Life Story of Rajyogini Dadi Sandeshi Ji",
+    quote: "മനസ്സ് അതിസൂക്ഷ്മമാകുമ്പോൾ ബാപ്ദാദയുടെ സൂക്ഷ്മ സാന്നിധ്യം മിഴിമുന്നിൽ പ്രകടമാകുന്നു.",
+    quoteEn: "When the mind reaches ultra-subtle silence, Bapdada's subtle presence becomes vividly tangible before our spiritual eyes."
   },
   {
     slug: "dadi-brijendra",
     id: "dadi-brijendra",
-    name: "ദാദി ബ്രിജേന്ദ്ര",
+    name: "രാജയോഗിനി ദാദി ബ്രിജേന്ദ്ര",
+    nameEn: "Rajyogini Dadi Brijendra",
     loukikName: "ബ്രിജേന്ദ്ര",
-    role: "ആദി ദ്രഷ്ടാവ് (First Visionary)",
-    years: "ആദിരത്നം",
+    loukikNameEn: "Brijendra",
+    role: "ആദി ദ്രഷ്ടാവ് (സത്യയുഗ ദർശനങ്ങൾ കണ്ട ആദ്യ രത്നം)",
+    roleEn: "First Visionary of the Golden Age ('Aadi Drishta')",
+    years: "ആദിരത്നം (1922 – 2011)",
+    yearsEn: "Adi Ratna (1922 – 2011)",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-brijendra.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_06_Dadi_Brijendra_Ji_e1633513436149_5fbea91b94.webp",
     summary: "സത്യയുഗ സുവർണ്ണ ലോകത്തിന്റെ ദിവ്യദർശനങ്ങൾ ആദ്യമായി കണ്ട ആദി ദ്രഷ്ടാവ്.",
-    bio: "ഓം മണ്ഡലിയുടെ പ്രാരംഭ നാളുകളിൽ തന്നെ സത്യയുഗ സുവർണ്ണ ലോകത്തിന്റെ ദിവ്യദർശനങ്ങൾ കണ്ട ആദ്യകാല സാധക. ഈ ദർശനങ്ങളാണ് പിന്നീട് ആത്മീയ ചിത്രങ്ങളായി മാറിയത്.\n\nശ്രീ കൃഷ്ണന്റെ സത്യയുഗ രൂപവും പുതിയ സുവർണ്ണ ലോകത്തിന്റെ ദിവ്യ സൗന്ദര്യവും ദാദി ധ്യാനത്തിൽ കണ്ട് ബാബയോട് വിവരിച്ചു. ഈ ദർശനങ്ങളുടെ അടിസ്ഥാനത്തിലാണ് കലാകാരന്മാർ പ്രസിദ്ധമായ സൃഷ്ടിചക്രം ചിത്രീകരിച്ചത്.",
-    virtues: ["ആദി ദർശനങ്ങൾ", "സത്യയുഗ അനുഭവം", "ആത്മീയ ഉല്ലാസം"],
+    summaryEn: "The first visionary of Om Mandali whose divine trance visions of Satyug inspired the movement's iconic spiritual paintings.",
+    bio: `#### ഓം മണ്ഡലിയിലെ 'ആദി ദ്രഷ്ടാവ്'
+1936–37 കാലഘട്ടത്തിൽ ഓം മണ്ഡലി ആരംഭിച്ചപ്പോൾ, ആദ്യമായി ദിവ്യദൃഷ്ടിയിലൂടെ (Trance Visions) വൈകുണ്ഠത്തിന്റെയും (സത്യയുഗം) ശ്രീകൃഷ്ണന്റെയും ദർശനങ്ങൾ കണ്ട ബാലികമാരിൽ പ്രമുഖയായിരുന്നു ദാദി ബ്രിജേന്ദ്ര. അതുകൊണ്ട് തന്നെ യജ്ഞ ചരിത്രത്തിൽ അവർ 'ആദി ദ്രഷ്ടാവ്' (First Visionary) എന്ന് അറിയപ്പെടുന്നു.
+
+#### ആത്മീയ ചിത്രങ്ങളുടെ ഉറവിടം
+സത്യയുഗത്തിലെ സ്വർണ്ണ കൊട്ടാരങ്ങൾ, അവിടുത്തെ പ്രകൃതി, ശ്രീനാരായണന്റെയും ശ്രീകൃഷ്ണന്റെയും രൂപസവിശേഷതകൾ, സ്വയംവരം എന്നിവയെല്ലാം ധ്യാനാവസ്ഥയിൽ കണ്ട് ബ്രഹ്മാ ബാബയ്ക്ക് വിവരിച്ചു നൽകിയത് ദാദി ബ്രിജേന്ദ്രയായിരുന്നു. ഈ വിവരണങ്ങളുടെ അടിസ്ഥാനത്തിലാണ് ബാബ പിന്നീട് പ്രശസ്തമായ രാജയോഗ ചിത്രങ്ങൾ വരപ്പിച്ചത്.
+
+#### തപസ്വിനിയായ ജീവിതം
+ജീവിതകാലം മുഴുവൻ ആ ദർശനങ്ങളുടെ ലഹരിയിലും ആത്മീയ സന്തോഷത്തിലും ജീവിച്ച ദാദി, മധുബനിലും വിവിധ സേവന കേന്ദ്രങ്ങളിലും സാധകർക്ക് സത്യയുഗ അനുഭവങ്ങൾ പകർന്നുനൽകി.`,
+    bioEn: `#### The First Visionary of Om Mandali
+During the inception of Om Mandali in 1936–37, Dadi Brijendra was the very first among the young girls to experience divine trance visions of Paradise (Satyug) and Shri Krishna, earning her the title 'Aadi Drishta' (First Visionary).
+
+#### Inspiration Behind the Spiritual Pictures
+Her vivid descriptions of the Golden Age—its palaces, divine nature, and the coronation of Shri Narayan and Shri Lakshmi—were carefully noted by Brahma Baba and served as the blueprint for the institution's iconic spiritual paintings.
+
+#### A Life of Spiritual Intoxication
+Remaining absorbed in divine bliss throughout her life, she inspired countless seekers in Madhuban with her first-hand accounts of the early yagya miracles.`,
+    virtues: ["ആദി ദർശന വരദാനം", "സത്യയുഗ സംസ്കാരം", "ആത്മീയ ഉല്ലാസം", "ഏകാഗ്രത", "നിഷ്കളങ്കത"],
+    virtuesEn: ["First Visionary (Aadi Drishta)", "Golden-Aged Sanskars", "Spiritual Bliss", "Deep Concentration", "Purity"],
     videoUrl: "https://www.youtube.com/embed/3RLkZ9tjLmg",
     videoEmbedUrl: "https://www.youtube.com/embed/3RLkZ9tjLmg",
-    videoTitle: "Dadi Brijendra Aadi Drishta",
-    quote: "സത്യയുഗത്തിന്റെ ദിവ്യപ്രകാശം നമ്മുടെ ഓരോ ആത്മീയ ചിന്തയിലും പ്രതിഫലിക്കണം."
+    videoTitle: "ദാദി ബ്രിജേന്ദ്ര ജി - ആദി ദ്രഷ്ടാവ്",
+    videoTitleEn: "Dadi Brijendra Ji - Aadi Drishta",
+    quote: "സത്യയുഗത്തിന്റെ ദിവ്യപ്രകാശം നമ്മുടെ ഓരോ ആത്മീയ ചിന്തയിലും പ്രതിഫലിക്കണം.",
+    quoteEn: "The divine light of the Golden Age should radiate through every single spiritual thought we create."
   },
   {
     slug: "dadi-gange",
     id: "dadi-gange",
-    name: "ദാദി ഗംഗേ",
+    name: "രാജയോഗിനി ദാദി ഗംഗേ (ഗംഗാ ദാദി)",
+    nameEn: "Rajyogini Dadi Gange (Ganga Dadi)",
     loukikName: "ഗംഗേ",
-    role: "പ്രാരംഭ സാധക & പവിത്രതാ രൂപം",
-    years: "ആദിരത്നം",
+    loukikNameEn: "Gange",
+    role: "പ്രാരംഭ സാധക & ഡൽഹി-ഉത്തരേന്ത്യൻ സേവന സ്തംഭം",
+    roleEn: "Pioneer Seeker & Pillar of Delhi-North India Services",
+    years: "ആദിരത്നം (1918 – 2005)",
+    yearsEn: "Adi Ratna (1918 – 2005)",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-gange.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_11_Dadi_Gange_ji_7112697f9d.webp",
     summary: "ഗംഗാ നദി സമാനമായ നിർമ്മല പവിത്രതയും തീവ്ര വൈരാഗ്യവും പുലർത്തിയ ആദിരത്നം.",
-    bio: "ഗംഗാ നദി സമാനമായ പവിത്രതയും തീവ്ര വൈരാഗ്യവും പുലർത്തിയ ആദിരത്നം. കഠിനമായ എതിർപ്പുകളെ അവഗണിച്ച് പ്രസ്ഥാനത്തിൽ ചേർന്ന് സമർപ്പിത ജീവിതം നയിച്ചു.\n\nസാമൂഹികമായ എല്ലാ തടസ്സങ്ങളെയും ഭേദിച്ച് ബാബയുടെ പവിത്രതാ മാർഗ്ഗത്തിൽ ഉറച്ചുനിന്നു. അവരുടെ ദൃഢനിശ്ചയവും സഹനശക്തിയും മറ്റു സഹോദരിമാർക്ക് വലിയൊരു ആത്മീയ പ്രചോദനമായി മാറി.",
-    virtues: ["പരിപൂർണ്ണ പവിത്രത", "തീവ്ര വൈരാഗ്യം", "സഹനശക്തി"],
+    summaryEn: "Pioneering jewel renowned for unshakeable purity and intense renunciation who helped establish Rajyoga across Northern India.",
+    bio: `#### പവിത്രതയ്ക്കായുള്ള അഗ്നിപരീക്ഷയും സമർപ്പണവും
+സിന്ധിലെ ഹൈദരാബാദിൽ ജനിച്ച് ചെറുപ്പത്തിൽ തന്നെ ഓം മണ്ഡലിയിലെത്തിയ ആദിരത്നമാണ് ദാദി ഗംഗേ. അക്കാലത്ത് സ്ത്രീകൾ ബ്രഹ്മചര്യം (പവിത്രത) അനുഷ്ഠിക്കുന്നതിനെതിരെ കുടുംബത്തിൽ നിന്നും സമൂഹത്തിൽ നിന്നും ഉണ്ടായ കഠിനമായ എതിർപ്പുകളെയും പീഡനങ്ങളെയും അചഞ്ചലമായ ഈശ്വരവിശ്വാസത്തോടെ ദാദി നേരിട്ടു. ഗംഗാജലം പോലെ നിർമ്മലമായ മനസ്സും എല്ലാവർക്കും ജ്ഞാനദാനം നൽകുന്ന പ്രകൃതവുമായതിനാൽ ബ്രഹ്മാ ബാബ അവർക്ക് 'ഗംഗേ' (ജ്ഞാനഗംഗ) എന്ന ആത്മീയ നാമം നൽകി.
+
+#### കറാച്ചിയിലെ തപസ്യയും മൗണ്ട് അബു യാത്രയും
+1937 മുതൽ 1950 വരെ കറാച്ചിയിലെ 14 വർഷത്തെ കഠിന തപസ്യയിൽ പങ്കാളിയായ ദാദി, തീവ്രമായ വൈരാഗ്യത്തിന്റെയും അച്ചടക്കത്തിന്റെയും പ്രതീകമായിരുന്നു. യജ്ഞത്തിലെ ഏത് സേവനവും സന്തോഷത്തോടെ ഏറ്റെടുക്കാൻ ദാദി സദാ സന്നദ്ധയായിരുന്നു.
+
+#### ഡൽഹിയിലെയും ഉത്തരേന്ത്യയിലെയും സേവനങ്ങൾ
+1952-ന് ശേഷം ബ്രഹ്മാ ബാബ ജ്ഞാനഗംഗകളെ ഭാരതത്തിന്റെ വിവിധ ഭാഗങ്ങളിലേക്ക് സേവനത്തിനായി അയച്ചപ്പോൾ, ഡൽഹിയിലും ഉത്തർപ്രദേശിലും പഞ്ചാബിലും രാജയോഗ കേന്ദ്രങ്ങൾ സ്ഥാപിക്കുന്നതിൽ ദാദി ഗംഗേ നിർണ്ണായക പങ്ക് വഹിച്ചു. ആയിരക്കണക്കിന് കുടുംബങ്ങളെ പവിത്രമായ യോഗജീവിതത്തിലേക്ക് നയിക്കാൻ ദാദിക്ക് സാധിച്ചു.`,
+    bioEn: `#### Test of Purity & Total Surrender
+Born in Hyderabad, Sindh, Dadi Gange joined Om Mandali during its formative years. Facing severe familial and societal opposition over the vow of celibacy (purity), she stood firm with unshakeable faith in God. Seeing her crystal-clear heart and zeal to purify souls with divine wisdom, Brahma Baba named her 'Gange' (The Ganges of Knowledge).
+
+#### 14 Years of Tapasya in Karachi
+Throughout the 14 years of solitude and spiritual effort in Karachi (1937–1950), Dadi Gange exemplified intense renunciation, simplicity, and tireless Karmayoga.
+
+#### Expansion of Services in North India
+After moving to India in 1950, she was among the pioneering sisters sent by Brahma Baba to establish centres in Delhi, Uttar Pradesh, and Punjab, transforming thousands of households through Rajyoga.`,
+    virtues: ["പരിപൂർണ്ണ പവിത്രത", "തീവ്ര വൈരാഗ്യം", "അചഞ്ചലമായ സഹനശക്തി", "ജ്ഞാനഗംഗാ സ്വരൂപം", "നിസ്വാർത്ഥ സേവനം"],
+    virtuesEn: ["Absolute Purity", "Intense Renunciation", "Unwavering Tolerance", "Ganges of Knowledge", "Selfless Service"],
     videoUrl: "https://www.youtube.com/embed/sad_ASzZwV0",
     videoEmbedUrl: "https://www.youtube.com/embed/sad_ASzZwV0",
-    videoTitle: "Ganga Dadi Ji Adaptation",
-    quote: "പവിത്രതയാണ് ആത്മാവിന്റെ യഥാർത്ഥ സൗന്ദര്യവും ഈശ്വരീയ വിജയത്തിന്റെ താക്കോലും."
+    videoTitle: "ആദിരത്ന പരമ്പര: ഗംഗാ ദാദി ജി ജീവിതരേഖ",
+    videoTitleEn: "Adi Ratna Series: Ganga Dadi Ji Life Story",
+    quote: "പവിത്രതയാണ് ആത്മാവിന്റെ യഥാർത്ഥ സൗന്ദര്യവും ഈശ്വരീയ വിജയത്തിന്റെ താക്കോലും.",
+    quoteEn: "Purity is the true beauty of the soul and the royal key to Godly victory."
   },
   {
     slug: "dadi-shantamani",
     id: "dadi-shantamani",
-    name: "ദാദി ശാന്താമണി",
+    name: "രാജയോഗിനി ദാദി ശാന്താമണി",
+    nameEn: "Rajyogini Dadi Shantamani",
     loukikName: "ശാന്താമണി",
-    role: "'സച്ലീ കൗഡി' രത്നം",
-    years: "ആദിരത്നം",
+    loukikNameEn: "Shantamani",
+    role: "ബാബയുടെ 'സച്ലീ കൗഡി' രത്നം & മധുബൻ-രാജസ്ഥാൻ സേവന നായിക",
+    roleEn: "Brahma Baba's 'Sachli Kaudi' (True Jewel) & Senior Rajyoga Teacher",
+    years: "1924 – 2019",
+    yearsEn: "1924 – 2019",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-shantamani.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_08_Dadi_Shantamani_Ji_8fcbd1ae35.webp",
     summary: "ബാബ സ്നേഹത്തോടെ 'സച്ലീ കൗഡി' എന്ന് വിശേഷിപ്പിച്ച സത്യസന്ധതയുടെ അമൂല്യ രത്നം.",
-    bio: "13-ാം വയസ്സിൽ പ്രസ്ഥാനത്തിൽ ചേർന്ന സാധക. ബാബ സ്നേഹത്തോടെ 'സച്ലീ കൗഡി' (സത്യസന്ധതയുടെ അമൂല്യ നാണയം) എന്ന് വിശേഷിപ്പിച്ചു. അചഞ്ചലമായ ക്ഷമയും ഗൗരവവും കാത്തുസൂക്ഷിച്ചു.\n\nതന്റെ ജീവിതകാലം മുഴുവൻ ബാബയുടെ സന്ദേശം ജീവിതത്തിൽ പകർത്തി ജീവിച്ചു. നിഷ്കളങ്കമായ മനസ്സിന്റെയും ആത്മീയ ഗാംഭീര്യത്തിന്റെയും മനോഹരമായ സമന്വയമായിരുന്നു അവരുടെ ജീവിതം.",
-    virtues: ["സത്യസന്ധത", "ആത്മീയ ഗൗരവം", "ബാല്യ സമർപ്പണം"],
-    videoUrl: "https://www.youtube.com/embed/Kw6WGlDO54k",
-    videoEmbedUrl: "https://www.youtube.com/embed/Kw6WGlDO54k",
-    videoTitle: "Dadi Shantamani Memoir Class",
-    quote: "സത്യസന്ധതയുള്ള ഹൃദയത്തിൽ ഈശ്വരൻ സദാ വിശ്രമിക്കുന്നു."
+    summaryEn: "Affectionately hailed by Brahma Baba as 'Sachli Kaudi' for her guileless honesty and unwavering spiritual maturity.",
+    bio: `#### പതിമൂന്നാം വയസ്സിലെ സമർപ്പണവും 'സച്ലീ കൗഡി' വിശേഷണവും
+1924-ൽ സിന്ധിൽ ജനിച്ച ശാന്താമണി, തന്റെ 13-ാം വയസ്സിൽ കുടുംബത്തോടൊപ്പം ഓം മണ്ഡലിയിൽ ചേർന്നു. ഉള്ളിലും പുറത്തും ഒരുപോലെ കളങ്കമില്ലാത്ത സത്യസന്ധതയും നിഷ്കളങ്കതയും പുലർത്തിയിരുന്നതിനാൽ പ്രജാപീതാ ബ്രഹ്മാ ബാബ അവരെ സ്നേഹത്തോടെ സിന്ധി ഭാഷയിൽ 'സച്ലീ കൗഡി' (സത്യസന്ധതയുടെ അമൂല്യ നാണയം / രത്നം) എന്ന് വിളിച്ചു.
+
+#### ബോർഡിംഗ് സ്കൂളിലെ ശിക്ഷണവും തപസ്യയും
+കറാച്ചിയിലെ ഓം മണ്ഡലി ബോർഡിംഗ് സ്കൂളിൽ മാതേശ്വരി മമ്മയുടെയും ബാബയുടെയും നേരിട്ടുള്ള ശിക്ഷണത്തിൽ വളർന്ന ശാന്താമണി, കുട്ടിക്കാലം മുതൽക്കേ ആത്മീയ ഗൗരവത്തിലും അച്ചടക്കത്തിലും മുന്നിലായിരുന്നു.
+
+#### മധുബനിലെയും രാജസ്ഥാനിലെയും സേവനങ്ങൾ
+1950-ൽ മൗണ്ട് അബുവിലെത്തിയ ശേഷം രാജസ്ഥാൻ, ഗുജറാത്ത്, മുംബൈ എന്നിവിടങ്ങളിലെ സേവന കേന്ദ്രങ്ങളിൽ ദീർഘകാലം സേവനമനുഷ്ഠിച്ചു. താൻ കണ്ടറിഞ്ഞ സാകാര ബാബയുടെയും മമ്മയുടെയും ചരിത്രാനുഭവങ്ങൾ പുതുതലമുറയിലെ സാധകർക്ക് പകർന്നുനൽകുന്നതിൽ ദാദി വലിയ പങ്കുവഹിച്ചു. 2019-ൽ 95-ാം വയസ്സിൽ ദാദി സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
+    bioEn: `#### Childhood Surrender & Title of 'Sachli Kaudi'
+Born in 1924 in Sindh, Dadi Shantamani joined Om Mandali with her family at the age of 13. Seeing her transparent honesty, guileless heart, and truthfulness, Brahma Baba affectionately called her 'Sachli Kaudi' (A pure, authentic pearl/coin of truth).
+
+#### Training in Karachi Boarding School
+Nurtured directly by Mamma and Baba in the Karachi boarding school, she developed profound spiritual maturity, introversion, and discipline from a young age.
+
+#### Decades of Service & Legacy
+After moving to Mount Abu in 1950, she served tirelessly across Rajasthan, Gujarat, and Mumbai, inspiring thousands with her authentic memoirs of Sakar Baba until she attained the angelic stage in 2019 at the age of 95.`,
+    virtues: ["നിഷ്കളങ്കമായ സത്യസന്ധത ('സച്ലീ കൗഡി')", "ആത്മീയ ഗൗരവം", "ബാല്യ സമർപ്പണം", "അചഞ്ചലമായ ക്ഷമ", "ശ്രീമത് പാലന"],
+    virtuesEn: ["Transparent Honesty ('Sachli Kaudi')", "Spiritual Maturity", "Childhood Dedication", "Immense Patience", "Fidelity to Shrimat"],
+    videoUrl: null,
+    videoEmbedUrl: null,
+    videoTitle: null,
+    videoTitleEn: null,
+    quote: "സത്യസന്ധതയുള്ള ഹൃദയത്തിൽ ഈശ്വരൻ സദാ വിശ്രമിക്കുന്നു.",
+    quoteEn: "God forever abides comfortably in a heart filled with transparent honesty."
   },
   {
     slug: "dada-anand-kishore",
     id: "dada-anand-kishore",
-    name: "ദാദാ ആനന്ദ് കിശോർ",
-    loukikName: "ആനന്ദ് കിശോർ",
-    role: "സാഹിത്യകാരൻ & പ്രഭാഷകൻ",
+    name: "രാജയോഗി ദാദാ ആനന്ദ് കിശോർ",
+    nameEn: "Rajyogi Dada Anand Kishore",
+    loukikName: "ദാദാ ആനന്ദ് കിശോർ",
+    loukikNameEn: "Anand Kishore",
+    role: "പ്രാരംഭ സാഹിത്യകാരൻ, പണ്ഡിതൻ & പ്രഭാഷകൻ",
+    roleEn: "Early Literary Scholar, Writer & Spiritual Orator",
     years: "ആദിരത്നം",
+    yearsEn: "Adi Ratna",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dada-anand-kishore.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_21_Dada_Anand_Kishor_ac5f6894e2.webp",
     summary: "യജ്ഞത്തിലെ പ്രസിദ്ധീകരണങ്ങളിലും പ്രഭാഷണങ്ങളിലും ബാബയോടൊപ്പം പ്രവർത്തിച്ച ബൗദ്ധിക സ്തംഭം.",
-    bio: "ആദ്യകാലത്ത് യജ്ഞത്തിലെ പ്രസിദ്ധീകരണങ്ങളിലും പ്രഭാഷണങ്ങളിലും ബാബയോടൊപ്പം പ്രവർത്തിച്ച ബൗദ്ധിക സ്തംഭം. നഗരങ്ങളിൽ ജ്ഞാനസന്ദേശം വ്യാപിപ്പിച്ചു.\n\nഡൽഹിയിലും മറ്റ് പ്രധാന നഗരങ്ങളിലും ആദ്യകാല പ്രദർശനങ്ങളും പ്രഭാഷണ പരമ്പരകളും സംഘടിപ്പിക്കുന്നതിൽ മുൻകൈയെടുത്തു. ആനന്ദഭരിതമായ പെരുമാറ്റവും പാണ്ഡിത്യവും വഴി ഏവർക്കും പ്രിയങ്കരനായി.",
-    virtues: ["ജ്ഞാന പ്രചാരണം", "സാഹിത്യ രചന", "പ്രഭാഷണ ചാതുരി"],
+    summaryEn: "Intellectual pillar of early Om Mandali who authored foundational spiritual publications and presented Rajyoga philosophy across major cities.",
+    bio: `#### ഓം മണ്ഡലിയിലെ ബൗദ്ധിക സ്തംഭം
+ഉന്നത വിദ്യാഭ്യാസവും ഭാഷാപാണ്ഡിത്യവുമുണ്ടായിരുന്ന ദാദാ ആനന്ദ് കിശോർ, ഓം മണ്ഡലിയുടെ പ്രാരംഭ ഘട്ടത്തിൽ തന്നെ ബ്രഹ്മാ ബാബയോടൊപ്പം ചേർന്ന പ്രധാന സഹോദരന്മാരിൽ ഒരാളാണ്. സദാ ആത്മീയ ആനന്ദത്തിൽ കഴിയുന്ന പ്രകൃതമായതിനാൽ ബാബ അദ്ദേഹത്തിന് 'ആനന്ദ് കിശോർ' എന്ന ആത്മീയ നാമം നൽകി.
+
+#### പ്രാരംഭ പ്രസിദ്ധീകരണങ്ങളും കത്തിടപാടുകളും
+കറാച്ചിയിലും തുടർന്ന് മൗണ്ട് അബുവിലും വെച്ച് ഈശ്വരീയ ജ്ഞാനം ലേഖനങ്ങളായും ലഘുലേഖകളായും അച്ചടിച്ച് ഭാരതത്തിലെ പ്രമുഖ വ്യക്തികൾക്കും നേതാക്കൾക്കും അയച്ചുകൊടുക്കുന്നതിൽ ദാദാ ആനന്ദ് കിശോർ മുഖ്യ പങ്കുവഹിച്ചു. ഓം മണ്ഡലിയുടെ ആദ്യകാല ഇംഗ്ലീഷ്-സിന്ധി-ഹിന്ദി രേഖകൾ തയ്യാറാക്കുന്നതിൽ മാതേശ്വരി മമ്മയോടൊപ്പം അദ്ദേഹം പ്രവർത്തിച്ചു.
+
+#### നഗരങ്ങളിലെ ജ്ഞാന പ്രചാരണം
+1950-കൾക്ക് ശേഷം ഡൽഹി, മുംബൈ, ഉത്തർപ്രദേശ് തുടങ്ങിയ ഇടങ്ങളിൽ നടന്ന ആത്മീയ സമ്മേളനങ്ങളിലും പ്രദർശനങ്ങളിലും ഈശ്വരീയ സന്ദേശം യുക്തിഭദ്രമായി അവതരിപ്പിക്കുന്നതിൽ അദ്ദേഹം ശ്രദ്ധേയമായ സംഭാവനകൾ നൽകി.`,
+    bioEn: `#### Intellectual Pillar of Early Om Mandali
+Well-educated and articulate, Dada Anand Kishore was among the foremost brothers who surrendered in the early days of Om Mandali in Sindh. Reflecting his ever-cheerful and blissful stage, Brahma Baba named him 'Anand Kishore'.
+
+#### Pioneering Publications & Correspondence
+During the Karachi years and early days in Mount Abu, he worked closely with Mateshwari Mamma and Baba in drafting official memorandums, spiritual pamphlets, and books to introduce God's message to national leaders and thinkers.
+
+#### All-India Spiritual Discourses
+From the 1950s onwards, he actively participated in major spiritual exhibitions and conferences across Delhi, Mumbai, and North India, presenting Rajyoga philosophy with clarity and conviction.`,
+    virtues: ["ജ്ഞാന പ്രചാരണ മികവ്", "സാഹിത്യ-പത്രപ്രവർത്തന വൈഭവം", "പ്രഭാഷണ ചാതുരി", "നിർഭയമായ സത്യവാദം", "ആത്മീയ ആനന്ദം"],
+    virtuesEn: ["Propagation of Divine Knowledge", "Literary & Editorial Skill", "Eloquent Oratory", "Fearless Advocacy of Truth", "Spiritual Bliss"],
     videoUrl: null,
     videoEmbedUrl: null,
     videoTitle: null,
-    quote: "ഈശ്വരീയ ജ്ഞാനം ആനന്ദത്തോടെ പകർന്നുനൽകുമ്പോൾ കേൾവിക്കാരിൽ ആനന്ദം താനേ നിറയും."
+    videoTitleEn: null,
+    quote: "ഈശ്വരീയ ജ്ഞാനം ആനന്ദത്തോടെ പകർന്നുനൽകുമ്പോൾ കേൾവിക്കാരിൽ ആനന്ദം താനേ നിറയും.",
+    quoteEn: "When divine wisdom is shared with authentic joy, happiness naturally blossoms in every listener's heart."
   },
   {
     slug: "dada-vishwaratnam",
     id: "dada-vishwaratnam",
-    name: "ദാദാ വിശ്വരത്നം",
-    loukikName: "വിശ്വരത്നം",
-    role: "ആത്മീയ ചിത്രകാരൻ",
+    name: "രാജയോഗി ദാദാ വിശ്വരത്നം",
+    nameEn: "Rajyogi Dada Vishwaratnam",
+    loukikName: "ദാദാ വിശ്വരത്നം (രാംചന്ദ്)",
+    loukikNameEn: "Dada Vishwaratnam",
+    role: "യജ്ഞത്തിന്റെ പ്രഥമ ദിവ്യ ചിത്രകാരൻ (Divine Artist)",
+    roleEn: "First Divine Artist of the Yagya",
     years: "ആദിരത്നം",
+    yearsEn: "Adi Ratna",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dada-vishwaratnam.jpg",
     photoFallback: "https://www.brahmakumaris.com/wp-content/uploads/2024/06/Dada-Vishwaratan-AnubhavGatha.jpg",
     summary: "ബാബയുടെ ദർശനപ്രകാരം കൽപ്പവൃക്ഷം, സൃഷ്ടിചക്രം, ഏണിപ്പടി എന്നീ പ്രധാന ആത്മീയ ചിത്രങ്ങൾ ആദ്യമായി വരച്ചുണ്ടാക്കിയ ദിവ്യ കലാകാരൻ.",
-    bio: "ബാബയുടെ ദർശനപ്രകാരം കൽപ്പവൃക്ഷം, സൃഷ്ടിചക്രം, ഏണിപ്പടി എന്നീ പ്രധാന ആത്മീയ ചിത്രങ്ങൾ ആദ്യമായി വരച്ചുണ്ടാക്കിയ ദിവ്യ കലാകാരൻ.\n\nദിവ്യദൃഷ്ടിയിലൂടെ ലഭിച്ച ദർശനങ്ങൾ കാൻവാസിലേക്ക് പകർത്തി ഈശ്വരീയ ജ്ഞാനത്തെ കണ്ണുകൾക്ക് ദൃശ്യഗോചരമാക്കി. ഇന്നും ബ്രഹ്മാകുമാരീസ് ലോകമെമ്പാടും പഠിപ്പിക്കുന്ന പ്രദർശന ചിത്രങ്ങളുടെ ആദിശില്പിയാണ് അദ്ദേഹം.",
-    virtues: ["ദിവ്യ ചിത്രകല", "ദർശന സാക്ഷാത്കാരം", "നിശ്ശബ്ദ സമർപ്പണം"],
+    summaryEn: "The master divine artist of the Yagya who manifested Brahma Baba's visions into the iconic spiritual charts of the World Drama, Kalpa Tree, and Ladder.",
+    bio: `#### ആത്മീയ ചിത്രങ്ങളുടെ സ്രഷ്ടാവ്
+ബ്രഹ്മാകുമാരീസ് ഈശ്വരീയ വിശ്വവിദ്യാലയത്തിലെ ഏറ്റവും പ്രധാനപ്പെട്ട പഠന ഉപാധികളായ 'കൽപ്പവൃക്ഷം' (The Kalpa Tree), 'സൃഷ്ടിചക്രം' (The Drama Wheel), 'ഏണിപ്പടി' (The Ladder of 84 Births), 'ത്രിമൂർത്തി', 'ലക്ഷ്മീ-നാരായണൻ' എന്നീ ചരിത്രപ്രസിദ്ധമായ ആത്മീയ ചിത്രങ്ങൾ ആദ്യമായി വരച്ചുണ്ടാക്കിയ ദിവ്യ കലാകാരനാണ് ദാദാ വിശ്വരത്നം.
+
+#### ബ്രഹ്മാ ബാബയുടെ ദർശനങ്ങൾക്ക് നിറം നൽകിയ തപസ്യ
+കറാച്ചിയിലും മൗണ്ട് അബുവിലും വെച്ച് പ്രജാപീതാ ബ്രഹ്മാ ബാബയ്ക്കും ദാദി ബ്രിജേന്ദ്ര ഉൾപ്പെടെയുള്ള ദ്രഷ്ടാക്കൾക്കും ലഭിച്ച ദിവ്യദർശനങ്ങളുടെ വിവരണങ്ങൾ കേട്ട്, ബാബയുടെ നേരിട്ടുള്ള മേൽനോട്ടത്തിലാണ് അദ്ദേഹം ഓരോ ചിത്രവും വരച്ചത്. ഒരു വര പോലും തെറ്റാതെ ആത്മീയ അർത്ഥം പൂർണ്ണമായി പ്രതിഫലിക്കുന്ന തരത്തിൽ ചിത്രങ്ങൾ പൂർത്തിയാക്കാൻ ദിവസങ്ങളോളം യോഗയിലിരുന്നാണ് അദ്ദേഹം ബ്രഷ് ചലിപ്പിച്ചിരുന്നത്.
+
+#### ലോകമെമ്പാടുമുള്ള ജ്ഞാനപ്രചാരണത്തിന്റെ അടിത്തറ
+അദ്ദേഹം വരച്ചുണ്ടാക്കിയ ആ ആദ്യകാല ചിത്രങ്ങളാണ് പിൽക്കാലത്ത് മൗണ്ട് അബുവിലെ ആത്മീയ മ്യൂസിയത്തിലും ലോകമെമ്പാടുമുള്ള ആയിരക്കണക്കിന് രാജയോഗ പഠനകേന്ദ്രങ്ങളിലും കോടിക്കണക്കിന് ആത്മാക്കൾക്ക് ഈശ്വരീയ ജ്ഞാനം പകർന്നുനൽകാൻ നിമിത്തമായത്.`,
+    bioEn: `#### Creator of the Iconic Spiritual Paintings
+Dada Vishwaratnam was the master artist behind the original philosophical paintings of the Brahma Kumaris—including 'The Kalpa Tree', 'The Cycle of World Drama', 'The Ladder of 84 Births', 'Trimurti', and 'Shri Lakshmi-Narayan'.
+
+#### Translating Visions onto Canvas
+Working under the direct guidance of Brahma Baba in Karachi and Mount Abu, he listened carefully to the divine visions experienced by Baba and the trance-messengers, meditating deeply as he painted every stroke to capture exact spiritual vibrations.
+
+#### Visual Foundation of Global Rajyoga Education
+The visual charts and translight paintings he pioneered became the cornerstone of the Spiritual Museums and the foundational 7-Day Rajyoga Course taught across more than 140 countries today.`,
+    virtues: ["ദിവ്യ ചിത്രകലാ വൈഭവം", "ദർശന സാക്ഷാത്കാരം", "ഏകാഗ്രമായ കർമ്മയോഗം", "നിശ്ശബ്ദ സമർപ്പണം", "സൂക്ഷ്മ ഭാവന"],
+    virtuesEn: ["Divine Artistic Genius", "Visualization of Spiritual Truths", "One-Pointed Karmayoga", "Silent Dedication", "Subtle Precision"],
     videoUrl: null,
     videoEmbedUrl: null,
     videoTitle: null,
-    quote: "കൈകളിൽ ഈശ്വരീയ സ്മരണയുണ്ടെങ്കിൽ ഓരോ വരയും ദിവ്യസന്ദേശമായി മാറും."
+    videoTitleEn: null,
+    quote: "കൈകളിൽ ഈശ്വരീയ സ്മരണയുണ്ടെങ്കിൽ ഓരോ വരയും ദിവ്യസന്ദേശമായി മാറും.",
+    quoteEn: "When divine remembrance guides the hands, every stroke of the brush becomes a sacred message."
   },
   {
     slug: "dadi-sarla",
     id: "dadi-sarla",
-    name: "ദാദി സരള",
+    name: "രാജയോഗിനി ദാദി സരള",
+    nameEn: "Rajyogini Dadi Sarla",
     loukikName: "സരള",
-    role: "കർണ്ണാടക സേവന അമരക്കാരി",
+    loukikNameEn: "Sarla",
+    role: "കർണ്ണാടക-ഗുജറാത്ത് സേവന അമരക്കാരി",
+    roleEn: "Pioneer of Karnataka & Western India Services",
     years: "ആദിരത്നം",
+    yearsEn: "Adi Ratna",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-sarla.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_14_Dadi_Pushpashanta_2_434f6e6388.webp",
     summary: "ബാംഗ്ലൂർ കേന്ദ്രം ആസ്ഥാനമാക്കി ദക്ഷിണേന്ത്യയിൽ ഈശ്വരീയ സന്ദേശം വിതറിയ സ്നേഹരൂപം.",
-    bio: "ബാംഗ്ലൂർ കേന്ദ്രം ആസ്ഥാനമാക്കി കന്നഡ ഭാഷയിൽ ബ്രഹ്മാകുമാരീസ് തത്ത്വചിന്തകൾ ആദ്യമായി പ്രചരിപ്പിച്ച ആദിരത്നം.\n\nതന്റെ ലാളിത്യവും മാതൃസഹജമായ വാത്സല്യവും കൊണ്ട് ഭാഷാ തടസ്സങ്ങളെ അതിജീവിച്ച് സാധകരുടെ ഹൃദയങ്ങളിൽ സ്ഥാനം നേടി. ദക്ഷിണേന്ത്യൻ സേവനങ്ങൾക്ക് ശക്തമായ അടിത്തറ പാകാൻ ദാദിക്ക് സാധിച്ചു.",
-    virtues: ["ഭാഷാ സമന്വയം", "ലാളിത്യം", "പ്രാദേശിക സേവന നേതൃത്വം"],
+    summaryEn: "Beloved instrument of simplicity and maternal warmth who overcame language barriers to establish Rajyoga services across Karnataka and Gujarat.",
+    bio: `#### ഓം മണ്ഡലിയിലെ സമർപ്പണവും സരള സ്വഭാവവും
+സിന്ധിൽ ജനിച്ച് കൗമാരത്തിൽ തന്നെ ഓം മണ്ഡലിയിൽ ജീവിതം സമർപ്പിച്ച ആദിരത്നമാണ് ദാദി സരള. ഉള്ളിലും പുറത്തും ഒരുപോലെ ലാളിത്യവും സരളതയും (Simplicity) നിറഞ്ഞ സ്വഭാവമായതിനാൽ ബ്രഹ്മാ ബാബ അവർക്ക് 'സരള' എന്ന ആത്മീയ നാമം നൽകി.
+
+#### ദക്ഷിണേന്ത്യയിലെയും പശ്ചിമേന്ത്യയിലെയും സേവനങ്ങൾ
+1950-ൽ മൗണ്ട് അബുവിലേക്ക് മാറിയ ശേഷം, കർണ്ണാടകയിലെ ബാംഗ്ലൂർ കേന്ദ്രീകരിച്ചും പിന്നീട് ഗുജറാത്തിലെ വിവിധ മേഖലകളിലും രാജയോഗ സന്ദേശം പ്രചരിപ്പിക്കുന്നതിൽ ദാദി സരള മുഖ്യ പങ്കുവഹിച്ചു. സിന്ധി മാതൃഭാഷയായിരുന്നിട്ടും സാധകർക്ക് വേണ്ടി കന്നഡയും ഗുജറാത്തിയും ഹിന്ദിയും പഠിച്ച് പ്രാദേശിക ജനങ്ങളുടെ ഹൃദയങ്ങളിലേക്ക് ഈശ്വരീയ ജ്ഞാനം എത്തിച്ചു.
+
+#### സാധകരുടെ പ്രിയങ്കരിയായ മാതൃരൂപം
+കഠിനമായ സാഹചര്യങ്ങളിലും പുഞ്ചിരിയോടെ സേവനമനുഷ്ഠിച്ച ദാദി, നൂറുകണക്കിന് പുതിയ സേവന കേന്ദ്രങ്ങൾക്ക് അടിത്തറയിടുകയും അനേകം രാജയോഗ അധ്യാപികമാരെ വാർത്തെടുക്കുകയും ചെയ്തു.`,
+    bioEn: `#### Early Surrender & Nature of Simplicity
+Surrendering her life in her youth at Om Mandali in Sindh, she was named 'Sarla' by Brahma Baba for her straightforward, gentle, and utterly simple nature.
+
+#### Pioneering Regional Services
+Following the relocation to Mount Abu in 1950, Dadi Sarla played an instrumental role in expanding Rajyoga services in Bengaluru (Karnataka) and across Gujarat. She lovingly learned local languages like Kannada and Gujarati to connect deeply with regional families.
+
+#### Nurturing Spiritual Instrument
+Through her warm maternal sustenance and steadfast yoga, she laid the foundation for numerous centres and inspired hundreds of young sisters to dedicate their lives to spiritual service.`,
+    virtues: ["പേരുപോലെ സരളമായ പ്രകൃതം", "പ്രാദേശിക ഭാഷാ സമന്വയം", "അക്ഷീണമായ സേവന തല്പരത", "മാതൃവാത്സല്യം", "ആത്മീയ അച്ചടക്കം"],
+    virtuesEn: ["Embodiment of Simplicity (Saralata)", "Linguistic & Cultural Adaptability", "Tireless Dedication", "Maternal Warmth", "Spiritual Discipline"],
     videoUrl: null,
     videoEmbedUrl: null,
     videoTitle: null,
-    quote: "ഹൃദയത്തിന്റെ ഭാഷ സ്നേഹമാണ്; അവിടെ എല്ലാ അതിരുകളും മാഞ്ഞുപോകുന്നു."
+    videoTitleEn: null,
+    quote: "ഹൃദയത്തിന്റെ ഭാഷ സ്നേഹമാണ്; അവിടെ എല്ലാ അതിരുകളും മാഞ്ഞുപോകുന്നു.",
+    quoteEn: "The language of the pure heart is divine love; before it, all physical barriers dissolve."
   },
   {
     slug: "dadi-sati",
     id: "dadi-sati",
-    name: "ദാദി സതി",
+    name: "രാജയോഗിനി ദാദി സതി",
+    nameEn: "Rajyogini Dadi Sati",
     loukikName: "സതി",
-    role: "ഉത്തർപ്രദേശ് സേവന നേതൃത്വം",
+    loukikNameEn: "Sati",
+    role: "ഉത്തർപ്രദേശ് (ലഖ്നൗ) സേവന പയനിയർ",
+    roleEn: "Pioneer of Uttar Pradesh (Lucknow) Services",
     years: "ആദിരത്നം",
+    yearsEn: "Adi Ratna",
     category: "adi-ratna",
     photo: "assets/images/adi-ratna/dadi-sati.webp",
     photoFallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_15_Dadi_Santr2i_1653dd1c06.webp",
     summary: "ഉത്തർപ്രദേശിലെ ലഖ്നൗവിലും അനുബന്ധ നഗരങ്ങളിലും ആദ്യകാല സേവനങ്ങൾക്ക് വിത്ത് പാകിയ തപസ്വിനി.",
-    bio: "ഉത്തർപ്രദേശിലെ ലഖ്നൗവിലും അനുബന്ധ നഗരങ്ങളിലും ആദ്യകാല ഈശ്വരീയ സേവനങ്ങൾക്ക് വിത്ത് പാകിയ തപസ്വിനി.\n\nകഠിനമായ സാഹചര്യങ്ങളിലും പതറാതെ ഈശ്വരീയ സേവനത്തിൽ മുഴുകി. അവരുടെ ത്യാഗവും സഹനശക്തിയും ഉത്തരേന്ത്യയിലെ വിദ്യാലയ വികസനത്തിന് വലിയ മുതൽക്കൂട്ടായി.",
-    virtues: ["ത്യാഗജീവിതം", "സേവന സന്നദ്ധത", "നിശ്ചയദാർഢ്യം"],
+    summaryEn: "Steadfast tapaswini who pioneered early Rajyoga services in Lucknow and across Uttar Pradesh through supreme sacrifice and devotion.",
+    bio: `#### ഏക ശിവബാബയിലുള്ള അടിയുറച്ച ഭക്തിയും സമർപ്പണവും
+സിന്ധിലെ ഹൈദരാബാദിൽ ജനിച്ച് ഓം മണ്ഡലിയിൽ ചേർന്ന ദാദി സതി, ഏക പരമാത്മാവിൽ മാത്രം മനസ്സുറപ്പിച്ച സത്യസന്ധയായ സാധകയായിരുന്നു. ഈശ്വരീയ മാർഗ്ഗത്തിൽ അടിയുറച്ചു നിൽക്കുന്നവൾ എന്ന അർത്ഥത്തിലാണ് ബാബ അവർക്ക് 'സതി' എന്ന പേര് നൽകിയത്.
+
+#### ഉത്തർപ്രദേശിലെ പ്രാരംഭ സേവന വിപ്ലവം
+1950-കൾക്ക് ശേഷം ഭാരതത്തിന്റെ ഹൃദയഭാഗമായ ഉത്തർപ്രദേശിലെ ലഖ്നൗ, കാൺപൂർ, അലഹബാദ് തുടങ്ങിയ നഗരങ്ങളിൽ ആദ്യകാല ബ്രഹ്മാകുമാരീസ് സേവന കേന്ദ്രങ്ങൾ ആരംഭിക്കുന്നതിന് ദാദി സതി നേതൃത്വം നൽകി. ഭൗതിക സൗകര്യങ്ങൾ വളരെ കുറവായിരുന്ന ആ കാലഘട്ടത്തിൽ, കാൽനടയായി സഞ്ചരിച്ചും വീടുകൾ സന്ദർശിച്ചുമാണ് ദാദി ഈശ്വരീയ സന്ദേശം ജനങ്ങളിലേക്ക് എത്തിച്ചത്.
+
+#### തപസ്വിനിയായ മാതൃക
+തന്റെ ജീവിതം മുഴുവൻ നിശ്ശബ്ദ സേവനത്തിനും തപസ്യയ്ക്കുമായി ഉഴിഞ്ഞുവെച്ച ദാദി സതി, ഉത്തരേന്ത്യയിലെ ആയിരക്കണക്കിന് സാധകർക്ക് ആത്മീയ കരുത്ത് പകർന്ന ആദിരത്നമാണ്.`,
+    bioEn: `#### Total Devotion in Om Mandali
+Joining Om Mandali in Sindh during its inception, she demonstrated unswerving loyalty and single-minded devotion to the Supreme Soul, earning the spiritual name 'Sati' from Brahma Baba.
+
+#### Pioneering Services in Uttar Pradesh
+In the 1950s, Dadi Sati was entrusted with pioneering spiritual services in Lucknow, Kanpur, and across Uttar Pradesh. With minimal material comforts, she travelled tirelessly to establish the early Rajyoga centres in Northern India.
+
+#### A Legacy of Tapasya
+Remembered for her austerity, sweetness, and deep yoga, Dadi Sati laid a rock-solid spiritual foundation that continues to blossom across hundreds of centres today.`,
+    virtues: ["പതിവ്രതയായ ആത്മീയ സാധക", "ത്യാഗപൂർണ്ണമായ ജീവിതം", "സേവന സന്നദ്ധത", "അചഞ്ചലമായ നിശ്ചയദാർഢ്യം", "ശാന്തത"],
+    virtuesEn: ["Unwavering Devotion to One God", "Life of Renunciation", "Zeal for Service", "Unshakeable Determination", "Inner Peace"],
     videoUrl: null,
     videoEmbedUrl: null,
     videoTitle: null,
-    quote: "തപസ്യയുടെ തീച്ചൂളയിൽ ശുദ്ധീകരിക്കപ്പെട്ട മനസ്സുള്ളവർക്ക് ഏതൊരു വെല്ലുവിളിയെയും തരണം ചെയ്യാം."
+    videoTitleEn: null,
+    quote: "തപസ്യയുടെ തീച്ചൂളയിൽ ശുദ്ധീകരിക്കപ്പെട്ട മനസ്സുള്ളവർക്ക് ഏതൊരു വെല്ലുവിളിയെയും തരണം ചെയ്യാം.",
+    quoteEn: "A mind refined in the furnace of deep tapasya can easily surmount every obstacle in the world."
   }
 ];
+
+// Ensure both gallery and galleryImages properties are available across all soul records
+if (window.BK_JEWELS_DATA && Array.isArray(window.BK_JEWELS_DATA)) {
+  window.BK_JEWELS_DATA.forEach(j => {
+    if (j.galleryImages && !j.gallery) j.gallery = j.galleryImages;
+    if (j.gallery && !j.galleryImages) j.galleryImages = j.gallery;
+  });
+}
 
 // Helper lookup functions
 window.getAdiRatnaBySlug = function(slug) {

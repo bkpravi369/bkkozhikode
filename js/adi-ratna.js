@@ -387,7 +387,10 @@
         </section>
 
         <!-- PHOTO GALLERY SECTION: DIVYA SMARANAKAL -->
-        ${(soul.galleryImages && soul.galleryImages.length > 0) ? `
+        ${(() => {
+          const gallery = (soul.gallery && soul.gallery.length > 0) ? soul.gallery : (soul.galleryImages || []);
+          if (!gallery || gallery.length <= 1) return '';
+          return `
         <section class="bk-detail-gallery-section">
           <div class="bk-section-header-modern">
             <span class="bk-sec-kicker">${lang === 'en' ? 'Visual Archive · Divine Memories' : 'ചിത്രശേഖരം · Visual Memories'}</span>
@@ -397,7 +400,7 @@
           </div>
 
           <div class="bk-gallery-modern-grid">
-            ${soul.galleryImages.map((img) => {
+            ${gallery.map((img) => {
               const imgTitle = (lang === 'en' && img.titleEn) ? img.titleEn : (img.title || '');
               const imgCaption = (lang === 'en' && img.captionEn) ? img.captionEn : (img.caption || '');
 
@@ -429,7 +432,8 @@
             }).join('')}
           </div>
         </section>
-        ` : ''}
+        `;
+        })()}
 
         <!-- VERIFIED VIDEO SECTION: STRICTLY RENDERED ONLY IF VIDEO_URL IS NOT NULL -->
         ${(soul.videoUrl || soul.videoEmbedUrl) ? `
