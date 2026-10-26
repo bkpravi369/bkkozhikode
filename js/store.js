@@ -4,7 +4,21 @@
  * events, Kozhikode center locations, and course registrations.
  */
 
-const STORAGE_KEY = 'bk_kozhikode_site_data_v2';
+// Purge legacy browser localStorage site keys so no browser/incognito shows stale local cache
+(function purgeLegacyLocalStorage() {
+  if (typeof localStorage === 'undefined') return;
+  const legacyKeys = [
+    'bk_kozhikode_site_data',
+    'bk_kozhikode_site_data_v2',
+    'bk_kozhikode_cms_store',
+    'bk_site_data',
+    'bk_events_data'
+  ];
+  legacyKeys.forEach(k => {
+    try { localStorage.removeItem(k); } catch (e) {}
+  });
+})();
+
 const ADMIN_SESSION_KEY = 'bk_kozhikode_admin_session';
 
 const DEFAULT_DATA = {
@@ -1058,7 +1072,8 @@ window.bkUtils = {
 // State Store singleton
 class SiteStore {
   constructor() {
-    this.data = this.loadData();
+    // Pure in-memory state initialized directly from defaults; zero dependence on localStorage
+    this.data = this.loadData(DEFAULT_DATA);
     this.initCrossTabSync();
     this.initServerSync();
   }
@@ -1069,10 +1084,7 @@ class SiteStore {
         this.syncChannel = new BroadcastChannel('bk_cms_realtime_sync');
         this.syncChannel.onmessage = (event) => {
           if (event.data && event.data.type === 'bk_store_change') {
-            this.data = this.loadData();
-            if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
-              window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
-            }
+            this.initServerSync();
           }
         };
       } catch (e) {
@@ -1083,76 +1095,43 @@ class SiteStore {
 
   async initServerSync() {
     if (typeof fetch === 'undefined') return;
-    try {
-      const res = await fetch('/api/data', { cache: 'no-cache' }).catch(() => null);
-      if (res && res.ok) {
-        const serverData = await res.json().catch(() => null);
-        if (serverData && typeof serverData === 'object' && Object.keys(serverData).length > 0) {
-          this.mergeServerData(serverData);
-        }
-      }
-    } catch (e) {
-      console.warn('Server sync note:', e);
-    }
-  }
+    const endpoints = [
+      `/api/site-data?t=${Date.now()}`,
+      `/api/data?t=${Date.now()}`,
+      `/siteData.json?t=${Date.now()}`,
+      `/data/site_data.json?t=${Date.now()}`
+    ];
 
-  mergeServerData(serverData) {
-    if (!serverData || typeof serverData !== 'object') return;
-    const serverClean = this.loadData(serverData);
+    for (const url of endpoints) {
+      try {
+        const res = await fetch(url, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
+        }).catch(() => null);
 
-    // Intelligently merge server events with local events without wiping admin additions
-    const localEvents = Array.isArray(this.data && this.data.events) ? this.data.events : [];
-    const serverEvents = Array.isArray(serverClean.events) ? serverClean.events : [];
-    const deletedIds = new Set(this.data && this.data.deletedEventIds ? this.data.deletedEventIds : []);
-
-    const eventsMap = new Map();
-    serverEvents.forEach(e => {
-      if (e && e.id && !deletedIds.has(e.id)) {
-        eventsMap.set(e.id, e);
-      }
-    });
-
-    localEvents.forEach(e => {
-      if (e && e.id && !deletedIds.has(e.id)) {
-        const existing = eventsMap.get(e.id);
-        if (!existing) {
-          eventsMap.set(e.id, e);
-        } else {
-          const timeLocal = e.updatedAt || e.createdAt || '';
-          const timeServer = existing.updatedAt || existing.createdAt || '';
-          if (timeLocal >= timeServer) {
-            eventsMap.set(e.id, e);
+        if (res && res.ok) {
+          const serverData = await res.json().catch(() => null);
+          if (serverData && typeof serverData === 'object' && Object.keys(serverData).length > 0) {
+            this.data = this.loadData(serverData);
+            if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+              window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
+            }
+            return;
           }
         }
+      } catch (e) {
+        // try next endpoint
       }
-    });
-
-    const combinedEvents = Array.from(eventsMap.values());
-
-    this.data = {
-      ...serverClean,
-      ...this.data,
-      events: combinedEvents,
-      settings: { ...serverClean.settings, ...(this.data && this.data.settings ? this.data.settings : {}) },
-      categories: Array.from(new Set([...(this.data && this.data.categories ? this.data.categories : []), ...(serverClean.categories || [])])),
-      wings: Array.from(new Set([...(this.data && this.data.wings ? this.data.wings : []), ...(serverClean.wings || [])]))
-    };
-
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
-      try { localStorage.setItem('bk_kozhikode_cms_store', JSON.stringify(this.data)); } catch (e) {}
-    } catch (e) {}
-
-    if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
-      window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
     }
   }
 
   loadData(customSource = null) {
     try {
-      const saved = customSource ? JSON.stringify(customSource) : localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
+      const parsed = customSource || DEFAULT_DATA;
+      if (parsed) {
         // Ensure course modules merge with new schema fields seamlessly
         let mergedCourseModules = DEFAULT_DATA.courseModules;
         if (Array.isArray(parsed.courseModules) && parsed.courseModules.length > 0) {
@@ -1425,27 +1404,21 @@ class SiteStore {
         };
       }
     } catch (err) {
-      console.warn('Failed to load localStorage data, using defaults', err);
+      console.warn('Failed to parse site data, using defaults', err);
     }
     return JSON.parse(JSON.stringify(DEFAULT_DATA));
   }
 
   saveData() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
-      try { localStorage.setItem('bk_kozhikode_cms_store', JSON.stringify(this.data)); } catch (e) {}
-
-      if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
-        window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
-      }
-      if (this.syncChannel) {
-        this.syncChannel.postMessage({ type: 'bk_store_change', timestamp: Date.now() });
-      }
-    } catch (err) {
-      console.error('Failed to save to localStorage', err);
+    // Zero localStorage: broadcast in-memory change across open tabs
+    if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
+    }
+    if (this.syncChannel) {
+      this.syncChannel.postMessage({ type: 'bk_store_change', timestamp: Date.now() });
     }
 
-    // Persist permanently to backend server disk
+    // Persist permanently to centralized server disk / cloud store
     if (typeof fetch !== 'undefined') {
       try {
         const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
@@ -1462,6 +1435,29 @@ class SiteStore {
       } catch (e) {}
     }
     return true;
+  }
+
+  async publishToLiveServer() {
+    if (typeof fetch === 'undefined') return { success: false, message: 'Fetch not available' };
+    try {
+      await this.persistToServer();
+      const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+      const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
+      const res = await fetch('/api/admin/publish', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Pin': pin,
+          ...(token ? { 'Authorization': 'Bearer ' + token } : {})
+        }
+      });
+      if (res && res.ok) {
+        return await res.json();
+      }
+      return { success: false, message: `Server returned HTTP ${res ? res.status : 'error'}` };
+    } catch (e) {
+      return { success: false, message: e.message };
+    }
   }
 
   // --- Settings ---

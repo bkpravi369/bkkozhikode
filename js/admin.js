@@ -188,6 +188,37 @@ class AdminController {
     }
   }
 
+  async publishToLive() {
+    const btn = document.getElementById('btnPublishLive');
+    const oldHtml = btn ? btn.innerHTML : '';
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = `<span style="display:inline-block;animation:spin 1s linear infinite;margin-right:4px;">⏳</span> Publishing...`;
+    }
+    this.toast("🚀 Saving & publishing all changes to Live Server (GitHub / Vercel)...");
+    try {
+      if (window.bkStore && typeof window.bkStore.publishToLiveServer === 'function') {
+        const res = await window.bkStore.publishToLiveServer();
+        if (res && res.success) {
+          this.toast(`✅ ${res.message || 'Changes published live successfully!'}`);
+        } else {
+          this.toast(`ℹ️ ${res && res.message ? res.message : 'Publish completed.'}`);
+        }
+      } else {
+        await window.bkStore.persistToServer();
+        this.toast("✅ Site data saved to server successfully!");
+      }
+    } catch (e) {
+      this.toast(`Publish note: ${e.message}`);
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = oldHtml;
+        if (window.lucide) window.lucide.createIcons();
+      }
+    }
+  }
+
   async handleLogout() {
     const token = sessionStorage.getItem('bk_admin_token');
     try {

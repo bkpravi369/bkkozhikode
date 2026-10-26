@@ -288,6 +288,9 @@
           <button type="button" class="btn-admin-nav-home" onclick="bkAdmin.switchPane('dashboard', document.querySelector('.admin-tab-btn[data-pane=\'dashboard\']'))" style="background:rgba(245,158,11,0.18);color:#ffd700;border:1px solid #f59e0b;padding:6px 14px;border-radius:6px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;">
             <i data-lucide="layout-dashboard" style="width:14px;height:14px;"></i> Dashboard
           </button>
+          <button type="button" id="btnPublishLive" class="btn-admin-publish-live" onclick="bkAdmin.publishToLive()" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#ffffff;border:1px solid #059669;padding:6px 14px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;box-shadow:0 2px 8px rgba(16,185,129,0.35);">
+            <i data-lucide="cloud-upload" style="width:14px;height:14px;"></i> Publish to Live Site
+          </button>
           <a href="/" class="btn-view-site" style="color:#ffd68a;text-decoration:none;font-size:0.85rem;padding:6px 12px;border:1px solid rgba(255,214,138,0.3);border-radius:6px;">View Public Site ↗</a>
           <button class="btn-admin-logout" onclick="bkAdmin.handleLogout()" style="background:rgba(217,69,20,0.8);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:0.85rem;cursor:pointer;">Sign Out</button>
         </div>
@@ -1573,8 +1576,8 @@
 
   <div class="toast-container" id="toastContainer"></div>
 
-  <script src="../js/store.js?v=93"></script>
-  <script src="../js/admin.js?v=92"></script>
+  <script src="../js/store.js?v=94"></script>
+  <script src="../js/admin.js?v=94"></script>
 
   <script>
     // Minimal app toast helper for admin

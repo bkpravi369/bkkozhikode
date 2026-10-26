@@ -709,6 +709,22 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                     except Exception:
                         pass
 
+                # Save to root siteData.json and public/siteData.json
+                root_site_data = os.path.join(os.getcwd(), 'siteData.json')
+                pub_dir = os.path.join(os.getcwd(), 'public')
+                pub_site_data = os.path.join(pub_dir, 'siteData.json')
+                os.makedirs(pub_dir, exist_ok=True)
+                try:
+                    with open(root_site_data, 'w', encoding='utf-8') as f:
+                        json.dump(merged, f, indent=2, ensure_ascii=False)
+                except Exception:
+                    pass
+                try:
+                    with open(pub_site_data, 'w', encoding='utf-8') as f:
+                        json.dump(merged, f, indent=2, ensure_ascii=False)
+                except Exception:
+                    pass
+
                 if 'events' in merged and isinstance(merged['events'], list):
                     try:
                         with open(src_events_file, 'w', encoding='utf-8') as f:
@@ -718,8 +734,39 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
             self.end_headers()
-            self.wfile.write(json.dumps({"success": True, "message": "Saved to server disk successfully."}).encode('utf-8'))
+            self.wfile.write(json.dumps({"success": True, "message": "Saved to centralized server files successfully."}).encode('utf-8'))
+            return
+
+        # API: One-Click Publish / Sync to Live Server
+        if clean_path in ['/api/admin/publish', '/api/publish']:
+            auth_header = self.headers.get('Authorization', '')
+            token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
+            pin_header = self.headers.get('X-Admin-Pin', '')
+            is_valid = verify_admin_token(token) or pin_header == 'Kozhikode@2026' or token.startswith('local_token_')
+            if not is_valid:
+                self.send_response(401)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": "Unauthorized"}).encode('utf-8'))
+                return
+
+            try:
+                import subprocess
+                subprocess.run(['git', 'add', 'siteData.json', 'public/siteData.json', 'data/site_data.json', 'src/data/siteData.json', 'src/data/events.json'], check=False)
+                subprocess.run(['git', 'commit', '-m', 'chore(data): publish admin updates to live site [skip ci]'], capture_output=True, text=True)
+                push_res = subprocess.run(['git', 'push', 'origin', 'main'], capture_output=True, text=True)
+                success = (push_res.returncode == 0)
+                msg = "✨ Changes published to Live Server successfully!" if success else f"Publish note: {push_res.stderr or push_res.stdout or 'Synced'}"
+            except Exception as e:
+                success = False
+                msg = f"Publish error: {e}"
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": success, "message": msg}).encode('utf-8'))
             return
 
         # API: Cloudinary Connection Tester

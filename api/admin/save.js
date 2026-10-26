@@ -104,6 +104,14 @@ module.exports = async function handler(req, res) {
     }
   } catch (err) {}
 
+  // Write directly to root siteData.json and public/siteData.json
+  try {
+    fs.writeFileSync(path.join(process.cwd(), 'siteData.json'), jsonString, 'utf-8');
+    const pubDir = path.join(process.cwd(), 'public');
+    if (!fs.existsSync(pubDir)) fs.mkdirSync(pubDir, { recursive: true });
+    fs.writeFileSync(path.join(pubDir, 'siteData.json'), jsonString, 'utf-8');
+  } catch (err) {}
+
   // 2. Write to /tmp/site_data.json (for serverless runtime persistence)
   try {
     fs.writeFileSync(tmpFilePath, jsonString, 'utf-8');
