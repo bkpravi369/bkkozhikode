@@ -1098,7 +1098,45 @@ class SiteStore {
 
   mergeServerData(serverData) {
     if (!serverData || typeof serverData !== 'object') return;
-    this.data = this.loadData(serverData);
+    const serverClean = this.loadData(serverData);
+
+    // Intelligently merge server events with local events without wiping admin additions
+    const localEvents = Array.isArray(this.data && this.data.events) ? this.data.events : [];
+    const serverEvents = Array.isArray(serverClean.events) ? serverClean.events : [];
+    const deletedIds = new Set(this.data && this.data.deletedEventIds ? this.data.deletedEventIds : []);
+
+    const eventsMap = new Map();
+    serverEvents.forEach(e => {
+      if (e && e.id && !deletedIds.has(e.id)) {
+        eventsMap.set(e.id, e);
+      }
+    });
+
+    localEvents.forEach(e => {
+      if (e && e.id && !deletedIds.has(e.id)) {
+        const existing = eventsMap.get(e.id);
+        if (!existing) {
+          eventsMap.set(e.id, e);
+        } else {
+          const timeLocal = e.updatedAt || e.createdAt || '';
+          const timeServer = existing.updatedAt || existing.createdAt || '';
+          if (timeLocal >= timeServer) {
+            eventsMap.set(e.id, e);
+          }
+        }
+      }
+    });
+
+    const combinedEvents = Array.from(eventsMap.values());
+
+    this.data = {
+      ...serverClean,
+      ...this.data,
+      events: combinedEvents,
+      settings: { ...serverClean.settings, ...(this.data && this.data.settings ? this.data.settings : {}) },
+      categories: Array.from(new Set([...(this.data && this.data.categories ? this.data.categories : []), ...(serverClean.categories || [])])),
+      wings: Array.from(new Set([...(this.data && this.data.wings ? this.data.wings : []), ...(serverClean.wings || [])]))
+    };
 
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
@@ -1205,10 +1243,34 @@ class SiteStore {
           }
         }
 
+        const LEGACY_DUMMY_IDS = new Set([
+          'evt-navathi-kozhikode-2026',
+          'evt-harmony-youth-2026',
+          'evt-navathi-feroke-2026',
+          'evt-shivratri-calicut-2026',
+          'evt-wellness-kozhikode-2026',
+          'evt-shivir-balussery-2025',
+          'evt-navathi-koyilandy-2026'
+        ]);
+        const isLegacyDummyEvent = (ev) => {
+          if (!ev) return true;
+          if (LEGACY_DUMMY_IDS.has(ev.id)) return true;
+          const t = (ev.title || '').toLowerCase();
+          if (t.includes('90th navathi celebration') || 
+              t.includes('harmony & stress-free') || 
+              t.includes('women empowerment & values') ||
+              t.includes('de-addiction & mind wellness') ||
+              t.includes('raja yoga deep meditation shivir') ||
+              t.includes('maha shivratri mahotsav')) {
+            return true;
+          }
+          return false;
+        };
+
         // Ensure events merge and migrate to new rich schema - NEVER fallback to dummy items
         let mergedEvents = [];
         if (Array.isArray(parsed.events)) {
-          mergedEvents = parsed.events.map(ev => {
+          mergedEvents = parsed.events.filter(ev => !isLegacyDummyEvent(ev)).map(ev => {
             const date = ev.date && ev.date.trim() ? ev.date : new Date().toISOString().split('T')[0];
             const year = ev.year || (date.length >= 4 && !isNaN(date.substring(0, 4)) ? date.substring(0, 4) : '2026');
             const centre = ev.centre || ev.center || ev.location || 'Kozhikode Main';
@@ -1733,6 +1795,9 @@ class SiteStore {
     if (!this.data.events) {
       this.data.events = [];
     }
+    if (this.data.deletedEventIds && event && event.id) {
+      this.data.deletedEventIds = this.data.deletedEventIds.filter(did => did !== event.id);
+    }
 
     const date = event.date && event.date.trim() ? event.date.trim() : new Date().toISOString().split('T')[0];
     const year = event.year && event.year.trim() ? event.year.trim() : (date.length >= 4 && !isNaN(date.substring(0, 4)) ? date.substring(0, 4) : '2026');
@@ -1839,6 +1904,10 @@ class SiteStore {
   }
 
   deleteEvent(id) {
+    if (!this.data.deletedEventIds) this.data.deletedEventIds = [];
+    if (!this.data.deletedEventIds.includes(id)) {
+      this.data.deletedEventIds.push(id);
+    }
     this.data.events = (this.data.events || []).filter(e => e.id !== id);
     this.saveData();
     return true;

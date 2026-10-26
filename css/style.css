@@ -2102,6 +2102,38 @@ button, input, select, textarea {
   padding-top: 1.5rem;
 }
 
+/* Top Padding Utility Classes (pt-28 = 7rem / 112px, pt-32 = 8rem / 128px) */
+.pt-28 {
+  padding-top: 7rem !important;
+}
+
+.pt-32 {
+  padding-top: 8rem !important;
+}
+
+@media (min-width: 768px) {
+  .md\:pt-28 {
+    padding-top: 7rem !important;
+  }
+  .md\:pt-32 {
+    padding-top: 8rem !important;
+  }
+}
+
+/* Dedicated Navathi Tab Clearance below fixed transparent navbar */
+#tab-navathi,
+#tab-navathi.tab-pane {
+  padding-top: clamp(7.5rem, 9.5vw, 9rem) !important;
+}
+
+#tab-navathi > .section-padding {
+  padding-top: 1.5rem !important;
+}
+
+#tab-navathi .navathi-ceremonial-banner {
+  margin-top: 1.25rem !important;
+}
+
 /* ==========================================================================
    Section Headers & Common UI
    ========================================================================== */
