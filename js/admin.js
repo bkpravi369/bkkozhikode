@@ -24,6 +24,13 @@ window.bkToast = function(msg) {
 };
 window.bkApp = window.bkApp || { toast: window.bkToast };
 
+// Permanently locked Cloudinary configuration for bkkozhikode
+const CLOUDINARY_CONFIG = Object.freeze({
+  cloudName: 'uo0dcjpe',
+  uploadPreset: 'qux0sq4f',
+  folder: 'Website event images'
+});
+
 class AdminController {
   constructor() {
     this.currentPane = 'dashboard';
@@ -645,10 +652,10 @@ class AdminController {
 
   // Universal Cloudinary Upload Helper (supports all image types, targets 'Website event images' folder)
   async uploadImageToCloudinary(fileOrBase64, fileName = 'image.jpg', folder = 'Website event images') {
-    const cloudName = 'uo0dcjpe';
+    const cloudName = CLOUDINARY_CONFIG.cloudName;
     const settings = (window.bkStore && window.bkStore.getSettings()) || {};
-    const preset = settings.cloudinaryUploadPreset || 'qux0sq4f';
-    const targetFolder = settings.cloudinaryFolder || folder || 'Website event images';
+    const preset = settings.cloudinaryUploadPreset || CLOUDINARY_CONFIG.uploadPreset;
+    const targetFolder = settings.cloudinaryFolder || folder || CLOUDINARY_CONFIG.folder;
 
     // 1. If it's a File object, try unsigned direct upload
     if (fileOrBase64 instanceof File || fileOrBase64 instanceof Blob) {

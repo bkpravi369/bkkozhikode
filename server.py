@@ -28,6 +28,27 @@ PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
 CACHE_TTL = 1800  # 30 minutes in seconds
 save_lock = threading.Lock()
 
+def load_dotenv():
+    if os.path.exists('.env'):
+        try:
+            with open('.env', 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith('#') and '=' in line:
+                        k, v = line.split('=', 1)
+                        k = k.strip()
+                        v = v.strip().strip('"').strip("'")
+                        if k not in os.environ:
+                            os.environ[k] = v
+        except Exception:
+            pass
+
+load_dotenv()
+
+CLOUDINARY_LOCKED_CLOUD = os.environ.get('CLOUDINARY_CLOUD_NAME', 'uo0dcjpe')
+CLOUDINARY_LOCKED_PRESET = os.environ.get('CLOUDINARY_UPLOAD_PRESET', 'qux0sq4f')
+CLOUDINARY_LOCKED_FOLDER = os.environ.get('CLOUDINARY_FOLDER', 'Website event images')
+
 # In-memory cache for YouTube responses
 youtube_cache = {
     "timestamp": 0,
@@ -639,7 +660,7 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             return
 
         # API: Admin Save (Writes permanently to data/site_data.json on server disk)
-        if clean_path in ['/api/admin/save', '/api/save', '/api/save-data']:
+        if clean_path in ['/api/admin/save', '/api/save']:
             auth_header = self.headers.get('Authorization', '')
             token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
             # Allow save from valid token or local server
@@ -933,7 +954,7 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                     presets_to_try = []
                     if c_preset:
                         presets_to_try.append(c_preset)
-                    presets_to_try.extend(['bk_upload', 'website_event_images', 'ml_default', 'unsigned', 'uo0dcjpe', 'website'])
+                    presets_to_try.extend(['qux0sq4f', 'website_event_images', 'bk_upload', 'ml_default', 'unsigned', 'uo0dcjpe', 'website'])
                     
                     for preset in presets_to_try:
                         try:

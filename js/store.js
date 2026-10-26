@@ -21,6 +21,13 @@
 
 const ADMIN_SESSION_KEY = 'bk_kozhikode_admin_session';
 
+// Permanently locked Cloudinary configuration for bkkozhikode
+const CLOUDINARY_LOCKED_CONFIG = Object.freeze({
+  cloudName: 'uo0dcjpe',
+  uploadPreset: 'qux0sq4f',
+  folder: 'Website event images'
+});
+
 const DEFAULT_DATA = {
   settings: {
     orgName: 'Brahma Kumaris Kozhikode',
@@ -1419,34 +1426,20 @@ class SiteStore {
       this.syncChannel.postMessage({ type: 'bk_store_change', timestamp: Date.now() });
     }
 
-    // Persist permanently to centralized server disk / cloud store via /api/save-data
-    if (typeof window !== 'undefined' && typeof window.saveAdminData === 'function') {
-      window.saveAdminData(this.data).catch(() => null);
-    } else if (typeof fetch !== 'undefined') {
+    // Persist permanently to centralized server disk / cloud store via /api/admin/save
+    if (typeof fetch !== 'undefined') {
       try {
         const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
-        const ghToken = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_github_token') : '';
         const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
-        fetch('/api/save-data', {
+        fetch('/api/admin/save', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'X-Admin-Pin': pin,
-            ...(token ? { 'Authorization': 'Bearer ' + token } : {}),
-            ...(ghToken ? { 'X-GitHub-Token': ghToken } : {})
+            ...(token ? { 'Authorization': 'Bearer ' + token } : {})
           },
-          body: JSON.stringify(this.data)
-        }).catch(() => {
-          fetch('/api/admin/save', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Admin-Pin': pin,
-              ...(token ? { 'Authorization': 'Bearer ' + token } : {})
-            },
-            body: JSON.stringify({ data: this.data })
-          }).catch(() => null);
-        });
+          body: JSON.stringify({ data: this.data })
+        }).catch(() => null);
       } catch (e) {}
     }
     return true;
@@ -1487,7 +1480,13 @@ class SiteStore {
   }
 
   updateSettings(newSettings) {
-    this.data.settings = { ...this.data.settings, ...newSettings };
+    const cleanSettings = { ...newSettings };
+    // Lock Cloudinary credentials so they never get wiped with empty strings
+    if (!cleanSettings.cloudinaryCloudName) cleanSettings.cloudinaryCloudName = CLOUDINARY_LOCKED_CONFIG.cloudName;
+    if (!cleanSettings.cloudinaryUploadPreset) cleanSettings.cloudinaryUploadPreset = CLOUDINARY_LOCKED_CONFIG.uploadPreset;
+    if (!cleanSettings.cloudinaryFolder) cleanSettings.cloudinaryFolder = CLOUDINARY_LOCKED_CONFIG.folder;
+
+    this.data.settings = { ...this.data.settings, ...cleanSettings };
     this.saveData();
   }
 
@@ -1931,27 +1930,11 @@ class SiteStore {
   }
 
   async persistToServer() {
-    if (typeof window !== 'undefined' && typeof window.saveAdminData === 'function') {
-      const res = await window.saveAdminData(this.data);
-      return res && res.success;
-    }
     if (typeof fetch === 'undefined') return true;
     try {
       const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
-      const ghToken = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_github_token') : '';
       const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
-      const res = await fetch('/api/save-data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Admin-Pin': pin,
-          ...(token ? { 'Authorization': 'Bearer ' + token } : {}),
-          ...(ghToken ? { 'X-GitHub-Token': ghToken } : {})
-        },
-        body: JSON.stringify(this.data)
-      });
-      if (res.ok) return true;
-      const fallback = await fetch('/api/admin/save', {
+      const res = await fetch('/api/admin/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1960,7 +1943,7 @@ class SiteStore {
         },
         body: JSON.stringify({ data: this.data })
       });
-      return fallback.ok;
+      return res.ok;
     } catch (e) {
       console.warn('Persist to server error:', e);
       return false;
