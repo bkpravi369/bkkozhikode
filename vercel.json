@@ -1,7 +1,6 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/:match*", "destination": "/api/:match*" },
     { "source": "/rajayoga-course", "destination": "/" },
     { "source": "/rajyoga-course", "destination": "/" },
     { "source": "/course", "destination": "/" },
@@ -13,8 +12,7 @@
     { "source": "/adi-ratna/:slug*", "destination": "/" },
     { "source": "/bk-admin", "destination": "/admin" },
     { "source": "/bk-admin/:path*", "destination": "/admin/:path*" },
-    { "source": "/admin", "destination": "/admin" },
-    { "source": "/((?!api|admin|data|assets|css|js|siteData\\.json).*)", "destination": "/" }
+    { "source": "/admin", "destination": "/admin" }
   ],
   "headers": [
     {
