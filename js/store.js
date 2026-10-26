@@ -1099,7 +1099,8 @@ class SiteStore {
       `/api/site-data?t=${Date.now()}`,
       `/api/data?t=${Date.now()}`,
       `/siteData.json?t=${Date.now()}`,
-      `/data/site_data.json?t=${Date.now()}`
+      `/data/site_data.json?t=${Date.now()}`,
+      `https://raw.githubusercontent.com/bkpravi369/bkkozhikode/main/siteData.json?t=${Date.now()}`
     ];
 
     for (const url of endpoints) {
@@ -1443,13 +1444,19 @@ class SiteStore {
       await this.persistToServer();
       const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
       const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
+      const ghToken = (typeof sessionStorage !== 'undefined') ? (sessionStorage.getItem('bk_github_token') || '') : '';
       const res = await fetch('/api/admin/publish', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Admin-Pin': pin,
-          ...(token ? { 'Authorization': 'Bearer ' + token } : {})
-        }
+          ...(token ? { 'Authorization': 'Bearer ' + token } : {}),
+          ...(ghToken ? { 'X-GitHub-Token': ghToken } : {})
+        },
+        body: JSON.stringify({
+          data: this.data,
+          githubToken: ghToken || (this.data && this.data.settings && this.data.settings.githubToken) || ''
+        })
       });
       if (res && res.ok) {
         return await res.json();

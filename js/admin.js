@@ -2699,6 +2699,7 @@ class AdminController {
     const cldPreset = document.getElementById('setCldPreset');
     const cldApiKey = document.getElementById('setCldApiKey');
     const cldApiSecret = document.getElementById('setCldApiSecret');
+    const ghToken = document.getElementById('setGhToken');
 
     if (orgName) orgName.value = s.orgName || '';
     if (orgNameMl) orgNameMl.value = s.orgNameMl || '';
@@ -2711,6 +2712,7 @@ class AdminController {
     if (cldPreset) cldPreset.value = s.cloudinaryUploadPreset || 'qux0sq4f';
     if (cldApiKey) cldApiKey.value = s.cloudinaryApiKey || '';
     if (cldApiSecret) cldApiSecret.value = s.cloudinaryApiSecret || '';
+    if (ghToken) ghToken.value = sessionStorage.getItem('bk_github_token') || s.githubToken || '';
     if (pin) pin.value = '';
   }
 
@@ -2728,6 +2730,11 @@ class AdminController {
     const cloudinaryUploadPreset = document.getElementById('setCldPreset')?.value.trim() || 'qux0sq4f';
     const cloudinaryApiKey = document.getElementById('setCldApiKey')?.value.trim() || '';
     const cloudinaryApiSecret = document.getElementById('setCldApiSecret')?.value.trim() || '';
+    const ghTokenInput = document.getElementById('setGhToken');
+    const githubToken = ghTokenInput ? ghTokenInput.value.trim() : '';
+    if (githubToken) {
+      sessionStorage.setItem('bk_github_token', githubToken);
+    }
 
     const settingsUpdates = {
       orgName,
@@ -2742,6 +2749,7 @@ class AdminController {
       cloudinaryApiKey,
       cloudinaryApiSecret
     };
+    if (githubToken) settingsUpdates.githubToken = githubToken;
     if (adminPin) settingsUpdates.adminPin = adminPin;
 
     window.bkStore.updateSettings(settingsUpdates);

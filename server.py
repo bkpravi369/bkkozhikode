@@ -745,12 +745,38 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             try:
+                # 1. If payload provided in body, save to disk first
+                content_length = int(self.headers.get('Content-Length', 0))
+                if content_length > 0:
+                    post_data = self.rfile.read(content_length).decode('utf-8')
+                    try:
+                        incoming = json.loads(post_data)
+                        payload = incoming.get('data') if isinstance(incoming.get('data'), dict) else incoming
+                        if isinstance(payload, dict) and len(payload) > 0:
+                            payload_clean = {k: v for k, v in payload.items() if k not in ['password', 'githubToken']}
+                            json_str = json.dumps(payload_clean, indent=2, ensure_ascii=False)
+                            root_file = os.path.join(os.getcwd(), 'siteData.json')
+                            data_file = os.path.join(os.getcwd(), 'data', 'site_data.json')
+                            src_file = os.path.join(os.getcwd(), 'src', 'data', 'siteData.json')
+                            with open(root_file, 'w', encoding='utf-8') as f:
+                                f.write(json_str)
+                            with open(data_file, 'w', encoding='utf-8') as f:
+                                f.write(json_str)
+                            with open(src_file, 'w', encoding='utf-8') as f:
+                                f.write(json_str)
+                            if 'events' in payload_clean and isinstance(payload_clean['events'], list):
+                                with open(os.path.join(os.getcwd(), 'src', 'data', 'events.json'), 'w', encoding='utf-8') as f:
+                                    json.dump(payload_clean['events'], f, indent=2, ensure_ascii=False)
+                    except Exception as pe:
+                        print(f"Publish pre-save warning: {pe}", file=sys.stderr)
+
+                # 2. Commit and push to GitHub repository
                 import subprocess
                 subprocess.run(['git', 'add', 'siteData.json', 'data/site_data.json', 'src/data/siteData.json', 'src/data/events.json'], check=False)
-                subprocess.run(['git', 'commit', '-m', 'chore(data): publish admin updates to live site [skip ci]'], capture_output=True, text=True)
+                subprocess.run(['git', 'commit', '-m', f"chore(data): publish admin updates to live site [{int(time.time())}] [skip ci]"], capture_output=True, text=True)
                 push_res = subprocess.run(['git', 'push', 'origin', 'main'], capture_output=True, text=True)
                 success = (push_res.returncode == 0)
-                msg = "✨ Changes published to Live Server successfully!" if success else f"Publish note: {push_res.stderr or push_res.stdout or 'Synced'}"
+                msg = "🚀 Changes permanently committed to GitHub repository & live Vercel deployment triggered!" if success else f"Publish note: {push_res.stderr or push_res.stdout or 'Saved locally'}"
             except Exception as e:
                 success = False
                 msg = f"Publish error: {e}"
