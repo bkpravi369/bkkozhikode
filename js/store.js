@@ -1419,20 +1419,34 @@ class SiteStore {
       this.syncChannel.postMessage({ type: 'bk_store_change', timestamp: Date.now() });
     }
 
-    // Persist permanently to centralized server disk / cloud store
-    if (typeof fetch !== 'undefined') {
+    // Persist permanently to centralized server disk / cloud store via /api/save-data
+    if (typeof window !== 'undefined' && typeof window.saveAdminData === 'function') {
+      window.saveAdminData(this.data).catch(() => null);
+    } else if (typeof fetch !== 'undefined') {
       try {
         const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+        const ghToken = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_github_token') : '';
         const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
-        fetch('/api/admin/save', {
+        fetch('/api/save-data', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'X-Admin-Pin': pin,
-            ...(token ? { 'Authorization': 'Bearer ' + token } : {})
+            ...(token ? { 'Authorization': 'Bearer ' + token } : {}),
+            ...(ghToken ? { 'X-GitHub-Token': ghToken } : {})
           },
-          body: JSON.stringify({ data: this.data })
-        }).catch(() => null);
+          body: JSON.stringify(this.data)
+        }).catch(() => {
+          fetch('/api/admin/save', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Admin-Pin': pin,
+              ...(token ? { 'Authorization': 'Bearer ' + token } : {})
+            },
+            body: JSON.stringify({ data: this.data })
+          }).catch(() => null);
+        });
       } catch (e) {}
     }
     return true;
@@ -1917,11 +1931,27 @@ class SiteStore {
   }
 
   async persistToServer() {
+    if (typeof window !== 'undefined' && typeof window.saveAdminData === 'function') {
+      const res = await window.saveAdminData(this.data);
+      return res && res.success;
+    }
     if (typeof fetch === 'undefined') return true;
     try {
       const token = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_admin_token') : '';
+      const ghToken = (typeof sessionStorage !== 'undefined') ? sessionStorage.getItem('bk_github_token') : '';
       const pin = (this.data && this.data.settings && this.data.settings.adminPin) || 'Kozhikode@2026';
-      const res = await fetch('/api/admin/save', {
+      const res = await fetch('/api/save-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Pin': pin,
+          ...(token ? { 'Authorization': 'Bearer ' + token } : {}),
+          ...(ghToken ? { 'X-GitHub-Token': ghToken } : {})
+        },
+        body: JSON.stringify(this.data)
+      });
+      if (res.ok) return true;
+      const fallback = await fetch('/api/admin/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1930,7 +1960,7 @@ class SiteStore {
         },
         body: JSON.stringify({ data: this.data })
       });
-      return res.ok;
+      return fallback.ok;
     } catch (e) {
       console.warn('Persist to server error:', e);
       return false;

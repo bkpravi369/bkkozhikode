@@ -639,7 +639,7 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             return
 
         # API: Admin Save (Writes permanently to data/site_data.json on server disk)
-        if clean_path in ['/api/admin/save', '/api/save']:
+        if clean_path in ['/api/admin/save', '/api/save', '/api/save-data']:
             auth_header = self.headers.get('Authorization', '')
             token = auth_header[7:].strip() if auth_header.startswith('Bearer ') else ''
             # Allow save from valid token or local server
