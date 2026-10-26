@@ -480,12 +480,14 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps({"authenticated": is_valid}).encode('utf-8'))
             return
 
-        # API: Site Data (Load from data/site_data.json)
+        # API: Site Data (Load from src/data/siteData.json or data/site_data.json)
         if clean_path in ['/api/data', '/api/site-data']:
-            site_data_file = os.path.join(os.getcwd(), 'data', 'site_data.json')
-            if os.path.exists(site_data_file):
+            src_file = os.path.join(os.getcwd(), 'src', 'data', 'siteData.json')
+            data_file = os.path.join(os.getcwd(), 'data', 'site_data.json')
+            target_file = src_file if os.path.exists(src_file) else data_file
+            if os.path.exists(target_file):
                 try:
-                    with open(site_data_file, 'r', encoding='utf-8') as f:
+                    with open(target_file, 'r', encoding='utf-8') as f:
                         data_content = f.read()
                     self.send_response(200)
                     self.send_header('Content-Type', 'application/json; charset=utf-8')
@@ -651,15 +653,21 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
             site_data_dir = os.path.join(os.getcwd(), 'data')
             site_data_file = os.path.join(site_data_dir, 'site_data.json')
             os.makedirs(site_data_dir, exist_ok=True)
+
+            src_data_dir = os.path.join(os.getcwd(), 'src', 'data')
+            src_site_data = os.path.join(src_data_dir, 'siteData.json')
+            src_events_file = os.path.join(src_data_dir, 'events.json')
+            os.makedirs(src_data_dir, exist_ok=True)
             
             with save_lock:
                 existing = {}
-                if os.path.exists(site_data_file):
+                target_read = src_site_data if os.path.exists(src_site_data) else site_data_file
+                if os.path.exists(target_read):
                     try:
-                        with open(site_data_file, 'r', encoding='utf-8') as f:
+                        with open(target_read, 'r', encoding='utf-8') as f:
                             existing = json.load(f)
                     except Exception as re:
-                        print(f"Warning reading site_data.json: {re}", file=sys.stderr)
+                        print(f"Warning reading site data: {re}", file=sys.stderr)
                         existing = {}
 
                 if 'data' in incoming_json and isinstance(incoming_json['data'], dict):
@@ -669,6 +677,12 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                 else:
                     merged = existing
 
+                # Explicitly preserve events array (even if empty)
+                incoming_payload = incoming_json.get('data') if isinstance(incoming_json.get('data'), dict) else incoming_json
+                if isinstance(incoming_payload, dict) and 'events' in incoming_payload and isinstance(incoming_payload['events'], list):
+                    merged['events'] = incoming_payload['events']
+
+                # Save to data/site_data.json
                 try:
                     fd, tmp_path = tempfile.mkstemp(dir=site_data_dir, prefix='site_data_', suffix='.tmp')
                     with os.fdopen(fd, 'w', encoding='utf-8') as tf:
@@ -679,6 +693,26 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                     try:
                         with open(site_data_file, 'w', encoding='utf-8') as f:
                             json.dump(merged, f, indent=2, ensure_ascii=False)
+                    except Exception:
+                        pass
+
+                # Save to src/data/siteData.json and src/data/events.json
+                try:
+                    fd, tmp_path = tempfile.mkstemp(dir=src_data_dir, prefix='site_data_', suffix='.tmp')
+                    with os.fdopen(fd, 'w', encoding='utf-8') as tf:
+                        json.dump(merged, tf, indent=2, ensure_ascii=False)
+                    os.replace(tmp_path, src_site_data)
+                except Exception as e:
+                    try:
+                        with open(src_site_data, 'w', encoding='utf-8') as f:
+                            json.dump(merged, f, indent=2, ensure_ascii=False)
+                    except Exception:
+                        pass
+
+                if 'events' in merged and isinstance(merged['events'], list):
+                    try:
+                        with open(src_events_file, 'w', encoding='utf-8') as f:
+                            json.dump(merged['events'], f, indent=2, ensure_ascii=False)
                     except Exception:
                         pass
 

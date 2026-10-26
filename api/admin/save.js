@@ -89,17 +89,22 @@ module.exports = async function handler(req, res) {
 
   const jsonString = JSON.stringify(merged, null, 2);
 
-  // 1. Write to local server disk (process.cwd()/data/site_data.json) if writable
+  // 1. Write to repository data files directly if writable
   try {
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir, { recursive: true });
-    }
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
     fs.writeFileSync(dataFilePath, jsonString, 'utf-8');
-  } catch (err) {
-    // Read-only serverless filesystem in Vercel
-  }
+  } catch (err) {}
 
-  // 2. Write to /tmp/site_data.json
+  try {
+    const srcDataDir = path.join(process.cwd(), 'src', 'data');
+    if (!fs.existsSync(srcDataDir)) fs.mkdirSync(srcDataDir, { recursive: true });
+    fs.writeFileSync(path.join(srcDataDir, 'siteData.json'), jsonString, 'utf-8');
+    if (Array.isArray(merged.events)) {
+      fs.writeFileSync(path.join(srcDataDir, 'events.json'), JSON.stringify(merged.events, null, 2), 'utf-8');
+    }
+  } catch (err) {}
+
+  // 2. Write to /tmp/site_data.json (for serverless runtime persistence)
   try {
     fs.writeFileSync(tmpFilePath, jsonString, 'utf-8');
   } catch (err) {

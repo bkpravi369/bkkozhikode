@@ -191,7 +191,7 @@ class AppController {
     window.addEventListener('scroll', () => {
       const header = document.getElementById('siteHeader');
       if (header) {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 15) {
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');

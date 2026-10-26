@@ -21,12 +21,18 @@ export default async function handler(req, res) {
 
   try {
     const tmpFilePath = path.join('/tmp', 'site_data.json');
+    const srcDataFilePath = path.join(process.cwd(), 'src', 'data', 'siteData.json');
     const dataFilePath = path.join(process.cwd(), 'data', 'site_data.json');
 
     let content = null;
     if (fs.existsSync(tmpFilePath)) {
       try {
         content = fs.readFileSync(tmpFilePath, 'utf-8');
+      } catch (e) {}
+    }
+    if (!content && fs.existsSync(srcDataFilePath)) {
+      try {
+        content = fs.readFileSync(srcDataFilePath, 'utf-8');
       } catch (e) {}
     }
     if (!content && fs.existsSync(dataFilePath)) {

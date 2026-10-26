@@ -890,299 +890,7 @@ const DEFAULT_DATA = {
     { id: 'festival_images', name: 'Festivals', nameMl: 'ആഘോഷങ്ങൾ', tag: 'festival_images', cloudinaryTag: 'festival_images' }
   ],
 
-  events: [
-    {
-      id: "evt-navathi-kozhikode-2026",
-      title: "90th Navathi Celebrations: Grand Spiritual Conclave & Peace Gathering",
-      titleMl: "ബ്രഹ്മാകുമാരീസ് 90-ാം നവതി ആത്മീയ മഹാസമ്മേളനം",
-      date: "2026-10-15",
-      year: "2026",
-      centre: "Kozhikode Main",
-      category: "Festivals",
-      isNavathi: true,
-      coverImage: "assets/images/uploads/1792577267_P1314528.jpg",
-      photos: [
-        "assets/images/uploads/1792577267_P1314528.jpg",
-        "assets/images/uploads/1792577294_P1314531.jpg",
-        "assets/images/uploads/1792577319_P1314534.jpg",
-        "assets/images/uploads/1792577345_P1314537.jpg",
-        "assets/images/uploads/1792577373_P1314540.jpg",
-        "assets/images/uploads/1792577397_P1314543.jpg",
-        "assets/images/uploads/1792577422_P1314545.jpg",
-        "assets/images/uploads/1792577461_P1314549.jpg",
-        "assets/images/uploads/1792577489_P1314553.jpg",
-        "assets/images/uploads/1792577519_P1314561.jpg",
-        "assets/images/uploads/1792577544_P1314564.jpg",
-        "assets/images/uploads/1792577572_P1314570.jpg",
-        "assets/images/uploads/1792577598_P1314573.jpg",
-        "assets/images/uploads/1792577627_P1314577.jpg",
-        "assets/images/uploads/1792577657_P1314583.jpg",
-        "assets/images/uploads/1792577681_P1314584.jpg",
-        "assets/images/uploads/1792577705_P1314588.jpg",
-        "assets/images/uploads/1792577731_P1314592.jpg",
-        "assets/images/uploads/1792577754_P1314596.jpg",
-        "assets/images/uploads/1792577779_P1314601.jpg"
-      ],
-      youtubeUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
-      videos: [
-        {
-          title: "Inaugural Ceremony & Divine Flag Unfurling",
-          url: "https://www.youtube.com/live/xeZ_HBW1mq4"
-        },
-        {
-          title: "Keynote Spiritual Discourse: 90 Years of World Renewal",
-          url: "https://www.youtube.com/live/YMXD1FmGleg"
-        }
-      ],
-      description: "Commemorating 90 glorious years of Brahma Kumaris (1936-2026) dedicated to world renewal, spiritual enlightenment of women, and global harmony. Features divine flag unfurling, amritvela mass meditation, and special address by senior Rajyogis.",
-      image: "assets/images/uploads/1792577267_P1314528.jpg",
-      additionalImages: [
-        "assets/images/uploads/1792577267_P1314528.jpg",
-        "assets/images/uploads/1792577294_P1314531.jpg",
-        "assets/images/uploads/1792577319_P1314534.jpg",
-        "assets/images/uploads/1792577345_P1314537.jpg",
-        "assets/images/uploads/1792577373_P1314540.jpg",
-        "assets/images/uploads/1792577397_P1314543.jpg",
-        "assets/images/uploads/1792577422_P1314545.jpg",
-        "assets/images/uploads/1792577461_P1314549.jpg",
-        "assets/images/uploads/1792577489_P1314553.jpg",
-        "assets/images/uploads/1792577519_P1314561.jpg",
-        "assets/images/uploads/1792577544_P1314564.jpg",
-        "assets/images/uploads/1792577572_P1314570.jpg",
-        "assets/images/uploads/1792577598_P1314573.jpg",
-        "assets/images/uploads/1792577627_P1314577.jpg",
-        "assets/images/uploads/1792577657_P1314583.jpg",
-        "assets/images/uploads/1792577681_P1314584.jpg",
-        "assets/images/uploads/1792577705_P1314588.jpg",
-        "assets/images/uploads/1792577731_P1314592.jpg",
-        "assets/images/uploads/1792577754_P1314596.jpg",
-        "assets/images/uploads/1792577779_P1314601.jpg"
-      ],
-      videoUrl: "https://www.youtube.com/live/xeZ_HBW1mq4",
-      location: "Kozhikode Main",
-      shortDesc: "A momentous milestone commemorating 90 years of world renewal, values education, and soul consciousness.",
-      fullDesc: "Commemorating 90 glorious years of Brahma Kumaris (1936-2026) dedicated to world renewal, spiritual enlightenment of women, and global harmony. Features divine flag unfurling, amritvela mass meditation, and special address by senior Rajyogis.",
-      time: "9:30 AM - 1:00 PM",
-      schedule: [
-        { time: "09:30 AM", session: "Welcome & Deep Meditation" },
-        { time: "10:15 AM", session: "Inaugural Blessings & Keynote Discourse" },
-        { time: "11:30 AM", session: "Spiritual Songs & Cultural Presentation" },
-        { time: "12:30 PM", session: "Brahma Bhojan & Divine Prasadam" }
-      ],
-      isFeatured: true,
-      status: "published",
-      order: 1,
-      createdAt: "2026-08-18"
-    },
-    {
-      id: "evt-navathi-feroke-2026",
-      title: "Navathi 90: Harmony & Stress-Free Youth Leadership Summit",
-      titleMl: "നവതി യുവ നേതൃത്വ ശിൽപശാല",
-      date: "2026-08-22",
-      year: "2026",
-      centre: "Feroke",
-      category: "Youth Program",
-      isNavathi: true,
-      coverImage: "assets/images/meditation_hall.jpg",
-      photos: [
-        "assets/images/rajyoga_peace.jpg",
-        "assets/images/light_palace_center.jpg"
-      ],
-      youtubeUrl: "https://www.youtube.com/live/YMXD1FmGleg",
-      description: "Special youth convention organized as part of the 90th Navathi celebrations, inspiring students and young professionals towards emotional resilience, concentration, and ethical living.",
-      image: "assets/images/meditation_hall.jpg",
-      additionalImages: [
-        "assets/images/rajyoga_peace.jpg",
-        "assets/images/light_palace_center.jpg"
-      ],
-      videoUrl: "https://www.youtube.com/live/YMXD1FmGleg",
-      location: "Feroke",
-      shortDesc: "Special youth convention organized as part of the 90th Navathi celebrations.",
-      fullDesc: "Special youth convention organized as part of the 90th Navathi celebrations, inspiring students and young professionals towards emotional resilience, concentration, and ethical living.",
-      time: "10:00 AM - 2:00 PM",
-      schedule: [
-        { time: "10:00 AM", session: "Mind Power & Memory Dynamics" },
-        { time: "11:30 AM", session: "Peer Pressure & Habits Overcoming" },
-        { time: "01:00 PM", session: "Interactive Youth Forum" }
-      ],
-      isFeatured: false,
-      status: "published",
-      order: 2,
-      createdAt: "2026-08-18"
-    },
-    {
-      id: "evt-navathi-vadakara-2025",
-      title: "Navathi Milestones: Value Education & Meditation Camp",
-      titleMl: "നവതി മൂല്യവിദ്യാഭ്യാസ മെഡിറ്റേഷൻ ക്യാമ്പ്",
-      date: "2025-11-18",
-      year: "2025",
-      centre: "Vadakara",
-      category: "Rajayoga Shivir",
-      isNavathi: true,
-      coverImage: "assets/images/paramdham_sunset.jpg",
-      photos: [
-        "assets/images/meditation_hall.jpg",
-        "assets/images/rajyoga_peace.jpg"
-      ],
-      youtubeUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
-      description: "A divine 3-day Rajayoga meditation shivir heralding the 90th year anniversary, guiding families through self-empowerment and soul consciousness.",
-      image: "assets/images/paramdham_sunset.jpg",
-      additionalImages: [
-        "assets/images/meditation_hall.jpg",
-        "assets/images/rajyoga_peace.jpg"
-      ],
-      videoUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
-      location: "Vadakara",
-      shortDesc: "A divine Rajayoga meditation shivir heralding the 90th year anniversary.",
-      fullDesc: "A divine 3-day Rajayoga meditation shivir heralding the 90th year anniversary, guiding families through self-empowerment and soul consciousness.",
-      time: "6:00 PM - 8:00 PM",
-      schedule: [
-        { time: "06:00 PM", session: "Understanding True Identity of the Soul" },
-        { time: "07:00 PM", session: "Connecting with the Supreme Ocean of Peace" }
-      ],
-      isFeatured: false,
-      status: "published",
-      order: 3,
-      createdAt: "2025-11-01"
-    },
-    {
-      id: "evt-shivarathri-ashokapuram-2026",
-      title: "Maha Shivratri Spiritual Festival & 12 Jyotirlingam Darshan",
-      titleMl: "മഹാശിവരാത്രി ആത്മീയോത്സവവും ജ്യോതിർലിംഗ ദർശനവും",
-      date: "2026-03-08",
-      year: "2026",
-      centre: "Ashokapuram",
-      category: "Festivals",
-      isNavathi: false,
-      coverImage: "assets/images/paramdham_sunset.jpg",
-      photos: [
-        "assets/images/light_palace_center.jpg",
-        "assets/images/meditation_hall.jpg"
-      ],
-      youtubeUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
-      description: "Experience the profound spiritual significance of Shivratri with 3D Jyotirlingam darshan, flag unfurling, and continuous 24-hour peace meditation.",
-      image: "assets/images/paramdham_sunset.jpg",
-      additionalImages: [
-        "assets/images/light_palace_center.jpg",
-        "assets/images/meditation_hall.jpg"
-      ],
-      videoUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
-      location: "Ashokapuram",
-      shortDesc: "Experience the profound spiritual significance of Shivratri with 3D Jyotirlingam darshan.",
-      fullDesc: "Maha Shivratri marks the divine descent of Incorporeal Supreme Soul Shiva. Features flag unfurling, 3D spiritual cave darshan, and sacred pledge for purity.",
-      time: "8:00 AM - 9:00 PM",
-      schedule: [
-        { time: "08:00 AM", session: "Sacred Shiva Dhwaj Flag Hoisting" },
-        { time: "10:00 AM", session: "Spiritual Discourse: The Secret of Shivratri" },
-        { time: "07:00 PM", session: "Maha Deepotsav & 108 Light Darshan" }
-      ],
-      isFeatured: true,
-      status: "published",
-      order: 4,
-      createdAt: "2026-03-01"
-    },
-    {
-      id: "evt-wellness-kozhikode-2026",
-      title: "De-Addiction & Mind Wellness Campaign for Community Health",
-      titleMl: "ലഹരിവിമുക്ത ആരോഗ്യ ബോധവൽക്കരണ പരിപാടി",
-      date: "2026-05-14",
-      year: "2026",
-      centre: "Kozhikode Main",
-      category: "Social Service",
-      isNavathi: false,
-      coverImage: "assets/images/rajyoga_peace.jpg",
-      photos: [
-        "assets/images/meditation_hall.jpg"
-      ],
-      youtubeUrl: "",
-      description: "Community outreach initiative offering free health checkups, subconscious mind empowerment, and lifestyle coaching for tobacco and stress de-addiction.",
-      image: "assets/images/rajyoga_peace.jpg",
-      additionalImages: [
-        "assets/images/meditation_hall.jpg"
-      ],
-      videoUrl: "",
-      location: "Kozhikode Main",
-      shortDesc: "Community outreach initiative offering subconscious mind empowerment and lifestyle coaching.",
-      fullDesc: "Community outreach initiative offering free health checkups, subconscious mind empowerment, and lifestyle coaching for tobacco and stress de-addiction.",
-      time: "10:00 AM - 1:00 PM",
-      schedule: [
-        { time: "10:00 AM", session: "Medical Doctors Panel Presentation" },
-        { time: "11:30 AM", session: "Subconscious Reprogramming Meditation" }
-      ],
-      isFeatured: false,
-      status: "published",
-      order: 5,
-      createdAt: "2026-05-01"
-    },
-    {
-      id: "evt-shivir-balussery-2025",
-      title: "Raja Yoga Deep Meditation Shivir for Inner Peace",
-      titleMl: "രാജയോഗ ആഴത്തിലുള്ള ധ്യാന ശിബിരം",
-      date: "2025-09-10",
-      year: "2025",
-      centre: "Balussery",
-      category: "Rajayoga Shivir",
-      isNavathi: false,
-      coverImage: "assets/images/light_palace_center.jpg",
-      photos: [
-        "assets/images/paramdham_sunset.jpg"
-      ],
-      youtubeUrl: "",
-      description: "Comprehensive 7-day experiential retreat on mind mastery, karmic philosophy, and experiencing God's supreme unconditional love.",
-      image: "assets/images/light_palace_center.jpg",
-      additionalImages: [
-        "assets/images/paramdham_sunset.jpg"
-      ],
-      videoUrl: "",
-      location: "Balussery",
-      shortDesc: "Comprehensive 7-day experiential retreat on mind mastery and karmic philosophy.",
-      fullDesc: "Comprehensive 7-day experiential retreat on mind mastery, karmic philosophy, and experiencing God's supreme unconditional love.",
-      time: "6:30 AM - 8:00 AM",
-      schedule: [
-        { time: "06:30 AM", session: "Morning Amritvela Meditation" },
-        { time: "07:15 AM", session: "Wisdom of Raja Yoga Philosophy" }
-      ],
-      isFeatured: false,
-      status: "published",
-      order: 6,
-      createdAt: "2025-09-01"
-    },
-    {
-      id: "evt-navathi-koyilandy-2026",
-      title: "Navathi Special: Women Empowerment & Values in Governance",
-      titleMl: "നവതി വിശേഷ വനിതാ ശാക്തീകരണ സെമിനാർ",
-      date: "2026-04-20",
-      year: "2026",
-      centre: "Koyilandy",
-      category: "Social Service",
-      isNavathi: true,
-      coverImage: "assets/images/meditation_hall.jpg",
-      photos: [
-        "assets/images/light_palace_center.jpg",
-        "assets/images/rajyoga_peace.jpg"
-      ],
-      youtubeUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
-      description: "Special seminar recognizing maternal leadership and spiritual qualities in society, hosted under the 90th year celebrations banner.",
-      image: "assets/images/meditation_hall.jpg",
-      additionalImages: [
-        "assets/images/light_palace_center.jpg",
-        "assets/images/rajyoga_peace.jpg"
-      ],
-      videoUrl: "https://www.youtube.com/watch?v=1zxJA_XoEog",
-      location: "Koyilandy",
-      shortDesc: "Special seminar recognizing maternal leadership and spiritual qualities in society.",
-      fullDesc: "Special seminar recognizing maternal leadership and spiritual qualities in society, hosted under the 90th year celebrations banner.",
-      time: "10:00 AM - 1:00 PM",
-      schedule: [
-        { time: "10:00 AM", session: "Spiritual Values in Family & Governance" },
-        { time: "11:30 AM", session: "Guided Rajayoga Experience" }
-      ],
-      isFeatured: false,
-      status: "published",
-      order: 7,
-      createdAt: "2026-04-10"
-    }
-  ],
+  events: [],
 
   registrations: [
     {
@@ -1497,20 +1205,16 @@ class SiteStore {
           }
         }
 
-        // Ensure events merge and migrate to new rich schema
-        let mergedEvents = DEFAULT_DATA.events;
+        // Ensure events merge and migrate to new rich schema - NEVER fallback to dummy items
+        let mergedEvents = [];
         if (Array.isArray(parsed.events)) {
           mergedEvents = parsed.events.map(ev => {
-            const date = ev.date && ev.date.trim() ? ev.date : '2026-10-15';
+            const date = ev.date && ev.date.trim() ? ev.date : new Date().toISOString().split('T')[0];
             const year = ev.year || (date.length >= 4 && !isNaN(date.substring(0, 4)) ? date.substring(0, 4) : '2026');
             const centre = ev.centre || ev.center || ev.location || 'Kozhikode Main';
             const isNavathi = Boolean(ev.isNavathi !== undefined ? ev.isNavathi : (ev.category === 'navathi' || (ev.title && ev.title.toLowerCase().includes('navathi'))));
             const coverImage = ev.coverImage || ev.image || 'assets/images/light_palace_center.jpg';
             let youtubeUrl = ev.youtubeUrl || ev.videoUrl || '';
-            if (youtubeUrl.includes('1zxJA_XoEog')) {
-              if (ev.id === 'evt-navathi-kozhikode-2026') youtubeUrl = 'https://www.youtube.com/live/xeZ_HBW1mq4';
-              else if (ev.id === 'evt-navathi-feroke-2026') youtubeUrl = 'https://www.youtube.com/live/YMXD1FmGleg';
-            }
             const description = ev.description || ev.fullDesc || ev.shortDesc || '';
             const photos = Array.isArray(ev.photos) && ev.photos.length > 0 ? ev.photos : (Array.isArray(ev.additionalImages) ? ev.additionalImages : []);
 
@@ -1542,11 +1246,10 @@ class SiteStore {
               isFeatured: ev.isFeatured !== undefined ? ev.isFeatured : false,
               status: ev.status || 'published',
               order: ev.order || 1,
-              createdAt: ev.createdAt || '2026-08-18',
+              createdAt: ev.createdAt || new Date().toISOString().split('T')[0],
               updatedAt: ev.updatedAt || ''
             };
           });
-
         }
 
         // Ensure key centres are present
@@ -2028,7 +1731,7 @@ class SiteStore {
 
   saveEvent(event) {
     if (!this.data.events) {
-      this.data.events = JSON.parse(JSON.stringify(DEFAULT_DATA.events));
+      this.data.events = [];
     }
 
     const date = event.date && event.date.trim() ? event.date.trim() : new Date().toISOString().split('T')[0];
@@ -2163,7 +1866,7 @@ class SiteStore {
   }
 
   resetEventsToDefault() {
-    this.data.events = JSON.parse(JSON.stringify(DEFAULT_DATA.events));
+    this.data.events = [];
     this.data.categories = ["Festivals", "Youth Program", "Social Service", "Celebrations"];
     this.data.wings = [...DEFAULT_DATA.wings];
     this.saveData();
