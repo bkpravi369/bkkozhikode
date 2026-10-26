@@ -917,8 +917,8 @@ Known for her powerful, crystal-clear discourses and fearless devotion to truth,
     id: "dada-vishwa-kishore",
     name: "രാജയോഗി ദാദാ വിശ്വ കിശോർ (ഭാവ്ജീ)",
     nameEn: "Rajyogi Dada Vishwa Kishore (Bhauji)",
-    loukikName: "ദാദാ നാരായണൻ (നാരായണൻ കൃപലാനി)",
-    loukikNameEn: "Dada Narayan Kripalani",
+    loukikName: "ഭേരുമൽ കൃപലാനി (ഭേരു ദാദാ)",
+    loukikNameEn: "Bherumal Kripalani (Bheru Dada)",
     role: "യജ്ഞത്തിന്റെ പ്രഥമ മാനേജർ & മുഖ്യ ട്രസ്റ്റി",
     roleEn: "First Manager & Chief Trustee of the Yagya",
     years: "1906 – 1986",
@@ -929,7 +929,7 @@ Known for her powerful, crystal-clear discourses and fearless devotion to truth,
     summary: "ബാബയുടെ വലംകൈയായി നിന്ന് യജ്ഞത്തിന്റെ സാമ്പത്തിക-നിയമ അടിത്തറ കാത്തുസൂക്ഷിച്ച നിസ്വാർത്ഥ കർമ്മയോഗി.",
     summaryEn: "Brahma Baba's trusted right hand who built and safeguarded the legal and financial foundations of the Yagya.",
     bio: `#### ബ്രഹ്മാ ബാബയുടെ വലംകൈയും സമർപ്പണവും
-സിന്ധിൽ ബ്രഹ്മാ ബാബയുടെ അടുത്ത ബന്ധുവും വജ്രവ്യാപാരത്തിലെ വിശ്വസ്ത പങ്കാളിയുമായിരുന്നു ദാദാ നാരായണൻ. 1936-ൽ ബാബയ്ക്ക് ദിവ്യദർശനങ്ങൾ ലഭിച്ച് വ്യാപാരം അവസാനിപ്പിക്കാൻ തീരുമാനിച്ചപ്പോൾ, ഒരു നിമിഷം പോലും സംശയിക്കാതെ ബാബയോടൊപ്പം നിൽക്കുകയും കൽക്കത്തയിലെ വ്യാപാര ഇടപാടുകൾ മാന്യമായി തീർപ്പാക്കി മുഴുവൻ സമ്പത്തും യജ്ഞത്തിലേക്ക് എത്തിക്കുകയും ചെയ്തു. ബാബ അദ്ദേഹത്തിന് 'വിശ്വ കിശോർ' എന്ന് പേര് നൽകി. സാധകർ അദ്ദേഹത്തെ ആദരവോടെ 'ഭാവ്ജീ' (മൂത്ത സഹോദരൻ) എന്ന് വിളിച്ചു.
+സിന്ധിൽ ബ്രഹ്മാ ബാബയുടെ അടുത്ത ബന്ധുവും വജ്രവ്യാപാരത്തിലെ വിശ്വസ്ത പങ്കാളിയുമായിരുന്നു ഭേരുമൽ കൃപലാനി (ദാദാ വിശ്വ കിശോർ). 1936-ൽ ബാബയ്ക്ക് ദിവ്യദർശനങ്ങൾ ലഭിച്ച് വ്യാപാരം അവസാനിപ്പിക്കാൻ തീരുമാനിച്ചപ്പോൾ, ഒരു നിമിഷം പോലും സംശയിക്കാതെ ബാബയോടൊപ്പം നിൽക്കുകയും കൽക്കത്തയിലെ വ്യാപാര ഇടപാടുകൾ മാന്യമായി തീർപ്പാക്കി മുഴുവൻ സമ്പത്തും യജ്ഞത്തിലേക്ക് എത്തിക്കുകയും ചെയ്തു. ബാബ അദ്ദേഹത്തിന് 'വിശ്വ കിശോർ' എന്ന് പേര് നൽകി. സാധകർ അദ്ദേഹത്തെ ആദരവോടെ 'ഭാവ്ജീ' (മൂത്ത സഹോദരൻ) എന്ന് വിളിച്ചു.
 
 #### പ്രതിസന്ധികളിൽ തളരാത്ത കോട്ട
 സിന്ധിലും കറാച്ചിയിലും ഓം മണ്ഡലിക്കെതിരെ എതിരാളികൾ കള്ളക്കേസുകളും ഉപരോധങ്ങളും സൃഷ്ടിച്ചപ്പോൾ, കോടതികളിലും സർക്കാർ ഓഫീസുകളിലും പ്രസ്ഥാനത്തിന് വേണ്ടി ധീരമായി പോരാടിയത് ഭാവ്ജീ ആയിരുന്നു. നൂറുകണക്കിന് സഹോദരിമാരുടെയും സാധകരുടെയും സുരക്ഷിതത്വവും ഭക്ഷണവും പാർപ്പിടവും ഉറപ്പുവരുത്തുന്ന വലിയ ഉത്തരവാദിത്തം അദ്ദേഹം ഒറ്റയ്ക്ക് തോളിലേറ്റി.
@@ -940,7 +940,7 @@ Known for her powerful, crystal-clear discourses and fearless devotion to truth,
 #### നിശ്ശബ്ദനായ കർമ്മയോഗി
 മധുബന്റെ മാനേജരായും ട്രസ്റ്റിയായും അഞ്ച് പതിറ്റാണ്ടുകാലം സേവനമനുഷ്ഠിച്ച അദ്ദേഹം, ഈശ്വരീയ സമ്പത്തിന്റെ ഓരോ പൈസയും അതീവ സൂക്ഷ്മതയോടെ കൈകാര്യം ചെയ്തു. 1986-ൽ അദ്ദേഹം സമ്പൂർണ്ണ അവ്യക്ത പദവി പ്രാപിച്ചു.`,
     bioEn: `#### Brahma Baba's Trusted Partner & Total Surrender
-A close relative and trusted business partner in Dada Lekhraj's famed diamond business, Dada Narayan was among the very first to recognise the divine light. When Brahma Baba experienced the spiritual revelations in 1936 and decided to wind up his business, Bhauji settled all accounts in Calcutta with immaculate integrity and dedicated all resources to Om Mandali. Baba bestowed upon him the name 'Vishwa Kishore', while the community lovingly addressed him as 'Bhauji' (Elder Brother).
+A close relative and trusted partner in Dada Lekhraj's diamond business, Bherumal Kripalani stood firmly by Baba when the divine visions began in 1936. He systematically wound up the Kolkata diamond enterprise, settled every account honourably, and dedicated the assets to the Yagya. Baba named him 'Vishwa Kishore', and the spiritual family lovingly called him 'Bhauji' (Elder Brother).
 
 #### Unshakeable Fortress in Adversity
 When fierce opposition, court lawsuits, and social boycotts mounted against Om Mandali in Sindh and Karachi, Bhauji stood like an impregnable rock. He defended the organization with legal acumen and courage before British magistrates and committees, shouldering the daunting responsibility of safety, shelter, and provisions for hundreds of young surrendered women.
@@ -952,60 +952,44 @@ In 1950, when the community shifted from Pakistan to India, Bhauji personally sc
 Serving as Chief Trustee and Manager for five decades, Bhauji treated every single coin of the divine treasury with utmost sacred reverence and transparency. A true karmayogi who worked tirelessly behind the scenes with childlike simplicity and fatherly protection, he attained the angelic stage in 1986.`,
     virtues: ["അചഞ്ചലമായ വിശ്വസ്തത", "സാമ്പത്തിക സുതാര്യതയും അച്ചടക്കവും", "നിയമപരിജ്ഞാനവും ധൈര്യവും", "നിസ്വാർത്ഥ കർമ്മയോഗം", "പിതൃസമാനമായ കരുതൽ"],
     virtuesEn: ["Unwavering Loyalty", "Financial Integrity & Transparency", "Legal Acumen & Courage", "Selfless Karmayoga", "Fatherly Care"],
-    videoUrl: "https://www.youtube.com/embed/GbaEqpAPRtA",
-    videoEmbedUrl: "https://www.youtube.com/embed/GbaEqpAPRtA",
-    videoTitle: "ദാദാ വിശ്വ കിശോർ (ഭാവ്ജീ) പ്രചോദനാത്മക ജീവിതകഥ",
-    videoTitleEn: "Vishwa Kishore Dada Inspiring Life Story",
+    videoUrl: "https://www.youtube.com/embed/AixwJyKlX7s",
+    videoEmbedUrl: "https://www.youtube.com/embed/AixwJyKlX7s",
+    videoTitle: "ദാദാ വിശ്വ കിശോർ - പ്രചോദനാത്മക ജീവിതകഥ",
+    videoTitleEn: "Vishwa Kishore Dada - Inspiring Life Story",
     quote: "സത്യസന്ധതയും സുതാര്യതയും ഉള്ളിടത്ത് ഈശ്വരീയ സംരക്ഷണം കവചമായി നിൽക്കും.",
     quoteEn: "Wherever there is absolute honesty and transparency, God's divine protection stands as an impenetrable shield.",
     galleryImages: [
       {
         src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_portrait.jpg",
-        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/DADA_NARAYAN_KRIPLANI_87b65ae09e.jpg",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/FullHD_Dada_Vishwakishore_c0adf347b4.jpg",
         title: "ദാദാ വിശ്വ കിശോർ (ഭാവ്ജീ)",
         titleEn: "Dada Vishwa Kishore (Bhauji)",
         caption: "ബ്രഹ്മാ ബാബയുടെ വലംകൈയായി നിന്ന് യജ്ഞത്തെ കാത്തുസൂക്ഷിച്ച മുഖ്യ ട്രസ്റ്റി",
         captionEn: "Brahma Baba's trusted right hand and the chief trustee and manager of the Yagya"
       },
       {
-        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_old_memories_1.webp",
-        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dada_Narayana_Old_Memories_1_d255bd5d23.webp",
-        title: "കറാച്ചിയിലെ ആദ്യകാല തപസ്യ",
-        titleEn: "Early Tapasya Days in Karachi",
-        caption: "ഓം മണ്ഡലിയുടെ ആദ്യ നാളുകളിൽ സാധകരുടെ സംരക്ഷണ കവചമായി മാറിയ ഭാവ്ജീ",
-        captionEn: "Standing as a protective shield for hundreds of young surrendered souls in Karachi"
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_featured.jpg",
+        fallback: "https://www.brahmakumaris.com/wp-content/uploads/2023/04/Dada-Vishwakishore-Featured-Images-1.jpg",
+        title: "ആത്മീയ സേവകൻ & സംരക്ഷകൻ",
+        titleEn: "Humble Godly Servant & Protective Administrator",
+        caption: "നിശ്ശബ്ദ കർമ്മയോഗത്തിലൂടെ യജ്ഞത്തിന്റെ സാമ്പത്തിക-ഭരണ അടിത്തറ ഭദ്രമാക്കിയ ഭാവ്ജീ",
+        captionEn: "Securing the financial and administrative pillars of the Yagya through silent karmayoga"
       },
       {
-        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_madhuban_trustee.webp",
-        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dada_Narayana_Old_Memories_2_ba5c435948.webp",
-        title: "മധുബന്റെ സാമ്പത്തിക-നിയമ അടിത്തറ",
-        titleEn: "Legal & Financial Pillar of Madhuban",
-        caption: "പാണ്ഡവ ഭവന്റെയും അനുബന്ധ ഭൂമികളുടെയും ക്രമീകരണങ്ങൾ സുതാര്യമായി നിർവ്വഹിച്ച കർമ്മയോഗി",
-        captionEn: "Managing property acquisition and legal safeguarding for Pandav Bhavan and Madhuban"
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_instrument.webp",
+        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_20_Dada_Vishwa_Kishore_68a4f0981c.webp",
+        title: "യജ്ഞത്തിന്റെ ആദിരത്നം",
+        titleEn: "Foundational Instrument of the Yagya",
+        caption: "ബാബയുടെ ആദ്യകാല ദിവ്യദർശനങ്ങൾ മുതൽ അവസാനം വരെ അചഞ്ചലമായി നിലകൊണ്ട പുണ്യാത്മാവ്",
+        captionEn: "Standing unshakeable from the earliest divine visions in 1936 to angelic completion"
       },
       {
-        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_old_memories_3.webp",
-        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Dada_Narayana_Old_Memories_3_7d79ddc153.webp",
-        title: "പിതൃസമാനമായ സ്നേഹവും കരുതലും",
-        titleEn: "Fatherly Love & Protection",
-        caption: "യജ്ഞത്തിലെ ഓരോ സഹോദരിമാർക്കും സാധകർക്കും താങ്ങും തണലുമായി നിന്ന വലിയ മനസ്സ്",
-        captionEn: "Providing tireless fatherly care, nourishment, and reassurance to the spiritual family"
-      },
-      {
-        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_godlywood.webp",
-        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_In_Godlywood_Narayan_Dada_7a4bc6cf41.webp",
-        title: "നിശ്ശബ്ദ കർമ്മയോഗത്തിന്റെ ഉദാത്ത മാതൃക",
-        titleEn: "Sublime Example of Silent Karmayoga",
-        caption: "പ്രശസ്തികളാഗ്രഹിക്കാതെ രാപ്പകലില്ലാതെ യജ്ഞ സേവനങ്ങളിൽ മുഴുകിയ പുണ്യാത്മാവ്",
-        captionEn: "Serving behind the scenes with pure selflessness, zero ego, and total dedication"
-      },
-      {
-        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_serene.webp",
-        fallback: "https://bkstrapiapp.blob.core.windows.net/strapi-uploads/assets/HD_Narayan_Dada_724d614417.webp",
-        title: "അചഞ്ചലമായ ഈശ്വര വിശ്വാസം",
-        titleEn: "Unshakeable Faith in God",
-        caption: "ഏത് പ്രതിസന്ധിയിലും തെല്ലും കുലുങ്ങാതെ സത്യസന്ധതയോടെ മുന്നേറിയ ആദിരത്നം",
-        captionEn: "Facing legal challenges and social storms with calm composure and immaculate integrity"
+        src: "assets/images/adi-ratna/gallery/dada_vishwa_kishore_tapasya.webp",
+        fallback: "https://www.brahmakumaris.com/wp-content/uploads/2023/04/Dada-Vishwakishore_.webp",
+        title: "നിസ്വാർത്ഥ സമർപ്പണം",
+        titleEn: "Selfless Surrender & Pure Integrity",
+        caption: "ഈശ്വരീയ സമ്പത്തിന്റെ ഓരോ കണികയും അതീവ പവിത്രതയോടെ പരിപാലിച്ച വിശ്വസ്തൻ",
+        captionEn: "Guarding every resource of the divine treasury with utmost sacred reverence and transparency"
       }
     ]
   },
@@ -1049,10 +1033,10 @@ Jagdish Bhai represented the Brahma Kumaris at the United Nations, global peace 
 Despite towering intellectual achievements and global acclaim, Jagdish Bhai radiated child-like simplicity, boundless humility, and unwavering loyalty to Shrimat. Working tirelessly day and night with ink and meditation, he left an everlasting treasure trove of spiritual literature before ascending to the angelic realm on 8 May 2001 at the age of 72.`,
     virtues: ["തത്ത്വചിന്താ പാണ്ഡിത്യം", "സാഹിത്യ നിർമ്മാണം", "യുക്തിസഹമായ വിശദീകരണം", "അചഞ്ചല സമർപ്പണം", "വിനയം"],
     virtuesEn: ["Philosophical Intellect", "Prolific Author", "Logical & Scientific Clarity", "Unflinching Dedication", "Childlike Humility"],
-    videoUrl: "https://www.youtube.com/embed/wxHqM97F4Zo",
-    videoEmbedUrl: "https://www.youtube.com/embed/wxHqM97F4Zo",
-    videoTitle: "റൂഹാനീ രാഹേം: ബി.കെ. ജഗദീഷ് ഭായ് ഡോക്യുമെന്ററി",
-    videoTitleEn: "Roohani Raahein: BK Jagdish Bhai Documentary",
+    videoUrl: "https://www.youtube.com/embed/bH5KblGNuXs",
+    videoEmbedUrl: "https://www.youtube.com/embed/bH5KblGNuXs",
+    videoTitle: "ബി.കെ. ജഗദീഷ് ഭായ് - പ്രചോദനാത്മക ജീവിതകഥ",
+    videoTitleEn: "Inspiring Story of BK Jagdish Bhaiji",
     quote: "ജ്ഞാനം ജീവിതത്തിൽ പ്രാവർത്തികമാകുമ്പോഴാണ് അതൊരു യഥാർത്ഥ ആത്മീയ ശക്തിയായി മാറുന്നത്.",
     quoteEn: "Spiritual knowledge becomes authentic soul power only when it is translated into living, daily practice.",
     galleryImages: [
