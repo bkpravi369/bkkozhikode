@@ -19,11 +19,11 @@
     "cloudinaryCloudName": "uo0dcjpe",
     "cloudinaryFolder": "Website event images",
     "cloudinaryUploadPreset": "qux0sq4f",
+    "adminPin": "Kozhikode@2026",
     "announcement": "🕊️ Join our Complimentary 7-Day Rajyoga Meditation Foundation Course — Morning & Evening Batches available at Ashokapuram Light Palace and all Kozhikode branches!",
     "heroTitle": "Awaken Your Inner Peace & Divine Radiance",
     "heroSubtitle": "Experience the timeless serenity of Rajyoga Meditation in Kozhikode. Connect with your true spiritual self and the Supreme Source of peace, love, and power in the divine light of Paramdham.",
     "aboutText": "Brahma Kumaris Kozhikode is a spiritual sanctuary dedicated to personal transformation and world peace through the study and practice of Rajyoga Meditation. Established as an international spiritual learning movement, our centers offer all educational courses and meditation sessions completely free of charge to people of all backgrounds, faiths, and walks of life.",
-    "adminPin": "Kozhikode@2026",
     "cloudinaryApiKey": "",
     "cloudinaryApiSecret": ""
   },
@@ -145,7 +145,8 @@
     "Speeches",
     "Rakshabandhan",
     "Exhibitions",
-    "ShivJayanthi"
+    "ShivJayanthi",
+    "പരമാത്മ ജ്യോതി സന്ദേശയാത്ര"
   ],
   "wings": [
     "Administrator",
