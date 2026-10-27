@@ -27,7 +27,8 @@ window.bkApp = window.bkApp || { toast: window.bkToast };
 // Permanently locked Cloudinary configuration for bkkozhikode
 const CLOUDINARY_CONFIG = Object.freeze({
   cloudName: 'uo0dcjpe',
-  uploadPreset: 'qux0sq4f',
+  uploadPreset: 'qud3sq4r',
+  fallbackUploadPreset: 'qux0sq4f',
   folder: 'Website event images'
 });
 
@@ -650,25 +651,29 @@ class AdminController {
     if (form) form.style.display = 'none';
   }
 
-  // Universal Cloudinary Upload Helper (supports all image types, targets 'Website event images' folder)
+  // Universal Direct Cloudinary Upload Helper (calls Cloudinary REST API directly, never routes through /api/...)
   async uploadImageToCloudinary(fileOrBase64, fileName = 'image.jpg', folder = 'Website event images') {
-    const cloudName = CLOUDINARY_CONFIG.cloudName;
+    const cloudName = CLOUDINARY_CONFIG.cloudName || 'uo0dcjpe';
     const settings = (window.bkStore && window.bkStore.getSettings()) || {};
-    const preset = settings.cloudinaryUploadPreset || CLOUDINARY_CONFIG.uploadPreset;
-    const targetFolder = settings.cloudinaryFolder || folder || CLOUDINARY_CONFIG.folder;
+    const configuredPreset = settings.cloudinaryUploadPreset || CLOUDINARY_CONFIG.uploadPreset || 'qud3sq4r';
+    const targetFolder = settings.cloudinaryFolder || folder || CLOUDINARY_CONFIG.folder || 'Website event images';
 
-    // 1. If it's a File object, try unsigned direct upload
-    if (fileOrBase64 instanceof File || fileOrBase64 instanceof Blob) {
+    // List of presets to try: configured preset first, then 'qud3sq4r', then fallback 'qux0sq4f'
+    const presetsToTry = Array.from(new Set([configuredPreset, 'qud3sq4r', 'qux0sq4f'].filter(Boolean)));
+
+    for (const preset of presetsToTry) {
       try {
         const formData = new FormData();
         formData.append('file', fileOrBase64);
         formData.append('upload_preset', preset);
-        formData.append('folder', targetFolder);
+        if (targetFolder) {
+          formData.append('folder', targetFolder);
+        }
 
         const cldRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
           method: 'POST',
           body: formData
-        }).catch(() => null);
+        });
 
         if (cldRes && cldRes.ok) {
           const cldData = await cldRes.json().catch(() => null);
@@ -677,52 +682,21 @@ class AdminController {
           }
         }
       } catch (err) {
-        console.warn('Direct Cloudinary upload error:', err);
+        console.warn(`Direct Cloudinary upload failed with preset "${preset}":`, err);
       }
     }
 
-    // 2. Convert to base64 if it's a File
-    let base64Data = fileOrBase64;
-    let actualName = fileName;
-    if (fileOrBase64 instanceof File) {
-      actualName = fileOrBase64.name;
-      base64Data = await new Promise((res) => {
-        const r = new FileReader();
-        r.onload = (e) => res(e.target.result);
-        r.onerror = () => res('');
-        r.readAsDataURL(fileOrBase64);
+    // Direct upload failed; if it's a File, convert to base64 data URL for local display fallback
+    if (fileOrBase64 instanceof File || fileOrBase64 instanceof Blob) {
+      return await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result || '');
+        reader.onerror = () => resolve('');
+        reader.readAsDataURL(fileOrBase64);
       });
     }
 
-    if (!base64Data) return '';
-
-    // 3. Post to /api/upload (server-side Cloudinary forwarder with local fallback)
-    try {
-      const resp = await fetch('/api/upload', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: actualName,
-          data: base64Data,
-          folder: targetFolder,
-          cloudName: cloudName,
-          uploadPreset: preset,
-          apiKey: settings.cloudinaryApiKey || '',
-          apiSecret: settings.cloudinaryApiSecret || ''
-        })
-      }).catch(() => null);
-
-      if (resp && resp.ok) {
-        const resJson = await resp.json().catch(() => null);
-        if (resJson && (resJson.secure_url || resJson.url)) {
-          return resJson.secure_url || resJson.url;
-        }
-      }
-    } catch (err) {
-      console.warn('/api/upload error:', err);
-    }
-
-    return base64Data;
+    return typeof fileOrBase64 === 'string' ? fileOrBase64 : '';
   }
 
   async handleFileUpload(e) {
@@ -2725,7 +2699,7 @@ class AdminController {
     if (announcement) announcement.value = s.announcement || '';
     if (cldCloud) cldCloud.value = s.cloudinaryCloudName || 'uo0dcjpe';
     if (cldFolder) cldFolder.value = s.cloudinaryFolder || 'Website event images';
-    if (cldPreset) cldPreset.value = s.cloudinaryUploadPreset || 'qux0sq4f';
+    if (cldPreset) cldPreset.value = s.cloudinaryUploadPreset || 'qud3sq4r';
     if (cldApiKey) cldApiKey.value = s.cloudinaryApiKey || '';
     if (cldApiSecret) cldApiSecret.value = s.cloudinaryApiSecret || '';
     if (ghToken) ghToken.value = sessionStorage.getItem('bk_github_token') || s.githubToken || '';
@@ -2800,46 +2774,72 @@ class AdminController {
 
   async testCloudinaryConnection() {
     const feedbackEl = document.getElementById('cldTestFeedback');
-    const cloudName = document.getElementById('setCldCloudName')?.value.trim() || 'uo0dcjpe';
-    const folder = document.getElementById('setCldFolder')?.value.trim() || 'Website event images';
-    const uploadPreset = document.getElementById('setCldPreset')?.value.trim() || 'qux0sq4f';
-    const apiKey = document.getElementById('setCldApiKey')?.value.trim() || '';
-    const apiSecret = document.getElementById('setCldApiSecret')?.value.trim() || '';
+    const cloudName = document.getElementById('setCldCloudName')?.value.trim() || CLOUDINARY_CONFIG.cloudName || 'uo0dcjpe';
+    const folder = document.getElementById('setCldFolder')?.value.trim() || CLOUDINARY_CONFIG.folder || 'Website event images';
+    const inputPreset = document.getElementById('setCldPreset')?.value.trim();
+    const primaryPreset = inputPreset || CLOUDINARY_CONFIG.uploadPreset || 'qud3sq4r';
 
     if (feedbackEl) {
       feedbackEl.style.display = 'block';
       feedbackEl.style.background = '#eff6ff';
       feedbackEl.style.color = '#1e40af';
       feedbackEl.style.border = '1px solid #93c5fd';
-      feedbackEl.innerHTML = '<span style="display:inline-block;animation:spin 1s linear infinite;">⏳</span> Testing connection to Cloudinary (' + cloudName + ')...';
+      feedbackEl.innerHTML = '<span style="display:inline-block;animation:spin 1s linear infinite;">⏳</span> Testing direct connection to Cloudinary (' + cloudName + ')...';
     }
 
-    try {
-      const res = await fetch('/api/cloudinary/test', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cloudName, folder, uploadPreset, apiKey, apiSecret })
-      });
-      const data = await res.json();
-      if (feedbackEl) {
-        if (data.success) {
-          feedbackEl.style.background = '#ecfdf5';
-          feedbackEl.style.color = '#065f46';
-          feedbackEl.style.border = '1px solid #6ee7b7';
-          feedbackEl.innerHTML = `<strong>✅ Success!</strong> ${data.message || 'Connected to Cloudinary!'}<br><small style="color:#047857;">Uploads to <code>${folder}</code> in account <strong>${cloudName}</strong> are working properly.</small>`;
-        } else {
-          feedbackEl.style.background = '#fff1f2';
-          feedbackEl.style.color = '#9f1239';
-          feedbackEl.style.border = '1px solid #fecdd3';
-          feedbackEl.innerHTML = `<strong>❌ Connection Failed:</strong> ${data.message || 'Error communicating with Cloudinary'}<br><small style="color:#be123c;">Tip: If using unsigned uploads, verify preset name in Cloudinary console or enter Cloudinary API Key & Secret above.</small>`;
+    // Direct browser upload of a tiny 1x1 transparent PNG pixel to Cloudinary REST API
+    const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    const presetsToTry = Array.from(new Set([primaryPreset, 'qud3sq4r', 'qux0sq4f'].filter(Boolean)));
+    let lastErrorMsg = '';
+    let successData = null;
+    let successfulPreset = primaryPreset;
+
+    for (const preset of presetsToTry) {
+      try {
+        const formData = new FormData();
+        formData.append('file', transparentPixel);
+        formData.append('upload_preset', preset);
+        if (folder) {
+          formData.append('folder', folder);
         }
+
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await res.json().catch(() => null);
+
+        if (res.ok && data && (data.secure_url || data.url)) {
+          successData = data;
+          successfulPreset = preset;
+          break;
+        } else {
+          lastErrorMsg = (data && data.error && data.error.message) || (data && data.message) || `HTTP ${res.status}`;
+          if (lastErrorMsg && !lastErrorMsg.toLowerCase().includes('preset not found')) {
+            break;
+          }
+        }
+      } catch (err) {
+        lastErrorMsg = err.message || 'Direct Cloudinary connection request failed';
       }
-    } catch (err) {
-      if (feedbackEl) {
+    }
+
+    if (feedbackEl) {
+      if (successData) {
+        feedbackEl.style.background = '#ecfdf5';
+        feedbackEl.style.color = '#065f46';
+        feedbackEl.style.border = '1px solid #6ee7b7';
+        feedbackEl.innerHTML = `<strong>✅ Success!</strong> Direct connection to Cloudinary verified!<br><small style="color:#047857;">Test 1x1 pixel uploaded to <code>${folder}</code> in account <strong>${cloudName}</strong> via preset <strong>${successfulPreset}</strong>.<br><a href="${successData.secure_url}" target="_blank" rel="noopener noreferrer" style="color:#065f46;font-weight:700;text-decoration:underline;">View uploaded test pixel (${successData.secure_url.split('/').pop()})</a></small>`;
+        const presetInput = document.getElementById('setCldPreset');
+        if (presetInput && (!presetInput.value || presetInput.value.trim() !== successfulPreset)) {
+          presetInput.value = successfulPreset;
+        }
+      } else {
         feedbackEl.style.background = '#fff1f2';
         feedbackEl.style.color = '#9f1239';
         feedbackEl.style.border = '1px solid #fecdd3';
-        feedbackEl.innerHTML = `<strong>❌ Request Failed:</strong> ${err.message}. Ensure local server is running.`;
+        feedbackEl.innerHTML = `<strong>❌ Connection Failed:</strong> ${lastErrorMsg || 'Error communicating with Cloudinary'}<br><small style="color:#be123c;">Direct call to <code>https://api.cloudinary.com/v1_1/${cloudName}/image/upload</code> failed. Please verify that the unsigned upload preset <strong>${primaryPreset}</strong> exists in your Cloudinary Dashboard under Settings &gt; Upload &gt; Upload Presets.</small>`;
       }
     }
   }

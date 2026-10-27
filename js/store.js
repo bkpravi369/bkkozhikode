@@ -48,7 +48,8 @@ const GITHUB_CLOUD_CONFIG = Object.freeze({
 // Permanently locked Cloudinary configuration for bkkozhikode
 const CLOUDINARY_LOCKED_CONFIG = Object.freeze({
   cloudName: 'uo0dcjpe',
-  uploadPreset: 'qux0sq4f',
+  uploadPreset: 'qud3sq4r',
+  fallbackUploadPreset: 'qux0sq4f',
   folder: 'Website event images'
 });
 
@@ -72,7 +73,7 @@ const DEFAULT_DATA = {
     timingsEvening: "5:00 PM – 8:00 PM",
     cloudinaryCloudName: "uo0dcjpe",
     cloudinaryFolder: "Website event images",
-    cloudinaryUploadPreset: "qux0sq4f",
+    cloudinaryUploadPreset: "qud3sq4r",
     announcement: "🕊️ Join our Complimentary 7-Day Rajyoga Meditation Foundation Course — Morning & Evening Batches available at Ashokapuram Light Palace and all Kozhikode branches!",
     heroTitle: "Awaken Your Inner Peace & Divine Radiance",
     heroSubtitle: "Experience the timeless serenity of Rajyoga Meditation in Kozhikode. Connect with your true spiritual self and the Supreme Source of peace, love, and power in the divine light of Paramdham.",
@@ -1172,23 +1173,25 @@ class SiteStore {
   async initServerSync() {
     if (typeof fetch === 'undefined') return;
 
-    // Single authoritative cloud loader: Fetch live file directly from GitHub Contents API
-    const ghToken = GITHUB_CLOUD_CONFIG.token;
-    const primaryUrl = `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.filePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${Date.now()}`;
-    const fallbackUrl = `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.fallbackFilePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${Date.now()}`;
-
-    const headers = {
-      'Accept': 'application/vnd.github.v3.raw',
-      ...(ghToken ? { 'Authorization': `token ${ghToken}` } : {}),
-      'User-Agent': 'BK-Kozhikode-CMS',
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Pragma': 'no-cache'
-    };
+    // Direct live data fetch from GitHub raw content with immediate fallback to /siteData.json
+    const timestamp = Date.now();
+    const fetchTargets = [
+      `https://raw.githubusercontent.com/bkpravi369/bkkozhikode/main/public/siteData.json?t=${timestamp}`,
+      `/siteData.json?t=${timestamp}`,
+      `/public/siteData.json?t=${timestamp}`,
+      `https://raw.githubusercontent.com/bkpravi369/bkkozhikode/main/siteData.json?t=${timestamp}`
+    ];
 
     let serverData = null;
-    for (const url of [primaryUrl, fallbackUrl]) {
+    for (const url of fetchTargets) {
       try {
-        const res = await fetch(url, { cache: 'no-store', headers });
+        const res = await fetch(url, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
+        });
         if (res && res.ok) {
           const json = await res.json().catch(() => null);
           if (json && typeof json === 'object' && Object.keys(json).length > 0) {
@@ -1197,7 +1200,35 @@ class SiteStore {
           }
         }
       } catch (e) {
-        // try fallback URL
+        // try fallback target
+      }
+    }
+
+    // Fallback: GitHub Contents API with auth token if public raw targets were not reached
+    if (!serverData) {
+      const ghToken = GITHUB_CLOUD_CONFIG.token;
+      const apiUrls = [
+        `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.filePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${timestamp}`,
+        `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.fallbackFilePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${timestamp}`
+      ];
+      const apiHeaders = {
+        'Accept': 'application/vnd.github.v3.raw',
+        ...(ghToken ? { 'Authorization': `token ${ghToken}` } : {}),
+        'User-Agent': 'BK-Kozhikode-CMS',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache'
+      };
+      for (const url of apiUrls) {
+        try {
+          const res = await fetch(url, { cache: 'no-store', headers: apiHeaders });
+          if (res && res.ok) {
+            const json = await res.json().catch(() => null);
+            if (json && typeof json === 'object' && Object.keys(json).length > 0) {
+              serverData = json;
+              break;
+            }
+          }
+        } catch (e) {}
       }
     }
 

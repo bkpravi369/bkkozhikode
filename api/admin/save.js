@@ -141,7 +141,7 @@ module.exports = async function handler(req, res) {
   // Preserve locked Cloudinary config
   if (!merged.settings) merged.settings = {};
   merged.settings.cloudinaryCloudName = merged.settings.cloudinaryCloudName || 'uo0dcjpe';
-  merged.settings.cloudinaryUploadPreset = merged.settings.cloudinaryUploadPreset || 'qux0sq4f';
+  merged.settings.cloudinaryUploadPreset = merged.settings.cloudinaryUploadPreset || 'qud3sq4r';
   merged.settings.cloudinaryFolder = merged.settings.cloudinaryFolder || 'Website event images';
 
   const jsonString = JSON.stringify(merged, null, 2);

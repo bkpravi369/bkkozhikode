@@ -47,7 +47,7 @@ def load_dotenv():
 load_dotenv()
 
 CLOUDINARY_LOCKED_CLOUD = os.environ.get('CLOUDINARY_CLOUD_NAME', 'uo0dcjpe')
-CLOUDINARY_LOCKED_PRESET = os.environ.get('CLOUDINARY_UPLOAD_PRESET', 'qux0sq4f')
+CLOUDINARY_LOCKED_PRESET = os.environ.get('CLOUDINARY_UPLOAD_PRESET', 'qud3sq4r')
 CLOUDINARY_LOCKED_FOLDER = os.environ.get('CLOUDINARY_FOLDER', 'Website event images')
 
 # In-memory cache for YouTube responses
@@ -1004,7 +1004,7 @@ class BKRequestHandler(http.server.SimpleHTTPRequestHandler):
                     presets_to_try = []
                     if c_preset:
                         presets_to_try.append(c_preset)
-                    presets_to_try.extend(['qux0sq4f', 'website_event_images', 'bk_upload', 'ml_default', 'unsigned', 'uo0dcjpe', 'website'])
+                    presets_to_try.extend(['qud3sq4r', 'qux0sq4f', 'website_event_images', 'bk_upload', 'ml_default', 'unsigned', 'uo0dcjpe', 'website'])
                     
                     for preset in presets_to_try:
                         try:

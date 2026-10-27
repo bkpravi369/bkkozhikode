@@ -44,7 +44,7 @@ export default async function handler(req, res) {
     const fileName = body.name || body.fileName || 'image.jpg';
     const folder = process.env.CLOUDINARY_FOLDER || body.folder || 'Website event images';
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME || body.cloudName || 'uo0dcjpe';
-    const preset = process.env.CLOUDINARY_UPLOAD_PRESET || body.uploadPreset || 'qux0sq4f';
+    const preset = process.env.CLOUDINARY_UPLOAD_PRESET || body.uploadPreset || 'qud3sq4r';
 
     const apiKey = body.apiKey || process.env.CLOUDINARY_API_KEY || '';
     const apiSecret = body.apiSecret || process.env.CLOUDINARY_API_SECRET || '';
@@ -88,7 +88,7 @@ export default async function handler(req, res) {
     }
 
     // 2. Try unsigned upload if not yet successful
-    const presetsToTry = ['qux0sq4f', body.uploadPreset, preset, 'website_event_images', 'uo0dcjpe', 'ml_default', 'unsigned', 'website'].filter(Boolean);
+    const presetsToTry = ['qud3sq4r', 'qux0sq4f', body.uploadPreset, preset, 'website_event_images', 'uo0dcjpe', 'ml_default', 'unsigned', 'website'].filter(Boolean);
 
     for (const p of presetsToTry) {
       if (cldUrl) break;
