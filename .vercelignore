@@ -3,3 +3,4 @@ scratch
 *.tar.gz
 .env*
 verify.js
+public
