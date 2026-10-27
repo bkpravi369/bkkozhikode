@@ -1,0 +1,5 @@
+scratch
+*.zip
+*.tar.gz
+.env*
+verify.js
