@@ -254,7 +254,7 @@
       "slug": "rajyoga-benefits",
       "subtitle": "How meditation rewires the brain, eliminates stress, and builds the 8 divine spiritual powers",
       "bannerImage": "assets/images/paramdham_sunset.jpg",
-      "contentHtml": "<div class=\"custom-article-body\">\n          <h3>The Ancient Science of Soul Healing</h3>\n          <p>Rajyoga is the union of the soul (the conscious energy of thought and feeling) with the Supreme Soul (the eternal Ocean of Peace, Love, and Purity). Unlike physical exercises, Rajyoga is practiced with gentle, open-eyed awareness, enabling practitioners to maintain divine peace during daily work, family life, and challenges.</p>\n          \n          <div class=\"powers-grid\">\n            <div class=\"power-badge\"><span>1</span> <strong>Power to Withdraw</strong> - Detach from outer chaos instantly</div>\n            <div class=\"power-badge\"><span>2</span> <strong>Power to Pack Up</strong> - Discard wasteful thoughts and worries</div>\n            <div class=\"power-badge\"><span>3</span> <strong>Power to Tolerate</strong> - Remain cool like an ocean in all circumstances</div>\n            <div class=\"power-badge\"><span>4</span> <strong>Power to Accommodate</strong> - Accept all souls with love and harmony</div>\n            <div class=\"power-badge\"><span>5</span> <strong>Power of Discrimination</strong> - Clearly discern truth from falsehood</div>\n            <div class=\"power-badge\"><span>6</span> <strong>Power of Judgment</strong> - Make quick, righteous and peaceful choices</div>\n            <div class=\"power-badge\"><span>7</span> <strong>Power to Face</strong> - Overcome inner fears and tests with courage</div>\n            <div class=\"power-badge\"><span>8</span> <strong>Power to Cooperate</strong> - Harmonize united energy for global benefit</div>\n          </div>\n        </div>",
+      "contentHtml": "\n        <div class=\"custom-article-body\">\n          <h3>The Ancient Science of Soul Healing</h3>\n          <p>Rajyoga is the union of the soul (the conscious energy of thought and feeling) with the Supreme Soul (the eternal Ocean of Peace, Love, and Purity). Unlike physical exercises, Rajyoga is practiced with gentle, open-eyed awareness, enabling practitioners to maintain divine peace during daily work, family life, and challenges.</p>\n          \n          <div class=\"powers-grid\">\n            <div class=\"power-badge\"><span>1</span> <strong>Power to Withdraw</strong> - Detach from outer chaos instantly</div>\n            <div class=\"power-badge\"><span>2</span> <strong>Power to Pack Up</strong> - Discard wasteful thoughts and worries</div>\n            <div class=\"power-badge\"><span>3</span> <strong>Power to Tolerate</strong> - Remain cool like an ocean in all circumstances</div>\n            <div class=\"power-badge\"><span>4</span> <strong>Power to Accommodate</strong> - Accept all souls with love and harmony</div>\n            <div class=\"power-badge\"><span>5</span> <strong>Power of Discrimination</strong> - Clearly discern truth from falsehood</div>\n            <div class=\"power-badge\"><span>6</span> <strong>Power of Judgment</strong> - Make quick, righteous and peaceful choices</div>\n            <div class=\"power-badge\"><span>7</span> <strong>Power to Face</strong> - Overcome inner fears and tests with courage</div>\n            <div class=\"power-badge\"><span>8</span> <strong>Power to Cooperate</strong> - Harmonize united energy for global benefit</div>\n          </div>\n        </div>\n      ",
       "createdAt": "2026-08-18"
     }
   ],
@@ -1133,25 +1133,14 @@
       "id": "evt_1793076787515_hj87",
       "title": "test",
       "titleMl": "test",
-      "category": "Celebrations",
-      "wing": "Design & Innovation",
-      "time": "10:00 AM - 1:00 PM",
-      "order": 1,
       "date": "2026-10-31",
       "year": "2026",
       "centre": "സുഖധാമം, ബാലുശ്ശേരി",
-      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "category": "Celebrations",
+      "wing": "Design & Innovation",
       "isNavathi": true,
-      "description": "inauguration ceremony of navathi year programs",
-      "shortDesc": "inauguration ceremony of navathi year programs",
-      "fullDesc": "inauguration ceremony of navathi year programs",
       "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
       "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
-      ],
-      "additionalImages": [
         "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
         "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
       ],
@@ -1162,13 +1151,21 @@
         }
       ],
       "youtubeUrl": "https://youtu.be/XMvso9kg3_I",
+      "description": "inauguration ceremony of navathi year programs",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
+      ],
       "videoUrl": "https://youtu.be/XMvso9kg3_I",
+      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "shortDesc": "inauguration ceremony of navathi year programs",
+      "fullDesc": "inauguration ceremony of navathi year programs",
+      "time": "10:00 AM - 1:00 PM",
+      "schedule": [],
       "isFeatured": true,
       "status": "published",
-      "youtubeVideoId": "XMvso9kg3_I",
-      "registrationUrl": "",
-      "externalUrl": "",
-      "schedule": [],
+      "order": 1,
       "createdAt": "2026-10-27",
       "updatedAt": "2026-10-27T04:53:07.515Z"
     }
