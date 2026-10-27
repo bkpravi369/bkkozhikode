@@ -1,45 +1,11 @@
 {
-  "cleanUrls": true,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
   "rewrites": [
-    { "source": "/rajayoga-course", "destination": "/" },
-    { "source": "/rajyoga-course", "destination": "/" },
-    { "source": "/course", "destination": "/" },
-    { "source": "/murali", "destination": "/" },
-    { "source": "/murli", "destination": "/" },
-    { "source": "/navathi", "destination": "/" },
-    { "source": "/events", "destination": "/" },
-    { "source": "/adi-ratna", "destination": "/" },
-    { "source": "/adi-ratna/:slug*", "destination": "/" },
-    { "source": "/bk-admin", "destination": "/admin" },
-    { "source": "/bk-admin/:path*", "destination": "/admin/:path*" },
-    { "source": "/admin", "destination": "/admin" }
-  ],
-  "headers": [
     {
-      "source": "/(siteData\\.json|data/.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-        },
-        {
-          "key": "Pragma",
-          "value": "no-cache"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
