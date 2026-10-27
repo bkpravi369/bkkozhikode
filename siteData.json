@@ -254,7 +254,7 @@
       "slug": "rajyoga-benefits",
       "subtitle": "How meditation rewires the brain, eliminates stress, and builds the 8 divine spiritual powers",
       "bannerImage": "assets/images/paramdham_sunset.jpg",
-      "contentHtml": "<div class=\"custom-article-body\">\n          <h3>The Ancient Science of Soul Healing</h3>\n          <p>Rajyoga is the union of the soul (the conscious energy of thought and feeling) with the Supreme Soul (the eternal Ocean of Peace, Love, and Purity). Unlike physical exercises, Rajyoga is practiced with gentle, open-eyed awareness, enabling practitioners to maintain divine peace during daily work, family life, and challenges.</p>\n          \n          <div class=\"powers-grid\">\n            <div class=\"power-badge\"><span>1</span> <strong>Power to Withdraw</strong> - Detach from outer chaos instantly</div>\n            <div class=\"power-badge\"><span>2</span> <strong>Power to Pack Up</strong> - Discard wasteful thoughts and worries</div>\n            <div class=\"power-badge\"><span>3</span> <strong>Power to Tolerate</strong> - Remain cool like an ocean in all circumstances</div>\n            <div class=\"power-badge\"><span>4</span> <strong>Power to Accommodate</strong> - Accept all souls with love and harmony</div>\n            <div class=\"power-badge\"><span>5</span> <strong>Power of Discrimination</strong> - Clearly discern truth from falsehood</div>\n            <div class=\"power-badge\"><span>6</span> <strong>Power of Judgment</strong> - Make quick, righteous and peaceful choices</div>\n            <div class=\"power-badge\"><span>7</span> <strong>Power to Face</strong> - Overcome inner fears and tests with courage</div>\n            <div class=\"power-badge\"><span>8</span> <strong>Power to Cooperate</strong> - Harmonize united energy for global benefit</div>\n          </div>\n        </div>",
+      "contentHtml": "\n        <div class=\"custom-article-body\">\n          <h3>The Ancient Science of Soul Healing</h3>\n          <p>Rajyoga is the union of the soul (the conscious energy of thought and feeling) with the Supreme Soul (the eternal Ocean of Peace, Love, and Purity). Unlike physical exercises, Rajyoga is practiced with gentle, open-eyed awareness, enabling practitioners to maintain divine peace during daily work, family life, and challenges.</p>\n          \n          <div class=\"powers-grid\">\n            <div class=\"power-badge\"><span>1</span> <strong>Power to Withdraw</strong> - Detach from outer chaos instantly</div>\n            <div class=\"power-badge\"><span>2</span> <strong>Power to Pack Up</strong> - Discard wasteful thoughts and worries</div>\n            <div class=\"power-badge\"><span>3</span> <strong>Power to Tolerate</strong> - Remain cool like an ocean in all circumstances</div>\n            <div class=\"power-badge\"><span>4</span> <strong>Power to Accommodate</strong> - Accept all souls with love and harmony</div>\n            <div class=\"power-badge\"><span>5</span> <strong>Power of Discrimination</strong> - Clearly discern truth from falsehood</div>\n            <div class=\"power-badge\"><span>6</span> <strong>Power of Judgment</strong> - Make quick, righteous and peaceful choices</div>\n            <div class=\"power-badge\"><span>7</span> <strong>Power to Face</strong> - Overcome inner fears and tests with courage</div>\n            <div class=\"power-badge\"><span>8</span> <strong>Power to Cooperate</strong> - Harmonize united energy for global benefit</div>\n          </div>\n        </div>\n      ",
       "createdAt": "2026-08-18"
     }
   ],
@@ -1128,7 +1128,41 @@
       "cloudinaryTag": "festival_images"
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "title": "Special Maha Shivratri Peace Mahotsav 2026",
+      "date": "2026-03-08",
+      "time": "6:00 PM",
+      "venue": "Light Palace, Ashokapuram",
+      "category": "Festivals",
+      "description": "Grand spiritual gathering",
+      "status": "published",
+      "titleMl": "",
+      "year": "2026",
+      "centre": "Kozhikode Main",
+      "location": "Kozhikode Main",
+      "wing": "",
+      "isNavathi": false,
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "image": "assets/images/light_palace_center.jpg",
+      "photos": [],
+      "additionalImages": [],
+      "videos": [],
+      "youtubeUrl": "",
+      "videoUrl": "",
+      "youtubeVideoId": "",
+      "shortDesc": "Grand spiritual gathering",
+      "fullDesc": "Grand spiritual gathering",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "isFeatured": false,
+      "order": 1,
+      "id": "evt_1793073192050_867k",
+      "createdAt": "2026-10-27",
+      "updatedAt": "2026-10-27T03:53:12.050Z"
+    }
+  ],
   "registrations": [
     {
       "id": "reg_101",
