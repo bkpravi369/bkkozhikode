@@ -20,6 +20,8 @@
 })();
 
 const ADMIN_SESSION_KEY = 'bk_kozhikode_admin_session';
+const ACTIVE_STORAGE_KEY = 'bk_active_site_data_v3';
+const ADMIN_LOCK_KEY = 'bk_last_admin_write_ts';
 
 // Direct GitHub Cloud Storage Configuration (Real Cloud Database for all devices)
 const _DEFAULT_GH_TOKEN = [103, 104, 112, 95, 108, 78, 78, 67, 55, 103, 57, 106, 100, 103, 119, 105, 52, 87, 121, 113, 83, 122, 69, 99, 83, 75, 99, 73, 98, 54, 117, 54, 99, 56, 49, 116, 50, 80, 119, 88].map(c => String.fromCharCode(c)).join('');
@@ -1100,10 +1102,39 @@ window.bkUtils = {
 // State Store singleton
 class SiteStore {
   constructor() {
-    // Pure in-memory state initialized directly from defaults; zero dependence on localStorage
-    this.data = this.loadData(DEFAULT_DATA);
+    this.lastAdminWriteTimestamp = 0;
+    if (typeof localStorage !== 'undefined') {
+      try {
+        const storedTs = localStorage.getItem(ADMIN_LOCK_KEY);
+        if (storedTs) this.lastAdminWriteTimestamp = parseInt(storedTs, 10) || 0;
+      } catch (e) {}
+    }
+
+    // Try loading initial state from active local storage cache if available
+    let initialSource = null;
+    if (typeof localStorage !== 'undefined') {
+      try {
+        const cachedStr = localStorage.getItem(ACTIVE_STORAGE_KEY);
+        if (cachedStr) {
+          const cachedJson = JSON.parse(cachedStr);
+          if (cachedJson && typeof cachedJson === 'object' && Object.keys(cachedJson).length > 0) {
+            initialSource = cachedJson;
+          }
+        }
+      } catch (e) {}
+    }
+
+    this.data = this.loadData(initialSource || DEFAULT_DATA);
     this.initCrossTabSync();
     this.initServerSync();
+  }
+
+  isWithinAdminLock() {
+    const lastWrite = Math.max(
+      this.lastAdminWriteTimestamp || 0,
+      parseInt((typeof localStorage !== 'undefined' && localStorage.getItem(ADMIN_LOCK_KEY)) || '0', 10)
+    );
+    return (Date.now() - lastWrite) < 120000; // 2 minutes lock
   }
 
   initCrossTabSync() {
@@ -1112,7 +1143,24 @@ class SiteStore {
         this.syncChannel = new BroadcastChannel('bk_cms_realtime_sync');
         this.syncChannel.onmessage = (event) => {
           if (event.data && event.data.type === 'bk_store_change') {
-            this.initServerSync();
+            if (event.data.data) {
+              // Direct state adoption from saving tab without extra network call
+              this.data = this.loadData(event.data.data);
+              if (event.data.timestamp) {
+                this.lastAdminWriteTimestamp = event.data.timestamp;
+              }
+              if (typeof localStorage !== 'undefined') {
+                try {
+                  localStorage.setItem(ADMIN_LOCK_KEY, String(this.lastAdminWriteTimestamp));
+                  localStorage.setItem(ACTIVE_STORAGE_KEY, JSON.stringify(this.data));
+                } catch (e) {}
+              }
+              if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+                window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
+              }
+            } else if (!this.isWithinAdminLock()) {
+              this.initServerSync();
+            }
           }
         };
       } catch (e) {
@@ -1124,68 +1172,88 @@ class SiteStore {
   async initServerSync() {
     if (typeof fetch === 'undefined') return;
 
-    // Direct GitHub Cloud Storage: Read live data directly from GitHub Contents API
-    const endpoints = [
-      {
-        url: `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.filePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${Date.now()}`,
-        headers: {
-          'Accept': 'application/vnd.github.v3.raw',
-          'Authorization': `token ${GITHUB_CLOUD_CONFIG.token}`,
-          'User-Agent': 'BK-Kozhikode-CMS'
-        }
-      },
-      {
-        url: `https://raw.githubusercontent.com/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/${GITHUB_CLOUD_CONFIG.branch}/${GITHUB_CLOUD_CONFIG.filePath}?t=${Date.now()}`,
-        headers: { 'Accept': 'application/json' }
-      },
-      {
-        url: `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.fallbackFilePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${Date.now()}`,
-        headers: {
-          'Accept': 'application/vnd.github.v3.raw',
-          'Authorization': `token ${GITHUB_CLOUD_CONFIG.token}`,
-          'User-Agent': 'BK-Kozhikode-CMS'
-        }
-      },
-      {
-        url: `/api/site-data?t=${Date.now()}`,
-        headers: { 'Accept': 'application/json' }
-      },
-      {
-        url: `/siteData.json?t=${Date.now()}`,
-        headers: { 'Accept': 'application/json' }
-      }
-    ];
+    // Single authoritative cloud loader: Fetch live file directly from GitHub Contents API
+    const ghToken = GITHUB_CLOUD_CONFIG.token;
+    const primaryUrl = `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.filePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${Date.now()}`;
+    const fallbackUrl = `https://api.github.com/repos/${GITHUB_CLOUD_CONFIG.owner}/${GITHUB_CLOUD_CONFIG.repo}/contents/${GITHUB_CLOUD_CONFIG.fallbackFilePath}?ref=${GITHUB_CLOUD_CONFIG.branch}&t=${Date.now()}`;
 
-    for (const ep of endpoints) {
+    const headers = {
+      'Accept': 'application/vnd.github.v3.raw',
+      ...(ghToken ? { 'Authorization': `token ${ghToken}` } : {}),
+      'User-Agent': 'BK-Kozhikode-CMS',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache'
+    };
+
+    let serverData = null;
+    for (const url of [primaryUrl, fallbackUrl]) {
       try {
-        const res = await fetch(ep.url, {
-          cache: 'no-store',
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            ...(ep.headers || {})
-          }
-        }).catch(() => null);
-
+        const res = await fetch(url, { cache: 'no-store', headers });
         if (res && res.ok) {
-          const serverData = await res.json().catch(() => null);
-          if (serverData && typeof serverData === 'object' && Object.keys(serverData).length > 0) {
-            this.data = this.loadData(serverData);
-            if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
-              window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
-            }
-            return;
+          const json = await res.json().catch(() => null);
+          if (json && typeof json === 'object' && Object.keys(json).length > 0) {
+            serverData = json;
+            break;
           }
         }
       } catch (e) {
-        // try next endpoint
+        // try fallback URL
+      }
+    }
+
+    if (serverData) {
+      const withinLock = this.isWithinAdminLock();
+      // Anti-race condition: If within admin write lock, NEVER let empty/stale events overwrite in-memory state
+      if (withinLock && this.data && Array.isArray(this.data.events) && this.data.events.length > 0) {
+        if (!Array.isArray(serverData.events) || serverData.events.length < this.data.events.length) {
+          serverData.events = [...this.data.events];
+        }
+      }
+
+      // Universal protection: NEVER overwrite a populated events list with an empty array
+      if (this.data && Array.isArray(this.data.events) && this.data.events.length > 0) {
+        if (!Array.isArray(serverData.events) || serverData.events.length === 0) {
+          serverData.events = [...this.data.events];
+        }
+      }
+
+      this.data = this.loadData(serverData);
+
+      // Cache active data locally
+      if (typeof localStorage !== 'undefined') {
+        try {
+          localStorage.setItem(ACTIVE_STORAGE_KEY, JSON.stringify(this.data));
+        } catch (e) {}
+      }
+
+      if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+        window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
       }
     }
   }
 
   loadData(customSource = null) {
     try {
-      const parsed = customSource || DEFAULT_DATA;
+      let parsed = customSource;
+      if (!parsed) {
+        if (typeof localStorage !== 'undefined') {
+          try {
+            const cachedStr = localStorage.getItem(ACTIVE_STORAGE_KEY);
+            if (cachedStr) {
+              const cachedJson = JSON.parse(cachedStr);
+              if (cachedJson && typeof cachedJson === 'object' && Object.keys(cachedJson).length > 0) {
+                parsed = cachedJson;
+              }
+            }
+          } catch (e) {}
+        }
+      }
+      if (!parsed && this.data && typeof this.data === 'object' && Object.keys(this.data).length > 0) {
+        parsed = this.data;
+      }
+      if (!parsed) {
+        parsed = DEFAULT_DATA;
+      }
       if (parsed) {
         // Ensure course modules merge with new schema fields seamlessly
         let mergedCourseModules = DEFAULT_DATA.courseModules;
@@ -1288,17 +1356,7 @@ class SiteStore {
         ]);
         const isLegacyDummyEvent = (ev) => {
           if (!ev) return true;
-          if (LEGACY_DUMMY_IDS.has(ev.id)) return true;
-          const t = (ev.title || '').toLowerCase();
-          if (t.includes('90th navathi celebration') || 
-              t.includes('harmony & stress-free') || 
-              t.includes('women empowerment & values') ||
-              t.includes('de-addiction & mind wellness') ||
-              t.includes('raja yoga deep meditation shivir') ||
-              t.includes('maha shivratri mahotsav')) {
-            return true;
-          }
-          return false;
+          return LEGACY_DUMMY_IDS.has(ev.id);
         };
 
         // Ensure events merge and migrate to new rich schema - NEVER fallback to dummy items
@@ -1346,6 +1404,11 @@ class SiteStore {
               updatedAt: ev.updatedAt || ''
             };
           });
+        }
+
+        // Anti-wipe: If parsed.events was empty/missing, but this.data already has events, never wipe them out!
+        if (mergedEvents.length === 0 && this.data && Array.isArray(this.data.events) && this.data.events.length > 0) {
+          mergedEvents = [...this.data.events];
         }
 
         // Ensure key centres are present
@@ -1465,12 +1528,24 @@ class SiteStore {
   }
 
   saveData() {
-    // Zero localStorage: broadcast in-memory change across open tabs
+    this.lastAdminWriteTimestamp = Date.now();
+    if (typeof localStorage !== 'undefined') {
+      try {
+        localStorage.setItem(ADMIN_LOCK_KEY, String(this.lastAdminWriteTimestamp));
+        localStorage.setItem(ACTIVE_STORAGE_KEY, JSON.stringify(this.data));
+      } catch (e) {}
+    }
+
+    // Broadcast in-memory change with exact data payload across open tabs
     if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
       window.dispatchEvent(new CustomEvent('bk_store_updated', { detail: this.data }));
     }
     if (this.syncChannel) {
-      this.syncChannel.postMessage({ type: 'bk_store_change', timestamp: Date.now() });
+      this.syncChannel.postMessage({
+        type: 'bk_store_change',
+        timestamp: this.lastAdminWriteTimestamp,
+        data: this.data
+      });
     }
 
     // Save directly to GitHub Cloud Storage in real-time
@@ -1482,6 +1557,15 @@ class SiteStore {
     const payload = customPayload || this.data;
     if (!payload || typeof payload !== 'object') {
       return { success: false, error: 'No data payload to save' };
+    }
+
+    // Immediately lock admin write state
+    this.lastAdminWriteTimestamp = Date.now();
+    if (typeof localStorage !== 'undefined') {
+      try {
+        localStorage.setItem(ADMIN_LOCK_KEY, String(this.lastAdminWriteTimestamp));
+        localStorage.setItem(ACTIVE_STORAGE_KEY, JSON.stringify(payload));
+      } catch (e) {}
     }
 
     // Prepare sanitized, clean JSON payload
@@ -1525,10 +1609,10 @@ class SiteStore {
           if (getJson && getJson.sha) currentSha = getJson.sha;
         }
 
-        // 2. Put file to GitHub Contents API
+        // 2. Put file to GitHub Contents API with [skip ci]
         const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
         const putBody = {
-          message: `chore(data): live update ${filePath} via Admin Panel [skip ci]`,
+          message: `chore(data): auto-sync admin update to siteData.json [skip ci]`,
           content: b64Content,
           branch: branch
         };

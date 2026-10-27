@@ -51,7 +51,9 @@ class AdminController {
           const syncChannel = new BroadcastChannel('bk_cms_realtime_sync');
           syncChannel.onmessage = (event) => {
             if (event.data && event.data.type === 'bk_store_change' && window.bkStore) {
-              window.bkStore.data = window.bkStore.loadData();
+              if (event.data.data) {
+                window.bkStore.data = window.bkStore.loadData(event.data.data);
+              }
               this.refreshAllPanes();
             }
           };

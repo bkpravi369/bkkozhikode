@@ -132,7 +132,7 @@ module.exports = async function handler(req, res) {
 
   if (ghToken) {
     try {
-      const commitMsg = `chore(data): publish admin updates to public/siteData.json [${new Date().toISOString()}]`;
+      const commitMsg = `chore(data): publish admin updates to public/siteData.json [skip ci] [${new Date().toISOString()}]`;
       await commitFileToGitHub(ghToken, repoOwner, repoName, 'public/siteData.json', jsonString, commitMsg);
       try {
         await commitFileToGitHub(ghToken, repoOwner, repoName, 'siteData.json', jsonString, commitMsg);

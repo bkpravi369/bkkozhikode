@@ -93,18 +93,27 @@ class AppController {
         const syncChannel = new BroadcastChannel('bk_cms_realtime_sync');
         syncChannel.onmessage = (event) => {
           if (event.data && event.data.type === 'bk_store_change' && window.bkStore) {
-            window.bkStore.data = window.bkStore.loadData();
+            if (event.data.data) {
+              window.bkStore.data = window.bkStore.loadData(event.data.data);
+            }
             this.refreshAllLiveViews();
           }
         };
       } catch (e) {}
     }
 
-    // Listen for storage events across all tabs/windows (fallback cross-tab sync)
+    // Listen for active storage events across all tabs/windows (fallback cross-tab sync)
     window.addEventListener('storage', (e) => {
-      if ((e.key === 'bk_kozhikode_site_data_v2' || e.key === 'bk_kozhikode_cms_store') && window.bkStore) {
-        window.bkStore.data = window.bkStore.loadData();
-        this.refreshAllLiveViews();
+      if ((e.key === 'bk_active_site_data_v3' || e.key === 'bk_kozhikode_site_data_v2') && window.bkStore) {
+        try {
+          if (e.newValue) {
+            const parsed = JSON.parse(e.newValue);
+            if (parsed && typeof parsed === 'object') {
+              window.bkStore.data = window.bkStore.loadData(parsed);
+              this.refreshAllLiveViews();
+            }
+          }
+        } catch (err) {}
       }
     });
 
