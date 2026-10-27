@@ -23,12 +23,10 @@
     "heroTitle": "Awaken Your Inner Peace & Divine Radiance",
     "heroSubtitle": "Experience the timeless serenity of Rajyoga Meditation in Kozhikode. Connect with your true spiritual self and the Supreme Source of peace, love, and power in the divine light of Paramdham.",
     "aboutText": "Brahma Kumaris Kozhikode is a spiritual sanctuary dedicated to personal transformation and world peace through the study and practice of Rajyoga Meditation. Established as an international spiritual learning movement, our centers offer all educational courses and meditation sessions completely free of charge to people of all backgrounds, faiths, and walks of life.",
-    "updatedAtTest": "2026-10-27T01:29:54.945Z",
-    "unicodeTest": "ഓം ശാന്തി - കോഴിക്കോട് ബ്രഹ്മാകുമാരീസ് 🕊️",
     "adminPin": "Kozhikode@2026"
   },
   "dailyThought": {
-    "date": "2026-10-22",
+    "date": "2026-10-27",
     "title": "Soul Consciousness & Unconditional Peace",
     "titleMl": "ആത്മീയ ശാന്തിയുടെ അനുഭവം",
     "quote": "When you remember you are a peaceful point of spiritual light, external storms cannot shake your inner stillness. You become a lighthouse of serenity for everyone around you.",
@@ -142,8 +140,7 @@
     "Festivals",
     "Youth Program",
     "Social Service",
-    "Celebrations",
-    "Shivjayanti"
+    "Celebrations"
   ],
   "wings": [
     "Administrator",
@@ -257,7 +254,7 @@
       "slug": "rajyoga-benefits",
       "subtitle": "How meditation rewires the brain, eliminates stress, and builds the 8 divine spiritual powers",
       "bannerImage": "assets/images/paramdham_sunset.jpg",
-      "contentHtml": "\n        <div class=\"custom-article-body\">\n          <h3>The Ancient Science of Soul Healing</h3>\n          <p>Rajyoga is the union of the soul (the conscious energy of thought and feeling) with the Supreme Soul (the eternal Ocean of Peace, Love, and Purity). Unlike physical exercises, Rajyoga is practiced with gentle, open-eyed awareness, enabling practitioners to maintain divine peace during daily work, family life, and challenges.</p>\n          \n          <div class=\"powers-grid\">\n            <div class=\"power-badge\"><span>1</span> <strong>Power to Withdraw</strong> - Detach from outer chaos instantly</div>\n            <div class=\"power-badge\"><span>2</span> <strong>Power to Pack Up</strong> - Discard wasteful thoughts and worries</div>\n            <div class=\"power-badge\"><span>3</span> <strong>Power to Tolerate</strong> - Remain cool like an ocean in all circumstances</div>\n            <div class=\"power-badge\"><span>4</span> <strong>Power to Accommodate</strong> - Accept all souls with love and harmony</div>\n            <div class=\"power-badge\"><span>5</span> <strong>Power of Discrimination</strong> - Clearly discern truth from falsehood</div>\n            <div class=\"power-badge\"><span>6</span> <strong>Power of Judgment</strong> - Make quick, righteous and peaceful choices</div>\n            <div class=\"power-badge\"><span>7</span> <strong>Power to Face</strong> - Overcome inner fears and tests with courage</div>\n            <div class=\"power-badge\"><span>8</span> <strong>Power to Cooperate</strong> - Harmonize united energy for global benefit</div>\n          </div>\n        </div>\n      ",
+      "contentHtml": "<div class=\"custom-article-body\">\n          <h3>The Ancient Science of Soul Healing</h3>\n          <p>Rajyoga is the union of the soul (the conscious energy of thought and feeling) with the Supreme Soul (the eternal Ocean of Peace, Love, and Purity). Unlike physical exercises, Rajyoga is practiced with gentle, open-eyed awareness, enabling practitioners to maintain divine peace during daily work, family life, and challenges.</p>\n          \n          <div class=\"powers-grid\">\n            <div class=\"power-badge\"><span>1</span> <strong>Power to Withdraw</strong> - Detach from outer chaos instantly</div>\n            <div class=\"power-badge\"><span>2</span> <strong>Power to Pack Up</strong> - Discard wasteful thoughts and worries</div>\n            <div class=\"power-badge\"><span>3</span> <strong>Power to Tolerate</strong> - Remain cool like an ocean in all circumstances</div>\n            <div class=\"power-badge\"><span>4</span> <strong>Power to Accommodate</strong> - Accept all souls with love and harmony</div>\n            <div class=\"power-badge\"><span>5</span> <strong>Power of Discrimination</strong> - Clearly discern truth from falsehood</div>\n            <div class=\"power-badge\"><span>6</span> <strong>Power of Judgment</strong> - Make quick, righteous and peaceful choices</div>\n            <div class=\"power-badge\"><span>7</span> <strong>Power to Face</strong> - Overcome inner fears and tests with courage</div>\n            <div class=\"power-badge\"><span>8</span> <strong>Power to Cooperate</strong> - Harmonize united energy for global benefit</div>\n          </div>\n        </div>",
       "createdAt": "2026-08-18"
     }
   ],
@@ -1133,7 +1130,7 @@
   ],
   "events": [
     {
-      "id": "evt_1793071792968_qdbs",
+      "id": "evt_1793071794136_onao",
       "title": "test",
       "titleMl": "test",
       "category": "Youth Program",
@@ -1162,7 +1159,7 @@
       "externalUrl": "",
       "schedule": [],
       "createdAt": "2026-10-27",
-      "updatedAt": "2026-10-27T03:29:52.968Z"
+      "updatedAt": "2026-10-27T03:29:54.136Z"
     }
   ],
   "registrations": [
