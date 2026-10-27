@@ -23,11 +23,10 @@
     "heroTitle": "Awaken Your Inner Peace & Divine Radiance",
     "heroSubtitle": "Experience the timeless serenity of Rajyoga Meditation in Kozhikode. Connect with your true spiritual self and the Supreme Source of peace, love, and power in the divine light of Paramdham.",
     "aboutText": "Brahma Kumaris Kozhikode is a spiritual sanctuary dedicated to personal transformation and world peace through the study and practice of Rajyoga Meditation. Established as an international spiritual learning movement, our centers offer all educational courses and meditation sessions completely free of charge to people of all backgrounds, faiths, and walks of life.",
-    "updatedAtTest": "2026-10-27T01:29:54.945Z",
-    "unicodeTest": "ഓം ശാന്തി - കോഴിക്കോട് ബ്രഹ്മാകുമാരീസ് 🕊️"
+    "adminPin": "Kozhikode@2026"
   },
   "dailyThought": {
-    "date": "2026-10-22",
+    "date": "2026-10-27",
     "title": "Soul Consciousness & Unconditional Peace",
     "titleMl": "ആത്മീയ ശാന്തിയുടെ അനുഭവം",
     "quote": "When you remember you are a peaceful point of spiritual light, external storms cannot shake your inner stillness. You become a lighthouse of serenity for everyone around you.",
@@ -141,8 +140,7 @@
     "Festivals",
     "Youth Program",
     "Social Service",
-    "Celebrations",
-    "Shivjayanti"
+    "Celebrations"
   ],
   "wings": [
     "Administrator",
@@ -1130,7 +1128,40 @@
       "cloudinaryTag": "festival_images"
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "id": "evt_1793071794136_onao",
+      "title": "test",
+      "titleMl": "test",
+      "category": "Youth Program",
+      "wing": "Business & Industry",
+      "time": "11-3",
+      "order": 1,
+      "date": "2026-09-22",
+      "year": "2026",
+      "centre": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
+      "location": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
+      "isNavathi": false,
+      "description": "test",
+      "shortDesc": "test",
+      "fullDesc": "test",
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "image": "assets/images/light_palace_center.jpg",
+      "photos": [],
+      "additionalImages": [],
+      "videos": [],
+      "youtubeUrl": "",
+      "videoUrl": "",
+      "isFeatured": false,
+      "status": "published",
+      "youtubeVideoId": "",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "createdAt": "2026-10-27",
+      "updatedAt": "2026-10-27T03:29:54.136Z"
+    }
+  ],
   "registrations": [
     {
       "id": "reg_101",
