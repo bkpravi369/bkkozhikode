@@ -140,7 +140,6 @@
     "Festivals",
     "Youth Program",
     "Social Service",
-    "Celebrations",
     "Speeches",
     "Rakshabandhan",
     "Exhibitions"
@@ -1170,10 +1169,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-27",
-      "updatedAt": "2026-10-27T09:27:42.653Z",
-      "youtubeVideoId": "XMvso9kg3_I",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-10-27T09:27:42.653Z"
     },
     {
       "id": "evt_1793093085690_azxz",
