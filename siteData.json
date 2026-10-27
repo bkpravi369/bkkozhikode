@@ -1130,37 +1130,47 @@
   ],
   "events": [
     {
-      "title": "Special Maha Shivratri Peace Mahotsav 2026",
-      "date": "2026-03-08",
-      "time": "6:00 PM",
-      "venue": "Light Palace, Ashokapuram",
-      "category": "Festivals",
-      "description": "Grand spiritual gathering",
-      "status": "published",
-      "titleMl": "",
+      "id": "evt_1793076787515_hj87",
+      "title": "test",
+      "titleMl": "test",
+      "category": "Celebrations",
+      "wing": "Design & Innovation",
+      "time": "10:00 AM - 1:00 PM",
+      "order": 1,
+      "date": "2026-10-31",
       "year": "2026",
-      "centre": "Kozhikode Main",
-      "location": "Kozhikode Main",
-      "wing": "",
-      "isNavathi": false,
-      "coverImage": "assets/images/light_palace_center.jpg",
-      "image": "assets/images/light_palace_center.jpg",
-      "photos": [],
-      "additionalImages": [],
-      "videos": [],
-      "youtubeUrl": "",
-      "videoUrl": "",
-      "youtubeVideoId": "",
-      "shortDesc": "Grand spiritual gathering",
-      "fullDesc": "Grand spiritual gathering",
+      "centre": "സുഖധാമം, ബാലുശ്ശേരി",
+      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "isNavathi": true,
+      "description": "inauguration ceremony of navathi year programs",
+      "shortDesc": "inauguration ceremony of navathi year programs",
+      "fullDesc": "inauguration ceremony of navathi year programs",
+      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+      "photos": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
+      ],
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
+      ],
+      "videos": [
+        {
+          "title": "navrathri",
+          "url": "https://youtu.be/XMvso9kg3_I"
+        }
+      ],
+      "youtubeUrl": "https://youtu.be/XMvso9kg3_I",
+      "videoUrl": "https://youtu.be/XMvso9kg3_I",
+      "isFeatured": true,
+      "status": "published",
+      "youtubeVideoId": "XMvso9kg3_I",
       "registrationUrl": "",
       "externalUrl": "",
       "schedule": [],
-      "isFeatured": false,
-      "order": 1,
-      "id": "evt_1793073202716_a784",
       "createdAt": "2026-10-27",
-      "updatedAt": "2026-10-27T03:53:22.716Z"
+      "updatedAt": "2026-10-27T04:53:07.515Z"
     }
   ],
   "registrations": [
