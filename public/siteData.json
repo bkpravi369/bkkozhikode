@@ -1133,6 +1133,49 @@
   ],
   "events": [
     {
+      "id": "evt_1793076787515_hj87",
+      "title": "test",
+      "titleMl": "test",
+      "date": "2026-10-31",
+      "year": "2026",
+      "centre": "സുഖധാമം, ബാലുശ്ശേരി",
+      "category": "Celebrations",
+      "wing": "Design & Innovation",
+      "isNavathi": false,
+      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+      "photos": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
+      ],
+      "videos": [
+        {
+          "title": "navrathri",
+          "url": "https://youtu.be/XMvso9kg3_I"
+        }
+      ],
+      "youtubeUrl": "https://youtu.be/XMvso9kg3_I",
+      "description": "inauguration ceremony of navathi year programs",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
+      ],
+      "videoUrl": "https://youtu.be/XMvso9kg3_I",
+      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "shortDesc": "inauguration ceremony of navathi year programs",
+      "fullDesc": "inauguration ceremony of navathi year programs",
+      "time": "10:00 AM - 1:00 PM",
+      "schedule": [],
+      "isFeatured": true,
+      "status": "published",
+      "order": 1,
+      "createdAt": "2026-10-27",
+      "updatedAt": "2026-10-27T09:27:42.653Z",
+      "youtubeVideoId": "XMvso9kg3_I",
+      "registrationUrl": "",
+      "externalUrl": ""
+    },
+    {
       "id": "evt_1793093085690_azxz",
       "title": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi",
       "titleMl": "",
@@ -1164,46 +1207,6 @@
       "order": 1,
       "createdAt": "2026-10-27",
       "updatedAt": "2026-10-27T09:24:45.690Z"
-    },
-    {
-      "id": "evt_1793076787515_hj87",
-      "title": "test",
-      "titleMl": "test",
-      "date": "2026-10-31",
-      "year": "2026",
-      "centre": "സുഖധാമം, ബാലുശ്ശേരി",
-      "category": "Celebrations",
-      "wing": "Design & Innovation",
-      "isNavathi": true,
-      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
-      "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
-      ],
-      "videos": [
-        {
-          "title": "navrathri",
-          "url": "https://youtu.be/XMvso9kg3_I"
-        }
-      ],
-      "youtubeUrl": "https://youtu.be/XMvso9kg3_I",
-      "description": "inauguration ceremony of navathi year programs",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
-      "additionalImages": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076776/Website%20event%20images/zl9uey6ih3llu4g4cto9.png"
-      ],
-      "videoUrl": "https://youtu.be/XMvso9kg3_I",
-      "location": "സുഖധാമം, ബാലുശ്ശേരി",
-      "shortDesc": "inauguration ceremony of navathi year programs",
-      "fullDesc": "inauguration ceremony of navathi year programs",
-      "time": "10:00 AM - 1:00 PM",
-      "schedule": [],
-      "isFeatured": true,
-      "status": "published",
-      "order": 1,
-      "createdAt": "2026-10-27",
-      "updatedAt": "2026-10-27T04:53:07.515Z"
     }
   ],
   "registrations": [
