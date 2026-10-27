@@ -198,23 +198,23 @@ class AdminController {
     const oldHtml = btn ? btn.innerHTML : '';
     if (btn) {
       btn.disabled = true;
-      btn.innerHTML = `<span style="display:inline-block;animation:spin 1s linear infinite;margin-right:4px;">⏳</span> Publishing...`;
+      btn.innerHTML = `<span style="display:inline-block;animation:spin 1s linear infinite;margin-right:4px;">⏳</span> Saving to GitHub Cloud...`;
     }
-    this.toast("🚀 Saving & publishing all changes to Live Server (GitHub / Vercel)...");
+    this.toast("🚀 Saving & committing directly to GitHub Cloud Storage (public/siteData.json)...");
     try {
-      if (window.bkStore && typeof window.bkStore.publishToLiveServer === 'function') {
-        const res = await window.bkStore.publishToLiveServer();
+      if (window.bkStore && typeof window.bkStore.saveToGitHubCloud === 'function') {
+        const res = await window.bkStore.saveToGitHubCloud();
         if (res && res.success) {
-          this.toast(`✅ ${res.message || 'Changes published live successfully!'}`);
+          this.toast(`✅ ${res.message || 'Saved to GitHub Cloud Storage! Live across all devices instantly.'}`);
         } else {
-          this.toast(`ℹ️ ${res && res.message ? res.message : 'Publish completed.'}`);
+          this.toast(`ℹ️ ${res && res.message ? res.message : 'Save completed.'}`);
         }
       } else {
         await window.bkStore.persistToServer();
         this.toast("✅ Site data saved to server successfully!");
       }
     } catch (e) {
-      this.toast(`Publish note: ${e.message}`);
+      this.toast(`Save note: ${e.message}`);
     } finally {
       if (btn) {
         btn.disabled = false;
