@@ -145,7 +145,8 @@
     "Speeches",
     "Rakshabandhan",
     "Exhibitions",
-    "ShivJayanthi"
+    "ShivJayanthi",
+    "Rakshabandan"
   ],
   "wings": [
     "Administrator",
@@ -1172,10 +1173,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-27",
-      "updatedAt": "2026-10-28T14:39:35.789Z",
-      "youtubeVideoId": "XMvso9kg3_I",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-10-28T14:39:35.789Z"
     },
     {
       "id": "evt_1793093085690_azxz",
