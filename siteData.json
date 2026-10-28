@@ -1135,49 +1135,13 @@
   ],
   "events": [
     {
-      "id": "evt_1793093085690_azxz",
-      "title": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi",
-      "titleMl": "",
-      "date": "2026-04-01",
-      "year": "2026",
-      "centre": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
-      "category": "Exhibitions",
-      "wing": "Social",
-      "isNavathi": true,
-      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png",
-      "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png"
-      ],
-      "videos": [],
-      "youtubeUrl": "",
-      "description": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi 1 april to 3rd april 2026",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png",
-      "additionalImages": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png"
-      ],
-      "videoUrl": "",
-      "location": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
-      "shortDesc": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi 1 april to 3rd april 2026",
-      "fullDesc": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi 1 april to 3rd april 2026",
-      "time": "10:00 AM - 8:00 PM",
-      "schedule": [],
-      "isFeatured": false,
-      "status": "published",
-      "order": 1,
-      "createdAt": "2026-10-27",
-      "updatedAt": "2026-10-27T15:15:22.645Z",
-      "youtubeVideoId": "",
-      "registrationUrl": "",
-      "externalUrl": ""
-    },
-    {
       "id": "evt_1793076787515_hj87",
       "title": "test",
       "titleMl": "test",
       "date": "2026-10-31",
       "year": "2026",
       "centre": "സുഖധാമം, ബാലുശ്ശേരി",
-      "category": "Celebrations",
+      "category": "Festivals",
       "wing": "Design & Innovation",
       "isNavathi": false,
       "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793076775/Website%20event%20images/xfi7gb421nowzqqlrybi.png",
@@ -1208,7 +1172,43 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-27",
-      "updatedAt": "2026-10-27T09:27:42.653Z"
+      "updatedAt": "2026-10-28T14:39:35.789Z",
+      "youtubeVideoId": "XMvso9kg3_I",
+      "registrationUrl": "",
+      "externalUrl": ""
+    },
+    {
+      "id": "evt_1793093085690_azxz",
+      "title": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi",
+      "titleMl": "",
+      "date": "2026-04-01",
+      "year": "2026",
+      "centre": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
+      "category": "Exhibitions",
+      "wing": "Social",
+      "isNavathi": true,
+      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png",
+      "photos": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png"
+      ],
+      "videos": [],
+      "youtubeUrl": "",
+      "description": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi 1 april to 3rd april 2026",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png",
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793093078/Website%20event%20images/tdqhhzzukdnneta4nbym.png"
+      ],
+      "videoUrl": "",
+      "location": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
+      "shortDesc": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi 1 april to 3rd april 2026",
+      "fullDesc": "Chithrapradarsini Sree Pisharikavu Temple, Kollam, Koyilandi 1 april to 3rd april 2026",
+      "time": "10:00 AM - 8:00 PM",
+      "schedule": [],
+      "isFeatured": false,
+      "status": "published",
+      "order": 1,
+      "createdAt": "2026-10-27",
+      "updatedAt": "2026-10-27T15:15:22.645Z"
     }
   ],
   "registrations": [
