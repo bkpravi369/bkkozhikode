@@ -1138,24 +1138,14 @@
       "id": "evt_1793269711924_cdxa",
       "title": "Paramathma Jyothi  Dharma Sandesha Yatra",
       "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശ യാത്ര",
-      "category": "Social Service",
-      "wing": "",
-      "time": "10:00 AM - 1:00 PM",
-      "order": 1,
       "date": "2026-07-29",
       "year": "2026",
       "centre": "സുഖധാമം, ബാലുശ്ശേരി",
-      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "category": "Social Service",
+      "wing": "",
       "isNavathi": true,
-      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ചാമുണ്ഡേശ്വരി ക്ഷേത്രം, ബാലുശ്ശേരിയിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.",
-      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ചാമുണ്ഡേശ്വരി ക്ഷേത...",
-      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ചാമുണ്ഡേശ്വരി ക്ഷേത്രം, ബാലുശ്ശേരിയിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.",
       "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793269647/Website%20event%20images/gkjjzrzqlmmjo3ykepuc.jpg",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793269647/Website%20event%20images/gkjjzrzqlmmjo3ykepuc.jpg",
       "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793269647/Website%20event%20images/gkjjzrzqlmmjo3ykepuc.jpg"
-      ],
-      "additionalImages": [
         "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793269647/Website%20event%20images/gkjjzrzqlmmjo3ykepuc.jpg"
       ],
       "videos": [
@@ -1165,53 +1155,22 @@
         }
       ],
       "youtubeUrl": "https://youtube.com/shorts/OjMeg8Q-LI4?si=qygiAlc36deeuyn7",
-      "videoUrl": "https://youtube.com/shorts/OjMeg8Q-LI4?si=qygiAlc36deeuyn7",
-      "isFeatured": true,
-      "status": "published",
-      "youtubeVideoId": "OjMeg8Q-LI4",
-      "registrationUrl": "",
-      "externalUrl": "",
-      "schedule": [],
-      "createdAt": "2026-10-29",
-      "updatedAt": "2026-10-29T10:28:31.924Z"
-    },
-    {
-      "id": "evt_1793267476742_1drc",
-      "title": "Paramathma Jyothi  Dharma Sandesha Yatra",
-      "titleMl": "പരമാത്മ  ജ്യോതി  ധർമ്മ സന്ദേശ യാത്ര",
-      "date": "2026-08-11",
-      "year": "2026",
-      "centre": "സുഖധാമം, ബാലുശ്ശേരി",
-      "category": "Social Service",
-      "wing": "",
-      "isNavathi": true,
-      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg",
-      "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg"
-      ],
-      "videos": [
-        {
-          "title": "Paramathma Jyothi sandesha Yatra",
-          "url": "https://youtube.com/shorts/QH16zIOZo-Y?si=rNYZHf5sEwQso7mK"
-        }
-      ],
-      "youtubeUrl": "https://youtube.com/shorts/QH16zIOZo-Y?si=rNYZHf5sEwQso7mK",
-      "description": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg",
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ചാമുണ്ഡേശ്വരി ക്ഷേത്രം, ബാലുശ്ശേരിയിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793269647/Website%20event%20images/gkjjzrzqlmmjo3ykepuc.jpg",
       "additionalImages": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg"
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793269647/Website%20event%20images/gkjjzrzqlmmjo3ykepuc.jpg"
       ],
-      "videoUrl": "https://youtube.com/shorts/QH16zIOZo-Y?si=rNYZHf5sEwQso7mK",
+      "videoUrl": "https://youtube.com/shorts/OjMeg8Q-LI4?si=qygiAlc36deeuyn7",
       "location": "സുഖധാമം, ബാലുശ്ശേരി",
-      "shortDesc": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
-      "fullDesc": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ചാമുണ്ഡേശ്വരി ക്ഷേത...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ചാമുണ്ഡേശ്വരി ക്ഷേത്രം, ബാലുശ്ശേരിയിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.",
       "time": "10:00 AM - 1:00 PM",
       "schedule": [],
       "isFeatured": true,
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-29",
-      "updatedAt": "2026-10-29T09:55:12.601Z"
+      "updatedAt": "2026-10-29T10:28:31.924Z"
     },
     {
       "id": "evt_1793076787515_hj87",
@@ -1423,5 +1382,8 @@
     "phoneSecondary": "+91 9539933699",
     "secondaryEmail": "contact@bkkozhikode.com"
   },
-  "districtCentresSummary": []
+  "districtCentresSummary": [],
+  "deletedEventIds": [
+    "evt_1793267476742_1drc"
+  ]
 }
