@@ -1136,26 +1136,16 @@
   "events": [
     {
       "id": "evt_1793267476742_1drc",
-      "title": "Paramathma Jyothi Sandesham",
-      "titleMl": "പരമാത്മ  ജ്യോതി  സന്ദേശം",
-      "category": "Social Service",
-      "wing": "",
-      "time": "10:00 AM - 1:00 PM",
-      "order": 1,
+      "title": "Paramathma Jyothi  Dharma Sandesha Yatra",
+      "titleMl": "പരമാത്മ  ജ്യോതി  ധർമ്മ സന്ദേശ യാത്ര",
       "date": "2026-08-11",
       "year": "2026",
       "centre": "സുഖധാമം, ബാലുശ്ശേരി",
-      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "category": "Social Service",
+      "wing": "",
       "isNavathi": true,
-      "description": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
-      "shortDesc": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
-      "fullDesc": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
       "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg",
       "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg"
-      ],
-      "additionalImages": [
         "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg"
       ],
       "videos": [
@@ -1165,15 +1155,25 @@
         }
       ],
       "youtubeUrl": "https://youtube.com/shorts/QH16zIOZo-Y?si=rNYZHf5sEwQso7mK",
+      "description": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg",
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793267451/Website%20event%20images/at2qqoxiepimjaixje0o.jpg"
+      ],
       "videoUrl": "https://youtube.com/shorts/QH16zIOZo-Y?si=rNYZHf5sEwQso7mK",
+      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "shortDesc": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
+      "fullDesc": "ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം,പരമാത്മ ജ്യോതിസന്ദേശയാത്ര ശ്രീ ചടയമംഗലം ശ്രീ കൃഷ്ണ ക്ഷേത്രം",
+      "time": "10:00 AM - 1:00 PM",
+      "schedule": [],
       "isFeatured": true,
       "status": "published",
+      "order": 1,
+      "createdAt": "2026-10-29",
+      "updatedAt": "2026-10-29T09:55:12.601Z",
       "youtubeVideoId": "QH16zIOZo-Y",
       "registrationUrl": "",
-      "externalUrl": "",
-      "schedule": [],
-      "createdAt": "2026-10-29",
-      "updatedAt": "2026-10-29T09:51:16.742Z"
+      "externalUrl": ""
     },
     {
       "id": "evt_1793076787515_hj87",
