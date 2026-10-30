@@ -1135,6 +1135,51 @@
   ],
   "events": [
     {
+      "id": "evt_1793354721658_0rbg",
+      "title": "Brahmakumaris Rakshabandan Celebrations, Kunnamangalam",
+      "titleMl": "ബ്രഹ്മകുമാരീസ്   രക്ഷാബന്ധൻ ഉത്സവം കുന്നമംഗലം",
+      "category": "Festivals",
+      "wing": "",
+      "time": "10:00 AM - 1:00 PM",
+      "order": 1,
+      "date": "2026-08-29",
+      "year": "2026",
+      "centre": "കുന്ദമംഗലം ബ്രാഞ്ച്",
+      "location": "കുന്ദമംഗലം ബ്രാഞ്ച്",
+      "isNavathi": true,
+      "description": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
+      "shortDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
+      "fullDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
+      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+      "photos": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354578/Website%20event%20images/rebzj8ypwopbabu8miwg.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354579/Website%20event%20images/deq8tqkjtdfpddkbpqfr.jpg"
+      ],
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354578/Website%20event%20images/rebzj8ypwopbabu8miwg.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354579/Website%20event%20images/deq8tqkjtdfpddkbpqfr.jpg"
+      ],
+      "videos": [
+        {
+          "title": "Rakshabandan Inaugural function ,",
+          "url": ""
+        }
+      ],
+      "youtubeUrl": "",
+      "videoUrl": "",
+      "isFeatured": true,
+      "status": "published",
+      "youtubeVideoId": "",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "createdAt": "2026-10-30",
+      "updatedAt": "2026-10-30T10:05:21.658Z"
+    },
+    {
       "id": "evt_1793269711924_cdxa",
       "title": "Paramathma Jyothi  Dharma Sandesha Yatra, Balussery",
       "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, ചാമുണ്ഡേശ്വരി ക്ഷേത്രം,  ബാലുശ്ശേരി",
@@ -1170,10 +1215,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-29",
-      "updatedAt": "2026-10-29T12:10:09.607Z",
-      "youtubeVideoId": "OjMeg8Q-LI4",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-10-29T12:10:09.607Z"
     },
     {
       "id": "evt_1793275519991_b7i3",
