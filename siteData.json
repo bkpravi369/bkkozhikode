@@ -1134,6 +1134,50 @@
   ],
   "events": [
     {
+      "id": "evt_1793359982151_kqq9",
+      "title": "Brahmakumaris Chitra Pradarshini , Ambalapadi Temple, Kozhikode",
+      "titleMl": "ബ്രഹ്മകുമാരീസ് ചിത്ര പ്രദർശിനി, അമ്പലപ്പാടി ക്ഷേത്രം , കോഴിക്കോട്",
+      "category": "Social Service",
+      "wing": "",
+      "time": "10:00 AM - 1:00 PM",
+      "order": 1,
+      "date": "2026-08-20",
+      "year": "2026",
+      "centre": "Light Palace (Kozhikode Main Centre)",
+      "location": "Light Palace (Kozhikode Main Centre)",
+      "isNavathi": false,
+      "description": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കോഴിക്കോട് അമ്പലപ്പാടി ക്ഷേത്രത്തിൽ നടന്ന ചിത്രപ്രദർശിനിയുടെ ദൃശ്യങ്ങൾ",
+      "shortDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കോഴിക്കോട് അമ്പലപ്പാടി ക്ഷേത്രത്തിൽ നടന്ന ചിത്രപ്രദർശിനിയുടെ ദൃശ്യങ്ങൾ",
+      "fullDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കോഴിക്കോട് അമ്പലപ്പാടി ക്ഷേത്രത്തിൽ നടന്ന ചിത്രപ്രദർശിനിയുടെ ദൃശ്യങ്ങൾ",
+      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359953/Website%20event%20images/zwevg4llribm7qsvsa1o.jpg",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359953/Website%20event%20images/zwevg4llribm7qsvsa1o.jpg",
+      "photos": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359953/Website%20event%20images/zwevg4llribm7qsvsa1o.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359954/Website%20event%20images/xmybnold6qes1kxbpsvd.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359955/Website%20event%20images/iwru53tqzdc3zz72e0yh.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359956/Website%20event%20images/ekvfoala8bonva11ekj5.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359957/Website%20event%20images/au2onycwjckh2dcic3ud.jpg"
+      ],
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359953/Website%20event%20images/zwevg4llribm7qsvsa1o.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359954/Website%20event%20images/xmybnold6qes1kxbpsvd.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359955/Website%20event%20images/iwru53tqzdc3zz72e0yh.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359956/Website%20event%20images/ekvfoala8bonva11ekj5.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793359957/Website%20event%20images/au2onycwjckh2dcic3ud.jpg"
+      ],
+      "videos": [],
+      "youtubeUrl": "",
+      "videoUrl": "",
+      "isFeatured": true,
+      "status": "published",
+      "youtubeVideoId": "",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "createdAt": "2026-10-30",
+      "updatedAt": "2026-10-30T11:33:02.151Z"
+    },
+    {
       "id": "evt_1793354721658_0rbg",
       "title": "Brahmakumaris Rakshabandan Celebrations, Kodakkattu Thazham, Kozhikode",
       "titleMl": "ബ്രഹ്മകുമാരീസ്രക്ഷാബന്ധൻ  ഉത്സവം, കൊടക്കാട്ടു താഴം, കോഴിക്കോട്",
@@ -1173,10 +1217,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-30",
-      "updatedAt": "2026-10-30T11:20:33.679Z",
-      "youtubeVideoId": "",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-10-30T11:20:33.679Z"
     },
     {
       "id": "evt_1793358413016_6gr4",
