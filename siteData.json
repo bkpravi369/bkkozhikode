@@ -1135,46 +1135,6 @@
   ],
   "events": [
     {
-      "id": "evt_1793356022526_uk6s",
-      "title": "Brahmakumaris Chitrapradarshini, Pisharikavu",
-      "titleMl": "ബ്രഹ്മകുമാരീസ് ചിത്ര പ്രദർശിനി, പിഷാരികാവ്",
-      "category": "Social Service",
-      "wing": "",
-      "time": "10:00 AM - 1:00 PM",
-      "order": 1,
-      "date": "2026-08-24",
-      "year": "2026",
-      "centre": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
-      "location": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
-      "isNavathi": true,
-      "description": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കൊയിലാണ്ടി പിഷാരികാവ് ദേവി ക്ഷേത്രത്തിൽ  നടന്ന ചിത്രപ്രദര്ശിനി പരിപാടിയുടെ ദൃശ്യങ്ങൾ.",
-      "shortDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കൊയിലാണ്ടി പിഷാരികാവ് ദേവി ക്ഷേത്രത്തിൽ  നടന്ന ചിത്രപ്രദര്ശിനി പരിപാടിയുടെ ദൃശ്യങ്ങൾ.",
-      "fullDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കൊയിലാണ്ടി പിഷാരികാവ് ദേവി ക്ഷേത്രത്തിൽ  നടന്ന ചിത്രപ്രദര്ശിനി പരിപാടിയുടെ ദൃശ്യങ്ങൾ.",
-      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
-      "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355913/Website%20event%20images/f0uzn8ajtejdfqvvord1.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355914/Website%20event%20images/lysrkzuwgcw675ocqkka.jpg"
-      ],
-      "additionalImages": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355913/Website%20event%20images/f0uzn8ajtejdfqvvord1.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355914/Website%20event%20images/lysrkzuwgcw675ocqkka.jpg"
-      ],
-      "videos": [],
-      "youtubeUrl": "",
-      "videoUrl": "",
-      "isFeatured": true,
-      "status": "published",
-      "youtubeVideoId": "",
-      "registrationUrl": "",
-      "externalUrl": "",
-      "schedule": [],
-      "createdAt": "2026-10-30",
-      "updatedAt": "2026-10-30T10:27:02.526Z"
-    },
-    {
       "id": "evt_1793354721658_0rbg",
       "title": "Brahmakumaris Rakshabandan Celebrations, Kunnamangalam",
       "titleMl": "ബ്രഹ്മകുമാരീസ്   രക്ഷാബന്ധൻ ഉത്സവം കുന്നമംഗലം",
@@ -1214,7 +1174,47 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-30",
-      "updatedAt": "2026-10-30T10:12:55.021Z"
+      "updatedAt": "2026-10-30T10:32:15.350Z",
+      "youtubeVideoId": "",
+      "registrationUrl": "",
+      "externalUrl": ""
+    },
+    {
+      "id": "evt_1793356022526_uk6s",
+      "title": "Brahmakumaris Chitrapradarshini, Pisharikavu",
+      "titleMl": "ബ്രഹ്മകുമാരീസ് ചിത്ര പ്രദർശിനി, പിഷാരികാവ്",
+      "date": "2026-08-24",
+      "year": "2026",
+      "centre": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
+      "category": "Social Service",
+      "wing": "",
+      "isNavathi": true,
+      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
+      "photos": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355913/Website%20event%20images/f0uzn8ajtejdfqvvord1.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355914/Website%20event%20images/lysrkzuwgcw675ocqkka.jpg"
+      ],
+      "videos": [],
+      "youtubeUrl": "",
+      "description": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കൊയിലാണ്ടി പിഷാരികാവ് ദേവി ക്ഷേത്രത്തിൽ  നടന്ന ചിത്രപ്രദര്ശിനി പരിപാടിയുടെ ദൃശ്യങ്ങൾ.",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355912/Website%20event%20images/xc2qeo67lxcfafsavumc.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355913/Website%20event%20images/f0uzn8ajtejdfqvvord1.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793355914/Website%20event%20images/lysrkzuwgcw675ocqkka.jpg"
+      ],
+      "videoUrl": "",
+      "location": "കൊയിലാണ്ടി ബ്രാഞ്ച്",
+      "shortDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കൊയിലാണ്ടി പിഷാരികാവ് ദേവി ക്ഷേത്രത്തിൽ  നടന്ന ചിത്രപ്രദര്ശിനി പരിപാടിയുടെ ദൃശ്യങ്ങൾ.",
+      "fullDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കൊയിലാണ്ടി പിഷാരികാവ് ദേവി ക്ഷേത്രത്തിൽ  നടന്ന ചിത്രപ്രദര്ശിനി പരിപാടിയുടെ ദൃശ്യങ്ങൾ.",
+      "time": "10:00 AM - 1:00 PM",
+      "schedule": [],
+      "isFeatured": true,
+      "status": "published",
+      "order": 1,
+      "createdAt": "2026-10-30",
+      "updatedAt": "2026-10-30T10:27:02.526Z"
     },
     {
       "id": "evt_1793269711924_cdxa",
