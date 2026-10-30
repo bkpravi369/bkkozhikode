@@ -1134,6 +1134,51 @@
   ],
   "events": [
     {
+      "id": "evt_1793354721658_0rbg",
+      "title": "Brahmakumaris Rakshabandan Celebrations, Kunnamangalam",
+      "titleMl": "ബ്രഹ്മകുമാരീസ്   രക്ഷാബന്ധൻ ഉത്സവം കുന്നമംഗലം",
+      "date": "2026-08-29",
+      "year": "2026",
+      "centre": "കുന്ദമംഗലം ബ്രാഞ്ച്",
+      "category": "Festivals",
+      "wing": "",
+      "isNavathi": true,
+      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+      "photos": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354578/Website%20event%20images/rebzj8ypwopbabu8miwg.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354579/Website%20event%20images/deq8tqkjtdfpddkbpqfr.jpg"
+      ],
+      "videos": [
+        {
+          "title": "Rakshabandan Inaugural function ,",
+          "url": ""
+        }
+      ],
+      "youtubeUrl": "",
+      "description": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
+      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+      "additionalImages": [
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354578/Website%20event%20images/rebzj8ypwopbabu8miwg.jpg",
+        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354579/Website%20event%20images/deq8tqkjtdfpddkbpqfr.jpg"
+      ],
+      "videoUrl": "",
+      "location": "കുന്ദമംഗലം ബ്രാഞ്ച്",
+      "shortDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
+      "fullDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
+      "time": "10:00 AM - 1:00 PM",
+      "schedule": [],
+      "isFeatured": true,
+      "status": "published",
+      "order": 1,
+      "createdAt": "2026-10-30",
+      "updatedAt": "2026-10-30T11:14:59.463Z",
+      "youtubeVideoId": "",
+      "registrationUrl": "",
+      "externalUrl": ""
+    },
+    {
       "id": "evt_1793358413016_6gr4",
       "title": "Brahmakumaris Rakshabandan Celebrations, Kunnamangalam",
       "titleMl": "ബ്രഹ്മകുമാരിസ്  രക്ഷാബന്ധൻ  ഉത്സവം , കുന്നമംഗലം",
@@ -1243,48 +1288,6 @@
       "order": 1,
       "createdAt": "2026-10-27",
       "updatedAt": "2026-10-30T10:41:06.590Z"
-    },
-    {
-      "id": "evt_1793354721658_0rbg",
-      "title": "Brahmakumaris Rakshabandan Celebrations, Kunnamangalam",
-      "titleMl": "ബ്രഹ്മകുമാരീസ്   രക്ഷാബന്ധൻ ഉത്സവം കുന്നമംഗലം",
-      "date": "2026-08-29",
-      "year": "2026",
-      "centre": "കുന്ദമംഗലം ബ്രാഞ്ച്",
-      "category": "Festivals",
-      "wing": "",
-      "isNavathi": true,
-      "coverImage": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
-      "photos": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354578/Website%20event%20images/rebzj8ypwopbabu8miwg.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354579/Website%20event%20images/deq8tqkjtdfpddkbpqfr.jpg"
-      ],
-      "videos": [
-        {
-          "title": "Rakshabandan Inaugural function ,",
-          "url": ""
-        }
-      ],
-      "youtubeUrl": "",
-      "description": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
-      "image": "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
-      "additionalImages": [
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354577/Website%20event%20images/ethryvncertbjxifn9wc.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354578/Website%20event%20images/rebzj8ypwopbabu8miwg.jpg",
-        "https://res.cloudinary.com/uo0dcjpe/image/upload/v1793354579/Website%20event%20images/deq8tqkjtdfpddkbpqfr.jpg"
-      ],
-      "videoUrl": "",
-      "location": "കുന്ദമംഗലം ബ്രാഞ്ച്",
-      "shortDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
-      "fullDesc": "ബ്രഹ്മകുമാരിസ് ഈശ്വരീയ വിദ്യാലയത്തിന്റെ ആഭിമുഖ്യത്തിൽ കുന്നമംഗലം സെന്ററിൽ നടന്ന രക്ഷാബന്ധൻ ഉത്സവത്തിലെ ചില ദൃശ്യങ്ങൾ.",
-      "time": "10:00 AM - 1:00 PM",
-      "schedule": [],
-      "isFeatured": true,
-      "status": "published",
-      "order": 1,
-      "createdAt": "2026-10-30",
-      "updatedAt": "2026-10-30T10:32:15.350Z"
     },
     {
       "id": "evt_1793269711924_cdxa",
