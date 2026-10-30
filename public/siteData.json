@@ -1135,38 +1135,6 @@
   ],
   "events": [
     {
-      "id": "evt_1793358487846_1myt",
-      "title": "Rakshabandan",
-      "titleMl": "",
-      "category": "Festivals",
-      "wing": "",
-      "time": "10:00 AM - 1:00 PM",
-      "order": 1,
-      "date": "2026-10-30",
-      "year": "2026",
-      "centre": "Light Palace (Kozhikode Main Centre)",
-      "location": "Light Palace (Kozhikode Main Centre)",
-      "isNavathi": false,
-      "description": "Rakshabandan",
-      "shortDesc": "Rakshabandan",
-      "fullDesc": "Rakshabandan",
-      "coverImage": "assets/images/light_palace_center.jpg",
-      "image": "assets/images/light_palace_center.jpg",
-      "photos": [],
-      "additionalImages": [],
-      "videos": [],
-      "youtubeUrl": "",
-      "videoUrl": "",
-      "isFeatured": true,
-      "status": "published",
-      "youtubeVideoId": "",
-      "registrationUrl": "",
-      "externalUrl": "",
-      "schedule": [],
-      "createdAt": "2026-10-30",
-      "updatedAt": "2026-10-30T11:08:07.846Z"
-    },
-    {
       "id": "evt_1793358413016_6gr4",
       "title": "Brahmakumaris Rakshabandan Celebrations, Kunnamangalam",
       "titleMl": "ബ്രഹ്മകുമാരിസ്  രക്ഷാബന്ധൻ  ഉത്സവം , കുന്നമംഗലം",
@@ -1575,6 +1543,7 @@
   "districtCentresSummary": [],
   "deletedEventIds": [
     "evt_1793267476742_1drc",
-    "evt_1793356022526_uk6s"
+    "evt_1793356022526_uk6s",
+    "evt_1793358487846_1myt"
   ]
 }
