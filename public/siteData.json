@@ -1134,6 +1134,47 @@
   ],
   "events": [
     {
+      "id": "evt_1793945786111_84ro",
+      "title": "Paramathma Jyothi Dharma Sandesha Yatra, Karumala",
+      "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, കരുമല ശ്രീമഹാവിഷ്ണുക്ഷേത്രം",
+      "date": "2026-06-23",
+      "year": "2026",
+      "centre": "സുഖധാമം, ബാലുശ്ശേരി",
+      "category": "Social Service",
+      "wing": "Religious",
+      "isNavathi": true,
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "photos": [
+        "assets/images/light_palace_center.jpg"
+      ],
+      "videos": [
+        {
+          "title": "Video #1",
+          "url": "https://youtube.com/shorts/jsER_-GsLZc?si=uWZe575mjMhG_m7f"
+        }
+      ],
+      "youtubeUrl": "https://youtube.com/shorts/jsER_-GsLZc?si=uWZe575mjMhG_m7f",
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര” കരുമല ശ്രീ മഹാവിഷ്ണു ക്ഷേത്രത്തിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "image": "assets/images/light_palace_center.jpg",
+      "additionalImages": [
+        "assets/images/light_palace_center.jpg"
+      ],
+      "videoUrl": "https://youtube.com/shorts/jsER_-GsLZc?si=uWZe575mjMhG_m7f",
+      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര” കരുമല ശ്രീ മഹാവിഷ്...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര” കരുമല ശ്രീ മഹാവിഷ്ണു ക്ഷേത്രത്തിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "time": "06:30 PM - 7:00PM",
+      "schedule": [],
+      "isFeatured": true,
+      "status": "published",
+      "order": 1,
+      "createdAt": "2026-11-06",
+      "updatedAt": "2026-11-06T10:41:43.334Z",
+      "youtubeVideoId": "jsER_-GsLZc",
+      "registrationUrl": "",
+      "externalUrl": ""
+    },
+    {
       "id": "evt_1793269711924_cdxa",
       "title": "Paramathma Jyothi  Dharma Sandesha Yatra, Balussery",
       "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, ചാമുണ്ഡേശ്വരി ക്ഷേത്രം,  ബാലുശ്ശേരി",
@@ -1169,48 +1210,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-29",
-      "updatedAt": "2026-11-06T10:40:04.815Z",
-      "youtubeVideoId": "OjMeg8Q-LI4",
-      "registrationUrl": "",
-      "externalUrl": ""
-    },
-    {
-      "id": "evt_1793945786111_84ro",
-      "title": "Paramathma Jyothi Dharma Sandesha Yatra, Karumala",
-      "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, കരുമല ശ്രീമഹാവിഷ്ണുക്ഷേത്രം",
-      "date": "2026-06-23",
-      "year": "2026",
-      "centre": "സുഖധാമം, ബാലുശ്ശേരി",
-      "category": "Social Service",
-      "wing": "Religious",
-      "isNavathi": true,
-      "coverImage": "assets/images/light_palace_center.jpg",
-      "photos": [
-        "assets/images/light_palace_center.jpg"
-      ],
-      "videos": [
-        {
-          "title": "Video #1",
-          "url": "https://youtube.com/shorts/jsER_-GsLZc?si=uWZe575mjMhG_m7f"
-        }
-      ],
-      "youtubeUrl": "https://youtube.com/shorts/jsER_-GsLZc?si=uWZe575mjMhG_m7f",
-      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര” കരുമല ശ്രീ മഹാവിഷ്ണു ക്ഷേത്രത്തിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
-      "image": "assets/images/light_palace_center.jpg",
-      "additionalImages": [
-        "assets/images/light_palace_center.jpg"
-      ],
-      "videoUrl": "https://youtube.com/shorts/jsER_-GsLZc?si=uWZe575mjMhG_m7f",
-      "location": "സുഖധാമം, ബാലുശ്ശേരി",
-      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര” കരുമല ശ്രീ മഹാവിഷ്...",
-      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര” കരുമല ശ്രീ മഹാവിഷ്ണു ക്ഷേത്രത്തിൽ ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
-      "time": "10:00 AM - 11:00AM",
-      "schedule": [],
-      "isFeatured": true,
-      "status": "published",
-      "order": 1,
-      "createdAt": "2026-11-06",
-      "updatedAt": "2026-11-06T10:36:22.903Z"
+      "updatedAt": "2026-11-06T10:40:04.815Z"
     },
     {
       "id": "evt_1793275519991_b7i3",
