@@ -1134,6 +1134,43 @@
   ],
   "events": [
     {
+      "id": "evt_1793965590703_ng12",
+      "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Thali Maha Temple",
+      "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര, തളി മഹാക്ഷേത്രം, കോഴിക്കോട്",
+      "category": "Social Service",
+      "wing": "Religious",
+      "time": "10:00 AM - 11:00 AM",
+      "order": 1,
+      "date": "2026-07-14",
+      "year": "2026",
+      "centre": "Light Palace (Kozhikode Main Centre)",
+      "location": "Light Palace (Kozhikode Main Centre)",
+      "isNavathi": false,
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യ സന്ദേശവും ആത്മീയ പ്രകാശവും ഏവരിലേക്കും പകർന്നു നൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്ക...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യ സന്ദേശവും ആത്മീയ പ്രകാശവും ഏവരിലേക്കും പകർന്നു നൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "image": "assets/images/light_palace_center.jpg",
+      "photos": [],
+      "additionalImages": [],
+      "videos": [
+        {
+          "title": "Video #1",
+          "url": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73"
+        }
+      ],
+      "youtubeUrl": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73",
+      "videoUrl": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73",
+      "isFeatured": true,
+      "status": "published",
+      "youtubeVideoId": "hoOsnjYKeW8",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "createdAt": "2026-11-06",
+      "updatedAt": "2026-11-06T11:46:30.703Z"
+    },
+    {
       "id": "evt_1793963157759_os14",
       "title": "Paramathma Jyothi Dharma Sandesha Yatra, Atholi",
       "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര ഏലിയോട്ടുമ്മൽ വിഷ്ണുക്ഷേത്രം, അത്തോളി ,",
@@ -1169,10 +1206,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-11-06",
-      "updatedAt": "2026-11-06T11:35:55.166Z",
-      "youtubeVideoId": "IOkedhoVNfg",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-11-06T11:35:55.166Z"
     },
     {
       "id": "evt_1793964251062_cqsk",
