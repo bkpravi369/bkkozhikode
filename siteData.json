@@ -1134,6 +1134,43 @@
   ],
   "events": [
     {
+      "id": "evt_1794224220896_8626",
+      "title": "Paramathma Jyothi Dharma Sandesha Yatra, Shri Sarada Advaidashramam, Kozhikode",
+      "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര, ശ്രീ ശാരദ അദ്വൈതാശ്രമം, കോഴിക്കോട് .",
+      "category": "Social Service",
+      "wing": "Religious",
+      "time": "5.00:00 PM- 6:00 PM",
+      "order": 1,
+      "date": "2026-06-18",
+      "year": "2026",
+      "centre": "ഉള്ള്യേരി ബ്രാഞ്ച്",
+      "location": "ഉള്ള്യേരി ബ്രാഞ്ച്",
+      "isNavathi": true,
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര”ശ്രീ ശാരദ അദ്വൈതാശ്രമം, കോഴിക്കോട്  ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\nഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര”ശ്രീ ശാരദ അദ്വൈതാശ്...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര”ശ്രീ ശാരദ അദ്വൈതാശ്രമം, കോഴിക്കോട്  ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\nഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "image": "assets/images/light_palace_center.jpg",
+      "photos": [],
+      "additionalImages": [],
+      "videos": [
+        {
+          "title": "Video #1",
+          "url": "https://youtube.com/shorts/pa6KylND55E?si=9TNeo-DXb9NeA9Y4"
+        }
+      ],
+      "youtubeUrl": "https://youtube.com/shorts/pa6KylND55E?si=9TNeo-DXb9NeA9Y4",
+      "videoUrl": "https://youtube.com/shorts/pa6KylND55E?si=9TNeo-DXb9NeA9Y4",
+      "isFeatured": true,
+      "status": "published",
+      "youtubeVideoId": "pa6KylND55E",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "createdAt": "2026-11-09",
+      "updatedAt": "2026-11-09T11:37:00.896Z"
+    },
+    {
       "id": "evt_1793964754327_sp8k",
       "title": "Paramathma Jyothi Dharma Sandesha Yatra, Kallod Sri Subrahmanya Temple",
       "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര കല്ലോട് ശ്രീ സുബ്രഹ്മണ്യ ക്ഷേത്രം",
@@ -1169,10 +1206,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-11-06",
-      "updatedAt": "2026-11-09T11:26:13.987Z",
-      "youtubeVideoId": "GArAmwOSPNA",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-11-09T11:26:13.987Z"
     },
     {
       "id": "evt_1794223502608_evk5",
