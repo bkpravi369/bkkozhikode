@@ -1134,6 +1134,47 @@
   ],
   "events": [
     {
+      "id": "evt_1793965590703_ng12",
+      "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Thali Maha Temple",
+      "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര, തളി മഹാക്ഷേത്രം, കോഴിക്കോട്",
+      "date": "2026-07-14",
+      "year": "2026",
+      "centre": "Light Palace (Kozhikode Main Centre)",
+      "category": "Social Service",
+      "wing": "Religious",
+      "isNavathi": true,
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "photos": [
+        "assets/images/light_palace_center.jpg"
+      ],
+      "videos": [
+        {
+          "title": "Video #1",
+          "url": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73"
+        }
+      ],
+      "youtubeUrl": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73",
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യ സന്ദേശവും ആത്മീയ പ്രകാശവും ഏവരിലേക്കും പകർന്നു നൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "image": "assets/images/light_palace_center.jpg",
+      "additionalImages": [
+        "assets/images/light_palace_center.jpg"
+      ],
+      "videoUrl": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73",
+      "location": "Light Palace (Kozhikode Main Centre)",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്ക...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യ സന്ദേശവും ആത്മീയ പ്രകാശവും ഏവരിലേക്കും പകർന്നു നൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "time": "10:00 AM - 11:00 AM",
+      "schedule": [],
+      "isFeatured": true,
+      "status": "published",
+      "order": 1,
+      "createdAt": "2026-11-06",
+      "updatedAt": "2026-11-10T11:33:59.434Z",
+      "youtubeVideoId": "hoOsnjYKeW8",
+      "registrationUrl": "",
+      "externalUrl": ""
+    },
+    {
       "id": "evt_1793963751606_xlw8",
       "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Sri Nallur Shiv Temple",
       "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, ശ്രീ നല്ലൂർ  ശിവക്ഷേത്രം",
@@ -1164,10 +1205,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-11-06",
-      "updatedAt": "2026-11-10T11:32:41.234Z",
-      "youtubeVideoId": "",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-11-10T11:32:41.234Z"
     },
     {
       "id": "evt_1794309858810_fcr4",
@@ -1418,40 +1456,6 @@
       "order": 1,
       "createdAt": "2026-11-09",
       "updatedAt": "2026-11-09T11:16:27.801Z"
-    },
-    {
-      "id": "evt_1793965590703_ng12",
-      "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Thali Maha Temple",
-      "titleMl": "പരമാത്മ ജ്യോതി ധർമ്മ സന്ദേശയാത്ര, തളി മഹാക്ഷേത്രം, കോഴിക്കോട്",
-      "date": "2026-07-14",
-      "year": "2026",
-      "centre": "Light Palace (Kozhikode Main Centre)",
-      "category": "Social Service",
-      "wing": "Religious",
-      "isNavathi": false,
-      "coverImage": "assets/images/light_palace_center.jpg",
-      "photos": [],
-      "videos": [
-        {
-          "title": "Video #1",
-          "url": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73"
-        }
-      ],
-      "youtubeUrl": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73",
-      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യ സന്ദേശവും ആത്മീയ പ്രകാശവും ഏവരിലേക്കും പകർന്നു നൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
-      "image": "assets/images/light_palace_center.jpg",
-      "additionalImages": [],
-      "videoUrl": "https://youtube.com/shorts/hoOsnjYKeW8?si=cAY638nAl5kc1B73",
-      "location": "Light Palace (Kozhikode Main Centre)",
-      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്ക...",
-      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” തളി മഹാക്ഷേത്രം, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യ സന്ദേശവും ആത്മീയ പ്രകാശവും ഏവരിലേക്കും പകർന്നു നൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
-      "time": "10:00 AM - 11:00 AM",
-      "schedule": [],
-      "isFeatured": true,
-      "status": "published",
-      "order": 1,
-      "createdAt": "2026-11-06",
-      "updatedAt": "2026-11-06T11:46:30.703Z"
     },
     {
       "id": "evt_1793963157759_os14",
