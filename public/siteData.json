@@ -1134,6 +1134,43 @@
   ],
   "events": [
     {
+      "id": "evt_1794311108872_11yv",
+      "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Mayiladum kunnummal Pazhani Temple, Kozhikode",
+      "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, മയിലാടുംകുന്ന്മേൽപഴനി ക്ഷേത്രം,",
+      "category": "Social Service",
+      "wing": "Religious",
+      "time": "08:00 AM -09:00 AM",
+      "order": 1,
+      "date": "2026-07-13",
+      "year": "2026",
+      "centre": "Light Palace (Kozhikode Main Centre)",
+      "location": "Light Palace (Kozhikode Main Centre)",
+      "isNavathi": true,
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” മയിലാടുംകുന്ന് മേൽപഴനി ശ്രീ ജ്ഞാന ദണ്ഡായുധപാണി സ്വാമി ക്ഷേത്രം കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” മയിലാടുംകുന്ന് മേൽപഴനി ശ...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” മയിലാടുംകുന്ന് മേൽപഴനി ശ്രീ ജ്ഞാന ദണ്ഡായുധപാണി സ്വാമി ക്ഷേത്രം കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "image": "assets/images/light_palace_center.jpg",
+      "photos": [],
+      "additionalImages": [],
+      "videos": [
+        {
+          "title": "Video #1",
+          "url": "https://youtube.com/shorts/IX6pZ-E6wOQ?si=oVdTwUu1xfYqbis1"
+        }
+      ],
+      "youtubeUrl": "https://youtube.com/shorts/IX6pZ-E6wOQ?si=oVdTwUu1xfYqbis1",
+      "videoUrl": "https://youtube.com/shorts/IX6pZ-E6wOQ?si=oVdTwUu1xfYqbis1",
+      "isFeatured": true,
+      "status": "published",
+      "youtubeVideoId": "IX6pZ-E6wOQ",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "createdAt": "2026-11-10",
+      "updatedAt": "2026-11-10T11:45:08.872Z"
+    },
+    {
       "id": "evt_1793359982151_kqq9",
       "title": "Brahmakumaris Chitra Pradarshini , Ambalapadi Temple, Kozhikode",
       "titleMl": "ബ്രഹ്മകുമാരീസ് ചിത്ര പ്രദർശിനി, അമ്പലപ്പാടി ക്ഷേത്രം , കോഴിക്കോട്",
@@ -1172,10 +1209,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-10-30",
-      "updatedAt": "2026-11-10T11:38:22.015Z",
-      "youtubeVideoId": "",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-11-10T11:38:22.015Z"
     },
     {
       "id": "evt_1793269711924_cdxa",
