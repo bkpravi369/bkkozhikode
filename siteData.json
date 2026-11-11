@@ -1134,6 +1134,47 @@
   ],
   "events": [
     {
+      "id": "evt_1794401159952_2uwu",
+      "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Shri Durgadevi Temple, Kozhikode",
+      "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, ശ്രീ ദുർഗാദേവി ക്ഷേത്രം കോഴിക്കോട്",
+      "date": "2026-07-14",
+      "year": "2026",
+      "centre": "Light Palace (Kozhikode Main Centre)",
+      "category": "Social Service",
+      "wing": "Religious",
+      "isNavathi": true,
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "photos": [
+        "assets/images/light_palace_center.jpg"
+      ],
+      "videos": [
+        {
+          "title": "Video #1",
+          "url": "https://youtube.com/shorts/15Yu8TqKUQI?si=vIp-lvwnWRgftI-p"
+        }
+      ],
+      "youtubeUrl": "https://youtube.com/shorts/15Yu8TqKUQI?si=vIp-lvwnWRgftI-p",
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ദുർഗാദേവി ക്ഷേത്രം, ഗാന്ധി റോഡ്, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "image": "assets/images/light_palace_center.jpg",
+      "additionalImages": [
+        "assets/images/light_palace_center.jpg"
+      ],
+      "videoUrl": "https://youtube.com/shorts/15Yu8TqKUQI?si=vIp-lvwnWRgftI-p",
+      "location": "Light Palace (Kozhikode Main Centre)",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ദുർഗാദേവി ക്ഷേത്രം,...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ദുർഗാദേവി ക്ഷേത്രം, ഗാന്ധി റോഡ്, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "time": "6:00 AM -7:00 AM",
+      "schedule": [],
+      "isFeatured": true,
+      "status": "published",
+      "order": 1,
+      "createdAt": "2026-11-11",
+      "updatedAt": "2026-11-11T16:22:14.184Z",
+      "youtubeVideoId": "15Yu8TqKUQI",
+      "registrationUrl": "",
+      "externalUrl": ""
+    },
+    {
       "id": "evt_1794404180945_oclv",
       "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Advaithashramam, Kolathur",
       "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, അദ്വൈതാശ്രമം, കൊളത്തൂർ, അത്തോളി",
@@ -1169,10 +1210,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-11-11",
-      "updatedAt": "2026-11-11T16:20:54.864Z",
-      "youtubeVideoId": "8pRublA4zrw",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-11-11T16:20:54.864Z"
     },
     {
       "id": "evt_1794404472393_v9x3",
@@ -1455,40 +1493,6 @@
       "order": 1,
       "createdAt": "2026-11-11",
       "updatedAt": "2026-11-11T12:49:23.335Z"
-    },
-    {
-      "id": "evt_1794401159952_2uwu",
-      "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Shri Durgadevi Temple, Kozhikode",
-      "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, ശ്രീ ദുർഗാദേവി ക്ഷേത്രം കോഴിക്കോട്",
-      "date": "2026-07-14",
-      "year": "2026",
-      "centre": "Light Palace (Kozhikode Main Centre)",
-      "category": "Social Service",
-      "wing": "Religious",
-      "isNavathi": false,
-      "coverImage": "assets/images/light_palace_center.jpg",
-      "photos": [],
-      "videos": [
-        {
-          "title": "Video #1",
-          "url": "https://youtube.com/shorts/15Yu8TqKUQI?si=vIp-lvwnWRgftI-p"
-        }
-      ],
-      "youtubeUrl": "https://youtube.com/shorts/15Yu8TqKUQI?si=vIp-lvwnWRgftI-p",
-      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ദുർഗാദേവി ക്ഷേത്രം, ഗാന്ധി റോഡ്, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
-      "image": "assets/images/light_palace_center.jpg",
-      "additionalImages": [],
-      "videoUrl": "https://youtube.com/shorts/15Yu8TqKUQI?si=vIp-lvwnWRgftI-p",
-      "location": "Light Palace (Kozhikode Main Centre)",
-      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ദുർഗാദേവി ക്ഷേത്രം,...",
-      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ശ്രീ ദുർഗാദേവി ക്ഷേത്രം, ഗാന്ധി റോഡ്, കോഴിക്കോട് ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
-      "time": "6:00 AM -7:00 AM",
-      "schedule": [],
-      "isFeatured": true,
-      "status": "published",
-      "order": 1,
-      "createdAt": "2026-11-11",
-      "updatedAt": "2026-11-11T12:45:59.952Z"
     },
     {
       "id": "evt_1794400878353_2bop",
