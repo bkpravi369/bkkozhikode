@@ -1134,6 +1134,43 @@
   ],
   "events": [
     {
+      "id": "evt_1794400878353_2bop",
+      "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Ponnaram Theru Shri Maha Ganapathi Temple",
+      "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, പൊന്നരം തെരു ശ്രി മഹാ ഗണപതി ക്ഷേത്രം, ബാലുശ്ശേരി",
+      "category": "Social Service",
+      "wing": "Religious",
+      "time": "10:00 AM - 11:00 AM",
+      "order": 1,
+      "date": "2026-06-24",
+      "year": "2026",
+      "centre": "സുഖധാമം, ബാലുശ്ശേരി",
+      "location": "സുഖധാമം, ബാലുശ്ശേരി",
+      "isNavathi": false,
+      "description": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ബാലുശ്ശേരി പൊന്നരം തെരു ശ്രീ മഹാഗണപതി ക്ഷേത്രത്തിൽ,   ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "shortDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ബാലുശ്ശേരി പൊന്നരം തെരു ...",
+      "fullDesc": "പ്രജാപിത ബ്രഹ്മകുമാരീസ് ഈശ്വരീയ വിശ്വ വിദ്യാലയം, കോഴിക്കോട് ജില്ലയുടെ ആഭിമുഖ്യത്തിൽ സംഘടിപ്പിച്ച “പരമാത്മ ജ്യോതി സന്ദേശയാത്ര” ബാലുശ്ശേരി പൊന്നരം തെരു ശ്രീ മഹാഗണപതി ക്ഷേത്രത്തിൽ,   ഭക്തിനിർഭരമായ അന്തരീക്ഷത്തിൽ എത്തിച്ചേർന്നപ്പോൾ…\n\n🕉️ പരമാത്മ ജ്യോതിയുടെ ദിവ്യസന്ദേശവും ആത്മീയപ്രകാശവും ഏവരിലേക്കും പകർന്നുനൽകിക്കൊണ്ട് നടന്ന ഈ പുണ്യയാത്ര, സ്നേഹത്തിന്റെയും സമാധാനത്തിന്റെയും ആത്മീയ ഉണർവിന്റെയും മനോഹരമായ സന്ദേശമാണ് നൽകിയത്.\n\n🙏 ഈ ദിവ്യ നിമിഷങ്ങളുടെ മനോഹര ദൃശ്യങ്ങളിലേക്ക് ഏവർക്കും സ്വാഗതം.",
+      "coverImage": "assets/images/light_palace_center.jpg",
+      "image": "assets/images/light_palace_center.jpg",
+      "photos": [],
+      "additionalImages": [],
+      "videos": [
+        {
+          "title": "Video #1",
+          "url": "https://youtube.com/shorts/pIHzVo8i0ac?si=8cf6e9cKGmEJL2tj"
+        }
+      ],
+      "youtubeUrl": "https://youtube.com/shorts/pIHzVo8i0ac?si=8cf6e9cKGmEJL2tj",
+      "videoUrl": "https://youtube.com/shorts/pIHzVo8i0ac?si=8cf6e9cKGmEJL2tj",
+      "isFeatured": true,
+      "status": "published",
+      "youtubeVideoId": "pIHzVo8i0ac",
+      "registrationUrl": "",
+      "externalUrl": "",
+      "schedule": [],
+      "createdAt": "2026-11-11",
+      "updatedAt": "2026-11-11T12:41:18.353Z"
+    },
+    {
       "id": "evt_1794317092264_dqcb",
       "title": "Paramathma Jyothi Dharma Sandesha  Yatra, Naduvannur Shri Narasimha Kshetram,",
       "titleMl": "പരമാത്മജ്യോതി ധർമ്മ സന്ദേശ യാത്ര, നടുവണ്ണൂർ ശ്രീ നരസിംഹ ക്ഷേത്രം",
@@ -1175,10 +1212,7 @@
       "status": "published",
       "order": 1,
       "createdAt": "2026-11-10",
-      "updatedAt": "2026-11-11T12:11:42.087Z",
-      "youtubeVideoId": "mhs3kyoW3aQ",
-      "registrationUrl": "",
-      "externalUrl": ""
+      "updatedAt": "2026-11-11T12:11:42.087Z"
     },
     {
       "id": "evt_1794324121387_v1aj",
